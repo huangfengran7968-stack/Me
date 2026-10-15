@@ -1,0 +1,787 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Touch Ring - User Guide</title>
+    <meta name="description" content="Quick start guide for your Deepvibe Touch Ring. Connect, wear, and begin your digital companionship journey.">
+    <link rel="icon" href="../image/icon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #D4A5A5;
+            --primary-dim: #C98888;
+            --secondary: #9093ff;
+            --secondary-dim: #7a7dff;
+            --background: #07090d;
+            --surface: rgba(14, 14, 14, 0.6);
+            --surface-high: rgba(26, 25, 25, 0.8);
+            --surface-border: rgba(73, 72, 71, 0.3);
+            --text-primary: #FAF9F6;
+            --text-secondary: #adaaaa;
+            --wood-tone: #D4B996;
+            --accent-glow: rgba(139, 92, 246, 0.3);
+            --success: #10b981;
+            --step-glow: rgba(212, 165, 165, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(212, 165, 165, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            padding: 24px 0 32px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .brand-logo {
+            height: 36px;
+            filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.4));
+        }
+
+        .brand-name {
+            font-family: 'Lexend', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .header-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .guide-card {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--surface-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .guide-card:nth-child(1) { animation-delay: 0.1s; }
+        .guide-card:nth-child(2) { animation-delay: 0.2s; }
+        .guide-card:nth-child(3) { animation-delay: 0.3s; }
+        .guide-card:nth-child(4) { animation-delay: 0.4s; }
+        .guide-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .guide-card:hover {
+            border-color: rgba(212, 165, 165, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(139, 92, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .step-container {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            box-shadow:
+                inset 0 1px 1px rgba(255, 255, 255, 0.2),
+                0 0 12px var(--step-glow),
+                0 0 24px rgba(144, 147, 255, 0.2);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 65ch;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(212, 165, 165, 0.04));
+            border-left: 3px solid var(--primary);
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+            margin-top: 16px;
+        }
+
+        .info-box p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.7;
+            max-width: 65ch;
+        }
+
+        .info-box strong {
+            color: var(--wood-tone);
+            font-weight: 600;
+        }
+
+        .info-box.accent {
+            border-left-color: var(--wood-tone);
+            background: linear-gradient(135deg, rgba(212, 185, 150, 0.08), rgba(139, 92, 246, 0.04));
+        }
+
+        .info-box.cyan {
+            border-left-color: #00E0FF;
+            background: linear-gradient(135deg, rgba(0, 224, 255, 0.08), rgba(212, 165, 165, 0.04));
+        }
+
+        .scenario-divider {
+            text-align: center;
+            padding: 32px 0 16px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out 0.3s forwards;
+        }
+
+        .scenario-divider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(144, 147, 255, 0.4), transparent);
+        }
+
+        .scenario-divider h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .scenario-divider p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 40ch;
+            margin: 0 auto;
+        }
+
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 9999px;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--success);
+        }
+
+        .success-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--success);
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 16px;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.9rem 1.25rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+        }
+
+        .download-btn:hover::before {
+            opacity: 1;
+        }
+
+        .download-btn i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s ease, color 0.3s ease;
+            width: 1.5rem;
+            text-align: center;
+        }
+
+        .download-btn:hover i {
+            transform: scale(1.1);
+            color: var(--secondary);
+        }
+
+        .download-btn-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .download-btn-text small {
+            display: block;
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            line-height: 1.2;
+            opacity: 0.8;
+        }
+
+        .download-btn-text span {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+            background: linear-gradient(90deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .download-btn:hover .download-btn-text span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .download-btn .fa-google-play {
+            font-size: 1.4rem;
+        }
+
+        .tips-section {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--surface-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 32px;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out 0.6s forwards;
+        }
+
+        .tips-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--wood-tone);
+        }
+
+        .tips-title svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--wood-tone);
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+            max-width: 65ch;
+        }
+
+        .tips-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .complete-card {
+            text-align: center;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(144, 147, 255, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, rgba(144, 147, 255, 0.06), rgba(212, 165, 165, 0.04));
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out 0.5s forwards;
+        }
+
+        .complete-card .step-title {
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+        }
+
+        .complete-card .step-description {
+            margin: 0 auto;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 32px 0;
+            border-top: 1px solid var(--surface-border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out 0.7s forwards;
+        }
+
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand img {
+            height: 28px;
+            filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.3));
+        }
+
+        .footer-brand-name {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-company {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .footer-contact {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-contact a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--secondary);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 16px; }
+            .header { padding: 16px 0 24px; }
+            .brand-name { font-size: 20px; }
+            .header-title { font-size: 1.25rem; }
+            .guide-card { padding: 20px; margin-bottom: 20px; }
+            .step-number { width: 36px; height: 36px; font-size: 1.1rem; }
+            .step-title { font-size: 1rem; }
+            .step-description { font-size: 0.85rem; }
+            .tips-section { padding: 20px; margin-top: 24px; }
+            .scenario-divider { padding: 24px 0 12px; }
+            .footer { padding: 24px 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="brand">
+                <img src="../image/icon.png" alt="Deepvibe" class="brand-logo">
+                <span class="brand-name">Deepvibe</span>
+            </div>
+            <h1 class="header-title">Touch Ring</h1>
+            <p class="header-subtitle">Quick start guide for your smart ring. Connect, wear, and begin your digital companionship journey.</p>
+        </header>
+
+        <!-- Step 1: Download App -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h2 class="step-title">Download the Deepvibe App</h2>
+                    <p class="step-description">Download the Deepvibe app from the options below, or search "Deepvibe" in your app store. Grant Bluetooth permissions when prompted to enable ring pairing.</p>
+                </div>
+            </div>
+            <div class="download-buttons">
+                <a href="https://apps.apple.com/cn/app/deepsire/id6446308808" class="download-btn" target="_blank">
+                    <i class="fab fa-apple"></i>
+                    <div class="download-btn-text">
+                        <small>Download on the</small>
+                        <span>App Store</span>
+                    </div>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.RoyalRV.deepvibe" class="download-btn" target="_blank">
+                    <i class="fab fa-google-play"></i>
+                    <div class="download-btn-text">
+                        <small>Get it on</small>
+                        <span>Google Play</span>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" id="apk-download-link" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    <div class="download-btn-text">
+                        <small>Direct APK</small>
+                        <span>Download</span>
+                    </div>
+                </a>
+            </div>
+            <div class="info-box" style="margin-top: 16px;">
+                <p><strong>Supported Platforms:</strong> iOS 14.0+ / Android 10.0+</p>
+            </div>
+            <div class="info-box accent" style="margin-top: 12px;">
+                <p><strong>Tip:</strong> Before first use, ensure your phone has network access and allow the app to use Bluetooth permissions for searching and connecting the Touch Ring.</p>
+            </div>
+        </div>
+
+        <!-- Step 2: Wear & Wake -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h2 class="step-title">Wear & Wake the Touch Ring</h2>
+                    <p class="step-description">Ensure the ring is sufficiently charged. Wear it on your finger with the inner sensor area naturally touching your skin. Choose a snug but non-restrictive fit — not too loose or too tight — for stable data measurement.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>Tip:</strong> Keep your hand still during measurement and avoid vigorous movement to improve data stability.</p>
+            </div>
+        </div>
+
+        <!-- Scenario A: Standalone Use -->
+        <div class="scenario-divider">
+            <h2>Scenario A: Standalone Ring Use</h2>
+            <p>For users who only use the Touch Ring and want to view status data or perform single measurements via the Deepvibe app.</p>
+        </div>
+
+        <!-- Step 3A: Connect via App -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">3A</div>
+                <div class="step-content">
+                    <h2 class="step-title">Connect in the App</h2>
+                    <p class="step-description">Open the Deepvibe app, sign in or create an account, then tap "Add Device" and select "Touch Ring". Follow the prompts to enable Bluetooth. The system will automatically search for nearby Touch Ring devices. Select your ring from the list to complete pairing. Once connected, the ring will appear on your device dashboard.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>Tip:</strong> If no devices are found, ensure the ring is charged, Bluetooth is enabled, and bring the ring closer to your phone before searching again.</p>
+            </div>
+        </div>
+
+        <!-- Step 4A: View Data -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">4A</div>
+                <div class="step-content">
+                    <h2 class="step-title">View Health Data</h2>
+                    <p class="step-description">After connection, tap the Touch Ring device card to enter the data page. View daily status data collected by the ring, including heart rate, sleep patterns, stress levels, and more. Displayed content varies by ring version and app version.</p>
+                </div>
+            </div>
+            <div class="info-box accent">
+                <p><strong>Note:</strong> Data is for daily reference only and is not intended for medical diagnosis, treatment, or health assessment.</p>
+            </div>
+        </div>
+
+        <!-- Step 5A: Measure -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">5A</div>
+                <div class="step-content">
+                    <h2 class="step-title">Take a Single Measurement</h2>
+                    <p class="step-description">In the health data page, select the measurement type you want (e.g., heart rate, stress). Tap the corresponding item, follow the prompts to keep your hand still, and wait for the measurement to complete. Results will appear on the app page.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>Tip:</strong> Keep the ring stable during measurement. Avoid frequent finger movement to prevent inaccurate results.</p>
+            </div>
+        </div>
+
+        <!-- Scenario B: Bind with Sight Frame -->
+        <div class="scenario-divider">
+            <h2>Scenario B: Link with Sight Device</h2>
+            <p>For users who already have a Deepvibe Sight device and want to link the Touch Ring for interactive companionship.</p>
+        </div>
+
+        <!-- Step 3B: Connect via Sight -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">3B</div>
+                <div class="step-content">
+                    <h2 class="step-title">Connect via Sight Interface</h2>
+                    <p class="step-description">Open the Deepvibe app and enter the interface of your bound Sight device. Tap "Add Device" or "Link Touch Ring". Follow the prompts to enable Bluetooth. The system will search for nearby Touch Ring devices. Bring the ring close to both your phone and Sight device, then wait for it to appear in the list.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4B: Match -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">4B</div>
+                <div class="step-content">
+                    <h2 class="step-title">Pair the Touch Ring</h2>
+                    <p class="step-description">Select your Touch Ring from the search results and tap to pair. Once paired, the ring will be linked to your Sight device account. Status data collected by the ring can now be used for interactive responses from your digital life on Sight.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>Tip:</strong> If you have multiple rings, confirm the correct one by its device name or number to avoid binding to the wrong device.</p>
+            </div>
+        </div>
+
+        <!-- Step 5B: Data & Interaction -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">5B</div>
+                <div class="step-content">
+                    <h2 class="step-title">Measure & Interact with Sight</h2>
+                    <p class="step-description">After pairing, wear the ring properly and select a measurement item in the app. Follow the prompts to stay still during measurement. Once complete, data can be viewed in the app. If Sight linking is enabled, your digital companion can respond based on your status — offering gentle reminders, caring interactions, or companionship feedback.</p>
+                </div>
+            </div>
+            <div class="info-box cyan">
+                <p><strong>Example:</strong> When the ring detects an elevated stress level, your digital companion on Sight may gently suggest a breathing exercise or play calming music.</p>
+            </div>
+            <div class="info-box accent" style="margin-top: 12px;">
+                <p><strong>Note:</strong> Ring-Sight linking is for daily companionship and status awareness only, not for medical diagnosis or emergency assistance.</p>
+            </div>
+            <div class="success-badge">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                Ring Linked Successfully
+            </div>
+        </div>
+
+        <!-- Tips -->
+        <section class="tips-section">
+            <div class="tips-title">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+                Helpful Tips
+            </div>
+            <ul class="tips-list">
+                <li>On first connection, confirm Bluetooth is enabled and allow the Deepvibe app to use Bluetooth permissions.</li>
+                <li>Before measurement, ensure the ring is charged and properly positioned on your finger.</li>
+                <li>During single measurements, keep your hand still and avoid clenching or frequent finger movement.</li>
+                <li>Sleep data usually requires continuous nighttime wearing; sync time varies by app display.</li>
+                <li>If connection fails, try toggling Bluetooth off and on, or search for the device again in the app.</li>
+                <li>Regularly check for firmware updates in the app for a more stable experience.</li>
+                <li>All status data is for daily reference only — not intended for medical diagnosis or health conclusions.</li>
+                <li>When battery is below 5%, measurement is unavailable — charge promptly. The ring is not discoverable via Bluetooth while charging; disconnect the charger to pair.</li>
+            </ul>
+        </section>
+
+        <!-- Complete -->
+        <div class="complete-card">
+            <h2 class="step-title">Setup Complete</h2>
+            <p class="step-description">After completing these steps, you can view daily status data from your Touch Ring via the Deepvibe app, or link the ring with your Sight device for a truly connected digital companionship experience.</p>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-brand">
+                <img src="../image/icon.png" alt="Deepvibe">
+                <span class="footer-brand-name">Deepvibe</span>
+            </div>
+            <p class="footer-company">Deepvibe Digital Technology Co., Ltd.</p>
+            <p class="footer-contact">Support: <a href="mailto:support@deepsire.com">support@deepsire.com</a></p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            const apkLink = document.getElementById('apk-download-link');
+            if (apkLink) {
+                const fetchApkUrl = async () => {
+                    const apiUrl = 'https://oms.deepsire.com/tencent/getStsApkCredential';
+                    try {
+                        const formData = new URLSearchParams();
+                        formData.append('serviceType', 0);
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                            body: formData
+                        });
+                        if (!response.ok) throw new Error('API request failed: ' + response.status);
+                        const data = await response.json();
+                        if (data && data.code === 0 && data.data && data.data.url) {
+                            const { url, expirationTimestamp } = data.data;
+                            localStorage.setItem('apkUrl', url);
+                            localStorage.setItem('apkExpiration', expirationTimestamp);
+                            return url;
+                        } else {
+                            throw new Error('Invalid API response format.');
+                        }
+                    } catch (error) {
+                        console.error('Failed to fetch APK URL:', error);
+                        return null;
+                    }
+                };
+
+                apkLink.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    const span = apkLink.querySelector('span');
+                    const originalText = span ? span.textContent : 'Download';
+                    const cachedUrl = localStorage.getItem('apkUrl');
+                    const cachedExpiration = localStorage.getItem('apkExpiration');
+                    const isExpired = !cachedExpiration || (Date.now() + 5000) >= parseInt(cachedExpiration, 10);
+                    let downloadUrl = cachedUrl;
+
+                    if (isExpired || !downloadUrl) {
+                        if (span) span.textContent = 'Getting link...';
+                        apkLink.style.pointerEvents = 'none';
+                        downloadUrl = await fetchApkUrl();
+                        apkLink.style.pointerEvents = 'auto';
+                    }
+
+                    if (downloadUrl) {
+                        if (span) span.textContent = 'Download';
+                        window.open(downloadUrl, '_blank');
+                    } else {
+                        if (span) span.textContent = 'Failed to get link';
+                        setTimeout(() => { if (span) span.textContent = originalText; }, 3000);
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

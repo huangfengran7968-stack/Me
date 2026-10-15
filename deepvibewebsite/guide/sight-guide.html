@@ -1,0 +1,645 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sight Device - User Guide</title>
+    <meta name="description" content="Quick start guide for your Deepvibe Sight Device. Set up and begin your digital companionship journey.">
+    <link rel="icon" href="../image/icon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --deep-space-blue: #0A1A2F;
+            --warm-white: #FAF9F6;
+            --wood-tone: #D4B996;
+            --tech-cyan: #00E0FF;
+            --primary: #D4A5A5;
+            --primary-dim: #C98888;
+            --secondary: #9093ff;
+            --secondary-dim: #7a7dff;
+            --background: #07090d;
+            --surface: rgba(14, 14, 14, 0.6);
+            --surface-high: rgba(26, 25, 25, 0.8);
+            --surface-border: rgba(73, 72, 71, 0.3);
+            --text-primary: #FAF9F6;
+            --text-secondary: #adaaaa;
+            --success: #10b981;
+            --btn-primary-start: #8B5CF6;
+            --btn-primary-end: #D4A5A5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(212, 165, 165, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 3rem 0 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .brand-logo {
+            height: 36px;
+            width: auto;
+            filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.4));
+        }
+
+        .brand-name {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .header-subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Guide Cards */
+        .guide-card {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--surface-border);
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            margin-bottom: 1.25rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .guide-card:nth-child(1) { animation-delay: 0.1s; }
+        .guide-card:nth-child(2) { animation-delay: 0.2s; }
+        .guide-card:nth-child(3) { animation-delay: 0.3s; }
+        .guide-card:nth-child(4) { animation-delay: 0.4s; }
+        .guide-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .guide-card:hover {
+            border-color: rgba(212, 165, 165, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(139, 92, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .step-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Lexend', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 
+                inset 0 1px 1px rgba(255, 255, 255, 0.2),
+                0 0 12px rgba(212, 165, 165, 0.4),
+                0 0 24px rgba(144, 147, 255, 0.2);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 50ch;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(212, 165, 165, 0.04));
+            border-left: 3px solid var(--primary);
+            border-radius: 0 0.75rem 0.75rem 0;
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .info-box p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .info-box strong {
+            color: var(--wood-tone);
+            font-weight: 600;
+        }
+
+        /* Success Badge */
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 9999px;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--success);
+        }
+
+        .success-badge svg {
+            width: 1rem;
+            height: 1rem;
+            fill: var(--success);
+        }
+
+        /* Download Buttons */
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 16px;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.9rem 1.25rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+        }
+
+        .download-btn:hover::before {
+            opacity: 1;
+        }
+
+        .download-btn i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s ease, color 0.3s ease;
+            width: 1.5rem;
+            text-align: center;
+        }
+
+        .download-btn:hover i {
+            transform: scale(1.1);
+            color: var(--secondary);
+        }
+
+        .download-btn-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .download-btn-text small {
+            display: block;
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            line-height: 1.2;
+            opacity: 0.8;
+        }
+
+        .download-btn-text span {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+            background: linear-gradient(90deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .download-btn:hover .download-btn-text span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .download-btn .fa-google-play {
+            font-size: 1.4rem;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--surface-border);
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out 0.6s forwards;
+        }
+
+        .tips-title {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            font-family: 'Lexend', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--wood-tone);
+        }
+
+        .tips-title svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            fill: var(--wood-tone);
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .tips-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0.375rem;
+            height: 0.375rem;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0 3rem;
+            border-top: 1px solid var(--surface-border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out 0.7s forwards;
+        }
+
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand img {
+            height: 1.75rem;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.3));
+        }
+
+        .footer-brand-name {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-company {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-contact {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-contact a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .header {
+                padding: 2rem 0 1.5rem;
+            }
+
+            .brand-name {
+                font-size: 1.25rem;
+            }
+
+            .header-title {
+                font-size: 1.5rem;
+            }
+
+            .guide-card {
+                padding: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            .step-container {
+                gap: 0.75rem;
+            }
+
+            .step-number {
+                width: 2.25rem;
+                height: 2.25rem;
+                font-size: 0.9rem;
+            }
+
+            .step-title {
+                font-size: 1rem;
+            }
+
+            .step-description {
+                font-size: 0.85rem;
+            }
+
+            .tips-section {
+                padding: 1.25rem;
+                margin-top: 1.5rem;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="brand">
+                <img src="../image/icon.png" alt="Deepvibe" class="brand-logo">
+                <span class="brand-name">Deepvibe</span>
+            </div>
+            <h1 class="header-title">Sight Device</h1>
+            <p class="header-subtitle">Quick start guide for your digital companionship journey</p>
+        </header>
+
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h2 class="step-title">Power On & Connect</h2>
+                    <p class="step-description">Connect your Sight device to power and wait for it to boot up. During the setup wizard, select your Wi-Fi network and enter the password.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>Tip:</strong> Place your Sight device in an area with strong Wi-Fi signal for a stable connection.</p>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h2 class="step-title">Download the Deepvibe App</h2>
+                    <p class="step-description">Download the Deepvibe app from the options below, or search "Deepvibe" in your app store to download and install the companion app.</p>
+                </div>
+            </div>
+            <div class="download-buttons">
+                <a href="https://apps.apple.com/cn/app/deepsire/id6446308808" class="download-btn" target="_blank">
+                    <i class="fab fa-apple"></i>
+                    <div class="download-btn-text">
+                        <small>Download on the</small>
+                        <span>App Store</span>
+                    </div>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.RoyalRV.deepvibe" class="download-btn" target="_blank">
+                    <i class="fab fa-google-play"></i>
+                    <div class="download-btn-text">
+                        <small>Get it on</small>
+                        <span>Google Play</span>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" id="apk-download-link" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    <div class="download-btn-text">
+                        <small>Direct APK</small>
+                        <span>Download</span>
+                    </div>
+                </a>
+            </div>
+            <div class="info-box" style="margin-top: 16px;">
+                <p><strong>Supported Platforms:</strong> iOS 14.0+ / Android 10.0+</p>
+            </div>
+            <div class="info-box accent" style="margin-top: 12px;">
+                <p><strong>Tip:</strong> Before first use, ensure your phone has network access to download the app and complete the setup wizard.</p>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h2 class="step-title">Bind Your Device</h2>
+                    <p class="step-description">Open the Deepvibe app, sign in or create an account, tap "Add Device", and scan the binding QR code on your Sight screen to complete pairing.</p>
+                </div>
+            </div>
+            <div class="success-badge">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                Device Bound Successfully
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h2 class="step-title">Create Your Digital Life</h2>
+                    <p class="step-description">In the app, select "Create Digital Life", upload photos or video materials, and the system will automatically generate an interactive digital presence.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>Best Results:</strong> Upload clear, front-facing photos with even lighting and a simple background.</p>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h2 class="step-title">Start Interacting</h2>
+                    <p class="step-description">Once setup is complete, your digital life will appear on your Sight device. It automatically wakes when you approach — interact through touch or voice.</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="tips-section">
+            <div class="tips-title">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+                Helpful Tips
+            </div>
+            <ul class="tips-list">
+                <li>For first-time use, connect to a charger to ensure sufficient battery</li>
+                <li>Regularly update device firmware through the app for the latest features</li>
+                <li>Avoid placing the device in direct sunlight or high-temperature environments</li>
+                <li>Contact support via the app or visit our Help Center if you encounter any issues</li>
+            </ul>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-brand">
+                <img src="../image/icon.png" alt="Deepvibe">
+                <span class="footer-brand-name">Deepvibe</span>
+            </div>
+            <p class="footer-company">Deepvibe Digital Technology Co., Ltd.</p>
+            <p class="footer-contact">Support: <a href="mailto:support@deepsire.com">support@deepsire.com</a></p>
+        </footer>
+    </div>
+</body>
+</html>

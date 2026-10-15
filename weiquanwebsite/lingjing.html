@@ -1,0 +1,2272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灵境计划 - 共筑数字生命新世界 | 微圈</title>
+    <meta name="description" content="灵境计划是微圈发起的数字生命共建计划，一个由全球用户上传、创造、养育的数字生命共同栖居与演化的共享世界。">
+    <link rel="icon" href="image/logo.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #8A2BE2;
+            --secondary-color: #00BFFF;
+            --primary-gradient: linear-gradient(135deg, #4F46E5, #8A2BE2);
+            --dark-bg: #0d0c1d;
+            --light-bg: #1a192f;
+            --text-light: #f0f4f8;
+            --text-dark: #a9b3d0;
+            --border-color: #2a3457;
+            --font-family: 'Noto Sans SC', 'Source Han Sans CN', 'Inter', sans-serif;
+            --nav-gradient: linear-gradient(90deg, #120A2F 0%, #1A1245 50%, #120A2F 100%);
+            --logo-gradient: linear-gradient(90deg, #00E0FF, #7B61FF);
+            --btn-gradient: linear-gradient(90deg, #5B38F5, #9D5CFF);
+            --glow-purple: 0 0 40px rgba(91, 56, 245, 0.3);
+            --glow-cyan: 0 0 40px rgba(0, 224, 255, 0.3);
+            --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            --card-border: rgba(255, 255, 255, 0.06);
+            
+            /* 灵境计划专属色 */
+            --lingjing-connect: #06B6D4;
+            --lingjing-grow: #10B981;
+            --lingjing-gather: #F59E0B;
+            --lingjing-gradient: linear-gradient(135deg, #06B6D4, #7C3AED, #10B981);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html {
+            width: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.8;
+            width: 100%;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(91, 56, 245, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(157, 92, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 224, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container { width: 90%; max-width: 1400px; margin: 0 auto; }
+        section { padding: 100px 0; position: relative; }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+            letter-spacing: 0.5px;
+        }
+
+        /* 导航栏样式 - 与首页一致 */
+        .header {
+            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
+            height: 80px;
+            background: transparent;
+            backdrop-filter: blur(0);
+            border-bottom: none;
+            transition: all 0.3s ease;
+        }
+        .header.scrolled {
+            background: rgba(10, 6, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .navbar { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+        }
+        .logo { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; 
+            position: absolute;
+            left: 40px;
+            transition: transform 0.3s ease;
+            gap: 12px;
+        }
+        .logo:hover { transform: scale(1.05); }
+        .logo-image { height: 40px; width: auto; filter: drop-shadow(0 0 10px rgba(0, 224, 255, 0.3)); }
+        .logo-text {
+            font-family: 'Noto Serif SC', 'Noto Sans SC', 'Inter', serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            animation: logoGradientShift 3s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(0, 224, 255, 0.3);
+            position: relative;
+        }
+        .logo-text::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -4px;
+            right: -4px;
+            bottom: -2px;
+            background: linear-gradient(90deg, rgba(0, 224, 255, 0.3), rgba(123, 97, 255, 0.3), rgba(91, 56, 245, 0.3));
+            border-radius: 4px;
+            opacity: 0;
+            z-index: -1;
+            filter: blur(8px);
+            transition: opacity 0.3s ease;
+        }
+        .logo:hover .logo-text::before {
+            opacity: 1;
+            animation: logoNeonPulse 1.5s ease-in-out infinite;
+        }
+        @keyframes logoGradientShift {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+        @keyframes logoNeonPulse {
+            0%, 100% { opacity: 0.5; filter: blur(6px); }
+            50% { opacity: 1; filter: blur(10px); }
+        }
+        .nav-menu { 
+            list-style: none; 
+            display: flex; 
+            gap: 40px; 
+            align-items: center;
+        }
+        .nav-link { 
+            color: #FFFFFF; 
+            text-decoration: none; 
+            font-family: 'Noto Sans SC', 'Source Han Sans CN', 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease-out;
+            position: relative;
+            padding: 8px 0;
+        }
+        .nav-link:hover {
+            font-weight: 500;
+        }
+        .nav-link.active {
+            font-weight: 500;
+        }
+        .nav-link:not(.active) {
+            color: #FFFFFF;
+        }
+        .nav-link:hover {
+            background: var(--logo-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: absolute;
+            right: 40px;
+        }
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 28px;
+            background: var(--btn-gradient);
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 24px;
+            font-family: 'Noto Sans SC', 'Source Han Sans CN', 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            transition: all 0.3s ease;
+        }
+        .btn-nav:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(91, 56, 245, 0.4);
+        }
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; transition: all 0.3s ease; }
+        .hamburger::after { content: '☰'; }
+        .hamburger.active::after { content: '✕'; }
+        .mobile-only { display: none; }
+
+        /* 灵境计划英雄区 */
+        #lingjing-hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+        }
+        
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .lingjing-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(ellipse at center, 
+                rgba(6, 182, 212, 0.15) 0%, 
+                rgba(13, 12, 29, 0) 70%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 120px 0;
+        }
+        
+        .lingjing-hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #06B6D4 50%, #7C3AED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .lingjing-hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+        
+        .lingjing-hero-slogan {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #06B6D4;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+        
+        .btn-primary {
+            background: var(--btn-gradient);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(91, 56, 245, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(91, 56, 245, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(6, 182, 212, 0.5);
+            color: #06B6D4;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(6, 182, 212, 0.1);
+            border-color: #06B6D4;
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 时代机遇板块 */
+        #opportunity {
+            background: linear-gradient(180deg, 
+                rgba(13, 12, 29, 0) 0%, 
+                rgba(6, 182, 212, 0.05) 50%, 
+                rgba(13, 12, 29, 0) 100%);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+        
+        .comparison-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+        
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .comparison-icon {
+            font-size: 2.5rem;
+        }
+        
+        .comparison-header h3 {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin: 0;
+        }
+        
+        .comparison-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .comparison-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .comparison-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #06B6D4;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        .old-economy .comparison-list li::before {
+            color: #FF4757;
+        }
+        
+        .core-value {
+            margin-top: 60px;
+            padding: 40px;
+            background: rgba(6, 182, 212, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            text-align: center;
+        }
+        
+        .core-value h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+        }
+        
+        .core-value p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        /* 愿景阐述 */
+        #vision {
+            background: linear-gradient(180deg, 
+                rgba(13, 12, 29, 0) 0%, 
+                rgba(6, 182, 212, 0.05) 50%, 
+                rgba(13, 12, 29, 0) 100%);
+        }
+        
+        .vision-diagram {
+            max-width: 800px;
+            margin: 60px auto 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+        
+        .vision-diagram img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        /* 核心产品矩阵 */
+        #products {
+            background: linear-gradient(180deg, 
+                rgba(13, 12, 29, 0) 0%, 
+                rgba(16, 185, 129, 0.05) 50%, 
+                rgba(13, 12, 29, 0) 100%);
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(6, 182, 212, 0.3);
+            box-shadow: 0 20px 60px rgba(6, 182, 212, 0.15);
+        }
+        
+        .product-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .product-icon {
+            font-size: 3rem;
+        }
+        
+        .product-header h3 {
+            font-size: 1.8rem;
+            color: #FFFFFF;
+            margin: 0;
+            flex: 1;
+        }
+        
+        .product-tag {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .product-tag.online {
+            background: linear-gradient(135deg, #10B981, #06B6D4);
+            color: #FFFFFF;
+        }
+        
+        .product-tag.coming-soon {
+            background: linear-gradient(135deg, #F59E0B, #FF4757);
+            color: #FFFFFF;
+        }
+        
+        .product-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .product-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, #1a192f, #0d0c1d);
+            border-radius: 16px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+        }
+        
+        /* 叠加按钮区域 - 确保可点击性 */
+        .product-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 100%);
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        .product-image-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(6, 182, 212, 0.9);
+            color: #FFFFFF;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            pointer-events: auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(6, 182, 212, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .product-image-btn:hover {
+            background: rgba(6, 182, 212, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+        }
+        
+        .placeholder-text {
+            text-align: center;
+            color: var(--text-dark);
+        }
+        
+        .placeholder-icon {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .placeholder-text .small {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-top: 8px;
+        }
+        
+        .product-detail h4 {
+            font-size: 1.2rem;
+            color: #06B6D4;
+            margin-bottom: 15px;
+        }
+        
+        .product-detail p {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .product-detail .highlight {
+            color: #10B981;
+            font-weight: 500;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(6, 182, 212, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .product-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .product-tag {
+                align-self: flex-start;
+            }
+        }
+
+        /* 灵境计划导航 emoji 无特效 - 保持普通白色 */
+        .lingjing-emoji {
+            font-weight: 400;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            background-clip: initial !important;
+            color: #FFFFFF !important;
+        }
+
+        /* 商业模式板块 */
+        #business-model {
+            background: linear-gradient(180deg, 
+                rgba(13, 12, 29, 0) 0%, 
+                rgba(245, 158, 11, 0.05) 50%, 
+                rgba(13, 12, 29, 0) 100%);
+        }
+        
+        .dual-track-model {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+        
+        .track {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .track:hover {
+            transform: translateY(-5px);
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+        
+        .track-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .track-icon {
+            font-size: 2.5rem;
+        }
+        
+        .track-header h3 {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin: 0;
+        }
+        
+        .track-subtitle {
+            color: #06B6D4;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .track-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .track-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .track-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10B981;
+            font-weight: bold;
+        }
+        
+        .track-note {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--text-dark);
+            font-style: italic;
+        }
+        
+        /* 四大收益管道 */
+        .income-pipelines {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pipeline {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .pipeline:hover {
+            transform: translateY(-5px);
+            border-color: rgba(245, 158, 11, 0.3);
+            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.15);
+        }
+        
+        .pipeline-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F59E0B, #FF4757);
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .pipeline h4 {
+            font-size: 1.3rem;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+        
+        .pipeline-type {
+            color: #06B6D4;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .pipeline p {
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .pipeline-highlight {
+            color: #10B981;
+            font-weight: 500;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(245, 158, 11, 0.2);
+        }
+        
+        /* 安全保障板块 */
+        #security {
+            background: linear-gradient(180deg, 
+                rgba(13, 12, 29, 0) 0%, 
+                rgba(46, 213, 115, 0.05) 50%, 
+                rgba(13, 12, 29, 0) 100%);
+        }
+        
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .security-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .security-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(46, 213, 115, 0.3);
+            box-shadow: 0 10px 40px rgba(46, 213, 115, 0.15);
+        }
+        
+        .security-icon {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        .security-card h3 {
+            font-size: 1.4rem;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+        }
+        
+        .security-card p {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* Footer 优化 */
+        .footer {
+            padding: 60px 0 40px;
+            background: rgba(10, 6, 18, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-slogan {
+            text-align: center;
+            color: #06B6D4;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        /* 3D 按钮效果 - 与首页一致 */
+        .btn-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            position: relative;
+            transition: transform 0.1s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .btn-3d::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .btn-3d:hover::before {
+            opacity: 1;
+            animation: neonPulse 1.5s ease-in-out infinite;
+        }
+        
+        /* 流光扫描线效果 */
+        .btn-3d::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.3),
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: skewX(-20deg);
+            transition: left 0.5s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .btn-3d:hover::after {
+            left: 100%;
+        }
+        
+        /* 流光扫过动画 */
+        @keyframes scanLine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* 边缘光效扫过 */
+        .btn-3d .scan-edge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                transparent,
+                rgba(0, 224, 255, 0.8),
+                rgba(91, 56, 245, 0.8),
+                transparent
+            );
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .btn-3d:hover .scan-edge {
+            animation: edgeScan 0.6s ease-out forwards;
+        }
+        @keyframes edgeScan {
+            0% { 
+                left: 0;
+                opacity: 1;
+                height: 20%;
+                top: 40%;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% { 
+                left: 100%;
+                opacity: 0;
+                height: 100%;
+                top: 0;
+            }
+        }
+        
+        /* 霓虹发光脉冲动画 */
+        @keyframes neonPulse {
+            0%, 100% {
+                opacity: 0.5;
+                filter: blur(6px);
+            }
+            50% {
+                opacity: 1;
+                filter: blur(10px);
+            }
+        }
+
+        /* 语言切换器 - 与首页一致 */
+        .lang-selector {
+            position: relative;
+        }
+        .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            color: #FFFFFF;
+            font-family: 'Noto Sans SC', 'Source Han Sans CN', 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .lang-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 26px;
+            background: linear-gradient(135deg, rgba(91, 56, 245, 0.3), rgba(0, 224, 255, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            filter: blur(8px);
+        }
+        .lang-btn:hover::before {
+            opacity: 0.6;
+            animation: neonPulse 1.5s ease-in-out infinite;
+        }
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(91, 56, 245, 0.4);
+            box-shadow: 0 4px 15px rgba(91, 56, 245, 0.3);
+        }
+        .lang-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.5s ease;
+            pointer-events: none;
+        }
+        .lang-btn:hover::after {
+            left: 100%;
+        }
+        .lang-icon {
+            width: 18px;
+            height: 18px;
+        }
+        .lang-arrow {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s ease;
+        }
+        .lang-selector:hover .lang-arrow {
+            transform: rotate(180deg);
+        }
+        .lang-current {
+            color: #FFFFFF;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .lang-current:hover {
+            background: var(--logo-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 160px;
+            background: rgba(18, 10, 47, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(91, 56, 245, 0.3);
+            border-radius: 12px;
+            padding: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(91, 56, 245, 0.2);
+            z-index: 1000;
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .lang-dropdown::-webkit-scrollbar {
+            width: 6px;
+        }
+        .lang-dropdown::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+        .lang-dropdown::-webkit-scrollbar-thumb {
+            background: rgba(91, 56, 245, 0.5);
+            border-radius: 3px;
+        }
+        
+        .lang-selector:hover .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .lang-option {
+            padding: 10px 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .lang-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(91, 56, 245, 0.2), transparent);
+            transition: left 0.3s ease;
+        }
+        .lang-option:hover {
+            background: rgba(91, 56, 245, 0.2);
+            color: #FFFFFF;
+        }
+        .lang-option:hover::before {
+            left: 100%;
+        }
+        .lang-option.active {
+            background: linear-gradient(90deg, rgba(91, 56, 245, 0.3), rgba(0, 224, 255, 0.2));
+            color: #00E0FF;
+        }
+        .lang-option.active::after {
+            content: '✓';
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00E0FF;
+            font-size: 12px;
+        }
+
+        /* 行动号召 */
+        #cta {
+            text-align: center;
+            padding: 120px 0;
+            background: linear-gradient(180deg, 
+                rgba(13, 12, 29, 0) 0%, 
+                rgba(245, 158, 11, 0.05) 100%);
+        }
+        
+        #cta .section-title {
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 0 40px;
+            background: rgba(10, 6, 18, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            text-decoration: none;
+        }
+        
+        .footer-logo img {
+            height: 36px;
+        }
+        
+        .footer-logo .logo-text {
+            font-size: 22px;
+            color: #FFFFFF;
+        }
+        
+        .footer-contact,
+        .footer-info {
+            text-align: center;
+            color: var(--text-dark);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-info a {
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .footer-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-left { flex: 0 0 auto; }
+        .footer-left .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .footer-left .footer-logo img { height: 36px; }
+        .footer-left .footer-logo .logo-text { font-size: 22px; color: #FFFFFF; }
+        .footer-center { flex: 1; min-width: 300px; text-align: center; }
+        .footer-center .footer-slogan {
+            color: #06B6D4; font-size: 1rem; font-weight: 500; margin-bottom: 10px; letter-spacing: 1px;
+            line-height: 1.4;
+        }
+        .footer-center .footer-contact { color: var(--text-dark); font-size: 13px; margin: 0; }
+        .footer-center .footer-contact a { color: var(--text-dark); text-decoration: none; }
+        .footer-right { flex: 0 0 auto; min-width: 250px; text-align: right; color: var(--text-dark); font-size: 13px; line-height: 1.5; }
+        .footer-right a { color: var(--text-dark); text-decoration: none; }
+        .footer-right p { margin: 6px 0; }
+
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .container { max-width: 720px; }
+            .section-title { font-size: 2rem; }
+            .lingjing-hero-title { font-size: 2.8rem; }
+            .lingjing-hero-subtitle { font-size: 16px; }
+            .hero-content { padding: 100px 0; }
+        }
+        @media (max-width: 768px) {
+            .container { max-width: 100%; padding: 0 16px; }
+            .header { height: 60px; background: rgba(10, 6, 18, 0.95); backdrop-filter: blur(10px); }
+            .navbar { padding: 0 12px; justify-content: space-between; height: 60px; }
+            .logo { position: relative; left: 0; display: flex; align-items: center; }
+            .logo-image { height: 28px; }
+            .logo-text { font-size: 16px; letter-spacing: 0.5px; }
+            .nav-right { display: none; }
+            .mobile-only { display: block; }
+            .hamburger { 
+                display: flex; 
+                align-items: center; 
+                justify-content: center;
+                position: relative;
+                right: 0;
+                width: 32px;
+                height: 32px;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 8px;
+                font-size: 1.2rem;
+                z-index: 1001;
+                cursor: pointer;
+            }
+            .nav-menu { 
+                display: none; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background-color: rgba(10, 6, 18, 0.98); 
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                flex-direction: column; 
+                text-align: left; 
+                padding: 20px 20px 30px 20px; 
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                z-index: 999;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            .nav-menu.active { 
+                display: flex; 
+            }
+            .nav-item { 
+                margin: 8px 0; 
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            .nav-item:last-child { border-bottom: none; }
+            .nav-link { 
+                font-size: 15px; 
+                padding: 12px 0;
+                display: block;
+                color: rgba(255, 255, 255, 0.9);
+            }
+            .nav-menu .btn-nav {
+                display: inline-flex;
+                margin: 16px 0;
+                padding: 12px 24px;
+                font-size: 14px;
+                width: fit-content;
+            }
+            .nav-menu .lang-selector {
+                margin: 8px 0 16px 0;
+                padding-bottom: 12px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .nav-menu .lang-selector .lang-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .lang-btn { 
+                padding: 8px 14px; 
+                font-size: 13px; 
+            }
+            .lang-icon { width: 16px; height: 16px; }
+            .lang-current { display: inline; }
+            .lang-dropdown {
+                right: 0;
+                left: auto;
+                min-width: 140px;
+                max-height: 180px;
+                overflow-y: auto;
+            }
+            
+            .lingjing-hero-title {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+            
+            .lingjing-hero-subtitle {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 12px; }
+            .header { height: 56px; }
+            .navbar { padding: 0 10px; }
+            .logo-image { height: 26px; }
+            .logo-text { font-size: 15px; letter-spacing: 0.5px; }
+            .hamburger { 
+                font-size: 1.1rem; 
+                width: 30px;
+                height: 30px;
+            }
+            .lingjing-hero-title {
+                font-size: 1.7rem;
+            }
+            .lingjing-hero-subtitle { font-size: 13px; }
+            .footer-container { 
+                flex-direction: column; 
+                text-align: center; 
+                padding: 20px; 
+                gap: 15px;
+                align-items: center;
+            }
+            .footer-left { 
+                margin-bottom: 10px; 
+                min-width: auto;
+            }
+            .footer-left .footer-logo img { height: 30px; }
+            .footer-left .footer-logo .logo-text { font-size: 18px; }
+            .footer-center { 
+                padding: 0; 
+                margin-bottom: 10px; 
+                min-width: auto;
+            }
+            .footer-center .footer-slogan { 
+                font-size: 0.85rem; 
+                margin-bottom: 10px; 
+                max-width: 100%;
+            }
+            .footer-center .footer-contact { font-size: 12px; }
+            .footer-right { 
+                text-align: center; 
+                font-size: 11px; 
+                min-width: auto;
+            }
+            .footer-right p { 
+                margin: 6px 0; 
+                word-break: break-all;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="navbar">
+            <!-- 左区：品牌 logo -->
+            <a href="index.html" class="logo">
+                <img src="image/logo.png" alt="微圈 Logo" class="logo-image">
+                <span class="logo-text">微 圈</span>
+            </a>
+            <!-- 中区：导航菜单 -->
+            <ul class="nav-menu">
+                <li class="nav-item mobile-only">
+                    <div class="lang-selector">
+                        <button class="lang-btn btn-3d" id="langBtn">
+                            <span class="scan-edge"></span>
+                            <svg class="lang-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <span class="lang-current" data-i18n="nav_lang">语言</span>
+                            <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="lang-dropdown">
+                            <div class="lang-option" data-lang="zh-CN">简体中文</div>
+                            <div class="lang-option" data-lang="en">English</div>
+                            <div class="lang-option" data-lang="ja">日本語</div>
+                            <div class="lang-option" data-lang="ko">한국어</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="index.html#hero" class="nav-link" data-i18n="nav_home">首页</a></li>
+                <li class="nav-item"><a href="index.html#architecture" class="nav-link" data-i18n="nav_arch">服务架构</a></li>
+                <li class="nav-item"><a href="index.html#scenarios" class="nav-link" data-i18n="nav_stories">用户故事</a></li>
+                <li class="nav-item"><a href="index.html#soul-products" class="nav-link" data-i18n="nav_products">四大智能设备</a></li>
+                <li class="nav-item"><a href="index.html#features" class="nav-link" data-i18n="nav_tech">技术优势</a></li>
+                <li class="nav-item"><a href="lingjing.html" class="nav-link active" data-i18n="nav_lingjing">灵境计划<span class="lingjing-emoji">✨</span></a></li>
+                <li class="nav-item mobile-only"><a href="index.html#contact" class="btn-nav" data-i18n="nav_contact">联系我们</a></li>
+            </ul>
+            <!-- 右区：联系我们按钮 + 语言选择 (桌面端) -->
+            <div class="nav-right">
+                <a href="index.html#contact" class="btn-nav" data-i18n="nav_contact_btn">联系我们</a>
+                <div class="lang-selector">
+                    <button class="lang-btn btn-3d" id="langBtn">
+                        <span class="scan-edge"></span>
+                        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <span class="lang-current" data-i18n="nav_lang">语言</span>
+                        <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="lang-dropdown">
+                        <div class="lang-option" data-lang="zh-CN">简体中文</div>
+                        <div class="lang-option" data-lang="en">English</div>
+                        <div class="lang-option" data-lang="ja">日本語</div>
+                        <div class="lang-option" data-lang="ko">한국어</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hamburger"></div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 英雄区：粒子汇聚 -->
+        <section id="lingjing-hero">
+            <div class="lingjing-hero-bg"></div>
+            <div id="particles-js"></div>
+            <div class="hero-content">
+                <h1 class="lingjing-hero-title" data-i18n="hero_title">灵境计划 —— 全球首个 AI 数字生命商业生态</h1>
+                <p class="lingjing-hero-subtitle" data-i18n="hero_subtitle">SaaS 平台 + 智能设备 · 掌握 AI 时代的"人货场"</p>
+                <p class="lingjing-hero-slogan" data-i18n="hero_slogan">让 AI 为你打工，让技术产生价值</p>
+                <div class="btn-group">
+                    <a href="#opportunity" class="btn btn-primary" data-i18n="hero_btn1">立即成为数字主理人</a>
+                    <a href="javascript:void(0);" class="btn btn-secondary" id="lingjing-android-link" data-i18n="hero_btn2">免费领养 AI 分身</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 时代机遇 -->
+        <section id="opportunity">
+            <div class="container">
+                <h2 class="section-title" data-i18n="opportunity_title">从"连接人"到"创造人"</h2>
+                <p class="section-subtitle" data-i18n="opportunity_subtitle">
+                    Web 2.0 时代，我们是流量的奴隶；AI 时代，我们是 AI 的主人
+                </p>
+                
+                <div class="comparison-grid">
+                    <!-- 左：传统经济 -->
+                    <div class="comparison-card old-economy">
+                        <div class="comparison-header">
+                            <span class="comparison-icon">❌</span>
+                            <h3 data-i18n="old_economy">传统流量经济</h3>
+                        </div>
+                        <ul class="comparison-list">
+                            <li data-i18n="old_point1">利润被大平台垄断</li>
+                            <li data-i18n="old_point2">内卷严重，难以盈利</li>
+                            <li data-i18n="old_point3">被动消费，没有回报</li>
+                            <li data-i18n="old_point4">竞争激烈的红海市场</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 右：AI 时代 -->
+                    <div class="comparison-card new-economy">
+                        <div class="comparison-header">
+                            <span class="comparison-icon">✅</span>
+                            <h3 data-i18n="new_economy">AI 算力经济</h3>
+                        </div>
+                        <ul class="comparison-list">
+                            <li data-i18n="new_point1">交易"劳动力"与"陪伴"</li>
+                            <li data-i18n="new_point2">人人都是 AI 经纪人</li>
+                            <li data-i18n="new_point3">消费即经营，使用即回报</li>
+                            <li data-i18n="new_point4">待开发的蓝海市场</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="core-value">
+                    <h3 data-i18n="core_value">核心机遇：成为<span style="color: #06B6D4;">"AI 数字资产运营商"</span></h3>
+                    <p data-i18n="core_value_desc">
+                        灵境提供的不仅是一个 AI 工具，而是一个会创造价值的<strong style="color: #06B6D4;">"数字员工"</strong>；
+                        不仅提供虚拟软件，更提供看得见、摸得着的<strong style="color: #10B981;">"灵魂载体"</strong>。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 商业模式 -->
+        <section id="business-model">
+            <div class="container">
+                <h2 class="section-title" data-i18n="business_title">消费即经营，使用即回报</h2>
+                <p class="section-subtitle" data-i18n="business_subtitle">
+                    颠覆性的"双轨"商业模型，让你从消费者变成经营者
+                </p>
+                
+                <!-- 双轨模型 -->
+                <div class="dual-track-model">
+                    <div class="track consumer">
+                        <div class="track-header">
+                            <span class="track-icon">🛍️</span>
+                            <h3 data-i18n="track_consumer">消费轨道</h3>
+                        </div>
+                        <p class="track-subtitle" data-i18n="track_consumer_subtitle">C 端需求 · 真实消费</p>
+                        <ul class="track-list">
+                            <li data-i18n="consumer_item1">购买会员服务</li>
+                            <li data-i18n="consumer_item2">付费咨询对话</li>
+                            <li data-i18n="consumer_item3">打赏数字生命</li>
+                            <li data-i18n="consumer_item4">购买智能设备硬件</li>
+                        </ul>
+                        <p class="track-note" data-i18n="consumer_note">真实的消费需求，产生真实的现金流</p>
+                    </div>
+                    
+                    <div class="track operator">
+                        <div class="track-header">
+                            <span class="track-icon">💼</span>
+                            <h3 data-i18n="track_operator">经营轨道</h3>
+                        </div>
+                        <p class="track-subtitle" data-i18n="track_operator_subtitle">B 端供给 · 价值创造</p>
+                        <ul class="track-list">
+                            <li data-i18n="operator_item1">升级为数字主理人</li>
+                            <li data-i18n="operator_item2">运营 AI 分身</li>
+                            <li data-i18n="operator_item3">代理销售硬件</li>
+                            <li data-i18n="operator_item4">获得平台分红</li>
+                        </ul>
+                        <p class="track-note" data-i18n="operator_note">人人都是 AI 经纪人，人人都是科技产品代理商</p>
+                    </div>
+                </div>
+                
+                <!-- 四大收益管道 -->
+                <h3 style="text-align: center; margin-top: 80px; margin-bottom: 40px; font-size: 2rem;" data-i18n="pipelines_title">四大收益管道，暴利与长尾并存</h3>
+                <div class="income-pipelines">
+                    <div class="pipeline">
+                        <div class="pipeline-number">1</div>
+                        <h4 data-i18n="pipeline1">软件销售佣金</h4>
+                        <p class="pipeline-type" data-i18n="pipeline1_type">现金流 · 快速回本</p>
+                        <p data-i18n="pipeline1_desc">销售 SaaS 服务包，获得现金奖励</p>
+                        <p class="pipeline-highlight" data-i18n="pipeline1_highlight">门槛极低，市场接受度高，极速裂变</p>
+                    </div>
+                    <div class="pipeline">
+                        <div class="pipeline-number">2</div>
+                        <h4 data-i18n="pipeline2">硬件零售利润</h4>
+                        <p class="pipeline-type" data-i18n="pipeline2_type">现金流 · 实体贸易</p>
+                        <p data-i18n="pipeline2_desc">电子产品销售，赚取渠道差价</p>
+                        <p class="pipeline-highlight" data-i18n="pipeline2_highlight">像苹果经销商一样，卖一台赚一台</p>
+                    </div>
+                    <div class="pipeline">
+                        <div class="pipeline-number">3</div>
+                        <h4 data-i18n="pipeline3">技术服务增值</h4>
+                        <p class="pipeline-type" data-i18n="pipeline3_type">经营补贴 · 持续增长</p>
+                        <p data-i18n="pipeline3_desc">平台补贴活跃的数字运营商</p>
+                        <p class="pipeline-highlight" data-i18n="pipeline3_highlight">持续增长的经营性现金流</p>
+                    </div>
+                    <div class="pipeline">
+                        <div class="pipeline-number">4</div>
+                        <h4 data-i18n="pipeline4">AI 服务收益</h4>
+                        <p class="pipeline-type" data-i18n="pipeline4_type">长期收入 · 复利效应</p>
+                        <p data-i18n="pipeline4_desc">你的 AI 分身 24 小时为用户提供服务</p>
+                        <p class="pipeline-highlight" data-i18n="pipeline4_highlight">每卖出一台智能设备，就是往别人家里放了一台为你服务的"智能终端"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 安全保障 -->
+        <section id="security">
+            <div class="container">
+                <h2 class="section-title" data-i18n="security_title">我们的安全保障</h2>
+                <p class="section-subtitle" data-i18n="security_subtitle">
+                    真实产品 · 实体落地 · 合规经营
+                </p>
+                <div class="security-grid">
+                    <div class="security-card">
+                        <span class="security-icon">📱</span>
+                        <h3 data-i18n="security1">真实产品</h3>
+                        <p data-i18n="security1_desc">有 App（已上线）、有 AI 算法、有实体硬件（智能设备）</p>
+                    </div>
+                    <div class="security-card">
+                        <span class="security-icon">🏢</span>
+                        <h3 data-i18n="security2">实体落地</h3>
+                        <p data-i18n="security2_desc">数字生命交易平台 + 线下智能设备体验店</p>
+                    </div>
+                    <div class="security-card">
+                        <span class="security-icon">🔒</span>
+                        <h3 data-i18n="security3">合规经营</h3>
+                        <p data-i18n="security3_desc">像苹果经销商一样，卖出一台硬件，赚取一份合理的实物利润</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 行动号召 -->
+        <section id="cta">
+            <div class="container">
+                <h2 class="section-title" data-i18n="cta_title">立即行动，开启你的 AI 商业之旅</h2>
+                <p class="section-subtitle" data-i18n="cta_subtitle">
+                    免费入驻，0 风险体验 AI 数字资产运营的魅力
+                </p>
+                <div class="btn-group">
+                    <a href="index.html" class="btn btn-primary" data-i18n="cta_btn1">回到微圈，创造我的生命</a>
+                    <a href="index.html#contact" class="btn btn-secondary" data-i18n="cta_btn2">预约灵境内测资格</a>
+                </div>
+                <p style="margin-top: 30px; color: var(--text-dark); font-size: 0.9rem;" data-i18n="cta_bonus">
+                    限时福利：前 1000 名注册用户享永久额外分红
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <a href="index.html" class="footer-logo">
+                    <img src="image/logo.png" alt="微圈">
+                    <span class="logo-text">微 圈</span>
+                </a>
+            </div>
+            <div class="footer-center">
+                <p class="footer-slogan" data-i18n="footer_slogan">灵境计划 —— 全球领先的 AI 情感计算与数字生命运营商</p>
+                <div class="footer-contact">
+                    <p>联系我们：<a href="mailto:support@meeetta.com">support@meeetta.com</a></p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p>© 2024 深颖数字（深圳）有限公司。All Rights Reserved.</p>
+                <p>备案号：<a href="https://beian.miit.gov.cn/">粤 ICP 备 2023062123 号</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- particles.js 库 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- 粒子动画配置 -->
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 300, density: { enable: true, value_area: 800 } },
+                color: { value: ['#06B6D4', '#7C3AED', '#10B981', '#F59E0B'] },
+                shape: { type: 'circle' },
+                opacity: { 
+                    value: 0.5, 
+                    random: true,
+                    anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                },
+                size: { 
+                    value: 3, 
+                    random: true,
+                    anim: { enable: true, speed: 2, size_min: 0.1, sync: false }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#06B6D4',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 0.8,
+                    direction: 'top',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: true,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                },
+                modes: {
+                    repulse: { distance: 100, duration: 0.4 },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+
+    <!-- 导航栏滚动效果 -->
+    <script>
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 移动端汉堡菜单
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // 语言切换功能
+        const translations = {
+            'zh-CN': {
+                nav_home: '首页',
+                nav_arch: '服务架构',
+                nav_stories: '用户故事',
+                nav_products: '四大智能设备',
+                nav_tech: '技术优势',
+                nav_lingjing: '灵境计划',
+                nav_contact: '联系我们',
+                nav_contact_btn: '联系我们',
+                nav_lang: '语言',
+                hero_title: '灵境计划 —— 全球首个 AI 数字生命商业生态',
+                hero_subtitle: 'SaaS 平台 + 智能设备 · 掌握 AI 时代的"人货场"',
+                hero_slogan: '让 AI 为你打工，让技术产生价值',
+                hero_btn1: '立即成为数字主理人',
+                hero_btn2: '免费领养 AI 分身',
+                opportunity_title: '从"连接人"到"创造人"',
+                opportunity_subtitle: 'Web 2.0 时代，我们是流量的奴隶；AI 时代，我们是 AI 的主人',
+                old_economy: '传统流量经济',
+                new_economy: 'AI 算力经济',
+                old_point1: '利润被大平台垄断',
+                old_point2: '内卷严重，难以盈利',
+                old_point3: '被动消费，没有回报',
+                old_point4: '竞争激烈的红海市场',
+                new_point1: '交易"劳动力"与"陪伴"',
+                new_point2: '人人都是 AI 经纪人',
+                new_point3: '消费即经营，使用即回报',
+                new_point4: '待开发的蓝海市场',
+                core_value: '核心机遇：成为"AI 数字资产运营商"',
+                core_value_desc: '灵境提供的不仅是一个 AI 工具，而是一个会创造价值的"数字员工"；不仅提供虚拟软件，更提供看得见、摸得着的"灵魂载体"。',
+                products_title: '软硬一体，实业为本',
+                products_subtitle: '有硬件，才是真落地；有实体，才是真生意',
+                product1_name: '灵境 AI 克隆系统',
+                product1_tag: '已上线 · 免费体验',
+                product1_soul: '软件 · 灵魂',
+                product2_name: '灵境 · AI 相框（旗舰版）',
+                product2_tag: '2026 Q1 重磅首发',
+                product3_name: '灵境 · AI 魂戒（便携版）',
+                product3_tag: '2025 黑科技爆品',
+                business_title: '消费即经营，使用即回报',
+                business_subtitle: '颠覆性的"双轨"商业模型，让你从消费者变成经营者',
+                track_consumer: '消费轨道',
+                track_consumer_subtitle: 'C 端需求 · 真实消费',
+                consumer_item1: '购买会员服务',
+                consumer_item2: '付费咨询对话',
+                consumer_item3: '打赏数字生命',
+                consumer_item4: '购买智能设备硬件',
+                consumer_note: '真实的消费需求，产生真实的现金流',
+                track_operator: '经营轨道',
+                track_operator_subtitle: 'B 端供给 · 价值创造',
+                operator_item1: '升级为数字主理人',
+                operator_item2: '运营 AI 分身',
+                operator_item3: '代理销售硬件',
+                operator_item4: '获得平台分红',
+                operator_note: '人人都是 AI 经纪人，人人都是科技产品代理商',
+                pipelines_title: '四大收益管道，暴利与长尾并存',
+                pipeline1: '软件销售佣金',
+                pipeline1_type: '现金流 · 快速回本',
+                pipeline1_desc: '销售 SaaS 服务包，获得现金奖励',
+                pipeline1_highlight: '门槛极低，市场接受度高，极速裂变',
+                pipeline2: '硬件零售利润',
+                pipeline2_type: '现金流 · 实体贸易',
+                pipeline2_desc: '电子产品销售，赚取渠道差价',
+                pipeline2_highlight: '像苹果经销商一样，卖一台赚一台',
+                pipeline3: '技术服务增值',
+                pipeline3_type: '经营补贴 · 持续增长',
+                pipeline3_desc: '平台补贴活跃的数字运营商',
+                pipeline3_highlight: '持续增长的经营性现金流',
+                pipeline4: 'AI 服务收益',
+                pipeline4_type: '长期收入 · 复利效应',
+                pipeline4_desc: '你的 AI 分身 24 小时为用户提供服务',
+                pipeline4_highlight: '每卖出一台智能设备，就是往别人家里放了一台为你服务的"智能终端"',
+                security_title: '我们的安全保障',
+                security_subtitle: '真实产品 · 实体落地 · 合规经营',
+                security1: '真实产品',
+                security1_desc: '有 App（已上线）、有 AI 算法、有实体硬件（智能设备）',
+                security2: '实体落地',
+                security2_desc: '数字生命交易平台 + 线下智能设备体验店',
+                security3: '合规经营',
+                security3_desc: '像苹果经销商一样，卖出一台硬件，赚取一份合理的实物利润',
+                cta_title: '立即行动，开启你的 AI 商业之旅',
+                cta_subtitle: '免费入驻，0 风险体验 AI 数字资产运营的魅力',
+                cta_btn1: '回到微圈，创造我的生命',
+                cta_btn2: '预约灵境内测资格',
+                cta_bonus: '限定福利：前 1000 名注册用户享受永久额外分红',
+                footer_slogan: '灵境计划 —— 全球领先的 AI 情感计算与数字生命运营商',
+            },
+            'en': {
+                nav_home: 'Home',
+                nav_arch: 'Architecture',
+                nav_stories: 'Stories',
+                nav_products: 'Products',
+                nav_tech: 'Technology',
+                nav_lingjing: 'Spirit Realm',
+                nav_contact: 'Contact',
+                nav_contact_btn: 'Contact Us',
+                nav_lang: 'Language',
+                hero_title: 'Spirit Realm - World First AI Digital Life Business Ecosystem',
+                hero_subtitle: 'SaaS Platform + Smart Devices · Master the "People-Goods-Field" of AI Era',
+                hero_slogan: 'Let AI Work for You, Let Technology Create Value',
+                hero_btn1: 'Become Digital Principal Now',
+                hero_btn2: 'Adopt AI Avatar Free',
+                opportunity_title: 'From "Connecting People" to "Creating People"',
+                opportunity_subtitle: 'In Web 2.0 era, we are slaves of traffic; In AI era, we are masters of AI',
+                old_economy: 'Traditional Traffic Economy',
+                new_economy: 'AI Computing Economy',
+                old_point1: 'Profits monopolized by big platforms',
+                old_point2: 'Severe involution, difficult to profit',
+                old_point3: 'Passive consumption, no return',
+                old_point4: 'Highly competitive red ocean market',
+                new_point1: 'Trading "labor" and "companionship"',
+                new_point2: 'Everyone is an AI agent',
+                new_point3: 'Consumption is operation, use is return',
+                new_point4: 'Undeveloped blue ocean market',
+                core_value: 'Core Opportunity: Become "AI Digital Asset Operator"',
+                core_value_desc: 'Lingjing provides not just an AI tool, but a "digital employee" that creates value; not just virtual software, but a tangible "soul carrier" that you can see and touch.',
+                products_title: 'Software & Hardware Integration',
+                products_subtitle: 'Hardware makes it real landing, Physical products make it real business',
+                product1_name: 'Spirit Realm AI Clone System',
+                product1_tag: 'Live · Free Trial',
+                product1_soul: 'Software · Soul',
+                product2_name: 'Spirit Realm · AI Frame (Flagship)',
+                product2_tag: '2026 Q1 Launch',
+                product3_name: 'Spirit Realm · AI Soul Ring (Portable)',
+                product3_tag: '2025 Black Tech Hit',
+                business_title: 'Consume is Operating, Use is Earning',
+                business_subtitle: 'Disruptive "Dual-Track" model transforms you from consumer to operator',
+                track_consumer: 'Consumer Track',
+                track_consumer_subtitle: 'C-side Demand · Real Consumption',
+                consumer_item1: 'Purchase Membership Services',
+                consumer_item2: 'Paid Consultation Dialogues',
+                consumer_item3: 'Reward Digital Life',
+                consumer_item4: 'Purchase Smart Device Hardware',
+                consumer_note: 'Real consumption demands generate real cash flow',
+                track_operator: 'Operator Track',
+                track_operator_subtitle: 'B-side Supply · Value Creation',
+                operator_item1: 'Upgrade to Digital Principal',
+                operator_item2: 'Operate AI Avatar',
+                operator_item3: 'Agent Hardware Sales',
+                operator_item4: 'Receive Platform Dividends',
+                operator_note: 'Everyone is an AI agent, everyone is a technology product distributor',
+                pipelines_title: 'Four Revenue Pipelines',
+                pipeline1: 'Software Sales Commission',
+                pipeline1_type: 'Cash Flow · Quick Return',
+                pipeline1_desc: 'Sell SaaS service packages and receive cash rewards',
+                pipeline1_highlight: 'Extremely low threshold, high market acceptance, rapid裂变',
+                pipeline2: 'Hardware Retail Profit',
+                pipeline2_type: 'Cash Flow · Physical Trade',
+                pipeline2_desc: 'Electronics sales, earn channel price difference',
+                pipeline2_highlight: 'Like Apple dealers, earn profit from each unit sold',
+                pipeline3: 'Technical Service Value',
+                pipeline3_type: 'Operating Subsidy · Continuous Growth',
+                pipeline3_desc: 'Platform subsidizes active digital operators',
+                pipeline3_highlight: 'Continuously growing operating cash flow',
+                pipeline4: 'AI Service Revenue',
+                pipeline4_type: 'Long-term Income · Compound Effect',
+                pipeline4_desc: 'Your AI avatar provides 24/7 services to users',
+                pipeline4_highlight: 'Every smart device sold places an "intelligent terminal" in someone\'s home that works for you',
+                security_title: 'Our Security Guarantee',
+                security_subtitle: 'Real Products · Physical Landing · Compliant Operation',
+                security1: 'Real Products',
+                security1_desc: 'Have App (launched), AI algorithms, and physical hardware (smart devices)',
+                security2: 'Physical Landing',
+                security2_desc: 'Digital life trading platform + offline smart device experience stores',
+                security3: 'Compliant Operation',
+                security3_desc: 'Like Apple dealers, sell hardware and earn reasonable physical profits',
+                cta_title: 'Act Now, Start Your AI Business Journey',
+                cta_subtitle: 'Free registration, Zero risk to experience AI digital asset operation',
+                cta_btn1: 'Back to Weiquan, Create My Life',
+                cta_btn2: 'Reserve Spirit Realm Beta Access',
+                cta_bonus: 'Limited-time benefit: First 1000 registered users enjoy permanent extra dividends',
+                footer_slogan: 'Lingjing Plan — Global Leading AI Emotional Computing and Digital Life Operator',
+            },
+            'ja': {
+                nav_home: 'ホーム',
+                nav_arch: 'サービス構成',
+                nav_stories: 'ユーザーストーリー',
+                nav_products: '四大スマートデバイス',
+                nav_tech: '技術的優位性',
+                nav_lingjing: '霊境計画',
+                nav_contact: 'お問い合わせ',
+                nav_contact_btn: 'お問い合わせ',
+                nav_lang: '言語',
+                hero_title: '霊境計画 - 世界初の AI デジタル生命ビジネスエコシステム',
+                hero_subtitle: 'SaaS プラットフォーム + スマートデバイス',
+                hero_slogan: 'AI に働かせ、技術に価値を生む',
+                hero_btn1: '今すぐデジタルプリンシパルに',
+                hero_btn2: 'AI アバターを無料で入手',
+                opportunity_title: '"人をつなぐ"から"人をつくる"へ',
+                opportunity_subtitle: 'Web2.0 時代はトラフィックの奴隷、AI 時代は AI の主人',
+                old_economy: '従来のトラフィック経済',
+                new_economy: 'AI 計算経済',
+                old_point1: '利益は大企業に独占されている',
+                old_point2: '深刻なインボリューション、利益を得るのが難しい',
+                old_point3: '受動的消費、報酬なし',
+                old_point4: '競争の激しいレッドオーシャン市場',
+                new_point1: '「労働力」と「付き合い」の取引',
+                new_point2: '誰もが AI エージェント',
+                new_point3: '消費は経営、使用は報酬',
+                new_point4: '未開発のブルーオーシャン市場',
+                core_value: '核心的機会：「AI デジタル資産運営者」になる',
+                core_value_desc: '霊境が提供するのは単なる AI ツールではなく、価値を創造する「デジタル従業員」です；単なる仮想ソフトウェアではなく、目で見て触れる「魂の担い手」を提供します。',
+                products_title: 'ソフトとハードの一体化',
+                products_subtitle: 'ハードウェアこそが真の着地、実体こそが真のビジネス',
+                product1_name: '霊境 AI クローンシステム',
+                product1_tag: '稼働中·無料体験',
+                product1_soul: 'ソフトウェア·魂',
+                product2_name: '霊境·AI フレーム（フラッグシップ）',
+                product2_tag: '2026 年第 1 四半期発売',
+                product3_name: '霊境·AI ソウルリング（ポータブル）',
+                product3_tag: '2025 年ブラックテクノロジー',
+                business_title: '消費が経営になり、使用が収益になる',
+                business_subtitle: '破壊的な「二重軌道」ビジネスモデル',
+                track_consumer: '消費軌道',
+                track_consumer_subtitle: 'C 側ニーズ · 実際の消費',
+                consumer_item1: '会員サービスの購入',
+                consumer_item2: '有料コンサルテーション対話',
+                consumer_item3: 'デジタル生命への報酬',
+                consumer_item4: 'スマートデバイスハードウェアの購入',
+                consumer_note: '実際の消費需要は、実際のキャッシュフローを生み出します',
+                track_operator: '経営軌道',
+                track_operator_subtitle: 'B 側供給 · 価値創造',
+                operator_item1: 'デジタルプリンシパルにアップグレード',
+                operator_item2: 'AI アバターの運営',
+                operator_item3: 'ハードウェア販売の代理',
+                operator_item4: 'プラットフォーム配当の受領',
+                operator_note: '誰もが AI エージェントであり、誰もがテクノロジー製品の販売代理店です',
+                pipelines_title: '4 つの収益パイプライン',
+                pipeline1: 'ソフトウェア販売手数料',
+                pipeline1_type: 'キャッシュフロー · 迅速なリターン',
+                pipeline1_desc: 'SaaS サービスパッケージを販売し、キャッシュ報酬を受け取る',
+                pipeline1_highlight: '非常に低い閾値、高い市場受容度、急速なフィッション',
+                pipeline2: 'ハードウェア小売利益',
+                pipeline2_type: 'キャッシュフロー · 実体貿易',
+                pipeline2_desc: '電子機器の販売、チャネル価格差の獲得',
+                pipeline2_highlight: 'アップル販売店のように、販売台数ごとに利益を得る',
+                pipeline3: '技術サービス付加価値',
+                pipeline3_type: '経営補助 · 継続的成長',
+                pipeline3_desc: 'プラットフォームは活発なデジタルオペレーターに補助金を提供',
+                pipeline3_highlight: '継続的に成長する営業キャッシュフロー',
+                pipeline4: 'AI サービス収益',
+                pipeline4_type: '長期収益 · 複合効果',
+                pipeline4_desc: 'あなたの AI アバターが 24時間365日ユーザーにサービスを提供',
+                pipeline4_highlight: 'スマートデバイスを販売するたびに、誰かの家にあなたのために働く「インテリジェントターミナル」が配置されます',
+                security_title: 'セキュリティ保証',
+                security_subtitle: '実製品·実体着地·コンプライアンス経営',
+                security1: '実製品',
+                security1_desc: 'アプリ（リリース済み）、AI アルゴリズム、実体ハードウェア（スマートデバイス）を備えています',
+                security2: '実体着地',
+                security2_desc: 'デジタル生命取引プラットフォーム + オフラインスマートデバイス体験店',
+                security3: 'コンプライアンス経営',
+                security3_desc: 'アップル販売店のように、ハードウェアを販売して合理的な実体利益を得る',
+                cta_title: '今すぐ行動、AI ビジネスの旅を始めよう',
+                cta_subtitle: '無料登録、ゼロリスクで AI デジタル資産運営を体験',
+                cta_btn1: '微圏に戻る',
+                cta_btn2: 'ベータアクセスを予約',
+                cta_bonus: '限定特典：最初の 1000 人の登録ユーザーは永久的な追加配当を享受',
+                footer_slogan: '霊境計画 —— 世界をリードする AI 感情計算とデジタル生命オペレーター',
+            },
+            'ko': {
+                nav_home: '홈',
+                nav_arch: '서비스 아키텍처',
+                nav_stories: '사용자 스토리',
+                nav_products: '사대스마트디바이스',
+                nav_tech: '기술 우위',
+                nav_lingjing: '령경계획',
+                nav_contact: '문의하기',
+                nav_contact_btn: '문의하기',
+                nav_lang: '언어',
+                hero_title: '영경계획 - 세계 최초 AI 디지털 생명 비즈니스 생태계',
+                hero_subtitle: 'SaaS 플랫폼 + 스마트디바이스',
+                hero_slogan: 'AI 가 당신을 위해 일하게 하라',
+                hero_btn1: '디지털 프린시팔 되기',
+                hero_btn2: '무료 AI 아바타 입양',
+                opportunity_title: '"연결"에서 "창조"로',
+                opportunity_subtitle: 'Web2.0 시대는 트래픽의 노예, AI 시대는 AI 의 주인',
+                old_economy: '전통 트래픽 경제',
+                new_economy: 'AI 컴퓨팅 경제',
+                old_point1: '이익이 큰 플랫폼에 독점됨',
+                old_point2: '심각한内卷, 수익 창출이 어려움',
+                old_point3: '수동적 소비, 보상 없음',
+                old_point4: '경쟁이 치열한 붉은 바다 시장',
+                new_point1: '"노동력"과 "동반자" 거래',
+                new_point2: '모두가 AI 에이전트',
+                new_point3: '소비는 경영, 사용은 보상',
+                new_point4: '개발되지 않은 청해 시장',
+                core_value: '핵심 기회: "AI 디지털 자산 운영자"가 되라',
+                core_value_desc: '령경이 제공하는 것은 단순한 AI 도구가 아니라 가치를 창출하는 "디지털 직원"입니다；단순한 가상 소프트웨어가 아니라 볼 수 있고 만질 수 있는 "영혼의 담체"를 제공합니다。',
+                products_title: '소프트웨어와 하드웨어 통합',
+                products_subtitle: '하드웨어가 진정한 착지, 실체가 진정한 비즈니스',
+                product1_name: '영경 AI 클론 시스템',
+                product1_tag: '운영중·무료 체험',
+                product1_soul: '소프트웨어·영혼',
+                product2_name: '영경·AI 프레임 (플래그십)',
+                product2_tag: '2026 년 1 분기 출시',
+                product3_name: '영경·AI 소울링 (휴대용)',
+                product3_tag: '2025 년 블랙테크',
+                business_title: '소비가 경영이 되고 사용이 수익이 된다',
+                business_subtitle: '파괴적인 "이중 트랙" 비즈니스 모델',
+                track_consumer: '소비 트랙',
+                track_consumer_subtitle: 'C 측 수요 · 실제 소비',
+                consumer_item1: '멤버십 서비스 구매',
+                consumer_item2: '유료 상담 대화',
+                consumer_item3: '디지털 생명에 보상',
+                consumer_item4: '스마트디바이스 하드웨어 구매',
+                consumer_note: '실제 소비 수요는 실제 현금 흐름을 생성합니다',
+                track_operator: '경영 트랙',
+                track_operator_subtitle: 'B 측 공급 · 가치 창조',
+                operator_item1: '디지털 프린시팔로 업그레이드',
+                operator_item2: 'AI 아바타 운영',
+                operator_item3: '하드웨어 판매 대리',
+                operator_item4: '플랫폼 배당금 수령',
+                operator_note: '모든 사람이 AI 에이전트이며, 모든 사람이 기술 제품 대리점입니다',
+                pipelines_title: '4 대 수익 파이프라인',
+                pipeline1: '소프트웨어 판매 수수료',
+                pipeline1_type: '현금 흐름 · 신속한 반환',
+                pipeline1_desc: 'SaaS 서비스 패키지를 판매하고 현금 보상을 받다',
+                pipeline1_highlight: '매우 낮은 문턱, 높은 시장 수용도, 급속한 분열',
+                pipeline2: '하드웨어 소매 이익',
+                pipeline2_type: '현금 흐름 · 실체 거래',
+                pipeline2_desc: '전자 제품 판매, 채널 가격 차이 얻기',
+                pipeline2_highlight: '애플 딜러처럼 판매 대수마다 이익 얻기',
+                pipeline3: '기술 서비스 부가가치',
+                pipeline3_type: '운영 보조 · 지속 성장',
+                pipeline3_desc: '플랫폼은 활발한 디지털 운영자에게 보조금 제공',
+                pipeline3_highlight: '지속적으로 성장하는 운영 현금 흐름',
+                pipeline4: 'AI 서비스 수익',
+                pipeline4_type: '장기 수입 · 복합 효과',
+                pipeline4_desc: '당신의 AI 아바타가 24시간 365일 사용자에게 서비스 제공',
+                pipeline4_highlight: '스마트디바이스를 판매할 때마다 누군가의 집에 당신을 위해 일하는 "지능형 단말기"가 배치됩니다',
+                security_title: '보안 보장',
+                security_subtitle: '실제 제품·실체 착지·준법 경영',
+                security1: '실제 제품',
+                security1_desc: '앱(출시됨), AI 알고리즘, 실체 하드웨어(스마트디바이스)를 보유',
+                security2: '실체 착지',
+                security2_desc: '디지털 생명 거래 플랫폼 + 오프라인 스마트디바이스 체험점',
+                security3: '준법 경영',
+                security3_desc: '애플 딜러처럼 하드웨어를 판매하고 합리적인 실체 이익 얻기',
+                cta_title: '지금 행동하라, AI 비즈니스 여정을 시작하라',
+                cta_subtitle: '무료 가입, 제로 리스크로 AI 디지털 자산 운영 체험',
+                cta_btn1: '미권으로 돌아가기',
+                cta_btn2: '베타 액세스 예약',
+                cta_bonus: '한정 혜택: 처음 1000명의 등록 사용자는 영구 추가 배당금을享受',
+                footer_slogan: '령경계획 —— 세계를 선도하는 AI 감정 계산과 디지털 생명 운영자',
+            }
+        };
+
+        // 语言切换逻辑
+        function detectBrowserLang() {
+            const lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            if (lang.startsWith('zh')) return 'zh-CN';
+            if (lang.startsWith('ja')) return 'ja';
+            if (lang.startsWith('ko')) return 'ko';
+            return 'en';
+        }
+        let currentLang = localStorage.getItem('lingjing_lang') || detectBrowserLang();
+        
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lingjing_lang', lang);
+            
+            // 更新所有带 data-i18n 的元素
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // 更新激活状态
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.classList.toggle('active', option.getAttribute('data-lang') === lang);
+            });
+            
+            // 更新 html lang 属性
+            document.documentElement.lang = lang;
+        }
+
+        // 语言按钮点击事件，切换下拉菜单显示
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const dropdown = btn.nextElementSibling;
+                if (dropdown && dropdown.classList.contains('lang-dropdown')) {
+                    // 切换下拉菜单显示状态
+                    const isVisible = dropdown.style.opacity === '1' && dropdown.style.visibility === 'visible';
+                    
+                    // 先关闭所有下拉菜单
+                    document.querySelectorAll('.lang-dropdown').forEach(d => {
+                        d.style.opacity = '0';
+                        d.style.visibility = 'hidden';
+                        d.style.transform = 'translateY(-10px)';
+                    });
+                    
+                    // 如果当前下拉菜单是隐藏的，则显示它
+                    if (!isVisible) {
+                        dropdown.style.opacity = '1';
+                        dropdown.style.visibility = 'visible';
+                        dropdown.style.transform = 'translateY(0)';
+                    }
+                }
+                e.stopPropagation();
+            });
+        });
+
+        // 语言选项点击事件
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                const lang = e.target.getAttribute('data-lang');
+                changeLanguage(lang);
+                
+                // 关闭所有下拉菜单
+                document.querySelectorAll('.lang-dropdown').forEach(dropdown => {
+                    dropdown.style.opacity = '0';
+                    dropdown.style.visibility = 'hidden';
+                    dropdown.style.transform = 'translateY(-10px)';
+                });
+                
+                e.stopPropagation();
+            });
+        });
+
+        // 点击其他地方关闭下拉菜单
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.lang-dropdown').forEach(dropdown => {
+                dropdown.style.opacity = '0';
+                dropdown.style.visibility = 'hidden';
+                dropdown.style.transform = 'translateY(-10px)';
+            });
+        });
+
+        // 阻止下拉菜单内部点击事件冒泡
+        document.querySelectorAll('.lang-dropdown').forEach(dropdown => {
+            dropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+
+        // 页面加载时初始化语言
+        changeLanguage(currentLang);
+        
+        // Android 下载按钮处理（与首页一致）
+        const lingjingAndroidLink = document.getElementById('lingjing-android-link');
+        if (lingjingAndroidLink) {
+            const originalButtonText = lingjingAndroidLink.querySelector('span').textContent;
+            const apiUrl = 'http://oms.meeetta.com/tencent/getStsApkCredential';
+            const wechatGuide = document.getElementById('wechatGuide');
+            
+            const isWeChat = () => {
+                return /micromessenger/i.test(navigator.userAgent);
+            };
+            
+            const fetchAndUpdateApkUrl = async () => {
+                try {
+                    const formData = new URLSearchParams();
+                    formData.append('serviceType', 0);
+                            
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: formData
+                    });
+        
+                    if (!response.ok) {
+                        throw new Error(`网络请求失败：${response.status} ${response.statusText}`);
+                    }
+                    const data = await response.json();
+        
+                    if (data && data.code === 0 && data.data.url) {
+                        const { url, expirationTimestamp } = data.data;
+                        lingjingAndroidLink.href = url;
+                        localStorage.setItem('apkUrl', url);
+                        localStorage.setItem('apkExpiration', expirationTimestamp);
+                        console.log('成功获取并更新 APK 链接。');
+                        return url;
+                    } else {
+                        console.error('API 返回数据格式不正确:', data);
+                        throw new Error('API 返回数据格式不正确。');
+                    }
+                } catch (error) {
+                    console.error('获取 APK 链接失败:', error);
+                    lingjingAndroidLink.querySelector('span').textContent = '获取失败';
+                    lingjingAndroidLink.style.pointerEvents = 'none';
+                    return null;
+                }
+            };
+            
+            lingjingAndroidLink.addEventListener('click', async (event) => {
+                event.preventDefault();
+        
+                if (isWeChat()) {
+                    if (wechatGuide) wechatGuide.style.display = 'block';
+                    return;
+                }
+        
+                const buttonSpan = event.currentTarget.querySelector('span');
+                const cachedExpiration = localStorage.getItem('apkExpiration');
+                const isExpired = !cachedExpiration || (Date.now() + 5000) >= parseInt(cachedExpiration, 10);
+                let downloadUrl = localStorage.getItem('apkUrl');
+        
+                if (isExpired || !downloadUrl) {
+                    if (buttonSpan) {
+                        buttonSpan.textContent = '更新链接中...';
+                    }
+                    event.currentTarget.style.pointerEvents = 'none';
+                    downloadUrl = await fetchAndUpdateApkUrl();
+                    if (buttonSpan) {
+                        buttonSpan.textContent = originalButtonText;
+                    }
+                    event.currentTarget.style.pointerEvents = 'auto';
+                }
+        
+                if (downloadUrl) {
+                    window.location.href = downloadUrl;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

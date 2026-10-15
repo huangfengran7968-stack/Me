@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weiquan Support</title>
+    <meta name="description" content="Weiquan app support: account help, device pairing, and contact. Weiquan is an AI companionship and digital life platform.">
+    <meta name="robots" content="index,follow">
+    <link rel="icon" href="image/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="image/logo.png">
+    <link rel="canonical" href="https://www.meeetta.com/support.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0d0c1d;
+            --text-light: #f0f4f8;
+            --text-dark: #a9b3d0;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --btn-gradient: linear-gradient(90deg, #5B38F5, #9D5CFF);
+            --font-family: 'Inter', 'Noto Sans SC', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-family);
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 10%, rgba(91, 56, 245, 0.14) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 90%, rgba(0, 224, 255, 0.06) 0%, transparent 50%);
+            pointer-events: none; z-index: -1;
+        }
+        .header {
+            position: sticky; top: 0; z-index: 20;
+            height: 72px;
+            background: rgba(10, 6, 18, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .navbar {
+            max-width: 960px; margin: 0 auto; height: 100%;
+            padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo { display: flex; align-items: center; gap: 10px; color: #fff; }
+        .logo img { height: 32px; }
+        .logo span { font-weight: 700; letter-spacing: 2px; }
+
+        .lang-selector { position: relative; z-index: 200; }
+        .lang-btn {
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 16px;
+            background: rgba(91, 56, 245, 0.18);
+            border: 1px solid rgba(157, 92, 255, 0.45);
+            border-radius: 999px;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .lang-dropdown {
+            position: absolute; top: calc(100% + 8px); right: 0;
+            min-width: 150px;
+            background: rgba(18, 10, 47, 0.96);
+            border: 1px solid rgba(91, 56, 245, 0.3);
+            border-radius: 12px;
+            padding: 8px;
+            display: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        .lang-selector.open .lang-dropdown { display: block; }
+        .lang-option {
+            display: block; width: 100%;
+            padding: 10px 14px;
+            background: transparent; border: none; border-radius: 8px;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px; text-align: left; cursor: pointer;
+        }
+        .lang-option:hover, .lang-option.active { background: rgba(91, 56, 245, 0.25); color: #fff; }
+
+        .wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
+        .hero { margin-bottom: 40px; }
+        .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+        .hero p { color: var(--text-dark); max-width: 720px; }
+        .card {
+            background: rgba(26, 25, 47, 0.72);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px 28px 12px;
+            margin-bottom: 24px;
+        }
+        .card h2 { font-size: 1.15rem; margin-bottom: 16px; }
+        .block { margin-bottom: 22px; }
+        .block h3 { font-size: 1rem; margin-bottom: 6px; font-weight: 600; }
+        .block p, .block li { color: var(--text-dark); font-size: 15px; }
+        .block ul { padding-left: 18px; margin: 8px 0; }
+        .mail {
+            display: inline-flex;
+            margin: 12px 0 8px;
+            padding: 10px 18px;
+            background: var(--btn-gradient);
+            color: #fff; text-decoration: none; border-radius: 999px; font-weight: 500;
+        }
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 28px 24px 40px;
+            text-align: center;
+            color: var(--text-dark);
+            font-size: 13px;
+        }
+        footer a { color: var(--text-dark); }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.55rem; }
+            .card { padding: 20px 18px 8px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="image/logo.png" alt="Weiquan">
+                <span>WEIQUAN</span>
+            </div>
+            <div class="lang-selector" id="langSelector">
+                <button class="lang-btn" id="langBtn" type="button">
+                    <span id="langCurrent">EN</span>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button type="button" class="lang-option" data-lang="zh-CN">简体中文</button>
+                    <button type="button" class="lang-option" data-lang="en">English</button>
+                    <button type="button" class="lang-option" data-lang="ja">日本語</button>
+                    <button type="button" class="lang-option" data-lang="ko">한국어</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="wrap">
+        <div class="hero">
+            <h1 data-translate-key="page_title">Weiquan Support</h1>
+            <p data-translate-key="page_intro">Account help, app usage, and compatible-device pairing for the Weiquan companionship platform.</p>
+        </div>
+
+        <section class="card">
+            <h2 data-translate-key="contact_title">Contact</h2>
+            <div class="block">
+                <p data-translate-key="contact_body">For app support, please email us. We typically reply within 1–2 business days.</p>
+                <a class="mail" href="mailto:support@meeetta.com">support@meeetta.com</a>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 data-translate-key="about_title">About Weiquan</h2>
+            <div class="block">
+                <p data-translate-key="about_body">Weiquan is an AI companionship and digital-life platform. You can create a digital companion with memory and personality, talk with it in the app, and continue that companionship on compatible devices such as a smart photo frame or wearable.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 data-translate-key="faq_title">Frequently asked questions</h2>
+            <div class="block">
+                <h3 data-translate-key="faq1_q">How do I create an account or sign in?</h3>
+                <p data-translate-key="faq1_a">Open the Weiquan app and follow the on-screen sign-in or registration steps. If you cannot receive a verification code, check your phone number or email, wait a few minutes, and try again. Still stuck? Email us with your registered phone or email address (do not send passwords).</p>
+            </div>
+            <div class="block">
+                <h3 data-translate-key="faq2_q">How do I use a digital companion?</h3>
+                <p data-translate-key="faq2_a">After signing in, create or choose a digital companion in the app. You can chat, leave memories, and continue the same companion on a compatible device that is linked to your account.</p>
+            </div>
+            <div class="block">
+                <h3 data-translate-key="faq3_q">A compatible device will not connect</h3>
+                <ul>
+                    <li data-translate-key="faq3_l1">Confirm Bluetooth and Wi-Fi are turned on.</li>
+                    <li data-translate-key="faq3_l2">Keep the device nearby and powered on.</li>
+                    <li data-translate-key="faq3_l3">Restart the app and the device, then try pairing again from the in-app device page.</li>
+                </ul>
+                <p data-translate-key="faq3_a">If it still fails, email us with the device name and a short description of the step where it stops.</p>
+            </div>
+            <div class="block">
+                <h3 data-translate-key="faq4_q">How do I delete my account or data?</h3>
+                <p data-translate-key="faq4_a">You can request account deletion from in-app settings, or email support@meeetta.com from the address or phone number linked to the account.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 data-translate-key="notice_title">Product notice</h2>
+            <div class="block">
+                <p data-translate-key="notice_body">Weiquan and compatible wearables are designed for general companionship, wellness, and lifestyle purposes only. They are not medical devices and are not intended to diagnose, treat, cure, prevent, or monitor any disease or medical condition. All data and trends are for reference only and must not be used for medical decisions. Please consult a qualified healthcare professional before making any medical decisions.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p data-translate-key="footer_copy">© DeepSire Digital (Shenzhen) Co., Ltd.</p>
+        <p style="margin-top:8px;"><a href="mailto:support@meeetta.com">support@meeetta.com</a></p>
+    </footer>
+
+    <script>
+    const translations = {
+        en: {
+            lang_label: "EN",
+            page_title: "Weiquan Support",
+            page_intro: "Account help, app usage, and compatible-device pairing for the Weiquan companionship platform.",
+            contact_title: "Contact",
+            contact_body: "For app support, please email us. We typically reply within 1–2 business days.",
+            about_title: "About Weiquan",
+            about_body: "Weiquan is an AI companionship and digital-life platform. You can create a digital companion with memory and personality, talk with it in the app, and continue that companionship on compatible devices such as a smart photo frame or wearable.",
+            faq_title: "Frequently asked questions",
+            faq1_q: "How do I create an account or sign in?",
+            faq1_a: "Open the Weiquan app and follow the on-screen sign-in or registration steps. If you cannot receive a verification code, check your phone number or email, wait a few minutes, and try again. Still stuck? Email us with your registered phone or email address (do not send passwords).",
+            faq2_q: "How do I use a digital companion?",
+            faq2_a: "After signing in, create or choose a digital companion in the app. You can chat, leave memories, and continue the same companion on a compatible device that is linked to your account.",
+            faq3_q: "A compatible device will not connect",
+            faq3_l1: "Confirm Bluetooth and Wi-Fi are turned on.",
+            faq3_l2: "Keep the device nearby and powered on.",
+            faq3_l3: "Restart the app and the device, then try pairing again from the in-app device page.",
+            faq3_a: "If it still fails, email us with the device name and a short description of the step where it stops.",
+            faq4_q: "How do I delete my account or data?",
+            faq4_a: "You can request account deletion from in-app settings, or email support@meeetta.com from the address or phone number linked to the account.",
+            notice_title: "Product notice",
+            notice_body: "Weiquan and compatible wearables are designed for general companionship, wellness, and lifestyle purposes only. They are not medical devices and are not intended to diagnose, treat, cure, prevent, or monitor any disease or medical condition. All data and trends are for reference only and must not be used for medical decisions. Please consult a qualified healthcare professional before making any medical decisions.",
+            footer_copy: "© DeepSire Digital (Shenzhen) Co., Ltd."
+        },
+        "zh-CN": {
+            lang_label: "中文",
+            page_title: "微圈技术支持",
+            page_intro: "微圈陪伴平台的账号帮助、App 使用与兼容设备配对说明。",
+            contact_title: "联系我们",
+            contact_body: "账号、登录、设备连接等使用问题，请发送邮件，我们将在 1–2 个工作日内回复。",
+            about_title: "关于微圈",
+            about_body: "微圈是一款 AI 情感陪伴与数字生命平台。你可以创建有记忆、有性格的数字分身，在 App 中对话，并在兼容设备（如智能相框、智能穿戴）上延续陪伴。",
+            faq_title: "常见问题",
+            faq1_q: "如何注册或登录？",
+            faq1_a: "打开微圈 App，按页面提示注册或登录。若收不到验证码，请核对手机号或邮箱后稍候再试。仍无法登录时，请发邮件并注明注册手机号或邮箱（请勿发送密码）。",
+            faq2_q: "如何使用数字分身？",
+            faq2_a: "登录后，在 App 中创建或选择数字分身，即可对话、留下记忆，并在已绑定账号的兼容设备上继续陪伴。",
+            faq3_q: "兼容设备连不上怎么办？",
+            faq3_l1: "确认已打开蓝牙和 Wi-Fi。",
+            faq3_l2: "设备保持开机并靠近手机。",
+            faq3_l3: "重启 App 与设备后，在 App 的设备页重新配对。",
+            faq3_a: "仍无法连接时，请发邮件说明设备名称以及卡在哪一步。",
+            faq4_q: "如何注销账号或删除数据？",
+            faq4_a: "可在 App 设置中申请注销，或使用账号绑定的手机号/邮箱发送邮件至 support@meeetta.com。",
+            notice_title: "产品说明",
+            notice_body: "微圈及相关兼容智能穿戴设备仅用于一般性的情感陪伴、生活与健康生活方式支持，并非医疗器械，无意用于任何疾病或健康状况的诊断、治疗、治愈、预防或监测。所有数据与趋势仅供参考，不得用于医疗决策。作出任何医疗相关决定前，请咨询具备资质的专业医务人员。",
+            footer_copy: "© 深颖数字（深圳）有限公司"
+        },
+        ja: {
+            lang_label: "日本語",
+            page_title: "微圈サポート",
+            page_intro: "微圈コンパニオンシップ向けのアカウント、アプリ利用、対応デバイスのペアリングに関するサポートです。",
+            contact_title: "お問い合わせ",
+            contact_body: "アプリのサポートはメールでご連絡ください。通常 1〜2 営業日以内にご返信します。",
+            about_title: "微圈について",
+            about_body: "微圈は AI による情感的な寄り添いとデジタルライフのプラットフォームです。記憶と個性を持つデジタルコンパニオンを作り、アプリで会話し、対応デバイス（スマートフォトフレームやウェアラブルなど）でも同じつながりを続けられます。",
+            faq_title: "よくある質問",
+            faq1_q: "アカウントの作成・ログイン方法は？",
+            faq1_a: "微圈アプリを開き、画面の案内に従って登録またはログインしてください。認証コードが届かない場合は、電話番号またはメールアドレスをご確認のうえ、少し待って再試行してください。解決しない場合は、登録済みの電話番号またはメールアドレスを添えてご連絡ください（パスワードは送らないでください）。",
+            faq2_q: "デジタルコンパニオンの使い方は？",
+            faq2_a: "ログイン後、アプリでデジタルコンパニオンを作成または選択します。会話したり記憶を残したりでき、アカウントにリンクした対応デバイスでも同じコンパニオンを続けられます。",
+            faq3_q: "対応デバイスが接続できない",
+            faq3_l1: "Bluetooth と Wi-Fi がオンになっていることを確認してください。",
+            faq3_l2: "デバイスの電源を入れ、近くに置いてください。",
+            faq3_l3: "アプリとデバイスを再起動し、アプリ内のデバイス画面から再度ペアリングしてください。",
+            faq3_a: "それでも失敗する場合は、デバイス名と止まった手順をメールでお知らせください。",
+            faq4_q: "アカウントやデータの削除方法は？",
+            faq4_a: "アプリの設定から削除を申請するか、アカウントに紐づく電話番号またはメールアドレスから support@meeetta.com へご連絡ください。",
+            notice_title: "製品に関するお知らせ",
+            notice_body: "微圈および対応ウェアラブルは、一般的な寄り添い、ウェルネス、ライフスタイル用途のみを目的としています。医療機器ではなく、疾病や健康状態の診断、治療、治癒、予防、監視を意図していません。データと傾向は参考情報であり、医療上の判断には使用しないでください。医療に関する判断の前に、資格のある医療専門家にご相談ください。",
+            footer_copy: "© 深颖数字（深圳）有限公司"
+        },
+        ko: {
+            lang_label: "한국어",
+            page_title: "위취안 지원",
+            page_intro: "위취안 컴패니언십 플랫폼의 계정, 앱 사용, 호환 기기 페어링 지원입니다.",
+            contact_title: "문의",
+            contact_body: "앱 지원은 이메일로 문의해 주세요. 보통 1–2 영업일 내에 답변드립니다.",
+            about_title: "위취안 소개",
+            about_body: "위취안은 AI 감정 동반과 디지털 라이프 플랫폼입니다. 기억과 성격이 있는 디지털 컴패니언을 만들고 앱에서 대화하며, 스마트 포토프레임이나 웨어러블 같은 호환 기기에서도 그 동반을 이어갈 수 있습니다.",
+            faq_title: "자주 묻는 질문",
+            faq1_q: "계정 생성 또는 로그인은 어떻게 하나요?",
+            faq1_a: "위취안 앱을 열고 화면 안내에 따라 가입 또는 로그인하세요. 인증 코드를 받지 못하면 전화번호나 이메일을 확인한 뒤 잠시 후 다시 시도하세요. 계속 안 되면 등록된 전화번호나 이메일을 적어 메일로 문의하세요(비밀번호는 보내지 마세요).",
+            faq2_q: "디지털 컴패니언은 어떻게 사용하나요?",
+            faq2_a: "로그인 후 앱에서 디지털 컴패니언을 만들거나 선택하세요. 대화하고 기억을 남길 수 있으며, 계정에 연결된 호환 기기에서도 같은 컴패니언을 이어갈 수 있습니다.",
+            faq3_q: "호환 기기가 연결되지 않아요",
+            faq3_l1: "Bluetooth와 Wi-Fi가 켜져 있는지 확인하세요.",
+            faq3_l2: "기기를 켜 두고 가까이 두세요.",
+            faq3_l3: "앱과 기기를 재시작한 뒤 앱의 기기 화면에서 다시 페어링하세요.",
+            faq3_a: "그래도 실패하면 기기 이름과 멈춘 단계를 메일로 알려 주세요.",
+            faq4_q: "계정이나 데이터는 어떻게 삭제하나요?",
+            faq4_a: "앱 설정에서 삭제를 요청하거나, 계정에 연결된 전화번호/이메일로 support@meeetta.com 에 메일을 보내 주세요.",
+            notice_title: "제품 안내",
+            notice_body: "위취안과 호환 웨어러블은 일반적인 동반, 웰니스, 라이프스타일 용도로만 설계되었습니다. 의료기기가 아니며 질병이나 건강 상태의 진단, 치료, 치유, 예방, 모니터링을 목적으로 하지 않습니다. 모든 데이터와 추세는 참고용이며 의학적 결정에 사용해서는 안 됩니다. 의학적 결정을 내리기 전에 자격을 갖춘 의료 전문가와 상담하세요.",
+            footer_copy: "© 深颖数字（深圳）有限公司"
+        }
+    };
+
+    const langLabels = { en: "EN", "zh-CN": "中文", ja: "日本語", ko: "한국어" };
+    const selector = document.getElementById("langSelector");
+    const langBtn = document.getElementById("langBtn");
+    const langCurrent = document.getElementById("langCurrent");
+
+    function setLanguage(lang) {
+        const t = translations[lang] || translations.en;
+        document.querySelectorAll("[data-translate-key]").forEach(function (el) {
+            const key = el.getAttribute("data-translate-key");
+            if (t[key]) el.textContent = t[key];
+        });
+        langCurrent.textContent = langLabels[lang] || "EN";
+        document.querySelectorAll(".lang-option").forEach(function (opt) {
+            opt.classList.toggle("active", opt.dataset.lang === lang);
+        });
+        localStorage.setItem("preferredLang", lang);
+        document.documentElement.lang = lang === "zh-CN" ? "zh-CN" : lang;
+    }
+
+    langBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        selector.classList.toggle("open");
+    });
+    document.querySelectorAll(".lang-option").forEach(function (opt) {
+        opt.addEventListener("click", function () {
+            setLanguage(this.dataset.lang);
+            selector.classList.remove("open");
+        });
+    });
+    document.addEventListener("click", function (e) {
+        if (!selector.contains(e.target)) selector.classList.remove("open");
+    });
+
+    (function () {
+        const saved = localStorage.getItem("preferredLang");
+        if (saved && translations[saved]) {
+            setLanguage(saved);
+            return;
+        }
+        const nav = (navigator.language || "").toLowerCase();
+        if (nav.startsWith("zh")) setLanguage("zh-CN");
+        else if (nav.startsWith("ja")) setLanguage("ja");
+        else if (nav.startsWith("ko")) setLanguage("ko");
+        else setLanguage("en");
+    })();
+    </script>
+</body>
+</html>

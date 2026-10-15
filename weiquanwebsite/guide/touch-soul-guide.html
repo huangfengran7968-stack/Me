@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>触 · 智能戒指 - 使用指南</title>
+    <meta name="description" content="触·智能戒指使用指南，快速连接设备并设置触感互动">
+    <link rel="icon" href="../image/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-color: #06b6d4;
+            --accent-color: #fbbf24;
+            --dark-bg: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-light: #ffffff;
+            --text-gray: #cbd5e1;
+            --success-color: #10b981;
+            --step-glow: rgba(6, 182, 212, 0.3);
+            --scenario-bg: rgba(139, 92, 246, 0.08);
+            --scenario-border: rgba(139, 92, 246, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-top: 24px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .logo-image {
+            height: 40px;
+            filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        .header-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .guide-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .guide-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-container {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--brand-color), #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px var(--step-glow);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            max-width: 65ch;
+        }
+
+        .step-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .qr-image {
+            width: 180px;
+            max-width: 60%;
+            border-radius: 12px;
+            margin: 12px auto 0;
+            display: block;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.05));
+            border-left: 3px solid var(--brand-color);
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+            margin-top: 16px;
+        }
+
+        .highlight-box p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin: 0;
+            line-height: 1.7;
+            max-width: 65ch;
+        }
+
+        .highlight-box strong {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .highlight-box.accent {
+            border-left-color: var(--accent-color);
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(6, 182, 212, 0.05));
+        }
+
+        .scenario-divider {
+            text-align: center;
+            padding: 32px 0 16px;
+            position: relative;
+        }
+
+        .scenario-divider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), transparent);
+        }
+
+        .scenario-divider h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #8b5cf6;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .scenario-divider p {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .tips-section {
+            background: rgba(251, 191, 36, 0.05);
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+
+        .tips-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--accent-color);
+        }
+
+        .tips-title svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent-color);
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+            max-width: 65ch;
+        }
+
+        .tips-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 32px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo img {
+            height: 28px;
+            filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.4));
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-contact {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 8px;
+        }
+
+        .footer-contact a {
+            color: var(--brand-color);
+            text-decoration: none;
+        }
+
+        /* 语言选择器 */
+        .lang-selector {
+            position: relative;
+            text-align: right;
+            margin-bottom: 16px;
+        }
+        .lang-selector .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .lang-selector .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #8b5cf6;
+        }
+        .lang-selector .lang-arrow {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s ease;
+        }
+        .lang-selector.open .lang-arrow {
+            transform: rotate(180deg);
+        }
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            min-width: 150px;
+            background: rgba(15, 23, 42, 0.96);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 12px;
+            padding: 6px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            z-index: 100;
+        }
+        .lang-selector.open .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .lang-option {
+            padding: 10px 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-weight: 400;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lang-option:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+        .lang-option.active {
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+            font-weight: 500;
+        }
+        .lang-option.active::after {
+            content: '\2713';
+            float: right;
+            color: #8b5cf6;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px;
+            }
+            .header {
+                padding-top: 16px;
+                margin-bottom: 24px;
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+            .header-title {
+                font-size: 1.25rem;
+            }
+            .guide-card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            .step-number {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+            .step-title {
+                font-size: 1rem;
+            }
+            .step-description {
+                font-size: 0.85rem;
+            }
+            .tips-section {
+                margin-top: 24px;
+                padding: 20px;
+            }
+            .footer {
+                margin-top: 32px;
+                padding: 24px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="../image/logo.png" alt="微圈 Logo" class="logo-image">
+                <span class="logo-text">微 圈</span>
+            </div>
+            <h1 class="header-title">触 · 智能戒指使用指南</h1>
+            <p class="header-subtitle">快速连接智能戒指，开启更自然的智能陪伴体验</p>
+        </div>
+
+        <div class="lang-selector">
+            <button class="lang-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="lang-dropdown">
+                <div class="lang-option active" data-lang="zh-CN">简体中文</div>
+                <div class="lang-option" data-lang="en">English</div>
+                <div class="lang-option" data-lang="ja">日本語</div>
+                <div class="lang-option" data-lang="ko">한국어</div>
+            </div>
+        </div>
+
+        <!-- Step 1: 下载App -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h2 class="step-title">扫码下载微圈 App</h2>
+                    <p class="step-description">请使用手机扫描说明书上的微圈 App 下载二维码，进入下载页面后按照提示安装 App。如果无法扫码，也可以在应用商店搜索"微圈"进行下载安装。</p>
+                </div>
+            </div>
+            <img src="微圈官网.png" alt="微圈 App 下载二维码" class="qr-image">
+            <div class="highlight-box">
+                <p><strong>支持平台：</strong>iOS 12.0 及以上 / Android 8.0 及以上。</p>
+            </div>
+            <div class="highlight-box accent" style="margin-top: 12px;">
+                <p><strong>小贴士：</strong>首次使用前，建议确认手机网络正常，并允许 App 使用蓝牙权限，以便后续搜索和连接智能戒指。</p>
+            </div>
+        </div>
+
+        <!-- Step 2: 佩戴戒指 -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h2 class="step-title">佩戴并唤醒智能戒指</h2>
+                    <p class="step-description">首次使用前，请先确认智能戒指电量充足。将戒指佩戴在手指上，保持内侧区域与皮肤自然贴合。佩戴时不宜过松或过紧，建议选择贴合但不压迫手指的尺寸，以获得舒适稳定的互动体验。</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>小贴士：</strong>完成佩戴后轻触戒指，确认震动回应正常，再继续连接设备。</p>
+            </div>
+        </div>
+
+        <!-- 情况一：单独连接智能戒指使用 -->
+        <div class="scenario-divider">
+            <h2>情况一：单独连接智能戒指使用</h2>
+            <p>适用于单独使用智能戒指，通过微圈 App 设置触感回应与互动节奏的场景。</p>
+        </div>
+
+        <!-- Step 3A: 在控制界面连接设备 -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">3A</div>
+                <div class="step-content">
+                    <h2 class="step-title">在控制界面连接设备</h2>
+                    <p class="step-description">打开微圈 App，注册或登录账号后，进入"控制"界面，点击"连接设备"或"添加设备"。根据页面提示打开手机蓝牙，并允许 App 获取蓝牙连接权限。系统会自动搜索附近可连接的智能戒指设备。在设备列表中找到对应的智能戒指后，点击设备名称进行连接。连接成功后，智能戒指会出现在控制界面中。</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>小贴士：</strong>如果没有搜索到设备，请确认戒指电量充足、手机蓝牙已开启，并将戒指靠近手机后重新搜索。</p>
+            </div>
+        </div>
+
+        <!-- Step 4A: 设置互动方式 -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">4A</div>
+                <div class="step-content">
+                    <h2 class="step-title">设置互动方式</h2>
+                    <p class="step-description">设备连接成功后，点击智能戒指设备卡片进入互动页面。你可以选择轻触、长按或自定义节奏，并设置对应的震动回应。具体选项以实际设备版本和 App 页面为准。</p>
+                </div>
+            </div>
+            <div class="highlight-box accent">
+                <p><strong>说明：</strong>互动内容由你主动设置，仅用于日常问候与陪伴表达。</p>
+            </div>
+        </div>
+
+        <!-- Step 5A: 发送触感信号 -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">5A</div>
+                <div class="step-content">
+                    <h2 class="step-title">发送触感信号</h2>
+                    <p class="step-description">进入互动页面后，选择一个已设置的节奏并点击发送。对方设备在线时会收到对应的震动回应，发送状态会显示在 App 页面中。</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>小贴士：</strong>若对方暂未收到回应，请检查双方设备连接、网络与消息权限。</p>
+            </div>
+        </div>
+
+        <!-- 情况二：绑定智能相框联动使用 -->
+        <div class="scenario-divider">
+            <h2>情况二：绑定智能相框联动使用</h2>
+            <p>适用于用户已经使用视 · AI 智能相框，希望将智能戒指与相框进行联动的场景。</p>
+        </div>
+
+        <!-- Step 3B: 进入合照界面连接设备 -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">3B</div>
+                <div class="step-content">
+                    <h2 class="step-title">进入合照界面连接设备</h2>
+                    <p class="step-description">打开微圈 App，进入已绑定智能相框的"合照"界面。在合照界面中，点击"连接设备"或"添加智能戒指"。根据页面提示打开手机蓝牙，并允许 App 使用蓝牙权限。系统会开始搜索附近可连接的智能戒指设备。请将戒指靠近手机和相框，等待设备出现在列表中。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4B: 匹配智能戒指 -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">4B</div>
+                <div class="step-content">
+                    <h2 class="step-title">匹配智能戒指</h2>
+                    <p class="step-description">在搜索结果中选择对应的智能戒指设备，点击进行匹配。匹配成功后，智能戒指会与当前相框账号完成绑定。后续戒指发送的互动信号，可用于触发相框中的数字人回应、问候或展示场景。</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>小贴士：</strong>如果家中有多个戒指，请根据设备名称或编号确认要绑定的戒指，避免绑定到其他设备。</p>
+            </div>
+        </div>
+
+        <!-- Step 5B: 开始互动与相框联动 -->
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">5B</div>
+                <div class="step-content">
+                    <h2 class="step-title">开始互动与相框联动</h2>
+                    <p class="step-description">完成匹配后，请正确佩戴智能戒指，并在合照界面或设备互动页面中选择一个触感节奏。发送后，如已开启相框联动功能，相框中的 AI 数字人会根据你的设置作出问候、关怀互动或陪伴反馈。</p>
+                </div>
+            </div>
+            <div class="highlight-box accent">
+                <p><strong>示例场景：</strong>你可以将“两次轻触”设为到家问候。发送后，相框中的 AI 数字人会按照预设文案回应，让远方的家人知道你已平安抵达。</p>
+            </div>
+            <div class="highlight-box" style="margin-top: 12px;">
+                <p><strong>说明：</strong>戒指与相框联动仅执行你主动设置的互动，不会替代电话、短信或紧急联络方式。</p>
+            </div>
+        </div>
+
+        <!-- 使用小贴士 -->
+        <div class="tips-section">
+            <div class="tips-title">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+                使用小贴士
+            </div>
+            <ul class="tips-list">
+                <li>首次连接时，请确认手机蓝牙已开启，并允许微圈 App 使用蓝牙权限。</li>
+                <li>使用前请保持戒指电量充足，并确认戒指佩戴舒适稳定。</li>
+                <li>首次发送前，可先在 App 中预览并确认触感节奏。</li>
+                <li>自定义节奏建议保持简短，方便彼此记忆和辨认。</li>
+                <li>如果设备连接异常，可尝试关闭并重新打开蓝牙，或在 App 中重新搜索设备。</li>
+                <li>请定期通过 App 检查设备固件更新，以获得更稳定的使用体验。</li>
+                <li>请勿在互动名称或备注中填写个人敏感信息。</li>
+                <li>戒指电量低于 5% 时部分互动可能不可用，请及时充电；充电期间蓝牙不可见，需断开充电线后才能搜索配对。</li>
+            </ul>
+        </div>
+
+        <!-- 完成连接 -->
+        <div class="guide-card" style="text-align: center; border-color: rgba(139, 92, 246, 0.3); background: linear-gradient(135deg, rgba(139, 92, 246, 0.06), rgba(6, 182, 212, 0.04));">
+            <h2 class="step-title" style="margin-bottom: 12px; font-size: 1.15rem;">完成连接</h2>
+            <p class="step-description" style="margin: 0 auto;">完成以上步骤后，您可以通过微圈 App 设置并发送触感回应，也可以将智能戒指与视 · AI 智能相框联动，让问候、提醒和陪伴形成更完整的互动体验。</p>
+        </div>
+
+        <div class="footer">
+            <a href="../index.html" class="footer-logo">
+                <img src="../image/logo.png" alt="微圈">
+                <span style="color: #fff; font-size: 18px; font-weight: 600;">微 圈</span>
+            </a>
+            <p class="footer-text">深颖数字（深圳）有限公司</p>
+            <p class="footer-contact">客服支持：<a href="mailto:support@meeetta.com">support@meeetta.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        const langNames = {
+            'zh-CN': '简体中文',
+            'en': 'English',
+            'ja': '日本語',
+            'ko': '한국어',
+        };
+
+        const guideTranslations = {
+            'zh-CN': {
+                title: '触 · 智能戒指使用指南',
+                subtitle: '快速连接智能戒指，开启更自然的智能陪伴体验',
+                s1_title: '扫码下载微圈 App',
+                s1_desc: '请使用手机扫描说明书上的微圈 App 下载二维码，进入下载页面后按照提示安装 App。如果无法扫码，也可以在应用商店搜索"微圈"进行下载安装。',
+                s1_platform: '支持平台：',
+                s1_platform_val: 'iOS 12.0 及以上 / Android 8.0 及以上。',
+                s1_tip: '小贴士：首次使用前，建议确认手机网络正常，并允许 App 使用蓝牙权限，以便后续搜索和连接智能戒指。',
+                s2_title: '佩戴并唤醒智能戒指',
+                s2_desc: '首次使用前，请先确认智能戒指电量充足。将戒指佩戴在手指上，保持内侧区域与皮肤自然贴合。佩戴时不宜过松或过紧，建议选择贴合但不压迫手指的尺寸，以获得舒适稳定的互动体验。',
+                s2_tip: '小贴士：完成佩戴后轻触戒指，确认震动回应正常，再继续连接设备。',
+                scenario1_title: '情况一：单独连接智能戒指使用',
+                scenario1_desc: '适用于单独使用智能戒指，通过微圈 App 设置触感回应与互动节奏的场景。',
+                s3a_title: '在控制界面连接设备',
+                s3a_desc: '打开微圈 App，注册或登录账号后，进入"控制"界面，点击"连接设备"或"添加设备"。根据页面提示打开手机蓝牙，并允许 App 获取蓝牙连接权限。系统会自动搜索附近可连接的智能戒指设备。在设备列表中找到对应的智能戒指后，点击设备名称进行连接。连接成功后，智能戒指会出现在控制界面中。',
+                s3a_tip: '小贴士：如果没有搜索到设备，请确认戒指电量充足、手机蓝牙已开启，并将戒指靠近手机后重新搜索。',
+                s4a_title: '设置互动方式',
+                s4a_desc: '设备连接成功后，点击智能戒指设备卡片进入互动页面。你可以选择轻触、长按或自定义节奏，并设置对应的震动回应。具体选项以实际设备版本和 App 页面为准。',
+                s4a_note: '说明：互动内容由你主动设置，仅用于日常问候与陪伴表达。',
+                s5a_title: '发送触感信号',
+                s5a_desc: '进入互动页面后，选择一个已设置的节奏并点击发送。对方设备在线时会收到对应的震动回应，发送状态会显示在 App 页面中。',
+                s5a_tip: '小贴士：若对方暂未收到回应，请检查双方设备连接、网络与消息权限。',
+                scenario2_title: '情况二：绑定智能相框联动使用',
+                scenario2_desc: '适用于用户已经使用视 · AI 智能相框，希望将智能戒指与相框进行联动的场景。',
+                s3b_title: '进入合照界面连接设备',
+                s3b_desc: '打开微圈 App，进入已绑定智能相框的"合照"界面。在合照界面中，点击"连接设备"或"添加智能戒指"。根据页面提示打开手机蓝牙，并允许 App 使用蓝牙权限。系统会开始搜索附近可连接的智能戒指设备。请将戒指靠近手机和相框，等待设备出现在列表中。',
+                s4b_title: '匹配智能戒指',
+                s4b_desc: '在搜索结果中选择对应的智能戒指设备，点击进行匹配。匹配成功后，智能戒指会与当前相框账号完成绑定。后续戒指发送的互动信号，可用于触发相框中的数字人回应、问候或展示场景。',
+                s4b_tip: '小贴士：如果家中有多个戒指，请根据设备名称或编号确认要绑定的戒指，避免绑定到其他设备。',
+                s5b_title: '开始互动与相框联动',
+                s5b_desc: '完成匹配后，请正确佩戴智能戒指，并在合照界面或设备互动页面中选择一个触感节奏。发送后，如已开启相框联动功能，相框中的 AI 数字人会根据你的设置作出问候、关怀互动或陪伴反馈。',
+                s5b_example: '示例场景：你可以将“两次轻触”设为到家问候。发送后，相框中的 AI 数字人会按照预设文案回应，让远方的家人知道你已平安抵达。',
+                s5b_note: '说明：戒指与相框联动仅执行你主动设置的互动，不会替代电话、短信或紧急联络方式。',
+                tips_title: '使用小贴士',
+                tip1: '首次连接时，请确认手机蓝牙已开启，并允许微圈 App 使用蓝牙权限。',
+                tip2: '使用前请保持戒指电量充足，并确认戒指佩戴舒适稳定。',
+                tip3: '首次发送前，可先在 App 中预览并确认触感节奏。',
+                tip4: '自定义节奏建议保持简短，方便彼此记忆和辨认。',
+                tip5: '如果设备连接异常，可尝试关闭并重新打开蓝牙，或在 App 中重新搜索设备。',
+                tip6: '请定期通过 App 检查设备固件更新，以获得更稳定的使用体验。',
+                tip7: '请勿在互动名称或备注中填写个人敏感信息。',
+                tip8: '戒指电量低于 5% 时部分互动可能不可用，请及时充电；充电期间蓝牙不可见，需断开充电线后才能搜索配对。',
+                done_title: '完成连接',
+                done_desc: '完成以上步骤后，您可以通过微圈 App 设置并发送触感回应，也可以将智能戒指与视 · AI 智能相框联动，让问候、提醒和陪伴形成更完整的互动体验。',
+                footer: '深颖数字（深圳）有限公司',
+                contact: '客服支持：',
+            },
+            'en': {
+                title: 'Touch Soul Smart Ring - User Guide',
+                subtitle: 'Quick Start, Begin Your Natural Smart Companion Experience',
+                s1_title: 'Download Weiquan App',
+                s1_desc: 'Scan the Weiquan App download QR code on the manual with your phone, then follow the instructions to install the app. You can also search "微圈" in the app store to download.',
+                s1_platform: 'Supported Platforms: ',
+                s1_platform_val: 'iOS 12.0+ / Android 8.0+',
+                s1_tip: 'Tip: Before first use, ensure your phone has network access and allow the app to use Bluetooth permissions for searching and connecting the smart ring.',
+                s2_title: 'Wear & Wake Up the Smart Ring',
+                s2_desc: 'Before first use, confirm the ring has sufficient charge. Wear it snugly but comfortably, with the inner surface resting naturally against your finger for a stable interaction experience.',
+                s2_tip: 'Tip: After putting it on, tap the ring once to confirm the vibration response before connecting.',
+                scenario1_title: 'Scenario 1: Connecting the Ring Standalone',
+                scenario1_desc: 'For using the smart ring on its own and setting haptic responses and interaction rhythms in the Weiquan App.',
+                s3a_title: 'Connect in the Control Interface',
+                s3a_desc: 'Open the Weiquan App, register or log in, then enter the "Control" interface and tap "Connect Device" or "Add Device". Follow the prompts to enable Bluetooth and allow the app Bluetooth permissions. The system will automatically search for nearby smart ring devices. Find your ring in the device list and tap to connect. Once connected, the ring will appear in the Control interface.',
+                s3a_tip: 'Tip: If no devices are found, ensure the ring is charged, Bluetooth is enabled, and bring the ring closer to your phone before searching again.',
+                s4a_title: 'Set an Interaction',
+                s4a_desc: 'After connection, tap the smart ring device card to open the interaction page. Choose a tap, press or custom rhythm and assign its vibration response. Available options vary by device and app version.',
+                s4a_note: 'Note: Interactions are set by you and are intended for everyday greetings and companionship.',
+                s5a_title: 'Send a Haptic Signal',
+                s5a_desc: 'On the interaction page, choose a saved rhythm and tap Send. When the other device is online, it will receive the matching vibration and the delivery status will appear in the app.',
+                s5a_tip: 'Tip: If no response arrives, check both devices, network connections and notification permissions.',
+                scenario2_title: 'Scenario 2: Linking with Smart Frame',
+                scenario2_desc: 'For users who already have the Sight AI Smart Frame and want to link the smart ring with the frame.',
+                s3b_title: 'Connect via Group Photo Interface',
+                s3b_desc: 'Open the Weiquan App and enter the "Group Photo" interface of your bound smart frame. Tap "Connect Device" or "Add Smart Ring". Follow the prompts to enable Bluetooth. The system will search for nearby smart ring devices. Bring the ring close to both phone and frame, and wait for it to appear in the list.',
+                s4b_title: 'Match the Smart Ring',
+                s4b_desc: 'Select the corresponding smart ring from the search results and tap to match. After matching, the ring will be linked to the current frame account. Interaction signals sent by the ring can trigger avatar replies, greetings or display scenes.',
+                s4b_tip: 'Tip: If there are multiple rings at home, confirm the correct ring by its device name or number to avoid binding to the wrong device.',
+                s5b_title: 'Start Ring & Frame Interaction',
+                s5b_desc: 'After matching, wear the ring and choose a haptic rhythm from the Group Photo or device interaction page. If frame linking is enabled, the AI avatar can respond with a greeting, caring interaction or companionship message.',
+                s5b_example: 'Example: Set two taps as an “I am home” greeting. After you send it, the avatar can reply with your preset message so family members know you arrived safely.',
+                s5b_note: 'Note: Ring-frame interactions only perform actions you set and do not replace calls, messages or emergency contact methods.',
+                tips_title: 'Usage Tips',
+                tip1: 'On first connection, confirm Bluetooth is enabled and allow the Weiquan App to use Bluetooth permissions.',
+                tip2: 'Before use, ensure the ring is charged and fits comfortably and securely.',
+                tip3: 'Preview and confirm a haptic rhythm in the app before sending it for the first time.',
+                tip4: 'Keep custom rhythms short so both people can remember and recognize them.',
+                tip5: 'If device connection fails, try toggling Bluetooth off and on, or search for the device again in the app.',
+                tip6: 'Regularly check for firmware updates in the app for a more stable experience.',
+                tip7: 'Do not enter personal sensitive information in interaction names or notes.',
+                tip8: 'Some interactions may be unavailable below 5% battery. The ring is not discoverable via Bluetooth while charging; disconnect the charger to pair.',
+                done_title: 'Setup Complete',
+                done_desc: 'After completing these steps, you can set and send haptic responses in the Weiquan App or link the ring with the Sight AI Smart Frame for a more complete companion experience.',
+                footer: 'Deepin Digital (Shenzhen) Co., Ltd.',
+                contact: 'Support: ',
+            },
+            'ja': {
+                title: 'Touch Soul スマートリング - ユーザーガイド',
+                subtitle: 'スマートリングを素早く接続、より自然なスマートコンパニオン体験を開始',
+                s1_title: '微圈アプリをダウンロード',
+                s1_desc: '取扱説明書にある微圈アプリのダウンロードQRコードをスマホでスキャンし、指示に従ってアプリをインストールします。QRコードがスキャンできない場合は、アプリストアで「微圈」を検索してダウンロードすることもできます。',
+                s1_platform: '対応プラットフォーム：',
+                s1_platform_val: 'iOS 12.0以上 / Android 8.0以上',
+                s1_tip: 'ヒント：初回使用前に、スマホのネット接続を確認し、アプリにBluetooth権限を許可してください。スマートリングの検索と接続に必要です。',
+                s2_title: 'スマートリングの装着と起動',
+                s2_desc: '初回使用前にバッテリー残量を確認し、リングの内側が指に自然に触れるよう、きつすぎず緩すぎない快適なサイズで装着してください。',
+                s2_tip: 'ヒント：装着後にリングを軽くタップし、振動の応答を確認してから接続してください。',
+                scenario1_title: 'シナリオ1：スマートリング単独接続',
+                scenario1_desc: 'スマートリングを単独で使用し、微圈アプリで触覚レスポンスとインタラクションリズムを設定する場合。',
+                s3a_title: 'コントロール画面でデバイス接続',
+                s3a_desc: '微圈アプリを開き、登録またはログイン後、「コントロール」画面で「デバイス接続」または「デバイス追加」をタップします。指示に従い、Bluetoothを有効にし、アプリにBluetooth権限を許可します。システムが自動的に近くのスマートリングデバイスを検索します。デバイスリストから対応するスマートリングを見つけ、タップして接続します。接続成功後、リングがコントロール画面に表示されます。',
+                s3a_tip: 'ヒント：デバイスが見つからない場合は、リングのバッテリー残量、Bluetoothの有効状態を確認し、リングをスマホに近づけてから再検索してください。',
+                s4a_title: 'インタラクションを設定',
+                s4a_desc: '接続後、スマートリングのデバイスカードからインタラクションページを開きます。タップ、長押し、カスタムリズムを選び、対応する振動を設定できます。',
+                s4a_note: '注意：インタラクションは自分で設定し、日常の挨拶や陪伴表現に使用します。',
+                s5a_title: '触覚シグナルを送信',
+                s5a_desc: '保存したリズムを選んで送信します。相手のデバイスがオンラインの場合、対応する振動が届き、送信状態がアプリに表示されます。',
+                s5a_tip: 'ヒント：届かない場合は、双方の接続、ネットワーク、通知権限を確認してください。',
+                scenario2_title: 'シナリオ2：スマートフォトフレームとの連携',
+                scenario2_desc: 'Sight AI スマートフォトフレームをすでに使用しており、スマートリングとフレームを連携させたいユーザー向け。',
+                s3b_title: 'グループ写真画面でデバイス接続',
+                s3b_desc: '微圈アプリを開き、バインド済みスマートフォトフレームの「グループ写真」画面に入ります。「デバイス接続」または「スマートリング追加」をタップします。指示に従いBluetoothを有効にします。システムが近くのスマートリングデバイスを検索します。リングをスマホとフレームの近くに置いて、リストに表示されるのを待ちます。',
+                s4b_title: 'スマートリングのマッチング',
+                s4b_desc: '検索結果からリングを選んでマッチングします。完了後、リングから送るインタラクションシグナルで、フレーム上のアバターの応答、挨拶、表示シーンを起動できます。',
+                s4b_tip: 'ヒント：自宅に複数のリングがある場合は、デバイス名または番号で正しいリングを確認し、間違ったデバイスへのバインドを避けてください。',
+                s5b_title: 'リングとフレームの連携を開始',
+                s5b_desc: 'マッチング後、グループ写真またはデバイスのインタラクションページで触覚リズムを選んで送信します。連携が有効なら、AIアバターが挨拶や陪伴メッセージで応答します。',
+                s5b_example: '例：2回のタップを「帰宅しました」に設定すると、送信後にアバターがプリセットメッセージで応答できます。',
+                s5b_note: '注意：リングとフレームの連携は設定した動作のみを実行し、電話、メッセージ、緊急連絡手段の代わりにはなりません。',
+                tips_title: '使用のヒント',
+                tip1: '初回接続時は、Bluetoothが有効で、微圈アプリにBluetooth権限が許可されていることを確認してください。',
+                tip2: '使用前にバッテリー残量と、快適で安定した装着を確認してください。',
+                tip3: '初回送信前にアプリで触覚リズムをプレビューしてください。',
+                tip4: 'カスタムリズムは、二人が覚えやすい短いものがおすすめです。',
+                tip5: 'デバイス接続に問題がある場合は、Bluetoothをオフにしてから再度オンにするか、アプリで再検索してください。',
+                tip6: 'より安定した体験のために、アプリでデバイスのファームウェア更新を定期的に確認してください。',
+                tip7: 'インタラクション名やメモに個人の機微情報を入力しないでください。',
+                tip8: 'バッテリー残量が5%未満では一部機能が使えない場合があります。充電中はBluetoothで検索できません。',
+                done_title: 'セットアップ完了',
+                done_desc: '設定後、微圈アプリから触覚レスポンスを送信したり、Sight AI スマートフォトフレームと連携して挨拶や陪伴体験を楽しめます。',
+                footer: 'Deepin Digital (Shenzhen) Co., Ltd.',
+                contact: 'サポート：',
+            },
+            'ko': {
+                title: 'Touch Soul 스마트 링 - 사용자 가이드',
+                subtitle: '스마트 링을 빠르게 연결하고 더 자연스러운 스마트 동반자 경험을 시작하세요',
+                s1_title: '微圈 앱 다운로드',
+                s1_desc: '설명서의 微圈 앱 다운로드 QR 코드를 휴대폰으로 스캔하고 안내에 따라 앱을 설치합니다. QR 코드를 스캔할 수 없는 경우 앱 스토어에서 "微圈"을 검색하여 다운로드할 수도 있습니다.',
+                s1_platform: '지원 플랫폼：',
+                s1_platform_val: 'iOS 12.0 이상 / Android 8.0 이상',
+                s1_tip: '팁: 첫 사용 전 휴대폰 네트워크를 확인하고 앱이 블루투스 권한을 사용할 수 있도록 허용하세요. 스마트 링 검색 및 연결에 필요합니다.',
+                s2_title: '스마트 링 착용 및 활성화',
+                s2_desc: '첫 사용 전 배터리를 확인하고, 링 안쪽이 손가락에 자연스럽게 닿도록 편안하고 안정적으로 착용하세요.',
+                s2_tip: '팁: 착용 후 링을 가볍게 탭해 진동 응답을 확인한 다음 연결하세요.',
+                scenario1_title: '시나리오 1: 스마트 링 단독 연결',
+                scenario1_desc: '스마트 링을 단독으로 사용하고 微圈 앱에서 촉감 응답과 인터랙션 리듬을 설정하는 경우.',
+                s3a_title: '제어 화면에서 기기 연결',
+                s3a_desc: '微圈 앱을 열고 등록 또는 로그인 후 "제어" 화면에서 "기기 연결" 또는 "기기 추가"를 탭합니다. 안내에 따라 블루투스를 활성화하고 앱에 블루투스 권한을 허용합니다. 시스템이 자동으로 주변 스마트 링 기기를 검색합니다. 기기 목록에서 해당 스마트 링을 찾아 탭하여 연결합니다. 연결 성공 시 링이 제어 화면에 표시됩니다.',
+                s3a_tip: '팁: 기기가 검색되지 않으면 링 배터리, 블루투스 활성화 상태를 확인하고 링을 휴대폰 가까이 가져와 다시 검색하세요.',
+                s4a_title: '인터랙션 설정',
+                s4a_desc: '연결 후 스마트 링 기기 카드에서 인터랙션 페이지를 엽니다. 탭, 길게 누르기, 맞춤 리듬을 선택하고 대응 진동을 설정할 수 있습니다.',
+                s4a_note: '참고: 인터랙션은 사용자가 직접 설정하며 일상 인사와 동행 표현에 사용됩니다.',
+                s5a_title: '촉감 신호 보내기',
+                s5a_desc: '저장된 리듬을 선택해 전송하세요. 상대 기기가 온라인이면 해당 진동을 받고, 전송 상태가 앱에 표시됩니다.',
+                s5a_tip: '팁: 응답이 없으면 양쪽 기기 연결, 네트워크, 알림 권한을 확인하세요.',
+                scenario2_title: '시나리오 2: 스마트 액자와 연동',
+                scenario2_desc: '이미 Sight AI 스마트 액자를 사용 중이며 스마트 링과 액자를 연동하고 싶은 사용자를 위한 가이드.',
+                s3b_title: '합사 화면에서 기기 연결',
+                s3b_desc: '微圈 앱을 열고 바인딩된 스마트 액자의 "합사" 화면으로 이동합니다. "기기 연결" 또는 "스마트 링 추가"를 탭합니다. 안내에 따라 블루투스를 활성화합니다. 시스템이 주변 스마트 링 기기를 검색합니다. 링을 휴대폰과 액자 근처에 두고 목록에 나타날 때까지 기다립니다.',
+                s4b_title: '스마트 링 매칭',
+                s4b_desc: '검색 결과에서 링을 선택해 매칭합니다. 완료 후 링에서 보낸 인터랙션 신호로 액자의 아바타 응답, 인사 또는 표시 장면을 실행할 수 있습니다.',
+                s4b_tip: '팁: 집에 여러 링이 있는 경우 기기 이름 또는 번호로 올바른 링을 확인하여 잘못된 기기 바인딩을 방지하세요.',
+                s5b_title: '링과 액자 인터랙션 시작',
+                s5b_desc: '매칭 후 합사 또는 기기 인터랙션 페이지에서 촉감 리듬을 선택해 보내세요. 연동이 켜져 있으면 AI 아바타가 인사나 동행 메시지로 응답합니다.',
+                s5b_example: '예시: 두 번 탭을 “집에 도착했어요”로 설정하면, 전송 후 아바타가 미리 설정한 메시지로 응답할 수 있습니다.',
+                s5b_note: '참고: 링과 액자 연동은 설정한 동작만 실행하며 전화, 메시지, 긴급 연락 수단을 대신하지 않습니다.',
+                tips_title: '사용 팁',
+                tip1: '첫 연결 시 블루투스가 활성화되어 있고 微圈 앱에 블루투스 권한이 허용되어 있는지 확인하세요.',
+                tip2: '사용 전 배터리와 편안하고 안정적인 착용 상태를 확인하세요.',
+                tip3: '처음 보내기 전에 앱에서 촉감 리듬을 미리 확인하세요.',
+                tip4: '맞춤 리듬은 두 사람이 기억하기 쉽도록 짧게 만드는 것이 좋습니다.',
+                tip5: '기기 연결에 문제가 있으면 블루투스를 끄고 다시 켜거나 앱에서 다시 검색하세요.',
+                tip6: '더 안정적인 경험을 위해 앱에서 기기 펌웨어 업데이트를 정기적으로 확인하세요.',
+                tip7: '인터랙션 이름이나 메모에 개인 민감 정보를 입력하지 마세요.',
+                tip8: '배터리가 5% 미만이면 일부 기능을 사용할 수 없습니다. 충전 중에는 블루투스로 검색되지 않습니다.',
+                done_title: '설정 완료',
+                done_desc: '설정 후 微圈 앱에서 촉감 응답을 보내거나 Sight AI 스마트 액자와 연동해 더 완성된 동행 경험을 만들 수 있습니다.',
+                footer: 'Deepin Digital (Shenzhen) Co., Ltd.',
+                contact: '고객 지원: ',
+            }
+        };
+
+        function setGuideLang(lang) {
+            const t = guideTranslations[lang];
+            if (!t) return;
+
+            document.querySelector('.header-title').textContent = t.title;
+            document.querySelector('.header-subtitle').textContent = t.subtitle;
+
+            const stepTitles = document.querySelectorAll('.step-title');
+            const stepDescs = document.querySelectorAll('.step-description');
+            const titleArr = [
+                t.s1_title, t.s2_title,
+                t.s3a_title, t.s4a_title, t.s5a_title,
+                t.s3b_title, t.s4b_title, t.s5b_title,
+                t.done_title
+            ];
+            const descArr = [
+                t.s1_desc, t.s2_desc,
+                t.s3a_desc, t.s4a_desc, t.s5a_desc,
+                t.s3b_desc, t.s4b_desc, t.s5b_desc,
+                t.done_desc
+            ];
+            stepTitles.forEach((el, i) => { if (titleArr[i]) el.textContent = titleArr[i]; });
+            stepDescs.forEach((el, i) => { if (descArr[i]) el.textContent = descArr[i]; });
+
+            // Scenario dividers
+            const scenarioDividers = document.querySelectorAll('.scenario-divider h2');
+            const scenarioDescs = document.querySelectorAll('.scenario-divider p');
+            if (scenarioDividers[0]) scenarioDividers[0].textContent = t.scenario1_title;
+            if (scenarioDescs[0]) scenarioDescs[0].textContent = t.scenario1_desc;
+            if (scenarioDividers[1]) scenarioDividers[1].textContent = t.scenario2_title;
+            if (scenarioDescs[1]) scenarioDescs[1].textContent = t.scenario2_desc;
+
+            // Highlight boxes
+            const tips = document.querySelectorAll('.highlight-box p');
+            const tipArr = [
+                t.s1_platform + t.s1_platform_val, t.s1_tip,
+                t.s2_tip,
+                t.s3a_tip,
+                t.s4a_note,
+                t.s5a_tip,
+                t.s4b_tip,
+                t.s5b_example, t.s5b_note
+            ];
+            tips.forEach((el, i) => {
+                if (tipArr[i]) {
+                    const colon = tipArr[i].indexOf('\uff1a') > -1 ? '\uff1a' : tipArr[i].indexOf(':') > -1 ? ':' : '';
+                    if (colon) {
+                        const parts = tipArr[i].split(colon);
+                        el.innerHTML = '<strong>' + parts[0] + colon + '</strong>' + parts.slice(1).join(colon);
+                    } else {
+                        el.textContent = tipArr[i];
+                    }
+                }
+            });
+
+            // Tips list
+            const tipsList = document.querySelectorAll('.tips-list li');
+            const tipsData = [t.tip1, t.tip2, t.tip3, t.tip4, t.tip5, t.tip6, t.tip7, t.tip8];
+            tipsList.forEach((el, i) => { if (tipsData[i]) el.textContent = tipsData[i]; });
+
+            // Tips title
+            const tipsTitle = document.querySelector('.tips-title');
+            if (tipsTitle) tipsTitle.textContent = t.tips_title;
+
+            // Update dropdown active state
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.classList.toggle('active', opt.dataset.lang === lang);
+            });
+
+            // Update button icon
+            const btn = document.querySelector('.lang-selector .lang-btn');
+            const globeSvg = btn?.querySelector('svg:first-child')?.outerHTML || '';
+            btn.innerHTML = globeSvg + '<svg class="lang-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+            localStorage.setItem('touch_guide_lang', lang);
+        }
+
+        function detectGuideLang() {
+            const saved = localStorage.getItem('touch_guide_lang');
+            if (saved && guideTranslations[saved]) return saved;
+            const lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            if (lang.startsWith('zh')) return 'zh-CN';
+            if (lang.startsWith('ja')) return 'ja';
+            if (lang.startsWith('ko')) return 'ko';
+            return 'en';
+        }
+
+        // Dropdown toggle
+        const langSelector = document.querySelector('.lang-selector');
+        const langBtn = langSelector?.querySelector('.lang-btn');
+        langBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langSelector.classList.toggle('open');
+        });
+
+        // Option click
+        document.querySelectorAll('.lang-option').forEach(opt => {
+            opt.addEventListener('click', (e) => {
+                setGuideLang(e.target.dataset.lang);
+                langSelector.classList.remove('open');
+                e.stopPropagation();
+            });
+        });
+
+        // Close on outside click
+        document.addEventListener('click', () => {
+            langSelector?.classList.remove('open');
+        });
+
+        // Prevent dropdown click propagation
+        document.querySelector('.lang-dropdown')?.addEventListener('click', (e) => e.stopPropagation());
+
+        // Init
+        setGuideLang(detectGuideLang());
+    </script>
+</body>
+</html>

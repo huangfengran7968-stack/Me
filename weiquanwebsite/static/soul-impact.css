@@ -1,0 +1,1455 @@
+/* Unified visual system for the four Soul product pages. */
+body.soul-page {
+    --dark-bg: #070910;
+    --text-light: #fffaf2;
+    --text-gray: rgba(255, 250, 242, 0.72);
+    --surface-1: rgba(255, 255, 255, 0.075);
+    --surface-2: rgba(255, 255, 255, 0.038);
+    --line-soft: rgba(255, 255, 255, 0.12);
+    --line-strong: rgba(var(--theme-rgb), 0.58);
+    --shadow-strong: 0 26px 70px rgba(0, 0, 0, 0.46);
+    --btn-gradient: linear-gradient(135deg, var(--brand-color), var(--accent-color));
+    --btn-hover: linear-gradient(135deg, var(--accent-color), var(--brand-color));
+    background:
+        linear-gradient(120deg, rgba(var(--theme-rgb), 0.18), transparent 26%),
+        linear-gradient(240deg, rgba(var(--accent-rgb), 0.15), transparent 30%),
+        #070910;
+    color: var(--text-light);
+}
+
+body.soul-sight {
+    --brand-color: #8A2BE2;
+    --accent-color: #00E0FF;
+    --theme-rgb: 138, 43, 226;
+    --accent-rgb: 0, 224, 255;
+}
+
+body.soul-touch {
+    --brand-color: #8A2BE2;
+    --accent-color: #00E0FF;
+    --theme-rgb: 138, 43, 226;
+    --accent-rgb: 0, 224, 255;
+}
+
+body.soul-scent {
+    --brand-color: #8A2BE2;
+    --accent-color: #00E0FF;
+    --theme-rgb: 138, 43, 226;
+    --accent-rgb: 0, 224, 255;
+}
+
+body.soul-pleasure {
+    --brand-color: #8A2BE2;
+    --accent-color: #00E0FF;
+    --theme-rgb: 138, 43, 226;
+    --accent-rgb: 0, 224, 255;
+}
+
+body.soul-page::before {
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+        linear-gradient(135deg, rgba(var(--theme-rgb), 0.12), transparent 35%, rgba(var(--accent-rgb), 0.10));
+    background-size: 72px 72px, 72px 72px, auto;
+    opacity: 0.72;
+}
+
+body.soul-page .container {
+    width: min(90%, 1240px);
+    max-width: 1240px;
+}
+
+body.soul-page .header {
+    height: 76px;
+    background: linear-gradient(180deg, rgba(7, 9, 16, 0.82), rgba(7, 9, 16, 0.28));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+}
+
+body.soul-page .header.scrolled {
+    background: rgba(7, 9, 16, 0.9);
+    border-bottom-color: rgba(var(--theme-rgb), 0.22);
+    box-shadow: 0 14px 42px rgba(0, 0, 0, 0.36);
+}
+
+body.soul-page .navbar {
+    max-width: 1320px;
+    padding: 0 32px;
+}
+
+body.soul-page .logo {
+    left: 40px;
+}
+
+body.soul-page .logo-image {
+    height: 46px;
+    filter: drop-shadow(0 0 14px rgba(var(--theme-rgb), 0.5));
+}
+
+body.soul-page .logo-text {
+    font-size: 32px;
+    letter-spacing: 2.5px;
+}
+
+body.soul-page .nav-links {
+    gap: 24px;
+}
+
+body.soul-page .nav-links a {
+    padding: 10px 0;
+    color: rgba(255, 250, 242, 0.72);
+    font-size: 14px;
+    letter-spacing: 0;
+}
+
+body.soul-page .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 3px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand-color), var(--accent-color));
+    opacity: 0;
+    transform: scaleX(0.35);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+body.soul-page .nav-links a:hover::after,
+body.soul-page .nav-links a.active::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+body.soul-page .lang-btn {
+    min-width: 42px;
+    border-radius: 999px;
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.soul-page .hero {
+    min-height: 94vh;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 136px 0 76px;
+}
+
+body.soul-page .hero-bg {
+    height: 100%;
+}
+
+body.soul-page .hero-bg img {
+    filter: saturate(1.12) contrast(1.05);
+}
+
+body.soul-scent .hero-bg img { object-position: 54% center; }
+body.soul-sight .hero-bg img { object-position: 52% center; }
+body.soul-touch .hero-bg img { object-position: 50% center; }
+body.soul-pleasure .hero-bg img { object-position: 50% center; }
+
+body.soul-page .hero-overlay {
+    background:
+        linear-gradient(180deg, rgba(7, 9, 16, 0.2) 0%, rgba(7, 9, 16, 0.24) 44%, rgba(7, 9, 16, 0.92) 100%),
+        linear-gradient(90deg, rgba(7, 9, 16, 0.68) 0%, rgba(7, 9, 16, 0.28) 42%, rgba(7, 9, 16, 0.10) 100%);
+}
+
+body.soul-page .hero-content {
+    width: min(90%, 1240px);
+    max-width: 1240px;
+    text-align: left;
+}
+
+body.soul-page .hero-badge {
+    margin-bottom: 18px;
+    padding: 8px 15px;
+    border-radius: 999px;
+    border: 1px solid rgba(var(--theme-rgb), 0.36);
+    background: rgba(7, 9, 16, 0.46);
+    color: var(--text-light);
+    box-shadow: 0 0 32px rgba(var(--theme-rgb), 0.16);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+body.soul-page .hero h1 {
+    max-width: 760px;
+    margin: 0 0 20px;
+    color: #fffaf2;
+    font-size: 6.25rem;
+    line-height: 1.08;
+    letter-spacing: 0;
+    text-shadow:
+        0 0 22px rgba(var(--theme-rgb), 0.34),
+        0 22px 70px rgba(0, 0, 0, 0.56);
+    background:
+        linear-gradient(135deg, #fffaf2 0%, #fffaf2 34%, var(--brand-color) 66%, var(--accent-color) 100%);
+    background-size: 180% 180%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.soul-page .hero-subtitle {
+    max-width: 660px;
+    margin-bottom: 34px;
+    color: rgba(255, 250, 242, 0.86);
+    font-size: 1.36rem;
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: 0;
+    text-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+}
+
+body.soul-page .hero-buttons {
+    justify-content: flex-start;
+    gap: 14px;
+}
+
+body.soul-page .btn-primary,
+body.soul-page .btn-secondary {
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-size: 15px;
+    letter-spacing: 0;
+}
+
+body.soul-page .btn-primary {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 18px 42px rgba(var(--theme-rgb), 0.24), 0 14px 38px rgba(0, 0, 0, 0.38);
+}
+
+body.soul-page .btn-primary:hover {
+    box-shadow: 0 22px 54px rgba(var(--theme-rgb), 0.34), 0 16px 44px rgba(0, 0, 0, 0.46);
+}
+
+body.soul-page .btn-secondary {
+    background: rgba(255, 255, 255, 0.075);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: rgba(255, 250, 242, 0.92);
+}
+
+body.soul-page .age-notice {
+    width: fit-content;
+    margin-top: 22px;
+    padding: 9px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: rgba(7, 9, 16, 0.42);
+    color: rgba(255, 250, 242, 0.7);
+    backdrop-filter: blur(12px);
+}
+
+body.soul-page section {
+    padding: 112px 0;
+}
+
+body.soul-page .philosophy,
+body.soul-page .features,
+body.soul-page .stories,
+body.soul-page .specs,
+body.soul-page .cta,
+body.soul-page .product-selection {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.018), rgba(255, 255, 255, 0)),
+        linear-gradient(135deg, rgba(var(--theme-rgb), 0.075), transparent 42%, rgba(var(--accent-rgb), 0.058));
+}
+
+body.soul-page .section-header {
+    max-width: 780px;
+    margin-bottom: 48px;
+}
+
+body.soul-page .section-header h2,
+body.soul-page .cta-content h2,
+body.soul-page .philosophy-content h2 {
+    color: #fffaf2;
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 1.22;
+    background: linear-gradient(135deg, #fffaf2 0%, #fffaf2 45%, var(--brand-color) 76%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.soul-page .section-header h2 {
+    font-size: 3rem;
+}
+
+body.soul-page .section-header p,
+body.soul-page .cta-content > p {
+    color: rgba(255, 250, 242, 0.68);
+    font-size: 1.06rem;
+    line-height: 1.7;
+}
+
+body.soul-page .philosophy-grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 44px;
+}
+
+body.soul-page .philosophy-content h2 {
+    margin-bottom: 22px;
+    font-size: 2.8rem;
+}
+
+body.soul-page .philosophy-content p {
+    color: rgba(255, 250, 242, 0.72);
+    font-size: 1.08rem;
+    line-height: 1.85;
+}
+
+body.soul-page .philosophy-video {
+    border: 1px solid rgba(var(--theme-rgb), 0.24);
+    border-radius: 8px;
+    box-shadow: var(--shadow-strong), 0 0 50px rgba(var(--theme-rgb), 0.12);
+    aspect-ratio: 16 / 10;
+}
+
+body.soul-page .philosophy-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body.soul-page .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+}
+
+body.soul-page .feature-card,
+body.soul-page .story-card,
+body.soul-page .spec-item,
+body.soul-page .product-card,
+body.soul-page .product-option {
+    border-radius: 8px;
+    border: 1px solid var(--line-soft);
+    background:
+        linear-gradient(180deg, var(--surface-1), var(--surface-2)),
+        linear-gradient(135deg, rgba(var(--theme-rgb), 0.08), rgba(var(--accent-rgb), 0.035));
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.24);
+}
+
+body.soul-page .feature-card {
+    min-height: 260px;
+    padding: 34px 28px;
+    text-align: left;
+}
+
+body.soul-page .feature-card:hover,
+body.soul-page .story-card:hover,
+body.soul-page .spec-item:hover,
+body.soul-page .product-card:hover,
+body.soul-page .product-card.active,
+body.soul-page .product-option:hover {
+    border-color: var(--line-strong);
+    box-shadow: var(--shadow-strong), 0 0 42px rgba(var(--theme-rgb), 0.16);
+    transform: translateY(-6px);
+}
+
+body.soul-page .feature-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 0 22px;
+    border-radius: 8px;
+    background:
+        linear-gradient(135deg, rgba(var(--theme-rgb), 0.26), rgba(var(--accent-rgb), 0.16)),
+        rgba(255, 255, 255, 0.06);
+    color: var(--brand-color);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+body.soul-page .feature-card h3 {
+    font-size: 1.36rem;
+    font-weight: 800;
+    line-height: 1.32;
+    letter-spacing: 0;
+}
+
+body.soul-page .feature-card p,
+body.soul-page .story-content p {
+    color: rgba(255, 250, 242, 0.68);
+    font-size: 0.98rem;
+    line-height: 1.78;
+}
+
+body.soul-page .stories-grid {
+    gap: 22px;
+}
+
+body.soul-page .story-card {
+    min-height: 250px;
+}
+
+body.soul-page .story-content {
+    padding: 30px;
+}
+
+body.soul-page .story-content h3 {
+    color: #fffaf2;
+    font-size: 1.36rem;
+    line-height: 1.42;
+    letter-spacing: 0;
+}
+
+body.soul-page .story-icon {
+    color: var(--brand-color);
+}
+
+body.soul-page .specs .specs-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+body.soul-page .spec-item {
+    min-height: 230px;
+    padding: 30px 18px;
+}
+
+body.soul-page .spec-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 22px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(var(--theme-rgb), 0.24), rgba(var(--accent-rgb), 0.15));
+    color: var(--brand-color);
+}
+
+body.soul-page .spec-value {
+    color: #fffaf2;
+    font-size: 1.72rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    text-shadow: 0 0 20px rgba(var(--theme-rgb), 0.24);
+}
+
+body.soul-page .spec-label {
+    color: rgba(255, 250, 242, 0.88);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+body.soul-page .spec-detail {
+    color: rgba(255, 250, 242, 0.58);
+    opacity: 1;
+    transform: none;
+    font-size: 0.9rem;
+}
+
+body.soul-page .product-selection,
+body.soul-page .cta {
+    overflow: hidden;
+}
+
+body.soul-page .product-cards-grid,
+body.soul-page .product-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 1120px;
+    margin: 0 auto 36px;
+}
+
+body.soul-page .product-card,
+body.soul-page .product-option {
+    width: auto;
+    max-width: none;
+    min-height: 300px;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+body.soul-page .product-brand {
+    color: rgba(255, 250, 242, 0.56);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0;
+}
+
+body.soul-page .product-name,
+body.soul-page .product-option .size,
+body.soul-page .product-option .tag {
+    color: #fffaf2;
+    font-size: 2.45rem;
+    font-weight: 900;
+    line-height: 1.16;
+    letter-spacing: 0;
+}
+
+body.soul-page .product-card:hover .product-name,
+body.soul-page .product-card.active .product-name,
+body.soul-page .product-option:hover .size,
+body.soul-page .product-option:hover .tag {
+    color: var(--brand-color);
+}
+
+body.soul-page .product-cn,
+body.soul-page .product-slogan,
+body.soul-page .product-option .desc,
+body.soul-page .product-option .slogan,
+body.soul-page .product-option .name {
+    color: rgba(255, 250, 242, 0.7);
+    letter-spacing: 0;
+}
+
+body.soul-page .specs-area,
+body.soul-page .product-option .features {
+    margin-top: auto;
+    opacity: 1;
+    transform: none;
+}
+
+body.soul-page .product-card .specs-grid,
+body.soul-page .product-card .specs-grid-inner,
+body.soul-page .product-option .features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+body.soul-page .product-spec-item,
+body.soul-page .product-option .feature-item {
+    min-height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 8px;
+    border: 1px solid rgba(var(--theme-rgb), 0.18);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.055);
+    color: rgba(255, 250, 242, 0.76);
+    font-size: 0.78rem;
+    line-height: 1.35;
+    text-align: center;
+}
+
+body.soul-page .mobile-tap-hint {
+    color: rgba(255, 250, 242, 0.56);
+}
+
+body.soul-page .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+body.soul-page .cta-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+body.soul-page .cta-links a {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.055);
+    color: rgba(255, 250, 242, 0.72);
+    text-decoration: none;
+}
+
+body.soul-page .cta-links a:hover {
+    border-color: rgba(var(--theme-rgb), 0.48);
+    color: #fffaf2;
+    background: rgba(var(--theme-rgb), 0.11);
+}
+
+body.soul-page .footer {
+    background: #05060b;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 1100px) {
+    body.soul-page .hero h1 {
+        font-size: 5rem;
+    }
+
+    body.soul-page .philosophy-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body.soul-page .specs .specs-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 860px) {
+    body.soul-page .header {
+        height: 68px;
+    }
+
+    body.soul-page .navbar {
+        padding: 0 20px;
+    }
+
+    body.soul-page .logo {
+        left: 20px;
+    }
+
+    body.soul-page .hamburger {
+        color: #fffaf2;
+        font-size: 24px;
+    }
+
+    body.soul-page .nav-links {
+        gap: 0;
+        background: rgba(7, 9, 16, 0.96);
+        border-bottom: 1px solid rgba(var(--theme-rgb), 0.24);
+    }
+
+    body.soul-page .hero {
+        min-height: 88vh;
+        padding: 118px 0 52px;
+    }
+
+    body.soul-page .hero-content {
+        text-align: center;
+    }
+
+    body.soul-page .hero h1,
+    body.soul-page .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body.soul-page .hero h1 {
+        font-size: 3.4rem;
+        line-height: 1.05;
+    }
+
+    body.soul-page .hero-subtitle {
+        font-size: 1.08rem;
+    }
+
+    body.soul-page .hero-buttons {
+        justify-content: center;
+    }
+
+    body.soul-page .age-notice {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body.soul-page section {
+        padding: 76px 0;
+    }
+
+    body.soul-page .section-header h2,
+    body.soul-page .philosophy-content h2,
+    body.soul-page .cta-content h2 {
+        font-size: 2.12rem;
+    }
+
+    body.soul-page .features-grid,
+    body.soul-page .stories-grid,
+    body.soul-page .product-cards-grid,
+    body.soul-page .product-options {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+    }
+
+    body.soul-page .feature-card,
+    body.soul-page .story-card,
+    body.soul-page .spec-item,
+    body.soul-page .product-card,
+    body.soul-page .product-option {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 540px) {
+    body.soul-page .container,
+    body.soul-page .hero-content {
+        width: min(92%, 520px);
+    }
+
+    body.soul-page .hero {
+        min-height: 84vh;
+        padding: 102px 0 44px;
+    }
+
+    body.soul-page .hero h1 {
+        font-size: 2.55rem;
+    }
+
+    body.soul-page .hero-badge {
+        max-width: 100%;
+        white-space: normal;
+    }
+
+    body.soul-page .btn-primary,
+    body.soul-page .btn-secondary {
+        width: 100%;
+    }
+
+    body.soul-page .specs .specs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body.soul-page .product-card .specs-grid,
+    body.soul-page .product-card .specs-grid-inner,
+    body.soul-page .product-option .features {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Restrained revision: one premium palette, full-screen hero, continuous sections. */
+body.soul-page,
+body.soul-sight,
+body.soul-touch,
+body.soul-scent,
+body.soul-pleasure {
+    --brand-color: #8A2BE2;
+    --accent-color: #00E0FF;
+    --theme-rgb: 138, 43, 226;
+    --accent-rgb: 0, 224, 255;
+    --text-light: #f3f5f7;
+    --text-gray: rgba(243, 245, 247, 0.66);
+    --surface-1: rgba(255, 255, 255, 0.07);
+    --surface-2: rgba(255, 255, 255, 0.025);
+    --line-soft: rgba(255, 255, 255, 0.105);
+    --line-strong: rgba(255, 255, 255, 0.28);
+    --shadow-strong: 0 28px 80px rgba(0, 0, 0, 0.46);
+    --btn-gradient: linear-gradient(135deg, #5B38F5, #9D5CFF);
+    --btn-hover: linear-gradient(135deg, #7B61FF, #5B38F5);
+    background: #0d0c1d !important;
+}
+
+body.soul-page::before {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0) 30%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.035), transparent 42%, rgba(255, 255, 255, 0.02));
+    background-size: auto;
+    opacity: 1;
+}
+
+body.soul-page .header {
+    background: linear-gradient(180deg, rgba(7, 8, 12, 0.92), rgba(7, 8, 12, 0.58));
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+body.soul-page .header.scrolled {
+    background: rgba(7, 8, 12, 0.92);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.soul-page .logo-image {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
+}
+
+body.soul-page .nav-links a,
+body.soul-page .nav-links a:hover,
+body.soul-page .nav-links a.active {
+    color: rgba(243, 245, 247, 0.82);
+}
+
+body.soul-page .nav-links a::after {
+    background: rgba(243, 245, 247, 0.72);
+}
+
+body.soul-page .lang-btn.active {
+    background: rgba(243, 245, 247, 0.92);
+    border-color: rgba(243, 245, 247, 0.92);
+    color: #080a0f;
+}
+
+body.soul-page .hero {
+    min-height: 100vh;
+    padding: 132px 0 86px;
+}
+
+body.soul-page .hero-overlay {
+    background:
+        linear-gradient(180deg, rgba(7, 8, 12, 0.16) 0%, rgba(7, 8, 12, 0.32) 45%, rgba(7, 8, 12, 0.92) 100%),
+        linear-gradient(90deg, rgba(7, 8, 12, 0.76) 0%, rgba(7, 8, 12, 0.34) 45%, rgba(7, 8, 12, 0.14) 100%);
+}
+
+body.soul-page .hero-badge,
+body.soul-page .age-notice {
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(7, 8, 12, 0.42);
+    color: rgba(243, 245, 247, 0.86);
+    box-shadow: none;
+}
+
+body.soul-page .hero h1,
+body.soul-page .section-header h2,
+body.soul-page .cta-content h2,
+body.soul-page .philosophy-content h2 {
+    color: #f3f5f7 !important;
+    background: none !important;
+    -webkit-text-fill-color: #f3f5f7 !important;
+    text-shadow: 0 20px 68px rgba(0, 0, 0, 0.66);
+}
+
+body.soul-page .hero-subtitle,
+body.soul-page .section-header p,
+body.soul-page .cta-content > p,
+body.soul-page .philosophy-content p,
+body.soul-page .feature-card p,
+body.soul-page .story-content p,
+body.soul-page .product-cn,
+body.soul-page .product-slogan,
+body.soul-page .product-option .desc,
+body.soul-page .product-option .slogan,
+body.soul-page .product-option .name {
+    color: rgba(243, 245, 247, 0.68) !important;
+}
+
+body.soul-page .btn-primary {
+    background: rgba(243, 245, 247, 0.92) !important;
+    border-color: rgba(243, 245, 247, 0.92);
+    color: #07080c !important;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.38);
+}
+
+body.soul-page .btn-primary:hover {
+    background: #ffffff !important;
+    box-shadow: 0 22px 58px rgba(0, 0, 0, 0.5);
+}
+
+body.soul-page .btn-primary::before {
+    background: linear-gradient(90deg, transparent, rgba(7, 8, 12, 0.12), transparent);
+}
+
+body.soul-page .btn-secondary {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(243, 245, 247, 0.88);
+}
+
+body.soul-page section,
+body.soul-page .philosophy,
+body.soul-page .features,
+body.soul-page .stories,
+body.soul-page .specs,
+body.soul-page .cta,
+body.soul-page .product-selection {
+    background: transparent !important;
+}
+
+body.soul-page section {
+    padding: 68px 0;
+}
+
+body.soul-page section + section {
+    padding-top: 22px;
+}
+
+body.soul-page .hero + section {
+    padding-top: 72px;
+}
+
+body.soul-page .section-header {
+    max-width: 920px;
+    margin: 0 0 36px;
+    text-align: left;
+}
+
+body.soul-page .section-header h2 {
+    font-size: 2.72rem;
+}
+
+body.soul-page .section-header p {
+    max-width: 620px;
+}
+
+body.soul-page .philosophy-grid {
+    gap: 52px;
+}
+
+body.soul-page .philosophy-video,
+body.soul-page .feature-card,
+body.soul-page .story-card,
+body.soul-page .spec-item,
+body.soul-page .product-card,
+body.soul-page .product-option {
+    border-color: rgba(255, 255, 255, 0.105);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.022)),
+        rgba(7, 8, 12, 0.24) !important;
+    box-shadow: 0 16px 54px rgba(0, 0, 0, 0.22);
+}
+
+body.soul-page .feature-card:hover,
+body.soul-page .story-card:hover,
+body.soul-page .spec-item:hover,
+body.soul-page .product-card:hover,
+body.soul-page .product-card.active,
+body.soul-page .product-option:hover {
+    border-color: rgba(255, 255, 255, 0.24);
+    box-shadow: 0 26px 74px rgba(0, 0, 0, 0.38);
+}
+
+body.soul-page .feature-icon,
+body.soul-page .spec-icon {
+    background: rgba(255, 255, 255, 0.075);
+    color: rgba(243, 245, 247, 0.9);
+    filter: grayscale(1) contrast(1.1);
+}
+
+body.soul-page .story-icon {
+    filter: grayscale(1) contrast(1.1);
+}
+
+body.soul-page .feature-card h3,
+body.soul-page .story-content h3,
+body.soul-page .spec-value,
+body.soul-page .spec-label,
+body.soul-page .product-name,
+body.soul-page .product-option .size,
+body.soul-page .product-option .tag,
+body.soul-page .product-card:hover .product-name,
+body.soul-page .product-card.active .product-name,
+body.soul-page .product-option:hover .size,
+body.soul-page .product-option:hover .tag {
+    color: #f3f5f7 !important;
+    text-shadow: none;
+}
+
+body.soul-page .product-spec-item,
+body.soul-page .product-option .feature-item,
+body.soul-page .cta-links a {
+    border-color: rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(243, 245, 247, 0.7);
+}
+
+body.soul-page .cta-links a:hover {
+    border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.085);
+    color: #f3f5f7;
+}
+
+body.soul-page .footer {
+    background: #07080c;
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 860px) {
+    body.soul-page .hero {
+        min-height: 100vh;
+        padding: 112px 0 56px;
+    }
+
+    body.soul-page section,
+    body.soul-page section + section {
+        padding: 50px 0;
+    }
+
+    body.soul-page section + section {
+        padding-top: 22px;
+    }
+
+    body.soul-page .hero + section {
+        padding-top: 52px;
+    }
+
+    body.soul-page .section-header {
+        max-width: 520px;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    body.soul-page .section-header h2,
+    body.soul-page .philosophy-content h2,
+    body.soul-page .cta-content h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 540px) {
+    body.soul-page .hero {
+        min-height: 100vh;
+        padding: 104px 0 46px;
+    }
+
+    body.soul-page .hero h1 {
+        font-size: 2.65rem;
+    }
+}
+
+/* Xiaomi-style overview tuning: clean product narrative and consistent pill buttons. */
+body.soul-page {
+    --mi-btn-h: 44px;
+    --mi-radius: 8px;
+    --mi-text: #f4f5f7;
+    --mi-muted: rgba(244, 245, 247, 0.64);
+    --mi-border: rgba(244, 245, 247, 0.82);
+    --mi-soft-border: rgba(244, 245, 247, 0.12);
+    --mi-panel: rgba(255, 255, 255, 0.038);
+}
+
+body.soul-page .hero-content {
+    max-width: 1180px;
+}
+
+body.soul-page .hero h1 {
+    max-width: 720px;
+    font-size: 5.65rem;
+    font-weight: 800;
+    line-height: 1.04;
+}
+
+body.soul-page .hero-subtitle {
+    max-width: 560px;
+    font-size: 1.18rem;
+    font-weight: 500;
+    line-height: 1.65;
+}
+
+body.soul-page .hero-badge,
+body.soul-page .age-notice {
+    min-height: 34px;
+    padding: 7px 15px;
+    border: 1px solid rgba(244, 245, 247, 0.28);
+    border-radius: 999px;
+}
+
+body.soul-page .btn-primary,
+body.soul-page .btn-secondary,
+body.soul-page .cta-links a {
+    min-height: var(--mi-btn-h);
+    padding: 0 24px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: var(--mi-btn-h);
+    box-shadow: none;
+}
+
+body.soul-page .btn-primary {
+    border-color: var(--mi-border);
+    background: var(--mi-text) !important;
+    color: #101114 !important;
+}
+
+body.soul-page .btn-secondary,
+body.soul-page .cta-links a {
+    border-color: rgba(244, 245, 247, 0.42);
+    background: transparent !important;
+    color: rgba(244, 245, 247, 0.9) !important;
+}
+
+body.soul-page .btn-primary:hover {
+    background: #ffffff !important;
+    border-color: #ffffff;
+    transform: translateY(-1px);
+}
+
+body.soul-page .btn-secondary:hover,
+body.soul-page .cta-links a:hover {
+    border-color: rgba(244, 245, 247, 0.82);
+    background: rgba(244, 245, 247, 0.08) !important;
+    transform: translateY(-1px);
+}
+
+body.soul-page .section-header {
+    max-width: 760px;
+    margin: 0 auto 42px;
+    text-align: center;
+}
+
+body.soul-page .section-header h2 {
+    font-size: 2.56rem;
+    font-weight: 800;
+}
+
+body.soul-page .section-header p {
+    max-width: none;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+body.soul-page .philosophy-grid {
+    gap: 44px;
+}
+
+body.soul-page .philosophy-content h2 {
+    font-size: 2.68rem;
+    font-weight: 800;
+}
+
+body.soul-page .philosophy-video {
+    border: 0;
+    border-radius: var(--mi-radius);
+    box-shadow: none;
+}
+
+body.soul-page .feature-card,
+body.soul-page .story-card,
+body.soul-page .spec-item,
+body.soul-page .product-card,
+body.soul-page .product-option {
+    border: 1px solid var(--mi-soft-border);
+    border-radius: var(--mi-radius);
+    background: var(--mi-panel) !important;
+    box-shadow: none;
+}
+
+body.soul-page .feature-card:hover,
+body.soul-page .story-card:hover,
+body.soul-page .spec-item:hover,
+body.soul-page .product-card:hover,
+body.soul-page .product-card.active,
+body.soul-page .product-option:hover {
+    border-color: rgba(244, 245, 247, 0.22);
+    box-shadow: none;
+    transform: translateY(-2px);
+}
+
+body.soul-page .feature-icon,
+body.soul-page .spec-icon {
+    border-radius: var(--mi-radius);
+    background: rgba(255, 255, 255, 0.055);
+    box-shadow: none;
+}
+
+body.soul-sight .features-grid,
+body.soul-pleasure .features-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+body.soul-touch .features-grid,
+body.soul-scent .features-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body.soul-page .specs .specs-grid {
+    gap: 16px;
+}
+
+body.soul-page .spec-item {
+    min-height: 208px;
+}
+
+body.soul-page .spec-value {
+    font-size: 1.58rem;
+}
+
+body.soul-page .product-card,
+body.soul-page .product-option {
+    min-height: 282px;
+}
+
+body.soul-page .product-spec-item,
+body.soul-page .product-option .feature-item {
+    border-color: rgba(244, 245, 247, 0.1);
+    background: rgba(244, 245, 247, 0.045);
+}
+
+@media (max-width: 1100px) {
+    body.soul-sight .features-grid,
+    body.soul-pleasure .features-grid,
+    body.soul-touch .features-grid,
+    body.soul-scent .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 860px) {
+    body.soul-page .hero h1 {
+        font-size: 3.15rem;
+    }
+
+    body.soul-page .section-header {
+        max-width: 520px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    body.soul-page .features-grid,
+    body.soul-page .stories-grid,
+    body.soul-page .product-cards-grid,
+    body.soul-page .product-options,
+    body.soul-sight .features-grid,
+    body.soul-pleasure .features-grid,
+    body.soul-touch .features-grid,
+    body.soul-scent .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 540px) {
+    body.soul-page .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    body.soul-page .btn-primary,
+    body.soul-page .btn-secondary {
+        min-height: 52px;
+        line-height: 52px;
+    }
+}
+
+/* Product identity accents: restrained color, stronger typography. */
+body.soul-sight {
+    --soul-accent: #00E0FF;
+    --soul-accent-rgb: 0, 224, 255;
+    --soul-logo-hue: 0deg;
+}
+
+body.soul-touch {
+    --soul-accent: #00E0FF;
+    --soul-accent-rgb: 0, 224, 255;
+    --soul-logo-hue: 0deg;
+}
+
+body.soul-scent {
+    --soul-accent: #00E0FF;
+    --soul-accent-rgb: 0, 224, 255;
+    --soul-logo-hue: 0deg;
+}
+
+body.soul-pleasure {
+    --soul-accent: #00E0FF;
+    --soul-accent-rgb: 0, 224, 255;
+    --soul-logo-hue: 0deg;
+}
+
+body.soul-page .logo-image {
+    filter: drop-shadow(0 0 10px rgba(0, 224, 255, 0.3));
+}
+
+body.soul-page .nav-links a::after {
+    height: 1px;
+    background: var(--soul-accent);
+    box-shadow: 0 0 14px rgba(var(--soul-accent-rgb), 0.55);
+}
+
+body.soul-page .hero-badge,
+body.soul-page .age-notice {
+    border-color: rgba(var(--soul-accent-rgb), 0.34);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035), 0 0 24px rgba(var(--soul-accent-rgb), 0.1);
+}
+
+body.soul-page .hero-content {
+    padding-bottom: 10px;
+}
+
+body.soul-page .hero h1 {
+    position: relative;
+    margin-bottom: 24px;
+    font-size: 5.35rem;
+    font-weight: 850;
+    line-height: 1.06;
+}
+
+body.soul-page .hero h1::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 2px;
+    margin-top: 18px;
+    border-radius: 999px;
+    background: var(--soul-accent);
+    box-shadow: 0 0 18px rgba(var(--soul-accent-rgb), 0.58);
+}
+
+body.soul-page .hero-subtitle {
+    margin-bottom: 30px;
+    font-size: 1.22rem;
+    line-height: 1.72;
+}
+
+body.soul-page .hero-buttons {
+    gap: 12px;
+}
+
+@keyframes soulButtonScan {
+    0% { transform: translateX(-135%) skewX(-18deg); opacity: 0; }
+    18% { opacity: 0.85; }
+    46% { opacity: 0.85; }
+    64%, 100% { transform: translateX(235%) skewX(-18deg); opacity: 0; }
+}
+
+body.soul-page .btn-primary,
+body.soul-page .btn-secondary,
+body.soul-page .cta-links a {
+    position: relative;
+    overflow: hidden;
+}
+
+body.soul-page .btn-primary::after,
+body.soul-page .btn-secondary::after,
+body.soul-page .cta-links a::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: 0;
+    width: 42%;
+    height: 160%;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(var(--soul-accent-rgb), 0.32), transparent);
+    animation: soulButtonScan 3.4s ease-in-out infinite;
+}
+
+body.soul-page .btn-secondary {
+    border-color: rgba(var(--soul-accent-rgb), 0.45);
+}
+
+body.soul-page .btn-secondary:hover,
+body.soul-page .cta-links a:hover {
+    border-color: rgba(var(--soul-accent-rgb), 0.82);
+}
+
+body.soul-page .section-header h2 {
+    position: relative;
+    margin-bottom: 14px;
+    font-size: 2.72rem;
+    font-weight: 850;
+    line-height: 1.18;
+}
+
+body.soul-page .section-header h2::after {
+    content: "";
+    display: block;
+    width: 54px;
+    height: 1px;
+    margin: 18px auto 0;
+    background: rgba(var(--soul-accent-rgb), 0.82);
+    box-shadow: 0 0 14px rgba(var(--soul-accent-rgb), 0.38);
+}
+
+body.soul-page .section-header p {
+    color: rgba(244, 245, 247, 0.58) !important;
+    font-size: 1.02rem;
+    line-height: 1.78;
+}
+
+body.soul-page .philosophy-content h2 {
+    position: relative;
+    margin-bottom: 24px;
+    font-size: 2.8rem;
+    font-weight: 850;
+    line-height: 1.18;
+}
+
+body.soul-page .philosophy-content h2::after {
+    content: "";
+    display: block;
+    width: 58px;
+    height: 1px;
+    margin-top: 18px;
+    background: rgba(var(--soul-accent-rgb), 0.82);
+    box-shadow: 0 0 14px rgba(var(--soul-accent-rgb), 0.36);
+}
+
+body.soul-page .philosophy-content p {
+    max-width: 620px;
+    font-size: 1.02rem;
+    line-height: 1.92;
+}
+
+body.soul-page .feature-card h3,
+body.soul-page .story-content h3 {
+    font-size: 1.28rem;
+    font-weight: 760;
+    line-height: 1.45;
+}
+
+body.soul-page .feature-card p,
+body.soul-page .story-content p {
+    font-size: 0.96rem;
+    line-height: 1.86;
+}
+
+body.soul-page .feature-icon,
+body.soul-page .spec-icon {
+    color: var(--soul-accent);
+    background: rgba(var(--soul-accent-rgb), 0.08);
+    filter: none;
+}
+
+body.soul-page .feature-card:hover,
+body.soul-page .story-card:hover,
+body.soul-page .spec-item:hover,
+body.soul-page .product-card:hover,
+body.soul-page .product-card.active,
+body.soul-page .product-option:hover {
+    border-color: rgba(var(--soul-accent-rgb), 0.34);
+}
+
+body.soul-page .spec-value {
+    font-size: 1.62rem;
+    font-weight: 820;
+}
+
+body.soul-page .product-name,
+body.soul-page .product-option .size,
+body.soul-page .product-option .tag {
+    font-size: 2.28rem;
+    font-weight: 850;
+}
+
+body.soul-page .product-card:hover .product-name,
+body.soul-page .product-card.active .product-name,
+body.soul-page .product-option:hover .size,
+body.soul-page .product-option:hover .tag {
+    color: var(--soul-accent) !important;
+}
+
+body.soul-page .product-spec-item,
+body.soul-page .product-option .feature-item {
+    border-color: rgba(var(--soul-accent-rgb), 0.12);
+}
+
+@media (max-width: 860px) {
+    body.soul-page .hero h1 {
+        font-size: 3rem;
+    }
+
+    body.soul-page .hero h1::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body.soul-page .hero-subtitle {
+        font-size: 1.04rem;
+        line-height: 1.68;
+    }
+
+    body.soul-page .section-header h2,
+    body.soul-page .philosophy-content h2,
+    body.soul-page .cta-content h2 {
+        font-size: 2.08rem;
+    }
+}
+
+@media (max-width: 540px) {
+    body.soul-page .hero h1 {
+        font-size: 2.44rem;
+    }
+
+    body.soul-page .section-header h2,
+    body.soul-page .philosophy-content h2,
+    body.soul-page .cta-content h2 {
+        font-size: 1.86rem;
+    }
+}
+
+/* Navbar brand sizes match the homepage at mobile breakpoints */
+@media (max-width: 768px) {
+    body.soul-page .logo-image { height: 28px; }
+    body.soul-page .logo-text { font-size: 19px; font-weight: 800; letter-spacing: 1px; }
+}
+@media (max-width: 480px) {
+    body.soul-page .logo-image { height: 26px; }
+    body.soul-page .logo-text { font-size: 15px; letter-spacing: 0.5px; }
+}

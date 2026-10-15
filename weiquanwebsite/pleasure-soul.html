@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>悦 - DeepSire | 最亲密的距离，是感官的同频</title>
+    <meta name="description" content="悦智能亲密产品，以精密触觉反馈与共享互动节奏，创造超越物理距离的感官共振。">
+    <link rel="icon" href="image/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/shared.css">
+    <link rel="stylesheet" href="static/product-common.css">
+    <style>
+        :root {
+            --brand-color: #8A2BE2;
+            --accent-color: #00E0FF;
+            --dark-bg: #0f172a;
+            --text-light: #ffffff;
+            --text-gray: #94a3b8;
+            --font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            --btn-gradient: linear-gradient(135deg, #5B38F5, #9D5CFF);
+            --btn-hover: linear-gradient(135deg, #7B61FF, #5B38F5);
+            --logo-glow: rgba(0, 224, 255, 0.4);
+            --bg-glow-1: rgba(138,43,226, 0.1);
+            --bg-glow-2: rgba(0,224,255, 0.08);
+            --feature-glow: rgba(138,43,226, 0.12);
+            --border-hover: rgba(138,43,226, 0.2);
+            --card-glow: rgba(138,43,226, 0.1);
+            --icon-bg: rgba(138,43,226, 0.2);
+            --icon-bg-light: rgba(138,43,226, 0.05);
+            --tag-bg: rgba(138,43,226, 0.12);
+            --specs-glow-1: rgba(138,43,226, 0.08);
+            --specs-glow-2: rgba(0,224,255, 0.06);
+            --spec-bg: rgba(138,43,226, 0.04);
+            --spec-border: rgba(138,43,226, 0.15);
+            --spec-bg-hover: rgba(138,43,226, 0.08);
+            --spec-border-hover: rgba(138,43,226, 0.4);
+            --spec-glow: rgba(138,43,226, 0.2);
+            --brand-color-alpha: rgba(138,43,226, 0.1);
+            --spec-icon-bg: rgba(138,43,226, 0.2);
+            --spec-icon-bg-light: rgba(0,224,255, 0.1);
+            --spec-value-glow: rgba(138,43,226, 0.5);
+            --cta-glow-1: rgba(138,43,226, 0.06);
+            --cta-glow-2: rgba(0,224,255, 0.04);
+            --scrollbar-thumb: #8A2BE2;
+            --scrollbar-thumb-light: #00E0FF;
+            --scrollbar-thumb-hover: #7B61FF;
+            --scrollbar-thumb-hover-light: #8A2BE2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.8;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(138,43,226, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0,224,255, 0.08) 0%, transparent 50%);
+            pointer-events: none; z-index: -1;
+        }
+
+        .container { width: 90%; max-width: 1280px; margin: 0 auto; }
+
+        .header {
+            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
+            height: 80px;
+            background: transparent;
+            backdrop-filter: blur(0);
+            border-bottom: none;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(10, 6, 18, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            height: 100%; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 0 40px;
+            position: relative;
+        }
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 14px; 
+            text-decoration: none; 
+            position: absolute;
+            left: 40px;
+        }
+        .logo-image { height: 46px; width: auto; filter: drop-shadow(0 0 10px rgba(0, 224, 255, 0.3)); transition: all 0.3s ease; }
+        .logo:hover .logo-image { filter: drop-shadow(0 0 16px rgba(0, 224, 255, 0.5)); }
+        .logo-text { font-family: 'Noto Serif SC', 'Noto Sans SC', 'Inter', serif; font-size: 32px; font-weight: 800; letter-spacing: 2.5px; color: #FFFFFF; text-shadow: 0 0 30px rgba(0, 224, 255, 0.3); }
+        .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+        .nav-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.3s ease; position: relative; }
+        .nav-links a:hover, .nav-links a.active { color: var(--brand-color); }
+
+        .hamburger { display: none; }
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .lang-btn {
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--brand-color);
+        }
+        .lang-btn.active {
+            background: var(--btn-gradient);
+            color: #fff;
+            border-color: var(--brand-color);
+        }
+
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            position: relative; padding: 120px 0 80px; overflow: hidden;
+        }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.55) 50%, rgba(15, 23, 42, 0.9) 100%);
+        }
+        .hero-content { text-align: center; max-width: 900px; z-index: 1; }
+        .hero-badge {
+            display: inline-block; padding: 8px 20px;
+            background: rgba(138,43,226, 0.12);
+            border: 1px solid rgba(138,43,226, 0.25);
+            border-radius: 50px; color: var(--brand-color);
+            font-size: 14px; font-weight: 500; margin-bottom: 24px;
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(138,43,226, 0.2); }
+            50% { box-shadow: 0 0 0 10px rgba(138,43,226, 0); }
+        }
+        .hero h1 {
+            font-size: 4.5rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #B8A9FF 30%, var(--brand-color) 70%, var(--accent-color) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; animation: gradientShift 6s ease-in-out infinite;
+        }
+        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .hero-subtitle { font-size: 1.5rem; color: var(--text-gray); margin-bottom: 40px; font-weight: 300; letter-spacing: 1px; }
+        .hero-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .age-notice {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 24px; background: rgba(138,43,226, 0.08);
+            border: 1px solid rgba(138,43,226, 0.2); border-radius: 50px;
+            color: var(--brand-color); font-size: 14px; margin-top: 20px;
+        }
+        .age-notice svg { width: 18px; height: 18px; }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; padding: 16px 40px;
+            background: var(--btn-gradient); color: #fff; text-decoration: none;
+            border-radius: 50px; font-weight: 600; font-size: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px rgba(138,43,226, 0.4);
+            position: relative; overflow: hidden;
+        }
+        .btn-primary::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(138,43,226, 0.6); }
+
+        .btn-secondary {
+            display: inline-flex; align-items: center; padding: 16px 40px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff; text-decoration: none; border-radius: 50px;
+            font-weight: 500; font-size: 16px; transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
+
+        section { padding: 120px 0; position: relative; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 60px; }
+        .section-header h2 {
+            font-size: 2.8rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff, var(--brand-color));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-header p { font-size: 1.1rem; color: var(--text-gray); }
+
+        .philosophy { background: linear-gradient(180deg, var(--dark-bg) 0%, #0a0612 100%); }
+        .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .philosophy-content h2 { font-size: 2.4rem; font-weight: 700; margin-bottom: 24px; line-height: 1.3; }
+        .philosophy-content p { font-size: 1.1rem; color: var(--text-gray); line-height: 1.9; margin-bottom: 20px; }
+        .philosophy-video { border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); }
+        .philosophy-video video { width: 100%; height: auto; display: block; }
+
+        .features { background: linear-gradient(180deg, #0a0612 0%, var(--dark-bg) 100%); }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px; padding: 40px 32px; text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; overflow: hidden;
+        }
+        .feature-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(138,43,226, 0.12) 0%, transparent 60%);
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .feature-card:hover::before { opacity: 1; }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(138,43,226, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(138,43,226, 0.1);
+        }
+        .feature-card .scan-edge {
+            position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+            background: linear-gradient(180deg, transparent, rgba(138,43,226, 0.9), transparent);
+            opacity: 0; pointer-events: none; z-index: 2;
+        }
+        .feature-card:hover .scan-edge { animation: edgeScan 0.6s ease-out forwards; }
+        @keyframes edgeScan { 0% { top: 0; opacity: 1; } 100% { top: 100%; opacity: 1; } }
+        .feature-icon { width: 72px; height: 72px; margin: 0 auto 24px; background: linear-gradient(135deg, rgba(138,43,226, 0.2), rgba(138,43,226, 0.05)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; transition: all 0.4s ease; }
+        .feature-card:hover .feature-icon { transform: scale(1.1) rotate(5deg); }
+        .feature-card h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 12px; }
+        .feature-card p { font-size: 0.95rem; color: var(--text-gray); line-height: 1.7; }
+
+        .stories { background: linear-gradient(180deg, var(--dark-bg) 0%, #0a0612 100%); }
+        .stories-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        .story-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px; overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .story-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); border-color: rgba(138,43,226, 0.2); }
+        .story-content { padding: 32px; }
+        .story-tag { display: inline-block; padding: 6px 14px; background: rgba(138,43,226, 0.12); color: var(--brand-color); font-size: 13px; font-weight: 500; border-radius: 20px; margin-bottom: 16px; }
+        .story-icon { margin-right: 8px; font-size: 1.2em; }
+        .story-content h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 16px; }
+        .story-content p { font-size: 1rem; color: var(--text-gray); line-height: 1.8; }
+
+        .specs { background: linear-gradient(180deg, #0a0612 0%, var(--dark-bg) 100%); position: relative; overflow: hidden; }
+        .specs::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(138,43,226, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 50%, rgba(0,224,255, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .specs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; z-index: 1; }
+        .spec-item {
+            background: rgba(138,43,226, 0.04);
+            border: 1px solid rgba(138,43,226, 0.15);
+            border-radius: 20px; padding: 32px 20px; text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; overflow: hidden;
+        }
+        .spec-item:hover {
+            background: rgba(138,43,226, 0.08);
+            border-color: rgba(138,43,226, 0.4);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(138,43,226, 0.2);
+        }
+        .spec-item::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), rgba(138,43,226, 0.1), rgba(255,255,255,0.05), transparent);
+            transform: rotate(45deg); animation: holoShine 4s ease-in-out infinite; pointer-events: none;
+        }
+        @keyframes holoShine { 0%, 100% { transform: rotate(45deg) translateX(-100%); } 50% { transform: rotate(45deg) translateX(100%); } }
+        .spec-icon { width: 48px; height: 48px; margin: 0 auto 16px; background: linear-gradient(135deg, rgba(138,43,226, 0.2), rgba(0,224,255, 0.1)); border-radius: 12px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; transition: all 0.3s ease; }
+        .spec-item:hover .spec-icon { transform: scale(1.1); }
+        .spec-icon svg { width: 24px; height: 24px; stroke: var(--brand-color); fill: none; stroke-width: 1.5; }
+        .spec-value { font-size: 1.8rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 20px rgba(138,43,226, 0.5); position: relative; z-index: 1; }
+        .spec-label { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); position: relative; z-index: 1; }
+        .spec-detail { font-size: 0.75rem; color: var(--brand-color); margin-top: 8px; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; position: relative; z-index: 1; }
+        .spec-item:hover .spec-detail { opacity: 1; transform: translateY(0); }
+
+        .product-selection { background: linear-gradient(180deg, var(--dark-bg) 0%, #0a0612 100%); position: relative; overflow: hidden; padding: 120px 0; }
+        .product-selection::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 30%, rgba(138,43,226, 0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 20% 80%, rgba(138,43,226, 0.04) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .product-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto 40px; position: relative; z-index: 1; }
+        .product-card {
+            background: rgba(30, 30, 50, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px; padding: 32px 20px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; overflow: hidden; cursor: pointer;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+        .product-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(138,43,226, 0.15) 0%, transparent 50%);
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .product-card:hover {
+            background: rgba(30, 30, 50, 0.7);
+            border-color: rgba(138,43,226, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(138,43,226, 0.15);
+        }
+        .product-card:hover::before { opacity: 1; }
+        .product-card::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
+            opacity: 0.7; z-index: 2;
+        }
+        .card-echo::after { background: linear-gradient(90deg, #8A2BE2, #8A2BE2); }
+        .card-mirage::after { background: linear-gradient(90deg, #7B61FF, #7B61FF); }
+        .card-surge::after { background: linear-gradient(90deg, #00E0FF, #00E0FF); }
+        .product-brand { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: rgba(255, 255, 255, 0.6); margin-bottom: 4px; letter-spacing: 1px; text-transform: uppercase; position: relative; z-index: 1; }
+        .product-name { font-size: 1.8rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; letter-spacing: 1px; text-shadow: 0 0 30px rgba(138,43,226, 0.5); position: relative; z-index: 1; transition: all 0.3s ease; }
+        .product-card:hover .product-name { color: var(--brand-color); }
+        .product-cn { font-size: 0.95rem; color: rgba(255, 255, 255, 0.7); position: relative; z-index: 1; margin-bottom: 12px; }
+        .product-slogan { font-size: 0.85rem; color: var(--brand-color); line-height: 1.4; position: relative; z-index: 1; }
+        .specs-area { opacity: 0; transform: translateY(8px); transition: all 0.3s ease; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.15); width: 100%; }
+        .product-card:hover .specs-area { opacity: 1; transform: translateY(0); }
+        .specs-area.mobile-expanded { opacity: 1; transform: translateY(0); }
+        .specs-grid-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; }
+        .product-spec-item { font-size: 12px; color: rgba(255, 255, 255, 0.8); position: relative; z-index: 1; transition: color 0.3s ease; }
+        .product-card:hover .product-spec-item { color: var(--brand-color); }
+        .mobile-tap-hint { display: none; font-size: 10px; color: rgba(255, 255, 255, 0.5); margin-top: 8px; position: relative; z-index: 1; }
+        .product-selection .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px; position: relative; z-index: 1; }
+        .product-selection .btn-primary { padding: 18px 50px; font-weight: 700; font-size: 16px; }
+        .product-selection .cta-links { margin-top: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; position: relative; z-index: 1; }
+        .product-selection .cta-links a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px; transition: all 0.3s ease; position: relative; padding: 8px 0; }
+        .product-selection .cta-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--brand-color), transparent); transition: width 0.3s ease; }
+        .product-selection .cta-links a:hover { color: var(--brand-color); }
+        .product-selection .cta-links a:hover::after { width: 100%; }
+
+        footer { padding: 40px 0; background: #050408; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+        footer p { color: var(--text-gray); font-size: 14px; }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        @media (max-width: 1024px) {
+            .philosophy-grid { grid-template-columns: 1fr; gap: 40px; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .specs-grid { grid-template-columns: repeat(2, 1fr); }
+            .philosophy-video { width: 100%; }
+            .product-cards-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0 20px; justify-content: space-between; }
+            .logo-image { height: 28px; }
+            .logo-text { font-size: 19px; font-weight: 800; letter-spacing: 1px; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(10, 6, 18, 0.98); backdrop-filter: blur(12px); flex-direction: column; padding: 20px; gap: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 15px; padding: 12px 0; display: block; }
+            .nav-language-switcher { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+            .nav-language-switcher .language-switcher { position: static; transform: none; display: flex; justify-content: center; gap: 8px; }
+            .hamburger { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; font-size: 1.2rem; cursor: pointer; order: 999; z-index: 1001; -webkit-tap-highlight-color: transparent; margin-left: auto; }
+            section { padding: 60px 0; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .hero-badge { font-size: 12px; padding: 6px 16px; }
+            .age-notice { font-size: 12px; padding: 10px 18px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .stories-grid { grid-template-columns: 1fr; }
+            .specs-grid { grid-template-columns: 1fr; }
+            .section-header h2 { font-size: 1.8rem; }
+            .section-header { margin-bottom: 40px; }
+            .spec-value { font-size: 1.4rem; }
+            .product-cards-grid { grid-template-columns: 1fr; max-width: 320px; }
+            .product-card { padding: 24px 20px; }
+            .product-name { font-size: 1.4rem; }
+            .btn-primary { padding: 14px 32px; font-size: 14px; }
+            .btn-secondary { padding: 14px 32px; font-size: 14px; }
+            .btn-back { padding: 12px 20px; font-size: 13px; }
+            .feature-card { padding: 28px 20px; }
+            .feature-icon { width: 56px; height: 56px; font-size: 1.5rem; }
+            .story-content { padding: 24px; }
+            .cta-links { gap: 20px; }
+            .cta-links a { font-size: 13px; }
+            .container { width: 92%; }
+            .mobile-tap-hint { display: block; }
+        }
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(10, 6, 18, 0.8);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #8A2BE2, #7B61FF);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #5B38F5, #7B61FF);
+        }
+        
+        @media (max-width: 480px) {
+            .navbar { padding: 0 16px; }
+            .logo-image { height: 26px; }
+            .logo-text { font-size: 15px; letter-spacing: 0.5px; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero-subtitle { font-size: 0.95rem; }
+            .section-header h2 { font-size: 1.5rem; }
+            .section-header p { font-size: 0.9rem; }
+            section { padding: 48px 0; }
+            .container { width: 94%; }
+            .product-card { padding: 20px 16px; }
+            .product-brand { font-size: 12px; }
+            .product-name { font-size: 1.3rem; }
+            .product-slogan { font-size: 0.8rem; }
+            .spec-value { font-size: 1.2rem; }
+            .spec-label { font-size: 0.8rem; }
+            .cta h2 { font-size: 1.5rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .cta-links { flex-direction: column; align-items: center; gap: 12px; }
+            .philosophy-content h2 { font-size: 1.6rem; }
+            .philosophy-content p { font-size: 0.95rem; }
+            .feature-card h3 { font-size: 1.2rem; }
+            .feature-card p { font-size: 0.85rem; }
+            .story-content h3 { font-size: 1.2rem; }
+            .story-content p { font-size: 0.9rem; }
+            .age-notice { font-size: 11px; padding: 8px 14px; }
+        }
+    </style>
+    <link rel="stylesheet" href="static/soul-impact.css">
+</head>
+<body class="soul-page soul-pleasure">
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="image/logo.png" alt="微圈 Logo" class="logo-image">
+                <span class="logo-text">微 圈</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="sight-soul.html">视</a></li>
+                <li><a href="touch-soul.html">触</a></li>
+                <li><a href="scent-soul.html">嗅</a></li>
+                <li><a href="pleasure-soul.html" class="active">悦</a></li>
+                <li class="nav-language-switcher">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="zh">中</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg"><img src="image/main4.jpg" alt="悦"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge">悦 · 情感连接设备</span>
+            <h1>悦</h1>
+            <p class="hero-subtitle">最亲密的距离，是感官的同频</p>
+            <div class="hero-buttons">
+                <a href="#philosophy" class="btn-primary">探索可能</a>
+                <a href="https://mall.jd.com/index-16561986.html?from=pc&cid=0" target="_blank" class="btn-secondary">了解更多</a>
+            </div>
+            <div class="age-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 6v6l4 2"></path>
+                </svg>
+                本产品仅面向成年用户
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy" id="philosophy">
+        <div class="container">
+            <div class="philosophy-grid">
+                <div class="philosophy-content reveal">
+                    <h2>连接，不止于言语</h2>
+                    <p>真正的亲密，是彼此互动节奏的共鸣，是探索未知的默契。</p>
+                    <p>悦是一系列精密的感官接口，旨在建立超越物理距离的深度信任与同步。</p>
+                    <p>将亲密关系转化为彼此可共同探索的私密艺术，让陪伴拥有最温暖的形态。</p>
+                </div>
+                <div class="philosophy-video reveal reveal-delay-2">
+                    <video class="w-full h-auto block" muted loop controls playsinline preload="none" poster="video/optimized/pleasure-poster.webp" aria-label="Pleasure device interaction video" data-product-video data-autoplay="true" data-hls="video/hls/pleasure/master.m3u8" data-fallback="video/optimized/pleasure-720p.mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>核心体验</h2>
+                <p>它是如何工作的？</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal reveal-delay-1">
+                    <span class="scan-edge"></span>
+                    <div class="feature-icon">🎵</div>
+                    <h3>谐律同步</h3>
+                    <p>触觉反馈与互动节奏的精密同步算法，实现远程同频体验</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-2">
+                    <span class="scan-edge"></span>
+                    <div class="feature-icon">🎭</div>
+                    <h3>情境感知</h3>
+                    <p>设备可融入不同的情感剧本与氛围音乐，创造沉浸体验</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-3">
+                    <span class="scan-edge"></span>
+                    <div class="feature-icon">🔐</div>
+                    <h3>无界连接</h3>
+                    <p>低延迟加密连接，让分离成为另一种形式的亲密探索</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-4">
+                    <span class="scan-edge"></span>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="24" cy="24" rx="20" ry="14" stroke="currentColor" stroke-width="2"/>
+                            <ellipse cx="24" cy="24" rx="12" ry="8" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+                            <circle cx="24" cy="24" r="5" fill="currentColor" opacity="0.9"/>
+                            <circle cx="24" cy="24" r="2" fill="#fff"/>
+                            <path d="M8 24c0-4 3-8 8-8M40 24c0-4-3-8-8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                            <path d="M24 8v4M24 36v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                        </svg>
+                    </div>
+                    <h3>AI看片识别</h3>
+                    <p>通过视觉识读神情与姿态，智能调节互动模式。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stories" id="stories">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>他们的故事</h2>
+                <p>真实用户的使用体验</p>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card reveal reveal-delay-1">
+                    <div class="story-content">
+                        <h3><span class="story-icon">🎨</span>"我们的触觉画布"</h3>
+                        <p>一对异地艺术情侣，将彼此约定的互动节奏转化为可被对方感知的触觉回应。他们说："即使相隔千里，我们也能在指尖收到熟悉的回应，这是一种全新的亲密对话。"</p>
+                    </div>
+                </div>
+                <div class="story-card reveal reveal-delay-2">
+                    <div class="story-content">
+                        <h3><span class="story-icon">💜</span>"重新发现彼此的语言"</h3>
+                        <p>结婚十年的夫妻通过悦探索新的感官模式。他们说："结婚久了，习惯了一切。但这个设备让我们重新发现了彼此，仿佛又谈了一次恋爱。"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="specs" id="specs">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>技术基石</h2>
+                <p>安全与品质保证</p>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-item reveal reveal-delay-1">
+                    <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <div class="spec-value">亲肤级</div>
+                    <div class="spec-label">安全材料</div>
+                    <div class="spec-detail">材质安全测试 · 亲肤硅胶</div>
+                </div>
+                <div class="spec-item reveal reveal-delay-2">
+                    <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg></div>
+                    <div class="spec-value">UV-C</div>
+                    <div class="spec-label">收纳清洁</div>
+                    <div class="spec-detail">定时维护 · 便捷收纳</div>
+                </div>
+                <div class="spec-item reveal reveal-delay-3">
+                    <div class="spec-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                    <div class="spec-value">端对端</div>
+                    <div class="spec-label">加密通讯</div>
+                    <div class="spec-detail">AES-256加密 · 金融级安全</div>
+                </div>
+                <div class="spec-item reveal reveal-delay-4">
+                    <div class="spec-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2"/><path d="M12 21v2"/><path d="M4.22 4.22l1.42 1.42"/><path d="M18.36 18.36l1.42 1.42"/><path d="M1 12h2"/><path d="M21 12h2"/><path d="M4.22 19.78l1.42-1.42"/><path d="M18.36 5.64l1.42-1.42"/></svg></div>
+                    <div class="spec-value">匠心</div>
+                    <div class="spec-label">设计工艺</div>
+                    <div class="spec-detail">人体工学 · 极简美学</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-selection" id="product-selection">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>探索感官的无限可能</h2>
+                <p>开启你们的亲密新篇章</p>
+            </div>
+            <div class="product-cards-grid reveal reveal-delay-1">
+                <div class="product-card card-echo" data-product="echo">
+                    <div class="product-brand">Pleasure Soul</div>
+                    <div class="product-name">Echo</div>
+                    <div class="product-cn">回声</div>
+                    <div class="product-slogan">智能探索，丰富回应</div>
+                    <div class="specs-area">
+                        <div class="specs-grid-inner">
+                            <div class="product-spec-item">吮吸震动</div>
+                            <div class="product-spec-item">智能加热</div>
+                            <div class="product-spec-item">拍打模式</div>
+                            <div class="product-spec-item">多功能启蒙</div>
+                        </div>
+                    </div>
+                    <div class="mobile-tap-hint">点击查看详情</div>
+                </div>
+                <div class="product-card card-mirage" data-product="mirage">
+                    <div class="product-brand">Pleasure Soul</div>
+                    <div class="product-name">Mirage</div>
+                    <div class="product-cn">幻影</div>
+                    <div class="product-slogan">远程连接，虚影实感</div>
+                    <div class="specs-area">
+                        <div class="specs-grid-inner">
+                            <div class="product-spec-item">APP视频互动</div>
+                            <div class="product-spec-item">实时触感同步</div>
+                            <div class="product-spec-item">异地连接</div>
+                            <div class="product-spec-item">消除距离</div>
+                        </div>
+                    </div>
+                    <div class="mobile-tap-hint">点击查看详情</div>
+                </div>
+                <div class="product-card card-surge" data-product="surge">
+                    <div class="product-brand">Pleasure Soul</div>
+                    <div class="product-name">Surge</div>
+                    <div class="product-cn">澎湃</div>
+                    <div class="product-slogan">巅峰动力，双重迸发</div>
+                    <div class="specs-area">
+                        <div class="specs-grid-inner">
+                            <div class="product-spec-item">超强脉冲引擎</div>
+                            <div class="product-spec-item">双重迸发</div>
+                            <div class="product-spec-item">多档可调</div>
+                            <div class="product-spec-item">极致强度</div>
+                        </div>
+                    </div>
+                    <div class="mobile-tap-hint">点击查看详情</div>
+                </div>
+            </div>
+            <div class="cta-buttons reveal reveal-delay-2">
+                <a href="https://mall.jd.com/index-16561986.html?from=pc&cid=0" target="_blank" class="btn-primary">了解更多详情</a>
+            </div>
+            <div class="cta-links reveal reveal-delay-3">
+                <a href="index.html">返回微圈首页</a>
+                <a href="sight-soul.html">探索视</a>
+                <a href="touch-soul.html">探索触</a>
+                <a href="scent-soul.html">探索嗅</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="index.html" class="footer-logo">
+                <img src="image/logo.png" alt="微圈">
+                <span class="logo-text" style="font-size: 22px;">微 圈</span>
+            </a>
+            <div class="footer-contact">
+                <p>联系我们：<a href="mailto:support@meeetta.com" style="color: var(--text-dark); text-decoration: none;">support@meeetta.com</a></p>
+            </div>
+            <div class="footer-info">
+                <p>© 2024 深颖数字（深圳）有限公司。All Rights Reserved.</p>
+                <p>备案号：<a href="https://beian.miit.gov.cn/" style="color: var(--text-dark); text-decoration: none;">粤 ICP 备 2023062123 号</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/shared.js"></script>
+    <script src="static/product-video.js"></script>
+    <script>
+        function initMobileCardInteraction() {
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            if (isMobile) {
+                const cards = document.querySelectorAll('.product-card');
+                cards.forEach(card => {
+                    const specsArea = card.querySelector('.specs-area');
+                    if (!specsArea) return;
+                    card.addEventListener('click', function(e) {
+                        if (e.target.closest('a') || e.target.closest('button')) return;
+                        const isExpanded = specsArea.classList.contains('mobile-expanded');
+                        cards.forEach(otherCard => {
+                            const otherSpecs = otherCard.querySelector('.specs-area');
+                            if (otherSpecs) otherSpecs.classList.remove('mobile-expanded');
+                        });
+                        if (!isExpanded) specsArea.classList.add('mobile-expanded');
+                    });
+                });
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.product-card')) {
+                        cards.forEach(card => {
+                            const specsArea = card.querySelector('.specs-area');
+                            if (specsArea) specsArea.classList.remove('mobile-expanded');
+                        });
+                    }
+                });
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() { initMobileCardInteraction(); });
+
+        // 本页翻译数据
+        const pageTranslations = {
+            zh: {
+                nav: {
+                    home: '首页',
+                    sight: '视',
+                    touch: '触',
+                    scent: '嗅',
+                    pleasure: '悦'
+                },
+                hero: {
+                    badge: '悦 · 情感连接设备',
+                    title: '悦',
+                    subtitle: '最亲密的距离，是感官的同频',
+                    btn1: '探索可能',
+                    btn2: '了解更多',
+                    ageNotice: '本产品仅面向成年用户'
+                },
+                philosophy: {
+                    title: '连接，不止于言语',
+                    p1: '真正的亲密，是彼此互动节奏的共鸣，是探索未知的默契。',
+                    p2: '悦是一系列精密的感官接口，旨在建立超越物理距离的深度信任与同步。',
+                    p3: '将亲密关系转化为彼此可共同探索的私密艺术，让陪伴拥有最温暖的形态。'
+                },
+                features: {
+                    title: '核心体验',
+                    subtitle: '它是如何工作的？',
+                    card1: {
+                        title: '谐律同步',
+                        desc: '触觉反馈与互动节奏的精密同步算法，实现远程同频体验'
+                    },
+                    card2: {
+                        title: '情境感知',
+                        desc: '设备可融入不同的情感剧本与氛围音乐，创造沉浸体验'
+                    },
+                    card3: {
+                        title: '无界连接',
+                        desc: '低延迟加密连接，让分离成为另一种形式的亲密探索'
+                    },
+                    card4: {
+                        title: 'AI看片识别',
+                        desc: '通过视觉识读神情与姿态，智能调节互动模式。'
+                    }
+                },
+                stories: {
+                    title: '他们的故事',
+                    subtitle: '真实用户的使用体验',
+                    story1: {
+                        title: '🎨"我们的触觉画布"',
+                        desc: '一对异地艺术情侣，将彼此约定的互动节奏转化为可被对方感知的触觉回应。他们说："即使相隔千里，我们也能在指尖收到熟悉的回应，这是一种全新的亲密对话。"'
+                    },
+                    story2: {
+                        title: '💜"重新发现彼此的语言"',
+                        desc: '结婚十年的夫妻通过悦探索新的感官模式。他们说："结婚久了，习惯了一切。但这个设备让我们重新发现了彼此，仿佛又谈了一次恋爱。"'
+                    }
+                },
+                specs: {
+                    title: '技术基石',
+                    subtitle: '安全与品质保证',
+                    spec1: {
+                        value: '亲肤级',
+                        label: '安全材料',
+                        detail: '材质安全测试 · 亲肤硅胶'
+                    },
+                    spec2: {
+                        value: 'UV-C',
+                        label: '收纳清洁',
+                        detail: '定时维护 · 便捷收纳'
+                    },
+                    spec3: {
+                        value: '端对端',
+                        label: '加密通讯',
+                        detail: 'AES-256加密 · 金融级安全'
+                    },
+                    spec4: {
+                        value: '匠心',
+                        label: '设计工艺',
+                        detail: '人体工学 · 极简美学'
+                    }
+                },
+                mobileTapHint: '点击查看详情',
+                productSelection: {
+                    title: '探索感官的无限可能',
+                    subtitle: '开启你们的亲密新篇章',
+                    card1: {
+                        brand: 'Pleasure Soul',
+                        name: 'Echo',
+                        cn: '回声',
+                        slogan: '智能探索，丰富回应',
+                        specs: ['吮吸震动', '智能加热', '拍打模式', '多功能启蒙']
+                    },
+                    card2: {
+                        brand: 'Pleasure Soul',
+                        name: 'Mirage',
+                        cn: '幻影',
+                        slogan: '远程连接，虚影实感',
+                        specs: ['APP视频互动', '实时触感同步', '异地连接', '消除距离']
+                    },
+                    card3: {
+                        brand: 'Pleasure Soul',
+                        name: 'Surge',
+                        cn: '澎湃',
+                        slogan: '巅峰动力，双重迸发',
+                        specs: ['超强脉冲引擎', '双重迸发', '多档可调', '极致强度']
+                    },
+                    btn: '了解更多详情',
+                    links: {
+                        home: '返回微圈首页',
+                        sight: '探索视',
+                        touch: '探索触',
+                        scent: '探索嗅'
+                    }
+                }
+            },
+            en: {
+                nav: {
+                    home: 'Home',
+                    sight: 'Sight',
+                    touch: 'Touch',
+                    scent: 'Scent',
+                    pleasure: 'Pleasure'
+                },
+                hero: {
+                    badge: 'Pleasure · Emotional Connection Device',
+                    title: 'Pleasure',
+                    subtitle: 'The closest distance is the synchronization of senses',
+                    btn1: 'Explore Possibilities',
+                    btn2: 'Learn More',
+                    ageNotice: 'This product is for adult users only'
+                },
+                philosophy: {
+                    title: 'Connection goes beyond words',
+                    p1: 'True intimacy is the resonance of shared interaction rhythms and the trust to explore together.',
+                    p2: 'Pleasure is a series of precise sensory interfaces designed to establish deep trust and synchronization beyond physical distance.',
+                    p3: 'Transform intimate relationships into a private art that can be explored together, giving companionship its warmest form.'
+                },
+                features: {
+                    title: 'Core Experience',
+                    subtitle: 'How does it work?',
+                    card1: {
+                        title: 'Harmonic Synchronization',
+                        desc: 'Precise synchronization of haptic feedback and shared interaction rhythms for connected experiences across distance'
+                    },
+                    card2: {
+                        title: 'Context Awareness',
+                        desc: 'The device can integrate into different emotional scripts and ambient music, creating an immersive experience'
+                    },
+                    card3: {
+                        title: 'Boundless Connection',
+                        desc: 'Low-latency encrypted connection, turning separation into another form of intimate exploration'
+                    },
+                    card4: {
+                        title: 'AI Video Recognition',
+                        desc: 'Intelligently adjust interaction patterns by visually reading facial expressions and gestures.'
+                    }
+                },
+                stories: {
+                    title: 'Their Stories',
+                    subtitle: 'Real user experiences',
+                    story1: {
+                        title: '🎨"Our tactile canvas"',
+                        desc: 'A long-distance artist couple turned their shared interaction rhythms into tactile responses. They said, "Even thousands of miles apart, a familiar reply can still reach our fingertips."'
+                    },
+                    story2: {
+                        title: '💜"Rediscovering each other\'s language"',
+                        desc: 'A couple married for ten years explored new sensory patterns through Pleasure. They said, "After being married for a long time, we got used to everything. But this device made us rediscover each other, as if we were falling in love again."'
+                    }
+                },
+                specs: {
+                    title: 'Technical Foundation',
+                    subtitle: 'Safety and quality assurance',
+                    spec1: {
+                        value: 'Skin-Friendly',
+                        label: 'Safe Materials',
+                        detail: 'Material Safety Tested · Soft-Touch Silicone'
+                    },
+                    spec2: {
+                        value: 'UV-C',
+                        label: 'Care & Storage',
+                        detail: 'Timed Care · Convenient Storage'
+                    },
+                    spec3: {
+                        value: 'End-to-End',
+                        label: 'Encrypted Communication',
+                        detail: 'AES-256 Encryption · Financial Grade Security'
+                    },
+                    spec4: {
+                        value: 'Craftsmanship',
+                        label: 'Design Technology',
+                        detail: 'Ergonomics · Minimalist Aesthetics'
+                    }
+                },
+                mobileTapHint: 'Tap to view details',
+                productSelection: {
+                    title: 'Explore the infinite possibilities of the senses',
+                    subtitle: 'Start your new chapter of intimacy',
+                    card1: {
+                        brand: 'Pleasure Soul',
+                        name: 'Echo',
+                        cn: 'Echo',
+                        slogan: 'Intelligent exploration, rich response',
+                        specs: ['Suction Vibration', 'Intelligent Heating', 'Percussion Mode', 'Multi-function Enlightenment']
+                    },
+                    card2: {
+                        brand: 'Pleasure Soul',
+                        name: 'Mirage',
+                        cn: 'Mirage',
+                        slogan: 'Remote connection, virtual reality',
+                        specs: ['APP Video Interaction', 'Real-time Touch Synchronization', 'Long-distance Connection', 'Eliminate Distance']
+                    },
+                    card3: {
+                        brand: 'Pleasure Soul',
+                        name: 'Surge',
+                        cn: 'Surge',
+                        slogan: 'Peak power, double burst',
+                        specs: ['Super Pulse Engine', 'Double Burst', 'Multi-level Adjustable', 'Extreme Intensity']
+                    },
+                    btn: 'Learn More Details',
+                    links: {
+                        home: 'Back to DeepSire Home',
+                        sight: 'Explore Sight',
+                        touch: 'Explore Touch',
+                        scent: 'Explore Scent'
+                    }
+                }
+            }
+        };
+    </script>
+</body>
+</html>

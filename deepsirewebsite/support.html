@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSire Support</title>
+    <meta name="description" content="DeepSire app support: account help, device pairing, and contact. DeepSire is an AI companionship and digital life platform.">
+    <meta name="robots" content="index,follow">
+    <link rel="icon" href="image/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="image/icon.png">
+    <link rel="canonical" href="https://www.deepsire.com/support.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #07090d;
+            --card-bg: rgba(14, 18, 28, 0.86);
+            --text-light: #FAF9F6;
+            --text-muted: #a8b0c0;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent: #00E0FF;
+            --primary: #D4A5A5;
+            --secondary: #9093ff;
+            --surface-container: #1a1919;
+            --surface-container-high: #201f1f;
+            --on-surface: #ffffff;
+            --on-surface-variant: #adaaaa;
+            --outline-variant: #494847;
+            --btn-gradient: linear-gradient(90deg, #8B5CF6, #D4A5A5);
+            --font-family: 'Inter', 'Noto Sans SC', 'Lexend', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-family);
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background:
+                radial-gradient(ellipse at 18% 8%, rgba(0, 224, 255, 0.10) 0%, transparent 46%),
+                radial-gradient(ellipse at 82% 92%, rgba(139, 92, 246, 0.12) 0%, transparent 50%);
+            pointer-events: none; z-index: -1;
+        }
+        .header {
+            position: sticky; top: 0; z-index: 20;
+            height: 72px;
+            background: rgba(7, 9, 13, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .navbar {
+            max-width: 960px; margin: 0 auto; height: 100%;
+            padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 16px;
+        }
+        .logo { display: flex; align-items: center; gap: 10px; color: #fff; }
+        .logo img { height: 32px; }
+        .logo span { font-family: 'Lexend', sans-serif; font-weight: 700; letter-spacing: 1px; }
+        .nav-right { display: flex; align-items: center; gap: 16px; }
+
+        .lang-selector { position: relative; z-index: 200; }
+        .lang-btn {
+            display: flex; align-items: center; gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover { border-color: var(--secondary); color: var(--secondary); transform: scale(1.05); }
+        .lang-btn i { font-size: 0.75rem; transition: transform 0.3s ease; }
+        .lang-selector.open .lang-btn i { transform: rotate(180deg); }
+        .lang-dropdown {
+            position: absolute; top: calc(100% + 0.5rem); right: 0;
+            min-width: 160px;
+            background: var(--surface-container);
+            border: 1px solid var(--outline-variant);
+            border-radius: 0.75rem;
+            padding: 0.5rem;
+            opacity: 0; visibility: hidden; transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 300;
+        }
+        .lang-selector.open .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .lang-dropdown button {
+            display: flex; align-items: center; gap: 0.75rem; width: 100%;
+            padding: 0.625rem 1rem;
+            background: transparent; border: none; border-radius: 0.5rem;
+            color: var(--on-surface-variant);
+            font-family: 'Lexend', sans-serif; font-size: 0.875rem;
+            cursor: pointer; text-align: left;
+        }
+        .lang-dropdown button:hover { background: var(--surface-container-high); color: var(--on-surface); }
+        .lang-dropdown button.active {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        .wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
+        .hero { margin-bottom: 40px; }
+        .hero h1 { font-family: 'Lexend', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+        .hero p { color: var(--text-muted); max-width: 720px; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px 28px 12px;
+            margin-bottom: 24px;
+        }
+        .card h2 { font-size: 1.15rem; margin-bottom: 16px; }
+        .block { margin-bottom: 22px; }
+        .block h3 { font-size: 1rem; margin-bottom: 6px; font-weight: 600; }
+        .block p, .block li { color: var(--text-muted); font-size: 15px; }
+        .block ul { padding-left: 18px; margin: 8px 0; }
+        .mail {
+            display: inline-flex; align-items: center;
+            margin: 12px 0 8px;
+            padding: 10px 18px;
+            background: var(--btn-gradient);
+            color: #fff; text-decoration: none; border-radius: 999px; font-weight: 500;
+        }
+        .mail:hover { opacity: 0.92; }
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 28px 24px 40px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        footer a { color: var(--text-muted); }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.55rem; }
+            .card { padding: 20px 18px 8px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="image/icon.png" alt="DeepSire">
+                <span>DeepSire</span>
+            </div>
+            <div class="nav-right">
+                <div class="lang-selector" id="langSelector">
+                    <button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="langDropdown">
+                        <span class="lang-current" id="langCurrent">EN</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown" role="listbox" aria-labelledby="langBtn">
+                        <button type="button" data-lang="en" class="active"><span class="lang-flag">🇺🇸</span> English</button>
+                        <button type="button" data-lang="zh"><span class="lang-flag">🇨🇳</span> 中文</button>
+                        <button type="button" data-lang="ja"><span class="lang-flag">🇯🇵</span> 日本語</button>
+                        <button type="button" data-lang="ko"><span class="lang-flag">🇰🇷</span> 한국어</button>
+                        <button type="button" data-lang="fr"><span class="lang-flag">🇫🇷</span> Français</button>
+                        <button type="button" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch</button>
+                        <button type="button" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</button>
+                        <button type="button" data-lang="pt"><span class="lang-flag">🇧🇷</span> Português</button>
+                        <button type="button" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+                        <button type="button" data-lang="ar"><span class="lang-flag">🇸🇦</span> العربية</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="wrap">
+        <div class="hero">
+            <h1 data-translate-key="page_title">DeepSire Support</h1>
+            <p data-translate-key="page_intro">Account help, app usage, and compatible-device pairing for the DeepSire companionship platform.</p>
+        </div>
+
+        <section class="card">
+            <h2 data-translate-key="contact_title">Contact</h2>
+            <div class="block">
+                <p data-translate-key="contact_body">For app support, please email us. We typically reply within 1–2 business days.</p>
+                <a class="mail" href="mailto:support@deepsire.com">support@deepsire.com</a>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 data-translate-key="about_title">About DeepSire</h2>
+            <div class="block">
+                <p data-translate-key="about_body">DeepSire is an AI companionship and digital-life platform. You can create a digital companion with memory and personality, talk with it in the app, and continue that companionship on compatible devices such as a smart photo frame or wearable.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 data-translate-key="faq_title">Frequently asked questions</h2>
+
+            <div class="block">
+                <h3 data-translate-key="faq1_q">How do I create an account or sign in?</h3>
+                <p data-translate-key="faq1_a">Open the DeepSire app and follow the on-screen sign-in or registration steps. If you cannot receive a verification code, check your phone number or email, wait a few minutes, and try again. Still stuck? Email us with your registered phone or email address (do not send passwords).</p>
+            </div>
+            <div class="block">
+                <h3 data-translate-key="faq2_q">How do I use a digital companion?</h3>
+                <p data-translate-key="faq2_a">After signing in, create or choose a digital companion in the app. You can chat, leave memories, and continue the same companion on a compatible device that is linked to your account.</p>
+            </div>
+            <div class="block">
+                <h3 data-translate-key="faq3_q">A compatible device will not connect</h3>
+                <ul>
+                    <li data-translate-key="faq3_l1">Confirm Bluetooth and Wi-Fi are turned on.</li>
+                    <li data-translate-key="faq3_l2">Keep the device nearby and powered on.</li>
+                    <li data-translate-key="faq3_l3">Restart the app and the device, then try pairing again from the in-app device page.</li>
+                </ul>
+                <p data-translate-key="faq3_a">If it still fails, email us with the device name and a short description of the step where it stops.</p>
+            </div>
+            <div class="block">
+                <h3 data-translate-key="faq4_q">How do I delete my account or data?</h3>
+                <p data-translate-key="faq4_a">You can request account deletion from in-app settings, or email support@deepsire.com from the address or phone number linked to the account.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 data-translate-key="notice_title">Product notice</h2>
+            <div class="block">
+                <p data-translate-key="notice_body">DeepSire and compatible wearables are designed for general companionship, wellness, and lifestyle purposes only. They are not medical devices and are not intended to diagnose, treat, cure, prevent, or monitor any disease or medical condition. All data and trends are for reference only and must not be used for medical decisions. Please consult a qualified healthcare professional before making any medical decisions.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p data-translate-key="footer_copy">© DeepSire. Architects of Digital Life.</p>
+        <p style="margin-top:8px;"><a href="mailto:support@deepsire.com">support@deepsire.com</a></p>
+    </footer>
+
+    <script src="js/product-common.js?v=20260815"></script>
+    <script>
+    const translations = {
+        en: {
+            page_title: "DeepSire Support",
+            page_intro: "Account help, app usage, and compatible-device pairing for the DeepSire companionship platform.",
+            contact_title: "Contact",
+            contact_body: "For app support, please email us. We typically reply within 1–2 business days.",
+            about_title: "About DeepSire",
+            about_body: "DeepSire is an AI companionship and digital-life platform. You can create a digital companion with memory and personality, talk with it in the app, and continue that companionship on compatible devices such as a smart photo frame or wearable.",
+            faq_title: "Frequently asked questions",
+            faq1_q: "How do I create an account or sign in?",
+            faq1_a: "Open the DeepSire app and follow the on-screen sign-in or registration steps. If you cannot receive a verification code, check your phone number or email, wait a few minutes, and try again. Still stuck? Email us with your registered phone or email address (do not send passwords).",
+            faq2_q: "How do I use a digital companion?",
+            faq2_a: "After signing in, create or choose a digital companion in the app. You can chat, leave memories, and continue the same companion on a compatible device that is linked to your account.",
+            faq3_q: "A compatible device will not connect",
+            faq3_l1: "Confirm Bluetooth and Wi-Fi are turned on.",
+            faq3_l2: "Keep the device nearby and powered on.",
+            faq3_l3: "Restart the app and the device, then try pairing again from the in-app device page.",
+            faq3_a: "If it still fails, email us with the device name and a short description of the step where it stops.",
+            faq4_q: "How do I delete my account or data?",
+            faq4_a: "You can request account deletion from in-app settings, or email support@deepsire.com from the address or phone number linked to the account.",
+            notice_title: "Product notice",
+            notice_body: "DeepSire and compatible wearables are designed for general companionship, wellness, and lifestyle purposes only. They are not medical devices and are not intended to diagnose, treat, cure, prevent, or monitor any disease or medical condition. All data and trends are for reference only and must not be used for medical decisions. Please consult a qualified healthcare professional before making any medical decisions.",
+            footer_copy: "© DeepSire. Architects of Digital Life."
+        },
+        zh: {
+            page_title: "DeepSire 技术支持",
+            page_intro: "DeepSire 陪伴平台的账号帮助、App 使用与兼容设备配对说明。",
+            contact_title: "联系我们",
+            contact_body: "账号、登录、设备连接等使用问题，请发送邮件，我们将在 1–2 个工作日内回复。",
+            about_title: "关于 DeepSire",
+            about_body: "DeepSire 是一款 AI 情感陪伴与数字生命平台。你可以创建有记忆、有性格的数字分身，在 App 中对话，并在兼容设备（如智能相框、智能穿戴）上延续陪伴。",
+            faq_title: "常见问题",
+            faq1_q: "如何注册或登录？",
+            faq1_a: "打开 DeepSire App，按页面提示注册或登录。若收不到验证码，请核对手机号或邮箱后稍候再试。仍无法登录时，请发邮件并注明注册手机号或邮箱（请勿发送密码）。",
+            faq2_q: "如何使用数字分身？",
+            faq2_a: "登录后，在 App 中创建或选择数字分身，即可对话、留下记忆，并在已绑定账号的兼容设备上继续陪伴。",
+            faq3_q: "兼容设备连不上怎么办？",
+            faq3_l1: "确认已打开蓝牙和 Wi-Fi。",
+            faq3_l2: "设备保持开机并靠近手机。",
+            faq3_l3: "重启 App 与设备后，在 App 的设备页重新配对。",
+            faq3_a: "仍无法连接时，请发邮件说明设备名称以及卡在哪一步。",
+            faq4_q: "如何注销账号或删除数据？",
+            faq4_a: "可在 App 设置中申请注销，或使用账号绑定的手机号/邮箱发送邮件至 support@deepsire.com。",
+            notice_title: "产品说明",
+            notice_body: "DeepSire 及相关兼容智能穿戴设备仅用于一般性的情感陪伴、生活与健康生活方式支持，并非医疗器械，无意用于任何疾病或健康状况的诊断、治疗、治愈、预防或监测。所有数据与趋势仅供参考，不得用于医疗决策。作出任何医疗相关决定前，请咨询具备资质的专业医务人员。",
+            footer_copy: "© DeepSire. 数字生命建筑师。"
+        },
+        ja: {
+            page_title: "DeepSire サポート",
+            page_intro: "DeepSire コンパニオンシップ向けのアカウント、アプリ利用、対応デバイスのペアリングに関するサポートです。",
+            contact_title: "お問い合わせ",
+            contact_body: "アプリのサポートはメールでご連絡ください。通常 1〜2 営業日以内にご返信します。",
+            about_title: "DeepSire について",
+            about_body: "DeepSire は AI による情感的な寄り添いとデジタルライフのプラットフォームです。記憶と個性を持つデジタルコンパニオンを作り、アプリで会話し、対応デバイス（スマートフォトフレームやウェアラブルなど）でも同じつながりを続けられます。",
+            faq_title: "よくある質問",
+            faq1_q: "アカウントの作成・ログイン方法は？",
+            faq1_a: "DeepSire アプリを開き、画面の案内に従って登録またはログインしてください。認証コードが届かない場合は、電話番号またはメールアドレスをご確認のうえ、少し待って再試行してください。解決しない場合は、登録済みの電話番号またはメールアドレスを添えてご連絡ください（パスワードは送らないでください）。",
+            faq2_q: "デジタルコンパニオンの使い方は？",
+            faq2_a: "ログイン後、アプリでデジタルコンパニオンを作成または選択します。会話したり記憶を残したりでき、アカウントにリンクした対応デバイスでも同じコンパニオンを続けられます。",
+            faq3_q: "対応デバイスが接続できない",
+            faq3_l1: "Bluetooth と Wi-Fi がオンになっていることを確認してください。",
+            faq3_l2: "デバイスの電源を入れ、近くに置いてください。",
+            faq3_l3: "アプリとデバイスを再起動し、アプリ内のデバイス画面から再度ペアリングしてください。",
+            faq3_a: "それでも失敗する場合は、デバイス名と止まった手順をメールでお知らせください。",
+            faq4_q: "アカウントやデータの削除方法は？",
+            faq4_a: "アプリの設定から削除を申請するか、アカウントに紐づく電話番号またはメールアドレスから support@deepsire.com へご連絡ください。",
+            notice_title: "製品に関するお知らせ",
+            notice_body: "DeepSire および対応ウェアラブルは、一般的な寄り添い、ウェルネス、ライフスタイル用途のみを目的としています。医療機器ではなく、疾病や健康状態の診断、治療、治癒、予防、監視を意図していません。データと傾向は参考情報であり、医療上の判断には使用しないでください。医療に関する判断の前に、資格のある医療専門家にご相談ください。",
+            footer_copy: "© DeepSire. Architects of Digital Life."
+        },
+        ko: {
+            page_title: "DeepSire 지원",
+            page_intro: "DeepSire 컴패니언십 플랫폼의 계정, 앱 사용, 호환 기기 페어링 지원입니다.",
+            contact_title: "문의",
+            contact_body: "앱 지원은 이메일로 문의해 주세요. 보통 1–2 영업일 내에 답변드립니다.",
+            about_title: "DeepSire 소개",
+            about_body: "DeepSire는 AI 감정 동반과 디지털 라이프 플랫폼입니다. 기억과 성격이 있는 디지털 컴패니언을 만들고 앱에서 대화하며, 스마트 포토프레임이나 웨어러블 같은 호환 기기에서도 그 동반을 이어갈 수 있습니다.",
+            faq_title: "자주 묻는 질문",
+            faq1_q: "계정 생성 또는 로그인은 어떻게 하나요?",
+            faq1_a: "DeepSire 앱을 열고 화면 안내에 따라 가입 또는 로그인하세요. 인증 코드를 받지 못하면 전화번호나 이메일을 확인한 뒤 잠시 후 다시 시도하세요. 계속 안 되면 등록된 전화번호나 이메일을 적어 메일로 문의하세요(비밀번호는 보내지 마세요).",
+            faq2_q: "디지털 컴패니언은 어떻게 사용하나요?",
+            faq2_a: "로그인 후 앱에서 디지털 컴패니언을 만들거나 선택하세요. 대화하고 기억을 남길 수 있으며, 계정에 연결된 호환 기기에서도 같은 컴패니언을 이어갈 수 있습니다.",
+            faq3_q: "호환 기기가 연결되지 않아요",
+            faq3_l1: "Bluetooth와 Wi-Fi가 켜져 있는지 확인하세요.",
+            faq3_l2: "기기를 켜 두고 가까이 두세요.",
+            faq3_l3: "앱과 기기를 재시작한 뒤 앱의 기기 화면에서 다시 페어링하세요.",
+            faq3_a: "그래도 실패하면 기기 이름과 멈춘 단계를 메일로 알려 주세요.",
+            faq4_q: "계정이나 데이터는 어떻게 삭제하나요?",
+            faq4_a: "앱 설정에서 삭제를 요청하거나, 계정에 연결된 전화번호/이메일로 support@deepsire.com 에 메일을 보내 주세요.",
+            notice_title: "제품 안내",
+            notice_body: "DeepSire와 호환 웨어러블은 일반적인 동반, 웰니스, 라이프스타일 용도로만 설계되었습니다. 의료기기가 아니며 질병이나 건강 상태의 진단, 치료, 치유, 예방, 모니터링을 목적으로 하지 않습니다. 모든 데이터와 추세는 참고용이며 의학적 결정에 사용해서는 안 됩니다. 의학적 결정을 내리기 전에 자격을 갖춘 의료 전문가와 상담하세요.",
+            footer_copy: "© DeepSire. Architects of Digital Life."
+        },
+        fr: {
+            page_title: "Assistance DeepSire",
+            page_intro: "Aide au compte, utilisation de l’app et association des appareils compatibles pour la plateforme d’accompagnement DeepSire.",
+            contact_title: "Contact",
+            contact_body: "Pour l’assistance de l’app, écrivez-nous. Nous répondons généralement sous 1 à 2 jours ouvrés.",
+            about_title: "À propos de DeepSire",
+            about_body: "DeepSire est une plateforme d’accompagnement IA et de vie numérique. Vous pouvez créer un compagnon numérique avec mémoire et personnalité, dialoguer dans l’app, et poursuivre cette présence sur des appareils compatibles tels qu’un cadre photo intelligent ou un wearable.",
+            faq_title: "Questions fréquentes",
+            faq1_q: "Comment créer un compte ou se connecter ?",
+            faq1_a: "Ouvrez l’app DeepSire et suivez les étapes à l’écran. Si vous ne recevez pas le code, vérifiez le numéro ou l’e-mail, attendez quelques minutes, puis réessayez. Sinon, écrivez-nous avec le téléphone ou l’e-mail enregistré (n’envoyez pas de mot de passe).",
+            faq2_q: "Comment utiliser un compagnon numérique ?",
+            faq2_a: "Après connexion, créez ou choisissez un compagnon dans l’app. Vous pouvez discuter, laisser des souvenirs, et continuer le même compagnon sur un appareil compatible lié au compte.",
+            faq3_q: "Un appareil compatible ne se connecte pas",
+            faq3_l1: "Vérifiez que le Bluetooth et le Wi-Fi sont activés.",
+            faq3_l2: "Gardez l’appareil allumé et à proximité.",
+            faq3_l3: "Redémarrez l’app et l’appareil, puis réessayez l’association depuis la page Appareils.",
+            faq3_a: "Si cela échoue encore, envoyez-nous le nom de l’appareil et l’étape où cela s’arrête.",
+            faq4_q: "Comment supprimer mon compte ou mes données ?",
+            faq4_a: "Vous pouvez demander la suppression dans les réglages de l’app, ou écrire à support@deepsire.com depuis le téléphone ou l’e-mail lié au compte.",
+            notice_title: "Avis produit",
+            notice_body: "DeepSire et les wearables compatibles sont conçus uniquement pour l’accompagnement, le bien-être et le mode de vie. Ils ne sont pas des dispositifs médicaux et ne visent pas à diagnostiquer, traiter, guérir, prévenir ou surveiller une maladie. Les données et tendances sont indicatives et ne doivent pas servir à des décisions médicales. Consultez un professionnel de santé qualifié avant toute décision médicale.",
+            footer_copy: "© DeepSire. Architects of Digital Life."
+        },
+        de: {
+            page_title: "DeepSire Support",
+            page_intro: "Kontohilfe, App-Nutzung und Kopplung kompatibler Geräte für die DeepSire-Begleitplattform.",
+            contact_title: "Kontakt",
+            contact_body: "Für App-Support schreiben Sie uns bitte. Wir antworten in der Regel innerhalb von 1–2 Werktagen.",
+            about_title: "Über DeepSire",
+            about_body: "DeepSire ist eine KI-Begleit- und Digital-Life-Plattform. Sie können einen digitalen Begleiter mit Gedächtnis und Persönlichkeit erstellen, in der App sprechen und diese Begleitung auf kompatiblen Geräten wie einem intelligenten Bilderrahmen oder Wearable fortsetzen.",
+            faq_title: "Häufige Fragen",
+            faq1_q: "Wie erstelle ich ein Konto oder melde mich an?",
+            faq1_a: "Öffnen Sie die DeepSire-App und folgen Sie den Schritten. Wenn kein Code ankommt, prüfen Sie Telefonnummer oder E-Mail, warten Sie kurz und versuchen Sie es erneut. Schreiben Sie uns sonst mit der registrierten Nummer oder E-Mail (kein Passwort senden).",
+            faq2_q: "Wie nutze ich einen digitalen Begleiter?",
+            faq2_a: "Nach der Anmeldung erstellen oder wählen Sie einen Begleiter in der App. Sie können chatten, Erinnerungen hinterlassen und denselben Begleiter auf einem mit dem Konto verknüpften Gerät fortsetzen.",
+            faq3_q: "Ein kompatibles Gerät verbindet sich nicht",
+            faq3_l1: "Prüfen Sie, ob Bluetooth und WLAN aktiviert sind.",
+            faq3_l2: "Halten Sie das Gerät eingeschaltet und in der Nähe.",
+            faq3_l3: "Starten Sie App und Gerät neu und koppeln Sie erneut über die Geräteseite in der App.",
+            faq3_a: "Schlägt es weiterhin fehl, senden Sie uns den Gerätenamen und den Schritt, an dem es stoppt.",
+            faq4_q: "Wie lösche ich Konto oder Daten?",
+            faq4_a: "Sie können die Löschung in den App-Einstellungen beantragen oder von der verknüpften Nummer/E-Mail an support@deepsire.com schreiben.",
+            notice_title: "Produkthinweis",
+            notice_body: "DeepSire und kompatible Wearables sind nur für allgemeine Begleitung, Wellness und Lifestyle gedacht. Sie sind keine Medizinprodukte und nicht zur Diagnose, Behandlung, Heilung, Vorbeugung oder Überwachung von Krankheiten bestimmt. Daten und Trends dienen nur als Referenz und dürfen nicht für medizinische Entscheidungen verwendet werden. Bitte konsultieren Sie vor medizinischen Entscheidungen eine qualifizierte Fachperson.",
+            footer_copy: "© DeepSire. Architects of Digital Life."
+        },
+        es: {
+            page_title: "Soporte de DeepSire",
+            page_intro: "Ayuda de cuenta, uso de la app y emparejamiento de dispositivos compatibles para la plataforma de acompañamiento DeepSire.",
+            contact_title: "Contacto",
+            contact_body: "Para soporte de la app, escríbenos. Solemos responder en 1–2 días laborables.",
+            about_title: "Acerca de DeepSire",
+            about_body: "DeepSire es una plataforma de acompañamiento con IA y vida digital. Puedes crear un compañero digital con memoria y personalidad, hablar en la app y continuar esa compañía en dispositivos compatibles como un marco inteligente o un wearable.",
+            faq_title: "Preguntas frecuentes",
+            faq1_q: "¿Cómo creo una cuenta o inicio sesión?",
+            faq1_a: "Abre la app DeepSire y sigue los pasos. Si no llega el código, comprueba el teléfono o el correo, espera unos minutos e inténtalo de nuevo. Si sigue fallando, escríbenos con el teléfono o correo registrados (no envíes contraseñas).",
+            faq2_q: "¿Cómo uso un compañero digital?",
+            faq2_a: "Tras iniciar sesión, crea o elige un compañero en la app. Puedes chatear, dejar recuerdos y continuar el mismo compañero en un dispositivo compatible vinculado a la cuenta.",
+            faq3_q: "Un dispositivo compatible no se conecta",
+            faq3_l1: "Confirma que Bluetooth y Wi-Fi están activados.",
+            faq3_l2: "Mantén el dispositivo encendido y cerca.",
+            faq3_l3: "Reinicia la app y el dispositivo e intenta emparejar de nuevo desde la página de dispositivos.",
+            faq3_a: "Si sigue fallando, envíanos el nombre del dispositivo y el paso en el que se detiene.",
+            faq4_q: "¿Cómo elimino mi cuenta o datos?",
+            faq4_a: "Puedes solicitarlo en ajustes de la app o escribir a support@deepsire.com desde el teléfono o correo vinculados a la cuenta.",
+            notice_title: "Aviso del producto",
+            notice_body: "DeepSire y los wearables compatibles están diseñados solo para acompañamiento general, bienestar y estilo de vida. No son dispositivos médicos y no pretenden diagnosticar, tratar, curar, prevenir ni monitorear ninguna enfermedad. Los datos y tendencias son solo de referencia y no deben usarse para decisiones médicas. Consulte a un profesional sanitario cualificado antes de tomar decisiones médicas.",
+            footer_copy: "© DeepSire. Architects of Digital Life."
+        },
+        pt: {
+            page_title: "Suporte DeepSire",
+            page_intro: "Ajuda de conta, uso do app e emparelhamento de dispositivos compatíveis da plataforma de companhia DeepSire.",
+            contact_title: "Contato",
+            contact_body: "Para suporte do app, envie um e-mail. Normalmente respondemos em 1–2 dias úteis.",
+            about_title: "Sobre o DeepSire",
+            about_body: "DeepSire é uma plataforma de companhia com IA e vida digital. Você pode criar um companheiro digital com memória e personalidade, conversar no app e continuar essa companhia em dispositivos compatíveis, como uma moldura inteligente ou um wearable.",
+            faq_title: "Perguntas frequentes",
+            faq1_q: "Como criar uma conta ou entrar?",
+            faq1_a: "Abra o app DeepSire e siga as etapas. Se não receber o código, confira o telefone ou e-mail, aguarde alguns minutos e tente de novo. Se ainda falhar, escreva com o telefone ou e-mail cadastrado (não envie senhas).",
+            faq2_q: "Como usar um companheiro digital?",
+            faq2_a: "Após entrar, crie ou escolha um companheiro no app. Você pode conversar, deixar memórias e continuar o mesmo companheiro em um dispositivo compatível vinculado à conta.",
+            faq3_q: "Um dispositivo compatível não conecta",
+            faq3_l1: "Confirme que Bluetooth e Wi-Fi estão ligados.",
+            faq3_l2: "Mantenha o dispositivo ligado e por perto.",
+            faq3_l3: "Reinicie o app e o dispositivo e tente emparelhar de novo na página de dispositivos.",
+            faq3_a: "Se ainda falhar, envie o nome do dispositivo e a etapa em que parou.",
+            faq4_q: "Como excluir minha conta ou dados?",
+            faq4_a: "Você pode solicitar nas configurações do app ou escrever para support@deepsire.com a partir do telefone ou e-mail vinculados à conta.",
+            notice_title: "Aviso do produto",
+            notice_body: "O DeepSire e wearables compatíveis destinam-se apenas a companhia geral, bem-estar e estilo de vida. Não são dispositivos médicos e não se destinam a diagnosticar, tratar, curar, prevenir ou monitorar qualquer doença. Dados e tendências são apenas de referência e não devem ser usados para decisões médicas. Consulte um profissional de saúde qualificado antes de qualquer decisão médica.",
+            footer_copy: "© DeepSire. Architects of Digital Life."
+        },
+        ru: {
+            page_title: "Поддержка DeepSire",
+            page_intro: "Помощь с аккаунтом, приложением и сопряжением совместимых устройств платформы сопровождения DeepSire.",
+            contact_title: "Контакты",
+            contact_body: "По вопросам приложения напишите нам. Обычно отвечаем в течение 1–2 рабочих дней.",
+            about_title: "О DeepSire",
+            about_body: "DeepSire — платформа ИИ-сопровождения и цифровой жизни. Вы можете создать цифрового компаньона с памятью и характером, общаться в приложении и продолжать это присутствие на совместимых устройствах, например умной рамке или носимом устройстве.",
+            faq_title: "Частые вопросы",
+            faq1_q: "Как создать аккаунт или войти?",
+            faq1_a: "Откройте приложение DeepSire и следуйте шагам на экране. Если код не приходит, проверьте телефон или почту, подождите и повторите. Если не получается, напишите нам с зарегистрированным телефоном или почтой (не присылайте пароль).",
+            faq2_q: "Как пользоваться цифровым компаньоном?",
+            faq2_a: "После входа создайте или выберите компаньона в приложении. Можно общаться, оставлять воспоминания и продолжать того же компаньона на совместимом устройстве, привязанном к аккаунту.",
+            faq3_q: "Совместимое устройство не подключается",
+            faq3_l1: "Убедитесь, что Bluetooth и Wi-Fi включены.",
+            faq3_l2: "Держите устройство включённым и рядом.",
+            faq3_l3: "Перезапустите приложение и устройство, затем повторите сопряжение на странице устройств.",
+            faq3_a: "Если не получается, напишите название устройства и шаг, на котором останавливается процесс.",
+            faq4_q: "Как удалить аккаунт или данные?",
+            faq4_a: "Запросите удаление в настройках приложения или напишите на support@deepsire.com с телефона или почты, привязанных к аккаунту.",
+            notice_title: "Уведомление о продукте",
+            notice_body: "DeepSire и совместимые носимые устройства предназначены только для общего сопровождения, wellness и образа жизни. Это не медицинские изделия и они не предназначены для диагностики, лечения, излечения, профилактики или мониторинга заболеваний. Данные и тенденции носят справочный характер и не должны использоваться для медицинских решений. Перед медицинскими решениями проконсультируйтесь с квалифицированным специалистом.",
+            footer_copy: "© DeepSire. Architects of Digital Life."
+        },
+        ar: {
+            page_title: "دعم DeepSire",
+            page_intro: "مساعدة الحساب واستخدام التطبيق وربط الأجهزة المتوافقة لمنصة مرافقة DeepSire.",
+            contact_title: "تواصل معنا",
+            contact_body: "لدعم التطبيق يُرجى مراسلتنا عبر البريد. نرد عادة خلال يوم إلى يومي عمل.",
+            about_title: "حول DeepSire",
+            about_body: "DeepSire منصة مرافقة بالذكاء الاصطناعي وحياة رقمية. يمكنك إنشاء رفيق رقمي بذاكرة وشخصية، والتحدث معه في التطبيق، ومتابعة هذه المرافقة على أجهزة متوافقة مثل إطار صور ذكي أو جهاز قابل للارتداء.",
+            faq_title: "الأسئلة الشائعة",
+            faq1_q: "كيف أنشئ حسابًا أو أسجّل الدخول؟",
+            faq1_a: "افتح تطبيق DeepSire واتبع الخطوات على الشاشة. إذا لم يصل رمز التحقق، راجع رقم الهاتف أو البريد وانتظر قليلًا ثم أعد المحاولة. إذا استمرت المشكلة، راسلنا مع رقم الهاتف أو البريد المسجّل (لا ترسل كلمة المرور).",
+            faq2_q: "كيف أستخدم الرفيق الرقمي؟",
+            faq2_a: "بعد تسجيل الدخول، أنشئ رفيقًا أو اختره في التطبيق. يمكنك الدردشة وترك الذكريات ومتابعة الرفيق نفسه على جهاز متوافق مرتبط بالحساب.",
+            faq3_q: "جهاز متوافق لا يتصل",
+            faq3_l1: "تأكد من تشغيل البلوتوث والواي فاي.",
+            faq3_l2: "أبقِ الجهاز قيد التشغيل وبالقرب منك.",
+            faq3_l3: "أعد تشغيل التطبيق والجهاز ثم حاول الربط من صفحة الأجهزة في التطبيق.",
+            faq3_a: "إذا استمر الفشل، راسلنا باسم الجهاز والخطوة التي يتوقف عندها.",
+            faq4_q: "كيف أحذف حسابي أو بياناتي؟",
+            faq4_a: "يمكنك طلب الحذف من إعدادات التطبيق، أو مراسلة support@deepsire.com من الهاتف أو البريد المرتبط بالحساب.",
+            notice_title: "إشعار المنتج",
+            notice_body: "صُمم DeepSire والأجهزة القابلة للارتداء المتوافقة لأغراض المرافقة العامة والعافية ونمط الحياة فقط. ليست أجهزة طبية ولا تهدف إلى تشخيص أو علاج أو شفاء أو الوقاية من أي مرض أو مراقبته. جميع البيانات والاتجاهات للمرجع فقط ويجب ألا تُستخدم في قرارات طبية. يُرجى استشارة مختص رعاية صحية مؤهل قبل اتخاذ أي قرارات طبية.",
+            footer_copy: "© DeepSire. Architects of Digital Life."
+        }
+    };
+
+    initLanguageSelector(translations);
+    </script>
+</body>
+</html>

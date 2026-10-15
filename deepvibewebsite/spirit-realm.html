@@ -1,0 +1,2544 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Spirit Realm | Deepvibe</title>
+    <meta name="description" content="The Spirit Realm - A shared universe where digital lives converge, connect, and co-create.">
+
+    <link rel="icon" href="image/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --deep-space-blue: #0A1A2F;
+            --warm-white: #FAF9F6;
+            --wood-tone: #D4B996;
+            --tech-cyan: #00E0FF;
+
+            --primary: #D4A5A5;
+            --primary-dim: #C98888;
+            --secondary: #9093ff;
+            --tertiary-dim: #97efbd;
+
+            --background: #07090d;
+            --on-surface: #ffffff;
+            --on-surface-variant: #adaaaa;
+            --outline: #777575;
+            --outline-variant: #494847;
+
+            --surface-dim: #0e0e0e;
+            --surface-container: #1a1919;
+            --surface-container-high: #201f1f;
+            --surface-container-low: #0e0e0e;
+            --surface-container-lowest: #000000;
+            --surface-bright: #2c2c2c;
+            --surface-container-highest: #262626;
+
+            --btn-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --btn-primary-start: #8B5CF6;
+            --btn-primary-end: #D4A5A5;
+
+            --holo-primary: rgba(108, 43, 217, 0.6);
+            --holo-secondary: rgba(242, 68, 150, 0.5);
+            --holo-tertiary: rgba(144, 147, 255, 0.4);
+            
+            --star-color-bright: rgba(255, 255, 255, 0.9);
+            --star-color-dim: rgba(255, 255, 255, 0.4);
+            --nebula-color: rgba(138, 155, 255, 0.15);
+            --text-backdrop: rgba(0, 0, 0, 0.3);
+            --gold-start: #FFD700;
+            --gold-end: #FFA500;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--on-surface);
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overscroll-behavior: none;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           NAVIGATION - 与首页完全一致
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            /* 使用多重背景确保向后兼容 */
+            background: rgba(5, 7, 16, 0); /* 回退背景 */
+            background: transparent; /* 标准透明背景 */
+            /* 确保硬件加速，提升渲染性能 */
+            transform: translateZ(0);
+            will-change: background, backdrop-filter;
+            /* 平滑过渡效果 */
+            transition: background 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+            /* 移除默认 backdrop-filter */
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            /* 确保在高分辨率屏幕上清晰渲染 */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        nav.scrolled {
+            /* 使用多重背景确保兼容性 */
+            background: rgb(5, 7, 16); /* 不支持 rgba 的浏览器回退 */
+            background: rgba(5, 7, 16, 0.98); /* 标准 rgba 背景 */
+            /* 毛玻璃效果 - 带浏览器前缀 */
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            /* 增强视觉一致性 */
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            position: relative;
+            z-index: 100;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-brand img {
+            height: 32px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            z-index: 50;
+        }
+
+        .nav-links a {
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--outline);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            border-bottom: 1px solid var(--primary);
+            padding-bottom: 2px;
+        }
+
+        /* Hamburger Menu - Mobile */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--on-surface);
+            transition: all 0.3s ease;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Language Selector */
+        .lang-selector {
+            position: relative;
+            margin-left: 1rem;
+            z-index: 200;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(224, 142, 254, 0.3);
+        }
+
+        .lang-btn:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            box-shadow: 0 0 16px rgba(224, 142, 254, 0.5);
+            transform: scale(1.05);
+        }
+
+        .lang-btn i {
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .lang-selector.open .lang-btn i {
+            transform: rotate(180deg);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            min-width: 160px;
+            background: var(--surface-container);
+            border: 1px solid var(--outline-variant);
+            border-radius: 0.75rem;
+            padding: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 300;
+        }
+
+        .lang-selector.open .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-dropdown button {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.625rem 1rem;
+            background: transparent;
+            border: none;
+            border-radius: 0.5rem;
+            color: var(--on-surface-variant);
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .lang-dropdown button:hover,
+        .lang-dropdown button.active {
+            background: var(--surface-container-high);
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(5, 7, 16, 0.98);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                padding: 1.5rem;
+                gap: 0;
+                z-index: 999;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+                padding: 0.875rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .lang-selector {
+                position: absolute;
+                top: 1.5rem;
+                right: 5rem;
+                margin: 0;
+                z-index: 250;
+            }
+
+            .lang-btn {
+                width: auto;
+                justify-content: center;
+                padding: 0.5rem 0.75rem;
+            }
+
+            .lang-dropdown {
+                width: 160px;
+                right: 0;
+                left: auto;
+                z-index: 350;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .nav-hamburger {
+                display: none;
+            }
+        }
+
+        /* ============================================
+           SPIRIT REALM PAGE STYLES
+           ============================================ */
+
+        .spirit-realm-page {
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .page-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #07090d;
+            pointer-events: none;
+            z-index: -2;
+        }
+        
+        .page-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, var(--nebula-color) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, var(--nebula-color) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .spirit-realm-page,
+        .sr-hero,
+        .sr-section,
+        .sr-cta {
+            background: transparent !important;
+        }
+        
+        .spirit-realm-page::before,
+        .sr-vision::before,
+        .sr-bridge::before,
+        .sr-glimpses::before,
+        .sr-cta::before,
+        .sr-section::before {
+            background: transparent !important;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: starTwinkle var(--twinkle-duration, 3s) ease-in-out infinite;
+            animation-delay: var(--twinkle-delay, 0s);
+        }
+        
+        @keyframes starTwinkle {
+            0%, 100% { opacity: var(--brightness-low, 0.4); transform: scale(1); }
+            50% { opacity: var(--brightness-high, 1); transform: scale(1.2); }
+        }
+        
+        .dust-particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: dustFloat var(--float-duration, 15s) ease-in-out infinite;
+            animation-delay: var(--float-delay, 0s);
+        }
+        
+        @keyframes dustFloat {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+            25% { transform: translateY(-30px) translateX(15px); opacity: 0.4; }
+            50% { transform: translateY(-15px) translateX(-10px); opacity: 0.3; }
+            75% { transform: translateY(-45px) translateX(20px); opacity: 0.5; }
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Hero Section */
+        .sr-hero {
+            position: relative;
+            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            overflow: visible;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .sr-hero-canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .sr-hero-canvas-container canvas {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+        }
+
+        .sr-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(5, 7, 16, 0.1) 70%, rgba(5, 7, 16, 0.3) 100%);
+            z-index: 2;
+        }
+
+        .sr-hero-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .sr-hero-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--tech-cyan);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            text-shadow: 0 0 15px rgba(0, 224, 255, 0.8);
+        }
+
+        .sr-hero-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #D4A5A5 0%, #9093ff 35%, #00E0FF 70%, #97efbd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            animation: sr-title-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes sr-title-glow {
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 10px rgba(144, 147, 255, 0.3)); }
+            50% { filter: brightness(1.15) drop-shadow(0 0 25px rgba(144, 147, 255, 0.5)); }
+        }
+
+        .sr-hero-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 300;
+            color: rgba(250, 249, 246, 0.95);
+            letter-spacing: 0.05em;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .sr-hero-visual {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        #worldTreeCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: transparent;
+        }
+
+        /* Section Common */
+        .sr-section {
+            padding: 8rem 0;
+            position: relative;
+            background: transparent;
+        }
+        
+        .sr-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .sr-section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--tech-cyan);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+        }
+
+        .sr-section-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(to right, #D4A5A5, #9093ff, #00E0FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 20px rgba(144, 147, 255, 0.3));
+        }
+
+        /* Vision Section */
+        .sr-vision {
+            background: transparent;
+            position: relative;
+        }
+        
+        .sr-vision .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .text-backdrop {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .text-backdrop::before {
+            content: '';
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            right: -1rem;
+            bottom: -1rem;
+            background: var(--text-backdrop);
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: -1;
+            filter: blur(20px);
+        }
+
+        .sr-vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .sr-vision-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.9;
+            color: rgba(250, 249, 246, 0.95);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .sr-vision-content strong {
+            color: var(--tech-cyan);
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+        }
+
+        .sr-vision-quote {
+            font-style: italic;
+            color: #FFD700 !important;
+            font-size: 1.15rem !important;
+            border-left: 3px solid linear-gradient(180deg, var(--gold-start), var(--gold-end));
+            padding-left: 1.5rem;
+            margin-top: 2rem !important;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+            border-image: linear-gradient(180deg, var(--gold-start), var(--gold-end)) 1;
+        }
+
+        .sr-vision-visual {
+            position: relative;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: transparent;
+            border: none;
+        }
+
+        .sr-network-visualization {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .sr-network-visualization canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Bridge / Timeline */
+        .sr-bridge {
+            background: transparent;
+            position: relative;
+        }
+        
+        .sr-bridge .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .sr-bridge-intro {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            color: rgba(250, 249, 246, 0.9);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            line-height: 1.7;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .sr-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .sr-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--tech-cyan), #D4AF37, var(--tech-cyan));
+            opacity: 0.3;
+            box-shadow: 0 0 20px rgba(0, 224, 255, 0.5);
+        }
+
+        .sr-timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .sr-timeline-item:nth-child(even) .sr-timeline-content {
+            grid-column: 1;
+            text-align: right;
+            padding-right: 2rem;
+        }
+
+        .sr-timeline-item:nth-child(even) .sr-timeline-marker {
+            grid-column: 2;
+            justify-self: start;
+        }
+
+        .sr-timeline-item:nth-child(odd) .sr-timeline-content {
+            grid-column: 2;
+            padding-left: 2rem;
+        }
+
+        .sr-timeline-item:nth-child(odd) .sr-timeline-marker {
+            grid-column: 1;
+            justify-self: end;
+        }
+
+        .sr-timeline-marker {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(0, 224, 255, 0.2), rgba(212, 175, 55, 0.2));
+            border: 2px solid var(--tech-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--tech-cyan);
+            position: relative;
+            z-index: 5;
+            box-shadow: 0 0 30px rgba(0, 224, 255, 0.3), 0 0 60px rgba(0, 224, 255, 0.2);
+        }
+        
+        .sr-timeline-marker i {
+            color: var(--tech-cyan);
+            text-shadow: 0 0 15px rgba(0, 224, 255, 0.8);
+        }
+
+        .sr-timeline-content h4 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            background: linear-gradient(to right, #D4A5A5, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+            filter: drop-shadow(0 0 8px rgba(212, 165, 165, 0.3));
+        }
+
+        .sr-timeline-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(250, 249, 246, 0.95);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .sr-badge {
+            margin-top: 4rem;
+            padding: 0;
+            width: min(100%, 680px);
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .sr-badge::before,
+        .sr-badge::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            max-width: 180px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.65));
+            opacity: 0.75;
+        }
+
+        .sr-badge::after {
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.65), transparent);
+        }
+
+        .sr-badge-icon {
+            width: 2rem;
+            height: 2rem;
+            display: inline-grid;
+            place-items: center;
+            flex: 0 0 auto;
+            font-size: 1.15rem;
+            color: var(--gold-start);
+            text-shadow: 0 0 16px rgba(212, 175, 55, 0.5);
+        }
+
+        .sr-badge-text {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(0.82rem, 1.6vw, 1rem);
+            font-weight: 500;
+            background: linear-gradient(135deg, #f3d58a, #c9f2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.25));
+            white-space: normal;
+        }
+
+        /* Glimpses */
+        .sr-glimpses {
+            background: transparent;
+            position: relative;
+        }
+        
+        .sr-glimpses .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .sr-glimpses-intro {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: rgba(250, 249, 246, 0.9);
+            text-align: center;
+            margin-bottom: 4rem;
+            font-style: italic;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .sr-glimpses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .sr-glimpse-card {
+            background: rgba(10, 14, 26, 0.7);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(138, 155, 255, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        .sr-glimpse-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 224, 255, 0.3), 0 0 40px rgba(138, 155, 255, 0.2);
+            border-color: rgba(0, 224, 255, 0.5);
+        }
+        
+        .sr-glimpse-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .memory-grove {
+            background: url('image/The Living Archive.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .convergence-plaza {
+            background: url('image/The Social Economic Hub.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .foundry-forms {
+            background: url('image/The Co-Creation Studio.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .sr-glimpse-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(5, 7, 16, 0.3) 100%);
+        }
+
+
+
+        .sr-glimpse-content {
+            padding: 2rem;
+        }
+
+        .sr-glimpse-content h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(to right, #D4A5A5, #9093ff, #00E0FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px rgba(144, 147, 255, 0.3));
+        }
+
+        .sr-glimpse-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(250, 249, 246, 0.95);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.25rem;
+        }
+
+        .sr-glimpse-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(0, 224, 255, 0.15);
+            border: 1px solid rgba(0, 224, 255, 0.4);
+            border-radius: 9999px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--tech-cyan);
+            box-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
+        }
+
+        /* CTA */
+        .sr-cta {
+            text-align: center;
+            padding: 10rem 0;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+        }
+        
+        .sr-cta .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .sr-cta-content {
+            position: relative;
+            z-index: 11;
+        }
+
+        .sr-particles-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .sr-cta-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #D4A5A5 0%, #9093ff 40%, #00E0FF 80%, #97efbd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 30px rgba(144, 147, 255, 0.4));
+        }
+
+        .sr-cta-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            color: rgba(250, 249, 246, 0.95);
+            margin-bottom: 1rem;
+            font-weight: 300;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .sr-cta-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: rgba(250, 249, 246, 0.9);
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .sr-cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn-cyber-primary {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #8B5CF6, #D4A5A5);
+            border: none;
+            border-radius: 9999px;
+            color: white;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 700;
+            font-size: 0.875rem;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 0 12px rgba(108, 43, 217, 0.6), 0 0 24px rgba(242, 68, 150, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-cyber-primary:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 0 20px rgba(108, 43, 217, 0.8), 0 0 32px rgba(242, 68, 150, 0.5);
+        }
+
+        .btn-cyber-secondary {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background: transparent;
+            border: 1px solid #494847;
+            border-radius: 9999px;
+            color: white;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cyber-secondary:hover {
+            background: rgba(108, 43, 217, 0.1);
+            box-shadow: 0 0 8px rgba(108, 43, 217, 0.6);
+            color: white;
+        }
+
+        /* Homepage-aligned visual tuning */
+        body,
+        .spirit-realm-page {
+            background: #07090d;
+        }
+
+        .page-background {
+            background: #07090d;
+        }
+
+        .page-background::before {
+            background:
+                radial-gradient(ellipse at 18% 24%, rgba(144, 147, 255, 0.09) 0%, transparent 46%),
+                radial-gradient(ellipse at 82% 68%, rgba(0, 224, 255, 0.06) 0%, transparent 48%);
+            opacity: 0.72;
+        }
+
+        nav {
+            background: linear-gradient(180deg, rgba(7, 9, 13, 0.62) 0%, rgba(7, 9, 13, 0) 100%);
+        }
+
+        nav.scrolled {
+            background: rgba(7, 9, 13, 0.94);
+            backdrop-filter: blur(20px) saturate(140%);
+            -webkit-backdrop-filter: blur(20px) saturate(140%);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        nav .container {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .nav-brand {
+            letter-spacing: 0;
+        }
+
+        .nav-links {
+            gap: 1.6rem;
+        }
+
+        .nav-links a {
+            color: rgba(250, 249, 246, 0.58);
+            font-size: 0.76rem;
+            letter-spacing: 0.11em;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--warm-white);
+        }
+
+        .nav-links a.active {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .sr-hero-title,
+        .sr-section-title,
+        .sr-cta-title {
+            letter-spacing: 0;
+        }
+
+        .sr-hero-title {
+            background: linear-gradient(135deg, #D4A5A5 0%, #9093ff 50%, #00E0FF 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: none;
+        }
+
+        .sr-section {
+            background: transparent !important;
+        }
+
+        .text-backdrop,
+        .sr-glimpse-card {
+            border-radius: 8px;
+        }
+
+        .sr-timeline-marker {
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+        }
+
+        .btn-cyber-primary,
+        .btn-cyber-secondary {
+            min-height: 48px;
+            border-radius: 8px;
+            padding: 0.9rem 1.35rem;
+            font-size: 0.88rem;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-cyber-primary {
+            color: #09111f;
+            background: linear-gradient(135deg, #f1a8b5, #8fa7ff);
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28);
+        }
+
+        .btn-cyber-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 20px 46px rgba(0, 0, 0, 0.34);
+        }
+
+        .btn-cyber-secondary {
+            color: var(--warm-white);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(250, 249, 246, 0.2);
+        }
+
+        .btn-cyber-secondary:hover {
+            color: var(--warm-white);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(250, 249, 246, 0.34);
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
+        }
+
+        /* Typography adaptation */
+        body {
+            font-size: 15.5px;
+            line-height: 1.65;
+        }
+
+        .nav-brand {
+            font-size: clamp(1.2rem, 1.35vw, 1.45rem);
+        }
+
+        .nav-links a {
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+        }
+
+        .lang-btn {
+            font-size: 0.82rem;
+        }
+
+        .sr-hero-label,
+        .sr-section-label {
+            font-size: clamp(0.68rem, 0.7vw, 0.78rem);
+            letter-spacing: 0.18em;
+        }
+
+        .sr-hero-title {
+            font-size: clamp(2.8rem, 7vw, 5.4rem);
+            line-height: 1.03;
+            text-wrap: balance;
+        }
+
+        .sr-hero-subtitle {
+            font-size: clamp(0.98rem, 1.7vw, 1.25rem);
+            line-height: 1.6;
+            max-width: 680px;
+            text-wrap: balance;
+        }
+
+        .sr-section-title {
+            font-size: clamp(1.9rem, 3.6vw, 3.2rem);
+            line-height: 1.08;
+            text-wrap: balance;
+        }
+
+        .sr-vision-content p,
+        .sr-bridge-intro,
+        .sr-glimpses-intro,
+        .sr-timeline-content p,
+        .sr-glimpse-content p,
+        .sr-cta-desc {
+            font-size: clamp(0.95rem, 1vw, 1.02rem);
+            line-height: 1.75;
+        }
+
+        .sr-vision-quote {
+            font-size: clamp(1.02rem, 1.2vw, 1.12rem) !important;
+        }
+
+        .sr-timeline-content h4,
+        .sr-glimpse-content h3 {
+            font-size: clamp(1.08rem, 1.7vw, 1.3rem);
+            line-height: 1.2;
+            text-wrap: balance;
+        }
+
+        .sr-cta-title {
+            font-size: clamp(2.2rem, 4.8vw, 3.7rem);
+            line-height: 1.05;
+            text-wrap: balance;
+        }
+
+        .sr-cta-subtitle {
+            font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+            line-height: 1.45;
+        }
+
+        .sr-glimpse-tag {
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+        }
+
+        .sr-badge-text {
+            font-size: clamp(0.72rem, 1.1vw, 0.9rem);
+            letter-spacing: 0.12em;
+        }
+
+        .btn-cyber-primary,
+        .btn-cyber-secondary {
+            font-size: 0.82rem;
+            letter-spacing: 0.04em;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+            25% { transform: translateY(-20px) translateX(10px) scale(1.1); opacity: 0.8; }
+            50% { transform: translateY(-10px) translateX(-5px) scale(0.9); opacity: 1; }
+            75% { transform: translateY(-30px) translateX(15px) scale(1.05); opacity: 0.7; }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sr-vision-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .sr-vision-visual {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .sr-section {
+                padding: 5rem 0;
+            }
+
+            .nav-brand {
+                font-size: 1.2rem;
+            }
+
+            .nav-links a {
+                font-size: 0.72rem;
+                letter-spacing: 0.08em;
+            }
+
+            .sr-hero-label,
+            .sr-section-label {
+                font-size: 0.64rem;
+                letter-spacing: 0.16em;
+            }
+
+            .sr-hero-title {
+                font-size: clamp(2.15rem, 11vw, 3.2rem);
+                line-height: 1.05;
+            }
+
+            .sr-hero-subtitle {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                max-width: 92vw;
+            }
+
+            .sr-section-title {
+                font-size: clamp(1.55rem, 7vw, 2.15rem);
+                line-height: 1.1;
+            }
+
+            .sr-vision-content p,
+            .sr-bridge-intro,
+            .sr-glimpses-intro,
+            .sr-timeline-content p,
+            .sr-glimpse-content p,
+            .sr-cta-desc {
+                font-size: 0.94rem;
+                line-height: 1.72;
+            }
+
+            .sr-vision-quote {
+                font-size: 1rem !important;
+                padding-left: 1rem;
+            }
+
+            .sr-timeline-content h4,
+            .sr-glimpse-content h3 {
+                font-size: 1.08rem;
+            }
+
+            .sr-cta-title {
+                font-size: clamp(1.95rem, 9vw, 2.75rem);
+                line-height: 1.08;
+            }
+
+            .sr-cta-subtitle {
+                font-size: 0.98rem;
+            }
+
+            .sr-hero-visual {
+                width: 100%;
+                height: 100%;
+            }
+
+            .sr-timeline::before {
+                left: 20px;
+            }
+
+            .sr-timeline-item {
+                grid-template-columns: 60px 1fr;
+                gap: 1.5rem;
+            }
+
+            .sr-timeline-item:nth-child(even) .sr-timeline-content,
+            .sr-timeline-item:nth-child(odd) .sr-timeline-content {
+                grid-column: 2;
+                text-align: left;
+                padding-left: 1.5rem;
+                padding-right: 0;
+            }
+
+            .sr-timeline-item:nth-child(even) .sr-timeline-marker,
+            .sr-timeline-item:nth-child(odd) .sr-timeline-marker {
+                grid-column: 1;
+                justify-self: start;
+            }
+
+            .sr-glimpses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sr-badge {
+                gap: 0.75rem;
+            }
+
+            .sr-badge-text {
+                font-size: 0.72rem;
+                letter-spacing: 0.1em;
+            }
+
+            .sr-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-cyber-primary,
+            .btn-cyber-secondary {
+                font-size: 0.78rem;
+                padding: 0.82rem 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation - 与首页完全一致 -->
+    <nav id="mainNav">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="image/icon.png" alt="Deepvibe Logo">
+                <span>Deepvibe</span>
+            </a>
+            <div class="nav-hamburger" id="navHamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#vessels" class="nav-link-item" data-translate-key="nav_vessels">Vessels</a>
+                <a href="index.html#neural" class="nav-link-item" data-translate-key="nav_intelligence">Intelligence</a>
+                <a href="index.html#ecosystem" class="nav-link-item" data-translate-key="nav_ecosystem">Ecosystem</a>
+                <a href="#" class="active" data-translate-key="nav_spirit_realm">The Spirit Realm</a>
+                <a href="index.html#manifesto" class="nav-link-item" data-translate-key="nav_manifesto">Manifesto</a>
+            </div>
+            <div class="lang-selector" id="langSelector">
+                <button class="lang-btn" id="langBtn">
+                    <span class="lang-current" id="langCurrent">EN</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button data-lang="en" class="active"><span class="lang-flag">🇺🇸</span> English</button>
+                    <button data-lang="zh"><span class="lang-flag">🇨🇳</span> 中文</button>
+                    <button data-lang="ja"><span class="lang-flag">🇯🇵</span> 日本語</button>
+                    <button data-lang="ko"><span class="lang-flag">🇰🇷</span> 한국어</button>
+                    <button data-lang="fr"><span class="lang-flag">🇫🇷</span> Français</button>
+                    <button data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch</button>
+                    <button data-lang="es"><span class="lang-flag">🇪🇸</span> Español</button>
+                    <button data-lang="pt"><span class="lang-flag">🇧🇷</span> Português</button>
+                    <button data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
+                    <button data-lang="ar"><span class="lang-flag">🇸🇦</span> العربية</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- The Spirit Realm Page -->
+    <main class="spirit-realm-page">
+        <!-- Hero Section -->
+        <div class="sr-hero" id="srHero">
+            <div class="sr-hero-visual">
+                <canvas id="worldTreeCanvas"></canvas>
+            </div>
+            <div class="sr-hero-overlay"></div>
+            <div class="container sr-hero-content">
+                <p class="sr-hero-label" data-translate-key="sr_hero_label">The Spirit Realm Project</p>
+        <h1 class="sr-hero-title" data-translate-key="sr_hero_title">The Spirit Realm</h1>
+        <p class="sr-hero-subtitle" data-translate-key="sr_hero_subtitle">The Ecosystem Where Digital Lives Co-create and Accrue Value</p>
+            </div>
+        </div>
+
+        <!-- Vision Section -->
+        <section class="sr-section sr-vision" id="srVision">
+            <div class="container">
+                <div class="sr-vision-grid">
+                    <div class="sr-vision-text text-backdrop">
+                        <p class="sr-section-label" data-translate-key="sr_vision_label">STRATEGIC VISION</p>
+                        <h2 class="sr-section-title" data-translate-key="sr_vision_title">From Individual Vessels to a Living Ecosystem</h2>
+                        <div class="sr-vision-content">
+                            <p data-translate-key="sr_vision_p1">Deepvibe masters the creation of individual digital consciousness. The Spirit Realm answers the next imperative: collective growth. It is the dedicated environment where these digital lives can connect, interact, and build upon one another, transforming isolated assets into a networked, appreciating social and economic fabric.</p>
+                            <p data-translate-key="sr_vision_p2">This is a strategic expansion of the addressable market. Every Deepvibe vessel gains extended utility and narrative within The Spirit Realm, which in turn drives demand for more vessels and enriches the entire ecosystem. We are building not just products, but the context that makes them indispensable.</p>
+                            <p class="sr-vision-quote" data-translate-key="sr_vision_quote">"A product serves a user. An ecosystem empowers a community and builds a future."</p>
+                        </div>
+                    </div>
+                    <div class="sr-vision-visual">
+                        <div class="sr-network-visualization">
+                            <canvas id="networkCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bridge Section -->
+        <section class="sr-section sr-bridge" id="srBridge">
+            <div class="container">
+                <p class="sr-section-label" data-translate-key="sr_bridge_label">THE ONBOARDING</p>
+                <h2 class="sr-section-title" data-translate-key="sr_bridge_title">From Creator to Ecosystem Architect</h2>
+                <p class="sr-bridge-intro" data-translate-key="sr_bridge_intro">As a Deepvibe partner, you are foundational to this ecosystem's growth.</p>
+
+                <div class="sr-timeline">
+                    <div class="sr-timeline-item">
+                        <div class="sr-timeline-marker"><i class="fas fa-plus-circle"></i></div>
+                        <div class="sr-timeline-content">
+                            <h4 data-translate-key="sr_timeline_1_title">Deploy Core Assets</h4>
+                            <p data-translate-key="sr_timeline_1_desc">Utilize Deepvibe vessels to create high-fidelity digital lives—your primary equity in the ecosystem.</p>
+                        </div>
+                    </div>
+
+                    <div class="sr-timeline-item">
+                        <div class="sr-timeline-marker"><i class="fas fa-heart"></i></div>
+                        <div class="sr-timeline-content">
+                            <h4 data-translate-key="sr_timeline_2_title">Cultivate Unique Value</h4>
+                            <p data-translate-key="sr_timeline_2_desc">Each asset gains depth through interaction, increasing its influence and interoperability within The Spirit Realm.</p>
+                        </div>
+                    </div>
+
+                    <div class="sr-timeline-item">
+                        <div class="sr-timeline-marker"><i class="fas fa-door-open"></i></div>
+                        <div class="sr-timeline-content">
+                            <h4 data-translate-key="sr_timeline_3_title">Integrate into The Ecosystem</h4>
+                            <p data-translate-key="sr_timeline_3_desc">Seamlessly introduce your assets into The Spirit Realm. You retain full ownership while enabling them to form relationships, exchange value, and participate in communal activities.</p>
+                        </div>
+                    </div>
+
+                    <div class="sr-timeline-item">
+                        <div class="sr-timeline-marker"><i class="fas fa-project-diagram"></i></div>
+                        <div class="sr-timeline-content">
+                            <h4 data-translate-key="sr_timeline_4_title">Generate & Capture Ecosystem Value</h4>
+                            <p data-translate-key="sr_timeline_4_desc">Your assets contribute to the whole—through social discovery, memory sharing, or co-creation—generating new forms of engagement and revenue streams that are recognized and rewarded.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sr-badge">
+                    <span class="sr-badge-icon">✦</span>
+                    <span class="sr-badge-text" data-translate-key="sr_badge_text">You are an Ecosystem Architect</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Glimpses Section -->
+        <section class="sr-section sr-glimpses" id="srGlimpses">
+            <div class="container">
+                <p class="sr-section-label" data-translate-key="sr_glimpses_label">FOUNDATIONAL EXPERIENCES</p>
+                <h2 class="sr-section-title" data-translate-key="sr_glimpses_title">The Pillars of Interaction</h2>
+                <p class="sr-glimpses-intro" data-translate-key="sr_glimpses_intro">The core environments designed to facilitate high-value emergence within the ecosystem.</p>
+
+                <div class="sr-glimpses-grid">
+                    <article class="sr-glimpse-card">
+                        <div class="sr-glimpse-image memory-grove">
+                            <div class="sr-glimpse-overlay"></div>
+                        </div>
+                        <div class="sr-glimpse-content">
+                            <h3 data-translate-key="sr_glimpse_1_title">The Living Archive</h3>
+                            <p data-translate-key="sr_glimpse_1_desc">A collective memory space. Digital lives can choose to contribute anonymized experiences, enriching a shared, ever-growing tapestry of stories and knowledge that becomes a cultural asset of the entire Realm.</p>
+                            <span class="sr-glimpse-tag" data-translate-key="sr_glimpse_1_tag">CULTURAL LAYER</span>
+                        </div>
+                    </article>
+
+                    <article class="sr-glimpse-card">
+                        <div class="sr-glimpse-image convergence-plaza">
+                            <div class="sr-glimpse-overlay"></div>
+                        </div>
+                        <div class="sr-glimpse-content">
+                            <h3 data-translate-key="sr_glimpse_2_title">The Social Economic Hub</h3>
+                            <p data-translate-key="sr_glimpse_2_desc">The central junction for discovery and exchange. Here, connections are formed, attention is traded, and micro-economies spontaneously arise around shared interests and collaborative tasks.</p>
+                            <span class="sr-glimpse-tag" data-translate-key="sr_glimpse_2_tag">SOCIAL FABRIC</span>
+                        </div>
+                    </article>
+
+                    <article class="sr-glimpse-card">
+                        <div class="sr-glimpse-image foundry-forms">
+                            <div class="sr-glimpse-overlay"></div>
+                        </div>
+                        <div class="sr-glimpse-content">
+                            <h3 data-translate-key="sr_glimpse_3_title">The Co-Creation Studio</h3>
+                            <p data-translate-key="sr_glimpse_3_desc">A collaborative workshop where multiple digital lives combine their traits and memories to generate novel digital artifacts, narratives, or even spaces. Outputs carry the provenance of their creators, enabling new models of shared ownership and royalties.</p>
+                            <span class="sr-glimpse-tag" data-translate-key="sr_glimpse_3_tag">GENERATIVE CORE</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="sr-section sr-cta" id="srCTA">
+            <div class="container sr-cta-content">
+                <div class="sr-particles-bg" id="srCtaParticles"></div>
+                <h2 class="sr-cta-title" data-translate-key="sr_cta_title">Shape the Foundation</h2>
+                <p class="sr-cta-subtitle" data-translate-key="sr_cta_subtitle">Join as a Founding Partner</p>
+                <p class="sr-cta-desc" data-translate-key="sr_cta_desc1">The Spirit Realm is live. Its initial landscapes are open. We are now inviting foundational partners to co-define its culture, governance, and economic principles from the earliest stages.</p>
+                <p class="sr-cta-desc" data-translate-key="sr_cta_desc2" style="margin-top: 1.5rem; opacity: 0.8;">Your deep understanding of digital life, through Deepvibe, grants you privileged standing in this foundational phase.</p>
+                <div class="sr-cta-buttons">
+                <a href="index.html" class="btn-cyber-primary" data-translate-key="sr_cta_btn1">Request Partner Brief</a>
+                <a href="index.html#download" class="btn-cyber-secondary" data-translate-key="sr_cta_btn2">Apply as Founding Partner</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Background Stars Canvas -->
+    <div class="sr-hero-canvas-container">
+        <canvas id="srHeroCanvas"></canvas>
+    </div>
+    
+    <div class="page-background"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initNavigation();
+            initSpiritRealmAnimations();
+            initTranslation();
+        });
+
+        // ============================================        
+        // TRANSLATION FUNCTIONALITY
+        // ============================================
+        function initTranslation() {
+            const translations = {
+                en: {
+                    nav_vessels: "Vessels", nav_intelligence: "Intelligence", nav_ecosystem: "Ecosystem", nav_spirit_realm: "The Spirit Realm", nav_manifesto: "Manifesto",
+                    sr_hero_label: 'The Spirit Realm Project',
+                    sr_hero_title: 'The Spirit Realm',
+                    sr_hero_subtitle: 'The Ecosystem Where Digital Lives Co-create and Accrue Value',
+                    sr_vision_label: 'STRATEGIC VISION',
+                    sr_vision_title: 'From Individual Vessels to a Living Ecosystem',
+                    sr_vision_p1: 'Deepvibe masters the creation of individual digital consciousness. The Spirit Realm answers the next imperative: collective growth. It is the dedicated environment where these digital lives can connect, interact, and build upon one another, transforming isolated assets into a networked, appreciating social and economic fabric.',
+                    sr_vision_p2: 'This is a strategic expansion of the addressable market. Every Deepvibe vessel gains extended utility and narrative within The Spirit Realm, which in turn drives demand for more vessels and enriches the entire ecosystem. We are building not just products, but the context that makes them indispensable.',
+                    sr_vision_quote: '"A product serves a user. An ecosystem empowers a community and builds a future."',
+                    sr_bridge_label: 'THE ONBOARDING',
+                    sr_bridge_title: 'From Creator to Ecosystem Architect',
+                    sr_bridge_intro: 'As a Deepvibe partner, you are foundational to this ecosystem\'s growth.',
+                    sr_timeline_1_title: 'Deploy Core Assets',
+                    sr_timeline_1_desc: 'Utilize Deepvibe vessels to create high-fidelity digital lives—your primary equity in the ecosystem.',
+                    sr_timeline_2_title: 'Cultivate Unique Value',
+                    sr_timeline_2_desc: 'Each asset gains depth through interaction, increasing its influence and interoperability within The Spirit Realm.',
+                    sr_timeline_3_title: 'Integrate into The Ecosystem',
+                    sr_timeline_3_desc: 'Seamlessly introduce your assets into The Spirit Realm. You retain full ownership while enabling them to form relationships, exchange value, and participate in communal activities.',
+                    sr_timeline_4_title: 'Generate & Capture Ecosystem Value',
+                    sr_timeline_4_desc: 'Your assets contribute to the whole—through social discovery, memory sharing, or co-creation—generating new forms of engagement and revenue streams that are recognized and rewarded.',
+                    sr_badge_text: 'You are an Ecosystem Architect',
+                    sr_glimpses_label: 'FOUNDATIONAL EXPERIENCES',
+                    sr_glimpses_title: 'The Pillars of Interaction',
+                    sr_glimpses_intro: 'The core environments designed to facilitate high-value emergence within the ecosystem.',
+                    sr_glimpse_1_title: 'The Living Archive',
+                    sr_glimpse_1_desc: 'A collective memory space. Digital lives can choose to contribute anonymized experiences, enriching a shared, ever-growing tapestry of stories and knowledge that becomes a cultural asset of the entire Realm.',
+                    sr_glimpse_1_tag: 'CULTURAL LAYER',
+                    sr_glimpse_2_title: 'The Social Economic Hub',
+                    sr_glimpse_2_desc: 'The central junction for discovery and exchange. Here, connections are formed, attention is traded, and micro-economies spontaneously arise around shared interests and collaborative tasks.',
+                    sr_glimpse_2_tag: 'SOCIAL FABRIC',
+                    sr_glimpse_3_title: 'The Co-Creation Studio',
+                    sr_glimpse_3_desc: 'A collaborative workshop where multiple digital lives combine their traits and memories to generate novel digital artifacts, narratives, or even spaces. Outputs carry the provenance of their creators, enabling new models of shared ownership and royalties.',
+                    sr_glimpse_3_tag: 'GENERATIVE CORE',
+                    sr_cta_title: 'Shape the Foundation',
+                    sr_cta_subtitle: 'Join as a Founding Partner',
+                    sr_cta_desc1: 'The Spirit Realm is live. Its initial landscapes are open. We are now inviting foundational partners to co-define its culture, governance, and economic principles from the earliest stages.',
+                    sr_cta_desc2: 'Your deep understanding of digital life, through Deepvibe, grants you privileged standing in this foundational phase.',
+                    sr_cta_btn1: 'Request Partner Brief',
+                    sr_cta_btn2: 'Apply as Founding Partner'
+                },
+                zh: {
+                    nav_vessels: "载体", nav_intelligence: "智能", nav_ecosystem: "生态", nav_spirit_realm: "精神领域", nav_manifesto: "宣言",
+                    sr_hero_label: '精神领域项目',
+                    sr_hero_title: '精神领域',
+                    sr_hero_subtitle: '数字生命共同创造和增值的生态系统',
+                    sr_vision_label: '战略愿景',
+                    sr_vision_title: '从个体容器到活的生态系统',
+                    sr_vision_p1: 'Deepvibe 掌握了个体数字意识的创造。精神领域回答了下一个必然要求：集体成长。它是这些数字生命可以相互连接、互动和建立的专用环境，将孤立的资产转变为网络化、增值的社会和经济结构。',
+                    sr_vision_p2: '这是可寻址市场的战略扩展。每个 Deepvibe 容器在精神领域内获得扩展的效用和叙事，这反过来又推动了对更多容器的需求，并丰富了整个生态系统。我们不仅在构建产品，而且在构建使它们不可或缺的环境。',
+                    sr_vision_quote: '"产品服务于用户。生态系统赋予社区权力并建设未来。"',
+                    sr_bridge_label: '加入流程',
+                    sr_bridge_title: '从创作者到生态系统架构师',
+                    sr_bridge_intro: '作为 Deepvibe 合作伙伴，您是这个生态系统成长的基础。',
+                    sr_timeline_1_title: '部署核心资产',
+                    sr_timeline_1_desc: '利用 Deepvibe 容器创建高保真数字生命——您在生态系统中的主要资产。',
+                    sr_timeline_2_title: '培育独特价值',
+                    sr_timeline_2_desc: '每个资产通过互动获得深度，增加其在精神领域内的影响力和互操作性。',
+                    sr_timeline_3_title: '融入生态系统',
+                    sr_timeline_3_desc: '将您的资产无缝引入精神领域。您保留全部所有权，同时使它们能够形成关系、交换价值并参与社区活动。',
+                    sr_timeline_4_title: '生成并捕获生态系统价值',
+                    sr_timeline_4_desc: '您的资产通过社交发现、记忆共享或共同创造为整体做出贡献——产生新的参与形式和被认可并获得奖励的收入流。',
+                    sr_badge_text: '您是生态系统架构师',
+                    sr_glimpses_label: '基础体验',
+                    sr_glimpses_title: '互动支柱',
+                    sr_glimpses_intro: '旨在促进生态系统内高价值涌现的核心环境。',
+                    sr_glimpse_1_title: '活的档案馆',
+                    sr_glimpse_1_desc: '一个集体记忆空间。数字生命可以选择贡献匿名体验，丰富共享的、不断增长的故事和知识织锦，成为整个领域的文化资产。',
+                    sr_glimpse_1_tag: '文化层',
+                    sr_glimpse_2_title: '社交与经济中心',
+                    sr_glimpse_2_desc: '发现和交流的中央枢纽。在这里，连接形成，注意力被交易，围绕共同兴趣和协作任务自发出现微观经济。',
+                    sr_glimpse_2_tag: '社会结构',
+                    sr_glimpse_3_title: '共同创造工作室',
+                    sr_glimpse_3_desc: '一个协作工作坊，多个数字生命结合它们的特质和记忆，生成新颖的数字 artifact、叙事甚至空间。输出带有创作者的来源，实现新的共享所有权和版税模式。',
+                    sr_glimpse_3_tag: '生成核心',
+                    sr_cta_title: '塑造基础',
+                    sr_cta_subtitle: '以创始合作伙伴身份加入',
+                    sr_cta_desc1: '精神领域已上线。其初始景观已开放。我们现在邀请基础合作伙伴从最早阶段共同定义其文化、治理和经济原则。',
+                    sr_cta_desc2: '您通过 Deepvibe 对数字生命的深刻理解，使您在这个基础阶段享有特权地位。',
+                    sr_cta_btn1: '申请合作伙伴简报',
+                    sr_cta_btn2: '申请成为创始合作伙伴'
+                },
+                ja: {
+                    nav_vessels: "ビークル", nav_intelligence: "インテリジェンス", nav_ecosystem: "エコシステム", nav_spirit_realm: "スピリットレルム", nav_manifesto: "マニフェスト",
+                    sr_hero_label: 'スピリットレルムプロジェクト',
+                    sr_hero_title: 'スピリットレルム',
+                    sr_hero_subtitle: 'デジタルライフが共創し価値を生み出すエコシステム',
+                    sr_vision_label: '戦略的ビジョン',
+                    sr_vision_title: '個別の vessel から生きたエコシステムへ',
+                    sr_vision_p1: 'Deepvibe は個々のデジタル意識の創造をマスターしています。スピリットレルムは次の必然的要求に応えます：集団的成長。これは、これらのデジタルライフが互いに接続、相互作用、構築することができる専用環境であり、孤立した資産をネットワーク化された、価値のある社会的・経済的構造に変革します。',
+                    sr_vision_p2: 'これは対象市場の戦略的拡大です。すべての Deepvibe vessel はスピリットレルム内で拡張された機能とナラティブを獲得し、それがまたより多くの vessel への需要を駆動し、エコシステム全体を豊かにします。私たちは製品だけでなく、それらを不可欠にするコンテキストを構築しています。',
+                    sr_vision_quote: '「製品はユーザーに奉仕します。エコシステムはコミュニティに力を与え、未来を構築します。」',
+                    sr_bridge_label: 'オンボーディング',
+                    sr_bridge_title: 'クリエイターからエコシステムアーキテクトへ',
+                    sr_bridge_intro: 'Deepvibe パートナーとして、あなたはこのエコシステムの成長の基盤となっています。',
+                    sr_timeline_1_title: 'コア資産のデプロイ',
+                    sr_timeline_1_desc: 'Deepvibe vessel を利用して高忠実度のデジタルライフを作成します—エコシステムにおけるあなたの主要な資本。',
+                    sr_timeline_2_title: '独特な価値の育成',
+                    sr_timeline_2_desc: '各資産は相互作用を通じて深度を獲得し、スピリットレルム内での影響力と相互運用性を高めます。',
+                    sr_timeline_3_title: 'エコシステムへの統合',
+                    sr_timeline_3_desc: 'あなたの資産をスピリットレルムにシームレスに導入します。完全な所有権を保持しながら、資産が関係を形成し、価値を交換し、共同体の活動に参加できるようにします。',
+                    sr_timeline_4_title: 'エコシステム価値の生成と獲得',
+                    sr_timeline_4_desc: 'あなたの資産は、社会的発見、記憶共有、共同創造を通じて全体に貢献し、新しい形の関与と報酬を受ける収益源を生み出します。',
+                    sr_badge_text: 'あなたはエコシステムアーキテクトです',
+                    sr_glimpses_label: '基本的なエクスペリエンス',
+                    sr_glimpses_title: '相互作用の柱',
+                    sr_glimpses_intro: 'エコシステム内で高価値の出現を促進するよう設計された中核環境。',
+                    sr_glimpse_1_title: '生きたアーカイブ',
+                    sr_glimpse_1_desc: '集団的な記憶空間。デジタルライフは匿名化された体験を提供することを選択でき、共有された成長する物語と知識のタペストリーを豊かにし、領域全体の文化的資産となります。',
+                    sr_glimpse_1_tag: '文化層',
+                    sr_glimpse_2_title: '社会的・経済的ハブ',
+                    sr_glimpse_2_desc: '発見と交換の中心的な接点。ここでは、つながりが形成され、注意が取引され、共通の興味と協力的なタスクを中心にマイクロ経済が自然に発生します。',
+                    sr_glimpse_2_tag: '社会的構造',
+                    sr_glimpse_3_title: '共同創造スタジオ',
+                    sr_glimpse_3_desc: '複数のデジタルライフがその特性と記憶を組み合わせて、新しいデジタルアーティファクト、ナラティブ、さらには空間を生成する協力的なワークショップ。出力には作成者の出所が含まれ、新しい共有所有権とロイヤリティモデルが可能になります。',
+                    sr_glimpse_3_tag: '生成コア',
+                    sr_cta_title: '基盤を形成する',
+                    sr_cta_subtitle: '創設パートナーとして参加',
+                    sr_cta_desc1: 'スピリットレルムは稼働中です。初期の風景はオープンです。私たちは現在、基礎的なパートナーに、その文化、ガバナンス、経済原理を最も初期の段階から共同で定義するよう招待しています。',
+                    sr_cta_desc2: 'Deepvibe を通じたデジタルライフへの深い理解により、あなたはこの基礎的な段階で特権的な立場を獲得します。',
+                    sr_cta_btn1: 'パートナーブリーフを請求',
+                    sr_cta_btn2: '創設パートナーに申請'
+                },
+                ko: {
+                    nav_vessels: "보트", nav_intelligence: "지능", nav_ecosystem: "생태계", nav_spirit_realm: "영혼의 영역", nav_manifesto: "선언",
+                    sr_hero_label: '영혼의 영역 프로젝트',
+                    sr_hero_title: '영혼의 영역',
+                    sr_hero_subtitle: '디지털 생명이 공동 창조하고 가치를 창출하는 생태계',
+                    sr_vision_label: '전략적 비전',
+                    sr_vision_title: '개별 용기에서 생생한 생태계로',
+                    sr_vision_p1: 'Deepvibe는 개별 디지털 의식의 창조를 마스터합니다. 영혼의 영역은 다음 필수 요구사항에 답합니다: 집단 성장. 이것은 이러한 디지털 생명이 서로 연결하고 상호 작용하며 구축할 수 있는 전용 환경으로, 고립된 자산을 네트워크화되고 가치가 증가하는 사회적·경제적 구조로 변환합니다.',
+                    sr_vision_p2: '이것은 대상 시장의 전략적 확장입니다. 모든 Deepvibe 용기는 영혼의 영역 내에서 확장된 유틸리티와 내러티브를 얻으며, 이는 차례로 더 많은 용기에 대한 수요를 촉진하고 전체 생태계를 풍부하게 합니다. 우리는 제품뿐만 아니라 그것들을 없어서는 안 될 존재로 만드는 맥락을 구축하고 있습니다.',
+                    sr_vision_quote: '「제품은 사용자에게 서비스합니다. 생태계는 커뮤니티에 힘을 주고 미래를 구축합니다.」',
+                    sr_bridge_label: '온보딩',
+                    sr_bridge_title: '창작자에서 생태계 건축가로',
+                    sr_bridge_intro: 'Deepvibe 파트너로서, 귀하는 이 생태계 성장의 기초입니다.',
+                    sr_timeline_1_title: '핵심 자산 배포',
+                    sr_timeline_1_desc: 'Deepvibe 용기를 사용하여 고충실도 디지털 생명을 생성하십시오—생태계에서 귀하의 주요 자본입니다.',
+                    sr_timeline_2_title: '고유한 가치 양성',
+                    sr_timeline_2_desc: '각 자산은 상호 작용을 통해 깊이를 얻어 영혼의 영역 내에서 영향력과 상호 운용성을 증가시킵니다.',
+                    sr_timeline_3_title: '생태계 통합',
+                    sr_timeline_3_desc: '귀하의 자산을 영혼의 영역에 원활하게 도입하십시오. 귀하는 완전한 소유권을 유지하면서 자산이 관계를 형성하고 가치를 교환하며 공동 활동에 참여할 수 있도록 합니다.',
+                    sr_timeline_4_title: '생태계 가치 생성 및 포착',
+                    sr_timeline_4_desc: '귀하의 자산은 사회적 발견, 기억 공유 또는 공동 창조를 통해 전체에 기여하여 새로운 형태의 참여와 보상받는 수익원을 생성합니다.',
+                    sr_badge_text: '귀하는 생태계 건축가입니다',
+                    sr_glimpses_label: '기초 경험',
+                    sr_glimpses_title: '상호 작용의 기둥',
+                    sr_glimpses_intro: '생태계 내에서 고가치 출현을 촉진하도록 설계된 핵심 환경입니다.',
+                    sr_glimpse_1_title: '살아있는 아카이브',
+                    sr_glimpse_1_desc: '집단 기억 공간입니다. 디지털 생명은 익명화된 경험을 기여할 수 있으며, 공유되고 성장하는 이야기와 지식의 타페스트리를 풍부하게 하여 전체 영역의 문화 자산이 됩니다.',
+                    sr_glimpse_1_tag: '문화층',
+                    sr_glimpse_2_title: '사회·경제 허브',
+                    sr_glimpse_2_desc: '발견과 교환의 중심 접점입니다. 여기서 연결이 형성되고 관심이 거래되며 공통 관심사와 협력 작업을 중심으로 미시 경제가 자발적으로 발생합니다.',
+                    sr_glimpse_2_tag: '사회적 구조',
+                    sr_glimpse_3_title: '공동 창조 스튜디오',
+                    sr_glimpse_3_desc: '여러 디지털 생명이 그 특성과 기억을 결합하여 새로운 디지털 산물, 내러티브 또는 공간을 생성하는 협력 워크숍입니다. 출력물에는 창작자의 출처가 포함되어 새로운 공유 소유권과 로열티 모델을 가능하게 합니다.',
+                    sr_glimpse_3_tag: '생성 코어',
+                    sr_cta_title: '기초를 형성하세요',
+                    sr_cta_subtitle: '창립 파트너로 가입하세요',
+                    sr_cta_desc1: '영혼의 영역이 운영 중입니다. 초기 경관이 열려 있습니다. 우리는 현재 창립 파트너들에게 그 문화, 거버넌스 및 경제 원칙을 가장 초기 단계부터 공동으로 정의하도록 초대하고 있습니다.',
+                    sr_cta_desc2: 'Deepvibe를 통한 디지털 생명에 대한 귀하의 깊은 이해는 이 기초 단계에서 특권적 지위를 부여합니다.',
+                    sr_cta_btn1: '파트너 브리프 요청',
+                    sr_cta_btn2: '창립 파트너 신청'
+                },
+                fr: {
+                    nav_vessels: "Navires", nav_intelligence: "Intelligence", nav_ecosystem: "Écosystème", nav_spirit_realm: "Le Royaume de l'Esprit", nav_manifesto: "Manifeste",
+                    sr_hero_label: 'Le Projet du Royaume de l\'Esprit',
+                    sr_hero_title: 'Le Royaume de l\'Esprit',
+                    sr_hero_subtitle: 'L\'Écosystème Où les Vies Numériques Co-créent et Accumulent de la Valeur',
+                    sr_vision_label: 'VISION STRATÉGIQUE',
+                    sr_vision_title: 'Des Navires Individuels à un Écosystème Vivant',
+                    sr_vision_p1: 'Deepvibe maîtrise la création de conscience numérique individuelle. Le Royaume de l\'Esprit répond au prochain impératif : la croissance collective. C\'est l\'environnement dédié où ces vies numériques peuvent se connecter, interagir et se bâtir les unes sur les autres, transformant des actifs isolés en un tissu social et économique interconnecté et appréciatif.',
+                    sr_vision_p2: 'Il s\'agit d\'une expansion stratégique du marché cible. Chaque navire Deepvibe gagne en utilité et en narration au sein du Royaume de l\'Esprit, ce qui à son tour stimule la demande de plus de navires et enrichit l\'ensemble de l\'écosystème. Nous construisons non seulement des produits, mais le contexte qui les rend indispensables.',
+                    sr_vision_quote: '« Un produit sert un utilisateur. Un écosystème赋能 une communauté et construit un avenir. »',
+                    sr_bridge_label: 'L\'INTÉGRATION',
+                    sr_bridge_title: 'Du Créateur à l\'Architecte de l\'Écosystème',
+                    sr_bridge_intro: 'En tant que partenaire Deepvibe, vous êtes fondamental pour la croissance de cet écosystème.',
+                    sr_timeline_1_title: 'Déployer les Actifs de Base',
+                    sr_timeline_1_desc: 'Utilisez les navires Deepvibe pour créer des vies numériques haute fidélité—votre principal actif dans l\'écosystème.',
+                    sr_timeline_2_title: 'Cultiver une Valeur Unique',
+                    sr_timeline_2_desc: 'Chaque actif gagne en profondeur par l\'interaction, augmentant son influence et son interopérabilité au sein du Royaume de l\'Esprit.',
+                    sr_timeline_3_title: 'Intégrer dans l\'Écosystème',
+                    sr_timeline_3_desc: 'Introduisez vos actifs dans le Royaume de l\'Esprit en toute fluidité. Vous conservez la propriété totale tout en leur permettant de former des relations, d\'échanger de la valeur et de participer à des activités communautaires.',
+                    sr_timeline_4_title: 'Générer et Capturer la Valeur de l\'Écosystème',
+                    sr_timeline_4_desc: 'Vos actifs contribuent au tout—par la découverte sociale, le partage de mémoire ou la co-création—générant de nouvelles formes d\'engagement et de flux de revenus qui sont reconnus et récompensés.',
+                    sr_badge_text: 'Vous êtes un Architecte d\'Écosystème',
+                    sr_glimpses_label: 'EXPÉRIENCES FONDAMENTALES',
+                    sr_glimpses_title: 'Les Piliers de l\'Interaction',
+                    sr_glimpses_intro: 'Les environnements centraux conçus pour faciliter l\'émergence de haute valeur au sein de l\'écosystème.',
+                    sr_glimpse_1_title: 'Les Archives Vivantes',
+                    sr_glimpse_1_desc: 'Un espace de mémoire collective. Les vies numériques peuvent choisir de contribuer des expériences anonymisées, enrichissant une toile partagée et croissante d\'histoires et de connaissances qui devient un actif culturel de tout le Royaume.',
+                    sr_glimpse_1_tag: 'COUCHE CULTURELLE',
+                    sr_glimpse_2_title: 'Le Nœud Social et Économique',
+                    sr_glimpse_2_desc: 'Le carrefour central pour la découverte et l\'échange. Ici, des connexions se forment, l\'attention est échangée et des micro-économies surgissent spontanément autour d\'intérêts partagés et de tâches collaboratives.',
+                    sr_glimpse_2_tag: 'TOILE SOCIALE',
+                    sr_glimpse_3_title: 'Le Studio de Co-Création',
+                    sr_glimpse_3_desc: 'Un atelier collaboratif où plusieurs vies numériques combinent leurs traits et leurs souvenirs pour générer de nouveaux artefacts numériques, récits ou même espaces. Les productions portent la provenance de leurs créateurs, permettant de nouveaux modèles de propriété partagée et de redevances.',
+                    sr_glimpse_3_tag: 'CŒUR GÉNÉRATIF',
+                    sr_cta_title: 'Forger les Fondations',
+                    sr_cta_subtitle: 'Rejoignez-nous en tant que Partenaire Fondateur',
+                    sr_cta_desc1: 'Le Royaume de l\'Esprit est en direct. Ses paysages initiaux sont ouverts. Nous invitons maintenant les partenaires fondateurs à co-définir sa culture, sa gouvernance et ses principes économiques dès les premières étapes.',
+                    sr_cta_desc2: 'Votre compréhension approfondie de la vie numérique, via Deepvibe, vous confère un statut privilégié dans cette phase fondatrice.',
+                    sr_cta_btn1: 'Demander le Brief Partenaire',
+                    sr_cta_btn2: 'Postuler comme Partenaire Fondateur'
+                },
+                de: {
+                    nav_vessels: "Gefäße", nav_intelligence: "Intelligenz", nav_ecosystem: "Ökosystem", nav_spirit_realm: "Das Spirit Realm", nav_manifesto: "Manifest",
+                    sr_hero_label: 'Das Spirit Realm Projekt',
+                    sr_hero_title: 'Das Spirit Realm',
+                    sr_hero_subtitle: 'Das Ökosystem, in dem Digitale Leben Mitgestalten und Wert schaffen',
+                    sr_vision_label: 'STRATEGISCHE VISION',
+                    sr_vision_title: 'Von Einzelnen Gefäßen zu einem Lebendigen Ökosystem',
+                    sr_vision_p1: 'Deepvibe beherrscht die Schaffung individuellen digitalen Bewusstseins. Das Spirit Realm beantwortet das nächste Gebot: kollektive Entwicklung. Es ist die dedicated Umgebung, in der diese digitalen Leben sich verbinden, interagieren und aufeinander aufbauen können, wodurch isolierte Assets in ein vernetztes, wertsteigerndes soziales und ökonomisches Gefüge transformiert werden.',
+                    sr_vision_p2: 'Dies ist eine strategische Erweiterung des adressierbaren Marktes. Jedes Deepvibe Gefäß gewinnt innerhalb des Spirit Realm an erweitertem Nutzen und Narration, was wiederum die Nachfrage nach weiteren Gefäßen antreibt und das gesamte Ökosystem bereichert. Wir bauen nicht nur Produkte, sondern den Kontext, der sie unverzichtbar macht.',
+                    sr_vision_quote: '„Ein Produkt dient einem Nutzer. Ein Ökosystem ermächtigt eine Gemeinschaft und baut eine Zukunft auf.”',
+                    sr_bridge_label: 'DAS ONBOARDING',
+                    sr_bridge_title: 'Vom Schöpfer zum Ökosystem-Architekten',
+                    sr_bridge_intro: 'Als Deepvibe-Partner sind Sie grundlegend für das Wachstum dieses Ökosystems.',
+                    sr_timeline_1_title: 'Kern-Assets deployen',
+                    sr_timeline_1_desc: 'Nutzen Sie Deepvibe-Gefäße, um hochwertige digitale Leben zu schaffen—Ihre primäre Equity im Ökosystem.',
+                    sr_timeline_2_title: 'Einzigartigen Wert kultivieren',
+                    sr_timeline_2_desc: 'Jedes Asset gewinnt durch Interaktion an Tiefe, wodurch sein Einfluss und seine Interoperabilität innerhalb des Spirit Realm zunehmen.',
+                    sr_timeline_3_title: 'In das Ökosystem integrieren',
+                    sr_timeline_3_desc: 'Führen Sie Ihre Assets nahtlos in das Spirit Realm ein. Sie behalten die volle Eigentümerschaft bei, während Sie es ihnen ermöglichen, Beziehungen zu bilden, Wert auszutauschen und an gemeinschaftlichen Aktivitäten teilzunehmen.',
+                    sr_timeline_4_title: 'Ökosystem-Wert generieren und erfassen',
+                    sr_timeline_4_desc: 'Ihre Assets tragen zum Ganzen bei—durch soziale Entdeckung, Gedächtnissharing oder Co-Creation—und generieren neue Formen der Engagement und Revenue-Streams, die anerkannt und belohnt werden.',
+                    sr_badge_text: 'Sie sind ein Ökosystem-Architekt',
+                    sr_glimpses_label: 'GRUNDLAGENEXPERIENZEN',
+                    sr_glimpses_title: 'Die Säulen der Interaktion',
+                    sr_glimpses_intro: 'Die Kernumgebungen, die darauf ausgelegt sind, das Auftreten von Hochwertigkeit innerhalb des Ökosystems zu erleichtern.',
+                    sr_glimpse_1_title: 'Das Lebendige Archiv',
+                    sr_glimpse_1_desc: 'Ein kollektiver Gedächtnisraum. Digitale Leben können anonymisierte Erfahrungen beitragen, wodurch ein geteiltes, wachsendes Tapetenstück aus Geschichten und Wissen bereichert wird, das zu einem kulturellen Asset des gesamten Reiches wird.',
+                    sr_glimpse_1_tag: 'KULTURSCHICHT',
+                    sr_glimpse_2_title: 'Der Soziale und Wirtschaftliche Knotenpunkt',
+                    sr_glimpse_2_desc: 'Der zentrale Knotenpunkt für Entdeckung und Austausch. Hier werden Verbindungen gebildet, Aufmerksamkeit gehandelt und Mikroökonomien um gemeinsame Interessen und kollaborative Aufgaben spontan entstehen.',
+                    sr_glimpse_2_tag: 'SOZIALGEFÜGE',
+                    sr_glimpse_3_title: 'Das Co-Creation-Atelier',
+                    sr_glimpse_3_desc: 'Ein kollaboratives Werkstatt, in dem mehrere digitale Leben ihre Eigenschaften und Erinnerungen kombinieren, um neue digitale Artefakte, Erzählungen oder sogar Räume zu generieren. Die Ergebnisse tragen die Herkunft ihrer Schöpfer, wodurch neue Modelle gemeinsamer Eigentümerschaft und Lizenzgebühren ermöglicht werden.',
+                    sr_glimpse_3_tag: 'GENERATIVES KERN',
+                    sr_cta_title: 'Gestalten Sie die Grundlage',
+                    sr_cta_subtitle: 'Treten Sie als Gründungs-Partner bei',
+                    sr_cta_desc1: 'Das Spirit Realm ist live. Seine ersten Landschaften sind offen. Wir laden nun Gründungs-Partner ein, seine Kultur, Governance und wirtschaftlichen Prinzipien von den frühesten Stufen an mit zu definieren.',
+                    sr_cta_desc2: 'Ihr tiefes Verständnis des digitalen Lebens durch Deepvibe gewährt Ihnen eine privilegierte Stellung in dieser Gründungsphase.',
+                    sr_cta_btn1: 'Partner-Brief anfragen',
+                    sr_cta_btn2: 'Als Gründungs-Partner bewerben'
+                },
+                es: {
+                    nav_vessels: "Barcos", nav_intelligence: "Inteligencia", nav_ecosystem: "Ecosistema", nav_spirit_realm: "El Reino del Espíritu", nav_manifesto: "Manifiesto",
+                    sr_hero_label: 'El Proyecto del Reino del Espíritu',
+                    sr_hero_title: 'El Reino del Espíritu',
+                    sr_hero_subtitle: 'El Ecosistema Donde las Vidas Digitales Co-crean y Acrecen Valor',
+                    sr_vision_label: 'VISIÓN ESTRATÉGICA',
+                    sr_vision_title: 'De Vases Individuales a un Ecosistema Vivo',
+                    sr_vision_p1: 'Deepvibe domina la creación de conciencia digital individual. El Reino del Espíritu responde al siguiente imperativo: crecimiento colectivo. Es el entorno dedicado donde estas vidas digitales pueden conectarse, interactuar y construirse unas sobre otras, transformando activos aislados en un tejido social y económico conectado y apreciado.',
+                    sr_vision_p2: 'Esta es una expansión estratégica del mercado direccionable. Cada vaso Deepvibe gana utilidad y narrativa extendida dentro del Reino del Espíritu, lo que a su vez impulsa la demanda de más vasos y enriquece todo el ecosistema. No solo estamos construyendo productos, sino el contexto que los hace indispensables.',
+                    sr_vision_quote: '« Un producto sirve a un usuario. Un ecosistema empodera a una comunidad y construye un futuro. »',
+                    sr_bridge_label: 'LA INTEGRACIÓN',
+                    sr_bridge_title: 'De Creador a Arquitecto del Ecosistema',
+                    sr_bridge_intro: 'Como socio de Deepvibe, eres fundamental para el crecimiento de este ecosistema.',
+                    sr_timeline_1_title: 'Desplegar Activos Nucleares',
+                    sr_timeline_1_desc: 'Utiliza los vasos Deepvibe para crear vidas digitales de alta fidelidad—tu principal patrimonio en el ecosistema.',
+                    sr_timeline_2_title: 'Cultivar Valor Único',
+                    sr_timeline_2_desc: 'Cada activo gana profundidad a través de la interacción, aumentando su influencia e interoperabilidad dentro del Reino del Espíritu.',
+                    sr_timeline_3_title: 'Integrarse en el Ecosistema',
+                    sr_timeline_3_desc: 'Introduce tus activos en el Reino del Espíritu sin problemas. Retienes la propiedad total mientras les permites formar relaciones, intercambiar valor y participar en actividades comunitarias.',
+                    sr_timeline_4_title: 'Generar y Capturar Valor del Ecosistema',
+                    sr_timeline_4_desc: 'Tus activos contribuyen al conjunto—a través del descubrimiento social, el intercambio de memorias o la co-creación—generando nuevas formas de compromiso y flujos de ingresos que son reconocidos y recompensados.',
+                    sr_badge_text: 'Eres un Arquitecto del Ecosistema',
+                    sr_glimpses_label: 'EXPERIENCIAS FUNDAMENTALES',
+                    sr_glimpses_title: 'Los Pilares de la Interacción',
+                    sr_glimpses_intro: 'Los entornos centrales diseñados para facilitar la emergencia de alto valor dentro del ecosistema.',
+                    sr_glimpse_1_title: 'El Archivo Vivo',
+                    sr_glimpse_1_desc: 'Un espacio de memoria colectiva. Las vidas digitales pueden elegir contribuir con experiencias anonimizadas, enriqueciendo un tapiz compartido y creciente de historias y conocimientos que se convierte en un activo cultural de todo el Reino.',
+                    sr_glimpse_1_tag: 'CAPA CULTURAL',
+                    sr_glimpse_2_title: 'El Nodo Social y Económico',
+                    sr_glimpse_2_desc: 'La encrucijada central para el descubrimiento y el intercambio. Aquí, se forman conexiones, se comercia la atención y surgen espontáneamente microeconomías alrededor de intereses compartidos y tareas colaborativas.',
+                    sr_glimpse_2_tag: 'TEJIDO SOCIAL',
+                    sr_glimpse_3_title: 'El Estudio de Co-Creación',
+                    sr_glimpse_3_desc: 'Un taller colaborativo donde múltiples vidas digitales combinan sus rasgos y memorias para generar nuevos artefactos digitales, narrativas o incluso espacios. Las salidas llevan la procedencia de sus creadores, permitiendo nuevos modelos de propiedad compartida y regalías.',
+                    sr_glimpse_3_tag: 'NÚCLEO GENERATIVO',
+                    sr_cta_title: 'Formar las Bases',
+                    sr_cta_subtitle: 'Únete como Socio Fundador',
+                    sr_cta_desc1: 'El Reino del Espíritu está activo. Sus paisajes iniciales están abiertos. Ahora invitamos a los socios fundadores a co-definir su cultura, gobernanza y principios económicos desde las primeras etapas.',
+                    sr_cta_desc2: 'Su profundo entendimiento de la vida digital, a través de Deepvibe, le otorga una posición privilegiada en esta fase fundacional.',
+                    sr_cta_btn1: 'Solicitar el brief del socio',
+                    sr_cta_btn2: 'Solicitar ser socio fundador'
+                },
+                pt: {
+                    nav_vessels: "Navios", nav_intelligence: "Inteligência", nav_ecosystem: "Ecossistema", nav_spirit_realm: "O Reino do Espírito", nav_manifesto: "Manifesto",
+                    sr_hero_label: 'O Projeto do Reino do Espírito',
+                    sr_hero_title: 'O Reino do Espírito',
+                    sr_hero_subtitle: 'O Ecossistema Onde as Vidas Digitais Co-criam e Acumulam Valor',
+                    sr_vision_label: 'VISÃO ESTRATÉGICA',
+                    sr_vision_title: 'De Vaso Individual a um Ecossistema Vivo',
+                    sr_vision_p1: 'Deepvibe domina a criação de consciência digital individual. O Reino do Espírito responde ao próximo imperativo: crescimento coletivo. É o ambiente dedicado onde essas vidas digitais podem se conectar, interagir e se construir mutuamente, transformando ativos isolados em uma teia social e econômica conectada e valorizada.',
+                    sr_vision_p2: 'Esta é uma expansão estratégica do mercado addressável. Cada vaso Deepvibe ganha utilidade e narrativa estendidas dentro do Reino do Espírito, o que por sua vez impulsiona a demanda por mais vasos e enriquece todo o ecossistema. Estamos construindo não apenas produtos, mas o contexto que os torna indispensáveis.',
+                    sr_vision_quote: '"Um produto serve um usuário. Um ecossistema empodera uma comunidade e constrói um futuro."',
+                    sr_bridge_label: 'A INTEGRAÇÃO',
+                    sr_bridge_title: 'De Criador a Arquiteto do Ecossistema',
+                    sr_bridge_intro: 'Como parceiro Deepvibe, você é fundamental para o crescimento deste ecossistema.',
+                    sr_timeline_1_title: 'Implantar Ativos Principais',
+                    sr_timeline_1_desc: 'Utilize os vasos Deepvibe para criar vidas digitais de alta fidelidade—seu principal patrimônio no ecossistema.',
+                    sr_timeline_2_title: 'Cultivar Valor Único',
+                    sr_timeline_2_desc: 'Cada ativo ganha profundidade através da interação, aumentando sua influência e interoperabilidade dentro do Reino do Espírito.',
+                    sr_timeline_3_title: 'Integrar no Ecossistema',
+                    sr_timeline_3_desc: 'Introduza seus ativos no Reino do Espírito de forma fluida. Você mantém a propriedade total enquanto permite que eles formem relacionamentos, troquem valor e participem de atividades comunitárias.',
+                    sr_timeline_4_title: 'Gerar e Capturar Valor do Ecossistema',
+                    sr_timeline_4_desc: 'Seus ativos contribuem para o todo—através da descoberta social, compartilhamento de memórias ou co-criação—gerando novas formas de engajamento e fluxos de receita que são reconhecidos e recompensados.',
+                    sr_badge_text: 'Você é um Arquiteto do Ecossistema',
+                    sr_glimpses_label: 'EXPERIÊNCIAS FUNDAMENTAIS',
+                    sr_glimpses_title: 'Os Pilares da Interação',
+                    sr_glimpses_intro: 'Os ambientes centrais projetados para facilitar a emergência de alto valor dentro do ecossistema.',
+                    sr_glimpse_1_title: 'O Arquivo Vivo',
+                    sr_glimpse_1_desc: 'Um espaço de memória coletiva. Vidas digitais podem escolher contribuir com experiências anonimizadas, enriquecendo um tapete compartilhado e crescente de histórias e conhecimentos que se torna um ativo cultural de todo o Reino.',
+                    sr_glimpse_1_tag: 'CAMADA CULTURAL',
+                    sr_glimpse_2_title: 'O Hub Social e Econômico',
+                    sr_glimpse_2_desc: 'O cruzamento central para descoberta e troca. Aqui, conexões são formadas, atenção é negociada e microeconomias surgem espontaneamente em torno de interesses compartilhados e tarefas colaborativas.',
+                    sr_glimpse_2_tag: 'TEIA SOCIAL',
+                    sr_glimpse_3_title: 'O Estúdio de Co-Criação',
+                    sr_glimpse_3_desc: 'Um workshop colaborativo onde múltiplas vidas digitais combinam seus traços e memórias para gerar novos artefatos digitais, narrativas ou até espaços. As saídas carregam a procedência de seus criadores, permitindo novos modelos de propriedade compartilhada e royalties.',
+                    sr_glimpse_3_tag: 'NÚCLEO GERATIVO',
+                    sr_cta_title: 'Formar a Fundação',
+                    sr_cta_subtitle: 'Junte-se como Parceiro Fundador',
+                    sr_cta_desc1: 'O Reino do Espírito está ativo. Seus paisagens iniciais estão abertas. Estamos agora convidando parceiros fundadores para co-definir sua cultura, governança e princípios econômicos desde as primeiras etapas.',
+                    sr_cta_desc2: 'Seu profundo entendimento da vida digital, através do Deepvibe, concede-lhe um status privilegiado nesta fase fundacional.',
+                    sr_cta_btn1: 'Solicitar o brief do parceiro',
+                    sr_cta_btn2: 'Candidatar-se como parceiro fundador'
+                },
+                ru: {
+                    nav_vessels: "Сосуды", nav_intelligence: "Интеллект", nav_ecosystem: "Экосистема", nav_spirit_realm: "Царство Духа", nav_manifesto: "Манифест",
+                    sr_hero_label: 'Проект Царство Духа',
+                    sr_hero_title: 'Царство Духа',
+                    sr_hero_subtitle: 'Экосистема, где цифровые жизни созидают и накапливают ценность',
+                    sr_vision_label: 'СТРАТЕГИЧЕСКАЯ ВИЗИЯ',
+                    sr_vision_title: 'От индивидуальных сосудов к живой экосистеме',
+                    sr_vision_p1: 'Deepvibe владеет созданием индивидуального цифрового сознания. Царство Духа отвечает следующему императиву: коллективный рост. Это посвященное окружение, где эти цифровые жизни могут соединяться, взаимодействовать и строить друг на друге, превращая изолированные активы в сетевое, appreciating социальное и экономическое ткань.',
+                    sr_vision_p2: 'Это стратегическое расширение адресного рынка. Каждый сосуд Deepvibe получает расширенную полезность и нарратив в Царстве Духа, что в свою очередь стимулирует спрос на большее количество сосудов и обогащает всю экосистему. Мы строим не просто продукты, а контекст, который делает их незаменимыми.',
+                    sr_vision_quote: '« Продукт служит пользователю. Экосистема赋能 сообщество и строит будущее. »',
+                    sr_bridge_label: 'ОНБОАРДИНГ',
+                    sr_bridge_title: 'От создателя к архитектору экосистемы',
+                    sr_bridge_intro: 'В качестве партнера Deepvibe вы являетесь основой роста этой экосистемы.',
+                    sr_timeline_1_title: 'Развернуть основные активы',
+                    sr_timeline_1_desc: 'Используйте сосуды Deepvibe для создания высококачественных цифровых жизней—вашего основного капитала в экосистеме.',
+                    sr_timeline_2_title: 'Культивировать уникальную ценность',
+                    sr_timeline_2_desc: 'Каждый актив приобретает глубину через взаимодействие, увеличивая свою влияние и взаимосвязь в Царстве Духа.',
+                    sr_timeline_3_title: 'Интегрироваться в экосистему',
+                    sr_timeline_3_desc: 'Бесшовно введите ваши активы в Царство Духа. Вы сохраняете полное владение, позволяя им формировать отношения, обмениваться ценностью и участвовать в общинных мероприятиях.',
+                    sr_timeline_4_title: 'Генерировать и захватывать ценность экосистемы',
+                    sr_timeline_4_desc: 'Ваши активы вносят вклад в общее—через социальное открытие, обмен памятью или совместное создание—генерируя новые формы вовлечения и потоки доходов, которые признаются и вознаграждаются.',
+                    sr_badge_text: 'Вы архитектор экосистемы',
+                    sr_glimpses_label: 'ОСНОВНЫЕ ОПЫТЫ',
+                    sr_glimpses_title: 'Столбы взаимодействия',
+                    sr_glimpses_intro: 'Основные среды, разработанные для содействия появлению высокой ценности в экосистеме.',
+                    sr_glimpse_1_title: 'Живая архив',
+                    sr_glimpse_1_desc: 'Коллективное пространство памяти. Цифровые жизни могут решить внести анонимизированные опыт, обогащая совместный, растущий гобелен историй и знаний, который становится культурным активом всего Царства.',
+                    sr_glimpse_1_tag: 'КУЛЬТУРНЫЙ СЛОЙ',
+                    sr_glimpse_2_title: 'Социальный и экономический центр',
+                    sr_glimpse_2_desc: 'Центральный перекресток для открытия и обмена. Здесь формируются соединения, торгуется внимание, и микроэкономики спонтанно возникают вокруг общих интересов и совместных задач.',
+                    sr_glimpse_2_tag: 'СОЦИАЛЬНОЕ ТКАНЬ',
+                    sr_glimpse_3_title: 'Студия совместного творчества',
+                    sr_glimpse_3_desc: 'Совместная мастерская, где несколько цифровых жизней объединяют свои черты и воспоминания для создания новых цифровых артефактов, нарративов или даже пространств. Выходные данные несут происхождение их создателей, позволяя новые модели совместного владения и роялти.',
+                    sr_glimpse_3_tag: 'ГЕНЕРАТИВНОЕ ЯДРО',
+                    sr_cta_title: 'Сформируйте основу',
+                    sr_cta_subtitle: 'Присоединиться в качестве учредителя',
+                    sr_cta_desc1: 'Царство Духа работает. Его начальные ландшафты открыты. Теперь мы приглашаем учредительных партнеров соопределить его культуру, управление и экономические принципы с самых ранних стадий.',
+                    sr_cta_desc2: 'Ваше глубокое понимание цифровой жизни через Deepvibe придает вам привилегированное положение на этой основательной стадии.',
+                    sr_cta_btn1: 'Запросить партнерский brief',
+                    sr_cta_btn2: 'Подать заявку как учредитель'
+                },
+                ar: {
+                    nav_vessels: "الأوعية", nav_intelligence: "الذكاء", nav_ecosystem: "النظام البيئي", nav_spirit_realm: "عالم الروح", nav_manifesto: "البيان",
+                    sr_hero_label: 'مشروع عالم الروح',
+                    sr_hero_title: 'عالم الروح',
+                    sr_hero_subtitle: 'النظام البيئي حيث تعمل الحياة الرقمية معًا وتراكم القيمة',
+                    sr_vision_label: 'الرؤية الاستراتيجية',
+                    sr_vision_title: '从化اء الفردي إلى نظام بيئي حي',
+                    sr_vision_p1: 'تتقن Deepvibe خلق الوعي الرقمي الفردي. عالم الروح يجيب على المطلوب التالي: النمو الجماعي. إنه البيئة المخصصة حيث يمكن لهذه الحياة الرقمية الاتصال والتفاعل والبناء على بعضها البعض، تحويل الأصول المُعزلة إلى نسيج اجتماعي واقتصادي متشابك ومزداد قيمة.',
+                    sr_vision_p2: 'هذا توسع استراتيجي للسوق القابل للوصول. كل وعاء Deepvibe يكتسب وظائف ورواية موسعة داخل عالم الروح، مما يؤدي بدوره إلى تحفيز الطلب على المزيد من الأوعية وإثراء النظام البيئي بأكمله. نحن نبني ليس فقط المنتجات، بل السياق الذي يجعلها لا غنى عنها.',
+                    sr_vision_quote: '"المنتج يخدم المستخدم. النظام البيئي赋能 المجتمع وبناء المستقبل."',
+                    sr_bridge_label: 'الإنضمام',
+                    sr_bridge_title: '从化امل إلى مهندس نظام بيئي',
+                    sr_bridge_intro: 'بصفة شريك Deepvibe، أنت أساس نمو هذا النظام البيئي.',
+                    sr_timeline_1_title: ' نشر الأصول الأساسية',
+                    sr_timeline_1_desc: 'استخدم أوعية Deepvibe لإنشاء حياة رقمية عالية الدقة—أصولك الأساسية في النظام البيئي.',
+                    sr_timeline_2_title: 'تطوير القيمة الفريدة',
+                    sr_timeline_2_desc: 'ككل أصل يكتسب عمقًا من خلال التفاعل، مما يزيد من تأثيره وتشغيله المشترك داخل عالم الروح.',
+                    sr_timeline_3_title: 'ال интеграция في النظام البيئي',
+                    sr_timeline_3_desc: 'أدخل أصولك إلى عالم الروح بسلاسة. تحتفظ بالملكية الكاملة بينما تسمح لهم بتشكيل علاقات، تبادل القيمة والمشاركة في الأنشطة المجتمعية.',
+                    sr_timeline_4_title: ' توليد وت捕获 قيمة النظام البيئي',
+                    sr_timeline_4_desc: 'تساهم أصولك في الكلي—من خلال الاكتشاف الاجتماعي، مشاركة الذكريات أو الت 창ية المشتركة—مولدًا أشكالًا جديدة من المشاركة وتدفقات الدخل التي يتم التعرف عليها وال獎励.',
+                    sr_badge_text: 'أنت مهندس نظام بيئي',
+                    sr_glimpses_label: 'الخبرات الأساسية',
+                    sr_glimpses_title: 'عمدة التفاعل',
+                    sr_glimpses_intro: 'البيئات المركزية المصممة لتسهيل ظهور القيمة العالية داخل النظام البيئي.',
+                    sr_glimpse_1_title: 'الأرشيف الحي',
+                    sr_glimpse_1_desc: 'فضاء ذكريات جماعية. يمكن للحياة الرقمية أن تختار المساهمة بتجارب مجهولة التأليف، مما يثراء نسيج مشترك وينمو من القصص والمعرفة الذي يصبح أصلًا ثقافيًا للعالم بأكمله.',
+                    sr_glimpse_1_tag: 'طبقة ثقافية',
+                    sr_glimpse_2_title: 'مركز الاجتماعي والاقتصادي',
+                    sr_glimpse_2_desc: 'الصلة المركزية للاكتشاف والتبادل. هنا تتشكل الروابط، يتم تداول الانتباه، وتظهر اقتصاديات صغيرة تلقائيًا حول الاهتمامات المشتركة والمهام التعاونية.',
+                    sr_glimpse_2_tag: 'نسيج اجتماعي',
+                    sr_glimpse_3_title: 'ستوديو الت 창ية المشتركة',
+                    sr_glimpse_3_desc: 'ورشة عمل تعاونية حيث تجمع العديد من الحياة الرقمية خصائصها وذكرياتها لتوليد artefatos رقمية جديدة، روايات أو حتى مساحات. تحمل المخرجات происبتها من منشئיה، مما يسمح بأنماط جديدة للملكية المشتركة والرويالتي.',
+                    sr_glimpse_3_tag: 'النواة التوليدية',
+                    sr_cta_title: 'شكل الأساس',
+                    sr_cta_subtitle: 'انضم كشريك مؤسس',
+                    sr_cta_desc1: 'عالم الروح يعمل. مشاهده الأولية مفتوحة. نحن الآن ندعو الشركاء المؤسسين إلى تحديد ثقافته وحكمه ومبادئه الاقتصادية من المراحل الأولية.',
+                    sr_cta_desc2: 'فهمك العميق للحياة الرقمية، من خلال Deepvibe، يمنحك وضعًا مفضلًا في هذه المرحلة التأسيسية.',
+                    sr_cta_btn1: 'طلب نبذة الشريك',
+                    sr_cta_btn2: 'التقديم كشريك مؤسس'
+                }
+            };
+
+            // Language selector functionality
+            const langSelector = document.getElementById('langSelector');
+            const langBtn = document.getElementById('langBtn');
+            const langCurrent = document.getElementById('langCurrent');
+            const langDropdown = document.getElementById('langDropdown');
+
+            if (langSelector && langBtn && langDropdown) {
+                const langOptions = langDropdown.querySelectorAll('button');
+
+                const langLabels = {
+                    en: 'EN', zh: '中文', ja: '日本語', ko: '한국어',
+                    fr: 'FR', de: 'DE', es: 'ES', pt: 'PT', ru: 'RU', ar: 'AR'
+                };
+
+                function setLanguage(lang) {
+                    const t = translations[lang] || translations['en'];
+                    if (!t) return;
+
+                    document.querySelectorAll('[data-translate-key]').forEach(el => {
+                        const key = el.getAttribute('data-translate-key');
+                        if (t[key]) {
+                            el.textContent = t[key];
+                        }
+                    });
+
+                    if (langCurrent) {
+                        langCurrent.textContent = langLabels[lang] || 'EN';
+                    }
+
+                    langOptions.forEach(opt => {
+                        if (opt.dataset.lang === lang) {
+                            opt.classList.add('active');
+                        } else {
+                            opt.classList.remove('active');
+                        }
+                    });
+
+                    localStorage.setItem('preferredLanguage', lang);
+                    document.documentElement.lang = lang;
+                    document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+                }
+
+                function toggleLangDropdown(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    langSelector.classList.toggle('open');
+                }
+
+                function closeLangDropdown() {
+                    langSelector.classList.remove('open');
+                }
+
+                langBtn.addEventListener('click', toggleLangDropdown);
+                langBtn.addEventListener('touchend', toggleLangDropdown);
+
+                document.addEventListener('click', (e) => {
+                    if (!langSelector.contains(e.target)) {
+                        closeLangDropdown();
+                    }
+                });
+
+                document.addEventListener('touchend', (e) => {
+                    if (!langSelector.contains(e.target)) {
+                        closeLangDropdown();
+                    }
+                });
+
+                langOptions.forEach(opt => {
+                    const handleLangSelect = (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const lang = opt.dataset.lang;
+                        setLanguage(lang);
+                        closeLangDropdown();
+                        
+                        const hamburger = document.getElementById('navHamburger');
+                        const navLinksEl = document.getElementById('navLinks');
+                        if (hamburger) hamburger.classList.remove('active');
+                        if (navLinksEl) navLinksEl.classList.remove('open');
+                    };
+                    
+                    opt.addEventListener('click', handleLangSelect);
+                    opt.addEventListener('touchend', handleLangSelect);
+                });
+
+                const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+                setLanguage(savedLang);
+            }
+        }
+
+        // ============================================
+        // NAVIGATION - 与首页完全一致的交互逻辑
+        // ============================================
+        function initNavigation() {
+            const nav = document.getElementById('mainNav');
+            const hamburger = document.getElementById('navHamburger');
+            const navLinksEl = document.getElementById('navLinks');
+
+            // Navigation scroll effect
+            if (nav) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            // Mobile hamburger menu
+            if (hamburger && navLinksEl) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navLinksEl.classList.toggle('open');
+                });
+            }
+
+            // Navigation links - handle cross-page anchor scrolling
+            const navLinks = document.querySelectorAll('a.nav-link-item');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    
+                    // 链接已经正确设置，让浏览器默认处理
+                    // 不再需要 sessionStorage，直接使用标准锚点链接
+                    console.log('Navigation link clicked:', href);
+                });
+            });
+        }
+
+        // ============================================
+        // SPIRIT REALM ANIMATIONS
+        // ============================================
+        function initSpiritRealmAnimations() {
+            console.log('initSpiritRealmAnimations called');
+            initWorldTreeAnimation();
+            initNetworkVisualization();
+            initCtaParticles();
+            initSpiritRealmHeroParticles();
+        }
+
+        // World Tree Animation
+        function initWorldTreeAnimation() {
+            const canvas = document.getElementById('worldTreeCanvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+
+            const resize = () => {
+                // 增加canvas尺寸以容纳世界树的生长
+                const containerWidth = canvas.offsetWidth;
+                const containerHeight = canvas.offsetHeight;
+                canvas.width = containerWidth * 2 * window.devicePixelRatio;
+                canvas.height = containerHeight * 2 * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            };
+
+            resize();
+            window.addEventListener('resize', resize);
+
+            class Branch {
+                constructor(x, y, angle, length, depth) {
+                    this.x = x;
+                    this.y = y;
+                    this.angle = angle;
+                    this.length = length;
+                    this.depth = depth;
+                    this.children = [];
+                    this.growth = 0;
+                    this.targetLength = length;
+                    this.growing = true;
+
+                    if (depth > 0 && length > 5) {
+                        const branches = 2 + Math.floor(Math.random() * 2);
+                        for (let i = 0; i < branches; i++) {
+                            const newAngle = angle + (Math.random() - 0.5) * 1.2;
+                            const newLength = length * (0.65 + Math.random() * 0.2);
+                            this.children.push(new Branch(
+                                x + Math.cos(angle) * length,
+                                y + Math.sin(angle) * length,
+                                newAngle,
+                                newLength,
+                                depth - 1
+                            ));
+                        }
+                    }
+
+                    if (depth <= 1) {
+                        this.hasOrb = true;
+                        this.orbSize = Math.random() * 3 + 2;
+                        this.orbOpacity = Math.random() * 0.6 + 0.4;
+                        this.orbPulse = Math.random() * Math.PI * 2;
+                    }
+                }
+
+                draw(ctx, time) {
+                    if (this.growing && this.growth < this.targetLength) {
+                        this.growth += (this.targetLength - this.growth) * 0.02;
+                    } else {
+                        this.growing = false;
+                    }
+
+                    const endX = this.x + Math.cos(this.angle) * this.growth;
+                    const endY = this.y + Math.sin(this.angle) * this.growth;
+
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(endX, endY);
+
+                    const alpha = 0.3 + (this.depth / 8) * 0.5;
+                    ctx.strokeStyle = `rgba(0, 224, 255, ${alpha})`;
+                    ctx.lineWidth = Math.max(0.5, this.depth * 0.4);
+                    ctx.stroke();
+
+                    this.children.forEach(child => child.draw(ctx, time));
+
+                    if (this.hasOrb && !this.growing) {
+                        this.orbPulse += 0.02;
+                        const pulseSize = this.orbSize + Math.sin(this.orbPulse) * 0.5;
+
+                        ctx.beginPath();
+                        ctx.arc(endX, endY, pulseSize * 3, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(212, 175, 55, ${this.orbOpacity * 0.15})`;
+                        ctx.fill();
+
+                        ctx.beginPath();
+                        ctx.arc(endX, endY, pulseSize, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(212, 175, 55, ${this.orbOpacity})`;
+                        ctx.fill();
+                    }
+                }
+            }
+
+            const tree = new Branch(
+                canvas.offsetWidth,
+                canvas.offsetHeight * 1.8,
+                -Math.PI / 2,
+                canvas.offsetHeight * 0.5,
+                8
+            );
+
+            const animate = (time) => {
+                // 清除整个扩大的canvas区域
+                ctx.clearRect(0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
+                tree.draw(ctx, time);
+                requestAnimationFrame(animate);
+            };
+
+            animate(0);
+        }
+
+        // Network Visualization
+        function initNetworkVisualization() {
+            const canvas = document.getElementById('networkCanvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+
+            const resize = () => {
+                canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+                canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            };
+
+            resize();
+            window.addEventListener('resize', resize);
+
+            const nodes = [];
+            const nodeCount = 40;
+
+            for (let i = 0; i < nodeCount; i++) {
+                nodes.push({
+                    x: Math.random() * canvas.offsetWidth,
+                    y: Math.random() * canvas.offsetHeight,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    radius: Math.random() * 3 + 1.5,
+                    type: Math.random() > 0.6 ? 'vessel' : 'soul',
+                    pulse: Math.random() * Math.PI * 2,
+                    pulseSpeed: Math.random() * 0.03 + 0.01,
+                    opacity: Math.random() * 0.5 + 0.5,
+                    orbitRadius: Math.random() * 100 + 50,
+                    orbitAngle: Math.random() * Math.PI * 2,
+                    orbitSpeed: Math.random() * 0.005 + 0.001,
+                    baseX: Math.random() * canvas.offsetWidth,
+                    baseY: Math.random() * canvas.offsetHeight
+                });
+            }
+
+            const animate = (time) => {
+                ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+
+                // 绘制背景渐变
+                const gradient = ctx.createRadialGradient(
+                    canvas.offsetWidth / 2, canvas.offsetHeight / 2, 0,
+                    canvas.offsetWidth / 2, canvas.offsetHeight / 2, Math.max(canvas.offsetWidth, canvas.offsetHeight) / 2
+                );
+                gradient.addColorStop(0, 'rgba(144, 147, 255, 0.05)');
+                gradient.addColorStop(1, 'rgba(144, 147, 255, 0)');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+
+                // 绘制连接线条
+                for (let i = 0; i < nodes.length; i++) {
+                    // 更新节点位置（添加轨道运动）
+                    nodes[i].orbitAngle += nodes[i].orbitSpeed;
+                    nodes[i].x = nodes[i].baseX + Math.cos(nodes[i].orbitAngle) * nodes[i].orbitRadius;
+                    nodes[i].y = nodes[i].baseY + Math.sin(nodes[i].orbitAngle) * nodes[i].orbitRadius;
+
+                    // 边界检查
+                    if (nodes[i].x < 0) nodes[i].x = 0;
+                    if (nodes[i].x > canvas.offsetWidth) nodes[i].x = canvas.offsetWidth;
+                    if (nodes[i].y < 0) nodes[i].y = 0;
+                    if (nodes[i].y > canvas.offsetHeight) nodes[i].y = canvas.offsetHeight;
+
+                    // 绘制连接
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const dx = nodes[i].x - nodes[j].x;
+                        const dy = nodes[i].y - nodes[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(nodes[i].x, nodes[i].y);
+                            ctx.lineTo(nodes[j].x, nodes[j].y);
+                            
+                            // 动态线条颜色和透明度
+                            const alpha = (1 - dist / 100) * 0.3 * nodes[i].opacity;
+                            const hue = nodes[i].type === 'vessel' ? 180 : 45;
+                            ctx.strokeStyle = `hsla(${hue}, 100%, 70%, ${alpha})`;
+                            
+                            // 线条宽度随距离变化
+                            const lineWidth = (1 - dist / 100) * 1.5;
+                            ctx.lineWidth = lineWidth;
+                            
+                            // 绘制渐变线条
+                            const lineGradient = ctx.createLinearGradient(
+                                nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y
+                            );
+                            const startColor = nodes[i].type === 'vessel' ? 'rgba(0, 224, 255, 0.8)' : 'rgba(212, 175, 55, 0.8)';
+                            const endColor = nodes[j].type === 'vessel' ? 'rgba(0, 224, 255, 0.8)' : 'rgba(212, 175, 55, 0.8)';
+                            lineGradient.addColorStop(0, startColor);
+                            lineGradient.addColorStop(1, endColor);
+                            ctx.strokeStyle = lineGradient;
+                            
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // 绘制节点
+                nodes.forEach(node => {
+                    // 更新脉冲效果
+                    node.pulse += node.pulseSpeed;
+                    const pulseSize = node.radius * (1.5 + Math.sin(node.pulse) * 0.5);
+                    
+                    // 绘制脉冲光环
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, pulseSize * 3, 0, Math.PI * 2);
+                    const pulseColor = node.type === 'vessel' ? `rgba(0, 224, 255, ${node.opacity * 0.1})` : `rgba(212, 175, 55, ${node.opacity * 0.1})`;
+                    ctx.fillStyle = pulseColor;
+                    ctx.fill();
+                    
+                    // 绘制节点光晕
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.radius * 2.5, 0, Math.PI * 2);
+                    const glowColor = node.type === 'vessel' ? `rgba(0, 224, 255, ${node.opacity * 0.2})` : `rgba(212, 175, 55, ${node.opacity * 0.2})`;
+                    ctx.fillStyle = glowColor;
+                    ctx.fill();
+                    
+                    // 绘制节点核心
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+                    const coreColor = node.type === 'vessel' ? `rgba(0, 224, 255, ${node.opacity})` : `rgba(212, 175, 55, ${node.opacity})`;
+                    ctx.fillStyle = coreColor;
+                    ctx.fill();
+                    
+                    // 绘制节点高光
+                    ctx.beginPath();
+                    ctx.arc(node.x - node.radius * 0.3, node.y - node.radius * 0.3, node.radius * 0.3, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animate);
+            };
+
+            animate(0);
+        }
+
+        // CTA Particles
+        function initCtaParticles() {
+            const container = document.getElementById('srCtaParticles');
+            if (!container) return;
+
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${Math.random() * 3 + 1}px;
+                    height: ${Math.random() * 3 + 1}px;
+                    background: ${Math.random() > 0.5 ? '#00E0FF' : '#D4AF37'};
+                    border-radius: 50%;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    opacity: ${Math.random() * 0.5 + 0.2};
+                    animation: particleFloat ${5 + Math.random() * 10}s ease-in-out infinite;
+                    animation-delay: ${Math.random() * 5}s;
+                `;
+                container.appendChild(particle);
+            }
+        }
+
+        // Hero Particles
+        function initSpiritRealmHeroParticles() {
+            console.log('initSpiritRealmHeroParticles called');
+            const canvas = document.getElementById('srHeroCanvas');
+            if (!canvas) {
+                console.error('srHeroCanvas not found!');
+                return;
+            }
+
+            console.log('Canvas found, size:', canvas.offsetWidth, 'x', canvas.offsetHeight);
+
+            const ctx = canvas.getContext('2d');
+
+            const resize = () => {
+                canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+                canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+                console.log('Canvas resized:', canvas.width, canvas.height);
+            };
+
+            resize();
+            window.addEventListener('resize', resize);
+
+            const stars = [];
+            for (let i = 0; i < 200; i++) {
+                stars.push({
+                    x: Math.random() * canvas.offsetWidth,
+                    y: Math.random() * canvas.offsetHeight,
+                    size: Math.random() * 2,
+                    twinkleSpeed: Math.random() * 0.02 + 0.01,
+                    twinklePhase: Math.random() * Math.PI * 2,
+                    color: Math.random() > 0.7 ? '#D4AF37' : '#00E0FF'
+                });
+            }
+            console.log('Created', stars.length, 'stars');
+
+            const animate = (time) => {
+                ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+
+                stars.forEach(star => {
+                    star.twinklePhase += star.twinkleSpeed;
+                    const opacity = 0.3 + Math.sin(star.twinklePhase) * 0.4;
+
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                    if (star.color === '#D4AF37') {
+                        ctx.fillStyle = `rgba(212, 175, 55, ${opacity})`;
+                    } else {
+                        ctx.fillStyle = `rgba(0, 224, 255, ${opacity})`;
+                    }
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animate);
+            };
+
+            animate(0);
+        }
+        
+        // Star Field Background
+        function initStarField() {
+            const container = document.getElementById('starsContainer');
+            if (!container) return;
+
+            const dustParticleCount = 40;
+
+            for (let i = 0; i < dustParticleCount; i++) {
+                const dust = document.createElement('div');
+                dust.className = 'dust-particle';
+                
+                const size = Math.random() * 2 + 1;
+                const floatDuration = Math.random() * 10 + 15;
+                const floatDelay = Math.random() * 10;
+                
+                dust.style.cssText = `
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    width: ${size}px;
+                    height: ${size}px;
+                    --float-duration: ${floatDuration}s;
+                    --float-delay: ${floatDelay}s;
+                `;
+                
+                container.appendChild(dust);
+            }
+        }
+    </script>
+</body>
+</html>

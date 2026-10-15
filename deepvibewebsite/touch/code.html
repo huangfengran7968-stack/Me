@@ -1,0 +1,2056 @@
+﻿<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Touch | Deepvibe</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../image/icon.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="../image/icon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../image/icon.png"/>
+<link rel="shortcut icon" href="../image/icon.png"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2" rel="preload" as="font" type="font/woff2" crossorigin/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#e8ffee",
+                        "surface-container": "#1a1919",
+                        "secondary-dim": "#6063ed",
+                        "tertiary-container": "#a5fecb",
+                        "on-error-container": "#ffb2b9",
+                        "secondary-fixed": "#cdcdff",
+                        "inverse-on-surface": "#565554",
+                        "on-surface-variant": "#adaaaa",
+                        "primary": "#e08efe",
+                        "inverse-primary": "#893da7",
+                        "on-tertiary-fixed": "#004f31",
+                        "tertiary-dim": "#97efbd",
+                        "secondary-fixed-dim": "#bdbeff",
+                        "on-primary-fixed-variant": "#5a0179",
+                        "background": "#0e0e0e",
+                        "on-secondary": "#07007a",
+                        "primary-fixed-dim": "#ce7eec",
+                        "surface-container-high": "#201f1f",
+                        "on-background": "#ffffff",
+                        "on-surface": "#ffffff",
+                        "inverse-surface": "#fcf8f8",
+                        "on-primary": "#4f006c",
+                        "on-tertiary": "#016d46",
+                        "on-secondary-fixed-variant": "#393bc7",
+                        "error-container": "#a70138",
+                        "tertiary-fixed": "#a5fecb",
+                        "primary-fixed": "#dd8bfb",
+                        "error-dim": "#d73357",
+                        "tertiary-fixed-dim": "#97efbd",
+                        "surface-container-low": "#131313",
+                        "outline-variant": "#494847",
+                        "primary-dim": "#ce7eec",
+                        "outline": "#777575",
+                        "error": "#ff6e84",
+                        "surface-variant": "#262626",
+                        "on-secondary-fixed": "#160dac",
+                        "on-tertiary-fixed-variant": "#066f47",
+                        "surface-container-lowest": "#000000",
+                        "on-secondary-container": "#ccccff",
+                        "secondary-container": "#2e2ebd",
+                        "secondary": "#9093ff",
+                        "primary-container": "#d180ef",
+                        "surface-tint": "#e08efe",
+                        "surface": "#0e0e0e",
+                        "surface-dim": "#0e0e0e",
+                        "on-tertiary-container": "#00643f",
+                        "on-error": "#490013",
+                        "surface-container-highest": "#262626",
+                        "on-primary-fixed": "#21002f",
+                        "surface-bright": "#2c2c2c",
+                        "on-primary-container": "#3d0055"
+                    },
+                    fontFamily: {
+                        "headline": ["Lexend"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<link rel="stylesheet" href="../css/product-common.css">
+<style>
+      
+      /* ========== BUTTON STYLES ========== */
+      @keyframes btnBreathingGlow {
+          0%, 100% { 
+              box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
+                          0 0 0 1px rgba(224, 142, 254, 0.3);
+          }
+          50% { 
+              box-shadow: inset 0 0 30px rgba(224, 142, 254, 0.35),
+                          0 0 0 1px rgba(224, 142, 254, 0.5);
+          }
+      }
+      @keyframes btnSecondaryBreathing {
+          0%, 100% { 
+              box-shadow: inset 0 0 15px rgba(224, 142, 254, 0.1),
+                          0 0 0 1px rgba(224, 142, 254, 0.2);
+          }
+          50% { 
+              box-shadow: inset 0 0 25px rgba(224, 142, 254, 0.2),
+                          0 0 0 1px rgba(224, 142, 254, 0.35);
+          }
+      }
+      .btn-primary {
+        position: relative;
+        background: linear-gradient(135deg, #e08efe 0%, #c77df3 100%);
+        color: #21002f;
+        padding: 1rem 2.5rem;
+        border-radius: 9999px;
+        font-family: 'Lexend', sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        border: none;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
+                    0 0 0 1px rgba(224, 142, 254, 0.3);
+        white-space: nowrap;
+        animation: btnBreathingGlow 3s ease-in-out infinite;
+      }
+      
+      @media (max-width: 640px) {
+        .btn-primary, .btn-secondary {
+          padding: 0.875rem 2rem;
+          font-size: 0.875rem;
+          width: 100%;
+          max-width: 280px;
+        }
+      }
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.6s;
+      }
+      .btn-primary:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 30px rgba(224, 142, 254, 0.5);
+      }
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+      
+      .btn-secondary {
+        position: relative;
+        background: rgba(38, 38, 38, 0.6);
+        backdrop-filter: blur(12px);
+        color: #ffffff;
+        padding: 1rem 2.5rem;
+        border-radius: 9999px;
+        font-family: 'Lexend', sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .btn-secondary::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .btn-secondary:hover {
+        border-color: rgba(224, 142, 254, 0.5);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+      .btn-secondary:hover::before {
+        opacity: 1;
+      }
+      
+      /* Button Ripple Effect */
+      .btn-primary, .btn-secondary {
+        position: relative;
+        overflow: hidden;
+      }
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        transform: scale(0);
+        animation: ripple-animation 0.6s linear;
+        pointer-events: none;
+      }
+      @keyframes ripple-animation {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+      
+      .btn-arrow {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #e08efe;
+        font-family: 'Lexend', sans-serif;
+        font-weight: 600;
+        font-size: 0.875rem;
+        cursor: pointer;
+        padding: 0.75rem 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .btn-arrow::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #e08efe, #9093ff);
+        transition: width 0.3s;
+      }
+      .btn-arrow:hover {
+        color: #ffffff;
+      }
+      .btn-arrow:hover::after {
+        width: 100%;
+      }
+      .btn-arrow .material-symbols-outlined {
+        transition: transform 0.3s;
+      }
+      .btn-arrow:hover .material-symbols-outlined {
+        transform: translateX(6px);
+      }
+      
+      /* ========== CARD HOVER EFFECTS ========== */
+      .card-hover {
+        position: relative;
+        background: #1a1919;
+        border-radius: 2rem;
+        padding: 2.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card-hover::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.1), rgba(144, 147, 255, 0.1));
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .card-hover::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 2rem;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.5), rgba(144, 147, 255, 0.5));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(224, 142, 254, 0.15);
+      }
+      .card-hover:hover::before {
+        opacity: 1;
+      }
+      .card-hover:hover::after {
+        opacity: 1;
+      }
+      
+      /* ========== PRODUCT CARD ========== */
+      .product-card {
+        position: relative;
+        background: #131313;
+        border-radius: 2.5rem;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .product-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 50%, rgba(224, 142, 254, 0.1) 100%);
+        opacity: 0;
+        transition: opacity 0.4s;
+        z-index: 1;
+      }
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 60px rgba(224, 142, 254, 0.2);
+        border-color: rgba(224, 142, 254, 0.3);
+      }
+      .product-card:hover::before {
+        opacity: 1;
+      }
+      .product-card img {
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .product-card:hover img {
+        transform: scale(1.05);
+      }
+      
+      /* ========== SCROLL ANIMATIONS ========== */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* ========== SMOOTH SCROLL ========== */
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+      .lang-selector { position: relative; }
+      .lang-btn { 
+        display: flex; 
+        align-items: center; 
+        gap: 0.4rem; 
+        background: rgba(224, 142, 254, 0.1); 
+        border: 1px solid rgba(224, 142, 254, 0.3); 
+        color: #e08efe; 
+        padding: 0.5rem 1rem; 
+        border-radius: 9999px; 
+        font-family: 'Inter', sans-serif; 
+        font-size: 0.75rem; 
+        font-weight: 500;
+        cursor: pointer; 
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 2px 8px rgba(224, 142, 254, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+      .lang-btn:hover { 
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2) 0%, rgba(144, 147, 255, 0.2) 100%); 
+        border-color: rgba(224, 142, 254, 0.5);
+        box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      .lang-dropdown { 
+        position: absolute; 
+        top: calc(100% + 0.75rem); 
+        right: 0; 
+        min-width: 160px; 
+        background: linear-gradient(180deg, #1a1919 0%, #131313 100%); 
+        border: 1px solid rgba(224, 142, 254, 0.2); 
+        border-radius: 1rem; 
+        padding: 0.5rem; 
+        opacity: 0; 
+        visibility: hidden; 
+        transform: translateY(-10px) scale(0.95); 
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        z-index: 100;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
+        backdrop-filter: blur(20px);
+      }
+      .lang-selector.open .lang-dropdown { 
+        opacity: 1; 
+        visibility: visible; 
+        transform: translateY(0) scale(1); 
+      }
+      .lang-dropdown button { 
+        display: block; 
+        width: 100%; 
+        text-align: left; 
+        padding: 0.6rem 1rem; 
+        background: none; 
+        border: none; 
+        color: #777575; 
+        font-size: 0.8125rem; 
+        font-family: 'Inter', sans-serif;
+        cursor: pointer; 
+        border-radius: 0.5rem; 
+        transition: all 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+      .lang-dropdown button::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: #e08efe;
+        transform: scaleY(0);
+        transition: transform 0.2s;
+      }
+      .lang-dropdown button:hover { 
+        background: rgba(224, 142, 254, 0.1); 
+        color: #ffffff;
+        padding-left: 1.25rem;
+      }
+      .lang-dropdown button:hover::before {
+        transform: scaleY(1);
+      }
+      .lang-dropdown button.active { 
+        background: linear-gradient(90deg, rgba(224, 142, 254, 0.15) 0%, transparent 100%); 
+        color: #e08efe;
+        padding-left: 1.25rem;
+      }
+      .lang-dropdown button.active::before {
+        transform: scaleY(1);
+      }
+      .shiny-text {
+        background: linear-gradient(
+          90deg,
+          #b5b5b5 0%,
+          #b5b5b5 40%,
+          #ffffff 50%,
+          #b5b5b5 60%,
+          #b5b5b5 100%
+        );
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 2s linear infinite;
+        animation-delay: 0s;
+      }
+      @keyframes shine {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+      .true-focus {
+        display: inline;
+        color: #b5b5b5; /* 普通文本颜色 */
+      }
+      .true-focus .focus-word {
+        position: relative;
+        display: inline-block;
+        color: #ffffff;
+        font-weight: 600;
+        padding: 0 4px;
+        margin: 0 2px;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        filter: blur(3.5px);
+        cursor: pointer;
+      }
+      .true-focus .focus-word:hover,
+      .true-focus .focus-word.active {
+        filter: blur(0);
+        color: #ffffff;
+      }
+      .true-focus .focus-word:hover::after,
+      .true-focus .focus-word.active::after {
+        content: '';
+        position: absolute;
+        inset: -4px -8px;
+        border: 2px solid #8266f5;
+        border-radius: 4px;
+        animation: focusPulse 0.5s ease-out forwards;
+      }
+      @keyframes focusPulse {
+        0% { opacity: 0; transform: scale(0.95); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      @font-face {
+        font-family: 'Compressa VF';
+        src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+      }
+      .text-pressure-container {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+        min-height: clamp(6rem, 14vw, 10rem);
+        display: grid;
+        place-items: center;
+        cursor: crosshair;
+      }
+      .text-pressure-title {
+        font-family: 'Compressa VF', 'Lexend', sans-serif;
+        direction: ltr;
+        unicode-bidi: isolate;
+        text-transform: uppercase;
+        font-size: clamp(3.25rem, 12vw, 10rem);
+        line-height: 0.92;
+        margin: 0;
+        text-align: center;
+        user-select: none;
+        white-space: nowrap;
+        max-width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: baseline;
+        gap: 0.015em;
+        font-weight: 300;
+        font-variation-settings: 'wght' 300, 'wdth' 100, 'ital' 0;
+      }
+      .text-pressure-title span {
+        display: inline-block;
+        color: #ffffff;
+        cursor: crosshair;
+        transition: font-variation-settings 0.15s ease-out;
+      }
+      /* ========== UNIFIED FOOTER STYLES ========== */
+      .unified-footer {
+        background-color: #0A0A0A;
+        padding: 80px 0;
+        width: 100%;
+      }
+      .unified-footer .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 48px;
+      }
+      .unified-footer .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 48px;
+      }
+      .unified-footer .footer-brand-col {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .unified-footer .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: 'Lexend', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        background: linear-gradient(to right, #D4A5A5, #9093FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-decoration: none;
+      }
+      .unified-footer .footer-logo img {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        -webkit-text-fill-color: initial;
+      }
+      .unified-footer .footer-copyright {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        color: #888888;
+        line-height: 1.6;
+        max-width: 260px;
+      }
+      .unified-footer .footer-section-title {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 20px;
+      }
+      .unified-footer .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .unified-footer .footer-link {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        color: #AAAAAA;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        position: relative;
+      }
+      .unified-footer .footer-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: linear-gradient(90deg, #E08EFE, #9093FF);
+        transition: width 0.3s ease;
+      }
+      .unified-footer .footer-link:hover {
+        color: #E08EFE;
+      }
+      .unified-footer .footer-link:hover::after {
+        width: 100%;
+      }
+      .unified-footer .footer-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 28px;
+        background: transparent;
+        border: 1px solid #E08EFE;
+        border-radius: 9999px;
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        color: #E08EFE;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        margin-bottom: 24px;
+      }
+      .unified-footer .footer-btn:hover {
+        background: linear-gradient(135deg, #E08EFE, #C77DF3);
+        color: #FFFFFF;
+        box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
+      }
+      .unified-footer .footer-social {
+        display: flex;
+        gap: 12px;
+      }
+      .unified-footer .footer-social-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #AAAAAA;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .unified-footer .footer-social-icon:hover {
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
+        border-color: #E08EFE;
+        color: #E08EFE;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3);
+      }
+      .unified-footer .footer-social-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+      
+      /* ========== MOBILE OPTIMIZATION ========== */
+      @media (max-width: 768px) {
+        .unified-footer {
+          padding: 40px 0;
+        }
+        .unified-footer .footer-container {
+          padding: 0 20px;
+        }
+        .unified-footer .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .unified-footer .footer-brand-col {
+          gap: 16px;
+        }
+        .unified-footer .footer-logo {
+          font-size: 20px;
+          gap: 8px;
+        }
+        .unified-footer .footer-logo img {
+          width: 32px;
+          height: 32px;
+        }
+        .unified-footer .footer-copyright {
+          font-size: 11px;
+          max-width: 100%;
+          line-height: 1.5;
+        }
+        .unified-footer .footer-section-title {
+          font-size: 11px;
+          margin-bottom: 16px;
+        }
+        .unified-footer .footer-links {
+          gap: 12px;
+        }
+        .unified-footer .footer-link {
+          font-size: 11px;
+          white-space: normal;
+          word-wrap: break-word;
+        }
+        .unified-footer .footer-btn {
+          padding: 14px 28px;
+          font-size: 12px;
+          width: 100%;
+          max-width: none;
+          font-weight: 700;
+          letter-spacing: 0.15em;
+          background: linear-gradient(135deg, #E08EFE, #C77DF3);
+          color: #FFFFFF;
+          box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
+        }
+        .unified-footer .footer-btn:hover {
+          background: linear-gradient(135deg, #f0aeff, #d79df8);
+          box-shadow: 0 12px 32px rgba(224, 142, 254, 0.6);
+          transform: translateY(-2px);
+        }
+        .unified-footer .footer-social {
+          gap: 8px;
+        }
+        .unified-footer .footer-social-icon {
+          width: 36px;
+          height: 36px;
+        }
+        .unified-footer .footer-social-icon svg {
+          width: 14px;
+          height: 14px;
+        }
+        /* Mobile: Vertical layout as per design */
+        .unified-footer .footer-brand-col {
+          order: 1;
+        }
+        .unified-footer .footer-nav-col:nth-child(3) {
+          order: 2;
+        }
+        .unified-footer .footer-nav-col:nth-child(2) {
+          order: 3;
+        }
+        .unified-footer .footer-nav-col:nth-child(4) {
+          order: 4;
+        }
+      }
+      
+      /* ========== UNIVERSAL DROPDOWN SYSTEM - Apple Style ========== */
+      :root {
+        --spring-fast: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        --spring-medium: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+      }
+      .dropdown { position: relative; display: inline-block; }
+      .dropdown-trigger { cursor: pointer; transition: all 0.15s ease; }
+      .dropdown-trigger:hover { background: linear-gradient(135deg, rgba(224, 142, 254, 0.15), rgba(144, 147, 255, 0.15)); box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2); }
+      .dropdown.open .dropdown-trigger { background: linear-gradient(135deg, rgba(224, 142, 254, 0.25), rgba(144, 147, 255, 0.25)); box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3); transform: translateY(-1px); }
+      .dropdown-menu {
+        position: absolute; top: calc(100% + 0.75rem); left: 0; min-width: 200px;
+        background: linear-gradient(180deg, #1a1919 0%, #131313 100%);
+        border: 1px solid rgba(224, 142, 254, 0.2); border-radius: 1rem; padding: 0.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
+        backdrop-filter: blur(20px); opacity: 0; visibility: hidden;
+        transform: translateY(8px) scale(0.96); transform-origin: top center;
+        transition: opacity 0.2s var(--spring-medium), visibility 0.2s var(--spring-medium), transform 0.35s var(--spring-fast);
+      }
+      .dropdown-menu.dropdown-right { left: auto; right: 0; }
+      .dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+      .dropdown:not(.open) .dropdown-menu { transition: opacity 0.15s ease-out, visibility 0.15s ease-out, transform 0.2s var(--ease-in-back); }
+      .dropdown.open .dropdown-item { animation: dropdownItemEnter 0.3s var(--spring-medium) forwards; opacity: 0; transform: translateY(8px); }
+      .dropdown.open .dropdown-item:nth-child(1) { animation-delay: 0.02s; }
+      .dropdown.open .dropdown-item:nth-child(2) { animation-delay: 0.04s; }
+      .dropdown.open .dropdown-item:nth-child(3) { animation-delay: 0.06s; }
+      .dropdown.open .dropdown-item:nth-child(4) { animation-delay: 0.08s; }
+      .dropdown.open .dropdown-item:nth-child(5) { animation-delay: 0.1s; }
+      @keyframes dropdownItemEnter { 0% { opacity: 0; transform: translateY(8px); } 60% { opacity: 1; transform: translateY(-2px); } 100% { opacity: 1; transform: translateY(0); } }
+      .dropdown-item { display: block; width: 100%; text-align: left; padding: 0.75rem 1rem; background: none; border: none; color: #AAAAAA; font-size: 0.875rem; font-family: 'Inter', sans-serif; cursor: pointer; border-radius: 0.5rem; transition: all 0.2s ease; position: relative; overflow: hidden; }
+      .dropdown-item::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 3px; background: linear-gradient(180deg, #E08EFE, #9093FF); transform: scaleY(0); transition: transform 0.2s ease; border-radius: 0 2px 2px 0; }
+      .dropdown-item:hover { background: rgba(224, 142, 254, 0.1); color: #FFFFFF; padding-left: 1.25rem; }
+      .dropdown-item:hover::before { transform: scaleY(1); }
+      .dropdown-item:focus { outline: none; box-shadow: 0 0 0 2px rgba(224, 142, 254, 0.5); }
+      .dropdown-item.active { background: linear-gradient(90deg, rgba(224, 142, 254, 0.15), transparent); color: #E08EFE; }
+      .dropdown-item.active::before { transform: scaleY(1); }
+      .collapse { border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 1rem; margin-bottom: 1rem; overflow: hidden; background: rgba(26, 25, 25, 0.5); transition: all 0.3s ease; }
+      .collapse:hover { border-color: rgba(224, 142, 254, 0.2); }
+      .collapse-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; cursor: pointer; background: none; border: none; width: 100%; color: #FFFFFF; font-size: 1rem; font-weight: 500; font-family: 'Inter', sans-serif; transition: all 0.2s ease; }
+      .collapse-header:hover { background: rgba(224, 142, 254, 0.05); }
+      .collapse-header .icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; transition: transform 0.35s var(--spring-medium); }
+      .collapse.open .collapse-header .icon { transform: rotate(180deg); }
+      .collapse-body { max-height: 0; overflow: hidden; transition: max-height 0.45s var(--spring-medium), padding 0.35s var(--spring-medium), opacity 0.35s ease; opacity: 0; }
+      .collapse.open .collapse-body { max-height: 500px; opacity: 1; }
+      .collapse.open .collapse-content { animation: collapseContentEnter 0.4s var(--spring-medium) forwards; }
+      @keyframes collapseContentEnter { 0% { opacity: 0; transform: translateY(-10px); } 60% { opacity: 1; transform: translateY(3px); } 100% { opacity: 1; transform: translateY(0); } }
+      .collapse-content { padding: 0 1.5rem 1.5rem; color: #AAAAAA; font-size: 0.875rem; line-height: 1.6; }
+      .dropdown-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); z-index: 99; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; cursor: pointer; }
+      .dropdown-overlay.active { opacity: 1; visibility: visible; }
+      .picker-modal { position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(180deg, #1a1919 0%, #0e0e0e 100%); border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; padding: 1.5rem; z-index: 101; transform: translateY(100%); opacity: 0; visibility: hidden; transition: transform 0.4s var(--spring-medium), opacity 0.3s ease, visibility 0.3s ease; }
+      .picker-modal.open { transform: translateY(0); opacity: 1; visibility: visible; }
+      .picker-modal.closing { transition: transform 0.25s ease-in, opacity 0.2s ease-in, visibility 0.2s ease-in; }
+      .picker-handle { width: 40px; height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 2px; margin: 0 auto 1rem; }
+      .picker-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+      .picker-title { font-size: 1rem; font-weight: 600; color: #FFFFFF; }
+      .picker-action { background: none; border: none; color: #E08EFE; font-size: 0.875rem; font-weight: 500; cursor: pointer; padding: 0.5rem; border-radius: 0.5rem; transition: all 0.2s ease; }
+      .picker-action:hover { background: rgba(224, 142, 254, 0.1); }
+      .focus-ring { position: relative; }
+      .focus-ring::after { content: ''; position: absolute; inset: -3px; border-radius: inherit; background: transparent; box-shadow: 0 0 0 0 rgba(224, 142, 254, 0); transition: box-shadow 0.2s ease; pointer-events: none; }
+      .focus-ring:focus-within::after { box-shadow: 0 0 0 3px rgba(224, 142, 254, 0.3); }
+      
+      /* ========== SCROLL REVEAL ANIMATIONS ========== */
+      /* Button Scroll Reveal */
+      .btn-scroll-reveal {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      .btn-scroll-reveal.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      
+      .btn-scroll-reveal.delay-100 { transition-delay: 0.1s; }
+      .btn-scroll-reveal.delay-200 { transition-delay: 0.2s; }
+      .btn-scroll-reveal.delay-300 { transition-delay: 0.3s; }
+      .btn-scroll-reveal.delay-400 { transition-delay: 0.4s; }
+      .btn-scroll-reveal.delay-500 { transition-delay: 0.5s; }
+      
+      /* Input/Card Scroll Reveal */
+      .input-reveal,
+      .card-scroll-reveal {
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .input-reveal.visible,
+      .card-scroll-reveal.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .input-reveal.delay-100,
+      .card-scroll-reveal.delay-100 { transition-delay: 0.1s; }
+      .input-reveal.delay-200,
+      .card-scroll-reveal.delay-200 { transition-delay: 0.2s; }
+      .input-reveal.delay-300,
+      .card-scroll-reveal.delay-300 { transition-delay: 0.3s; }
+      
+      /* Input Field Enhanced */
+      .input-field {
+        position: relative;
+        background: rgba(26, 25, 25, 0.8);
+        border: 1px solid rgba(119, 117, 117, 0.3);
+        border-radius: 0.75rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .input-field:focus {
+        background: rgba(26, 25, 25, 0.95);
+        border-color: #e08efe;
+        box-shadow: 
+          0 0 0 2px rgba(224, 142, 254, 0.1),
+          0 0 20px rgba(224, 142, 254, 0.2);
+        transform: translateY(-2px);
+      }
+      
+      /* Floating Label */
+      .input-label {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        color: #adaaaa;
+        font-size: 0.875rem;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: left top;
+      }
+      
+      .input-field:focus + .input-label,
+      .input-field:not(:placeholder-shown) + .input-label {
+        transform: scale(0.75) translateY(-1.5rem);
+        color: #e08efe;
+        font-weight: 600;
+      }
+      
+      /* Bottom Border Animation */
+      .input-field::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #e08efe, #9093ff);
+        transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0 2px 2px 0;
+      }
+      
+      .input-field:focus::after {
+        width: 100%;
+      }
+      
+      /* Performance Optimization */
+      .btn-scroll-reveal,
+      .input-reveal,
+      .card-scroll-reveal {
+        will-change: transform, opacity;
+      }
+      
+      .btn-scroll-reveal.visible,
+      .input-reveal.visible,
+      .card-scroll-reveal.visible {
+        will-change: auto;
+      }
+      
+      /* Mobile Optimization */
+      @media (max-width: 640px) {
+        .btn-scroll-reveal {
+          transform: translateY(30px);
+        }
+        .input-reveal,
+        .card-scroll-reveal {
+          transform: translateY(20px);
+        }
+      }
+      
+      
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_0_40px_rgba(224,142,254,0.1)]">
+<nav class="flex justify-between items-center px-8 py-4 w-full">
+<a href="../index.html" class="nav-brand" style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Lexend', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; background: linear-gradient(to right, #D4A5A5, #9093ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none;">
+    <img src="../image/icon.png" alt="Deepvibe Logo" style="height: 32px; width: auto; border-radius: 8px;">
+    <span>Deepvibe</span>
+</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../sight/code.html" data-translate-key="nav_sight">Sight</a>
+<a class="text-[#e08efe] border-b-2 border-[#e08efe] pb-1 font-headline text-sm tracking-tight" href="../touch/code.html" data-translate-key="nav_touch">Touch</a>
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../pleasure/code.html" data-translate-key="nav_pleasure">Pleasure</a>
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../scent/code.html" data-translate-key="nav_scent">Scent</a>
+</div>
+<div class="flex items-center">
+<div class="lang-selector" id="langSelector">
+<button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="langDropdown">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400;">language</span>
+<span id="langCurrent">EN</span>
+<span class="material-symbols-outlined text-sm opacity-60" style="font-variation-settings: 'wght' 300;" data-icon="expand_more">expand_more</span>
+</button>
+<div class="lang-dropdown" id="langDropdown" role="listbox" aria-labelledby="langBtn">
+<button data-lang="en" class="active" role="option" aria-selected="true">English</button>
+<button data-lang="zh" role="option" aria-selected="false">中文</button>
+<button data-lang="ja" role="option" aria-selected="false">日本語</button>
+<button data-lang="ko" role="option" aria-selected="false">한국어</button>
+<button data-lang="fr" role="option" aria-selected="false">Français</button>
+<button data-lang="de" role="option" aria-selected="false">Deutsch</button>
+<button data-lang="es" role="option" aria-selected="false">Español</button>
+<button data-lang="pt" role="option" aria-selected="false">Português</button>
+<button data-lang="ru" role="option" aria-selected="false">Русский</button>
+<button data-lang="ar" role="option" aria-selected="false">العربية</button>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-16 w-full overflow-x-hidden">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" alt="Macro close-up of a futuristic black smart ring with glowing violet circuit lines pulsing with soft ethereal light" src="image/main1.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 text-center px-6 w-full max-w-4xl mx-auto">
+<span class="text-primary font-label text-[0.6875rem] uppercase tracking-[0.3em] mb-6 block" data-translate-key="hero_label">Explore The Ecosystem</span>
+<div class="text-pressure-container" id="textPressureHero" data-text="Touch" translate="no">
+<h1 class="text-pressure-title text-on-background drop-shadow-2xl">
+                        Touch
+                    </h1>
+</div>
+<p class="font-headline text-xl md:text-2xl text-primary-dim tracking-wide opacity-90 mt-4 text-balance" data-translate-key="hero_subtitle">A Sentinel for Your Inner Rhythm</p>
+<div class="mt-10 md:mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+<a href="https://www.bestfunx.com/collections/touch-soul" class="btn-primary btn-scroll-reveal" data-delay="100" data-translate-key="hero_cta_primary">Begin Synthesis</a>
+<a href="#interface" class="btn-secondary btn-scroll-reveal" data-delay="200" data-translate-key="hero_cta_secondary">Technical Specs</a>
+</div>
+</div>
+</section>
+<!-- Visual Ethos: product-linked video showcase -->
+<section class="py-24 px-8" id="visual-ethos">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="flex flex-col justify-center max-w-xl">
+<h2 class="font-headline text-5xl font-bold leading-tight mb-8" data-translate-key="visual_ethos_title">Our Visual Ethos</h2>
+<p class="text-outline leading-relaxed text-xl" data-translate-key="visual_ethos_desc">A ring designed as a quiet bridge between body and digital companion. It follows the rhythm of every gesture and pulse, turning subtle movement into an immediate, connected response.</p>
+</div>
+<div class="relative w-full rounded-3xl overflow-hidden bg-surface-container shadow-2xl">
+<video class="w-full aspect-video object-cover block" muted loop controls playsinline preload="none" poster="../video/optimized/touch-poster.webp" aria-label="Deepvibe Touch ring ecosystem interaction video" data-product-video data-autoplay="true" data-hls="../video/hls/touch/master.m3u8" data-fallback="../video/optimized/touch-720p.mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+</div>
+</section>
+<!-- Philosophy: Biological Sensors -->
+<section class="py-24 px-8 max-w-7xl mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+<div>
+<h4 id="ecosystem" class="text-[28px] font-headline font-bold text-primary mb-6" data-translate-key="ecosystem_title">Ecosystem Integration</h4>
+<div class="true-focus text-[21px] leading-[1.8] text-[#b5b5b5] space-y-4">
+<p data-translate-key="ecosystem_desc_part1">When the <span class="focus-word">Touch</span> device detects sustained tension waves or abnormal data, it encrypts and transmits this signal to the <span class="focus-word">Sight</span> device in your home.</p>
+<p data-translate-key="ecosystem_desc_part2">A virtual health companion will appear on the screen with a concerned gaze or a gentle voice, reminding you: "Your heart rate is slightly elevated. It's recommended to take a few deep breaths."</p>
+<p data-translate-key="ecosystem_desc_part3">If the data continues to show anomalies, the companion will switch to an <span class="focus-word">alert mode</span> and collaborate with the <span class="focus-word">Scent</span> device to release soothing fragrances, forming a complete <span class="focus-word">protective loop</span> from monitoring to care.</p>
+</div>
+</div>
+<div class="relative rounded-2xl overflow-hidden bg-[#1a1919] group video-container-enhanced">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"></div>
+<video class="w-full h-auto block transform transition-all duration-500 group-hover:scale-[1.02] group-hover:brightness-[1.05] group-hover:contrast-[1.08] group-hover:saturate-[1.15] rounded-2xl" muted loop playsinline preload="none" poster="../video/optimized/touch-core-poster.webp" aria-label="Deepvibe Touch core philosophy visual" data-product-video data-autoplay="true" data-fallback="image/Core Philosophy.mp4">
+</video>
+<div class="absolute bottom-4 left-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+<div class="backdrop-blur-xl bg-black/85 rounded-2xl border border-white/10 px-5 py-3.5 flex items-center gap-3.5 shadow-2xl">
+<div class="w-2.5 h-2.5 bg-[#00E0FF] rounded-full flex-shrink-0 animate-pulse-glow"></div>
+<div class="text-[11px] font-semibold uppercase tracking-[0.12em] text-gray-300 leading-tight">Video Status: Active</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mb-20">
+<h2 class="text-[12px] font-label uppercase tracking-[0.3em] text-primary mb-6" data-translate-key="philosophy_title">CORE PHILOSOPHY</h2>
+<h3 class="text-[64px] leading-[1.1] font-black font-headline tracking-tight text-white" data-translate-key="philosophy_subtitle">A harmonious dialogue between carbon and silicon.</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Pulse -->
+<div class="p-8 rounded-2xl bg-[#1a1919]">
+<span class="material-symbols-outlined text-primary text-[48px] block mb-6" data-icon="monitor_heart">monitor_heart</span>
+<h4 class="text-xl font-bold font-headline text-white mb-3" data-translate-key="pulse_title">Pulse</h4>
+<p class="text-[14px] text-outline leading-relaxed" data-translate-key="pulse_desc">Real-time cardiovascular intelligence that anticipates emotional shifts through subtle HRV fluctuations. It doesn't just count beats; it hears your heart's intent.</p>
+</div>
+<!-- Aegis -->
+<div class="p-8 rounded-2xl bg-[#1a1919]">
+<span class="material-symbols-outlined text-primary text-[48px] block mb-6" data-icon="shield_with_heart">shield_with_heart</span>
+<h4 class="text-xl font-bold font-headline text-white mb-3" data-translate-key="aegis_title">Aegis</h4>
+<p class="text-[14px] text-outline leading-relaxed" data-translate-key="aegis_desc">Advanced dermal monitoring that detects environmental stress and biological fatigue. A silent guardian that knows when you need to retreat and recharge.</p>
+</div>
+<!-- Nexus -->
+<div class="p-8 rounded-2xl bg-[#1a1919]">
+<span class="material-symbols-outlined text-primary text-[48px] block mb-6" data-icon="hub">hub</span>
+<h4 class="text-xl font-bold font-headline text-white mb-3" data-translate-key="nexus_title">Nexus</h4>
+<p class="text-[14px] text-outline leading-relaxed" data-translate-key="nexus_desc">The neural bridge connecting biological data to your Deepvibe ecosystem. A seamless thread of intelligence weaving through your digital existence.</p>
+</div>
+</div>
+</section>
+<!-- Matrix: Models -->
+<section class="py-32 bg-surface-container-lowest w-full">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+<div>
+<h2 class="text-sm font-label uppercase tracking-[0.3em] text-primary mb-4" data-translate-key="selection_title">The Selection</h2>
+<h3 class="text-5xl md:text-7xl font-bold font-headline tracking-tighter" data-translate-key="selection_subtitle">Choose Your Form</h3>
+</div>
+<p class="text-outline max-w-md body" data-translate-key="selection_desc">Engineered from the most resilient materials to become a permanent extension of your physical self.</p>
+</div>
+<div class="space-y-32">
+<!-- Model: Pulse -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="aspect-square rounded-3xl overflow-hidden glass-card p-1">
+<img class="w-full h-full object-cover rounded-[1.4rem]" alt="Brushed stainless steel smart ring" src="image/Pulse Edition.jpg"/>
+</div>
+<div class="px-4">
+<span class="text-primary font-bold font-headline text-xl mb-2 block">01</span>
+<h4 class="text-5xl font-bold font-headline mb-6" data-translate-key="pulse_edition_title">Pulse Edition</h4>
+<p class="text-outline text-lg mb-8 leading-relaxed" data-translate-key="pulse_edition_desc">Forged from ultra-pure Stainless Steel. A classic testament to durability and precision.</p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="pulse_feat1">Brushed Aero-grade Steel</span></li>
+<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="pulse_feat2">Kinetic Charging Interface</span></li>
+<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="pulse_feat3">24/7 Heart Flux Tracking</span></li>
+</ul>
+<button class="px-8 py-3 rounded-full bg-surface-container-high border border-outline-variant/30 text-primary font-bold hover:bg-primary hover:text-on-primary transition-all" data-translate-key="configure_pulse">Configure Pulse</button>
+</div>
+</div>
+<!-- Model: Aegis -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="md:order-2 aspect-square rounded-3xl overflow-hidden glass-card p-1">
+<img class="w-full h-full object-cover rounded-[1.4rem]" alt="Sleek matte black ceramic smart ring" src="image/Aegis Hybrid.jpg"/>
+</div>
+<div class="md:order-1 px-4">
+<span class="text-secondary font-bold font-headline text-xl mb-2 block">02</span>
+<h4 class="text-5xl font-bold font-headline mb-6" data-translate-key="aegis_hybrid_title">Aegis Hybrid</h4>
+<p class="text-outline text-lg mb-8 leading-relaxed" data-translate-key="aegis_hybrid_desc">A fusion of high-density Ceramic and lightweight Titanium.</p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="aegis_feat1">Thermal-Conductive Ceramic</span></li>
+<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="aegis_feat2">Bio-static Titanium Core</span></li>
+<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="aegis_feat3">Advanced Dermal Synthesis</span></li>
+</ul>
+<button class="px-8 py-3 rounded-full bg-surface-container-high border border-outline-variant/30 text-secondary font-bold hover:bg-secondary hover:text-on-secondary transition-all" data-translate-key="configure_aegis">Configure Aegis</button>
+</div>
+</div>
+<!-- Model: Nexus -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="aspect-square rounded-3xl overflow-hidden glass-card p-1">
+<img class="w-full h-full object-cover rounded-[1.4rem]" alt="Medical-grade white polymer smart ring" src="image/Nexus Medical.jpg"/>
+</div>
+<div class="px-4">
+<span class="text-tertiary-dim font-bold font-headline text-xl mb-2 block">03</span>
+<h4 class="text-5xl font-bold font-headline mb-6" data-translate-key="nexus_medical_title">Nexus Medical</h4>
+<p class="text-outline text-lg mb-8 leading-relaxed" data-translate-key="nexus_medical_desc">Medical-grade bio-polymers engineered for peak sensitivity.</p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-tertiary-dim text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="nexus_feat1">Ultra-Sensitive PPG Array</span></li>
+<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-tertiary-dim text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="nexus_feat2">Frictionless Interior Profile</span></li>
+<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-tertiary-dim text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="nexus_feat3">Maximum Neural Precision</span></li>
+</ul>
+<button class="px-8 py-3 rounded-full bg-surface-container-high border border-outline-variant/30 text-tertiary-dim font-bold hover:bg-tertiary-container hover:text-on-tertiary-container transition-all" data-translate-key="configure_nexus">Configure Nexus</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience: Language of Life -->
+<section class="py-32 relative overflow-hidden w-full">
+<div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px]"></div>
+<div class="max-w-6xl mx-auto px-8 text-center relative z-10">
+<h2 class="text-sm font-label uppercase tracking-[0.3em] text-outline mb-6" data-translate-key="interface_title">The Interface</h2>
+<h3 id="interface" class="text-6xl md:text-8xl font-black font-headline tracking-tighter mb-10" data-translate-key="interface_subtitle">The Language of Life</h3>
+<p class="text-xl md:text-2xl text-on-surface-variant leading-relaxed mb-20 max-w-4xl mx-auto font-light" data-translate-key="interface_desc">Your biometrics are more than numbers; they are a dialect. Touch translates the electrical whispers of your skin into actionable emotional insights.</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="glass-card p-8 rounded-3xl text-center">
+<div class="text-4xl font-black font-headline text-primary mb-2">98%</div>
+<div class="text-[0.6rem] uppercase tracking-widest text-outline" data-translate-key="stat_accuracy">Emotional Accuracy</div>
+</div>
+<div class="glass-card p-8 rounded-3xl text-center">
+<div class="text-4xl font-black font-headline text-secondary mb-2">0.2ms</div>
+<div class="text-[0.6rem] uppercase tracking-widest text-outline" data-translate-key="stat_latency">Neural Latency</div>
+</div>
+<div class="glass-card p-8 rounded-3xl text-center">
+<div class="text-4xl font-black font-headline text-tertiary-dim mb-2">12k</div>
+<div class="text-[0.6rem] uppercase tracking-widest text-outline" data-translate-key="stat_sync">Daily Sync-points</div>
+</div>
+<div class="glass-card p-8 rounded-3xl text-center">
+<div class="text-4xl font-black font-headline text-white mb-2">∞</div>
+<div class="text-[0.6rem] uppercase tracking-widest text-outline" data-translate-key="stat_evolution">Evolution Potential</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Foundation -->
+<section class="py-32 px-8 max-w-7xl mx-auto w-full border-t border-outline-variant/10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div>
+<h2 class="text-sm font-label uppercase tracking-[0.3em] text-primary mb-6" data-translate-key="tech_title">Tech Foundation</h2>
+<h3 class="text-5xl font-bold font-headline mb-8 tracking-tight" data-translate-key="tech_subtitle">Silicon Intelligence, Biological Design.</h3>
+<p class="text-outline text-lg leading-relaxed mb-12" data-translate-key="tech_desc">Every millimeter of the Touch is packed with advanced sensory arrays, designed to operate in total silence and invisibility.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="waves">waves</span>
+<div>
+<h5 class="font-bold font-headline mb-1" data-translate-key="tech_feat1_title">Dual PPG Sensors</h5>
+<p class="text-sm text-outline" data-translate-key="tech_feat1_desc">High-frequency clinical-grade light arrays for deep tissue monitoring.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="water_drop">water_drop</span>
+<div>
+<h5 class="font-bold font-headline mb-1" data-translate-key="tech_feat2_title">IP68 Immersion</h5>
+<p class="text-sm text-outline" data-translate-key="tech_feat2_desc">Engineered for depth. Water-tight seal up to 50 meters of pressure.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="battery_very_low">battery_very_low</span>
+<div>
+<h5 class="font-bold font-headline mb-1" data-translate-key="tech_feat3_title">10-Day Life</h5>
+<p class="text-sm text-outline" data-translate-key="tech_feat3_desc">Ultra-efficient power management for continuous synthesis.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="bluetooth_connected">bluetooth_connected</span>
+<div>
+<h5 class="font-bold font-headline mb-1" data-translate-key="tech_feat4_title">Neural Sync</h5>
+<p class="text-sm text-outline" data-translate-key="tech_feat4_desc">Encrypted low-energy bridge to your Deepvibe companion.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/10 rounded-[3rem] blur-2xl"></div>
+<div class="relative bg-surface-container-high rounded-[2.5rem] p-12 overflow-hidden aspect-square flex flex-col justify-center">
+<div class="space-y-8">
+<div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
+<span class="text-outline font-label uppercase text-[0.7rem] tracking-widest" data-translate-key="spec_model">Model</span>
+<span class="font-headline font-bold">Touch Nexus V2</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
+<span class="text-outline font-label uppercase text-[0.7rem] tracking-widest" data-translate-key="spec_weight">Weight</span>
+<span class="font-headline font-bold">4.2 Grams</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
+<span class="text-outline font-label uppercase text-[0.7rem] tracking-widest" data-translate-key="spec_processor">Processor</span>
+<span class="font-headline font-bold">S2 Ethereal Chip</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
+<span class="text-outline font-label uppercase text-[0.7rem] tracking-widest" data-translate-key="spec_security">Security</span>
+<span class="font-headline font-bold">Dermal Encryption</span>
+</div>
+</div>
+<!-- Pulse Visualizer -->
+<div class="mt-16 flex items-end justify-between gap-1 h-20">
+<div class="w-2 bg-primary/20 rounded-full h-[40%]"></div>
+<div class="w-2 bg-primary/40 rounded-full h-[60%]"></div>
+<div class="w-2 bg-primary/60 rounded-full h-[80%]"></div>
+<div class="w-2 bg-primary rounded-full h-[50%]"></div>
+<div class="w-2 bg-primary/70 rounded-full h-[90%]"></div>
+<div class="w-2 bg-primary/30 rounded-full h-[30%]"></div>
+<div class="w-2 bg-primary/50 rounded-full h-[70%]"></div>
+<div class="w-2 bg-primary rounded-full h-[100%]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Unified Footer -->
+<footer class="unified-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="../index.html" class="footer-logo">
+          <img src="../image/icon.png" alt="Deepvibe">
+          <span>Deepvibe</span>
+        </a>
+        <p class="footer-copyright" data-translate-key="footer_copyright">© 2024 Deepvibe. The Ethereal Pulse Synthesis. All digital entities are protected under Neural Terms.</p>
+      </div>
+      
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_ecosystem">Ecosystem</h4>
+        <div class="footer-links">
+          <a href="../sight/code.html" class="footer-link" data-translate-key="footer_sight">Sight</a>
+          <a href="../touch/code.html" class="footer-link" data-translate-key="footer_touch">Touch</a>
+          <a href="../pleasure/code.html" class="footer-link" data-translate-key="footer_pleasure">Pleasure</a>
+          <a href="../scent/code.html" class="footer-link" data-translate-key="footer_scent">Scent</a>
+        </div>
+      </div>
+      
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_protocols">Protocols</h4>
+        <div class="footer-links">
+          <a href="#" class="footer-link" data-translate-key="footer_privacy">Privacy Protocol</a>
+          <a href="#" class="footer-link" data-translate-key="footer_terms">Neural Terms</a>
+          <a href="#" class="footer-link" data-translate-key="footer_status">System Status</a>
+          <a href="#" class="footer-link" data-translate-key="footer_support">Contact Support</a>
+        </div>
+      </div>
+      
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_connect">Connect</h4>
+        <a href="https://www.bestfunx.com/collections/ad" class="footer-btn" data-translate-key="footer_cta_button">Support Interface</a>
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" title="Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" title="Discord">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/product-common.js?v=20260814"></script>
+<script src="../js/product-video.js?v=20260814"></script>
+<script>
+const translations = {
+    en: {
+        nav_sight: "Sight", nav_touch: "Touch", nav_pleasure: "Pleasure", nav_scent: "Scent", nav_connect: "Connect",
+        hero_label: "Explore The Ecosystem", hero_title: "Touch", hero_subtitle: "A Sentinel for Your Inner Rhythm",
+        hero_cta_primary: "Begin Synthesis", hero_cta_secondary: "Technical Specs",
+        philosophy_title: "Core Philosophy", philosophy_subtitle: "A harmonious dialogue between carbon and silicon.",
+        ecosystem_title: "Ecosystem Integration",
+        ecosystem_desc_part1: "When the <span class=\"focus-word\">Touch</span> device detects sustained tension waves or abnormal data, it encrypts and transmits this signal to the <span class=\"focus-word\">Sight</span> device in your home.",
+        ecosystem_desc_part2: "A virtual health companion will appear on the screen with a concerned gaze or a gentle voice, reminding you: \"Your heart rate is slightly elevated. It's recommended to take a few deep breaths.\"",
+        ecosystem_desc_part3: "If the data continues to show anomalies, the companion will switch to an <span class=\"focus-word\">alert mode</span> and collaborate with the <span class=\"focus-word\">Scent</span> device to release soothing fragrances, forming a complete <span class=\"focus-word\">protective loop</span> from monitoring to care.",
+        pulse_title: "Pulse", pulse_desc: "Real-time cardiovascular intelligence that anticipates emotional shifts through subtle HRV fluctuations. It doesn't just count beats; it hears your heart's intent.",
+        aegis_title: "Aegis", aegis_desc: "Advanced dermal monitoring that detects environmental stress and biological fatigue. A silent guardian that knows when you need to retreat and recharge.",
+        nexus_title: "Nexus", nexus_desc: "The neural bridge connecting biological data to your Deepvibe ecosystem. A seamless thread of intelligence weaving through your digital existence.",
+        selection_title: "The Selection", selection_subtitle: "Choose Your Form", selection_desc: "Engineered from the most resilient materials to become a permanent extension of your physical self.",
+        pulse_edition_title: "Pulse Edition", pulse_edition_desc: "Forged from ultra-pure Stainless Steel. A classic testament to durability and precision.",
+        pulse_feat1: "Brushed Aero-grade Steel", pulse_feat2: "Kinetic Charging Interface", pulse_feat3: "24/7 Heart Flux Tracking",
+        configure_pulse: "Configure Pulse",
+        aegis_hybrid_title: "Aegis Hybrid", aegis_hybrid_desc: "A fusion of high-density Ceramic and lightweight Titanium.",
+        aegis_feat1: "Thermal-Conductive Ceramic", aegis_feat2: "Bio-static Titanium Core", aegis_feat3: "Advanced Dermal Synthesis",
+        configure_aegis: "Configure Aegis",
+        nexus_medical_title: "Nexus Medical", nexus_medical_desc: "Medical-grade bio-polymers engineered for peak sensitivity.",
+        nexus_feat1: "Ultra-Sensitive PPG Array", nexus_feat2: "Frictionless Interior Profile", nexus_feat3: "Maximum Neural Precision",
+        configure_nexus: "Configure Nexus",
+        interface_title: "The Interface", interface_subtitle: "The Language of Life", interface_desc: "Your biometrics are more than numbers; they are a dialect. Touch translates the electrical whispers of your skin into actionable emotional insights.",
+        stat_accuracy: "Emotional Accuracy", stat_latency: "Neural Latency", stat_sync: "Daily Sync-points", stat_evolution: "Evolution Potential",
+        tech_title: "Tech Foundation", tech_subtitle: "Silicon Intelligence, Biological Design.", tech_desc: "Every millimeter of the Touch is packed with advanced sensory arrays, designed to operate in total silence and invisibility.",
+        tech_feat1_title: "Dual PPG Sensors", tech_feat1_desc: "High-frequency clinical-grade light arrays for deep tissue monitoring.",
+        tech_feat2_title: "IP68 Immersion", tech_feat2_desc: "Engineered for depth. Water-tight seal up to 50 meters of pressure.",
+        tech_feat3_title: "10-Day Life", tech_feat3_desc: "Ultra-efficient power management for continuous synthesis.",
+        tech_feat4_title: "Neural Sync", tech_feat4_desc: "Encrypted low-energy bridge to your Deepvibe companion.",
+        spec_model: "Model", spec_weight: "Weight", spec_processor: "Processor", spec_security: "Security",
+        footer_copyright: "© 2024 Deepvibe. The Ethereal Pulse Synthesis.",
+        footer_ecosystem: "Ecosystem", footer_sight: "Sight", footer_touch: "Touch", footer_pleasure: "Pleasure", footer_scent: "Scent",
+        footer_protocols: "Protocols", footer_privacy: "Privacy Protocol", footer_terms: "Neural Terms", footer_status: "System Status",
+        footer_connect: "Connect", footer_support: "Support Interface",
+        footer_cta_button: "Explore Ecosystem"
+    },
+    zh: {
+        nav_sight: "视", nav_touch: "触", nav_pleasure: "悦", nav_scent: "嗅", nav_connect: "连接",
+        hero_label: "探索灵魂生态系统", hero_title: "触", hero_subtitle: "内心节奏的守护者",
+        hero_cta_primary: "开始合成", hero_cta_secondary: "技术规格",
+        philosophy_title: "核心哲学", philosophy_subtitle: "碳与硅的和谐对话。",
+        ecosystem_title: "灵魂生态系统集成",
+        ecosystem_desc_part1: "当<span class=\"focus-word\">Touch</span>设备检测到持续的紧张波形或异常数据时，它会加密并将此信号传输到您家中的<span class=\"focus-word\">Sight</span>设备。",
+        ecosystem_desc_part2: "虚拟健康伴侣将以关切的目光或温柔的声音出现在屏幕上，提醒您：『您的心率略有升高。建议进行几次深呼吸。』",
+        ecosystem_desc_part3: "如果数据继续显示异常，伴侣将切换到<span class=\"focus-word\">警报模式</span>，并与<span class=\"focus-word\">Scent</span>设备协作释放舒缓香氛，形成从监测到关怀的完整<span class=\"focus-word\">保护闭环</span>。",
+        pulse_title: "脉搏", pulse_desc: "实时心血管智能，通过微小的HRV波动预测情绪变化。它不仅计算心跳，更能聆听你内心的意图。",
+        aegis_title: "护盾", aegis_desc: "先进的皮肤监测，检测环境压力和生物疲劳。一个沉默的守护者知道你何时需要休息和恢复。",
+        nexus_title: "连接", nexus_desc: "连接生物数据与Deepvibe生态系统的神经桥梁。贯穿数字存在的智能线索。",
+        selection_title: "选择", selection_subtitle: "选择你的形态", selection_desc: "采用最具弹性的材料打造，成为你身体永久的延伸。",
+        pulse_edition_title: "脉搏版", pulse_edition_desc: "采用超高纯度不锈钢打造。耐用与精密的经典证明。",
+        pulse_feat1: "拉丝航空级钢", pulse_feat2: "动能充电接口", pulse_feat3: "24/7心 flux追踪",
+        configure_pulse: "配置脉搏",
+        aegis_hybrid_title: "护盾混合版", aegis_hybrid_desc: "高密度陶瓷与轻质钛的融合。",
+        aegis_feat1: "导热陶瓷", aegis_feat2: "生物静态钛核心", aegis_feat3: "先进皮肤合成",
+        configure_aegis: "配置护盾",
+        nexus_medical_title: "连接医疗版", nexus_medical_desc: "医疗级生物聚合物，为极致灵敏度而工程设计。",
+        nexus_feat1: "超高灵敏度PPG阵列", nexus_feat2: "无摩擦内壁轮廓", nexus_feat3: "极致神经精度",
+        configure_nexus: "配置连接",
+        interface_title: "界面", interface_subtitle: "生命的语言", interface_desc: "你的生物特征不仅仅是数字，更是一种方言。触将皮肤的电信号转化为可操作的情感洞察。",
+        stat_accuracy: "情感准确度", stat_latency: "神经延迟", stat_sync: "每日同步点", stat_evolution: "进化潜力",
+        tech_title: "技术基础", tech_subtitle: "硅智能，生物设计。", tech_desc: "触的每一毫米都配备了先进的感觉阵列，设计为在完全沉默和隐形中运行。",
+        tech_feat1_title: "双PPG传感器", tech_feat1_desc: "高频临床级光阵列，用于深层组织监测。",
+        tech_feat2_title: "IP68防水", tech_feat2_desc: "深度工程。50米压力下的水密密封。",
+        tech_feat3_title: "10天续航", tech_feat3_desc: "超高效电源管理，持续合成。",
+        tech_feat4_title: "神经同步", tech_feat4_desc: "加密低能耗桥接至你的Deepvibe伴侣。",
+        spec_model: "型号", spec_weight: "重量", spec_processor: "处理器", spec_security: "安全",
+        footer_copyright: "© 2024 Deepvibe。空灵脉搏合成。",
+        footer_ecosystem: "生态系统", footer_sight: "视", footer_touch: "触", footer_pleasure: "悦", footer_scent: "嗅",
+        footer_protocols: "协议", footer_privacy: "隐私协议", footer_terms: "神经条款", footer_status: "系统状态",
+        footer_connect: "连接", footer_support: "支持界面",
+        footer_cta_button: "探索生态系统"
+    },
+    ja: {
+        nav_sight: "サイト", nav_touch: "タッチ", nav_pleasure: "プレジャー", nav_scent: "セント", nav_connect: "接続",
+        hero_label: "Soulエコシステムを探索", hero_title: "タッチ", hero_subtitle: "あなたの内なるリズムの番人",
+        hero_cta_primary: "合成を始める", hero_cta_secondary: "技術仕様",
+        philosophy_title: "コア哲学", philosophy_subtitle: "炭素と硅素の調和された対話。",
+        ecosystem_title: "Soulエコシステム統合",
+        ecosystem_desc_part1: "<span class=\"focus-word\">Touch</span>デバイスが持続的な緊張波や異常データを検出すると、暗号化してお宅の<span class=\"focus-word\">Sight</span>デバイスに送信します。",
+        ecosystem_desc_part2: "仮想ヘルスコンパニオンが心配そうな眼差しや優しい声で画面に現れ、「心拍数が少し上がっています。深呼吸を数回することをお勧めします。」とお知らせします。",
+        ecosystem_desc_part3: "データが異常を示し続ける場合、コンパニオンは<span class=\"focus-word\">アラートモード</span>に切り替わり、<span class=\"focus-word\">Scent</span>デバイスと連携して心地よい香りを放出し、モニタリングからケアまでの<span class=\"focus-word\">完全な保護ループ</span>を形成します。",
+        pulse_title: "パルス", pulse_desc: "微妙なHRV変動を通じて感情の変化を予測するリアルタイム心血管インテリジェンス。単に鼓動を数えるのではなく、あなたの心の意図を聞いています。",
+        aegis_title: "イージス", aegis_desc: "環境ストレスと生物学的疲労を検出する高度な皮膚監視。休息と充電が必要な時期を知る沈黙の守護者。",
+        nexus_title: "ネクサス", nexus_desc: "生物学的データをDeepvibeエコシステムに接続する神経ブリッジ。デジタルな存在を貫く知性のシームレスな糸。",
+        selection_title: "選択", selection_subtitle: "形を選択", selection_desc: "最も回復力のある材料から、あなたの物理的自己の永続的な拡張になるように設計されています。",
+        pulse_edition_title: "パルスエディション", pulse_edition_desc: "超高純度ステンレス鋼から鍛造。耐久性と精密さの古典的な証。",
+        pulse_feat1: "ブラシド航空-grade鋼", pulse_feat2: "運動充電インターフェース", pulse_feat3: "24/7心fluxトラッキング",
+        configure_pulse: "パルス設定",
+        aegis_hybrid_title: "イージスハイブリッド", aegis_hybrid_desc: "高密度セラミックスと軽量チタンの融合。",
+        aegis_feat1: "熱伝導セラミックス", aegis_feat2: "バイオ静態チタンコア", aegis_feat3: "先進的皮膚合成",
+        configure_aegis: "イージス設定",
+        nexus_medical_title: "ネクサスメディカル", nexus_medical_desc: "ピーク感度のために設計された医療グレードの生物ポリマー。",
+        nexus_feat1: "超高感度PPGアレイ", nexus_feat2: "フリクションレス内部プロファイル", nexus_feat3: "最大神経精度",
+        configure_nexus: "ネクサス設定",
+        interface_title: "インターフェース", interface_subtitle: "人生の言語", interface_desc: "あなたの生体データは数字以上の方言です。タッチは肌の電気的なささやきを実行可能な感情洞察に変換します。",
+        stat_accuracy: "感情精度", stat_latency: "神経レイテンシ", stat_sync: "日次同期ポイント", stat_evolution: "進化の可能性",
+        tech_title: "技術基盤", tech_subtitle: "硅素インテリジェンス、生物学的设计。", tech_desc: "タッチの每一ミリメートルは、完全な静寂と不可視で動作するように設計された高度なセンサーアレイでパックされています。",
+        tech_feat1_title: "ダブルPPGセンサー", tech_feat1_desc: "深部組織モニタリングのための高周波数臨床グレード光アレイ。",
+        tech_feat2_title: "IP68防水", tech_feat2_desc: "深度のために設計。50メートルの圧力までの防水シール。",
+        tech_feat3_title: "10日間バッテリー", tech_feat3_desc: "連続合成のための超効率的な電源管理。",
+        tech_feat4_title: "神経同期", tech_feat4_desc: "Deepvibeコンパニオンへの暗号化された低エネルギーブリッジ。",
+        spec_model: "モデル", spec_weight: "重量", spec_processor: "プロセッサ", spec_security: "セキュリティ",
+        footer_copyright: "© 2024 Deepvibe。エーテルなパルス合成。",
+        footer_ecosystem: "エコシステム", footer_sight: "サイト", footer_touch: "タッチ", footer_pleasure: "プレジャー", footer_scent: "セント",
+        footer_protocols: "プロトコル", footer_privacy: "プライバシープロトコル", footer_terms: "ニュラル利用規約", footer_status: "システムステータス",
+        footer_connect: "接続", footer_support: "お問い合わせ",
+        footer_cta_button: "エコシステムを探索"
+    },
+    ko: {
+        nav_sight: "사이트", nav_touch: "터치", nav_pleasure: "플레저", nav_scent: "센트", nav_connect: "연결",
+        hero_label: "영혼 생태계 탐색", hero_title: "터치", hero_subtitle: "내적 리듬의 파수꾼",
+        hero_cta_primary: "합성 시작", hero_cta_secondary: "기술 사양",
+        philosophy_title: "핵심 철학", philosophy_subtitle: "탄소와 실리콘의 조화로운 대화.",
+        ecosystem_title: "소울 생태계 통합",
+        ecosystem_desc_part1: "<span class=\"focus-word\">Touch</span> 장치가 지속적인 긴장 파동이나 비정상적인 데이터를 감지하면 암호화하여 집의 <span class=\"focus-word\">Sight</span> 장치로 전송합니다.",
+        ecosystem_desc_part2: "가상 건강 동반자가 걱정스러운 시선이나 부드러운 목소리로 화면에 나타나 \"심박수가 약간 상승했습니다. 심호흡을 몇 번 하시는 것이 좋습니다.\"라고 알려줍니다.",
+        ecosystem_desc_part3: "데이터가 계속 이상을 보이면 동반자가 <span class=\"focus-word\">경고 모드</span>로 전환되어 <span class=\"focus-word\">Scent</span> 장치와 협력하여 편안한 향기를 방출하여 모니터링에서 케어까지 <span class=\"focus-word\">완전한 보호 루프</span>를 형성합니다.",
+        pulse_title: "펄스", pulse_desc: "미묘한 HRV 변동을 통해 정서적 변화를 예측하는 실시간 심혈관 지능. 단순히 심박을 세는 것이 아니라 당신의 마음의 의도를 듣습니다.",
+        aegis_title: "아이기스", aegis_desc: "환경 스트레스와 생물학적 피로를 감지하는 고급 피부 모니터링. 당신이 휴식과 재충전이 필요한 시기를 아는 침묵의 수호자.",
+        nexus_title: "넥서스", nexus_desc: "생물학적 데이터를 Deepvibe 생태계에 연결하는 신경 다리. 디지털 존재를 관통하는 지능의 매끈한 실.",
+        selection_title: "선택", selection_subtitle: "당신의 형태를 선택", selection_desc: "가장 회복력 있는 재료로 설계되어 당신의 육체적 자신의 영구적인 확장이 됩니다.",
+        pulse_edition_title: "펄스 에디션", pulse_edition_desc: "초고순도 스테인리스강에서 단조. 내구성과 정밀도의 고전적인 증거.",
+        pulse_feat1: "브러시 항공 등급 강철", pulse_feat2: "운동 충전 인터페이스", pulse_feat3: "24/7 심장 플럭스 추적",
+        configure_pulse: "펄스 구성",
+        aegis_hybrid_title: "아이기스 하이브리드", aegis_hybrid_desc: "고밀도 세라믹과 경량 티타늄의 융합.",
+        aegis_feat1: "열전도 세라믹", aegis_feat2: "정전기 티타늄 코어", aegis_feat3: "고급 피부 합성",
+        configure_aegis: "아이기스 구성",
+        nexus_medical_title: "넥서스 메디컬", nexus_medical_desc: "최고의 감도를 위해 설계된 의료 등급 생체 폴리머.",
+        nexus_feat1: "초고감도 PPG 어레이", nexus_feat2: "마찰 없는 내부 프로파일", nexus_feat3: "최대 신경 정밀도",
+        configure_nexus: "넥서스 구성",
+        interface_title: "인터페이스", interface_subtitle: "생명의 언어", interface_desc: "당신의 생체 데이터는 숫자 이상の方言입니다. 터치는 피부의 전기적인 속삭임을 실행 가능한 정서적 통찰로 변환합니다.",
+        stat_accuracy: "정서 정확도", stat_latency: "신경 지연", stat_sync: "일일 동기화 포인트", stat_evolution: "진화 가능성",
+        tech_title: "기술 기반", tech_subtitle: "실리콘 지능, 생물학적 설계.", tech_desc: "터치의 모든 밀리미터는 완전한 침묵과 불확실성에서 작동하도록 설계된 고급 센서 어레이로 구성되어 있습니다.",
+        tech_feat1_title: "이중 PPG 센서", tech_feat1_desc: "심층 조직 모니터를 위한 고주파 임상 등급 광 어레이.",
+        tech_feat2_title: "IP68 방수", tech_feat2_desc: "깊이를 위해 설계. 50미터 압력까지의 방수 밀봉.",
+        tech_feat3_title: "10일 수명", tech_feat3_desc: "연속 합성을 위한 초효율 전원 관리.",
+        tech_feat4_title: "신경 동기화", tech_feat4_desc: "Deepvibe 동반자로의 암호화된 저에너지 브릿지.",
+        spec_model: "모델", spec_weight: "무게", spec_processor: "프로세서", spec_security: "보안",
+        footer_copyright: "© 2024 Deepvibe. 에테러한 펄스 합성.",
+        footer_ecosystem: "생태계", footer_sight: "사이트", footer_touch: "터치", footer_pleasure: "플레저", footer_scent: "센트",
+        footer_protocols: "프로토콜", footer_privacy: "개인정보 보호 프로토콜", footer_terms: "신경 약관", footer_status: "시스템 상태",
+        footer_connect: "연결", footer_support: "문의하기",
+        footer_cta_button: "생태계 탐색"
+    },
+    fr: {
+        nav_sight: "Vue", nav_touch: "Touch", nav_pleasure: "Plaisir", nav_scent: "Scent", nav_connect: "Connecter",
+        hero_label: "Explorez l'Écosystème", hero_title: "Touch", hero_subtitle: "Un Sentinelle pour Votre Rythme Intérieur",
+        hero_cta_primary: "Commencer la Synthèse", hero_cta_secondary: "Spécifications Techniques",
+        philosophy_title: "Philosophie Centrale", philosophy_subtitle: "Un dialogue harmonieux entre carbone et silicium.",
+        ecosystem_title: "Intégration de l'Écosystème Soul",
+        ecosystem_desc_part1: "Lorsque le dispositif <span class=\"focus-word\">Touch</span> détecte des ondes de tension soutenues ou des données anormales, il crypte et transmet ce signal au dispositif <span class=\"focus-word\">Sight</span> dans votre maison.",
+        ecosystem_desc_part2: "Un compagnon de santé virtuel apparaîtra à l'écran avec un regard inquiet ou une voix douce, vous rappelant: \"Votre fréquence cardiaque est légèrement élevée. Il est recommandé de prendre quelques respirations profondes.\"",
+        ecosystem_desc_part3: "Si les données continuent à montrer des anomalies, le compagnon passera en <span class=\"focus-word\">mode alerte</span> et collaborera avec le dispositif <span class=\"focus-word\">Scent</span> pour libérer des parfums apaisants, formant une <span class=\"focus-word\">boucle de protection complète</span> de la surveillance aux soins.",
+        pulse_title: "Pulse", pulse_desc: "Intelligence cardiovasculaire en temps réel qui anticipe les changements émotionnels à travers les subtiles fluctuations HRV. Il ne compte pas seulement les battements; il écoute l'intention de votre cœur.",
+        aegis_title: "Aegis", aegis_desc: "Surveillance dermique avancée qui détecte le stress environnemental et la fatigue biologique. Un gardien silencieux qui sait quand vous avez besoin de vous retirer et de vous ressourcer.",
+        nexus_title: "Nexus", nexus_desc: "Le pont neural reliant les données biologiques à votre écosystème Deepvibe. Un fil transparent d'intelligence traversant votre existence numérique.",
+        selection_title: "La Sélection", selection_subtitle: "Choisissez Votre Forme", selection_desc: "Conçu à partir des matériaux les plus résilients pour devenir une extension permanente de votre être physique.",
+        pulse_edition_title: "Pulse Edition", pulse_edition_desc: "Forgé dans un acier stainless ultra-pur. Un témoignage classique de durabilité et de précision.",
+        pulse_feat1: "Acier Aero-grade Brossé", pulse_feat2: "Interface de Charge Cinétique", pulse_feat3: "Suivi du Flux Cardiaque 24/7",
+        configure_pulse: "Configurer Pulse",
+        aegis_hybrid_title: "Aegis Hybrid", aegis_hybrid_desc: "Une fusion de céramique haute densité et de titane léger.",
+        aegis_feat1: "Céramique Thermo-Conductrice", aegis_feat2: "Noyau Titane Bio-statique", aegis_feat3: "Synthèse Dermique Avancée",
+        configure_aegis: "Configurer Aegis",
+        nexus_medical_title: "Nexus Medical", nexus_medical_desc: "Bio-polymères de qualité médicale conçus pour une sensibilité maximale.",
+        nexus_feat1: "Réseau PPG Ultra-Sensible", nexus_feat2: "Profil Intérieur Sans Friction", nexus_feat3: "Précision Neuronale Maximale",
+        configure_nexus: "Configurer Nexus",
+        interface_title: "L'Interface", interface_subtitle: "Le Langage de la Vie", interface_desc: "Vos biométriques sont plus que des nombres; c'est un dialecte. Touch traduit les murmures électriques de votre peau en informations émotionnelles exploitables.",
+        stat_accuracy: "Précision Émotionnelle", stat_latency: "Latence Neuronale", stat_sync: "Points de Synchronisation Quotidiens", stat_evolution: "Potentiel d'Évolution",
+        tech_title: "Fondation Tech", tech_subtitle: "Intelligence Silicium, Design Biologique.", tech_desc: "Chaque millimètre du Touch est rempli de réseaux sensoriels avancés, conçus pour fonctionner dans un silence et une invisibilité totaux.",
+        tech_feat1_title: "Capteurs PPG Double", tech_feat1_desc: "Réseaux lumineux cliniques de haute fréquence pour la surveillance des tissus profonds.",
+        tech_feat2_title: "Immersion IP68", tech_feat2_desc: "Conçu pour la profondeur. Étanchéité jusqu'à 50 mètres de pression.",
+        tech_feat3_title: "Autonomie 10 Jours", tech_feat3_desc: "Gestion d'énergie ultra-efficace pour une synthèse continue.",
+        tech_feat4_title: "Synchronisation Neurale", tech_feat4_desc: "Pont crypté à basse énergie vers votre compagnon Deepvibe.",
+        spec_model: "Modèle", spec_weight: "Poids", spec_processor: "Processeur", spec_security: "Sécurité",
+        footer_copyright: "© 2024 Deepvibe. La Synthèse Ethérée du Pulse.",
+        footer_ecosystem: "Écosystème", footer_sight: "Vue", footer_touch: "Touch", footer_pleasure: "Plaisir", footer_scent: "Scent",
+        footer_protocols: "Protocoles", footer_privacy: "Protocole de Confidentialité", footer_terms: "Termes Neuraux", footer_status: "État du Système",
+        footer_connect: "Connecter", footer_support: "Contacter le Support",
+        footer_cta_button: "Explorer l'Écosystème"
+    },
+    de: {
+        nav_sight: "Sehen", nav_touch: "Touch", nav_pleasure: "Vergnügen", nav_scent: "Scent", nav_connect: "Verbinden",
+        hero_label: "Erkunden Sie das Ökosystem", hero_title: "Touch", hero_subtitle: "Ein Wächter für Ihren inneren Rhythmus",
+        hero_cta_primary: "Synthese beginnen", hero_cta_secondary: "Technische Daten",
+        philosophy_title: "Kernphilosophie", philosophy_subtitle: "Ein harmonischer Dialog zwischen Kohlenstoff und Silizium.",
+        ecosystem_title: "Soul-Ökosystem-Integration",
+        ecosystem_desc_part1: "Wenn das <span class=\"focus-word\">Touch</span>-Gerät anhaltende Spannungswellen oder anomale Daten erkennt, verschlüsselt und überträgt es dieses Signal an das <span class=\"focus-word\">Sight</span>-Gerät in Ihrem Zuhause.",
+        ecosystem_desc_part2: "Ein virtueller Gesundheitsbegleiter erscheint auf dem Bildschirm mit besorgtem Blick oder sanfter Stimme und erinnert Sie: „Ihre Herzfrequenz ist leicht erhöht. Es wird empfohlen, einige tiefe Atemzüge zu nehmen.\"",
+        ecosystem_desc_part3: "Wenn die Daten weiterhin Anomalien zeigen, wechselt der Begleiter in den <span class=\"focus-word\">Alarmmodus</span> und arbeitet mit dem <span class=\"focus-word\">Scent</span>-Gerät zusammen, um beruhigende Düfte freizusetzen und bildet so eine <span class=\"focus-word\">vollständige Schutzschleife</span> von der Überwachung bis zur Fürsorge.",
+        pulse_title: "Puls", pulse_desc: "Echtzeit-Herz-Kreislauf-Intelligenz, die emotionale Veränderungen durch subtile HRV-Schwankungen vorhersagt. Es zählt nicht nur die Schläge; es hört die Absicht Ihres Herzens.",
+        aegis_title: "Aegis", aegis_desc: "Fortgeschrittene dermale Überwachung, die Umweltstress und biologische Müdigkeit erkennt. Ein stiller Wächter, der weiß, wann Sie sich zurückziehen und aufladen müssen.",
+        nexus_title: "Nexus", nexus_desc: "Die neuronale Brücke, die biologische Daten mit Ihrem Deepvibe-Ökosystem verbindet. Ein nahtloser Faden der Intelligenz, der sich durch Ihre digitale Existenz webt.",
+        selection_title: "Die Auswahl", selection_subtitle: "Wählen Sie Ihre Form", selection_desc: "Aus den widerstandsfähigsten Materialien gefertigt, um eine dauerhafte Erweiterung Ihres physischen Selbst zu werden.",
+        pulse_edition_title: "Puls Edition", pulse_edition_desc: "Aus ultrareinem Edelstahl geschmiedet. Ein klassisches Zeugnis für Haltbarkeit und Präzision.",
+        pulse_feat1: "Gebürsteter Aero-Stahl", pulse_feat2: "Kinetische Ladeschnittstelle", pulse_feat3: "24/7 Herz-Flux-Tracking",
+        configure_pulse: "Puls Konfigurieren",
+        aegis_hybrid_title: "Aegis Hybrid", aegis_hybrid_desc: "Eine Fusion aus Hochleistungskeramik und leichtem Titan.",
+        aegis_feat1: "Thermisch-Leitfähige Keramik", aegis_feat2: "Bio-statischer Titan-Kern", aegis_feat3: "Fortgeschrittene Dermale Synthese",
+        configure_aegis: "Aegis Konfigurieren",
+        nexus_medical_title: "Nexus Medical", nexus_medical_desc: "Medizinische Bio-Polymere für maximale Empfindlichkeit entwickelt.",
+        nexus_feat1: "Ultra-empfindliches PPG-Array", nexus_feat2: "Reibungsfreies Innenprofil", nexus_feat3: "Maximale Neuronale Präzision",
+        configure_nexus: "Nexus Konfigurieren",
+        interface_title: "Die Schnittstelle", interface_subtitle: "Die Sprache des Lebens", interface_desc: "Ihre Biomarker sind mehr als Zahlen; sie sind ein Dialekt. Touch übersetzt die elektrischen Flüstern Ihrer Haut in umsetzbare emotionale Erkenntnisse.",
+        stat_accuracy: "Emotionale Genauigkeit", stat_latency: "Neuronale Latenz", stat_sync: "Tägliche Sync-Punkte", stat_evolution: "Evolutionspotenzial",
+        tech_title: "Technische Grundlage", tech_subtitle: "Silizium-Intelligenz, Biologisches Design.", tech_desc: "Jeder Millimeter des Touch ist mit fortschrittlichen Sensor-Arrays gepackt, die für völlige Stille und Unsichtbarkeit ausgelegt sind.",
+        tech_feat1_title: "Doppelte PPG-Sensoren", tech_feat1_desc: "Hochfrequente klinische Licht-Arrays für tiefes Gewebemonitoring.",
+        tech_feat2_title: "IP68-Tauchfähigkeit", tech_feat2_desc: "Für Tiefe ausgelegt. Wasserdichte Versiegelung bis 50 Meter Druck.",
+        tech_feat3_title: "10-Tage-Lebensdauer", tech_feat3_desc: "Ultra-effizientes Energiemanagement für kontinuierliche Synthese.",
+        tech_feat4_title: "Neuronale Synchronisation", tech_feat4_desc: "Verschlüsselte Low-Energy-Brücke zu Ihrem Deepvibe-Begleiter.",
+        spec_model: "Modell", spec_weight: "Gewicht", spec_processor: "Prozessor", spec_security: "Sicherheit",
+        footer_copyright: "© 2024 Deepvibe. Die Ätherische Puls-Synthese.",
+        footer_ecosystem: "Ökosystem", footer_sight: "Sehen", footer_touch: "Touch", footer_pleasure: "Vergnügen", footer_scent: "Scent",
+        footer_protocols: "Protokolle", footer_privacy: "Datenschutzprotokoll", footer_terms: "Neurale Bedingungen", footer_status: "Systemstatus",
+        footer_connect: "Verbinden", footer_support: "Support kontaktieren",
+        footer_cta_button: "Ökosystem erkunden"
+    },
+    es: {
+        nav_sight: "Vista", nav_touch: "Touch", nav_pleasure: "Placer", nav_scent: "Scent", nav_connect: "Conectar",
+        hero_label: "Explora el Ecosistema", hero_title: "Touch", hero_subtitle: "Un Centinela para Tu Ritmo Interior",
+        hero_cta_primary: "Iniciar Síntesis", hero_cta_secondary: "Especificaciones Técnicas",
+        philosophy_title: "Filosofía Central", philosophy_subtitle: "Un diálogo armonioso entre carbono y silicio.",
+        ecosystem_title: "Integración del Ecosistema Soul",
+        ecosystem_desc_part1: "Cuando el dispositivo <span class=\"focus-word\">Touch</span> detecta ondas de tensión sostenidas o datos anormales, encripta y transmite esta señal al dispositivo <span class=\"focus-word\">Sight</span> en tu hogar.",
+        ecosystem_desc_part2: "Un compañero de salud virtual aparecerá en la pantalla con una mirada preocupada o una voz suave, recordándote: \"Tu frecuencia cardíaca está ligeramente elevada. Se recomienda tomar algunas respiraciones profundas.\"",
+        ecosystem_desc_part3: "Si los datos continúan mostrando anomalías, el compañero cambiará a <span class=\"focus-word\">modo de alerta</span> y colaborará con el dispositivo <span class=\"focus-word\">Scent</span> para liberar fragancias relajantes, formando un <span class=\"focus-word\">bucle de protección completo</span> desde el monitoreo hasta el cuidado.",
+        pulse_title: "Pulso", pulse_desc: "Inteligencia cardiovascular en tiempo real que anticipa cambios emocionales a través de sutiles fluctuaciones HRV. No solo cuenta loslatidos; escucha la intención de tu corazón.",
+        aegis_title: "Egida", aegis_desc: "Monitoreo dérmico avanzado que detecta estrés ambiental y fatiga biológica. Un guardián silencioso que sabe cuándo necesitas retirarte y recargar.",
+        nexus_title: "Nexus", nexus_desc: "El puente neural que conecta datos biológicos con tu ecosistema Deepvibe. Un hilo seamless de inteligencia tejiendo a través de tu existencia digital.",
+        selection_title: "La Selección", selection_subtitle: "Elige Tu Forma", selection_desc: "Diseñado con los materiales más resilientes para convertirse en una extensión permanente de tu ser físico.",
+        pulse_edition_title: "Edición Pulse", pulse_edition_desc: "Forjado de acero inoxidable ultra puro. Un testimonio clásico de durabilidad y precisión.",
+        pulse_feat1: "Acero Aero-grado Cepillado", pulse_feat2: "Interfaz de Carga Cinética", pulse_feat3: "Seguimiento del Flujo Cardíaco 24/7",
+        configure_pulse: "Configurar Pulse",
+        aegis_hybrid_title: "Egida Híbrido", aegis_hybrid_desc: "Una fusión de cerámica de alta densidad y titanio ligero.",
+        aegis_feat1: "Cerámica Térmico-Conductora", aegis_feat2: "Núcleo de Titanio Bio-estático", aegis_feat3: "Síntesis Dérmica Avanzada",
+        configure_aegis: "Configurar Egida",
+        nexus_medical_title: "Nexus Médico", nexus_medical_desc: "Bio-polímeros de grado médico diseñados para máxima sensibilidad.",
+        nexus_feat1: "Matriz PPG Ultra-Sensible", nexus_feat2: "Perfil Interior Sin Fricción", nexus_feat3: "Precisión Neural Máxima",
+        configure_nexus: "Configurar Nexus",
+        interface_title: "La Interfaz", interface_subtitle: "El Lenguaje de la Vida", interface_desc: "Tus biométricos son más que números; son un dialecto. Touch traduce los susurros eléctricos de tu piel en conocimientos emocionales accionables.",
+        stat_accuracy: "Precisión Emocional", stat_latency: "Latencia Neural", stat_sync: "Puntos de Sincronización Diarios", stat_evolution: "Potencial de Evolución",
+        tech_title: "Fundamento Técnico", tech_subtitle: "Inteligencia de Silicio, Diseño Biológico.", tech_desc: "Cada milímetro del Touch está lleno de matrices sensoras avanzadas, diseñadas para operar en silencio total e invisibilidad.",
+        tech_feat1_title: "Sensores PPG Duales", tech_feat1_desc: "Matrices de luz clínica de alta frecuencia para monitoreo de tejido profundo.",
+        tech_feat2_title: "Inmersión IP68", tech_feat2_desc: "Ingeniería para profundidad. Sellado hermético hasta 50 metros de presión.",
+        tech_feat3_title: "Vida de 10 Días", tech_feat3_desc: "Gestión de energía ultra eficiente para síntesis continua.",
+        tech_feat4_title: "Sincronización Neural", tech_feat4_desc: "Puente encriptado de baja energía a tu compañero Deepvibe.",
+        spec_model: "Modelo", spec_weight: "Peso", spec_processor: "Procesador", spec_security: "Seguridad",
+        footer_copyright: "© 2024 Deepvibe. La Síntesis Etérea del Pulso.",
+        footer_ecosystem: "Ecosistema", footer_sight: "Vista", footer_touch: "Touch", footer_pleasure: "Placer", footer_scent: "Scent",
+        footer_protocols: "Protocolos", footer_privacy: "Protocolo de Privacidad", footer_terms: "Términos Neurales", footer_status: "Estado del Sistema",
+        footer_connect: "Conectar", footer_support: "Contactar Soporte",
+        footer_cta_button: "Explorar el Ecosistema"
+    },
+    pt: {
+        nav_sight: "Visão", nav_touch: "Touch", nav_pleasure: "Prazer", nav_scent: "Scent", nav_connect: "Conectar",
+        hero_label: "Explore o Ecossistema", hero_title: "Touch", hero_subtitle: "Um Sentinela para Seu Ritmo Interior",
+        hero_cta_primary: "Iniciar Síntese", hero_cta_secondary: "Especificações Técnicas",
+        philosophy_title: "Filosofia Central", philosophy_subtitle: "Um diálogo harmonioso entre carbono e silício.",
+        ecosystem_title: "Integração do Ecossistema Soul",
+        ecosystem_desc_part1: "Quando o dispositivo <span class=\"focus-word\">Touch</span> detecta ondas de tensão sustentadas ou dados anormais, ele criptografa e transmite esse sinal para o dispositivo <span class=\"focus-word\">Sight</span> em sua casa.",
+        ecosystem_desc_part2: "Um companheiro de saúde virtual aparecerá na tela com um olhar preocupado ou uma voz suave, lembrando você: \"Sua frequência cardíaca está ligeiramente elevada. É recomendado tomar algumas respirações profundas.\"",
+        ecosystem_desc_part3: "Se os dados continuarem mostrando anomalias, o companheiro mudará para o <span class=\"focus-word\">modo de alerta</span> e colaborará com o dispositivo <span class=\"focus-word\">Scent</span> para liberar fragrâncias calmantes, formando um <span class=\"focus-word\">loop de proteção completo</span> do monitoramento aos cuidados.",
+        pulse_title: "Pulso", pulse_desc: "Inteligência cardiovascular em tempo real que antecipa mudanças emocionais através de sutis flutuações HRV. Ele não conta apenas as batidas; ele ouve a intenção do seu coração.",
+        aegis_title: "Egide", aegis_desc: "Monitoramento dérmico avançado que detecta estresse ambiental e fadiga biológica. Um guardião silencioso que sabe quando você precisa recuar e recarregar.",
+        nexus_title: "Nexus", nexus_desc: "A ponte neural conectando dados biológicos ao seu ecossistema Deepvibe. Um fio contínuo de inteligência tecendo através da sua existência digital.",
+        selection_title: "A Seleção", selection_subtitle: "Escolha Sua Forma", selection_desc: "Engenharia dos materiais mais resilientes para se tornar uma extensão permanente do seu eu físico.",
+        pulse_edition_title: "Edição Pulse", pulse_edition_desc: "Forjado em aço inoxidável ultra puro. Um testemunho clássico de durabilidade e precisão.",
+        pulse_feat1: "Aço Aero-grau Escovado", pulse_feat2: "Interface de Carga Cinética", pulse_feat3: "Rastreamento do Fluxo Cardíaco 24/7",
+        configure_pulse: "Configurar Pulso",
+        aegis_hybrid_title: "Egide Híbrido", aegis_hybrid_desc: "Uma fusão de cerâmica de alta densidade e titânio leve.",
+        aegis_feat1: "Cerâmica Termo-Condutora", aegis_feat2: "Núcleo de Titânio Bio-estático", aegis_feat3: "Síntese Dérmica Avançada",
+        configure_aegis: "Configurar Egide",
+        nexus_medical_title: "Nexus Médico", nexus_medical_desc: "Bio-polímeros de grau médico projetados para sensibilidade máxima.",
+        nexus_feat1: "Matriz PPG Ultra-Sensível", nexus_feat2: "Perfil Interior Sem Atrito", nexus_feat3: "Precisão Neural Máxima",
+        configure_nexus: "Configurar Nexus",
+        interface_title: "A Interface", interface_subtitle: "A Linguagem da Vida", interface_desc: "Seus biométricos são mais do que números; são um dialeto. Touch traduz os sussurros elétricos da sua pele em insights emocionais acionáveis.",
+        stat_accuracy: "Precisão Emocional", stat_latency: "Latência Neural", stat_sync: "Pontos de Sincronização Diários", stat_evolution: "Potencial de Evolução",
+        tech_title: "Fundação Tech", tech_subtitle: "Inteligência de Silício, Design Biológico.", tech_desc: "Cada milímetro do Touch é embalado com matrizes sensoriais avançadas, projetadas para operar em total silêncio e invisibilidade.",
+        tech_feat1_title: "Sensores PPG Duplos", tech_feat1_desc: "Matrizes de luz clínica de alta frequência para monitoramento de tecido profundo.",
+        tech_feat2_title: "Imersão IP68", tech_feat2_desc: "Engenharia para profundidade. Vedação hermética até 50 metros de pressão.",
+        tech_feat3_title: "Vida de 10 Dias", tech_feat3_desc: "Gerenciamento de energia ultra eficiente para síntese contínua.",
+        tech_feat4_title: "Sincronização Neural", tech_feat4_desc: "Ponte criptografada de baixa energia para seu companheiro Deepvibe.",
+        spec_model: "Modelo", spec_weight: "Peso", spec_processor: "Processador", spec_security: "Segurança",
+        footer_copyright: "© 2024 Deepvibe. A Síntese Etérea do Pulso.",
+        footer_ecosystem: "Ecossistema", footer_sight: "Visão", footer_touch: "Touch", footer_pleasure: "Prazer", footer_scent: "Scent",
+        footer_protocols: "Protocolos", footer_privacy: "Protocolo de Privacidade", footer_terms: "Termos Neurais", footer_status: "Status do Sistema",
+        footer_connect: "Conectar", footer_support: "Contatar Suporte",
+        footer_cta_button: "Explorar o Ecossistema"
+    },
+    ru: {
+        nav_sight: "Зрение", nav_touch: "Touch", nav_pleasure: "Удовольствие", nav_scent: "Scent", nav_connect: "Подключить",
+        hero_label: "Исследуйте Экосистему", hero_title: "Touch", hero_subtitle: "Страж Вашего Внутреннего Ритма",
+        hero_cta_primary: "Начать Синтез", hero_cta_secondary: "Технические Характеристики",
+        philosophy_title: "Основная Философия", philosophy_subtitle: "Гармоничный диалог между углеродом и кремнием.",
+        ecosystem_title: "Интеграция Экосистемы Soul",
+        ecosystem_desc_part1: "Когда устройство <span class=\"focus-word\">Touch</span> обнаруживает устойчивые волны напряжения или аномальные данные, оно шифрует и передает этот сигнал на устройство <span class=\"focus-word\">Sight</span> в вашем доме.",
+        ecosystem_desc_part2: "Виртуальный здоровый компаньон появится на экране с обеспокоенным взглядом или мягким голосом, напоминая вам: «Ваша частота сердечных сокращений слегка повышена. Рекомендуется сделать несколько глубоких вдохов.»",
+        ecosystem_desc_part3: "Если данные продолжают показывать аномалии, компаньон переключится в <span class=\"focus-word\">режим оповещения</span> и будет сотрудничать с устройством <span class=\"focus-word\">Scent</span> для высвобождения успокаивающих ароматов, формируя <span class=\"focus-word\">полный защитный цикл</span> от мониторинга до заботы.",
+        pulse_title: "Пульс", pulse_desc: "Интеллект сердечно-сосудистой системы в реальном времени, который предсказывает эмоциональные изменения через тонкие колебания HRV. Он не просто подсчитывает удары; он слышит намерения вашего сердца.",
+        aegis_title: "Эгида", aegis_desc: "Усовершенствованный дермальный мониторинг, определяющий экологический стресс и биологическую усталость. Безмолвный страж, который знает, когда вам нужно отступить и восстановиться.",
+        nexus_title: "Нексус", nexus_desc: "Нейронный мост, соединяющий биологические данные с вашей экосистемой Deepvibe. Непрерывная нить интеллекта, проходящая через ваше цифровое существование.",
+        selection_title: "Выбор", selection_subtitle: "Выберите Свою Форму", selection_desc: "Спроектирован из самых прочных материалов, чтобы стать постоянным расширением вашего физического существа.",
+        pulse_edition_title: "Пульс Эдишн", pulse_edition_desc: "Выкован из ультрачистой нержавеющей стали. Классическое свидетельство долговечности и точности.",
+        pulse_feat1: "Щеточная аэро-сталь", pulse_feat2: "Кинетический зарядный интерфейс", pulse_feat3: "24/7 Отслеживание сердечного потока",
+        configure_pulse: "Настроить Пульс",
+        aegis_hybrid_title: "Эгида Гибрид", aegis_hybrid_desc: "Слияние высокоплотной керамики и легкого титана.",
+        aegis_feat1: "Теплопроводящая керамика", aegis_feat2: "Био-статический титановый сердечник", aegis_feat3: "Усовершенствованный дермальный синтез",
+        configure_aegis: "Настроить Эгиду",
+        nexus_medical_title: "Нексус Медикал", nexus_medical_desc: "Медицинские биополимеры, разработанные для максимальной чувствительности.",
+        nexus_feat1: "Сверхчувствительный PPG-массив", nexus_feat2: "Профиль внутренней поверхности без трения", nexus_feat3: "Максимальная нейронная точность",
+        configure_nexus: "Настроить Нексус",
+        interface_title: "Интерфейс", interface_subtitle: "Язык Жизни", interface_desc: "Ваши биометрические данные — это не просто цифры; это диалект. Touch переводит электрические шепоты вашей кожи в действенные эмоциональные идеи.",
+        stat_accuracy: "Эмоциональная точность", stat_latency: "Нейронная задержка", stat_sync: "Точки ежедневной синхронизации", stat_evolution: "Потенциал эволюции",
+        tech_title: "Техническая База", tech_subtitle: "Кремниевый Интеллект, Биологический Дизайн.", tech_desc: "Каждый миллиметр Touch наполнен передовыми сенсорными массивами, предназначенными для работы в полной тишине и невидимости.",
+        tech_feat1_title: "Двойные PPG-сенсоры", tech_feat1_desc: "Высокочастотные клинические световые массивы для глубокого мониторинга тканей.",
+        tech_feat2_title: "Погружение IP68", tech_feat2_desc: "Спроектировано для глубины. Водонепроницаемое уплотнение до 50 метров давления.",
+        tech_feat3_title: "10-дневный срок службы", tech_feat3_desc: "Сверхэффективное управление питанием для непрерывного синтеза.",
+        tech_feat4_title: "Нейронная синхронизация", tech_feat4_desc: "Зашифрованный мост низкой энергии к вашему компаньону Deepvibe.",
+        spec_model: "Модель", spec_weight: "Вес", spec_processor: "Процессор", spec_security: "Безопасность",
+        footer_copyright: "© 2024 Deepvibe. Эфирный Синтез Пульса.",
+        footer_ecosystem: "Экосистема", footer_sight: "Зрение", footer_touch: "Touch", footer_pleasure: "Удовольствие", footer_scent: "Scent",
+        footer_protocols: "Протоколы", footer_privacy: "Протокол Конфиденциальности", footer_terms: "Нейральные Условия", footer_status: "Статус Системы",
+        footer_connect: "Подключить", footer_support: "Связаться с Поддержкой",
+        footer_cta_button: "Исследовать Экосистему"
+    },
+    ar: {
+        nav_sight: "البصر", nav_touch: "Touch", nav_pleasure: "المتعة", nav_scent: "Scent", nav_connect: "اتصال",
+        hero_label: "استكشف النظام البيئي", hero_title: "Touch", hero_subtitle: "حارس إيقاعك الداخلي",
+        hero_cta_primary: "ابدأ التوليف", hero_cta_secondary: "المواصفات التقنية",
+        philosophy_title: "الفلسفة الجوهرية", philosophy_subtitle: "حوار متناغم بين الكربون والسيليكون.",
+        ecosystem_title: "تكامل نظام Soul البيئي",
+        ecosystem_desc_part1: "عندما يكتشف جهاز <span class=\"focus-word\">Touch</span> موجات توتر مستمرة أو بيانات غير طبيعية، يقوم بتشفير هذه الإشارة وإرسالها إلى جهاز <span class=\"focus-word\">Sight</span> في منزلك.",
+        ecosystem_desc_part2: "سيظهر رفيق صحة افتراضي على الشاشة بنظرة قلقة أو صوت لطيف، ليذكّرك: \"معدل ضربات قلبك مرتفع قليلاً. يُنصح بأخذ بعض الأنفاس العميقة.\"",
+        ecosystem_desc_part3: "إذا استمرت البيانات في إظهار حالات شاذة، سيتحول الرفيق إلى <span class=\"focus-word\">وضع التنبيه</span> ويعمل مع جهاز <span class=\"focus-word\">Scent</span> لإطلاق عطور مهدئة، مما يشكل <span class=\"focus-word\">حلقة حماية كاملة</span> من المتابعة إلى الرعاية.",
+        pulse_title: "نبض", pulse_desc: "ذكاء القلب والأوعية الدموية في الوقت الفعلي يتوقع التحولات العاطفية من خلال تقلبات HRV الدقيقة. إنه لا يحسب النبضات فحسب؛ بل يستمع لنوايا قلبك.",
+        aegis_title: "أيجيس", aegis_desc: "مراقبة جلدية متقدمة تكتشف الإجهاد البيئي والإرهاق البيولوجي. حارس صامت يعرف متى تحتاج إلى الانسحاب وإعادة الشحن.",
+        nexus_title: "نيكسوس", nexus_desc: "الجسر العصبي الذي يربط البيانات البيولوجية بنظام Deepvibe البيئي. خيط سلس من الذكاء ينسج عبر وجودك الرقمي.",
+        selection_title: "الاختيار", selection_subtitle: "اختر شكللك", selection_desc: "مصمم من أكثر المواد مرونة ليصبح امتدادًا دائمًا لكيانك الجسدي.",
+        pulse_edition_title: "إصدار نبض", pulse_edition_desc: "مصنوع من الفولاذ المقاوم للصدأ فائق النقاء. شهادة كلاسيكية على المتانة والدقة.",
+        pulse_feat1: "فولاذ هوائي متموج", pulse_feat2: "واجهة الشحن الحركي", pulse_feat3: "تتبع تدفق القلب 24/7",
+        configure_pulse: "تكوين النبض",
+        aegis_hybrid_title: "أيجيس الهجين", aegis_hybrid_desc: "اندماج السيراميك عالي الكثافة والتيتانيوم خفيف الوزن.",
+        aegis_feat1: "سيراميك موصل للحرارة", aegis_feat2: "قلب تيتانيوم ثابت بيولوجيًا", aegis_feat3: "تخليق جلدي متقدم",
+        configure_aegis: "تكوين أيجيس",
+        nexus_medical_title: "نيكسوس الطبي", nexus_medical_desc: "بوليمرات حيوية من الدرجة الطبية مصممة للحساسية القصوى.",
+        nexus_feat1: "مجموعة PPG فائقة الحساسية", nexus_feat2: "ملخص داخلي بدون احتكاك", nexus_feat3: "الدقة العصبية القصوى",
+        configure_nexus: "تكوين نيكسوس",
+        interface_title: "الواجهة", interface_subtitle: "لغة الحياة", interface_desc: "قياساتك الحيوية أكثر من مجرد أرقام؛ إنها لهجة. تترجم Touch همسات بشرتك الكهربائية إلى رؤى عاطفية قابلة للتنفيذ.",
+        stat_accuracy: "الدقة العاطفية", stat_latency: " الكمون العصبي", stat_sync: "نقاط المزامنة اليومية", stat_evolution: "إمكانات التطور",
+        tech_title: "الأساس التقني", tech_subtitle: "ذكاء السيليكون، التصميم البيولوجي.", tech_desc: "كل مليمتر من Touch مليء بمصفوفات استشعار متقدمة مصممة للتشغيل في صمت تام وعدم رؤية.",
+        tech_feat1_title: "مستشعرات PPG مزدوجة", tech_feat1_desc: "مصفوفات ضوء سريرية عالية التردد لمراقبة الأنسجة العميقة.",
+        tech_feat2_title: "الغمر IP68", tech_feat2_desc: "مصمم للعمق. ختم مقاوم للماء حتى 50 مترًا من الضغط.",
+        tech_feat3_title: "حياة 10 أيام", tech_feat3_desc: "إدارة طاقة فائقة الكفاءة للتخليق المستمر.",
+        tech_feat4_title: "المزامنة العصبية", tech_feat4_desc: "جسر منخفض الطاقة مشفر إلى رفيق Deepvibe الخاص بك.",
+        spec_model: "طراز", spec_weight: "الوزن", spec_processor: "المعالج", spec_security: "الأمان",
+        footer_copyright: "© 2024 Deepvibe. تخليق النبض الأثيري.",
+        footer_ecosystem: "النظام البيئي", footer_sight: "البصر", footer_touch: "Touch", footer_pleasure: "المتعة", footer_scent: "Scent",
+        footer_protocols: "البروتوكولات", footer_privacy: "بروتوكول الخصوصية", footer_terms: "الشروط العصبية", footer_status: "حالة النظام",
+        footer_connect: "اتصال", footer_support: "تواصل مع الدعم",
+        footer_cta_button: "استكشاف النظام البيئي"
+    }
+};
+const visualEthosTranslations = {
+    en: ["Our Visual Ethos", "A ring designed as a quiet bridge between body and digital companion. It follows the rhythm of every gesture and pulse, turning subtle movement into an immediate, connected response."],
+    zh: ["我们的视觉理念", "一枚连接身体与数字伴侣的静默桥梁。戒指感知每次手势与脉动的节奏，把细微动作转化为即时、连贯的联动回应。"],
+    ja: ["私たちのビジュアル信条", "身体とデジタルコンパニオンを静かにつなぐリング。あらゆるジェスチャーと鼓動のリズムを捉え、わずかな動きを即時の連動レスポンスへ変えます。"],
+    ko: ["우리의 비주얼 철학", "몸과 디지털 동반자를 조용히 잇는 링입니다. 모든 제스처와 맥박의 리듬을 감지해 미세한 움직임을 즉각적인 연동 반응으로 전환합니다."],
+    fr: ["Notre éthique visuelle", "Une bague pensée comme un lien discret entre le corps et le compagnon numérique. Elle suit chaque geste et chaque pulsation pour les transformer en réponse immédiate et connectée."],
+    de: ["Unser visuelles Ethos", "Ein Ring als stille Brücke zwischen Körper und digitalem Begleiter. Er folgt dem Rhythmus jeder Geste und jedes Pulses und übersetzt feinste Bewegungen in eine unmittelbare, vernetzte Reaktion."],
+    es: ["Nuestro ethos visual", "Un anillo concebido como un puente silencioso entre el cuerpo y el compañero digital. Sigue cada gesto y pulso para convertir el movimiento sutil en una respuesta inmediata y conectada."],
+    pt: ["Nossa ética visual", "Um anel criado como ponte silenciosa entre o corpo e o companheiro digital. Ele acompanha cada gesto e pulsação, transformando movimentos sutis em uma resposta imediata e conectada."],
+    ru: ["Наша визуальная философия", "Кольцо становится незаметным мостом между телом и цифровым спутником. Оно улавливает ритм каждого жеста и пульса, превращая тонкое движение в мгновенный связанный отклик."],
+    ar: ["رؤيتنا البصرية", "خاتم صُمم ليكون جسراً هادئاً بين الجسد والرفيق الرقمي. يتتبع إيقاع كل إيماءة ونبضة ويحوّل الحركة الدقيقة إلى استجابة فورية ومترابطة."]
+};
+Object.entries(visualEthosTranslations).forEach(([lang, copy]) => Object.assign(translations[lang], { visual_ethos_title: copy[0], visual_ethos_desc: copy[1] }));
+
+initLanguageSelector(translations, {
+    onBeforeTranslate: function(el, value, key) {
+        if (el.id === 'textPressureHero') {
+            el.setAttribute('data-text', value);
+            const titleEl = el.querySelector('.text-pressure-title');
+            if (titleEl && window.textPressureInstance) {
+                window.textPressureInstance.text = value;
+                window.textPressureInstance.handleResize();
+                titleEl.textContent = '';
+                const chars = value.split('');
+                chars.forEach(function(char) {
+                    const span = document.createElement('span');
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    titleEl.appendChild(span);
+                });
+                window.textPressureInstance.spans = titleEl.querySelectorAll('span');
+            }
+            return false;
+        }
+        if (key === 'ecosystem_desc_part1' || key === 'ecosystem_desc_part2' || key === 'ecosystem_desc_part3') {
+            el.innerHTML = value;
+            return false;
+        }
+    }
+});
+
+
+// TextPressure Component
+class TextPressure {
+    constructor(container, options = {}) {
+        this.container = container;
+        this.text = options.text || 'Hello!';
+        this.fontFamily = options.fontFamily || 'Compressa VF';
+        this.width = options.width !== false;
+        this.weight = options.weight !== false;
+        this.italic = options.italic !== false;
+        this.alpha = options.alpha || false;
+        this.flex = options.flex !== false;
+        this.stroke = options.stroke || false;
+        this.textColor = options.textColor || '#ffffff';
+        this.strokeColor = options.strokeColor || '#5227FF';
+        this.minFontSize = options.minFontSize || 36;
+
+        this.titleRef = container.querySelector('h1') || container.querySelector('.text-pressure-title');
+        this.mouse = { x: 0, y: 0 };
+        this.cursor = { x: 0, y: 0 };
+        this.raf = null;
+        this.observer = null;
+        this.isPaused = false;
+        this.reducedMotion = window.prefersReducedMotion || false;
+
+        this.init();
+    }
+
+    dist(a, b) {
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    getAttr(distance, maxDist, minVal, maxVal) {
+        const val = maxVal - Math.abs((maxVal * distance) / maxDist);
+        return Math.max(minVal, val + minVal);
+    }
+
+    init() {
+        if (!this.titleRef) return;
+
+        const chars = this.text.split('');
+        this.titleRef.innerHTML = chars.map(char => 
+            char === ' ' ? `<span>&nbsp;</span>` : `<span>${char}</span>`
+        ).join('');
+
+        if (this.flex) {
+            this.titleRef.style.display = 'flex';
+            this.titleRef.style.justifyContent = 'space-between';
+        }
+
+        this.spans = this.titleRef.querySelectorAll('span');
+
+        this.container.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+        this.container.addEventListener('touchmove', (e) => this.handleTouchMove(e));
+        window.addEventListener('resize', () => this.handleResize());
+
+        this.setupIntersectionObserver();
+        this.setupVisibilityListener();
+
+        this.handleResize();
+        if (!this.reducedMotion) {
+            this.animate();
+        }
+    }
+
+    setupIntersectionObserver() {
+        if (!this.container) return;
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !document.hidden) {
+                    this.resume();
+                } else {
+                    this.pause();
+                }
+            });
+        }, { threshold: 0.1 });
+        this.observer.observe(this.container);
+    }
+
+    setupVisibilityListener() {
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.pause();
+            } else if (this.observer) {
+                const isVisible = this.observer.takeRecords().some(e => e.isIntersecting);
+                if (isVisible) this.resume();
+            }
+        });
+    }
+
+    pause() {
+        if (!this.isPaused) {
+            if (this.raf) cancelAnimationFrame(this.raf);
+            this.isPaused = true;
+        }
+    }
+
+    resume() {
+        if (this.isPaused && !this.reducedMotion) {
+            this.isPaused = false;
+            this.animate();
+        }
+    }
+
+    handleMouseMove(e) {
+        const rect = this.container.getBoundingClientRect();
+        this.mouse.x = e.clientX - rect.left;
+        this.mouse.y = e.clientY - rect.top;
+    }
+
+    handleTouchMove(e) {
+        if (e.touches.length > 0) {
+            const rect = this.container.getBoundingClientRect();
+            this.mouse.x = e.touches[0].clientX - rect.left;
+            this.mouse.y = e.touches[0].clientY - rect.top;
+        }
+    }
+
+    handleResize() {
+        const containerW = this.container.offsetWidth;
+        const containerH = this.container.offsetHeight;
+        // 检测是否包含CJK字符（中文、日文、韩文）
+        const isCJK = /[\u4e00-\u9fa5\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]/.test(this.text);
+        // CJK字符宽度约为英文的1.5-2倍，需要使用不同的计算因子
+        const charWidthFactor = isCJK ? 1.0 : 0.5;
+        let newFontSize = Math.max(containerW / (this.text.length * charWidthFactor), this.minFontSize);
+
+        // 单字 CJK 产品名（如中文“视/触/悦/嗅”）限制大小，避免撑破固定高度容器
+        if (isCJK && this.text.length === 1) {
+            newFontSize = Math.min(newFontSize, containerH * 0.85);
+        }
+
+        if (this.titleRef) {
+            this.titleRef.style.fontSize = newFontSize + 'px';
+        }
+    }
+
+    animate() {
+        this.cursor.x += (this.mouse.x - this.cursor.x) * 0.1;
+        this.cursor.y += (this.mouse.y - this.cursor.y) * 0.1;
+
+        const maxDist = this.container.offsetWidth / 2;
+
+        if (this.spans) {
+            this.spans.forEach((span) => {
+                const rect = span.getBoundingClientRect();
+                const charPos = {
+                    x: rect.left + rect.width / 2 - this.container.getBoundingClientRect().left,
+                    y: rect.top + rect.height / 2 - this.container.getBoundingClientRect().top
+                };
+
+                const d = this.dist(this.cursor, charPos);
+
+                const wdth = this.width ? Math.floor(this.getAttr(d, maxDist, 5, 200)) : 100;
+                const wght = this.weight ? Math.floor(this.getAttr(d, maxDist, 100, 900)) : 400;
+                const ital = this.italic ? this.getAttr(d, maxDist, 0, 1).toFixed(2) : 0;
+                const aph = this.alpha ? this.getAttr(d, maxDist, 0, 1).toFixed(2) : 1;
+
+                span.style.fontVariationSettings = `'wght' ${wght}, 'wdth' ${wdth}, 'ital' ${ital}`;
+                span.style.opacity = aph;
+                span.style.color = this.textColor;
+                span.style.transition = 'font-variation-settings 0.1s ease';
+            });
+        }
+
+        this.raf = requestAnimationFrame(() => this.animate());
+    }
+
+    destroy() {
+        if (this.raf) {
+            cancelAnimationFrame(this.raf);
+        }
+    }
+}
+
+// Initialize TextPressure
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('textPressureHero');
+    window.textPressureInstance = window.initProductHeroTitle(container, { text: 'Touch' });
+});
+
+// TrueFocus Animation
+let currentFocusIndex = 0;
+let focusAnimationInterval;
+let isHovering = false;
+const focusReducedMotion = window.prefersReducedMotion || false;
+
+function animateFocus() {
+    if (isHovering) return; // Don't animate if user is hovering
+
+    const focusWords = document.querySelectorAll('.true-focus .focus-word');
+    if (focusWords.length === 0) return;
+
+    focusWords.forEach((word) => {
+        word.classList.remove('active');
+    });
+
+    if (focusWords[currentFocusIndex]) {
+        focusWords[currentFocusIndex].classList.add('active');
+    }
+
+    currentFocusIndex = (currentFocusIndex + 1) % focusWords.length;
+}
+
+// Start animation. Querying the words dynamically keeps the effect working
+// after the language selector rebuilds the translated rich text.
+const focusContainer = document.querySelector('.true-focus');
+if (focusContainer && focusContainer.querySelector('.focus-word')) {
+    animateFocus();
+    if (!focusReducedMotion) {
+        focusAnimationInterval = setInterval(animateFocus, 5000);
+    }
+
+    // Pause automatic focus while a visitor examines a keyword.
+    focusContainer.addEventListener('mouseover', (event) => {
+        const word = event.target.closest('.focus-word');
+        if (word && focusContainer.contains(word)) {
+            isHovering = true;
+            clearInterval(focusAnimationInterval);
+            focusContainer.querySelectorAll('.focus-word').forEach(w => w.classList.remove('active'));
+            word.classList.add('active');
+        }
+    });
+
+    focusContainer.addEventListener('mouseout', (event) => {
+        const word = event.target.closest('.focus-word');
+        if (word && focusContainer.contains(word) && !word.contains(event.relatedTarget)) {
+            isHovering = false;
+            word.classList.remove('active');
+            setTimeout(() => {
+                if (!isHovering && !focusReducedMotion) {
+                    animateFocus();
+                    clearInterval(focusAnimationInterval);
+                    focusAnimationInterval = setInterval(animateFocus, 5000);
+                }
+            }, 3000);
+        }
+    });
+}
+
+// ========== SCROLL REVEAL ANIMATION ==========
+const scrollObserverOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
+};
+
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.dataset.delay) || 0;
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+                scrollObserver.unobserve(entry.target);
+            }, delay);
+        }
+    });
+}, scrollObserverOptions);
+
+document.querySelectorAll('.btn-scroll-reveal, .input-reveal, .card-scroll-reveal').forEach(el => {
+    scrollObserver.observe(el);
+});
+
+// ========== UNIVERSAL DROPDOWN SYSTEM ==========
+class DropdownManager {
+    constructor() {
+        this.openDropdowns = new Set();
+        this.overlay = this.createOverlay();
+        this.init();
+    }
+    createOverlay() {
+        const overlay = document.createElement('div');
+        overlay.className = 'dropdown-overlay';
+        overlay.addEventListener('click', () => this.closeAll());
+        document.body.appendChild(overlay);
+        return overlay;
+    }
+    init() {
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            const trigger = dropdown.querySelector('.dropdown-trigger');
+            if (trigger) {
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.toggle(dropdown);
+                });
+            }
+        });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) this.closeAll();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') this.closeAll();
+        });
+    }
+    open(dropdown) {
+        if (this.openDropdowns.size === 0) {
+            this.overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        dropdown.classList.add('open');
+        this.openDropdowns.add(dropdown);
+        const firstItem = dropdown.querySelector('.dropdown-item');
+        if (firstItem) setTimeout(() => firstItem.focus(), 100);
+    }
+    close(dropdown) {
+        dropdown.classList.remove('open');
+        this.openDropdowns.delete(dropdown);
+        if (this.openDropdowns.size === 0) {
+            this.overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+    toggle(dropdown) {
+        if (dropdown.classList.contains('open')) this.close(dropdown);
+        else this.open(dropdown);
+    }
+    closeAll() {
+        this.openDropdowns.forEach(d => d.classList.remove('open'));
+        this.openDropdowns.clear();
+        this.overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+class CollapseManager {
+    constructor() { this.init(); }
+    init() {
+        document.querySelectorAll('.collapse').forEach(collapse => {
+            const header = collapse.querySelector('.collapse-header');
+            if (header) header.addEventListener('click', () => this.toggle(collapse));
+        });
+    }
+    open(collapse) {
+        const body = collapse.querySelector('.collapse-body');
+        collapse.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+    }
+    close(collapse) {
+        const body = collapse.querySelector('.collapse-body');
+        body.style.maxHeight = '0';
+        collapse.classList.remove('open');
+    }
+    toggle(collapse) {
+        if (collapse.classList.contains('open')) this.close(collapse);
+        else this.open(collapse);
+    }
+}
+
+class PickerModal {
+    constructor(element) {
+        this.element = element;
+        this.overlay = document.querySelector('.dropdown-overlay') || this.createOverlay();
+        this.init();
+    }
+    createOverlay() {
+        const overlay = document.createElement('div');
+        overlay.className = 'dropdown-overlay';
+        overlay.addEventListener('click', () => this.close());
+        document.body.appendChild(overlay);
+        return overlay;
+    }
+    init() {
+        const closeBtn = this.element.querySelector('.picker-close');
+        if (closeBtn) closeBtn.addEventListener('click', () => this.close());
+        const confirmBtn = this.element.querySelector('.picker-confirm');
+        if (confirmBtn) confirmBtn.addEventListener('click', () => { this.onConfirm?.(); this.close(); });
+    }
+    open() {
+        this.overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        this.element.classList.remove('closing');
+        this.element.classList.add('open');
+    }
+    close() {
+        this.element.classList.add('closing');
+        this.element.classList.remove('open');
+        setTimeout(() => {
+            this.element.classList.remove('closing');
+            this.overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }, 250);
+    }
+    onConfirm(callback) { this.onConfirm = callback; }
+}
+
+const dropdownManager = new DropdownManager();
+const collapseManager = new CollapseManager();
+window.DropdownSystem = { dropdown: dropdownManager, collapse: collapseManager, PickerModal: PickerModal };
+</script>
+</body></html>

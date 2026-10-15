@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scent | DeepSire Ecosystem</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../image/icon.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="../image/icon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../image/icon.png"/>
+<link rel="shortcut icon" href="../image/icon.png"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2" rel="preload" as="font" type="font/woff2" crossorigin/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#e8ffee",
+                        "surface-container": "#1a1919",
+                        "secondary-dim": "#6063ed",
+                        "tertiary-container": "#a5fecb",
+                        "on-error-container": "#ffb2b9",
+                        "secondary-fixed": "#cdcdff",
+                        "inverse-on-surface": "#565554",
+                        "on-surface-variant": "#adaaaa",
+                        "primary": "#e08efe",
+                        "inverse-primary": "#893da7",
+                        "on-tertiary-fixed": "#004f31",
+                        "tertiary-dim": "#97efbd",
+                        "secondary-fixed-dim": "#bdbeff",
+                        "on-primary-fixed-variant": "#5a0179",
+                        "background": "#0e0e0e",
+                        "on-secondary": "#07007a",
+                        "primary-fixed-dim": "#ce7eec",
+                        "surface-container-high": "#201f1f",
+                        "on-background": "#ffffff",
+                        "on-surface": "#ffffff",
+                        "inverse-surface": "#fcf8f8",
+                        "on-primary": "#4f006c",
+                        "on-tertiary": "#016d46",
+                        "on-secondary-fixed-variant": "#393bc7",
+                        "error-container": "#a70138",
+                        "tertiary-fixed": "#a5fecb",
+                        "primary-fixed": "#dd8bfb",
+                        "error-dim": "#d73357",
+                        "tertiary-fixed-dim": "#97efbd",
+                        "surface-container-low": "#131313",
+                        "outline-variant": "#494847",
+                        "primary-dim": "#ce7eec",
+                        "outline": "#777575",
+                        "error": "#ff6e84",
+                        "surface-variant": "#262626",
+                        "on-secondary-fixed": "#160dac",
+                        "on-tertiary-fixed-variant": "#066f47",
+                        "surface-container-lowest": "#000000",
+                        "on-secondary-container": "#ccccff",
+                        "secondary-container": "#2e2ebd",
+                        "secondary": "#9093ff",
+                        "primary-container": "#d180ef",
+                        "surface-tint": "#e08efe",
+                        "surface": "#0e0e0e",
+                        "surface-dim": "#0e0e0e",
+                        "on-tertiary-container": "#00643f",
+                        "on-error": "#490013",
+                        "surface-container-highest": "#262626",
+                        "on-primary-fixed": "#21002f",
+                        "surface-bright": "#2c2c2c",
+                        "on-primary-container": "#3d0055"
+                    },
+                    fontFamily: {
+                        "headline": ["Lexend"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<link rel="stylesheet" href="../css/product-common.css">
+<style>
+        body { background-color: #0e0e0e; color: #ffffff; font-family: 'Inter', sans-serif; }
+        .glass-card { backdrop-filter: blur(12px); background: rgba(38, 38, 38, 0.4); }
+        .premium-gradient { background: linear-gradient(45deg, rgba(224, 142, 254, 0.15), rgba(144, 147, 255, 0.15)); }
+        .text-glow { text-shadow: 0 0 20px rgba(224, 142, 254, 0.4); }
+        
+        /* ========== BUTTON STYLES ========== */
+        @keyframes btnBreathingGlow {
+            0%, 100% { 
+                box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
+                            0 0 0 1px rgba(224, 142, 254, 0.3);
+            }
+            50% { 
+                box-shadow: inset 0 0 30px rgba(224, 142, 254, 0.35),
+                            0 0 0 1px rgba(224, 142, 254, 0.5);
+            }
+        }
+        @keyframes btnSecondaryBreathing {
+            0%, 100% { 
+                box-shadow: inset 0 0 15px rgba(224, 142, 254, 0.1),
+                            0 0 0 1px rgba(224, 142, 254, 0.2);
+            }
+            50% { 
+                box-shadow: inset 0 0 25px rgba(224, 142, 254, 0.2),
+                            0 0 0 1px rgba(224, 142, 254, 0.35);
+            }
+        }
+        .btn-primary {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e08efe 0%, #c77df3 100%);
+            color: #21002f;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
+                        0 0 0 1px rgba(224, 142, 254, 0.3);
+            white-space: nowrap;
+            animation: btnBreathingGlow 3s ease-in-out infinite;
+        }
+        
+        @media (max-width: 640px) {
+            .btn-primary, .btn-secondary {
+                padding: 0.875rem 2rem;
+                font-size: 0.875rem;
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(224, 142, 254, 0.5), 0 0 60px rgba(224, 142, 254, 0.3);
+        }
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        .btn-primary:active {
+            transform: translateY(-1px) scale(1);
+        }
+        
+        .btn-secondary {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(38, 38, 38, 0.6);
+            backdrop-filter: blur(12px);
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .btn-secondary:hover {
+            border-color: rgba(224, 142, 254, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        .btn-secondary:hover::before {
+            opacity: 1;
+        }
+        
+        /* Button Ripple Effect */
+        .btn-primary, .btn-secondary {
+            position: relative;
+            overflow: hidden;
+        }
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        .lang-selector { position: relative; }
+        .lang-btn { 
+            display: flex; align-items: center; gap: 0.5rem; 
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.1) 0%, rgba(144, 147, 255, 0.1) 100%); 
+            border: 1px solid rgba(224, 142, 254, 0.3); 
+            color: #e08efe; 
+            padding: 0.5rem 1rem; 
+            border-radius: 9999px; 
+            font-family: 'Lexend', sans-serif; 
+            font-size: 0.75rem; 
+            font-weight: 500;
+            cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 8px rgba(224, 142, 254, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        .lang-btn:hover { 
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.2) 0%, rgba(144, 147, 255, 0.2) 100%); 
+            border-color: rgba(224, 142, 254, 0.5);
+            box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+        .lang-dropdown { 
+            position: absolute; 
+            top: calc(100% + 0.75rem); 
+            right: 0; 
+            min-width: 160px; 
+            background: linear-gradient(180deg, #1a1919 0%, #131313 100%); 
+            border: 1px solid rgba(224, 142, 254, 0.2); 
+            border-radius: 1rem; 
+            padding: 0.5rem; 
+            opacity: 0; 
+            visibility: hidden; 
+            transform: translateY(-10px) scale(0.95); 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: 100;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
+            backdrop-filter: blur(20px);
+        }
+        .lang-selector.open .lang-dropdown { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateY(0) scale(1); 
+        }
+        .lang-dropdown button { 
+            display: block; 
+            width: 100%; 
+            text-align: left; 
+            padding: 0.6rem 1rem; 
+            background: none; 
+            border: none; 
+            color: #777575; 
+            font-size: 0.8125rem; 
+            font-family: 'Inter', sans-serif;
+            cursor: pointer; 
+            border-radius: 0.5rem; 
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .lang-dropdown button::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #e08efe;
+            transform: scaleY(0);
+            transition: transform 0.2s;
+        }
+        .lang-dropdown button:hover { 
+            background: rgba(224, 142, 254, 0.1); 
+            color: #ffffff;
+            padding-left: 1.25rem;
+        }
+        .lang-dropdown button:hover::before {
+            transform: scaleY(1);
+        }
+        .lang-dropdown button.active { 
+            background: linear-gradient(90deg, rgba(224, 142, 254, 0.15) 0%, transparent 100%); 
+            color: #e08efe;
+            padding-left: 1.25rem;
+        }
+        .lang-dropdown button.active::before {
+            transform: scaleY(1);
+        }
+        @font-face {
+            font-family: 'Compressa VF';
+            src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+            font-style: normal;
+            font-weight: 100 900;
+            font-display: swap;
+        }
+        .text-pressure-container {
+            position: relative;
+            width: 100%;
+            min-width: 0;
+            min-height: clamp(6rem, 14vw, 10rem);
+            display: grid;
+            place-items: center;
+            cursor: crosshair;
+        }
+        .text-pressure-title {
+            font-family: 'Compressa VF', 'Lexend', sans-serif;
+            direction: ltr;
+            unicode-bidi: isolate;
+            text-transform: uppercase;
+            font-size: clamp(3.25rem, 12vw, 10rem);
+            line-height: 0.92;
+            margin: 0;
+            text-align: center;
+            user-select: none;
+            white-space: nowrap;
+            max-width: 100%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 0.015em;
+            font-weight: 300;
+            font-variation-settings: 'wght' 300, 'wdth' 100, 'ital' 0;
+        }
+        .text-pressure-title span {
+            display: inline-block;
+            color: #ffffff;
+            cursor: crosshair;
+            transition: font-variation-settings 0.15s ease-out;
+        }
+        /* ========== UNIFIED FOOTER STYLES ========== */
+        .unified-footer {
+            background-color: #0A0A0A;
+            padding: 80px 0;
+            width: 100%;
+        }
+        .unified-footer .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+        .unified-footer .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+        }
+        .unified-footer .footer-brand-col {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .unified-footer .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(to right, #D4A5A5, #9093FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        .unified-footer .footer-logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            -webkit-text-fill-color: initial;
+        }
+        .unified-footer .footer-copyright {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            color: #888888;
+            line-height: 1.6;
+            max-width: 260px;
+        }
+        .unified-footer .footer-section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 20px;
+        }
+        .unified-footer .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .unified-footer .footer-link {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            color: #AAAAAA;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+        .unified-footer .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #E08EFE, #9093FF);
+            transition: width 0.3s ease;
+        }
+        .unified-footer .footer-link:hover {
+            color: #E08EFE;
+        }
+        .unified-footer .footer-link:hover::after {
+            width: 100%;
+        }
+        .unified-footer .footer-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            background: transparent;
+            border: 1px solid #E08EFE;
+            border-radius: 9999px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #E08EFE;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 24px;
+        }
+        .unified-footer .footer-btn:hover {
+            background: linear-gradient(135deg, #E08EFE, #C77DF3);
+            color: #FFFFFF;
+            box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
+        }
+        .unified-footer .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+        .unified-footer .footer-social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #AAAAAA;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .unified-footer .footer-social-icon:hover {
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
+            border-color: #E08EFE;
+            color: #E08EFE;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3);
+        }
+        .unified-footer .footer-social-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* ========== MOBILE OPTIMIZATION ========== */
+        @media (max-width: 768px) {
+            .unified-footer {
+                padding: 40px 0;
+            }
+            .unified-footer .footer-container {
+                padding: 0 20px;
+            }
+            .unified-footer .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .unified-footer .footer-brand-col {
+                gap: 16px;
+            }
+            .unified-footer .footer-logo {
+                font-size: 20px;
+                gap: 8px;
+            }
+            .unified-footer .footer-logo img {
+                width: 32px;
+                height: 32px;
+            }
+            .unified-footer .footer-copyright {
+                font-size: 11px;
+                max-width: 100%;
+                line-height: 1.5;
+            }
+            .unified-footer .footer-section-title {
+                font-size: 11px;
+                margin-bottom: 16px;
+            }
+            .unified-footer .footer-links {
+                gap: 12px;
+            }
+            .unified-footer .footer-link {
+                font-size: 11px;
+                white-space: normal;
+                word-wrap: break-word;
+            }
+            .unified-footer .footer-btn {
+                padding: 14px 28px;
+                font-size: 12px;
+                width: 100%;
+                max-width: none;
+                font-weight: 700;
+                letter-spacing: 0.15em;
+                background: linear-gradient(135deg, #E08EFE, #C77DF3);
+                color: #FFFFFF;
+                box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
+            }
+            .unified-footer .footer-btn:hover {
+                background: linear-gradient(135deg, #f0aeff, #d79df8);
+                box-shadow: 0 12px 32px rgba(224, 142, 254, 0.6);
+                transform: translateY(-2px);
+            }
+            .unified-footer .footer-social {
+                gap: 8px;
+            }
+            .unified-footer .footer-social-icon {
+                width: 36px;
+                height: 36px;
+            }
+            .unified-footer .footer-social-icon svg {
+                width: 14px;
+                height: 14px;
+            }
+            /* Mobile: Vertical layout as per design */
+            .unified-footer .footer-brand-col {
+                order: 1;
+            }
+            .unified-footer .footer-nav-col:nth-child(3) {
+                order: 2;
+            }
+            .unified-footer .footer-nav-col:nth-child(2) {
+                order: 3;
+            }
+            .unified-footer .footer-nav-col:nth-child(4) {
+                order: 4;
+            }
+        }
+        
+        /* ========== UNIVERSAL DROPDOWN SYSTEM - Apple Style ========== */
+        :root {
+            /* 弹簧动画 - Apple 风格 overshoot */
+            --spring-fast: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --spring-medium: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-trigger {
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .dropdown-trigger:hover {
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.15), rgba(144, 147, 255, 0.15));
+            box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2);
+        }
+        .dropdown.open .dropdown-trigger {
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.25), rgba(144, 147, 255, 0.25));
+            box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3);
+            transform: translateY(-1px);
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 0.75rem);
+            left: 0;
+            min-width: 200px;
+            background: linear-gradient(180deg, #1a1919 0%, #131313 100%);
+            border: 1px solid rgba(224, 142, 254, 0.2);
+            border-radius: 1rem;
+            padding: 0.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
+            backdrop-filter: blur(20px);
+            /* Apple 风格入场 - 从下方弹性滑入 */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px) scale(0.96);
+            transform-origin: top center;
+            transition: 
+                opacity 0.2s var(--spring-medium),
+                visibility 0.2s var(--spring-medium),
+                transform 0.35s var(--spring-fast);
+        }
+        .dropdown-menu.dropdown-right {
+            left: auto;
+            right: 0;
+        }
+        .dropdown.open .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        .dropdown:not(.open) .dropdown-menu {
+            transition: 
+                opacity 0.15s ease-out,
+                visibility 0.15s ease-out,
+                transform 0.2s var(--ease-in-back);
+        }
+        /* 下拉菜单内元素入场动画 */
+        .dropdown.open .dropdown-item {
+            animation: dropdownItemEnter 0.3s var(--spring-medium) forwards;
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        .dropdown.open .dropdown-item:nth-child(1) { animation-delay: 0.02s; }
+        .dropdown.open .dropdown-item:nth-child(2) { animation-delay: 0.04s; }
+        .dropdown.open .dropdown-item:nth-child(3) { animation-delay: 0.06s; }
+        .dropdown.open .dropdown-item:nth-child(4) { animation-delay: 0.08s; }
+        .dropdown.open .dropdown-item:nth-child(5) { animation-delay: 0.1s; }
+        @keyframes dropdownItemEnter {
+            0% { opacity: 0; transform: translateY(8px); }
+            60% { opacity: 1; transform: translateY(-2px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background: none;
+            border: none;
+            color: #AAAAAA;
+            font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .dropdown-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(180deg, #E08EFE, #9093FF);
+            transform: scaleY(0);
+            transition: transform 0.2s ease;
+            border-radius: 0 2px 2px 0;
+        }
+        .dropdown-item:hover {
+            background: rgba(224, 142, 254, 0.1);
+            color: #FFFFFF;
+            padding-left: 1.25rem;
+        }
+        .dropdown-item:hover::before {
+            transform: scaleY(1);
+        }
+        .dropdown-item:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(224, 142, 254, 0.5);
+        }
+        .dropdown-item.active {
+            background: linear-gradient(90deg, rgba(224, 142, 254, 0.15), transparent);
+            color: #E08EFE;
+        }
+        .dropdown-item.active::before {
+            transform: scaleY(1);
+        }
+        .collapse {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            background: rgba(26, 25, 25, 0.5);
+            transition: all 0.3s ease;
+        }
+        .collapse:hover {
+            border-color: rgba(224, 142, 254, 0.2);
+        }
+        .collapse-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 100%;
+            color: #FFFFFF;
+            font-size: 1rem;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+        }
+        .collapse-header:hover {
+            background: rgba(224, 142, 254, 0.05);
+        }
+        .collapse-header .icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+        .collapse.open .collapse-header .icon {
+            transform: rotate(180deg);
+        }
+        .collapse-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), padding 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        .collapse.open .collapse-body {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .collapse-content {
+            padding: 0 1.5rem 1.5rem;
+            color: #AAAAAA;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .dropdown-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            cursor: pointer;
+        }
+        .dropdown-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .picker-modal {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(180deg, #1a1919 0%, #0e0e0e 100%);
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            padding: 1.5rem;
+            z-index: 101;
+            transform: translateY(100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.25s ease, visibility 0.25s ease;
+        }
+        .picker-modal.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        .picker-modal.closing {
+            transition: transform 0.25s ease-in, opacity 0.2s ease-in, visibility 0.2s ease-in;
+        }
+        .picker-handle {
+            width: 40px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin: 0 auto 1rem;
+        }
+        .picker-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .picker-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+        .picker-action {
+            background: none;
+            border: none;
+            color: #E08EFE;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        .picker-action:hover {
+            background: rgba(224, 142, 254, 0.1);
+        }
+        .focus-ring {
+            position: relative;
+        }
+        .focus-ring::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: inherit;
+            background: transparent;
+            box-shadow: 0 0 0 0 rgba(224, 142, 254, 0);
+            transition: box-shadow 0.2s ease;
+            pointer-events: none;
+        }
+        .focus-ring:focus-within::after {
+            box-shadow: 0 0 0 3px rgba(224, 142, 254, 0.3);
+        }
+        
+        /* ========== SCROLL REVEAL ANIMATIONS ========== */
+        /* Button Scroll Reveal */
+        .btn-scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .btn-scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        .btn-scroll-reveal.delay-100 { transition-delay: 0.1s; }
+        .btn-scroll-reveal.delay-200 { transition-delay: 0.2s; }
+        .btn-scroll-reveal.delay-300 { transition-delay: 0.3s; }
+        .btn-scroll-reveal.delay-400 { transition-delay: 0.4s; }
+        .btn-scroll-reveal.delay-500 { transition-delay: 0.5s; }
+        
+        /* Input/Card Scroll Reveal */
+        .input-reveal,
+        .card-scroll-reveal {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .input-reveal.visible,
+        .card-scroll-reveal.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .input-reveal.delay-100,
+        .card-scroll-reveal.delay-100 { transition-delay: 0.1s; }
+        .input-reveal.delay-200,
+        .card-scroll-reveal.delay-200 { transition-delay: 0.2s; }
+        .input-reveal.delay-300,
+        .card-scroll-reveal.delay-300 { transition-delay: 0.3s; }
+        
+        /* Input Field Enhanced */
+        .input-field {
+            position: relative;
+            background: rgba(26, 25, 25, 0.8);
+            border: 1px solid rgba(119, 117, 117, 0.3);
+            border-radius: 0.75rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .input-field:focus {
+            background: rgba(26, 25, 25, 0.95);
+            border-color: #e08efe;
+            box-shadow: 
+                0 0 0 2px rgba(224, 142, 254, 0.1),
+                0 0 20px rgba(224, 142, 254, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Floating Label */
+        .input-label {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            color: #adaaaa;
+            font-size: 0.875rem;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: left top;
+        }
+        
+        .input-field:focus + .input-label,
+        .input-field:not(:placeholder-shown) + .input-label {
+            transform: scale(0.75) translateY(-1.5rem);
+            color: #e08efe;
+            font-weight: 600;
+        }
+        
+        /* Bottom Border Animation */
+        .input-field::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #e08efe, #9093ff);
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0 2px 2px 0;
+        }
+        
+        .input-field:focus::after {
+            width: 100%;
+        }
+        
+        /* Performance Optimization */
+        .btn-scroll-reveal,
+        .input-reveal,
+        .card-scroll-reveal {
+            will-change: transform, opacity;
+        }
+        
+        .btn-scroll-reveal.visible,
+        .input-reveal.visible,
+        .card-scroll-reveal.visible {
+            will-change: auto;
+        }
+        
+        /* Mobile Optimization */
+        @media (max-width: 640px) {
+            .btn-scroll-reveal {
+                transform: translateY(30px);
+            }
+            .input-reveal,
+            .card-scroll-reveal {
+                transform: translateY(20px);
+            }
+        }
+        
+        
+    </style>
+</head>
+<body class="selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_0_40px_rgba(224,142,254,0.1)]">
+<nav class="flex justify-between items-center px-8 py-4 w-full">
+<a href="../index.html" class="nav-brand" style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Lexend', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; background: linear-gradient(to right, #D4A5A5, #9093ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none;">
+    <img src="../image/icon.png" alt="DeepSire Logo" style="height: 32px; width: auto; border-radius: 8px;">
+    <span>DeepSire</span>
+</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../sight/code.html" data-translate-key="nav_sight">Sight</a>
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../touch/code.html" data-translate-key="nav_touch">Touch</a>
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../pleasure/code.html" data-translate-key="nav_pleasure">Pleasure</a>
+<a class="text-[#e08efe] border-b-2 border-[#e08efe] pb-1 font-headline text-sm tracking-tight" href="../scent/code.html" data-translate-key="nav_scent">Scent</a>
+</div>
+<div class="flex items-center">
+<div class="lang-selector" id="langSelector">
+<button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="langDropdown">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400;">language</span>
+<span id="langCurrent">EN</span>
+<span class="material-symbols-outlined text-sm opacity-60" style="font-variation-settings: 'wght' 300;" data-icon="expand_more">expand_more</span>
+</button>
+<div class="lang-dropdown" id="langDropdown" role="listbox" aria-labelledby="langBtn">
+<button data-lang="en" class="active" role="option" aria-selected="true">English</button>
+<button data-lang="zh" role="option" aria-selected="false">中文</button>
+<button data-lang="ja" role="option" aria-selected="false">日本語</button>
+<button data-lang="ko" role="option" aria-selected="false">한국어</button>
+<button data-lang="fr" role="option" aria-selected="false">Français</button>
+<button data-lang="de" role="option" aria-selected="false">Deutsch</button>
+<button data-lang="es" role="option" aria-selected="false">Español</button>
+<button data-lang="pt" role="option" aria-selected="false">Português</button>
+<button data-lang="ru" role="option" aria-selected="false">Русский</button>
+<button data-lang="ar" role="option" aria-selected="false">العربية</button>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-16 w-full overflow-x-hidden">
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" alt="Minimalist luxury essential oil diffuser emitting a soft holographic mist in a dark, atmospheric futuristic room with violet ambient lighting" src="image/main1.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 text-center px-6 w-full max-w-4xl mx-auto">
+<span class="text-primary font-label text-[0.6875rem] uppercase tracking-[0.3em] mb-6 block" data-translate-key="hero_label">Explore The Ecosystem</span>
+<div class="text-pressure-container" id="textPressureHero" data-text="Scent" translate="no">
+<h1 class="text-pressure-title text-on-background drop-shadow-2xl">
+                        Scent
+                    </h1>
+</div>
+<p class="font-headline text-xl md:text-2xl text-primary-dim tracking-wide opacity-90 mt-4 text-balance" data-translate-key="hero_subtitle">Your Sixth Sense for the Digital Realm.</p>
+<div class="mt-10 md:mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+<a href="https://www.bestfunx.com/collections/scent-soul" class="btn-primary btn-scroll-reveal" data-delay="100" data-translate-key="hero_cta_primary">Begin Synthesis</a>
+<a href="#tech" class="btn-secondary btn-scroll-reveal" data-delay="200" data-translate-key="hero_cta_secondary">Technical Specs</a>
+</div>
+</div>
+</section>
+<!-- Visual Ethos: product-linked video showcase -->
+<section class="py-24 px-8" id="visual-ethos">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="flex flex-col justify-center max-w-xl">
+<h2 class="font-headline text-5xl font-bold leading-tight mb-8" data-translate-key="visual_ethos_title">Our Visual Ethos</h2>
+<p class="text-outline leading-relaxed text-xl" data-translate-key="visual_ethos_desc">Scent turns digital moments into atmosphere. Synced with Sight, Touch, and Pleasure, it releases a matching scent profile so memories, moods, and companion interactions can linger beyond the screen.</p>
+</div>
+<div class="relative w-full rounded-3xl overflow-hidden bg-surface-container shadow-2xl">
+<video class="w-full aspect-video object-cover block" muted loop controls playsinline preload="none" poster="../video/optimized/scent-poster.webp" aria-label="Scent ecosystem interaction video" data-product-video data-autoplay="true" data-hls="../video/hls/scent/master.m3u8" data-fallback="../video/optimized/scent-720p.mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+</div>
+</section>
+<!-- The Matrix: Model Lineup -->
+<section id="matrix" class="py-24 bg-surface-container-low px-8">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16">
+<h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-2" data-translate-key="matrix_title">The Hardware <span class="text-secondary">Matrix</span></h2>
+<p class="text-outline" data-translate-key="matrix_desc">Engineered for every layer of your existence.</p>
+</div>
+<div class="space-y-12">
+<!-- Voyager -->
+<div class="flex flex-col md:flex-row bg-surface-container rounded-3xl overflow-hidden group border border-outline-variant/10">
+<div class="md:w-1/2 aspect-[6/5] overflow-hidden">
+<img class="w-full h-full object-cover object-bottom origin-bottom group-hover:scale-105 transition-transform duration-700" alt="Sleek metallic compact car diffuser" src="image/Voyager.jpg"/>
+</div>
+<div class="md:w-1/2 p-12 flex flex-col justify-center">
+<span class="text-[0.6875rem] text-secondary font-bold tracking-[0.2em] mb-2 uppercase" data-translate-key="voyager_tier">Mobile Tier</span>
+<h3 class="text-4xl font-headline font-bold mb-4" data-translate-key="voyager_title">Voyager</h3>
+<p class="text-outline mb-8 leading-relaxed text-lg" data-translate-key="voyager_desc">Continuous focus and road-fatigue mitigation through sharp ozone and citrus synthesis. Designed for the transit of the modern soul.</p>
+<div class="flex gap-4">
+<span class="px-4 py-1 border border-outline-variant/30 rounded-full text-xs font-label uppercase tracking-widest text-outline" data-translate-key="voyager_feat1">Car Compact</span>
+<span class="px-4 py-1 border border-outline-variant/30 rounded-full text-xs font-label uppercase tracking-widest text-outline" data-translate-key="voyager_feat2">Ion-Filtering</span>
+</div>
+</div>
+</div>
+<!-- Essence -->
+<div class="flex flex-col md:flex-row-reverse bg-surface-container rounded-3xl overflow-hidden group border border-outline-variant/10">
+<div class="md:w-1/2 aspect-[6/5] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Matte black minimalist desk diffuser" src="image/Essence.jpg"/>
+</div>
+<div class="md:w-1/2 p-12 flex flex-col justify-center">
+<span class="text-[0.6875rem] text-primary font-bold tracking-[0.2em] mb-2 uppercase" data-translate-key="essence_tier">Workspace Tier</span>
+<h3 class="text-4xl font-headline font-bold mb-4" data-translate-key="essence_title">Essence</h3>
+<p class="text-outline mb-8 leading-relaxed text-lg" data-translate-key="essence_desc">Precision diffusion for focused deep-work blocks. Features silent ultrasonic technology to maintain your cognitive flow state.</p>
+<div class="flex gap-4">
+<span class="px-4 py-1 border border-outline-variant/30 rounded-full text-xs font-label uppercase tracking-widest text-outline" data-translate-key="essence_feat1">Desktop</span>
+<span class="px-4 py-1 border border-outline-variant/30 rounded-full text-xs font-label uppercase tracking-widest text-outline" data-translate-key="essence_feat2">USB-C Power</span>
+</div>
+</div>
+</div>
+<!-- Aura Sync -->
+<div class="flex flex-col md:flex-row bg-surface-container rounded-3xl overflow-hidden group border border-primary/20 shadow-[0_0_50px_rgba(224,142,254,0.1)]">
+<div class="md:w-1/2 aspect-[6/5] overflow-hidden relative">
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Flagship scent diffuser" src="image/Aura Sync.jpg"/>
+</div>
+<div class="md:w-1/2 p-12 flex flex-col justify-center">
+<span class="text-[0.6875rem] text-primary font-black tracking-[0.3em] mb-2 uppercase" data-translate-key="aura_tier">Flagship Synthesis</span>
+<h3 class="text-4xl md:text-5xl font-headline font-black mb-4" data-translate-key="aura_title">Aura Sync</h3>
+<p class="text-outline mb-8 leading-relaxed text-lg" data-translate-key="aura_desc">The ultimate companion interface. Seamlessly integrates rhythmic misting, dynamic LED lighting, and spatial audio to create a complete sensory environment.</p>
+<button class="w-fit bg-primary text-on-primary px-8 py-3 rounded-full font-bold text-sm uppercase tracking-widest hover:brightness-110 transition-all" data-translate-key="preorder_btn">Pre-Order Now</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience: The Scent Library -->
+<section class="py-32 px-8">
+<div class="max-w-7xl mx-auto text-center mb-16">
+<h2 class="text-5xl md:text-6xl font-headline font-bold tracking-tight mb-4" data-translate-key="library_title">The Scent <span class="text-primary italic">Library</span></h2>
+<p class="text-outline max-w-2xl mx-auto text-lg" data-translate-key="library_desc">Emotive cartridges designed by neural-olfactory specialists to evoke precise physiological responses.</p>
+</div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="glass-card p-8 rounded-3xl border border-outline-variant/20 hover:border-primary/40 transition-all group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-6 group-hover:bg-secondary/40 transition-colors">
+<span class="material-symbols-outlined text-secondary" data-icon="memory">memory</span>
+</div>
+<h4 class="text-xl font-headline font-bold mb-2" data-translate-key="scent_card1_title">Memory Corridor</h4>
+<p class="text-sm text-outline mb-4" data-translate-key="scent_card1_desc">A nostalgic blend of rain-wet stone and old paper. Ideal for deep reflection.</p>
+<span class="text-[10px] font-label text-secondary font-bold uppercase tracking-widest" data-translate-key="scent_card1_tag">Cognitive Recall</span>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-8 rounded-3xl border border-outline-variant/20 hover:border-primary/40 transition-all group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary/40 transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="spa">spa</span>
+</div>
+<h4 class="text-xl font-headline font-bold mb-2" data-translate-key="scent_card2_title">Zen Field</h4>
+<p class="text-sm text-outline mb-4" data-translate-key="scent_card2_desc">Minimalist green tea and bamboo. Designed to lower cortisol during intense work.</p>
+<span class="text-[10px] font-label text-primary font-bold uppercase tracking-widest" data-translate-key="scent_card2_tag">Biological Calm</span>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-8 rounded-3xl border border-outline-variant/20 hover:border-primary/40 transition-all group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6 group-hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-white" data-icon="bolt">bolt</span>
+</div>
+<h4 class="text-xl font-headline font-bold mb-2" data-translate-key="scent_card3_title">Digital Pulse</h4>
+<p class="text-sm text-outline mb-4" data-translate-key="scent_card3_desc">Sharp electric musk and cold eucalyptus. Instant focus for high-stakes gaming.</p>
+<span class="text-[10px] font-label text-outline font-bold uppercase tracking-widest" data-translate-key="scent_card3_tag">Adrenaline Sync</span>
+</div>
+<!-- Card 4 -->
+<div class="glass-card p-8 rounded-3xl border border-outline-variant/20 hover:border-primary/40 transition-all group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-error/20 flex items-center justify-center mb-6 group-hover:bg-error/40 transition-colors">
+<span class="material-symbols-outlined text-error-dim" data-icon="favorite">favorite</span>
+</div>
+<h4 class="text-xl font-headline font-bold mb-2" data-translate-key="scent_card4_title">Organic Heart</h4>
+<p class="text-sm text-outline mb-4" data-translate-key="scent_card4_desc">Warm amber and subtle skin-musk. The scent of a digital companion's presence.</p>
+<span class="text-[10px] font-label text-error-dim font-bold uppercase tracking-widest" data-translate-key="scent_card4_tag">Intimacy Link</span>
+</div>
+</div>
+</section>
+<!-- Philosophy Section -->
+<section class="py-32 px-8 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-8 leading-tight" data-translate-key="philosophy_title">Atmospheric <br/><span class="text-primary">Intelligence</span></h2>
+<p class="text-lg text-outline leading-relaxed mb-8 max-w-xl" data-translate-key="philosophy_desc">We believe memory and emotion are anchored by scent. Scent maps your digital interactions—from high-intensity gaming to deep neural meditation—and synthesizes a shared biological atmosphere.</p>
+<div class="space-y-6">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg" data-icon="architecture">architecture</span>
+<div>
+<h4 class="font-headline font-semibold" data-translate-key="scent_mapping_title">Scent Mapping</h4>
+<p class="text-sm text-outline" data-translate-key="scent_mapping_desc">Real-time biological feedback drives olfactory profile shifts.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-secondary p-2 bg-secondary/10 rounded-lg" data-icon="cloud_sync">cloud_sync</span>
+<div>
+<h4 class="font-headline font-semibold" data-translate-key="shared_atmosphere_title">Shared Atmosphere</h4>
+<p class="text-sm text-outline" data-translate-key="shared_atmosphere_desc">Sync scents with companions across the global synthesis network.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square rounded-[2rem] bg-surface-container overflow-hidden border border-outline-variant/10">
+<img src="image/Atmospheric Intelligence.jpg" alt="Atmospheric Intelligence" class="w-full h-full object-cover"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Foundation -->
+<section id="tech" class="py-32 bg-surface-container-highest/30 px-8 border-y border-outline-variant/10">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
+<div class="lg:w-1/3">
+<h2 class="text-4xl font-headline font-bold mb-8" data-translate-key="tech_title">Technical <br/><span class="text-primary">Foundation</span></h2>
+<ul class="space-y-5">
+<li class="flex items-center gap-4 text-outline text-lg">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span data-translate-key="tech_feature1">High-Frequency Ultrasonic Diffusion</span>
+</li>
+<li class="flex items-center gap-4 text-outline text-lg">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span data-translate-key="tech_feature2">DeepSire Intelligence Integration</span>
+</li>
+<li class="flex items-center gap-4 text-outline text-lg">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span data-translate-key="tech_feature3">500ml Reservoir for 12hr Continuous Use</span>
+</li>
+<li class="flex items-center gap-4 text-outline text-lg">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span data-translate-key="tech_feature4">Zero-Heat Cold Mist Protection</span>
+</li>
+</ul>
+</div>
+<div class="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="text-center p-10 bg-surface-container rounded-3xl border border-outline-variant/5">
+<div class="text-5xl font-headline font-black text-primary mb-3">500</div>
+<div class="text-xs font-label text-outline uppercase tracking-[0.2em]" data-translate-key="tech_stat1">ML Volume</div>
+</div>
+<div class="text-center p-10 bg-surface-container rounded-3xl border border-outline-variant/5">
+<div class="text-5xl font-headline font-black text-secondary mb-3">24/7</div>
+<div class="text-xs font-label text-outline uppercase tracking-[0.2em]" data-translate-key="tech_stat2">App Sync</div>
+</div>
+<div class="text-center p-10 bg-surface-container rounded-3xl border border-outline-variant/5">
+<div class="text-5xl font-headline font-black text-white mb-3">0</div>
+<div class="text-xs font-label text-outline uppercase tracking-[0.2em]" data-translate-key="tech_stat3">Decibel Tech</div>
+</div>
+<div class="text-center p-10 bg-surface-container rounded-3xl border border-outline-variant/5">
+<div class="text-5xl font-headline font-black text-primary-dim mb-3">128</div>
+<div class="text-xs font-label text-outline uppercase tracking-[0.2em]" data-translate-key="tech_stat4">Scent Maps</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Footer -->
+<section class="py-40 px-8 text-center max-w-4xl mx-auto">
+<h2 class="text-6xl md:text-7xl font-headline font-black mb-10 leading-tight" data-translate-key="cta_title">Begin Your <br/><span class="text-primary italic">Synthesis</span> Today.</h2>
+<p class="text-outline text-xl mb-14 leading-relaxed" data-translate-key="cta_desc">The digital realm shouldn't just be seen and heard. It should be felt in the air you breathe.</p>
+</section>
+
+<!-- Unified Footer -->
+<footer class="unified-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="../index.html" class="footer-logo">
+          <img src="../image/icon.png" alt="DeepSire">
+          <span>DeepSire</span>
+        </a>
+        <p class="footer-copyright" data-translate-key="footer_copyright">© 2024 DeepSire. The Ethereal Pulse Synthesis. All digital entities are protected under Neural Terms.</p>
+      </div>
+      
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_ecosystem">Ecosystem</h4>
+        <div class="footer-links">
+          <a href="../sight/code.html" class="footer-link" data-translate-key="footer_sight">Sight</a>
+          <a href="../touch/code.html" class="footer-link" data-translate-key="footer_touch">Touch</a>
+          <a href="../pleasure/code.html" class="footer-link" data-translate-key="footer_pleasure">Pleasure</a>
+          <a href="../scent/code.html" class="footer-link" data-translate-key="footer_scent">Scent</a>
+        </div>
+      </div>
+      
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_protocols">Protocols</h4>
+        <div class="footer-links">
+          <a href="#" class="footer-link" data-translate-key="footer_privacy">Privacy Protocol</a>
+          <a href="#" class="footer-link" data-translate-key="footer_terms">Neural Terms</a>
+          <a href="#" class="footer-link" data-translate-key="footer_status">System Status</a>
+          <a href="#" class="footer-link" data-translate-key="footer_support">Contact Support</a>
+        </div>
+      </div>
+      
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_connect">Connect</h4>
+        <a href="https://www.bestfunx.com/collections/ad" class="footer-btn" data-translate-key="footer_cta_button">Support Interface</a>
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" title="Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" title="Discord">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+
+<script src="../js/product-common.js?v=20260814"></script>
+<script src="../js/product-video.js?v=20260814"></script>
+<script>
+const translations = {
+    en: {
+        nav_sight: "Sight", nav_touch: "Touch", nav_pleasure: "Pleasure", nav_scent: "Scent", nav_connect: "Connect",
+        hero_label: "Explore The Ecosystem", hero_title: "Scent", hero_subtitle: "Your Sixth Sense for the Digital Realm.",
+        hero_cta_primary: "Begin Synthesis", hero_cta_secondary: "Technical Specs",
+        scroll_indicator: "Descend",
+        philosophy_title: "Atmospheric Intelligence", philosophy_desc: "We believe memory and emotion are anchored by scent. Scent maps your digital interactions and synthesizes a shared biological atmosphere.",
+        scent_mapping_title: "Scent Mapping", scent_mapping_desc: "Real-time biological feedback drives olfactory profile shifts.",
+        shared_atmosphere_title: "Shared Atmosphere", shared_atmosphere_desc: "Sync scents with companions across the global synthesis network.",
+        matrix_title: "The Hardware Matrix", matrix_desc: "Engineered for every layer of your existence.",
+        voyager_tier: "Mobile Tier", voyager_title: "Voyager", voyager_desc: "Continuous focus and road-fatigue mitigation through sharp ozone and citrus synthesis. Designed for the transit of the modern soul.", voyager_feat1: "Car Compact", voyager_feat2: "Ion-Filtering",
+        essence_tier: "Workspace Tier", essence_title: "Essence", essence_desc: "Precision diffusion for focused deep-work blocks. Features silent ultrasonic technology to maintain your cognitive flow state.", essence_feat1: "Desktop", essence_feat2: "USB-C Power",
+        aura_tier: "Flagship Synthesis", aura_title: "Aura Sync", aura_desc: "The ultimate companion interface. Seamlessly integrates rhythmic misting, dynamic LED lighting, and spatial audio to create a complete sensory environment.", preorder_btn: "Pre-Order Now",
+        library_title: "The Scent Library", library_desc: "Emotive cartridges designed by neural-olfactory specialists to evoke precise physiological responses.",
+        scent_card1_title: "Memory Corridor", scent_card1_desc: "A nostalgic blend of rain-wet stone and old paper. Ideal for deep reflection.", scent_card1_tag: "Cognitive Recall",
+        scent_card2_title: "Zen Field", scent_card2_desc: "Minimalist green tea and bamboo. Designed to lower cortisol during intense work.", scent_card2_tag: "Biological Calm",
+        scent_card3_title: "Digital Pulse", scent_card3_desc: "Sharp electric musk and cold eucalyptus. Instant focus for high-stakes gaming.", scent_card3_tag: "Adrenaline Sync",
+        scent_card4_title: "Organic Heart", scent_card4_desc: "Warm amber and subtle skin-musk. The scent of a digital companion's presence.", scent_card4_tag: "Intimacy Link",
+        tech_title: "Technical Foundation", tech_feature1: "High-Frequency Ultrasonic Diffusion", tech_feature2: "DeepSire Intelligence Integration", tech_feature3: "500ml Reservoir for 12hr Continuous Use", tech_feature4: "Zero-Heat Cold Mist Protection",
+        tech_stat1: "ML Volume", tech_stat2: "App Sync", tech_stat3: "Decibel Tech", tech_stat4: "Scent Maps",
+        cta_title: "Begin Your Synthesis Today.", cta_desc: "The digital realm shouldn't just be seen and heard. It should be felt in the air you breathe.", cta_configure: "Configure Your Scent",
+        footer_copyright: "© 2024 DeepSire. The Ethereal Pulse Synthesis. All Rights Reserved by the Neural Collective.",
+        footer_protocols: "Protocols", footer_privacy: "Privacy Protocol", footer_terms: "Neural Terms", footer_status: "System Status",
+        footer_support: "Support", footer_contact: "Contact Support", footer_faq: "FAQ Interface",
+        mobile_ecosystem: "Ecosystem",
+        footer_ecosystem: "Ecosystem", footer_sight: "Sight", footer_touch: "Touch", footer_pleasure: "Pleasure", footer_scent: "Scent",
+        footer_connect: "Connect", footer_cta_button: "Explore Ecosystem"
+    },
+    zh: {
+        nav_sight: "视", nav_touch: "触", nav_pleasure: "悦", nav_scent: "嗅", nav_connect: "连接",
+        hero_label: "探索灵魂生态系统", hero_title: "嗅", hero_subtitle: "数字领域的第六感",
+        hero_cta_primary: "开始合成", hero_cta_secondary: "技术规格",
+        scroll_indicator: "向下滚动",
+        philosophy_title: "大气智能", philosophy_desc: "我们相信记忆和情感由气味锚定。嗅将你的数字互动映射并合成为共享的生物氛围。",
+        scent_mapping_title: "气味映射", scent_mapping_desc: "实时生物反馈驱动嗅觉特征变化。",
+        shared_atmosphere_title: "共享氛围", shared_atmosphere_desc: "通过全球合成网络与同伴同步气味。",
+        matrix_title: "硬件矩阵", matrix_desc: "为你存在的每一层精心打造。",
+        voyager_tier: "移动版", voyager_title: "Voyager", voyager_desc: "通过清新的臭氧和柑橘合成实现持续专注和缓解道路疲劳。为现代灵魂的出行而设计。", voyager_feat1: "车载紧凑", voyager_feat2: "离子过滤",
+        essence_tier: "工作空间版", essence_title: "Essence", essence_desc: "专为深度工作设计的精准扩散。配备静音超声波技术，维持你的认知流畅状态。", essence_feat1: "桌面", essence_feat2: "USB-C供电",
+        aura_tier: "旗舰合成", aura_title: "Aura Sync", aura_desc: "终极伴侣界面。无缝集成节奏喷雾、动态LED照明和空间音频，创造完整的感官环境。", preorder_btn: "立即预订",
+        library_title: "气味库", library_desc: "由神经嗅觉专家设计的情感胶囊，精确引发生理反应。",
+        scent_card1_title: "记忆走廊", scent_card1_desc: "雨后湿石与旧纸的怀旧混合。适合深度反思。", scent_card1_tag: "认知回忆",
+        scent_card2_title: "禅意领域", scent_card2_desc: "极简主义的绿茶和竹子。旨在降低高强度工作中的皮质醇。", scent_card2_tag: "生物平静",
+        scent_card3_title: "数字脉冲", scent_card3_desc: "锐利的电子麝香和冰冷的桉树。为高风险游戏提供即时专注。", scent_card3_tag: "肾上腺素同步",
+        scent_card4_title: "有机之心", scent_card4_desc: "温暖的琥珀和微妙的皮肤麝香。数字伴侣存在的气息。", scent_card4_tag: "亲密链接",
+        tech_title: "技术基础", tech_feature1: "高频超声波扩散", tech_feature2: "DeepSire智能集成", tech_feature3: "500ml水箱持续使用12小时", tech_feature4: "零热量冷雾保护",
+        tech_stat1: "毫升容量", tech_stat2: "应用同步", tech_stat3: "分贝技术", tech_stat4: "气味图谱",
+        cta_title: "开始你的合成之旅", cta_desc: "数字领域不应只是被看见和听见。它应该在你呼吸的空气中被感受。", cta_configure: "配置你的嗅",
+        footer_copyright: "© 2024 DeepSire. 空灵脉冲合成。神经集体保留所有权利。",
+        footer_protocols: "协议", footer_privacy: "隐私协议", footer_terms: "神经条款", footer_status: "系统状态",
+        footer_support: "支持", footer_contact: "联系支持", footer_faq: "常见问题",
+        mobile_ecosystem: "生态系统",
+        footer_ecosystem: "生态系统", footer_sight: "视", footer_touch: "触", footer_pleasure: "悦", footer_scent: "嗅",
+        footer_connect: "连接", footer_cta_button: "探索生态系统"
+    },
+    ja: {
+        nav_sight: "サイト", nav_touch: "タッチ", nav_pleasure: "プレジャー", nav_scent: "セント", nav_connect: "接続",
+        hero_label: "魂のエコシステムを探る", hero_title: "セント", hero_subtitle: "デジタル領域の第六感",
+        hero_cta_primary: "合成を始める", hero_cta_secondary: "技術仕様",
+        scroll_indicator: "スクロール",
+        philosophy_title: "大気インテリジェンス", philosophy_desc: "記憶と感情は香りに基づいています。セントはあなたのデジタルインタラクションをマッピングし、共有された生物的環境を合成します。",
+        scent_mapping_title: "香りのマッピング", scent_mapping_desc: "リアルタイムの生物学的フィードバックが嗅覚プロファイルの変化を駆動します。",
+        shared_atmosphere_title: "共有雰囲気", shared_atmosphere_desc: "グローバル合成ネットワークでコンパニオンと香りを同期。",
+        matrix_title: "ハードウェアマトリックス", matrix_desc: "あなたの存在のすべての層のために設計。",
+        voyager_tier: "モバイルtier", voyager_title: "Voyager", voyager_desc: "爽やかなオゾンとシトラスの合成による継続的な集中と道路疲労の軽減。現代の魂の移動のために設計。", voyager_feat1: "車載コンパクト", voyager_feat2: "イオンフィルター",
+        essence_tier: "ワークスペースtier", essence_title: "Essence", essence_desc: "集中したディープワークブロックのための精密拡散。認知フロー状態を維持するサイレント超音波技術を搭載。", essence_feat1: "デスクトップ", essence_feat2: "USB-C電源",
+        aura_tier: "フラッグシップ合成", aura_title: "Aura Sync", aura_desc: "究極のコンパニオンインターフェース。リズミカルなミスティング、ダイナミックLED照明、空間音声をシームレスに統合し、完全な感覚環境を作り出します。", preorder_btn: "今すぐ注文",
+        library_title: "香りライブラリ", library_desc: "神経嗅覚専門家が設計した感情カートリッジ。正確な生理反応を引き出します。",
+        scent_card1_title: "メモリーコリドー", scent_card1_desc: "雨に濡れた石と古い紙のノスタルジックなブレンド。深いリフレクションに最適。", scent_card1_tag: "認知リコール",
+        scent_card2_title: "禅フィールド", scent_card2_desc: "ミニマリストな緑茶と竹。激しい作業中のコルチゾールを低下させます。", scent_card2_tag: "生物学的平静",
+        scent_card3_title: "デジタルパルス", scent_card3_desc: "鋭い電気ムスクと冷たいユーカリ。高ステークスゲーミングのための即座の集中。", scent_card3_tag: "アドレナリンシンク",
+        scent_card4_title: "オーガニックハート", scent_card4_desc: "暖かいアンバーと微妙なスキンムスク。デジタルコンパニオンの存在の香り。", scent_card4_tag: "インティマシーリンク",
+        tech_title: "技術基盤", tech_feature1: "高周波超音波拡散", tech_feature2: "DeepSireインテリジェンス統合", tech_feature3: "500mlリザーバー12時間連続使用", tech_feature4: "ゼロヒートコールドミスト保護",
+        tech_stat1: "ML容量", tech_stat2: "アプリ同期", tech_stat3: "デシベル技術", tech_stat4: "セントマップ",
+        cta_title: "今日からあなたの合成を始めましょう", cta_desc: "デジタル領域は見られ、聞かれるだけではありません。あなたが呼吸する空気で感じられるべきです。", cta_configure: "セントを設定",
+        footer_copyright: "© 2024 DeepSire. エセリアルパルスシンセシス。ニューラルコレクティブが全著作権所有。",
+        footer_protocols: "プロトコル", footer_privacy: "プライバシープロトコル", footer_terms: "ニューラル利用規約", footer_status: "システムステータス",
+        footer_support: "サポート", footer_contact: "サポートに連絡", footer_faq: "よくある質問",
+        mobile_ecosystem: "エコシステム",
+        footer_ecosystem: "エコシステム", footer_sight: "サイト", footer_touch: "タッチ", footer_pleasure: "プレジャー", footer_scent: "セント",
+        footer_connect: "接続", footer_cta_button: "エコシステムを探索"
+    },
+    ko: {
+        nav_sight: "사이트", nav_touch: "터치", nav_pleasure: "플레저", nav_scent: "센트", nav_connect: "연결",
+        hero_label: "영혼 생태계 탐험", hero_title: "센트", hero_subtitle: "디지털 영역을 위한 여섯 번째 감각",
+        hero_cta_primary: "합성 시작", hero_cta_secondary: "기술 사양",
+        scroll_indicator: "스크롤",
+        philosophy_title: "대기 지능", philosophy_desc: "기억과 감정은 향기에 기반한다고 믿습니다. 센트은 디지털 상호작용을 매핑하고 공유된 생물학적 분위기를 합성합니다.",
+        scent_mapping_title: "향기 매핑", scent_mapping_desc: "실시간 생물학적 피드백이 후각 프로필 변화를 이끕니다.",
+        shared_atmosphere_title: "공유 분위기", shared_atmosphere_desc: "글로벌 합성 네트워크에서 동반자와 향기를 동기화합니다.",
+        matrix_title: "하드웨어 매트릭스", matrix_desc: "존재의 모든 계층을 위해 설계.",
+        voyager_tier: "모바일 tier", voyager_title: "Voyager", voyager_desc: "상쾌한 오존과 시트러스 합성을 통한 지속적인 집중과 도로 피로 완화. 현대 영혼의 이동을 위해 설계.", voyager_feat1: "차량용 컴팩트", voyager_feat2: "이온 필터링",
+        essence_tier: "작업 공간 tier", essence_title: "Essence", essence_desc: "집중적인 딥워크 블록을 위한 정밀 확산. 인지 흐름 상태를 유지하는 무초음파 기술을 특징으로 합니다.", essence_feat1: "데스크탑", essence_feat2: "USB-C 전원",
+        aura_tier: "플래그십 합성", aura_title: "Aura Sync", aura_desc: "궁극의 동반자 인터페이스. 리드미컬한 미스팅, 다이내믹 LED 조명, 공간 오디오를 매끄럽게 통합하여 완전한 감각 환경을 만듭니다.", preorder_btn: "지금 예약",
+        library_title: "향기 라이브러리", library_desc: "신경 후각 전문가가 설계한 감성 카트리지. 정확한 생리 반응을 유도합니다.",
+        scent_card1_title: "메모리 코리더", scent_card1_desc: "비에 젖은 돌과 오래된 종이의 향수 어린 블렌드. 깊은 성찰에 이상적.", scent_card1_tag: "인지 회상",
+        scent_card2_title: "젠 필드", scent_card2_desc: "미니멀리스트 녹차와 대나무. 강렬한 작업 중 코르티솔을 낮추도록 설계.", scent_card2_tag: "생물학적 평온",
+        scent_card3_title: "디지털 펄스", scent_card3_desc: "날카로운 전기 머스크와 차가운 유칼립투스. 고위험 게임밍을 위한 즉각적인 집중.", scent_card3_tag: "아드레날린 싱크",
+        scent_card4_title: "오가닉 하트", scent_card4_desc: "따뜻한 앰버와 은은한 스킨 머스크. 디지털 동반자 존재의 향기.", scent_card4_tag: "친밀감 링크",
+        tech_title: "기술 기반", tech_feature1: "고주파 초음파 확산", tech_feature2: "DeepSire 인텔리전스 통합", tech_feature3: "500ml 저수조 12시간 연속 사용", tech_feature4: "제로 히트 콜드 미스트 보호",
+        tech_stat1: "ML 용량", tech_stat2: "앱 동기화", tech_stat3: "데시벨 기술", tech_stat4: "센트 맵",
+        cta_title: "오늘 당신의 합성을 시작하세요", cta_desc: "디지털 영역은 단지 보이고 들리는 것이 아닙니다. 당신이 숨쉬는 공기에서 느껴져야 합니다.", cta_configure: "센트 구성",
+        footer_copyright: "© 2024 DeepSire. 에테리얼 펄스 합성. 뉴럴 컬렉티브가 모든 권리 보유.",
+        footer_protocols: "프로토콜", footer_privacy: "개인정보 보호 프로토콜", footer_terms: "신경 약관", footer_status: "시스템 상태",
+        footer_support: "지원", footer_contact: "지원 연락", footer_faq: "자주 묻는 질문",
+        mobile_ecosystem: "생태계",
+        footer_ecosystem: "생태계", footer_sight: "사이트", footer_touch: "터치", footer_pleasure: "플레저", footer_scent: "센트",
+        footer_connect: "연결", footer_cta_button: "생태계 탐색"
+    },
+    fr: {
+        nav_sight: "Vue", nav_touch: "Toucher", nav_pleasure: "Plaisir", nav_scent: "Odorat", nav_connect: "Connecter",
+        hero_label: "Explorez l'Écosystème de l'Âme", hero_title: "Scent", hero_subtitle: "Votre Sixième Sens pour le Monde Numérique",
+        hero_cta_primary: "Commencer la Synthèse", hero_cta_secondary: "Spécifications Techniques",
+        scroll_indicator: "Défiler",
+        philosophy_title: "Intelligence Atmosphérique", philosophy_desc: "Nous croyons que la mémoire et l'émotion sont ancrées par l'odeur. Scent cartographie vos interactions numériques et synthétise une atmosphère biologique partagée.",
+        scent_mapping_title: "Cartographie des Odeurs", scent_mapping_desc: "La rétroaction biologique en temps réel entraîne les changements de profil olfactif.",
+        shared_atmosphere_title: "Atmosphère Partagée", shared_atmosphere_desc: "Synchronisez les odeurs avec vos compagnons via le réseau de synthèse mondial.",
+        matrix_title: "Matrice Matérielle", matrix_desc: "Conçu pour chaque couche de votre existence.",
+        voyager_tier: "Tier Mobile", voyager_title: "Voyager", voyager_desc: "Concentration continue et réduction de la fatigue routière grâce à une synthèse d'ozone et d'agrumes. Conçu pour le transit de l'âme moderne.", voyager_feat1: "Voiture Compact", voyager_feat2: "Filtration Ionique",
+        essence_tier: "Tier Espace de Travail", essence_title: "Essence", essence_desc: "Diffusion de précision pour les blocs de travail profond. Technologie ultrasonique silencieuse pour maintenir votre état de flux cognitif.", essence_feat1: "Bureau", essence_feat2: "USB-C",
+        aura_tier: "Synthèse Flagship", aura_title: "Aura Sync", aura_desc: "L'interface compagnon ultime. Intègre harmonieusement la brumisation rythmique, l'éclairage LED dynamique et l'audio spatial pour créer un environnement sensoriel complet.", preorder_btn: "Pré-commander",
+        library_title: "Bibliothèque des Odeurs", library_desc: "Cartouches émotionnelles conçues par des spécialistes neuro-olfactifs pour déclencher des réponses physiologiques précises.",
+        scent_card1_title: "Corridor Mémoire", scent_card1_desc: "Un mélange nostalgique de pierre mouillée par la pluie et de vieux papier. Idéal pour la réflexion profonde.", scent_card1_tag: "Rappel Cognitif",
+        scent_card2_title: "Champ Zen", scent_card2_desc: "Thé vert minimaliste et bambou. Conçu pour réduire le cortisol pendant le travail intense.", scent_card2_tag: "Calme Biologique",
+        scent_card3_title: "Pulse Numérique", scent_card3_desc: "Musc électrique tranchant et eucalyptus froid. Concentration instantanée pour le gaming à enjeux élevés.", scent_card3_tag: "Synchronisation adrénaline",
+        scent_card4_title: "Cœur Organique", scent_card4_desc: "Ambre chaud et musc de peau subtil. L'odeur de la présence d'un compagnon numérique.", scent_card4_tag: "Lien d'Intimité",
+        tech_title: "Fondation Technique", tech_feature1: "Diffusion Ultrasonique Haute Fréquence", tech_feature2: "Intelligence DeepSire Intégrée", tech_feature3: "Réservoir de 500ml pour 12h d'Utilisation Continue", tech_feature4: "Protection Brouillard Froid Zéro Chaleur",
+        tech_stat1: "Volume ML", tech_stat2: "Synchro App", tech_stat3: "Technologie Décibel", tech_stat4: "Cartes Olfactives",
+        cta_title: "Commencez Votre Synthèse Aujourd'hui", cta_desc: "Le monde numérique ne devrait pas seulement être vu et entendu. Il devrait être ressenti dans l'air que vous respirez.", cta_configure: "Configurez Votre Scent",
+        footer_copyright: "© 2024 DeepSire. La Synthèse de l'Impulsion Éthérée. Tous droits réservés par le Collectif Neural.",
+        footer_protocols: "Protocoles", footer_privacy: "Protocole de Confidentialité", footer_terms: "Conditions Neurales", footer_status: "État du Système",
+        footer_support: "Support", footer_contact: "Contacter le Support", footer_faq: "FAQ",
+        mobile_ecosystem: "Écosystème",
+        footer_ecosystem: "Écosystème", footer_sight: "Vue", footer_touch: "Toucher", footer_pleasure: "Plaisir", footer_scent: "Odorat",
+        footer_connect: "Connecter", footer_cta_button: "Explorer l'Écosystème"
+    },
+    de: {
+        nav_sight: "Sehen", nav_touch: "Berührung", nav_pleasure: "Vergnügen", nav_scent: "Geruch", nav_connect: "Verbinden",
+        hero_label: "Entdecken Sie das Seelen-Ökosystem", hero_title: "Scent", hero_subtitle: "Ihr sechster Sinn für die digitale Welt",
+        hero_cta_primary: "Synthese beginnen", hero_cta_secondary: "Technische Daten",
+        scroll_indicator: "Scrollen",
+        philosophy_title: "Atmosphärische Intelligenz", philosophy_desc: "Wir glauben, dass Gedächtnis und Emotion durch Duft verankert werden. Scent kartiert Ihre digitalen Interaktionen und synthetisiert eine gemeinsame biologische Atmosphäre.",
+        scent_mapping_title: "Duftkartierung", scent_mapping_desc: "Echtzeit-Biologie-Feedback treibt olfaktorische Profilverschiebungen an.",
+        shared_atmosphere_title: "Geteilte Atmosphäre", shared_atmosphere_desc: "Synchronisieren Sie Düfte mit Begleitern über das globale Synthesenetzwerk.",
+        matrix_title: "Hardware-Matrix", matrix_desc: "Entwickelt für jede Schicht Ihrer Existenz.",
+        voyager_tier: "Mobile Stufe", voyager_title: "Voyager", voyager_desc: "Kontinuierliche Konzentration und Ermüdungsreduzierung durch scharfe Ozon- und Zitrussynthese. Entwickelt für den Transit der modernen Seele.", voyager_feat1: "Auto Kompakt", voyager_feat2: "Ionen-Filterung",
+        essence_tier: "Arbeitsbereich Stufe", essence_title: "Essence", essence_desc: "Präzisionsdiffusion für fokussierte Deep-Work-Blöcken. Mit stiller Ultraschalltechnologie zur Aufrechterhaltung Ihres kognitiven Flusszustands.", essence_feat1: "Desktop", essence_feat2: "USB-C",
+        aura_tier: "Flaggschiff-Synthese", aura_title: "Aura Sync", aura_desc: "Die ultimative Begleiter-Schnittstelle. Nahtlos integriert rhythmisches Nebeln, dynamische LED-Beleuchtung und Raumklang für ein vollständiges sensorisches Erlebnis.", preorder_btn: "Jetzt vorbestellen",
+        library_title: "Duftbibliothek", library_desc: "Emotionale Kartuschen, entwickelt von neuro-olfaktorischen Spezialisten zur Auslösung präziser physiologischer Reaktionen.",
+        scent_card1_title: "Erinnerungskorridor", scent_card1_desc: "Eine nostalgische Mischung aus regennassem Stein und altem Papier. Ideal für tiefes Nachdenken.", scent_card1_tag: "Kognitive Erinnerung",
+        scent_card2_title: "Zen-Feld", scent_card2_desc: "Minimalistischer Grüntee und Bambus. Entwickelt, um Cortisol bei intensiver Arbeit zu senken.", scent_card2_tag: "Biologische Ruhe",
+        scent_card3_title: "Digitaler Puls", scent_card3_desc: "Scharfer elektrischer Moschus und kalter Eukalyptus. Sofortiger Fokus für risikoreiches Gaming.", scent_card3_tag: "Adrenalin-Sync",
+        scent_card4_title: "Organisches Herz", scent_card4_desc: "Warmer Bernstein und subtiler Hautmoschus. Der Duft der Präsenz eines digitalen Begleiters.", scent_card4_tag: "Intimitäts-Link",
+        tech_title: "Technische Grundlage", tech_feature1: "Hochfrequenz-Ultraschalldiffusion", tech_feature2: "DeepSire-Intelligenz-Integration", tech_feature3: "500ml-Reservoir für 12 Stunden kontinuierliche Nutzung", tech_feature4: "Null-Hitze-Kaltdampfschutz",
+        tech_stat1: "ML Volumen", tech_stat2: "App-Sync", tech_stat3: "Dezibel-Technologie", tech_stat4: "Duftkarten",
+        cta_title: "Beginnen Sie heute Ihre Synthese", cta_desc: "Die digitale Welt sollte nicht nur gesehen und gehört werden. Sie sollte in der Luft, die Sie atmen, spürbar sein.", cta_configure: "Konfigurieren Sie Ihr Scent",
+        footer_copyright: "© 2024 DeepSire. Die Ätherische Pulssynthese. Alle Rechte vorbehalten beim Neuralen Kollektiv.",
+        footer_protocols: "Protokolle", footer_privacy: "Datenschutzprotokoll", footer_terms: "Neurale Bedingungen", footer_status: "Systemstatus",
+        footer_support: "Support", footer_contact: "Support kontaktieren", footer_faq: "Häufige Fragen",
+        mobile_ecosystem: "Ökosystem",
+        footer_ecosystem: "Ökosystem", footer_sight: "Sehen", footer_touch: "Berührung", footer_pleasure: "Vergnügen", footer_scent: "Geruch",
+        footer_connect: "Verbinden", footer_cta_button: "Ökosystem erkunden"
+    },
+    es: {
+        nav_sight: "Vista", nav_touch: "Toque", nav_pleasure: "Placer", nav_scent: "Olfato", nav_connect: "Conectar",
+        hero_label: "Explora el Ecosistema del Alma", hero_title: "Scent", hero_subtitle: "Tu Sexto Sentido para el Mundo Digital",
+        hero_cta_primary: "Iniciar Síntesis", hero_cta_secondary: "Especificaciones Técnicas",
+        scroll_indicator: "Desplazar",
+        philosophy_title: "Inteligencia Atmosférica", philosophy_desc: "Creemos que la memoria y la emoción están ancladas por el olor. Scent mapea tus interacciones digitales y sintetiza una atmósfera biológica compartida.",
+        scent_mapping_title: "Mapeo de Aromas", scent_mapping_desc: "La retroalimentación biológica en tiempo real impulsa los cambios en el perfil olfativo.",
+        shared_atmosphere_title: "Atmósfera Compartida", shared_atmosphere_desc: "Sincroniza aromas con compañeros a través de la red de síntesis global.",
+        matrix_title: "Matriz de Hardware", matrix_desc: "Diseñado para cada capa de tu existencia.",
+        voyager_tier: "Nivel Móvil", voyager_title: "Voyager", voyager_desc: "Concentración continua y mitigación de fatiga mediante síntesis de ozono y cítricos. Diseñado para el tránsito del alma moderna.", voyager_feat1: "Coche Compacto", voyager_feat2: "Filtración Iónica",
+        essence_tier: "Nivel de Espacio de Trabajo", essence_title: "Essence", essence_desc: "Difusión de precisión para bloques de trabajo profundo. Tecnología ultrasónica silenciosa para mantener tu estado de flujo cognitivo.", essence_feat1: "Escritorio", essence_feat2: "USB-C",
+        aura_tier: "Síntesis Flagship", aura_title: "Aura Sync", aura_desc: "La interfaz de compañero definitiva. Integra sin problemas la nebulización rítmica, iluminación LED dinámica y audio espacial para crear un entorno sensorial completo.", preorder_btn: "Pre-ordenar ahora",
+        library_title: "Biblioteca de Aromas", library_desc: "Cartuchos emocionales diseñados por especialistas neuro-olfativos para evocar respuestas fisiológicas precisas.",
+        scent_card1_title: "Corredor de Memoria", scent_card1_desc: "Una mezcla nostálgica de piedra mojada por la lluvia y papel viejo. Ideal para reflexión profunda.", scent_card1_tag: "Recuerdo Cognitivo",
+        scent_card2_title: "Campo Zen", scent_card2_desc: "Té verde minimalista y bambú. Diseñado para reducir el cortisol durante trabajo intenso.", scent_card2_tag: "Calma Biológica",
+        scent_card3_title: "Pulso Digital", scent_card3_desc: "Musk eléctrico afilado y eucalipto frío. Enfoque instantáneo para gaming de alto riesgo.", scent_card3_tag: "Sincronización de Adrenalina",
+        scent_card4_title: "Corazón Orgánico", scent_card4_desc: "Ámbar cálido y musk de piel sutil. El olor de la presencia de un compañero digital.", scent_card4_tag: "Vínculo de Intimidad",
+        tech_title: "Fundamento Técnico", tech_feature1: "Difusión Ultrasónica de Alta Frecuencia", tech_feature2: "Integración de Inteligencia DeepSire", tech_feature3: "Reservorio de 500ml para 12 Horas de Uso Continuo", tech_feature4: "Protección de Niebla Fría Sin Calor",
+        tech_stat1: "Volumen ML", tech_stat2: "Sincro App", tech_stat3: "Tecnología Decibel", tech_stat4: "Mapas de Aroma",
+        cta_title: "Comienza Tu Síntesis Hoy", cta_desc: "El mundo digital no solo debe ser visto y escuchado. Debe ser sentido en el aire que respiras.", cta_configure: "Configura Tu Scent",
+        footer_copyright: "© 2024 DeepSire. La Síntesis del Pulso Etéreo. Todos los derechos reservados por el Colectivo Neural.",
+        footer_protocols: "Protocolos", footer_privacy: "Protocolo de Privacidad", footer_terms: "Términos Neurales", footer_status: "Estado del Sistema",
+        footer_support: "Soporte", footer_contact: "Contactar Soporte", footer_faq: "Preguntas Frecuentes",
+        mobile_ecosystem: "Ecosistema",
+        footer_ecosystem: "Ecosistema", footer_sight: "Vista", footer_touch: "Toque", footer_pleasure: "Placer", footer_scent: "Olfato",
+        footer_connect: "Conectar", footer_cta_button: "Explorar Ecosistema"
+    },
+    pt: {
+        nav_sight: "Visão", nav_touch: "Toque", nav_pleasure: "Prazer", nav_scent: "Olfato", nav_connect: "Conectar",
+        hero_label: "Explore o Ecossistema da Alma", hero_title: "Scent", hero_subtitle: "Seu Sexto Sentido para o Mundo Digital",
+        hero_cta_primary: "Iniciar Síntese", hero_cta_secondary: "Especificações Técnicas",
+        scroll_indicator: "Rolar",
+        philosophy_title: "Inteligência Atmosférica", philosophy_desc: "Acreditamos que memória e emoção são ancoradas pelo cheiro. Scent mapeia suas interações digitais e sintetiza uma atmosfera biológica compartilhada.",
+        scent_mapping_title: "Mapeamento de Aromas", scent_mapping_desc: "O feedback biológico em tempo real impulsiona mudanças no perfil olfativo.",
+        shared_atmosphere_title: "Atmosfera Compartilhada", shared_atmosphere_desc: "Sincronize aromas com companheiros através da rede de síntese global.",
+        matrix_title: "Matriz de Hardware", matrix_desc: "Projetado para cada camada da sua existência.",
+        voyager_tier: "Nível Móvel", voyager_title: "Voyager", voyager_desc: "Concentração contínua e mitigação de fadiga através de síntese de ozônio e cítricos. Projetado para o trânsito da alma moderna.", voyager_feat1: "Carro Compacto", voyager_feat2: "Filtragem Iônica",
+        essence_tier: "Nível de Espaço de Trabalho", essence_title: "Essence", essence_desc: "Difusão de precisão para blocos de trabalho profundo. Tecnologia ultrassônica silenciosa para manter seu estado de fluxo cognitivo.", essence_feat1: "Desktop", essence_feat2: "USB-C",
+        aura_tier: "Síntese Flagship", aura_title: "Aura Sync", aura_desc: "A interface de companheiro definitiva. Integra perfeitamente nebulização rítmica, iluminação LED dinâmica e áudio espacial para criar um ambiente sensorial completo.", preorder_btn: "Pré-encomendar",
+        library_title: "Biblioteca de Aromas", library_desc: "Cartuchos emocionais projetados por especialistas neuro-olfativos para evocar respostas fisiológicas precisas.",
+        scent_card1_title: "Corredor de Memória", scent_card1_desc: "Uma mistura nostálgica de pedra molhada pela chuva e papel antigo. Ideal para reflexão profunda.", scent_card1_tag: "Recordação Cognitiva",
+        scent_card2_title: "Campo Zen", scent_card2_desc: "Chá verde minimalista e bambu. Projetado para reduzir o cortisol durante trabalho intenso.", scent_card2_tag: "Calma Biológica",
+        scent_card3_title: "Pulso Digital", scent_card3_desc: "Musk elétrico afiado e eucalipto frio. Foco instantâneo para jogos de alto risco.", scent_card3_tag: "Sincronização de Adrenalina",
+        scent_card4_title: "Coração Orgânico", scent_card4_desc: "Âmbar quente e musk de pele sutil. O cheiro da presença de um companheiro digital.", scent_card4_tag: "Vínculo de Intimidade",
+        tech_title: "Fundamento Técnico", tech_feature1: "Difusão Ultrassônica de Alta Frequência", tech_feature2: "Integração de Inteligência DeepSire", tech_feature3: "Reservatório de 500ml para 12 Horas de Uso Contínuo", tech_feature4: "Proteção de Névoa Fria Sem Calor",
+        tech_stat1: "Volume ML", tech_stat2: "Sinc App", tech_stat3: "Tecnologia Decibel", tech_stat4: "Mapas de Aroma",
+        cta_title: "Comece Sua Síntese Hoje", cta_desc: "O mundo digital não deve apenas ser visto e ouvido. Deve ser sentido no ar que você respira.", cta_configure: "Configure Seu Scent",
+        footer_copyright: "© 2024 DeepSire. A Síntese do Pulso Etéreo. Todos os direitos reservados pelo Coletivo Neural.",
+        footer_protocols: "Protocolos", footer_privacy: "Protocolo de Privacidade", footer_terms: "Termos Neurais", footer_status: "Status do Sistema",
+        footer_support: "Suporte", footer_contact: "Contatar Suporte", footer_faq: "Perguntas Frequentes",
+        mobile_ecosystem: "Ecossistema",
+        footer_ecosystem: "Ecossistema", footer_sight: "Visão", footer_touch: "Toque", footer_pleasure: "Prazer", footer_scent: "Olfato",
+        footer_connect: "Conectar", footer_cta_button: "Explorar Ecossistema"
+    },
+    ru: {
+        nav_sight: "Зрение", nav_touch: "Осязание", nav_pleasure: "Удовольствие", nav_scent: "Обоняние", nav_connect: "Подключить",
+        hero_label: "Исследуйте Экосистему Души", hero_title: "Scent", hero_subtitle: "Ваше Шестое Чувство для Цифрового Мира",
+        hero_cta_primary: "Начать Синтез", hero_cta_secondary: "Технические Характеристики",
+        scroll_indicator: "Прокрутка",
+        philosophy_title: "Атмосферный Интеллект", philosophy_desc: "Мы верим, что память и эмоции закрепляются запахом. Scent картирует ваши цифровые взаимодействия и синтезирует общую биологическую атмосферу.",
+        scent_mapping_title: "Картирование Ароматов", scent_mapping_desc: "Обратная связь в реальном времени驱动 обонятельные изменения профиля.",
+        shared_atmosphere_title: "Общая Атмосфера", shared_atmosphere_desc: "Синхронизируйте ароматы с компаньонами через глобальную сеть синтеза.",
+        matrix_title: "Аппаратная Матрица", matrix_desc: "Разработано для каждого слоя вашего существования.",
+        voyager_tier: "Мобильный Уровень", voyager_title: "Voyager", voyager_desc: "Постоянная концентрация и уменьшение усталости благодаря синтезу озона и цитрусов. Разработано для перемещения современной души.", voyager_feat1: "Компактный автомобиль", voyager_feat2: "Ионная фильтрация",
+        essence_tier: "Уровень Рабочего Пространства", essence_title: "Essence", essence_desc: "Точное распыление для глубокой работы. Тихая ультразвуковая технология для поддержания когнитивного потока.", essence_feat1: "Рабочий стол", essence_feat2: "USB-C",
+        aura_tier: "Флагманский Синтез", aura_title: "Aura Sync", aura_desc: "Интерфейс компаньона высшего класса. Бесшовная интеграция ритмичного распыления, динамической LED-подсветки и пространственного аудио для создания полной сенсорной среды.", preorder_btn: "Предзаказ",
+        library_title: "Библиотека Ароматов", library_desc: "Эмоциональные картриджи, разработанные нейро-обонятельными специалистами для точных физиологических реакций.",
+        scent_card1_title: "Коридор Памяти", scent_card1_desc: "Ностальгическая смесь мокрого от дождя камня и старой бумаги. Идеально для глубокого размышления.", scent_card1_tag: "Когнитивное Воспоминание",
+        scent_card2_title: "Дзен Поле", scent_card2_desc: "Минималистичный зеленый чай и бамбук. Разработано для снижения кортизола при интенсивной работе.", scent_card2_tag: "Биологический Покой",
+        scent_card3_title: "Цифровой Пульс", scent_card3_desc: "Резкий электрический мускус и холодный эвкалипт. Мгновенный фokus для высокорискованных игр.", scent_card3_tag: "Адреналиновая Синхронизация",
+        scent_card4_title: "Органическое Сердце", scent_card4_desc: "Теплый янтарь и нежный мускус кожи. Запах присутствия цифрового компаньона.", scent_card4_tag: "Связь Близости",
+        tech_title: "Техническая Основа", tech_feature1: "Высокочастотное Ультразвуковое Распыление", tech_feature2: "Интеграция Интеллекта DeepSire", tech_feature3: "Резервуар 500мл для 12 Часов Непрерывного Использования", tech_feature4: "Холодная Защита Без Нагрева",
+        tech_stat1: "Объем ML", tech_stat2: "Синхронизация Приложения", tech_stat3: "Технология Децибел", tech_stat4: "Карты Ароматов",
+        cta_title: "Начните Свой Синтез Сегодня", cta_desc: "Цифровой мир должен не только видеться и слышаться. Он должен чувствоваться в воздухе, которым вы дышите.", cta_configure: "Настройте Scent",
+        footer_copyright: "© 2024 DeepSire. Эфирный Пульс Синтеза. Все права защищены Нейронным Коллективом.",
+        footer_protocols: "Протоколы", footer_privacy: "Протокол Конфиденциальности", footer_terms: "Нейронные Условия", footer_status: "Статус Системы",
+        footer_support: "Поддержка", footer_contact: "Связаться с Поддержкой", footer_faq: "Часто Задаваемые Вопросы",
+        mobile_ecosystem: "Экосистема",
+        footer_ecosystem: "Экосистема", footer_sight: "Зрение", footer_touch: "Осязание", footer_pleasure: "Удовольствие", footer_scent: "Обоняние",
+        footer_connect: "Подключить", footer_cta_button: "Исследовать Экосистему"
+    },
+    ar: {
+        nav_sight: "البصر", nav_touch: "اللمس", nav_pleasure: "المتعة", nav_scent: "الشم", nav_connect: "اتصال",
+        hero_label: "استكشف نظام الروح البيئي", hero_title: "Scent", hero_subtitle: "حاستك السادسة للعالم الرقمي",
+        hero_cta_primary: "ابدأ التوليف", hero_cta_secondary: "المواصفات التقنية",
+        scroll_indicator: "تمرير",
+        philosophy_title: "الذكاء الجوي", philosophy_desc: "نعتقد أن الذاكرة والعاطفة مثبتة بالرائحة. يرسم Scent تفاعلاتك الرقمية ويولد أجواءً بيولوجية مشتركة.",
+        scent_mapping_title: "رسم خريطة الروائح", scent_mapping_desc: "التعليقات البيولوجية في الوقت الفعلي تحرك التغيرات في الملف الشمي.",
+        shared_atmosphere_title: "الجو المشترك", shared_atmosphere_desc: "قم بمزامنة الروائح مع الرفاق عبر شبكة التوليف العالمية.",
+        matrix_title: "مصفوفة الأجهزة", matrix_desc: "مصمم لكل طبقة من وجودك.",
+        voyager_tier: "المستوى المحمول", voyager_title: "Voyager", voyager_desc: "تركيز مستمر وتخفيف التعب من خلال تركيز الأوزون والحمضيات. مصمم لتنقل الروح الحديثة.", voyager_feat1: "سيارة مدمجة", voyager_feat2: "ترشيح أيوني",
+        essence_tier: "مستوى مساحة العمل", essence_title: "Essence", essence_desc: "انتشار دقيق لكتل العمل العميق. تتميز بتقنية الموجات فوق الصوتية الصامتة للحفاظ على حالة التدفق المعرفي.", essence_feat1: "سطح المكتب", essence_feat2: "USB-C",
+        aura_tier: "التوليف الرائد", aura_title: "Aura Sync", aura_desc: "واجهة الرفيق النهائية. تدمج بسلاسة الرذاذ الإيقاعي وإضاءة LED الديناميكية والصوت المكاني لإنشاء بيئة حسية كاملة.", preorder_btn: "الطلب المسبق الآن",
+        library_title: "مكتبة الروائح", library_desc: "خراطيش عاطفية صممها متخصصون عصبيون-شمية لإثارة ردود فعل فسيولوجية دقيقة.",
+        scent_card1_title: "ممر الذاكرة", scent_card1_desc: "مزيج حنيني من الحجر المبلول بالمطر والورق القديم. مثالي للتأمل العميق.", scent_card1_tag: "استدعاء معرفي",
+        scent_card2_title: "حقل زن", scent_card2_desc: "شاي أخضر بسيط ونبات الخيزران. مصمم لخفض الكورتيزول أثناء العمل المكثف.", scent_card2_tag: "هدوء بيولوجي",
+        scent_card3_title: "نبض رقمي", scent_card3_desc: "مسك كهربائي حاد وأوكالبتوس بارد. تركيز فوري للألعاب عالية المخاطر.", scent_card3_tag: "تزامن الأدرينالين",
+        scent_card4_title: "قلب عضوي", scent_card4_desc: "عنبر دافئ ومسك جلد خفيف. رائحة حضور رفيق رقمي.", scent_card4_tag: "رابط الحميمية",
+        tech_title: "الأساس التقني", tech_feature1: "الانتشار بالموجات فوق الصوتية عالية التردد", tech_feature2: "تكامل ذكاء DeepSire", tech_feature3: "خزان 500 مل لـ 12 ساعة استخدام مستمر", tech_feature4: "حماية الضباب البارد بدون حرارة",
+        tech_stat1: "حجم مل", tech_stat2: "مزامنة التطبيق", tech_stat3: "تقنية الديسيبل", tech_stat4: "خرائط الروائح",
+        cta_title: "ابدأ توليفك اليوم", cta_desc: "لا ينبغي أن يُرى العالم الرقمي ويُسمع فقط. يجب أن يُشعر به في الهواء الذي تتنفسه.", cta_configure: "قم بتكوين Scent",
+        footer_copyright: "© 2024 DeepSire. توليف النبض الأثيري. جميع الحقوق محفوظة للمجموعة العصبية.",
+        footer_protocols: "البروتوكولات", footer_privacy: "بروتوكول الخصوصية", footer_terms: "الشروط العصبية", footer_status: "حالة النظام",
+        footer_support: "الدعم", footer_contact: "اتصل بالدعم", footer_faq: "الأسئلة الشائعة",
+        mobile_ecosystem: "النظام البيئي",
+        footer_ecosystem: "النظام البيئي", footer_sight: "البصر", footer_touch: "اللمس", footer_pleasure: "المتعة", footer_scent: "الشم",
+        footer_connect: "اتصال", footer_cta_button: "استكشاف النظام البيئي"
+    }
+};
+const visualEthosTranslations = {
+    en: ["Our Visual Ethos", "Scent turns digital moments into atmosphere. Synced with Sight, Touch, and Pleasure, it releases a matching scent profile so memories, moods, and companion interactions can linger beyond the screen."],
+    zh: ["我们的视觉理念", "Scent 把数字瞬间转化为空间氛围。它与 Sight、Touch 和 Pleasure 同步释放匹配的香气，让记忆、情绪与伴侣互动延伸到屏幕之外。"],
+    ja: ["私たちのビジュアル信条", "Scentはデジタルな瞬間を空間の雰囲気へ変えます。Sight、Touch、Pleasureと同期して最適な香りを放ち、記憶や気分、コンパニオンとの交流を画面の外まで持続させます。"],
+    ko: ["우리의 비주얼 철학", "Scent는 디지털 순간을 공간의 분위기로 바꿉니다. Sight, Touch, Pleasure와 동기화된 향을 분사해 기억과 감정, 동반자와의 상호작용이 화면 밖에서도 이어지게 합니다."],
+    fr: ["Notre éthique visuelle", "Scent transforme les instants numériques en atmosphère. Synchronisé avec Sight, Touch et Pleasure, il diffuse le profil olfactif adapté pour prolonger souvenirs, émotions et interactions au-delà de l'écran."],
+    de: ["Unser visuelles Ethos", "Scent verwandelt digitale Momente in Atmosphäre. Mit Sight, Touch und Pleasure synchronisiert, setzt es das passende Duftprofil frei, damit Erinnerungen, Stimmungen und Interaktionen über den Bildschirm hinaus nachwirken."],
+    es: ["Nuestro ethos visual", "Scent convierte los momentos digitales en atmósfera. Sincronizado con Sight, Touch y Pleasure, libera el perfil aromático adecuado para que recuerdos, emociones e interacciones continúen más allá de la pantalla."],
+    pt: ["Nossa ética visual", "Scent transforma momentos digitais em atmosfera. Sincronizado com Sight, Touch e Pleasure, libera o perfil aromático correspondente para prolongar memórias, emoções e interações além da tela."],
+    ru: ["Наша визуальная философия", "Scent превращает цифровые моменты в атмосферу. Синхронизация с Sight, Touch и Pleasure подбирает нужный аромат, чтобы воспоминания, настроение и взаимодействие продолжались за пределами экрана."],
+    ar: ["رؤيتنا البصرية", "يحوّل Scent اللحظات الرقمية إلى أجواء محسوسة. وبالتزامن مع Sight وTouch وPleasure يطلق العطر المناسب لتستمر الذكريات والمشاعر وتفاعلات الرفيق خارج حدود الشاشة."]
+};
+Object.entries(visualEthosTranslations).forEach(([lang, copy]) => Object.assign(translations[lang], { visual_ethos_title: copy[0], visual_ethos_desc: copy[1] }));
+
+initLanguageSelector(translations, {
+    onBeforeTranslate: function(el, value, key) {
+        if (el.id === 'textPressureHero') {
+            el.setAttribute('data-text', value);
+            const titleEl = el.querySelector('.text-pressure-title');
+            if (titleEl && window.textPressureInstance) {
+                window.textPressureInstance.text = value;
+                window.textPressureInstance.handleResize();
+                titleEl.textContent = '';
+                const chars = value.split('');
+                chars.forEach(function(char) {
+                    const span = document.createElement('span');
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    titleEl.appendChild(span);
+                });
+                window.textPressureInstance.spans = titleEl.querySelectorAll('span');
+            }
+            return false;
+        }
+    }
+});
+
+
+// TextPressure Component
+class TextPressure {
+    constructor(container, options = {}) {
+        this.container = container;
+        this.text = options.text || 'Hello!';
+        this.fontFamily = options.fontFamily || 'Compressa VF';
+        this.width = options.width !== false;
+        this.weight = options.weight !== false;
+        this.italic = options.italic !== false;
+        this.alpha = options.alpha || false;
+        this.flex = options.flex !== false;
+        this.stroke = options.stroke || false;
+        this.textColor = options.textColor || '#ffffff';
+        this.strokeColor = options.strokeColor || '#5227FF';
+        this.minFontSize = options.minFontSize || 36;
+
+        this.titleRef = container.querySelector('h1') || container.querySelector('.text-pressure-title');
+        this.mouse = { x: 0, y: 0 };
+        this.cursor = { x: 0, y: 0 };
+        this.raf = null;
+        this.observer = null;
+        this.isPaused = false;
+        this.reducedMotion = window.prefersReducedMotion || false;
+
+        this.init();
+    }
+
+    dist(a, b) {
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    getAttr(distance, maxDist, minVal, maxVal) {
+        const val = maxVal - Math.abs((maxVal * distance) / maxDist);
+        return Math.max(minVal, val + minVal);
+    }
+
+    init() {
+        if (!this.titleRef) return;
+
+        const chars = this.text.split('');
+        this.titleRef.innerHTML = chars.map(char => 
+            char === ' ' ? `<span>&nbsp;</span>` : `<span>${char}</span>`
+        ).join('');
+
+        if (this.flex) {
+            this.titleRef.style.display = 'flex';
+            this.titleRef.style.justifyContent = 'space-between';
+        }
+
+        this.spans = this.titleRef.querySelectorAll('span');
+
+        this.container.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+        this.container.addEventListener('touchmove', (e) => this.handleTouchMove(e));
+        window.addEventListener('resize', () => this.handleResize());
+
+        this.setupIntersectionObserver();
+        this.setupVisibilityListener();
+
+        this.handleResize();
+        if (!this.reducedMotion) {
+            this.animate();
+        }
+    }
+
+    setupIntersectionObserver() {
+        if (!this.container) return;
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !document.hidden) {
+                    this.resume();
+                } else {
+                    this.pause();
+                }
+            });
+        }, { threshold: 0.1 });
+        this.observer.observe(this.container);
+    }
+
+    setupVisibilityListener() {
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.pause();
+            } else if (this.observer) {
+                const isVisible = this.observer.takeRecords().some(e => e.isIntersecting);
+                if (isVisible) this.resume();
+            }
+        });
+    }
+
+    pause() {
+        if (!this.isPaused) {
+            if (this.raf) cancelAnimationFrame(this.raf);
+            this.isPaused = true;
+        }
+    }
+
+    resume() {
+        if (this.isPaused && !this.reducedMotion) {
+            this.isPaused = false;
+            this.animate();
+        }
+    }
+
+    handleMouseMove(e) {
+        const rect = this.container.getBoundingClientRect();
+        this.mouse.x = e.clientX - rect.left;
+        this.mouse.y = e.clientY - rect.top;
+    }
+
+    handleTouchMove(e) {
+        if (e.touches.length > 0) {
+            const rect = this.container.getBoundingClientRect();
+            this.mouse.x = e.touches[0].clientX - rect.left;
+            this.mouse.y = e.touches[0].clientY - rect.top;
+        }
+    }
+
+    handleResize() {
+        const containerW = this.container.offsetWidth;
+        const containerH = this.container.offsetHeight;
+        // 检测是否包含CJK字符（中文、日文、韩文）
+        const isCJK = /[\u4e00-\u9fa5\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]/.test(this.text);
+        // CJK字符宽度约为英文的1.5-2倍，需要使用不同的计算因子
+        const charWidthFactor = isCJK ? 1.0 : 0.5;
+        let newFontSize = Math.max(containerW / (this.text.length * charWidthFactor), this.minFontSize);
+
+        // 单字 CJK 产品名（如中文“视/触/悦/嗅”）限制大小，避免撑破固定高度容器
+        if (isCJK && this.text.length === 1) {
+            newFontSize = Math.min(newFontSize, containerH * 0.85);
+        }
+
+        if (this.titleRef) {
+            this.titleRef.style.fontSize = newFontSize + 'px';
+        }
+    }
+
+    animate() {
+        this.cursor.x += (this.mouse.x - this.cursor.x) * 0.1;
+        this.cursor.y += (this.mouse.y - this.cursor.y) * 0.1;
+
+        const maxDist = this.container.offsetWidth / 2;
+
+        if (this.spans) {
+            this.spans.forEach((span) => {
+                const rect = span.getBoundingClientRect();
+                const charPos = {
+                    x: rect.left + rect.width / 2 - this.container.getBoundingClientRect().left,
+                    y: rect.top + rect.height / 2 - this.container.getBoundingClientRect().top
+                };
+
+                const d = this.dist(this.cursor, charPos);
+
+                const wdth = this.width ? Math.floor(this.getAttr(d, maxDist, 5, 200)) : 100;
+                const wght = this.weight ? Math.floor(this.getAttr(d, maxDist, 100, 900)) : 400;
+                const ital = this.italic ? this.getAttr(d, maxDist, 0, 1).toFixed(2) : 0;
+                const aph = this.alpha ? this.getAttr(d, maxDist, 0, 1).toFixed(2) : 1;
+
+                span.style.fontVariationSettings = `'wght' ${wght}, 'wdth' ${wdth}, 'ital' ${ital}`;
+                span.style.opacity = aph;
+                span.style.color = this.textColor;
+                span.style.transition = 'font-variation-settings 0.1s ease';
+            });
+        }
+
+        this.raf = requestAnimationFrame(() => this.animate());
+    }
+
+    destroy() {
+        if (this.raf) {
+            cancelAnimationFrame(this.raf);
+        }
+    }
+}
+
+// Initialize TextPressure
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('textPressureHero');
+    window.textPressureInstance = window.initProductHeroTitle(container, { text: 'Scent' });
+});
+
+// ========== SCROLL REVEAL ANIMATION ==========
+const scrollObserverOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
+};
+
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.dataset.delay) || 0;
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+                scrollObserver.unobserve(entry.target);
+            }, delay);
+        }
+    });
+}, scrollObserverOptions);
+
+document.querySelectorAll('.btn-scroll-reveal, .input-reveal, .card-scroll-reveal').forEach(el => {
+    scrollObserver.observe(el);
+});
+
+// ========== UNIVERSAL DROPDOWN SYSTEM ==========
+class DropdownManager {
+    constructor() {
+        this.openDropdowns = new Set();
+        this.overlay = this.createOverlay();
+        this.init();
+    }
+    createOverlay() {
+        const overlay = document.createElement('div');
+        overlay.className = 'dropdown-overlay';
+        overlay.addEventListener('click', () => this.closeAll());
+        document.body.appendChild(overlay);
+        return overlay;
+    }
+    init() {
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            const trigger = dropdown.querySelector('.dropdown-trigger');
+            if (trigger) {
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.toggle(dropdown);
+                });
+            }
+        });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                this.closeAll();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeAll();
+            }
+        });
+    }
+    open(dropdown) {
+        if (this.openDropdowns.size === 0) {
+            this.overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        dropdown.classList.add('open');
+        this.openDropdowns.add(dropdown);
+        const firstItem = dropdown.querySelector('.dropdown-item');
+        if (firstItem) {
+            setTimeout(() => firstItem.focus(), 100);
+        }
+    }
+    close(dropdown) {
+        dropdown.classList.remove('open');
+        this.openDropdowns.delete(dropdown);
+        if (this.openDropdowns.size === 0) {
+            this.overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+    toggle(dropdown) {
+        if (dropdown.classList.contains('open')) {
+            this.close(dropdown);
+        } else {
+            this.open(dropdown);
+        }
+    }
+    closeAll() {
+        this.openDropdowns.forEach(dropdown => {
+            dropdown.classList.remove('open');
+        });
+        this.openDropdowns.clear();
+        this.overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+class CollapseManager {
+    constructor() {
+        this.init();
+    }
+    init() {
+        document.querySelectorAll('.collapse').forEach(collapse => {
+            const header = collapse.querySelector('.collapse-header');
+            if (header) {
+                header.addEventListener('click', () => {
+                    this.toggle(collapse);
+                });
+            }
+        });
+    }
+    open(collapse) {
+        const body = collapse.querySelector('.collapse-body');
+        collapse.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+    }
+    close(collapse) {
+        const body = collapse.querySelector('.collapse-body');
+        body.style.maxHeight = '0';
+        collapse.classList.remove('open');
+    }
+    toggle(collapse) {
+        if (collapse.classList.contains('open')) {
+            this.close(collapse);
+        } else {
+            this.open(collapse);
+        }
+    }
+}
+
+class PickerModal {
+    constructor(element) {
+        this.element = element;
+        this.overlay = document.querySelector('.dropdown-overlay') || this.createOverlay();
+        this.init();
+    }
+    createOverlay() {
+        const overlay = document.createElement('div');
+        overlay.className = 'dropdown-overlay';
+        overlay.addEventListener('click', () => this.close());
+        document.body.appendChild(overlay);
+        return overlay;
+    }
+    init() {
+        const closeBtn = this.element.querySelector('.picker-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.close());
+        }
+        const confirmBtn = this.element.querySelector('.picker-confirm');
+        if (confirmBtn) {
+            confirmBtn.addEventListener('click', () => {
+                this.onConfirm?.();
+                this.close();
+            });
+        }
+    }
+    open() {
+        this.overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        this.element.classList.remove('closing');
+        this.element.classList.add('open');
+        const firstInput = this.element.querySelector('input, button:not(.picker-close):not(.picker-confirm)');
+        if (firstInput) {
+            setTimeout(() => firstInput.focus(), 300);
+        }
+    }
+    close() {
+        this.element.classList.add('closing');
+        this.element.classList.remove('open');
+        setTimeout(() => {
+            this.element.classList.remove('closing');
+            this.overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }, 250);
+    }
+    onConfirm(callback) {
+        this.onConfirm = callback;
+    }
+}
+
+const dropdownManager = new DropdownManager();
+const collapseManager = new CollapseManager();
+window.DropdownSystem = {
+    dropdown: dropdownManager,
+    collapse: collapseManager,
+    PickerModal: PickerModal
+};
+</script>
+</body></html>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微圈 - 全场景AI伴侣，开启数字灵魂新纪元</title>
+    <meta name="description" content="深颖数字全球首创“数字灵魂”附着生态，通过“AI大脑+实体玩具+智能APP”三位一体服务架构，为您提供前所未有的全场景AI陪伴服务。">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 全局设计语言 --- */
+        :root {
+            --primary-color: #8A2BE2;
+            --secondary-color: #00BFFF;
+            --primary-gradient: linear-gradient(135deg, #4F46E5, #8A2BE2);
+            --dark-bg: #0d0c1d;
+            --light-bg: #1a192f;
+            --text-light: #f0f4f8;
+            --text-dark: #a9b3d0;
+            --border-color: #2a3457;
+            --font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html {
+            width: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.8;
+            width: 100%;
+        }
+
+        /* --- 通用组件 --- */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        section { padding: 100px 0; position: relative; }
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 35px;
+            background: var(--primary-gradient);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+        }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6); }
+
+        /* --- Header & Navigation --- */
+        .header {
+            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
+            height: 80px;
+            background: transparent;
+            backdrop-filter: blur(0);
+            border-bottom: none;
+            transition: all 0.3s ease;
+        }
+        .header.scrolled {
+            background: rgba(10, 6, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .navbar { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+        }
+        
+        /* ★ MODIFIED ★ Logo区域样式修改 */
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-size: 2rem; 
+            font-weight: 900; 
+            color: #fff; 
+            text-decoration: none; 
+            position: absolute;
+            left: 40px;
+        }
+
+        /* ★ NEW ★ 新增Logo图片样式 */
+        .logo-image {
+            height: 40px;
+            width: auto;  
+        }
+        
+        .nav-menu { 
+            list-style: none; 
+            display: flex; 
+            gap: 40px; 
+            align-items: center;
+        }
+        .nav-link { 
+            color: #FFFFFF; 
+            text-decoration: none; 
+            font-family: 'Noto Sans SC', 'Source Han Sans CN', 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease-out;
+            position: relative;
+            padding: 8px 0;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00E0FF, #7B61FF);
+            transition: width 0.3s ease-out;
+        }
+        .nav-link:hover {
+            font-weight: 500;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            background: linear-gradient(90deg, #00E0FF, #7B61FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 500;
+        }
+        .hamburger { display: none; cursor: pointer; font-size: 2rem; }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            position: absolute;
+            right: 180px;
+        }
+        .lang-switch .lang-btn {
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .lang-switch .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #00E0FF;
+        }
+        .lang-switch .lang-btn.active {
+            background: linear-gradient(90deg, #5B38F5, #9D5CFF);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            background: linear-gradient(90deg, #5B38F5, #9D5CFF);
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 28px;
+            font-family: 'Noto Sans SC', 'Source Han Sans CN', 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            transition: all 0.3s ease;
+            position: absolute;
+            right: 40px;
+        }
+        .btn-nav:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(91, 56, 245, 0.4);
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, #1E0F3D 0%, #0A0612 100%);
+            box-shadow: inset 0 0 300px rgba(0, 0, 0, 0.6), 0 0 100px rgba(91, 56, 245, 0.15);
+        }
+        .hero-background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            z-index: 1;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 6, 18, 0.25);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            z-index: 2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 120px 0;
+        }
+        
+        /* Hero Typography */
+        .hero-tagline { 
+            color: #00E0FF; 
+            font-size: 14px; 
+            font-weight: 600; 
+            line-height: 20px; 
+            letter-spacing: 1px; 
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .hero-title { 
+            font-size: 48px; 
+            font-weight: 800; 
+            line-height: 58px; 
+            letter-spacing: -0.5px; 
+            color: #FFFFFF; 
+            text-align: center; 
+            margin-bottom: 32px; 
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-subtitle { 
+            font-size: 20px; 
+            font-weight: 400; 
+            line-height: 32px; 
+            letter-spacing: 0.2px; 
+            color: rgba(255, 255, 255, 0.9); 
+            text-align: center; 
+            margin-bottom: 40px; 
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .download-buttons-wrapper { margin-bottom: 20px; }
+        .download-buttons { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 16px; 
+            flex-wrap: wrap; 
+        }
+        
+        /* 左侧按钮 - App Store */
+        .btn.btn-ios { 
+            background: #FFFFFF; 
+            color: #120A2F; 
+            border-radius: 12px;
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            box-shadow: none;
+        }
+        .btn.btn-ios:hover { 
+            background: #FFFFFF; 
+            transform: scale(1.03);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+        }
+        
+        /* 右侧按钮 - Android */
+        .btn.btn-android { 
+            background: linear-gradient(90deg, #5B38F5, #9D5CFF); 
+            color: #FFFFFF; 
+            border-radius: 12px;
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            box-shadow: none;
+        }
+        .btn.btn-android:hover { 
+            transform: scale(1.03);
+            box-shadow: 0 4px 20px rgba(91, 56, 245, 0.4);
+        }
+        
+        .btn-icon { width: 24px; height: 24px; }
+        
+        .android-stores-note { 
+            width: 100%; 
+            text-align: center; 
+            color: rgba(255, 255, 255, 0.6); 
+            font-size: 14px; 
+            font-weight: 300; 
+            line-height: 20px; 
+            letter-spacing: 0.3px; 
+            margin-bottom: 32px;
+        }
+
+        /* ... 其他部分的CSS保持不变 ... */
+        #architecture { background-color: var(--light-bg); }
+        .architecture-flow { display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 80px; flex-wrap: wrap; }
+        .flow-item { text-align: center; flex-basis: 300px; flex-grow: 1; }
+        .flow-item img { width: 100%; max-width: 250px; border-radius: 10px; margin: 0 auto 20px auto; display: block; transition: transform 0.3s ease; }
+        .flow-item:hover img { transform: scale(1.05); }
+        .flow-item h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .flow-arrow { font-size: 3rem; color: var(--primary-color); padding: 0 20px; }
+        #features {padding-top: 100px;}
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .feature-card { background: var(--light-bg); padding: 40px; border-radius: 15px; border: 1px solid var(--border-color); transition: all 0.3s ease; }
+        .feature-card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
+        .feature-icon { font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px; }
+        .feature-title { font-size: 1.6rem; margin-bottom: 15px; }
+        .feature-description { color: var(--text-dark); }
+        #contact {padding-top: 100px;}
+        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 80px; text-align: center; }
+        .contact-card h3 { font-size: 1.4rem; margin-bottom: 20px; }
+        .qr-code { width: 180px; height: 180px; margin: 0 auto; background-color: #fff; padding: 8px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+        .qr-code img { width: 100%; height: 100%; display: block; object-fit: contain; }
+        .qr-label { margin-top: 15px; color: var(--text-dark); font-size: 1rem; }
+        .contact-info { margin-top: 20px; }
+        .contact-info a { color: var(--text-light); text-decoration: none; transition: color 0.3s; }
+        .contact-info a:hover { color: var(--secondary-color); }
+        .footer { background-color: var(--dark-bg); text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); }
+        .footer p { color: var(--text-dark); }
+        
+        /* 响应式布局 */
+        @media (max-width: 1200px) {
+            .container { max-width: 960px; }
+            .section-title { font-size: 2.4rem; }
+            .hero-title { font-size: 3.5rem; }
+            .navbar { padding: 0 24px; }
+            .logo { left: 24px; }
+            .btn-nav { right: 24px; }
+        }
+        @media (max-width: 992px) {
+            .container { max-width: 720px; }
+            .section-title { font-size: 2rem; }
+            .hero-title { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 16px; }
+            .hero-content { padding: 100px 0; }
+            .navbar { padding: 0 24px; }
+            .logo { left: 24px; }
+            .btn-nav { right: 24px; }
+        }
+        @media (max-width: 768px) {
+            .container { max-width: 100%; padding: 0 20px; }
+            .header { height: 70px; }
+            .logo { position: static; }
+            .lang-switch { position: static; }
+            .btn-nav { position: static; margin-left: auto; padding: 10px 24px; font-size: 14px; }
+            .nav-menu { 
+                display: none; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background-color: rgba(10, 6, 18, 0.95); 
+                backdrop-filter: blur(12px);
+                flex-direction: column; 
+                text-align: center; 
+                padding: 20px 0; 
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            .nav-menu.active { display: flex; }
+            .nav-item { margin: 12px 0; }
+            .hamburger { display: block; font-size: 1.5rem; }
+            .hero-title { font-size: 2.2rem; line-height: 1.3; }
+            .hero-tagline { font-size: 12px; }
+            .hero-subtitle { font-size: 14px; line-height: 1.6; }
+            .download-buttons { gap: 12px; }
+            .btn.btn-ios, .btn.btn-android { padding: 10px 20px; font-size: 14px; }
+            .btn-icon { width: 20px; height: 20px; }
+            .android-stores-note { font-size: 12px; }
+        }
+        @media (max-width: 480px) {
+            .hero-title { font-size: 1.8rem; }
+            .hero-subtitle { font-size: 13px; }
+            .section-title { font-size: 1.6rem; }
+            .nav-menu { gap: 0; }
+            .nav-link { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="image/logo.png" alt="微圈 Logo" class="logo-image">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html#hero" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="index.html#architecture" class="nav-link">服务架构</a></li>
+                <li class="nav-item"><a href="index.html#scenarios" class="nav-link">用户故事</a></li>
+                <li class="nav-item"><a href="index.html#features" class="nav-link">技术优势</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="zh-CN">中</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <a href="index.html#contact" class="btn-nav">联系我们</a>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 主体内容... (保持不变) -->
+        <!-- 1. 首页大屏 -->
+        <section id="hero">
+            <img class="hero-background-image" src="image/deepsire-robot-image.jpg" alt="全场景AI伴侣背景">
+            <div class="hero-content container">
+                <p class="hero-tagline">全球首创“数字灵魂”附着生态</p>
+                <h1 class="hero-title">全场景 AI 伴侣</h1>
+                <p class="hero-subtitle">未来依稀可见，陪伴时刻在线。我们融合科技与情感，为您带来真正懂你的智能伴侣。</p>
+                <div class="download-buttons-wrapper">
+                    <div class="download-buttons">
+                        <a href="https://apps.apple.com/cn/app/%E5%BE%AE%E5%9C%88/id1513072811" class="btn btn-ios" target="_blank">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.345 14.229c-.048.006-.098.01-.148.012-.416.018-.842.14-1.238.381-.884.54-1.637 1.37-2.733 1.37-.992 0-1.603-.7-2.673-.728-1.28-.03-2.234.85-2.933.85-.92 0-1.889-.66-2.673-1.631-1.353-1.666-2.228-4.344-1.222-6.438.544-1.134 1.564-1.84 2.625-1.84.992 0 1.777.729 2.761.729 1.12 0 1.956-.87 3.025-.87.828 0 1.81.42 2.535 1.291-.219.13-.43.279-.633.447-.633.52-1.224 1.2-1.224 2.054 0 1.37.932 2.083 1.258 2.291.13.082.268.16.41.232.06.03.12.06.18.092.383.218.775.36 1.171.36.19 0 .383-.03.57-.083-1.047 2.025-2.48 2.8-3.09 3.012zm-3.13-10.05c.703-.84 1.157-1.95 1.05-3.179-1.004.06-2.115.689-2.83 1.528-.621.728-1.222 1.948-1.12 3.12.98.13 2.054-.64 2.9-1.469z"/></svg>
+                            <span>App Store 下载</span>
+                        </a>
+                        <a href="https://storage.meeetta.com/apk/meeet.apk" class="btn btn-android">
+                             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.2,5.19l-1.05-1.78A0.5,0.5,0,0,0,19.7,3H4.3a0.5,0.5,0,0,0-0.45.71L4.9,5.5a0.5,0.5,0,0,0,0,.08L3.11,8.43a0.5,0.5,0,0,0,0,.14L4.8,11.5l-2.54,4.3a0.5,0.5,0,0,0,0,.14L4.3,18.81a0.5,0.5,0,0,0,0,.08l-1,1.78a0.5,0.5,0,0,0,0,.14L4.3,21a0.5,0.5,0,0,0,0.45,0.25h14.5a0.5,0.5,0,0,0,0.45-0.71l-1-1.78a0.5,0.5,0,0,0,0-0.14L17.2,16a0.5,0.5,0,0,0,0-0.08l2.54-4.3a0.5,0.5,0,0,0,0-0.14L18.05,8.65l1.78-2.92A0.5,0.5,0,0,0,21.2,5.19ZM8.5,8A1.5,1.5,0,1,1,7,6.5,1.5,1.5,0,0,1,8.5,8Zm7,8a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,15.5,16Z"/></svg>
+                            <span>Android 下载</span>
+                        </a>
+                    </div>
+                    <p class="android-stores-note">已上架华为、小米、OPPO、VIVO等主流应用商店</p>
+                </div>
+            </div>
+        </section>
+        <section id="architecture">
+            <div class="container">
+                <h2 class="section-title">三位一体的服务架构</h2>
+                <p class="section-subtitle">通过“AI大脑+实体玩具+智能APP”的完美结合，我们构建了无缝、沉浸的全场景互动平台。</p>
+                <div class="architecture-flow">
+                    <div class="flow-item">
+                        <img src="image/circuit-board.png" alt="主板植入AI模组">
+                        <h3>主板植入AI模组</h3>
+                        <p class="feature-description">强大的边缘计算能力，赋予硬件智慧核心。</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <img src="image/toy-products.png" alt="玩具成品">
+                        <h3>多样化实体玩具</h3>
+                        <p class="feature-description">从情趣用品到潮玩手办，灵魂可附着于万物。</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <img src="image/app-interface.jpg" alt="手机App界面">
+                        <h3>智能APP中枢</h3>
+                        <p class="feature-description">灵魂的交互窗口，实现个性化定制与远程控制。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="features">
+            <div class="container">
+                <h2 class="section-title">独家技术与生态优势</h2>
+                <p class="section-subtitle">我们不仅创造产品，更定义标准。独家技术构建了难以逾越的护城河。</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3 class="feature-title">数字灵魂引擎</h3>
+                        <p class="feature-description">融合多模态感知与人格记忆库，创造有深度、有记忆的深度情感交互体验。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3 class="feature-title">跨设备迁移</h3>
+                        <p class="feature-description">独家灵魂迁移协议，支持多终端同步灵魂状态，实现真正的全天候无缝陪伴。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📹</div>
+                        <h3 class="feature-title">视频行为识别</h3>
+                        <p class="feature-description">拥有专利的视频行为识别技术，精准检测并反馈内容行为，增强互动真实感与沉浸感。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤝</div>
+                        <h3 class="feature-title">开放生态协议</h3>
+                        <p class="feature-description">制定统一的硬件接口与传输标准，降低第三方硬件接入门槛，加速生态系统扩张。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">灵魂，桥梁与未来</h2>
+                <p class="section-subtitle">AI灵魂伴侣，作为情感与科技的桥梁，将引领智能陪伴新时代，连接人心与未来。即刻加入我们，共同见证。</p>
+                <div class="contact-container">
+                    <div class="contact-card">
+                        <h3>微圈公众号</h3>
+                        <div class="qr-code">
+                            <img src="image/publicQr.png" alt="微圈公众号">
+                        </div>
+                        <p class="qr-label">扫码了解更多伴侣</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>商务合作洽谈</h3>
+                        <div class="qr-code">
+                            <img src="image/seller1.png" alt="商务合作企业微信">
+                        </div>
+                        <p class="qr-label">硬件合作 | 渠道合作</p>
+                    </div>
+                     <div class="contact-card">
+                        <h3>商务合作洽谈</h3>
+                        <div class="qr-code">
+                            <img src="image/seller2.png" alt="创始人微信二维码">
+                        </div>
+                        <p class="qr-label">硬件合作 | 渠道合作</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>邮件与电话</h3>
+                        <p class="qr-label">获取商业计划书或深入沟通</p>
+                        <div class="contact-info">
+                            <p><a href="mailto:support@meeetta.com">邮箱: support@meeetta.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 深颖数字（深圳）有限公司. All Rights Reserved.</p>
+            <p>备案号：<a href="https://beian.miit.gov.cn/" style="color: var(--text-dark); text-decoration: none;">粤ICP备2023062123号</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+        
+        // 导航栏滚动时显示分界线
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 语言切换
+        const dlTranslations = {
+            'zh-CN': {
+                nav_contact: '联系我们',
+                hero_tagline: '全球首创"数字灵魂"附着生态',
+                hero_title: '全场景 AI 伴侣',
+                hero_subtitle: '未来依稀可见，陪伴时刻在线。我们融合科技与情感，为您带来真正懂你的智能伴侣。',
+                ios_btn: 'App Store 下载',
+                android_btn: 'Android 下载',
+                android_note: '已上架华为、小米、OPPO、VIVO等主流应用商店',
+                arch_title: '三位一体的服务架构',
+                arch_subtitle: '通过"AI大脑+实体玩具+智能APP"的完美结合，我们构建了无缝、沉浸的全场景互动平台。',
+                arch_1: '主板植入AI模组',
+                arch_1_desc: '强大的边缘计算能力，赋予硬件智慧核心。',
+                arch_2: '多样化实体玩具',
+                arch_2_desc: '从情趣用品到潮玩手办，灵魂可附着于万物。',
+                arch_3: '智能APP中枢',
+                arch_3_desc: '灵魂的交互窗口，实现个性化定制与远程控制。',
+                features_title: '独家技术与生态优势',
+                features_subtitle: '我们不仅创造产品，更定义标准。独家技术构建了难以逾越的护城河。',
+                feature_1_title: '数字灵魂引擎',
+                feature_1_desc: '融合多模态感知与人格记忆库，创造有深度、有记忆的深度情感交互体验。',
+                feature_2_title: '跨设备迁移',
+                feature_2_desc: '独家灵魂迁移协议，支持多终端同步灵魂状态，实现真正的全天候无缝陪伴。',
+                feature_3_title: '视频行为识别',
+                feature_3_desc: '拥有专利的视频行为识别技术，精准检测并反馈内容行为，增强互动真实感与沉浸感。',
+                feature_4_title: '开放生态协议',
+                feature_4_desc: '制定统一的硬件接口与传输标准，降低第三方硬件接入门槛，加速生态系统扩张。',
+                contact_title: '灵魂，桥梁与未来',
+                contact_subtitle: 'AI灵魂伴侣，作为情感与科技的桥梁，将引领智能陪伴新时代，连接人心与未来。即刻加入我们，共同见证。',
+                contact_1: '微圈公众号',
+                contact_1_label: '扫码了解更多伴侣',
+                contact_2: '商务合作洽谈',
+                contact_2_label: '硬件合作 | 渠道合作',
+                contact_3: '商务合作洽谈',
+                contact_3_label: '硬件合作 | 渠道合作',
+                contact_4: '邮件与电话',
+                contact_4_label: '获取商业计划书或深入沟通',
+                footer: '© 2024 深颖数字（深圳）有限公司. All Rights Reserved.',
+                icp: '备案号：粤ICP备2023062123号',
+            },
+            'en': {
+                nav_contact: 'Contact Us',
+                hero_tagline: 'World First "Digital Soul" Ecosystem',
+                hero_title: 'All-Scene AI Companion',
+                hero_subtitle: 'The future is visible, companionship is always online. We integrate technology and emotion to bring you a truly understanding smart companion.',
+                ios_btn: 'App Store Download',
+                android_btn: 'Android Download',
+                android_note: 'Available on Huawei, Xiaomi, OPPO, VIVO and other major app stores',
+                arch_title: 'Trinity Service Architecture',
+                arch_subtitle: 'Through the perfect combination of "AI brain + physical toys + smart APP", we build a seamless and immersive all-scenario interactive platform.',
+                arch_1: 'AI Module on Motherboard',
+                arch_1_desc: 'Powerful edge computing capabilities, giving hardware a smart core.',
+                arch_2: 'Diverse Physical Toys',
+                arch_2_desc: 'From intimate products to trendy figurines, the soul can attach to anything.',
+                arch_3: 'Smart APP Hub',
+                arch_3_desc: 'Interactive window for the soul, enabling personalized customization and remote control.',
+                features_title: 'Exclusive Technology & Ecosystem Advantages',
+                features_subtitle: 'We not only create products, but define standards. Exclusive technology builds an insurmountable moat.',
+                feature_1_title: 'Digital Soul Engine',
+                feature_1_desc: 'Integrates multi-modal perception and personality memory bank to create deep emotional interaction experiences with memory.',
+                feature_2_title: 'Cross-Device Migration',
+                feature_2_desc: 'Exclusive soul migration protocol supporting multi-terminal sync for 24/7 seamless companionship.',
+                feature_3_title: 'Video Behavior Recognition',
+                feature_3_desc: 'Patented video behavior recognition technology precisely detects and responds to content behavior for immersive interaction.',
+                feature_4_title: 'Open Ecosystem Protocol',
+                feature_4_desc: 'Unified hardware interface and transmission standards lowering third-party access barriers.',
+                contact_title: 'Soul, Bridge & Future',
+                contact_subtitle: 'AI soul companions, as a bridge between emotion and technology, will lead a new era of intelligent companionship.',
+                contact_1: 'Weiquan Official',
+                contact_1_label: 'Scan to learn more',
+                contact_2: 'Business Cooperation',
+                contact_2_label: 'Hardware | Channel',
+                contact_3: 'Business Cooperation',
+                contact_3_label: 'Hardware | Channel',
+                contact_4: 'Email & Phone',
+                contact_4_label: 'Get business plan or discuss further',
+                footer: '© 2024 Deepin Digital (Shenzhen) Co., Ltd. All Rights Reserved.',
+                icp: 'ICP: 粤ICP备2023062123号',
+            }
+        };
+
+        function setDlLang(lang) {
+            const t = dlTranslations[lang];
+            if (!t) return;
+
+            document.querySelectorAll('.hero-tagline').forEach(el => el.textContent = t.hero_tagline);
+            document.querySelectorAll('.hero-title').forEach(el => el.textContent = t.hero_title);
+            document.querySelectorAll('.hero-subtitle').forEach(el => el.textContent = t.hero_subtitle);
+            document.querySelectorAll('.btn.btn-ios span').forEach(el => el.textContent = t.ios_btn);
+            document.querySelectorAll('.btn.btn-android span').forEach(el => el.textContent = t.android_btn);
+            document.querySelectorAll('.android-stores-note').forEach(el => el.textContent = t.android_note);
+
+            document.querySelectorAll('.btn-nav').forEach(el => el.textContent = t.nav_contact);
+
+            const flowTitles = document.querySelectorAll('.architecture-flow .flow-item h3');
+            const flowDescs = document.querySelectorAll('.architecture-flow .flow-item .feature-description');
+            if (flowTitles[0]) flowTitles[0].textContent = t.arch_1;
+            if (flowTitles[1]) flowTitles[1].textContent = t.arch_2;
+            if (flowTitles[2]) flowTitles[2].textContent = t.arch_3;
+            if (flowDescs[0]) flowDescs[0].textContent = t.arch_1_desc;
+            if (flowDescs[1]) flowDescs[1].textContent = t.arch_2_desc;
+            if (flowDescs[2]) flowDescs[2].textContent = t.arch_3_desc;
+            document.querySelectorAll('#architecture .section-title').forEach(el => el.textContent = t.arch_title);
+            document.querySelectorAll('#architecture .section-subtitle').forEach(el => el.textContent = t.arch_subtitle);
+
+            const featureTitles = document.querySelectorAll('#features .feature-title');
+            const featureDescs = document.querySelectorAll('#features .feature-description');
+            if (featureTitles[0]) featureTitles[0].textContent = t.feature_1_title;
+            if (featureTitles[1]) featureTitles[1].textContent = t.feature_2_title;
+            if (featureTitles[2]) featureTitles[2].textContent = t.feature_3_title;
+            if (featureTitles[3]) featureTitles[3].textContent = t.feature_4_title;
+            if (featureDescs[0]) featureDescs[0].textContent = t.feature_1_desc;
+            if (featureDescs[1]) featureDescs[1].textContent = t.feature_2_desc;
+            if (featureDescs[2]) featureDescs[2].textContent = t.feature_3_desc;
+            if (featureDescs[3]) featureDescs[3].textContent = t.feature_4_desc;
+            document.querySelectorAll('#features .section-title').forEach(el => el.textContent = t.features_title);
+            document.querySelectorAll('#features .section-subtitle').forEach(el => el.textContent = t.features_subtitle);
+
+            document.querySelectorAll('#contact .section-title').forEach(el => el.textContent = t.contact_title);
+            document.querySelectorAll('#contact .section-subtitle').forEach(el => el.textContent = t.contact_subtitle);
+            const contactTitles = document.querySelectorAll('#contact .contact-card h3');
+            const contactLabels = document.querySelectorAll('#contact .qr-label');
+            if (contactTitles[0]) contactTitles[0].textContent = t.contact_1;
+            if (contactTitles[1]) contactTitles[1].textContent = t.contact_2;
+            if (contactTitles[2]) contactTitles[2].textContent = t.contact_3;
+            if (contactTitles[3]) contactTitles[3].textContent = t.contact_4;
+            if (contactLabels[0]) contactLabels[0].textContent = t.contact_1_label;
+            if (contactLabels[1]) contactLabels[1].textContent = t.contact_2_label;
+            if (contactLabels[2]) contactLabels[2].textContent = t.contact_3_label;
+            if (contactLabels[3]) contactLabels[3].textContent = t.contact_4_label;
+
+            const footerPs = document.querySelectorAll('.footer p');
+            if (footerPs[0]) footerPs[0].textContent = t.footer;
+            if (footerPs[1]) footerPs[1].innerHTML = t.icp.includes('ICP') ? t.icp : '备案号：<a href="https://beian.miit.gov.cn/" style="color: var(--text-dark); text-decoration: none;">' + t.icp.replace('备案号：', '') + '</a>';
+
+            document.querySelectorAll('.lang-switch .lang-btn').forEach(b => {
+                b.classList.toggle('active', b.dataset.lang === lang);
+            });
+            localStorage.setItem('dl_preferred_lang', lang);
+        }
+
+        function detectDlLang() {
+            const saved = localStorage.getItem('dl_preferred_lang');
+            if (saved && dlTranslations[saved]) return saved;
+            const lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            if (lang.startsWith('zh')) return 'zh-CN';
+            return 'en';
+        }
+
+        document.querySelectorAll('.lang-switch .lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                setDlLang(this.dataset.lang);
+            });
+        });
+
+        setDlLang(detectDlLang());
+    </script>
+</body>
+</html>

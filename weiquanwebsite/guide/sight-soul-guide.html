@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>视 . AI智能相框 - 使用指南</title>
+    <meta name="description" content="视 . AI智能相框智能相框使用指南，快速上手操作说明">
+    <link rel="icon" href="../image/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-color: #06b6d4;
+            --accent-color: #fbbf24;
+            --dark-bg: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-light: #ffffff;
+            --text-gray: #cbd5e1;
+            --success-color: #10b981;
+            --step-glow: rgba(6, 182, 212, 0.3);
+            --z-base: 1;
+            --z-dropdown: 10;
+            --z-sticky: 20;
+            --z-modal-backdrop: 30;
+            --z-modal: 40;
+            --z-toast: 50;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(251, 191, 36, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            z-index: var(--z-base);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-top: 24px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .logo-image {
+            height: 40px;
+            filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.5));
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        .header-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .guide-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .guide-card:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-container {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--brand-color), #0891b2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px var(--step-glow);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            max-width: 65ch;
+        }
+
+        .step-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .qr-image {
+            width: 180px;
+            max-width: 60%;
+            border-radius: 12px;
+            margin: 12px auto 0;
+            display: block;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .image-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .image-row .qr-image {
+            width: auto;
+            max-width: 200px;
+            margin: 0;
+            flex: 0 0 auto;
+            display: block;
+        }
+
+        .image-row .step-image {
+            width: auto;
+            max-width: 45%;
+            margin-top: 0;
+            flex: 0 0 auto;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(251, 191, 36, 0.05));
+            border-left: 3px solid var(--brand-color);
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+            margin-top: 16px;
+        }
+
+        .highlight-box p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin: 0;
+            line-height: 1.7;
+            max-width: 65ch;
+        }
+
+        .highlight-box strong {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 20px;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #10b981;
+        }
+
+        .success-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: #10b981;
+        }
+
+        .tips-section {
+            background: rgba(251, 191, 36, 0.05);
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+
+        .tips-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--accent-color);
+        }
+
+        .tips-title svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent-color);
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+            max-width: 65ch;
+        }
+
+        .tips-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 32px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo img {
+            height: 28px;
+            filter: drop-shadow(0 0 6px rgba(6, 182, 212, 0.4));
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-contact {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 8px;
+        }
+
+        .footer-contact a {
+            color: var(--brand-color);
+            text-decoration: none;
+        }
+
+        .lang-selector {
+            position: relative;
+            text-align: right;
+            margin-bottom: 16px;
+        }
+        .lang-selector .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .lang-selector .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--brand-color);
+        }
+        .lang-selector .lang-arrow {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s ease;
+        }
+        .lang-selector.open .lang-arrow {
+            transform: rotate(180deg);
+        }
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            min-width: 150px;
+            background: rgba(15, 23, 42, 0.96);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 6px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            z-index: 100;
+        }
+        .lang-selector.open .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .lang-option {
+            padding: 10px 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-weight: 400;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lang-option:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+        .lang-option.active {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--brand-color);
+            font-weight: 500;
+        }
+        .lang-option.active::after {
+            content: '✓';
+            float: right;
+            color: var(--brand-color);
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px;
+            }
+
+            .header {
+                padding-top: 16px;
+                margin-bottom: 24px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .header-title {
+                font-size: 1.25rem;
+            }
+
+            .guide-card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .step-number {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+
+            .step-title {
+                font-size: 1rem;
+            }
+
+            .step-description {
+                font-size: 0.85rem;
+            }
+
+            .tips-section {
+                margin-top: 24px;
+                padding: 20px;
+            }
+
+            .footer {
+                margin-top: 32px;
+                padding: 24px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="../image/logo.png" alt="微圈 Logo" class="logo-image">
+                <span class="logo-text">微 圈</span>
+            </div>
+            <h1 class="header-title">视 . AI智能相框使用指南</h1>
+            <p class="header-subtitle">快速上手，开启数字陪伴之旅</p>
+        </div>
+
+        <div class="lang-selector">
+            <button class="lang-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="lang-dropdown">
+                <div class="lang-option active" data-lang="zh-CN">简体中文</div>
+                <div class="lang-option" data-lang="en">English</div>
+                <div class="lang-option" data-lang="ja">日本語</div>
+                <div class="lang-option" data-lang="ko">한국어</div>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h2 class="step-title">连接电源与 Wi-Fi</h2>
+                    <p class="step-description">将视 . AI 智能相框接通电源，等待设备启动。根据开机向导提示，选择家中的 Wi-Fi 网络并输入密码，完成联网。</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>小贴士：</strong>建议将相框放在 Wi-Fi 信号较好的位置，以获得更稳定的内容同步、语音互动和使用体验。</p>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h2 class="step-title">下载微圈 App</h2>
+                    <p class="step-description">使用手机扫描包装底部的微圈 App 二维码，进入下载页面；也可以在应用商店搜索"微圈"下载安装。</p>
+                </div>
+            </div>
+            <img src="微圈官网.png" alt="微圈 App 下载二维码" class="qr-image">
+            <div class="highlight-box">
+                <p><strong>支持平台：</strong>iOS 12.0 及以上 / Android 8.0 及以上。</p>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h2 class="step-title">绑定相框</h2>
+                    <p class="step-description">打开微圈 App，注册或登录账号后，点击"添加设备"。根据页面提示，扫描包装底部或相框背面插电口附近的设备绑定二维码，即可完成手机账号与相框的配对。</p>
+                </div>
+            </div>
+            <div class="image-row">
+                <img src="绑定相框二维码.png" alt="设备绑定二维码" class="qr-image">
+                <img src="相框反面插电口处.png" alt="相框背面插电口处" class="step-image">
+            </div>
+            <div class="highlight-box">
+                <p>绑定成功后，您可以通过微圈 App 管理相框中的照片、视频、人物档案和相关设置。</p>
+            </div>
+            <div class="highlight-box" style="border-left-color: var(--accent-color); background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(6, 182, 212, 0.05));">
+                <p><strong>送礼模式：</strong>如果您购买相框是为了送给家人或朋友，也可以在不拆开包装的情况下，直接扫描包装底部的设备绑定二维码，提前完成设备绑定、人物影像整理和祝福内容设置。收礼人收到相框并开机联网后，即可看到您准备的人物影像档案、惊喜照片和礼物祝福。</p>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h2 class="step-title">整理人物影像档案</h2>
+                    <p class="step-description">在微圈 App 中选择人物档案，根据提示上传本人或已获授权的照片、视频素材。系统会按人物与时间整理内容，供相框展示和查阅。</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>最佳效果：</strong>建议上传清晰的正面照片，保持光线均匀、背景简洁，人物面部无遮挡。</p>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-container">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h2 class="step-title">开始浏览</h2>
+                    <p class="step-description">设置完成后，人物照片、视频与相关故事会在相框中呈现。您可以通过触摸屏幕浏览，也可以在微圈 App 中继续调整人物、内容和播放设置。</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>如设备支持靠近亮屏功能</strong>，靠近相框时可自动唤醒屏幕，让日常互动更加自然便捷。</p>
+            </div>
+        </div>
+
+        <div class="tips-section">
+            <div class="tips-title">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+                使用小贴士
+            </div>
+            <ul class="tips-list">
+                <li>首次使用建议连接充电器使用，确保充足电量</li>
+                <li>定期通过App更新设备固件，获取最新功能</li>
+                <li>避免将设备放置在阳光直射或高温环境</li>
+                <li>如遇问题可在App中联系客服或查看帮助中心</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <a href="index.html" class="footer-logo">
+                <img src="../image/logo.png" alt="微圈">
+                <span style="color: #fff; font-size: 18px; font-weight: 600;">微 圈</span>
+            </a>
+            <p class="footer-text">深颖数字（深圳）有限公司</p>
+            <p class="footer-contact">客服支持：<a href="mailto:support@meeetta.com">support@meeetta.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        const langNames = {
+            'zh-CN': '简体中文',
+            'en': 'English',
+            'ja': '日本語',
+            'ko': '한국어',
+        };
+
+        const guideTranslations = {
+            'zh-CN': {
+                title: '视 . AI智能相框使用指南',
+                subtitle: '快速上手，开启数字陪伴之旅',
+                s1_title: '连接电源与 Wi-Fi',
+                s1_desc: '将视 . AI 智能相框接通电源，等待设备启动。根据开机向导提示，选择家中的 Wi-Fi 网络并输入密码，完成联网。',
+                s1_tip: '小贴士：建议将相框放在 Wi-Fi 信号较好的位置，以获得更稳定的内容同步、语音互动和使用体验。',
+                s2_title: '下载微圈 App',
+                s2_desc: '使用手机扫描包装底部的微圈 App 二维码，进入下载页面；也可以在应用商店搜索"微圈"下载安装。',
+                s2_tip: '支持平台：iOS 12.0 及以上 / Android 8.0 及以上。',
+                s3_title: '绑定相框',
+                s3_desc: '打开微圈 App，注册或登录账号后，点击"添加设备"。根据页面提示，扫描包装底部或相框背面插电口附近的设备绑定二维码，即可完成手机账号与相框的配对。',
+                s3_tip1: '绑定成功后，您可以通过微圈 App 管理相框中的照片、视频、人物档案和相关设置。',
+                s3_tip2: '送礼模式：无需拆开包装即可扫描设备绑定二维码，提前完成人物影像整理和祝福内容设置。收礼人开机联网后即可看到准备好的人物影像档案、惊喜照片和礼物祝福。',
+                s4_title: '整理人物影像档案',
+                s4_desc: '在微圈 App 中选择人物档案，上传本人或已获授权的照片、视频素材。系统会按人物与时间整理内容，供相框展示和查阅。',
+                s4_tip: '最佳效果：建议上传清晰的正面照片，保持光线均匀、背景简洁，人物面部无遮挡。',
+                s5_title: '开始浏览',
+                s5_desc: '设置完成后，人物照片、视频与相关故事会在相框中呈现。您可以通过触摸屏幕浏览，也可以在微圈 App 中继续调整人物、内容和播放设置。',
+                s5_tip: '如设备支持靠近亮屏功能，靠近相框时可自动唤醒屏幕，让日常互动更加自然便捷。',
+                footer: '深颖数字（深圳）有限公司',
+                contact: '客服支持：',
+            },
+            'en': {
+                title: 'Sight AI Smart Frame - User Guide',
+                subtitle: 'Quick Start, Begin Your Digital Companion Journey',
+                s1_title: 'Connect Power & Wi-Fi',
+                s1_desc: 'Plug in the Sight AI Smart Frame and wait for it to start. Follow the on-screen wizard to select your Wi-Fi network and enter the password to complete the connection.',
+                s1_tip: 'Tip: Place the frame where Wi-Fi signal is strong for stable content syncing, voice interaction, and a better experience.',
+                s2_title: 'Download Weiquan App',
+                s2_desc: 'Scan the Weiquan App QR code on the bottom of the package, or search "微圈" in the app store to download.',
+                s2_tip: 'Supported: iOS 12.0+ / Android 8.0+',
+                s3_title: 'Bind the Frame',
+                s3_desc: 'Open the Weiquan App, register or log in, then tap "Add Device". Follow the instructions to scan the binding QR code on the package bottom or near the charging port on the back of the frame.',
+                s3_tip1: 'Once bound, you can manage photos, videos, person archives and frame settings in the Weiquan App.',
+                s3_tip2: 'Gift Mode: Scan the binding QR code without opening the package, then prepare a person media archive, photos and a greeting before the recipient powers on.',
+                s4_title: 'Organize a Person Media Archive',
+                s4_desc: 'Select a person archive in the Weiquan App and upload photos or videos of yourself or material you are authorized to use. Content is organized by person and time for display and browsing.',
+                s4_tip: 'Best results: Use clear front-facing photos with even lighting, simple background, and no facial obstructions.',
+                s5_title: 'Start Browsing',
+                s5_desc: 'After setup, photos, videos and related stories appear on the frame. Browse by touch and adjust people, content and playback settings in the Weiquan App.',
+                s5_tip: 'If your device supports proximity wake, the screen lights up as you approach for a more natural experience.',
+                footer: 'Deepin Digital (Shenzhen) Co., Ltd.',
+                contact: 'Support: ',
+            },
+            'ja': {
+                title: 'Sight AI スマートフォトフレーム - ユーザーガイド',
+                subtitle: 'クイックスタート、デジタルコンパニオンとの旅を始めよう',
+                s1_title: '電源とWi-Fiに接続',
+                s1_desc: 'Sight AI スマートフォトフレームの電源を入れ、起動を待ちます。セットアップウィザードに従い、Wi-Fiネットワークを選択してパスワードを入力し、接続を完了します。',
+                s1_tip: 'ヒント：安定したコンテンツ同期、音声対話、使用体験のために、Wi-Fi信号の良い場所にフレームを置いてください。',
+                s2_title: '微圈アプリをダウンロード',
+                s2_desc: 'パッケージ底面の微圈アプリQRコードをスキャンするか、アプリストアで「微圈」を検索してダウンロードします。',
+                s2_tip: '対応プラットフォーム：iOS 12.0以上 / Android 8.0以上。',
+                s3_title: 'フォトフレームをバインド',
+                s3_desc: '微圈アプリを開き、アカウント登録またはログイン後、「デバイス追加」をタップします。パッケージ底面またはフレーム背面の充電ポート付近にあるバインディングQRコードをスキャンしてペアリングします。',
+                s3_tip1: 'バインド後、微圈アプリで写真・動画・人物アーカイブ・設定を管理できます。',
+                s3_tip2: 'ギフトモード：包装を開けずにQRコードを読み取り、人物画像アーカイブ、写真、祝福メッセージを事前に準備できます。',
+                s4_title: '人物画像アーカイブを整理',
+                s4_desc: '微圈アプリで人物アーカイブを選び、本人または使用許可を得た写真・動画をアップロードします。人物と時間別に整理して表示・閲覧できます。',
+                s4_tip: '最適な結果：明るい正面写真を均一な照明、シンプルな背景、顔の遮蔽なしでアップロードしてください。',
+                s5_title: '閲覧を始める',
+                s5_desc: '設定後、人物の写真・動画・関連する物語が表示されます。タッチで閲覧し、微圈アプリで人物・内容・再生設定を調整できます。',
+                s5_tip: '近接起動機能対応デバイスの場合、フレームに近づくと画面が自動点灯し、日常的な対話がより自然で便利になります。',
+                footer: 'Deepin Digital (Shenzhen) Co., Ltd.',
+                contact: 'サポート：',
+            },
+            'ko': {
+                title: 'Sight AI 스마트 액자 - 사용자 가이드',
+                subtitle: '빠른 시작, 디지털 동반자와의 여행 시작하기',
+                s1_title: '전원 및 Wi-Fi 연결',
+                s1_desc: 'Sight AI 스마트 액자의 전원을 켜고 시작될 때까지 기다립니다. 설정 마법사에 따라 Wi-Fi 네트워크를 선택하고 비밀번호를 입력하여 연결을 완료합니다.',
+                s1_tip: '팁: 안정적인 콘텐츠 동기화, 음성 상호작용 및 사용 환경을 위해 Wi-Fi 신호가 강한 곳에 액자를 두십시오.',
+                s2_title: '微圈 앱 다운로드',
+                s2_desc: '패키지 하단의 微圈 앱 QR 코드를 스캔하거나 앱 스토어에서 "微圈"을 검색하여 다운로드합니다.',
+                s2_tip: '지원 플랫폼: iOS 12.0 이상 / Android 8.0 이상.',
+                s3_title: '액자 연결(바인딩)',
+                s3_desc: '微圈 앱을 열고 계정 등록 또는 로그인 후 "장치 추가"를 탭합니다. 패키지 하단 또는 액자 후면 충전 포트 부근의 QR 코드를 스캔하여 페어링합니다.',
+                s3_tip1: '연결 후 微圈 앱에서 사진, 영상, 인물 아카이브와 설정을 관리할 수 있습니다.',
+                s3_tip2: '선물 모드: 포장을 열지 않고 QR 코드를 스캔해 인물 영상 아카이브, 사진과 축하 메시지를 미리 준비할 수 있습니다.',
+                s4_title: '인물 영상 아카이브 정리',
+                s4_desc: '微圈 앱에서 인물 아카이브를 선택하고 본인 또는 사용 허가를 받은 사진과 영상을 업로드합니다. 인물과 시간별로 정리해 전시하고 찾아볼 수 있습니다.',
+                s4_tip: '최적의 결과: 밝은 정면 사진을 균일한 조명, 간단한 배경, 얼굴 가림 없이 업로드하세요.',
+                s5_title: '열람 시작',
+                s5_desc: '설정 후 인물 사진, 영상과 관련 이야기가 액자에 표시됩니다. 터치로 찾아보고 微圈 앱에서 인물, 콘텐츠와 재생 설정을 조정할 수 있습니다.',
+                s5_tip: '근접 감지 기능을 지원하는 기기의 경우, 액자에 가까이 가면 화면이 자동으로 켜져 일상적인 상호작용이 더욱 자연스럽고 편리해집니다.',
+                footer: 'Deepin Digital (Shenzhen) Co., Ltd.',
+                contact: '고객 지원: ',
+            }
+        };
+
+        function setGuideLang(lang) {
+            const t = guideTranslations[lang];
+            if (!t) return;
+
+            document.querySelector('.header-title').textContent = t.title;
+            document.querySelector('.header-subtitle').textContent = t.subtitle;
+
+            const stepTitles = document.querySelectorAll('.step-title');
+            const stepDescs = document.querySelectorAll('.step-description');
+            const titleArr = [t.s1_title, t.s2_title, t.s3_title, t.s4_title, t.s5_title];
+            const descArr = [t.s1_desc, t.s2_desc, t.s3_desc, t.s4_desc, t.s5_desc];
+            stepTitles.forEach((el, i) => { if (titleArr[i]) el.textContent = titleArr[i]; });
+            stepDescs.forEach((el, i) => { if (descArr[i]) el.textContent = descArr[i]; });
+
+            const tips = document.querySelectorAll('.highlight-box p');
+            const tipArr = [t.s1_tip, t.s2_tip, t.s3_tip1, t.s3_tip2, t.s4_tip, t.s5_tip];
+            tips.forEach((el, i) => {
+                if (tipArr[i]) {
+                    const colon = tipArr[i].indexOf('：') > -1 ? '：' : tipArr[i].indexOf(':') > -1 ? ':' : '';
+                    if (colon) {
+                        const parts = tipArr[i].split(colon);
+                        el.innerHTML = '<strong>' + parts[0] + colon + '</strong>' + parts.slice(1).join(colon);
+                    } else {
+                        el.textContent = tipArr[i];
+                    }
+                }
+            });
+
+            // 更新下拉菜单选中状态
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.classList.toggle('active', opt.dataset.lang === lang);
+            });
+
+            // 更新按钮图标（保留已有图标）
+            const btn = document.querySelector('.lang-selector .lang-btn');
+            const globeSvg = btn?.querySelector('svg:first-child')?.outerHTML || '';
+            btn.innerHTML = globeSvg + '<svg class="lang-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+            localStorage.setItem('guide_preferred_lang', lang);
+        }
+
+        function detectGuideLang() {
+            const saved = localStorage.getItem('guide_preferred_lang');
+            if (saved && guideTranslations[saved]) return saved;
+            const lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            if (lang.startsWith('zh')) return 'zh-CN';
+            if (lang.startsWith('ja')) return 'ja';
+            if (lang.startsWith('ko')) return 'ko';
+            return 'en';
+        }
+
+        // 下拉菜单切换
+        const langSelector = document.querySelector('.lang-selector');
+        const langBtn = langSelector?.querySelector('.lang-btn');
+        langBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langSelector.classList.toggle('open');
+        });
+
+        // 选项点击
+        document.querySelectorAll('.lang-option').forEach(opt => {
+            opt.addEventListener('click', (e) => {
+                setGuideLang(e.target.dataset.lang);
+                langSelector.classList.remove('open');
+                e.stopPropagation();
+            });
+        });
+
+        // 点击外部关闭
+        document.addEventListener('click', () => {
+            langSelector?.classList.remove('open');
+        });
+
+        // 阻止下拉菜单内部冒泡
+        document.querySelector('.lang-dropdown')?.addEventListener('click', (e) => e.stopPropagation());
+
+        setGuideLang(detectGuideLang());
+    </script>
+</body>
+</html>
