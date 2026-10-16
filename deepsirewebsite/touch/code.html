@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
+<html class="dark award tint-touch" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Touch | DeepSire</title>
@@ -9,7 +8,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="../image/icon.png"/>
 <link rel="shortcut icon" href="../image/icon.png"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2" rel="preload" as="font" type="font/woff2" crossorigin/>
 <script id="tailwind-config">
@@ -18,923 +17,95 @@
             theme: {
                 extend: {
                     colors: {
-                        "tertiary": "#e8ffee",
-                        "surface-container": "#1a1919",
-                        "secondary-dim": "#6063ed",
-                        "tertiary-container": "#a5fecb",
-                        "on-error-container": "#ffb2b9",
-                        "secondary-fixed": "#cdcdff",
-                        "inverse-on-surface": "#565554",
-                        "on-surface-variant": "#adaaaa",
-                        "primary": "#e08efe",
-                        "inverse-primary": "#893da7",
-                        "on-tertiary-fixed": "#004f31",
-                        "tertiary-dim": "#97efbd",
-                        "secondary-fixed-dim": "#bdbeff",
-                        "on-primary-fixed-variant": "#5a0179",
-                        "background": "#0e0e0e",
-                        "on-secondary": "#07007a",
-                        "primary-fixed-dim": "#ce7eec",
-                        "surface-container-high": "#201f1f",
-                        "on-background": "#ffffff",
-                        "on-surface": "#ffffff",
-                        "inverse-surface": "#fcf8f8",
-                        "on-primary": "#4f006c",
-                        "on-tertiary": "#016d46",
-                        "on-secondary-fixed-variant": "#393bc7",
-                        "error-container": "#a70138",
-                        "tertiary-fixed": "#a5fecb",
-                        "primary-fixed": "#dd8bfb",
-                        "error-dim": "#d73357",
-                        "tertiary-fixed-dim": "#97efbd",
-                        "surface-container-low": "#131313",
-                        "outline-variant": "#494847",
-                        "primary-dim": "#ce7eec",
-                        "outline": "#777575",
-                        "error": "#ff6e84",
-                        "surface-variant": "#262626",
-                        "on-secondary-fixed": "#160dac",
-                        "on-tertiary-fixed-variant": "#066f47",
-                        "surface-container-lowest": "#000000",
-                        "on-secondary-container": "#ccccff",
-                        "secondary-container": "#2e2ebd",
-                        "secondary": "#9093ff",
-                        "primary-container": "#d180ef",
-                        "surface-tint": "#e08efe",
-                        "surface": "#0e0e0e",
-                        "surface-dim": "#0e0e0e",
-                        "on-tertiary-container": "#00643f",
-                        "on-error": "#490013",
-                        "surface-container-highest": "#262626",
-                        "on-primary-fixed": "#21002f",
-                        "surface-bright": "#2c2c2c",
-                        "on-primary-container": "#3d0055"
+                        "ink": "#0c0b08",
+                        "ink-2": "#14120c",
+                        "ink-3": "#1d1a12",
+                        "bone": "#f6efe0",
+                        "bone-dim": "#b3a992",
+                        "moonstone": "#8fa3b8",
+                        "amber": "#ffa11f",
+                        "tint": "#79ff4d",
+                        "tertiary": "#79ff4d",
+                        "surface-container": "#1d1a12",
+                        "secondary-dim": "#79ff4d",
+                        "tertiary-container": "#79ff4d",
+                        "on-error-container": "#f6efe0",
+                        "secondary-fixed": "#79ff4d",
+                        "inverse-on-surface": "#b3a992",
+                        "on-surface-variant": "#b3a992",
+                        "primary": "#ffa11f",
+                        "inverse-primary": "#ffa11f",
+                        "on-tertiary-fixed": "#0c0b08",
+                        "tertiary-dim": "#79ff4d",
+                        "secondary-fixed-dim": "#79ff4d",
+                        "on-primary-fixed-variant": "#0c0b08",
+                        "background": "#0c0b08",
+                        "on-secondary": "#0c0b08",
+                        "primary-fixed-dim": "#ffa11f",
+                        "surface-container-high": "#1d1a12",
+                        "on-background": "#f6efe0",
+                        "on-surface": "#f6efe0",
+                        "inverse-surface": "#f6efe0",
+                        "on-primary": "#0c0b08",
+                        "on-tertiary": "#0c0b08",
+                        "on-secondary-fixed-variant": "#0c0b08",
+                        "error-container": "#1d1a12",
+                        "tertiary-fixed": "#79ff4d",
+                        "primary-fixed": "#ffa11f",
+                        "error-dim": "#79ff4d",
+                        "tertiary-fixed-dim": "#79ff4d",
+                        "surface-container-low": "#14120c",
+                        "outline-variant": "#8fa3b8",
+                        "primary-dim": "#ffa11f",
+                        "outline": "#8fa3b8",
+                        "error": "#79ff4d",
+                        "surface-variant": "#14120c",
+                        "on-secondary-fixed": "#0c0b08",
+                        "on-tertiary-fixed-variant": "#0c0b08",
+                        "surface-container-lowest": "#0c0b08",
+                        "on-secondary-container": "#f6efe0",
+                        "secondary-container": "#79ff4d",
+                        "secondary": "#79ff4d",
+                        "primary-container": "#ffa11f",
+                        "surface-tint": "#ffa11f",
+                        "surface": "#0c0b08",
+                        "surface-dim": "#0c0b08",
+                        "on-tertiary-container": "#0c0b08",
+                        "on-error": "#0c0b08",
+                        "surface-container-highest": "#1d1a12",
+                        "on-primary-fixed": "#0c0b08",
+                        "surface-bright": "#1d1a12",
+                        "on-primary-container": "#0c0b08"
                     },
                     fontFamily: {
                         "headline": ["Lexend"],
                         "body": ["Inter"],
                         "label": ["Inter"]
                     },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
                 },
             },
         }
     </script>
 <link rel="stylesheet" href="../css/product-common.css">
-<style>
-      
-      /* ========== BUTTON STYLES ========== */
-      @keyframes btnBreathingGlow {
-          0%, 100% { 
-              box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
-                          0 0 0 1px rgba(224, 142, 254, 0.3);
-          }
-          50% { 
-              box-shadow: inset 0 0 30px rgba(224, 142, 254, 0.35),
-                          0 0 0 1px rgba(224, 142, 254, 0.5);
-          }
-      }
-      @keyframes btnSecondaryBreathing {
-          0%, 100% { 
-              box-shadow: inset 0 0 15px rgba(224, 142, 254, 0.1),
-                          0 0 0 1px rgba(224, 142, 254, 0.2);
-          }
-          50% { 
-              box-shadow: inset 0 0 25px rgba(224, 142, 254, 0.2),
-                          0 0 0 1px rgba(224, 142, 254, 0.35);
-          }
-      }
-      .btn-primary {
-        position: relative;
-        background: linear-gradient(135deg, #e08efe 0%, #c77df3 100%);
-        color: #21002f;
-        padding: 1rem 2.5rem;
-        border-radius: 9999px;
-        font-family: 'Lexend', sans-serif;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-        border: none;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
-                    0 0 0 1px rgba(224, 142, 254, 0.3);
-        white-space: nowrap;
-        animation: btnBreathingGlow 3s ease-in-out infinite;
-      }
-      
-      @media (max-width: 640px) {
-        .btn-primary, .btn-secondary {
-          padding: 0.875rem 2rem;
-          font-size: 0.875rem;
-          width: 100%;
-          max-width: 280px;
-        }
-      }
-      .btn-primary::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        transition: left 0.6s;
-      }
-      .btn-primary:hover {
-        transform: translateY(-3px) scale(1.02);
-        box-shadow: 0 8px 30px rgba(224, 142, 254, 0.5);
-      }
-      .btn-primary:hover::before {
-        left: 100%;
-      }
-      
-      .btn-secondary {
-        position: relative;
-        background: rgba(38, 38, 38, 0.6);
-        backdrop-filter: blur(12px);
-        color: #ffffff;
-        padding: 1rem 2.5rem;
-        border-radius: 9999px;
-        font-family: 'Lexend', sans-serif;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .btn-secondary::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      .btn-secondary:hover {
-        border-color: rgba(224, 142, 254, 0.5);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      }
-      .btn-secondary:hover::before {
-        opacity: 1;
-      }
-      
-      /* Button Ripple Effect */
-      .btn-primary, .btn-secondary {
-        position: relative;
-        overflow: hidden;
-      }
-      .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.5);
-        transform: scale(0);
-        animation: ripple-animation 0.6s linear;
-        pointer-events: none;
-      }
-      @keyframes ripple-animation {
-        to {
-          transform: scale(4);
-          opacity: 0;
-        }
-      }
-      
-      .btn-arrow {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #e08efe;
-        font-family: 'Lexend', sans-serif;
-        font-weight: 600;
-        font-size: 0.875rem;
-        cursor: pointer;
-        padding: 0.75rem 0;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .btn-arrow::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #e08efe, #9093ff);
-        transition: width 0.3s;
-      }
-      .btn-arrow:hover {
-        color: #ffffff;
-      }
-      .btn-arrow:hover::after {
-        width: 100%;
-      }
-      .btn-arrow .material-symbols-outlined {
-        transition: transform 0.3s;
-      }
-      .btn-arrow:hover .material-symbols-outlined {
-        transform: translateX(6px);
-      }
-      
-      /* ========== CARD HOVER EFFECTS ========== */
-      .card-hover {
-        position: relative;
-        background: #1a1919;
-        border-radius: 2rem;
-        padding: 2.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        overflow: hidden;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .card-hover::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.1), rgba(144, 147, 255, 0.1));
-        opacity: 0;
-        transition: opacity 0.4s;
-      }
-      .card-hover::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 2rem;
-        padding: 1px;
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.5), rgba(144, 147, 255, 0.5));
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.4s;
-      }
-      .card-hover:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 50px rgba(224, 142, 254, 0.15);
-      }
-      .card-hover:hover::before {
-        opacity: 1;
-      }
-      .card-hover:hover::after {
-        opacity: 1;
-      }
-      
-      /* ========== PRODUCT CARD ========== */
-      .product-card {
-        position: relative;
-        background: #131313;
-        border-radius: 2.5rem;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .product-card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, transparent 50%, rgba(224, 142, 254, 0.1) 100%);
-        opacity: 0;
-        transition: opacity 0.4s;
-        z-index: 1;
-      }
-      .product-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 25px 60px rgba(224, 142, 254, 0.2);
-        border-color: rgba(224, 142, 254, 0.3);
-      }
-      .product-card:hover::before {
-        opacity: 1;
-      }
-      .product-card img {
-        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .product-card:hover img {
-        transform: scale(1.05);
-      }
-      
-      /* ========== SCROLL ANIMATIONS ========== */
-      .fade-in-up {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .fade-in-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      
-      /* ========== SMOOTH SCROLL ========== */
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 80px;
-      }
-      .lang-selector { position: relative; }
-      .lang-btn { 
-        display: flex; 
-        align-items: center; 
-        gap: 0.4rem; 
-        background: rgba(224, 142, 254, 0.1); 
-        border: 1px solid rgba(224, 142, 254, 0.3); 
-        color: #e08efe; 
-        padding: 0.5rem 1rem; 
-        border-radius: 9999px; 
-        font-family: 'Inter', sans-serif; 
-        font-size: 0.75rem; 
-        font-weight: 500;
-        cursor: pointer; 
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        backdrop-filter: blur(8px);
-        box-shadow: 0 2px 8px rgba(224, 142, 254, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      }
-      .lang-btn:hover { 
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2) 0%, rgba(144, 147, 255, 0.2) 100%); 
-        border-color: rgba(224, 142, 254, 0.5);
-        box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        transform: translateY(-1px);
-      }
-      .lang-dropdown { 
-        position: absolute; 
-        top: calc(100% + 0.75rem); 
-        right: 0; 
-        min-width: 160px; 
-        background: linear-gradient(180deg, #1a1919 0%, #131313 100%); 
-        border: 1px solid rgba(224, 142, 254, 0.2); 
-        border-radius: 1rem; 
-        padding: 0.5rem; 
-        opacity: 0; 
-        visibility: hidden; 
-        transform: translateY(-10px) scale(0.95); 
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-        z-index: 100;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
-        backdrop-filter: blur(20px);
-      }
-      .lang-selector.open .lang-dropdown { 
-        opacity: 1; 
-        visibility: visible; 
-        transform: translateY(0) scale(1); 
-      }
-      .lang-dropdown button { 
-        display: block; 
-        width: 100%; 
-        text-align: left; 
-        padding: 0.6rem 1rem; 
-        background: none; 
-        border: none; 
-        color: #777575; 
-        font-size: 0.8125rem; 
-        font-family: 'Inter', sans-serif;
-        cursor: pointer; 
-        border-radius: 0.5rem; 
-        transition: all 0.2s;
-        position: relative;
-        overflow: hidden;
-      }
-      .lang-dropdown button::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 2px;
-        background: #e08efe;
-        transform: scaleY(0);
-        transition: transform 0.2s;
-      }
-      .lang-dropdown button:hover { 
-        background: rgba(224, 142, 254, 0.1); 
-        color: #ffffff;
-        padding-left: 1.25rem;
-      }
-      .lang-dropdown button:hover::before {
-        transform: scaleY(1);
-      }
-      .lang-dropdown button.active { 
-        background: linear-gradient(90deg, rgba(224, 142, 254, 0.15) 0%, transparent 100%); 
-        color: #e08efe;
-        padding-left: 1.25rem;
-      }
-      .lang-dropdown button.active::before {
-        transform: scaleY(1);
-      }
-      .shiny-text {
-        background: linear-gradient(
-          90deg,
-          #b5b5b5 0%,
-          #b5b5b5 40%,
-          #ffffff 50%,
-          #b5b5b5 60%,
-          #b5b5b5 100%
-        );
-        background-size: 200% 100%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: shine 2s linear infinite;
-        animation-delay: 0s;
-      }
-      @keyframes shine {
-        0% { background-position: 200% 0; }
-        100% { background-position: -200% 0; }
-      }
-      .true-focus {
-        display: inline;
-        color: #b5b5b5; /* 普通文本颜色 */
-      }
-      .true-focus .focus-word {
-        position: relative;
-        display: inline-block;
-        color: #ffffff;
-        font-weight: 600;
-        padding: 0 4px;
-        margin: 0 2px;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        filter: blur(3.5px);
-        cursor: pointer;
-      }
-      .true-focus .focus-word:hover,
-      .true-focus .focus-word.active {
-        filter: blur(0);
-        color: #ffffff;
-      }
-      .true-focus .focus-word:hover::after,
-      .true-focus .focus-word.active::after {
-        content: '';
-        position: absolute;
-        inset: -4px -8px;
-        border: 2px solid #8266f5;
-        border-radius: 4px;
-        animation: focusPulse 0.5s ease-out forwards;
-      }
-      @keyframes focusPulse {
-        0% { opacity: 0; transform: scale(0.95); }
-        100% { opacity: 1; transform: scale(1); }
-      }
-      @font-face {
-        font-family: 'Compressa VF';
-        src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
-        font-style: normal;
-        font-weight: 100 900;
-        font-display: swap;
-      }
-      .text-pressure-container {
-        position: relative;
-        width: 100%;
-        min-width: 0;
-        min-height: clamp(6rem, 14vw, 10rem);
-        display: grid;
-        place-items: center;
-        cursor: crosshair;
-      }
-      .text-pressure-title {
-        font-family: 'Compressa VF', 'Lexend', sans-serif;
-        direction: ltr;
-        unicode-bidi: isolate;
-        text-transform: uppercase;
-        font-size: clamp(3.25rem, 12vw, 10rem);
-        line-height: 0.92;
-        margin: 0;
-        text-align: center;
-        user-select: none;
-        white-space: nowrap;
-        max-width: 100%;
-        display: inline-flex;
-        justify-content: center;
-        align-items: baseline;
-        gap: 0.015em;
-        font-weight: 300;
-        font-variation-settings: 'wght' 300, 'wdth' 100, 'ital' 0;
-      }
-      .text-pressure-title span {
-        display: inline-block;
-        color: #ffffff;
-        cursor: crosshair;
-        transition: font-variation-settings 0.15s ease-out;
-      }
-      /* ========== UNIFIED FOOTER STYLES ========== */
-      .unified-footer {
-        background-color: #0A0A0A;
-        padding: 80px 0;
-        width: 100%;
-      }
-      .unified-footer .footer-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 48px;
-      }
-      .unified-footer .footer-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 48px;
-      }
-      .unified-footer .footer-brand-col {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-      }
-      .unified-footer .footer-logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-family: 'Lexend', sans-serif;
-        font-size: 24px;
-        font-weight: 700;
-        background: linear-gradient(to right, #D4A5A5, #9093FF);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-decoration: none;
-      }
-      .unified-footer .footer-logo img {
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
-        -webkit-text-fill-color: initial;
-      }
-      .unified-footer .footer-copyright {
-        font-family: 'Inter', sans-serif;
-        font-size: 12px;
-        font-weight: 300;
-        color: #888888;
-        line-height: 1.6;
-        max-width: 260px;
-      }
-      .unified-footer .footer-section-title {
-        font-family: 'Inter', sans-serif;
-        font-size: 12px;
-        font-weight: 600;
-        color: #FFFFFF;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        margin-bottom: 20px;
-      }
-      .unified-footer .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-      .unified-footer .footer-link {
-        font-family: 'Inter', sans-serif;
-        font-size: 12px;
-        font-weight: 400;
-        color: #AAAAAA;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        display: inline-block;
-        position: relative;
-      }
-      .unified-footer .footer-link::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0;
-        height: 1px;
-        background: linear-gradient(90deg, #E08EFE, #9093FF);
-        transition: width 0.3s ease;
-      }
-      .unified-footer .footer-link:hover {
-        color: #E08EFE;
-      }
-      .unified-footer .footer-link:hover::after {
-        width: 100%;
-      }
-      .unified-footer .footer-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 14px 28px;
-        background: transparent;
-        border: 1px solid #E08EFE;
-        border-radius: 9999px;
-        font-family: 'Inter', sans-serif;
-        font-size: 12px;
-        font-weight: 600;
-        color: #E08EFE;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        margin-bottom: 24px;
-      }
-      .unified-footer .footer-btn:hover {
-        background: linear-gradient(135deg, #E08EFE, #C77DF3);
-        color: #FFFFFF;
-        box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
-      }
-      .unified-footer .footer-social {
-        display: flex;
-        gap: 12px;
-      }
-      .unified-footer .footer-social-icon {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #AAAAAA;
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
-      .unified-footer .footer-social-icon:hover {
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
-        border-color: #E08EFE;
-        color: #E08EFE;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3);
-      }
-      .unified-footer .footer-social-icon svg {
-        width: 16px;
-        height: 16px;
-      }
-      
-      /* ========== MOBILE OPTIMIZATION ========== */
-      @media (max-width: 768px) {
-        .unified-footer {
-          padding: 40px 0;
-        }
-        .unified-footer .footer-container {
-          padding: 0 20px;
-        }
-        .unified-footer .footer-grid {
-          grid-template-columns: 1fr;
-          gap: 32px;
-        }
-        .unified-footer .footer-brand-col {
-          gap: 16px;
-        }
-        .unified-footer .footer-logo {
-          font-size: 20px;
-          gap: 8px;
-        }
-        .unified-footer .footer-logo img {
-          width: 32px;
-          height: 32px;
-        }
-        .unified-footer .footer-copyright {
-          font-size: 11px;
-          max-width: 100%;
-          line-height: 1.5;
-        }
-        .unified-footer .footer-section-title {
-          font-size: 11px;
-          margin-bottom: 16px;
-        }
-        .unified-footer .footer-links {
-          gap: 12px;
-        }
-        .unified-footer .footer-link {
-          font-size: 11px;
-          white-space: normal;
-          word-wrap: break-word;
-        }
-        .unified-footer .footer-btn {
-          padding: 14px 28px;
-          font-size: 12px;
-          width: 100%;
-          max-width: none;
-          font-weight: 700;
-          letter-spacing: 0.15em;
-          background: linear-gradient(135deg, #E08EFE, #C77DF3);
-          color: #FFFFFF;
-          box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
-        }
-        .unified-footer .footer-btn:hover {
-          background: linear-gradient(135deg, #f0aeff, #d79df8);
-          box-shadow: 0 12px 32px rgba(224, 142, 254, 0.6);
-          transform: translateY(-2px);
-        }
-        .unified-footer .footer-social {
-          gap: 8px;
-        }
-        .unified-footer .footer-social-icon {
-          width: 36px;
-          height: 36px;
-        }
-        .unified-footer .footer-social-icon svg {
-          width: 14px;
-          height: 14px;
-        }
-        /* Mobile: Vertical layout as per design */
-        .unified-footer .footer-brand-col {
-          order: 1;
-        }
-        .unified-footer .footer-nav-col:nth-child(3) {
-          order: 2;
-        }
-        .unified-footer .footer-nav-col:nth-child(2) {
-          order: 3;
-        }
-        .unified-footer .footer-nav-col:nth-child(4) {
-          order: 4;
-        }
-      }
-      
-      /* ========== UNIVERSAL DROPDOWN SYSTEM - Apple Style ========== */
-      :root {
-        --spring-fast: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        --spring-medium: cubic-bezier(0.34, 1.56, 0.64, 1);
-        --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
-        --ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
-      }
-      .dropdown { position: relative; display: inline-block; }
-      .dropdown-trigger { cursor: pointer; transition: all 0.15s ease; }
-      .dropdown-trigger:hover { background: linear-gradient(135deg, rgba(224, 142, 254, 0.15), rgba(144, 147, 255, 0.15)); box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2); }
-      .dropdown.open .dropdown-trigger { background: linear-gradient(135deg, rgba(224, 142, 254, 0.25), rgba(144, 147, 255, 0.25)); box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3); transform: translateY(-1px); }
-      .dropdown-menu {
-        position: absolute; top: calc(100% + 0.75rem); left: 0; min-width: 200px;
-        background: linear-gradient(180deg, #1a1919 0%, #131313 100%);
-        border: 1px solid rgba(224, 142, 254, 0.2); border-radius: 1rem; padding: 0.5rem;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
-        backdrop-filter: blur(20px); opacity: 0; visibility: hidden;
-        transform: translateY(8px) scale(0.96); transform-origin: top center;
-        transition: opacity 0.2s var(--spring-medium), visibility 0.2s var(--spring-medium), transform 0.35s var(--spring-fast);
-      }
-      .dropdown-menu.dropdown-right { left: auto; right: 0; }
-      .dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-      .dropdown:not(.open) .dropdown-menu { transition: opacity 0.15s ease-out, visibility 0.15s ease-out, transform 0.2s var(--ease-in-back); }
-      .dropdown.open .dropdown-item { animation: dropdownItemEnter 0.3s var(--spring-medium) forwards; opacity: 0; transform: translateY(8px); }
-      .dropdown.open .dropdown-item:nth-child(1) { animation-delay: 0.02s; }
-      .dropdown.open .dropdown-item:nth-child(2) { animation-delay: 0.04s; }
-      .dropdown.open .dropdown-item:nth-child(3) { animation-delay: 0.06s; }
-      .dropdown.open .dropdown-item:nth-child(4) { animation-delay: 0.08s; }
-      .dropdown.open .dropdown-item:nth-child(5) { animation-delay: 0.1s; }
-      @keyframes dropdownItemEnter { 0% { opacity: 0; transform: translateY(8px); } 60% { opacity: 1; transform: translateY(-2px); } 100% { opacity: 1; transform: translateY(0); } }
-      .dropdown-item { display: block; width: 100%; text-align: left; padding: 0.75rem 1rem; background: none; border: none; color: #AAAAAA; font-size: 0.875rem; font-family: 'Inter', sans-serif; cursor: pointer; border-radius: 0.5rem; transition: all 0.2s ease; position: relative; overflow: hidden; }
-      .dropdown-item::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 3px; background: linear-gradient(180deg, #E08EFE, #9093FF); transform: scaleY(0); transition: transform 0.2s ease; border-radius: 0 2px 2px 0; }
-      .dropdown-item:hover { background: rgba(224, 142, 254, 0.1); color: #FFFFFF; padding-left: 1.25rem; }
-      .dropdown-item:hover::before { transform: scaleY(1); }
-      .dropdown-item:focus { outline: none; box-shadow: 0 0 0 2px rgba(224, 142, 254, 0.5); }
-      .dropdown-item.active { background: linear-gradient(90deg, rgba(224, 142, 254, 0.15), transparent); color: #E08EFE; }
-      .dropdown-item.active::before { transform: scaleY(1); }
-      .collapse { border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 1rem; margin-bottom: 1rem; overflow: hidden; background: rgba(26, 25, 25, 0.5); transition: all 0.3s ease; }
-      .collapse:hover { border-color: rgba(224, 142, 254, 0.2); }
-      .collapse-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; cursor: pointer; background: none; border: none; width: 100%; color: #FFFFFF; font-size: 1rem; font-weight: 500; font-family: 'Inter', sans-serif; transition: all 0.2s ease; }
-      .collapse-header:hover { background: rgba(224, 142, 254, 0.05); }
-      .collapse-header .icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; transition: transform 0.35s var(--spring-medium); }
-      .collapse.open .collapse-header .icon { transform: rotate(180deg); }
-      .collapse-body { max-height: 0; overflow: hidden; transition: max-height 0.45s var(--spring-medium), padding 0.35s var(--spring-medium), opacity 0.35s ease; opacity: 0; }
-      .collapse.open .collapse-body { max-height: 500px; opacity: 1; }
-      .collapse.open .collapse-content { animation: collapseContentEnter 0.4s var(--spring-medium) forwards; }
-      @keyframes collapseContentEnter { 0% { opacity: 0; transform: translateY(-10px); } 60% { opacity: 1; transform: translateY(3px); } 100% { opacity: 1; transform: translateY(0); } }
-      .collapse-content { padding: 0 1.5rem 1.5rem; color: #AAAAAA; font-size: 0.875rem; line-height: 1.6; }
-      .dropdown-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); z-index: 99; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; cursor: pointer; }
-      .dropdown-overlay.active { opacity: 1; visibility: visible; }
-      .picker-modal { position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(180deg, #1a1919 0%, #0e0e0e 100%); border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; padding: 1.5rem; z-index: 101; transform: translateY(100%); opacity: 0; visibility: hidden; transition: transform 0.4s var(--spring-medium), opacity 0.3s ease, visibility 0.3s ease; }
-      .picker-modal.open { transform: translateY(0); opacity: 1; visibility: visible; }
-      .picker-modal.closing { transition: transform 0.25s ease-in, opacity 0.2s ease-in, visibility 0.2s ease-in; }
-      .picker-handle { width: 40px; height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 2px; margin: 0 auto 1rem; }
-      .picker-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-      .picker-title { font-size: 1rem; font-weight: 600; color: #FFFFFF; }
-      .picker-action { background: none; border: none; color: #E08EFE; font-size: 0.875rem; font-weight: 500; cursor: pointer; padding: 0.5rem; border-radius: 0.5rem; transition: all 0.2s ease; }
-      .picker-action:hover { background: rgba(224, 142, 254, 0.1); }
-      .focus-ring { position: relative; }
-      .focus-ring::after { content: ''; position: absolute; inset: -3px; border-radius: inherit; background: transparent; box-shadow: 0 0 0 0 rgba(224, 142, 254, 0); transition: box-shadow 0.2s ease; pointer-events: none; }
-      .focus-ring:focus-within::after { box-shadow: 0 0 0 3px rgba(224, 142, 254, 0.3); }
-      
-      /* ========== SCROLL REVEAL ANIMATIONS ========== */
-      /* Button Scroll Reveal */
-      .btn-scroll-reveal {
-        opacity: 0;
-        transform: translateY(40px) scale(0.95);
-        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-      
-      .btn-scroll-reveal.visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-      
-      .btn-scroll-reveal.delay-100 { transition-delay: 0.1s; }
-      .btn-scroll-reveal.delay-200 { transition-delay: 0.2s; }
-      .btn-scroll-reveal.delay-300 { transition-delay: 0.3s; }
-      .btn-scroll-reveal.delay-400 { transition-delay: 0.4s; }
-      .btn-scroll-reveal.delay-500 { transition-delay: 0.5s; }
-      
-      /* Input/Card Scroll Reveal */
-      .input-reveal,
-      .card-scroll-reveal {
-        opacity: 0;
-        transform: translateX(-30px);
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      
-      .input-reveal.visible,
-      .card-scroll-reveal.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      
-      .input-reveal.delay-100,
-      .card-scroll-reveal.delay-100 { transition-delay: 0.1s; }
-      .input-reveal.delay-200,
-      .card-scroll-reveal.delay-200 { transition-delay: 0.2s; }
-      .input-reveal.delay-300,
-      .card-scroll-reveal.delay-300 { transition-delay: 0.3s; }
-      
-      /* Input Field Enhanced */
-      .input-field {
-        position: relative;
-        background: rgba(26, 25, 25, 0.8);
-        border: 1px solid rgba(119, 117, 117, 0.3);
-        border-radius: 0.75rem;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      
-      .input-field:focus {
-        background: rgba(26, 25, 25, 0.95);
-        border-color: #e08efe;
-        box-shadow: 
-          0 0 0 2px rgba(224, 142, 254, 0.1),
-          0 0 20px rgba(224, 142, 254, 0.2);
-        transform: translateY(-2px);
-      }
-      
-      /* Floating Label */
-      .input-label {
-        position: absolute;
-        left: 1rem;
-        top: 1rem;
-        color: #adaaaa;
-        font-size: 0.875rem;
-        pointer-events: none;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        transform-origin: left top;
-      }
-      
-      .input-field:focus + .input-label,
-      .input-field:not(:placeholder-shown) + .input-label {
-        transform: scale(0.75) translateY(-1.5rem);
-        color: #e08efe;
-        font-weight: 600;
-      }
-      
-      /* Bottom Border Animation */
-      .input-field::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #e08efe, #9093ff);
-        transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        border-radius: 0 2px 2px 0;
-      }
-      
-      .input-field:focus::after {
-        width: 100%;
-      }
-      
-      /* Performance Optimization */
-      .btn-scroll-reveal,
-      .input-reveal,
-      .card-scroll-reveal {
-        will-change: transform, opacity;
-      }
-      
-      .btn-scroll-reveal.visible,
-      .input-reveal.visible,
-      .card-scroll-reveal.visible {
-        will-change: auto;
-      }
-      
-      /* Mobile Optimization */
-      @media (max-width: 640px) {
-        .btn-scroll-reveal {
-          transform: translateY(30px);
-        }
-        .input-reveal,
-        .card-scroll-reveal {
-          transform: translateY(20px);
-        }
-      }
-      
-      
-    </style>
+<link rel="stylesheet" href="../css/award.css?v=3">
+<link rel="stylesheet" href="../css/product-flare.css">
 </head>
-<body class="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_0_40px_rgba(224,142,254,0.1)]">
-<nav class="flex justify-between items-center px-8 py-4 w-full">
-<a href="../index.html" class="nav-brand" style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Lexend', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; background: linear-gradient(to right, #D4A5A5, #9093ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none;">
-    <img src="../image/icon.png" alt="DeepSire Logo" style="height: 32px; width: auto; border-radius: 8px;">
-    <span>DeepSire</span>
-</a>
-<div class="hidden md:flex gap-8 items-center">
-<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../sight/code.html" data-translate-key="nav_sight">Sight</a>
-<a class="text-[#e08efe] border-b-2 border-[#e08efe] pb-1 font-headline text-sm tracking-tight" href="../touch/code.html" data-translate-key="nav_touch">Touch</a>
-<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../pleasure/code.html" data-translate-key="nav_pleasure">Pleasure</a>
-<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../scent/code.html" data-translate-key="nav_scent">Scent</a>
-</div>
-<div class="flex items-center">
-<div class="lang-selector" id="langSelector">
+<body class="flare-body selection:bg-primary selection:text-on-primary">
+<header class="flare-header">
+  <nav class="flare-nav" aria-label="Primary">
+    <a href="../index.html" class="flare-brand">
+      <img src="../image/icon.png" alt="DeepSire Logo">
+      <span>DeepSire</span>
+    </a>
+    <div class="flare-navlinks">
+      <a class="flare-navlink" href="../sight/code.html" data-translate-key="nav_sight">Sight</a>
+      <a class="flare-navlink active" href="../touch/code.html" data-translate-key="nav_touch">Touch</a>
+      <a class="flare-navlink" href="../pleasure/code.html" data-translate-key="nav_pleasure">Pleasure</a>
+      <a class="flare-navlink" href="../scent/code.html" data-translate-key="nav_scent">Scent</a>
+    </div>
+    <div class="flare-navtools">
+      <div class="lang-selector" id="langSelector">
 <button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="langDropdown">
 <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400;">language</span>
 <span id="langCurrent">EN</span>
@@ -953,261 +124,203 @@
 <button data-lang="ar" role="option" aria-selected="false">العربية</button>
 </div>
 </div>
-</div>
-</nav>
+    </div>
+  </nav>
 </header>
-<main class="pt-16 w-full overflow-x-hidden">
-<!-- Hero Section -->
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
-<div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover opacity-60" alt="Macro close-up of a futuristic black smart ring with glowing violet circuit lines pulsing with soft ethereal light" src="image/main1.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-</div>
-<div class="relative z-10 text-center px-6 w-full max-w-4xl mx-auto">
-<span class="text-primary font-label text-[0.6875rem] uppercase tracking-[0.3em] mb-6 block" data-translate-key="hero_label">Explore The Ecosystem</span>
-<div class="text-pressure-container" id="textPressureHero" data-text="Touch" translate="no">
-<h1 class="text-pressure-title text-on-background drop-shadow-2xl">
-                        Touch
-                    </h1>
-</div>
-<p class="font-headline text-xl md:text-2xl text-primary-dim tracking-wide opacity-90 mt-4 text-balance" data-translate-key="hero_subtitle">A Sentinel for Your Inner Rhythm</p>
-<div class="mt-10 md:mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
-<a href="https://www.bestfunx.com/collections/touch-soul" class="btn-primary btn-scroll-reveal" data-delay="100" data-translate-key="hero_cta_primary">Begin Synthesis</a>
-<a href="#interface" class="btn-secondary btn-scroll-reveal" data-delay="200" data-translate-key="hero_cta_secondary">Technical Specs</a>
-</div>
-</div>
+<main class="flare-main">
+<!-- Hero -->
+<section class="flare-hero">
+  <div class="flare-hero-media flare-duotone" aria-hidden="true">
+    <img src="image/main1.jpg" alt="Macro close-up of a futuristic black smart ring with glowing violet circuit lines pulsing with soft ethereal light">
+  </div>
+  <div class="flare-ghost" aria-hidden="true" translate="no">TOUCH</div>
+  <div class="flare-hero-inner">
+    <span class="flare-eyebrow flare-rise" style="--d:.05s" data-translate-key="hero_label">Explore The Ecosystem</span>
+    <div class="text-pressure-container flare-rise" style="--d:.15s" id="textPressureHero" data-text="Touch" translate="no">
+      <h1 class="text-pressure-title">Touch</h1>
+    </div>
+    <p class="flare-sub flare-rise" style="--d:.28s" data-translate-key="hero_subtitle">A Sentinel for Your Inner Rhythm</p>
+    <div class="flare-ctas flare-rise" style="--d:.4s">
+      <a href="https://www.bestfunx.com/collections/touch-soul" class="flare-btn-primary" data-translate-key="hero_cta_primary">Begin Synthesis</a>
+      <a href="#interface" class="flare-btn-ghost" data-translate-key="hero_cta_secondary">Technical Specs</a>
+    </div>
+  </div>
+  <a class="flare-scrollcue" href="#visual-ethos" aria-label="Scroll to content"><span></span></a>
 </section>
-<!-- Visual Ethos: product-linked video showcase -->
-<section class="py-24 px-8" id="visual-ethos">
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-<div class="flex flex-col justify-center max-w-xl">
-<h2 class="font-headline text-5xl font-bold leading-tight mb-8" data-translate-key="visual_ethos_title">Our Visual Ethos</h2>
-<p class="text-outline leading-relaxed text-xl" data-translate-key="visual_ethos_desc">A ring designed as a quiet bridge between body and digital companion. It follows the rhythm of every gesture and pulse, turning subtle movement into an immediate, connected response.</p>
-</div>
-<div class="relative w-full rounded-3xl overflow-hidden bg-surface-container shadow-2xl">
-<video class="w-full aspect-video object-cover block" muted loop controls playsinline preload="none" poster="../video/optimized/touch-poster.webp" aria-label="DeepSire Touch ring ecosystem interaction video" data-product-video data-autoplay="true" data-hls="../video/hls/touch/master.m3u8" data-fallback="../video/optimized/touch-720p.mp4">
+<div class="flare-marquee" aria-hidden="true">
+  <div class="flare-marquee-track">
+    <span>TOUCH &#10022; DeepSire Ecosystem &#10022;&nbsp;</span><span>TOUCH &#10022; DeepSire Ecosystem &#10022;&nbsp;</span>
+  </div>
+</div><section id="visual-ethos" class="flare-section">
+  <span class="flare-index" aria-hidden="true">01</span>
+  <div class="flare-sec-inner"><div class="flare-sec-head">
+    
+    <h2 class="flare-h2" data-translate-key="visual_ethos_title">Our Visual Ethos</h2>
+    
+  </div><div class="flare-video-grid"><div><p class="flare-lede" style="margin-top:0;max-width:36rem;" data-translate-key="visual_ethos_desc">A ring designed as a quiet bridge between body and digital companion. It follows the rhythm of every gesture and pulse, turning subtle movement into an immediate, connected response.</p></div><div class="flare-video-wrap">
+    <div class="flare-video-frame"><video class="w-full aspect-video object-cover block" muted loop controls playsinline preload="none" poster="../video/optimized/touch-poster.webp" aria-label="DeepSire Touch ring ecosystem interaction video" data-product-video data-autoplay="true" data-hls="../video/hls/touch/master.m3u8" data-fallback="../video/optimized/touch-720p.mp4">
 Your browser does not support the video tag.
-</video>
-</div>
-</div>
+</video></div>
+  </div></div>
+  </div>
 </section>
-<!-- Philosophy: Biological Sensors -->
-<section class="py-24 px-8 max-w-7xl mx-auto w-full">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-<div>
-<h4 id="ecosystem" class="text-[28px] font-headline font-bold text-primary mb-6" data-translate-key="ecosystem_title">Ecosystem Integration</h4>
-<div class="true-focus text-[21px] leading-[1.8] text-[#b5b5b5] space-y-4">
-<p data-translate-key="ecosystem_desc_part1">When the <span class="focus-word">Touch</span> device detects sustained tension waves or abnormal data, it encrypts and transmits this signal to the <span class="focus-word">Sight</span> device in your home.</p>
-<p data-translate-key="ecosystem_desc_part2">A virtual health companion will appear on the screen with a concerned gaze or a gentle voice, reminding you: "Your heart rate is slightly elevated. It's recommended to take a few deep breaths."</p>
-<p data-translate-key="ecosystem_desc_part3">If the data continues to show anomalies, the companion will switch to an <span class="focus-word">alert mode</span> and collaborate with the <span class="focus-word">Scent</span> device to release soothing fragrances, forming a complete <span class="focus-word">protective loop</span> from monitoring to care.</p>
+<section id="philosophy" class="flare-section alt">
+  <span class="flare-index" aria-hidden="true">02</span>
+  <div class="flare-sec-inner"><div class="flare-video-grid" style="margin-bottom:4rem;">
+      <div>
+        <h4 id="ecosystem" class="flare-h2" style="font-size:clamp(1.6rem,3vw,2.2rem);" data-translate-key="ecosystem_title">Ecosystem Integration</h4>
+        <div class="flare-lede">
+          <p data-translate-key="ecosystem_desc_part1">When the <span class="focus-word">Touch</span> device detects sustained tension waves or abnormal data, it encrypts and transmits this signal to the <span class="focus-word">Sight</span> device in your home.</p>
+          <p data-translate-key="ecosystem_desc_part2">A virtual health companion will appear on the screen with a concerned gaze or a gentle voice, reminding you: "Your heart rate is slightly elevated. It's recommended to take a few deep breaths."</p>
+          <p data-translate-key="ecosystem_desc_part3">If the data continues to show anomalies, the companion will switch to an <span class="focus-word">alert mode</span> and collaborate with the <span class="focus-word">Scent</span> device to release soothing fragrances, forming a complete <span class="focus-word">protective loop</span> from monitoring to care.</p>
+        </div>
+      </div>
+      <div class="flare-video-wrap">
+        <div class="flare-video-frame"><video class="w-full h-auto block transform transition-all duration-500 group-hover:scale-[1.02] group-hover:brightness-[1.05] group-hover:contrast-[1.08] group-hover:saturate-[1.15] rounded-2xl" muted loop playsinline preload="none" poster="../video/optimized/touch-core-poster.webp" aria-label="DeepSire Touch core philosophy visual" data-product-video data-autoplay="true" data-fallback="image/Core Philosophy.mp4">
+</video><div class="flare-videostatus"><span class="flare-statusdot"></span><span>Video Status: Active</span></div></div>
+      </div>
+    </div>
+<div class="flare-sec-head">
+    
+    <h2 class="flare-h2" data-translate-key="philosophy_title">CORE PHILOSOPHY</h2>
+    
+  </div><h3 class="flare-h2" style="font-size:clamp(2rem,4.6vw,3.4rem);margin-top:0.6rem;" data-translate-key="philosophy_subtitle">A harmonious dialogue between carbon and silicon.</h3><div class="flare-cards3" style="margin-top:3rem;">
+<div class="flare-card card-scroll-reveal">
+      <span class="material-symbols-outlined flare-card-icon">monitor_heart</span>
+      <h4 class="flare-card-title" data-translate-key="pulse_title">Pulse</h4>
+      <p class="flare-card-desc" data-translate-key="pulse_desc">Real-time cardiovascular intelligence that anticipates emotional shifts through subtle HRV fluctuations. It doesn't just count beats; it hears your heart's intent.</p>
+    </div>
+<div class="flare-card card-scroll-reveal">
+      <span class="material-symbols-outlined flare-card-icon">shield_with_heart</span>
+      <h4 class="flare-card-title" data-translate-key="aegis_title">Aegis</h4>
+      <p class="flare-card-desc" data-translate-key="aegis_desc">Advanced dermal monitoring that detects environmental stress and biological fatigue. A silent guardian that knows when you need to retreat and recharge.</p>
+    </div>
+<div class="flare-card card-scroll-reveal">
+      <span class="material-symbols-outlined flare-card-icon">hub</span>
+      <h4 class="flare-card-title" data-translate-key="nexus_title">Nexus</h4>
+      <p class="flare-card-desc" data-translate-key="nexus_desc">The neural bridge connecting biological data to your DeepSire ecosystem. A seamless thread of intelligence weaving through your digital existence.</p>
+    </div>
 </div>
-</div>
-<div class="relative rounded-2xl overflow-hidden bg-[#1a1919] group video-container-enhanced">
-<div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"></div>
-<video class="w-full h-auto block transform transition-all duration-500 group-hover:scale-[1.02] group-hover:brightness-[1.05] group-hover:contrast-[1.08] group-hover:saturate-[1.15] rounded-2xl" muted loop playsinline preload="none" poster="../video/optimized/touch-core-poster.webp" aria-label="DeepSire Touch core philosophy visual" data-product-video data-autoplay="true" data-fallback="image/Core Philosophy.mp4">
-</video>
-<div class="absolute bottom-4 left-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-<div class="backdrop-blur-xl bg-black/85 rounded-2xl border border-white/10 px-5 py-3.5 flex items-center gap-3.5 shadow-2xl">
-<div class="w-2.5 h-2.5 bg-[#00E0FF] rounded-full flex-shrink-0 animate-pulse-glow"></div>
-<div class="text-[11px] font-semibold uppercase tracking-[0.12em] text-gray-300 leading-tight">Video Status: Active</div>
-</div>
-</div>
-</div>
-</div>
-<div class="text-center mb-20">
-<h2 class="text-[12px] font-label uppercase tracking-[0.3em] text-primary mb-6" data-translate-key="philosophy_title">CORE PHILOSOPHY</h2>
-<h3 class="text-[64px] leading-[1.1] font-black font-headline tracking-tight text-white" data-translate-key="philosophy_subtitle">A harmonious dialogue between carbon and silicon.</h3>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Pulse -->
-<div class="p-8 rounded-2xl bg-[#1a1919]">
-<span class="material-symbols-outlined text-primary text-[48px] block mb-6" data-icon="monitor_heart">monitor_heart</span>
-<h4 class="text-xl font-bold font-headline text-white mb-3" data-translate-key="pulse_title">Pulse</h4>
-<p class="text-[14px] text-outline leading-relaxed" data-translate-key="pulse_desc">Real-time cardiovascular intelligence that anticipates emotional shifts through subtle HRV fluctuations. It doesn't just count beats; it hears your heart's intent.</p>
-</div>
-<!-- Aegis -->
-<div class="p-8 rounded-2xl bg-[#1a1919]">
-<span class="material-symbols-outlined text-primary text-[48px] block mb-6" data-icon="shield_with_heart">shield_with_heart</span>
-<h4 class="text-xl font-bold font-headline text-white mb-3" data-translate-key="aegis_title">Aegis</h4>
-<p class="text-[14px] text-outline leading-relaxed" data-translate-key="aegis_desc">Advanced dermal monitoring that detects environmental stress and biological fatigue. A silent guardian that knows when you need to retreat and recharge.</p>
-</div>
-<!-- Nexus -->
-<div class="p-8 rounded-2xl bg-[#1a1919]">
-<span class="material-symbols-outlined text-primary text-[48px] block mb-6" data-icon="hub">hub</span>
-<h4 class="text-xl font-bold font-headline text-white mb-3" data-translate-key="nexus_title">Nexus</h4>
-<p class="text-[14px] text-outline leading-relaxed" data-translate-key="nexus_desc">The neural bridge connecting biological data to your DeepSire ecosystem. A seamless thread of intelligence weaving through your digital existence.</p>
-</div>
-</div>
+  </div>
 </section>
-<!-- Matrix: Models -->
-<section class="py-32 bg-surface-container-lowest w-full">
-<div class="max-w-7xl mx-auto px-8">
-<div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
-<div>
-<h2 class="text-sm font-label uppercase tracking-[0.3em] text-primary mb-4" data-translate-key="selection_title">The Selection</h2>
-<h3 class="text-5xl md:text-7xl font-bold font-headline tracking-tighter" data-translate-key="selection_subtitle">Choose Your Form</h3>
+<section id="matrix" class="flare-section">
+  <span class="flare-index" aria-hidden="true">03</span>
+  <div class="flare-sec-inner"><div class="flare-sec-head">
+    <span class="flare-eyebrow" data-translate-key="selection_title">The Selection</span>
+    <h2 class="flare-h2" data-translate-key="selection_subtitle">Choose Your Form</h2>
+    <p class="flare-lede" data-translate-key="selection_desc">Engineered from the most resilient materials to become a permanent extension of your physical self.</p>
+  </div><div class="flare-models">
+<div class="flare-model card-scroll-reveal">
+    <div class="flare-model-media">
+      <div class="flare-duotone"><img src="image/Pulse Edition.jpg" alt="Brushed stainless steel smart ring" loading="lazy"></div>
+    </div>
+    <div class="flare-model-body">
+      <span class="flare-model-num" aria-hidden="true">01</span>
+      
+      <h3 class="flare-model-title" data-translate-key="pulse_edition_title">Pulse Edition</h3>
+      <p class="flare-model-desc" data-translate-key="pulse_edition_desc">Forged from ultra-pure Stainless Steel. A classic testament to durability and precision.</p>
+      <ul class="flare-feats" style="display:block;"><li class="flare-feat-check"><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span><span data-translate-key="pulse_feat1">Brushed Aero-grade Steel</span></li><li class="flare-feat-check"><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span><span data-translate-key="pulse_feat2">Kinetic Charging Interface</span></li><li class="flare-feat-check"><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span><span data-translate-key="pulse_feat3">24/7 Heart Flux Tracking</span></li></ul>
+      <div class="flare-cta-row"><a href="#" class="flare-btn-primary" data-translate-key="configure_pulse">Configure Pulse</a></div>
+    </div>
+  </div>
+<div class="flare-model flare-flip card-scroll-reveal">
+    <div class="flare-model-media">
+      <div class="flare-duotone"><img src="image/Aegis Hybrid.jpg" alt="Sleek matte black ceramic smart ring" loading="lazy"></div>
+    </div>
+    <div class="flare-model-body">
+      <span class="flare-model-num" aria-hidden="true">02</span>
+      
+      <h3 class="flare-model-title" data-translate-key="aegis_hybrid_title">Aegis Hybrid</h3>
+      <p class="flare-model-desc" data-translate-key="aegis_hybrid_desc">A fusion of high-density Ceramic and lightweight Titanium.</p>
+      <ul class="flare-feats" style="display:block;"><li class="flare-feat-check"><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span><span data-translate-key="aegis_feat1">Thermal-Conductive Ceramic</span></li><li class="flare-feat-check"><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span><span data-translate-key="aegis_feat2">Bio-static Titanium Core</span></li><li class="flare-feat-check"><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span><span data-translate-key="aegis_feat3">Advanced Dermal Synthesis</span></li></ul>
+      <div class="flare-cta-row"><a href="#" class="flare-btn-primary" data-translate-key="configure_aegis">Configure Aegis</a></div>
+    </div>
+  </div>
+<div class="flare-model card-scroll-reveal">
+    <div class="flare-model-media">
+      <div class="flare-duotone"><img src="image/Nexus Medical.jpg" alt="Medical-grade white polymer smart ring" loading="lazy"></div>
+    </div>
+    <div class="flare-model-body">
+      <span class="flare-model-num" aria-hidden="true">03</span>
+      
+      <h3 class="flare-model-title" data-translate-key="nexus_medical_title">Nexus Medical</h3>
+      <p class="flare-model-desc" data-translate-key="nexus_medical_desc">Medical-grade bio-polymers engineered for peak sensitivity.</p>
+      <ul class="flare-feats" style="display:block;"><li class="flare-feat-check"><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span><span data-translate-key="nexus_feat1">Ultra-Sensitive PPG Array</span></li><li class="flare-feat-check"><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span><span data-translate-key="nexus_feat2">Frictionless Interior Profile</span></li><li class="flare-feat-check"><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span><span data-translate-key="nexus_feat3">Maximum Neural Precision</span></li></ul>
+      <div class="flare-cta-row"><a href="#" class="flare-btn-primary" data-translate-key="configure_nexus">Configure Nexus</a></div>
+    </div>
+  </div>
 </div>
-<p class="text-outline max-w-md body" data-translate-key="selection_desc">Engineered from the most resilient materials to become a permanent extension of your physical self.</p>
-</div>
-<div class="space-y-32">
-<!-- Model: Pulse -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-<div class="aspect-square rounded-3xl overflow-hidden glass-card p-1">
-<img class="w-full h-full object-cover rounded-[1.4rem]" alt="Brushed stainless steel smart ring" src="image/Pulse Edition.jpg"/>
-</div>
-<div class="px-4">
-<span class="text-primary font-bold font-headline text-xl mb-2 block">01</span>
-<h4 class="text-5xl font-bold font-headline mb-6" data-translate-key="pulse_edition_title">Pulse Edition</h4>
-<p class="text-outline text-lg mb-8 leading-relaxed" data-translate-key="pulse_edition_desc">Forged from ultra-pure Stainless Steel. A classic testament to durability and precision.</p>
-<ul class="space-y-4 mb-10">
-<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="pulse_feat1">Brushed Aero-grade Steel</span></li>
-<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="pulse_feat2">Kinetic Charging Interface</span></li>
-<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="pulse_feat3">24/7 Heart Flux Tracking</span></li>
-</ul>
-<button class="px-8 py-3 rounded-full bg-surface-container-high border border-outline-variant/30 text-primary font-bold hover:bg-primary hover:text-on-primary transition-all" data-translate-key="configure_pulse">Configure Pulse</button>
-</div>
-</div>
-<!-- Model: Aegis -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-<div class="md:order-2 aspect-square rounded-3xl overflow-hidden glass-card p-1">
-<img class="w-full h-full object-cover rounded-[1.4rem]" alt="Sleek matte black ceramic smart ring" src="image/Aegis Hybrid.jpg"/>
-</div>
-<div class="md:order-1 px-4">
-<span class="text-secondary font-bold font-headline text-xl mb-2 block">02</span>
-<h4 class="text-5xl font-bold font-headline mb-6" data-translate-key="aegis_hybrid_title">Aegis Hybrid</h4>
-<p class="text-outline text-lg mb-8 leading-relaxed" data-translate-key="aegis_hybrid_desc">A fusion of high-density Ceramic and lightweight Titanium.</p>
-<ul class="space-y-4 mb-10">
-<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="aegis_feat1">Thermal-Conductive Ceramic</span></li>
-<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="aegis_feat2">Bio-static Titanium Core</span></li>
-<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="aegis_feat3">Advanced Dermal Synthesis</span></li>
-</ul>
-<button class="px-8 py-3 rounded-full bg-surface-container-high border border-outline-variant/30 text-secondary font-bold hover:bg-secondary hover:text-on-secondary transition-all" data-translate-key="configure_aegis">Configure Aegis</button>
-</div>
-</div>
-<!-- Model: Nexus -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-<div class="aspect-square rounded-3xl overflow-hidden glass-card p-1">
-<img class="w-full h-full object-cover rounded-[1.4rem]" alt="Medical-grade white polymer smart ring" src="image/Nexus Medical.jpg"/>
-</div>
-<div class="px-4">
-<span class="text-tertiary-dim font-bold font-headline text-xl mb-2 block">03</span>
-<h4 class="text-5xl font-bold font-headline mb-6" data-translate-key="nexus_medical_title">Nexus Medical</h4>
-<p class="text-outline text-lg mb-8 leading-relaxed" data-translate-key="nexus_medical_desc">Medical-grade bio-polymers engineered for peak sensitivity.</p>
-<ul class="space-y-4 mb-10">
-<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-tertiary-dim text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="nexus_feat1">Ultra-Sensitive PPG Array</span></li>
-<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-tertiary-dim text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="nexus_feat2">Frictionless Interior Profile</span></li>
-<li class="flex items-center gap-3 text-on-surface/80"><span class="material-symbols-outlined text-tertiary-dim text-sm" data-icon="check_circle">check_circle</span> <span data-translate-key="nexus_feat3">Maximum Neural Precision</span></li>
-</ul>
-<button class="px-8 py-3 rounded-full bg-surface-container-high border border-outline-variant/30 text-tertiary-dim font-bold hover:bg-tertiary-container hover:text-on-tertiary-container transition-all" data-translate-key="configure_nexus">Configure Nexus</button>
-</div>
-</div>
-</div>
-</div>
+  </div>
 </section>
-<!-- Experience: Language of Life -->
-<section class="py-32 relative overflow-hidden w-full">
-<div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]"></div>
-<div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px]"></div>
-<div class="max-w-6xl mx-auto px-8 text-center relative z-10">
-<h2 class="text-sm font-label uppercase tracking-[0.3em] text-outline mb-6" data-translate-key="interface_title">The Interface</h2>
-<h3 id="interface" class="text-6xl md:text-8xl font-black font-headline tracking-tighter mb-10" data-translate-key="interface_subtitle">The Language of Life</h3>
-<p class="text-xl md:text-2xl text-on-surface-variant leading-relaxed mb-20 max-w-4xl mx-auto font-light" data-translate-key="interface_desc">Your biometrics are more than numbers; they are a dialect. Touch translates the electrical whispers of your skin into actionable emotional insights.</p>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<div class="glass-card p-8 rounded-3xl text-center">
-<div class="text-4xl font-black font-headline text-primary mb-2">98%</div>
-<div class="text-[0.6rem] uppercase tracking-widest text-outline" data-translate-key="stat_accuracy">Emotional Accuracy</div>
+<section id="experience" class="flare-section alt">
+  <span class="flare-index" aria-hidden="true">04</span>
+  <div class="flare-sec-inner"><div class="flare-sec-head" style="text-align:center;margin-left:auto;margin-right:auto;">
+    <span class="flare-eyebrow" data-translate-key="interface_title">The Interface</span>
+    <h3 id="interface" class="flare-h2" data-translate-key="interface_subtitle">The Language of Life</h3>
+    <p class="flare-lede" style="margin-left:auto;margin-right:auto;text-align:center;" data-translate-key="interface_desc">Your biometrics are more than numbers; they are a dialect. Touch translates the electrical whispers of your skin into actionable emotional insights.</p>
+  </div>
+<div class="flare-cards cols-4">
+<div class="flare-spec card-scroll-reveal" style="text-align:center;">
+      <div class="flare-spec-value">98%%</div>
+      <div class="flare-spec-label" data-translate-key="stat_accuracy">Emotional Accuracy</div>
+    </div>
+<div class="flare-spec card-scroll-reveal" style="text-align:center;">
+      <div class="flare-spec-value">0.2ms</div>
+      <div class="flare-spec-label" data-translate-key="stat_latency">Neural Latency</div>
+    </div>
+<div class="flare-spec card-scroll-reveal" style="text-align:center;">
+      <div class="flare-spec-value">12k</div>
+      <div class="flare-spec-label" data-translate-key="stat_sync">Daily Sync-points</div>
+    </div>
+<div class="flare-spec card-scroll-reveal" style="text-align:center;">
+      <div class="flare-spec-value">∞</div>
+      <div class="flare-spec-label" data-translate-key="stat_evolution">Evolution Potential</div>
+    </div>
 </div>
-<div class="glass-card p-8 rounded-3xl text-center">
-<div class="text-4xl font-black font-headline text-secondary mb-2">0.2ms</div>
-<div class="text-[0.6rem] uppercase tracking-widest text-outline" data-translate-key="stat_latency">Neural Latency</div>
-</div>
-<div class="glass-card p-8 rounded-3xl text-center">
-<div class="text-4xl font-black font-headline text-tertiary-dim mb-2">12k</div>
-<div class="text-[0.6rem] uppercase tracking-widest text-outline" data-translate-key="stat_sync">Daily Sync-points</div>
-</div>
-<div class="glass-card p-8 rounded-3xl text-center">
-<div class="text-4xl font-black font-headline text-white mb-2">∞</div>
-<div class="text-[0.6rem] uppercase tracking-widest text-outline" data-translate-key="stat_evolution">Evolution Potential</div>
-</div>
-</div>
-</div>
+  </div>
 </section>
-<!-- Technical Foundation -->
-<section class="py-32 px-8 max-w-7xl mx-auto w-full border-t border-outline-variant/10">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-<div>
-<h2 class="text-sm font-label uppercase tracking-[0.3em] text-primary mb-6" data-translate-key="tech_title">Tech Foundation</h2>
-<h3 class="text-5xl font-bold font-headline mb-8 tracking-tight" data-translate-key="tech_subtitle">Silicon Intelligence, Biological Design.</h3>
-<p class="text-outline text-lg leading-relaxed mb-12" data-translate-key="tech_desc">Every millimeter of the Touch is packed with advanced sensory arrays, designed to operate in total silence and invisibility.</p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
-<div class="flex gap-4">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="waves">waves</span>
-<div>
-<h5 class="font-bold font-headline mb-1" data-translate-key="tech_feat1_title">Dual PPG Sensors</h5>
-<p class="text-sm text-outline" data-translate-key="tech_feat1_desc">High-frequency clinical-grade light arrays for deep tissue monitoring.</p>
-</div>
-</div>
-<div class="flex gap-4">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="water_drop">water_drop</span>
-<div>
-<h5 class="font-bold font-headline mb-1" data-translate-key="tech_feat2_title">IP68 Immersion</h5>
-<p class="text-sm text-outline" data-translate-key="tech_feat2_desc">Engineered for depth. Water-tight seal up to 50 meters of pressure.</p>
-</div>
-</div>
-<div class="flex gap-4">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="battery_very_low">battery_very_low</span>
-<div>
-<h5 class="font-bold font-headline mb-1" data-translate-key="tech_feat3_title">10-Day Life</h5>
-<p class="text-sm text-outline" data-translate-key="tech_feat3_desc">Ultra-efficient power management for continuous synthesis.</p>
-</div>
-</div>
-<div class="flex gap-4">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="bluetooth_connected">bluetooth_connected</span>
-<div>
-<h5 class="font-bold font-headline mb-1" data-translate-key="tech_feat4_title">Neural Sync</h5>
-<p class="text-sm text-outline" data-translate-key="tech_feat4_desc">Encrypted low-energy bridge to your DeepSire companion.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="relative">
-<div class="absolute -inset-4 bg-primary/10 rounded-[3rem] blur-2xl"></div>
-<div class="relative bg-surface-container-high rounded-[2.5rem] p-12 overflow-hidden aspect-square flex flex-col justify-center">
-<div class="space-y-8">
-<div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
-<span class="text-outline font-label uppercase text-[0.7rem] tracking-widest" data-translate-key="spec_model">Model</span>
-<span class="font-headline font-bold">Touch Nexus V2</span>
-</div>
-<div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
-<span class="text-outline font-label uppercase text-[0.7rem] tracking-widest" data-translate-key="spec_weight">Weight</span>
-<span class="font-headline font-bold">4.2 Grams</span>
-</div>
-<div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
-<span class="text-outline font-label uppercase text-[0.7rem] tracking-widest" data-translate-key="spec_processor">Processor</span>
-<span class="font-headline font-bold">S2 Ethereal Chip</span>
-</div>
-<div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
-<span class="text-outline font-label uppercase text-[0.7rem] tracking-widest" data-translate-key="spec_security">Security</span>
-<span class="font-headline font-bold">Dermal Encryption</span>
-</div>
-</div>
-<!-- Pulse Visualizer -->
-<div class="mt-16 flex items-end justify-between gap-1 h-20">
-<div class="w-2 bg-primary/20 rounded-full h-[40%]"></div>
-<div class="w-2 bg-primary/40 rounded-full h-[60%]"></div>
-<div class="w-2 bg-primary/60 rounded-full h-[80%]"></div>
-<div class="w-2 bg-primary rounded-full h-[50%]"></div>
-<div class="w-2 bg-primary/70 rounded-full h-[90%]"></div>
-<div class="w-2 bg-primary/30 rounded-full h-[30%]"></div>
-<div class="w-2 bg-primary/50 rounded-full h-[70%]"></div>
-<div class="w-2 bg-primary rounded-full h-[100%]"></div>
-</div>
-</div>
-</div>
-</div>
+<section id="specs" class="flare-section">
+  <span class="flare-index" aria-hidden="true">05</span>
+  <div class="flare-sec-inner"><div class="flare-sec-head">
+    <span class="flare-eyebrow" data-translate-key="tech_title">Tech Foundation</span>
+    <h2 class="flare-h2" data-translate-key="tech_subtitle">Silicon Intelligence, Biological Design.</h2>
+    <p class="flare-lede" data-translate-key="tech_desc">Every millimeter of the Touch is packed with advanced sensory arrays, designed to operate in total silence and invisibility.</p>
+  </div><div class="flare-video-grid">
+      <div class="flare-cards" style="grid-template-columns:1fr 1fr;">
+        <div class="flare-card card-scroll-reveal">
+          <span class="material-symbols-outlined flare-card-icon">waves</span>
+          <h5 class="flare-card-title" data-translate-key="tech_feat1_title">Dual PPG Sensors</h5>
+          <p class="flare-card-desc" data-translate-key="tech_feat1_desc">High-frequency clinical-grade light arrays for deep tissue monitoring.</p>
+        </div>
+        <div class="flare-card card-scroll-reveal">
+          <span class="material-symbols-outlined flare-card-icon">water_drop</span>
+          <h5 class="flare-card-title" data-translate-key="tech_feat2_title">IP68 Immersion</h5>
+          <p class="flare-card-desc" data-translate-key="tech_feat2_desc">Engineered for depth. Water-tight seal up to 50 meters of pressure.</p>
+        </div>
+        <div class="flare-card card-scroll-reveal">
+          <span class="material-symbols-outlined flare-card-icon">battery_very_low</span>
+          <h5 class="flare-card-title" data-translate-key="tech_feat3_title">10-Day Life</h5>
+          <p class="flare-card-desc" data-translate-key="tech_feat3_desc">Ultra-efficient power management for continuous synthesis.</p>
+        </div>
+        <div class="flare-card card-scroll-reveal">
+          <span class="material-symbols-outlined flare-card-icon">bluetooth_connected</span>
+          <h5 class="flare-card-title" data-translate-key="tech_feat4_title">Neural Sync</h5>
+          <p class="flare-card-desc" data-translate-key="tech_feat4_desc">Encrypted low-energy bridge to your DeepSire companion.</p>
+        </div>
+      </div>
+      <div>
+        <div class="flare-spec-rows card-scroll-reveal">
+          <div class="flare-spec-row"><span class="k" data-translate-key="spec_model">Model</span><span class="v">Touch Nexus V2</span></div>
+          <div class="flare-spec-row"><span class="k" data-translate-key="spec_weight">Weight</span><span class="v">4.2 Grams</span></div>
+          <div class="flare-spec-row"><span class="k" data-translate-key="spec_processor">Processor</span><span class="v">S2 Ethereal Chip</span></div>
+          <div class="flare-spec-row"><span class="k" data-translate-key="spec_security">Security</span><span class="v">Dermal Encryption</span></div>
+        </div>
+        <div class="flare-pulse" aria-hidden="true"><i style="height:40%"></i><i style="height:60%"></i><i style="height:80%"></i><i style="height:50%"></i><i style="height:90%"></i><i style="height:30%"></i><i style="height:70%"></i><i style="height:100%"></i></div>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
-
 <!-- Unified Footer -->
 <footer class="unified-footer">
   <div class="footer-container">
@@ -1257,8 +370,7 @@ Your browser does not support the video tag.
       </div>
     </div>
   </div>
-</footer>
-<script src="../js/product-common.js?v=20260814"></script>
+</footer><script src="../js/product-common.js?v=20260814"></script>
 <script src="../js/product-video.js?v=20260814"></script>
 <script>
 const translations = {
@@ -1676,8 +788,8 @@ class TextPressure {
         this.alpha = options.alpha || false;
         this.flex = options.flex !== false;
         this.stroke = options.stroke || false;
-        this.textColor = options.textColor || '#ffffff';
-        this.strokeColor = options.strokeColor || '#5227FF';
+        this.textColor = options.textColor || '#f6efe0';
+        this.strokeColor = options.strokeColor || '#79ff4d';
         this.minFontSize = options.minFontSize || 36;
 
         this.titleRef = container.querySelector('h1') || container.querySelector('.text-pressure-title');
@@ -2053,4 +1165,6 @@ const dropdownManager = new DropdownManager();
 const collapseManager = new CollapseManager();
 window.DropdownSystem = { dropdown: dropdownManager, collapse: collapseManager, PickerModal: PickerModal };
 </script>
-</body></html>
+<script src="../js/award.js?v=3"></script>
+</body>
+</html>

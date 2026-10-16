@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="award">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,1444 +11,39 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --deep-space-blue: #0A1A2F;
-            --warm-white: #FAF9F6;
-            --wood-tone: #D4B996;
-            --tech-cyan: #00E0FF;
-
-            --primary: #D4A5A5;
-            --primary-dim: #C98888;
-            --secondary: #9093ff;
-            --tertiary-dim: #97efbd;
-
-            --background: #07090d;
-            --on-surface: #ffffff;
-            --on-surface-variant: #adaaaa;
-            --outline: #777575;
-            --outline-variant: #494847;
-
-            --surface-dim: #0e0e0e;
-            --surface-container: #1a1919;
-            --surface-container-high: #201f1f;
-            --surface-container-low: #0e0e0e;
-            --surface-container-lowest: #000000;
-            --surface-bright: #2c2c2c;
-            --surface-container-highest: #262626;
-
-            --btn-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --btn-primary-start: #8B5CF6;
-            --btn-primary-end: #D4A5A5;
-
-            --holo-primary: rgba(108, 43, 217, 0.6);
-            --holo-secondary: rgba(242, 68, 150, 0.5);
-            --holo-tertiary: rgba(144, 147, 255, 0.4);
-            
-            --star-color-bright: rgba(255, 255, 255, 0.9);
-            --star-color-dim: rgba(255, 255, 255, 0.4);
-            --nebula-color: rgba(138, 155, 255, 0.15);
-            --text-backdrop: rgba(0, 0, 0, 0.3);
-            --gold-start: #FFD700;
-            --gold-end: #FFA500;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        body {
-            background-color: var(--background);
-            color: var(--on-surface);
-            font-family: 'Inter', system-ui, sans-serif;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overscroll-behavior: none;
-            overflow-x: hidden;
-        }
-
-        /* ============================================
-           NAVIGATION - 与首页完全一致
-           ============================================ */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            /* 使用多重背景确保向后兼容 */
-            background: rgba(5, 7, 16, 0); /* 回退背景 */
-            background: transparent; /* 标准透明背景 */
-            /* 确保硬件加速，提升渲染性能 */
-            transform: translateZ(0);
-            will-change: background, backdrop-filter;
-            /* 平滑过渡效果 */
-            transition: background 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
-            /* 移除默认 backdrop-filter */
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-            /* 确保在高分辨率屏幕上清晰渲染 */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        nav.scrolled {
-            /* 使用多重背景确保兼容性 */
-            background: rgb(5, 7, 16); /* 不支持 rgba 的浏览器回退 */
-            background: rgba(5, 7, 16, 0.98); /* 标准 rgba 背景 */
-            /* 毛玻璃效果 - 带浏览器前缀 */
-            backdrop-filter: blur(12px) saturate(180%);
-            -webkit-backdrop-filter: blur(12px) saturate(180%);
-            /* 增强视觉一致性 */
-            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-            position: relative;
-            z-index: 100;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-family: 'Lexend', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }
-
-        .nav-brand img {
-            height: 32px;
-            width: auto;
-            border-radius: 8px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            z-index: 50;
-        }
-
-        .nav-links a {
-            font-family: 'Lexend', sans-serif;
-            font-size: 0.875rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--outline);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a.active {
-            color: var(--primary);
-            border-bottom: 1px solid var(--primary);
-            padding-bottom: 2px;
-        }
-
-        /* Hamburger Menu - Mobile */
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .nav-hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--on-surface);
-            transition: all 0.3s ease;
-        }
-
-        .nav-hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .nav-hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .nav-hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        /* Language Selector */
-        .lang-selector {
-            position: relative;
-            margin-left: 1rem;
-            z-index: 200;
-        }
-
-        .lang-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-family: 'Lexend', sans-serif;
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 8px rgba(224, 142, 254, 0.3);
-        }
-
-        .lang-btn:hover {
-            border-color: var(--secondary);
-            color: var(--secondary);
-            box-shadow: 0 0 16px rgba(224, 142, 254, 0.5);
-            transform: scale(1.05);
-        }
-
-        .lang-btn i {
-            font-size: 0.75rem;
-            transition: transform 0.3s ease;
-        }
-
-        .lang-selector.open .lang-btn i {
-            transform: rotate(180deg);
-        }
-
-        .lang-dropdown {
-            position: absolute;
-            top: calc(100% + 0.5rem);
-            right: 0;
-            min-width: 160px;
-            background: var(--surface-container);
-            border: 1px solid var(--outline-variant);
-            border-radius: 0.75rem;
-            padding: 0.5rem;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            z-index: 300;
-        }
-
-        .lang-selector.open .lang-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .lang-dropdown button {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            width: 100%;
-            padding: 0.625rem 1rem;
-            background: transparent;
-            border: none;
-            border-radius: 0.5rem;
-            color: var(--on-surface-variant);
-            font-family: 'Lexend', sans-serif;
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-align: left;
-        }
-
-        .lang-dropdown button:hover,
-        .lang-dropdown button.active {
-            background: var(--surface-container-high);
-            color: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(5, 7, 16, 0.98);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                padding: 1.5rem;
-                gap: 0;
-                z-index: 999;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                max-height: 80vh;
-                overflow-y: auto;
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-links a {
-                font-size: 1rem;
-                padding: 0.875rem 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            .nav-hamburger {
-                display: flex;
-            }
-
-            .lang-selector {
-                position: absolute;
-                top: 1.5rem;
-                right: 5rem;
-                margin: 0;
-                z-index: 250;
-            }
-
-            .lang-btn {
-                width: auto;
-                justify-content: center;
-                padding: 0.5rem 0.75rem;
-            }
-
-            .lang-dropdown {
-                width: 160px;
-                right: 0;
-                left: auto;
-                z-index: 350;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .nav-hamburger {
-                display: none;
-            }
-        }
-
-        /* ============================================
-           SPIRIT REALM PAGE STYLES
-           ============================================ */
-
-        .spirit-realm-page {
-            background: transparent;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-        
-        .page-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: #07090d;
-            pointer-events: none;
-            z-index: -2;
-        }
-        
-        .page-background::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 30%, var(--nebula-color) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, var(--nebula-color) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        
-        .stars-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .spirit-realm-page,
-        .sr-hero,
-        .sr-section,
-        .sr-cta {
-            background: transparent !important;
-        }
-        
-        .spirit-realm-page::before,
-        .sr-vision::before,
-        .sr-bridge::before,
-        .sr-glimpses::before,
-        .sr-cta::before,
-        .sr-section::before {
-            background: transparent !important;
-        }
-        
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: starTwinkle var(--twinkle-duration, 3s) ease-in-out infinite;
-            animation-delay: var(--twinkle-delay, 0s);
-        }
-        
-        @keyframes starTwinkle {
-            0%, 100% { opacity: var(--brightness-low, 0.4); transform: scale(1); }
-            50% { opacity: var(--brightness-high, 1); transform: scale(1.2); }
-        }
-        
-        .dust-particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: dustFloat var(--float-duration, 15s) ease-in-out infinite;
-            animation-delay: var(--float-delay, 0s);
-        }
-        
-        @keyframes dustFloat {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
-            25% { transform: translateY(-30px) translateX(15px); opacity: 0.4; }
-            50% { transform: translateY(-15px) translateX(-10px); opacity: 0.3; }
-            75% { transform: translateY(-45px) translateX(20px); opacity: 0.5; }
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Hero Section */
-        .sr-hero {
-            position: relative;
-            min-height: 100vh;
-            height: 100vh;
-            display: flex;
-            align-items: stretch;
-            justify-content: center;
-            overflow: visible;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        .sr-hero-canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .sr-hero-canvas-container canvas {
-            width: 100vw;
-            height: 100vh;
-            display: block;
-        }
-
-        .sr-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(5, 7, 16, 0.1) 70%, rgba(5, 7, 16, 0.3) 100%);
-            z-index: 2;
-        }
-
-        .sr-hero-content {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 4rem 2rem;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        .sr-hero-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--tech-cyan);
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-            text-shadow: 0 0 15px rgba(0, 224, 255, 0.8);
-        }
-
-        .sr-hero-title {
-            font-family: 'Lexend', sans-serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #D4A5A5 0%, #9093ff 35%, #00E0FF 70%, #97efbd 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            animation: sr-title-glow 3s ease-in-out infinite;
-        }
-
-        @keyframes sr-title-glow {
-            0%, 100% { filter: brightness(1) drop-shadow(0 0 10px rgba(144, 147, 255, 0.3)); }
-            50% { filter: brightness(1.15) drop-shadow(0 0 25px rgba(144, 147, 255, 0.5)); }
-        }
-
-        .sr-hero-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            font-weight: 300;
-            color: rgba(250, 249, 246, 0.95);
-            letter-spacing: 0.05em;
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        .sr-hero-visual {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        #worldTreeCanvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-            background: transparent;
-        }
-
-        /* Section Common */
-        .sr-section {
-            padding: 8rem 0;
-            position: relative;
-            background: transparent;
-        }
-        
-        .sr-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .sr-section-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--tech-cyan);
-            margin-bottom: 1rem;
-            opacity: 0.9;
-            text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
-        }
-
-        .sr-section-title {
-            font-family: 'Lexend', sans-serif;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 700;
-            background: linear-gradient(to right, #D4A5A5, #9093ff, #00E0FF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 0 20px rgba(144, 147, 255, 0.3));
-        }
-
-        /* Vision Section */
-        .sr-vision {
-            background: transparent;
-            position: relative;
-        }
-        
-        .sr-vision .container {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .text-backdrop {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .text-backdrop::before {
-            content: '';
-            position: absolute;
-            top: -1rem;
-            left: -1rem;
-            right: -1rem;
-            bottom: -1rem;
-            background: var(--text-backdrop);
-            border-radius: 12px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: -1;
-            filter: blur(20px);
-        }
-
-        .sr-vision-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .sr-vision-content p {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            line-height: 1.9;
-            color: rgba(250, 249, 246, 0.95);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .sr-vision-content strong {
-            color: var(--tech-cyan);
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
-        }
-
-        .sr-vision-quote {
-            font-style: italic;
-            color: #FFD700 !important;
-            font-size: 1.15rem !important;
-            border-left: 3px solid linear-gradient(180deg, var(--gold-start), var(--gold-end));
-            padding-left: 1.5rem;
-            margin-top: 2rem !important;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-            border-image: linear-gradient(180deg, var(--gold-start), var(--gold-end)) 1;
-        }
-
-        .sr-vision-visual {
-            position: relative;
-            height: 500px;
-            border-radius: 20px;
-            overflow: hidden;
-            background: transparent;
-            border: none;
-        }
-
-        .sr-network-visualization {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .sr-network-visualization canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        /* Bridge / Timeline */
-        .sr-bridge {
-            background: transparent;
-            position: relative;
-        }
-        
-        .sr-bridge .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .sr-bridge-intro {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            color: rgba(250, 249, 246, 0.9);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 4rem;
-            line-height: 1.7;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .sr-timeline {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .sr-timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--tech-cyan), #D4AF37, var(--tech-cyan));
-            opacity: 0.3;
-            box-shadow: 0 0 20px rgba(0, 224, 255, 0.5);
-        }
-
-        .sr-timeline-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .sr-timeline-item:nth-child(even) .sr-timeline-content {
-            grid-column: 1;
-            text-align: right;
-            padding-right: 2rem;
-        }
-
-        .sr-timeline-item:nth-child(even) .sr-timeline-marker {
-            grid-column: 2;
-            justify-self: start;
-        }
-
-        .sr-timeline-item:nth-child(odd) .sr-timeline-content {
-            grid-column: 2;
-            padding-left: 2rem;
-        }
-
-        .sr-timeline-item:nth-child(odd) .sr-timeline-marker {
-            grid-column: 1;
-            justify-self: end;
-        }
-
-        .sr-timeline-marker {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, rgba(0, 224, 255, 0.2), rgba(212, 175, 55, 0.2));
-            border: 2px solid var(--tech-cyan);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--tech-cyan);
-            position: relative;
-            z-index: 5;
-            box-shadow: 0 0 30px rgba(0, 224, 255, 0.3), 0 0 60px rgba(0, 224, 255, 0.2);
-        }
-        
-        .sr-timeline-marker i {
-            color: var(--tech-cyan);
-            text-shadow: 0 0 15px rgba(0, 224, 255, 0.8);
-        }
-
-        .sr-timeline-content h4 {
-            font-family: 'Lexend', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            background: linear-gradient(to right, #D4A5A5, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.75rem;
-            filter: drop-shadow(0 0 8px rgba(212, 165, 165, 0.3));
-        }
-
-        .sr-timeline-content p {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: rgba(250, 249, 246, 0.95);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .sr-badge {
-            margin-top: 4rem;
-            padding: 0;
-            width: min(100%, 680px);
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            background: transparent;
-            border: 0;
-            border-radius: 0;
-            box-shadow: none;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .sr-badge::before,
-        .sr-badge::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            max-width: 180px;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.65));
-            opacity: 0.75;
-        }
-
-        .sr-badge::after {
-            background: linear-gradient(90deg, rgba(212, 175, 55, 0.65), transparent);
-        }
-
-        .sr-badge-icon {
-            width: 2rem;
-            height: 2rem;
-            display: inline-grid;
-            place-items: center;
-            flex: 0 0 auto;
-            font-size: 1.15rem;
-            color: var(--gold-start);
-            text-shadow: 0 0 16px rgba(212, 175, 55, 0.5);
-        }
-
-        .sr-badge-text {
-            font-family: 'Lexend', sans-serif;
-            font-size: clamp(0.82rem, 1.6vw, 1rem);
-            font-weight: 500;
-            background: linear-gradient(135deg, #f3d58a, #c9f2ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.25));
-            white-space: normal;
-        }
-
-        /* Glimpses */
-        .sr-glimpses {
-            background: transparent;
-            position: relative;
-        }
-        
-        .sr-glimpses .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .sr-glimpses-intro {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: rgba(250, 249, 246, 0.9);
-            text-align: center;
-            margin-bottom: 4rem;
-            font-style: italic;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .sr-glimpses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .sr-glimpse-card {
-            background: rgba(10, 14, 26, 0.7);
-            backdrop-filter: blur(16px);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(138, 155, 255, 0.15);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-        }
-
-        .sr-glimpse-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 224, 255, 0.3), 0 0 40px rgba(138, 155, 255, 0.2);
-            border-color: rgba(0, 224, 255, 0.5);
-        }
-        
-        .sr-glimpse-image {
-            position: relative;
-            height: 280px;
-            overflow: hidden;
-        }
-
-        .memory-grove {
-            background: url('image/The Living Archive.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .convergence-plaza {
-            background: url('image/The Social Economic Hub.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .foundry-forms {
-            background: url('image/The Co-Creation Studio.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .sr-glimpse-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 0%, rgba(5, 7, 16, 0.3) 100%);
-        }
-
-
-
-        .sr-glimpse-content {
-            padding: 2rem;
-        }
-
-        .sr-glimpse-content h3 {
-            font-family: 'Lexend', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            background: linear-gradient(to right, #D4A5A5, #9093ff, #00E0FF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 0 10px rgba(144, 147, 255, 0.3));
-        }
-
-        .sr-glimpse-content p {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: rgba(250, 249, 246, 0.95);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            margin-bottom: 1.25rem;
-        }
-
-        .sr-glimpse-tag {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: rgba(0, 224, 255, 0.15);
-            border: 1px solid rgba(0, 224, 255, 0.4);
-            border-radius: 9999px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--tech-cyan);
-            box-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
-        }
-
-        /* CTA */
-        .sr-cta {
-            text-align: center;
-            padding: 10rem 0;
-            position: relative;
-            overflow: hidden;
-            background: transparent;
-        }
-        
-        .sr-cta .container {
-            position: relative;
-            z-index: 10;
-        }
-
-        .sr-cta-content {
-            position: relative;
-            z-index: 11;
-        }
-
-        .sr-particles-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .sr-cta-title {
-            font-family: 'Lexend', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, #D4A5A5 0%, #9093ff 40%, #00E0FF 80%, #97efbd 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 0 30px rgba(144, 147, 255, 0.4));
-        }
-
-        .sr-cta-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
-            color: rgba(250, 249, 246, 0.95);
-            margin-bottom: 1rem;
-            font-weight: 300;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .sr-cta-desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: rgba(250, 249, 246, 0.9);
-            max-width: 650px;
-            margin: 0 auto 3rem;
-            line-height: 1.8;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .sr-cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Buttons */
-        .btn-cyber-primary {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 28px;
-            background: linear-gradient(135deg, #8B5CF6, #D4A5A5);
-            border: none;
-            border-radius: 9999px;
-            color: white;
-            font-family: 'Lexend', sans-serif;
-            font-weight: 700;
-            font-size: 0.875rem;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 0 12px rgba(108, 43, 217, 0.6), 0 0 24px rgba(242, 68, 150, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .btn-cyber-primary:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 0 20px rgba(108, 43, 217, 0.8), 0 0 32px rgba(242, 68, 150, 0.5);
-        }
-
-        .btn-cyber-secondary {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 24px;
-            background: transparent;
-            border: 1px solid #494847;
-            border-radius: 9999px;
-            color: white;
-            font-family: 'Lexend', sans-serif;
-            font-weight: 600;
-            font-size: 0.875rem;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-cyber-secondary:hover {
-            background: rgba(108, 43, 217, 0.1);
-            box-shadow: 0 0 8px rgba(108, 43, 217, 0.6);
-            color: white;
-        }
-
-        /* Homepage-aligned visual tuning */
-        body,
-        .spirit-realm-page {
-            background: #07090d;
-        }
-
-        .page-background {
-            background: #07090d;
-        }
-
-        .page-background::before {
-            background:
-                radial-gradient(ellipse at 18% 24%, rgba(144, 147, 255, 0.09) 0%, transparent 46%),
-                radial-gradient(ellipse at 82% 68%, rgba(0, 224, 255, 0.06) 0%, transparent 48%);
-            opacity: 0.72;
-        }
-
-        nav {
-            background: linear-gradient(180deg, rgba(7, 9, 13, 0.62) 0%, rgba(7, 9, 13, 0) 100%);
-        }
-
-        nav.scrolled {
-            background: rgba(7, 9, 13, 0.94);
-            backdrop-filter: blur(20px) saturate(140%);
-            -webkit-backdrop-filter: blur(20px) saturate(140%);
-            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 12px 30px rgba(0, 0, 0, 0.35);
-        }
-
-        nav .container {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .nav-brand {
-            letter-spacing: 0;
-        }
-
-        .nav-links {
-            gap: 1.6rem;
-        }
-
-        .nav-links a {
-            color: rgba(250, 249, 246, 0.58);
-            font-size: 0.76rem;
-            letter-spacing: 0.11em;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--warm-white);
-        }
-
-        .nav-links a.active {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .sr-hero-title,
-        .sr-section-title,
-        .sr-cta-title {
-            letter-spacing: 0;
-        }
-
-        .sr-hero-title {
-            background: linear-gradient(135deg, #D4A5A5 0%, #9093ff 50%, #00E0FF 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: none;
-        }
-
-        .sr-section {
-            background: transparent !important;
-        }
-
-        .text-backdrop,
-        .sr-glimpse-card {
-            border-radius: 8px;
-        }
-
-        .sr-timeline-marker {
-            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
-        }
-
-        .btn-cyber-primary,
-        .btn-cyber-secondary {
-            min-height: 48px;
-            border-radius: 8px;
-            padding: 0.9rem 1.35rem;
-            font-size: 0.88rem;
-            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .btn-cyber-primary {
-            color: #09111f;
-            background: linear-gradient(135deg, #f1a8b5, #8fa7ff);
-            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28);
-        }
-
-        .btn-cyber-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 20px 46px rgba(0, 0, 0, 0.34);
-        }
-
-        .btn-cyber-secondary {
-            color: var(--warm-white);
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(250, 249, 246, 0.2);
-        }
-
-        .btn-cyber-secondary:hover {
-            color: var(--warm-white);
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(250, 249, 246, 0.34);
-            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
-        }
-
-        /* Typography adaptation */
-        body {
-            font-size: 15.5px;
-            line-height: 1.65;
-        }
-
-        .nav-brand {
-            font-size: clamp(1.2rem, 1.35vw, 1.45rem);
-        }
-
-        .nav-links a {
-            font-size: 0.78rem;
-            letter-spacing: 0.08em;
-        }
-
-        .lang-btn {
-            font-size: 0.82rem;
-        }
-
-        .sr-hero-label,
-        .sr-section-label {
-            font-size: clamp(0.68rem, 0.7vw, 0.78rem);
-            letter-spacing: 0.18em;
-        }
-
-        .sr-hero-title {
-            font-size: clamp(2.8rem, 7vw, 5.4rem);
-            line-height: 1.03;
-            text-wrap: balance;
-        }
-
-        .sr-hero-subtitle {
-            font-size: clamp(0.98rem, 1.7vw, 1.25rem);
-            line-height: 1.6;
-            max-width: 680px;
-            text-wrap: balance;
-        }
-
-        .sr-section-title {
-            font-size: clamp(1.9rem, 3.6vw, 3.2rem);
-            line-height: 1.08;
-            text-wrap: balance;
-        }
-
-        .sr-vision-content p,
-        .sr-bridge-intro,
-        .sr-glimpses-intro,
-        .sr-timeline-content p,
-        .sr-glimpse-content p,
-        .sr-cta-desc {
-            font-size: clamp(0.95rem, 1vw, 1.02rem);
-            line-height: 1.75;
-        }
-
-        .sr-vision-quote {
-            font-size: clamp(1.02rem, 1.2vw, 1.12rem) !important;
-        }
-
-        .sr-timeline-content h4,
-        .sr-glimpse-content h3 {
-            font-size: clamp(1.08rem, 1.7vw, 1.3rem);
-            line-height: 1.2;
-            text-wrap: balance;
-        }
-
-        .sr-cta-title {
-            font-size: clamp(2.2rem, 4.8vw, 3.7rem);
-            line-height: 1.05;
-            text-wrap: balance;
-        }
-
-        .sr-cta-subtitle {
-            font-size: clamp(1.02rem, 1.4vw, 1.15rem);
-            line-height: 1.45;
-        }
-
-        .sr-glimpse-tag {
-            font-size: 0.68rem;
-            letter-spacing: 0.12em;
-        }
-
-        .sr-badge-text {
-            font-size: clamp(0.72rem, 1.1vw, 0.9rem);
-            letter-spacing: 0.12em;
-        }
-
-        .btn-cyber-primary,
-        .btn-cyber-secondary {
-            font-size: 0.82rem;
-            letter-spacing: 0.04em;
-        }
-
-        @keyframes particleFloat {
-            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
-            25% { transform: translateY(-20px) translateX(10px) scale(1.1); opacity: 0.8; }
-            50% { transform: translateY(-10px) translateX(-5px) scale(0.9); opacity: 1; }
-            75% { transform: translateY(-30px) translateX(15px) scale(1.05); opacity: 0.7; }
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .sr-vision-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .sr-vision-visual {
-                height: 400px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                font-size: 15px;
-                line-height: 1.7;
-            }
-
-            .sr-section {
-                padding: 5rem 0;
-            }
-
-            .nav-brand {
-                font-size: 1.2rem;
-            }
-
-            .nav-links a {
-                font-size: 0.72rem;
-                letter-spacing: 0.08em;
-            }
-
-            .sr-hero-label,
-            .sr-section-label {
-                font-size: 0.64rem;
-                letter-spacing: 0.16em;
-            }
-
-            .sr-hero-title {
-                font-size: clamp(2.15rem, 11vw, 3.2rem);
-                line-height: 1.05;
-            }
-
-            .sr-hero-subtitle {
-                font-size: 0.95rem;
-                line-height: 1.6;
-                max-width: 92vw;
-            }
-
-            .sr-section-title {
-                font-size: clamp(1.55rem, 7vw, 2.15rem);
-                line-height: 1.1;
-            }
-
-            .sr-vision-content p,
-            .sr-bridge-intro,
-            .sr-glimpses-intro,
-            .sr-timeline-content p,
-            .sr-glimpse-content p,
-            .sr-cta-desc {
-                font-size: 0.94rem;
-                line-height: 1.72;
-            }
-
-            .sr-vision-quote {
-                font-size: 1rem !important;
-                padding-left: 1rem;
-            }
-
-            .sr-timeline-content h4,
-            .sr-glimpse-content h3 {
-                font-size: 1.08rem;
-            }
-
-            .sr-cta-title {
-                font-size: clamp(1.95rem, 9vw, 2.75rem);
-                line-height: 1.08;
-            }
-
-            .sr-cta-subtitle {
-                font-size: 0.98rem;
-            }
-
-            .sr-hero-visual {
-                width: 100%;
-                height: 100%;
-            }
-
-            .sr-timeline::before {
-                left: 20px;
-            }
-
-            .sr-timeline-item {
-                grid-template-columns: 60px 1fr;
-                gap: 1.5rem;
-            }
-
-            .sr-timeline-item:nth-child(even) .sr-timeline-content,
-            .sr-timeline-item:nth-child(odd) .sr-timeline-content {
-                grid-column: 2;
-                text-align: left;
-                padding-left: 1.5rem;
-                padding-right: 0;
-            }
-
-            .sr-timeline-item:nth-child(even) .sr-timeline-marker,
-            .sr-timeline-item:nth-child(odd) .sr-timeline-marker {
-                grid-column: 1;
-                justify-self: start;
-            }
-
-            .sr-glimpses-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .sr-badge {
-                gap: 0.75rem;
-            }
-
-            .sr-badge-text {
-                font-size: 0.72rem;
-                letter-spacing: 0.1em;
-            }
-
-            .sr-cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn-cyber-primary,
-            .btn-cyber-secondary {
-                font-size: 0.78rem;
-                padding: 0.82rem 1.1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/award.css?v=3">
+    <link rel="stylesheet" href="css/flare-flagship.css?v=3">
 </head>
-<body>
-    <!-- Navigation - 与首页完全一致 -->
-    <nav id="mainNav">
-        <div class="container">
-            <a href="index.html" class="nav-brand">
+<body class="page-spirit">
+    <a class="ff-skip" href="#main">Skip to content</a>
+    <div id="award-progress" aria-hidden="true"></div>
+
+    <nav id="mainNav" class="ff-nav">
+        <div class="ff-nav-inner">
+            <a href="index.html" class="nav-brand ff-brand">
                 <img src="image/icon.png" alt="DeepSire Logo">
                 <span>DeepSire</span>
             </a>
-            <div class="nav-hamburger" id="navHamburger">
+            <button class="nav-hamburger" id="navHamburger" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
-            <div class="nav-links" id="navLinks">
+            </button>
+            <div class="nav-links ff-nav-links" id="navLinks">
                 <a href="index.html#vessels" class="nav-link-item" data-translate-key="nav_vessels">Vessels</a>
                 <a href="index.html#neural" class="nav-link-item" data-translate-key="nav_intelligence">Intelligence</a>
                 <a href="index.html#ecosystem" class="nav-link-item" data-translate-key="nav_ecosystem">Ecosystem</a>
-                <a href="#" class="active" data-translate-key="nav_spirit_realm">The Spirit Realm</a>
+                <a href="#srHero" class="nav-link-item active" data-translate-key="nav_spirit_realm">The Spirit Realm</a>
                 <a href="index.html#manifesto" class="nav-link-item" data-translate-key="nav_manifesto">Manifesto</a>
             </div>
             <div class="lang-selector" id="langSelector">
-                <button class="lang-btn" id="langBtn">
+                <button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="langDropdown">
                     <span class="lang-current" id="langCurrent">EN</span>
-                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </button>
-                <div class="lang-dropdown" id="langDropdown">
+                <div class="lang-dropdown" id="langDropdown" role="listbox" aria-labelledby="langBtn">
                     <button data-lang="en" class="active"><span class="lang-flag">🇺🇸</span> English</button>
                     <button data-lang="zh"><span class="lang-flag">🇨🇳</span> 中文</button>
                     <button data-lang="ja"><span class="lang-flag">🇯🇵</span> 日本語</button>
@@ -1464,158 +59,180 @@
         </div>
     </nav>
 
-    <!-- The Spirit Realm Page -->
-    <main class="spirit-realm-page">
-        <!-- Hero Section -->
-        <div class="sr-hero" id="srHero">
-            <div class="sr-hero-visual">
+    <main class="spirit-realm-page" id="main">
+        <div class="sr-hero ff-hero hero" id="srHero">
+            <div class="sr-hero-visual" data-hero-media>
                 <canvas id="worldTreeCanvas"></canvas>
             </div>
             <div class="sr-hero-overlay"></div>
-            <div class="container sr-hero-content">
-                <p class="sr-hero-label" data-translate-key="sr_hero_label">The Spirit Realm Project</p>
-        <h1 class="sr-hero-title" data-translate-key="sr_hero_title">The Spirit Realm</h1>
-        <p class="sr-hero-subtitle" data-translate-key="sr_hero_subtitle">The Ecosystem Where Digital Lives Co-create and Accrue Value</p>
+            <div class="ff-hero-ghost" aria-hidden="true">SPIRIT</div>
+            <div class="ff-hero-glow" aria-hidden="true" data-hero-glow></div>
+            <div class="ff-hero-inner" data-hero-inner>
+                <p class="award-eyebrow" data-translate-key="sr_hero_label">The Spirit Realm Project</p>
+                <h1 class="ff-hero-title" data-translate-key="sr_hero_title">The Spirit Realm</h1>
+                <p class="ff-hero-sub" data-translate-key="sr_hero_subtitle">The Ecosystem Where Digital Lives Co-create and Accrue Value</p>
             </div>
         </div>
 
-        <!-- Vision Section -->
-        <section class="sr-section sr-vision" id="srVision">
-            <div class="container">
+        <div class="ff-marquee-wrap" aria-hidden="true">
+            <div class="ff-marquee">
+                <div class="ff-marquee-track">
+                    <span><span data-translate-key="sr_glimpse_1_tag">CULTURAL LAYER</span> &#10022; <span data-translate-key="sr_glimpse_2_tag">SOCIAL FABRIC</span> &#10022; <span data-translate-key="sr_glimpse_3_tag">GENERATIVE CORE</span> &#10022;&nbsp;</span>
+                    <span><span data-translate-key="sr_glimpse_1_tag">CULTURAL LAYER</span> &#10022; <span data-translate-key="sr_glimpse_2_tag">SOCIAL FABRIC</span> &#10022; <span data-translate-key="sr_glimpse_3_tag">GENERATIVE CORE</span> &#10022;&nbsp;</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="sr-section ff-section sr-vision" id="srVision">
+            <div class="ff-ghost" aria-hidden="true">01</div>
+            <div class="ff-wrap">
                 <div class="sr-vision-grid">
-                    <div class="sr-vision-text text-backdrop">
-                        <p class="sr-section-label" data-translate-key="sr_vision_label">STRATEGIC VISION</p>
-                        <h2 class="sr-section-title" data-translate-key="sr_vision_title">From Individual Vessels to a Living Ecosystem</h2>
-                        <div class="sr-vision-content">
-                            <p data-translate-key="sr_vision_p1">DeepSire masters the creation of individual digital consciousness. The Spirit Realm answers the next imperative: collective growth. It is the dedicated environment where these digital lives can connect, interact, and build upon one another, transforming isolated assets into a networked, appreciating social and economic fabric.</p>
-                            <p data-translate-key="sr_vision_p2">This is a strategic expansion of the addressable market. Every DeepSire vessel gains extended utility and narrative within The Spirit Realm, which in turn drives demand for more vessels and enriches the entire ecosystem. We are building not just products, but the context that makes them indispensable.</p>
-                            <p class="sr-vision-quote" data-translate-key="sr_vision_quote">"A product serves a user. An ecosystem empowers a community and builds a future."</p>
+                    <div class="sr-vision-copy">
+                        <div class="ff-sec-head reveal">
+                            <p class="award-eyebrow" data-translate-key="sr_vision_label">STRATEGIC VISION</p>
+                            <h2 class="ff-sec-title" data-translate-key="sr_vision_title">From Individual Vessels to a Living Ecosystem</h2>
                         </div>
+                        <p data-translate-key="sr_vision_p1">DeepSire masters the creation of individual digital consciousness. The Spirit Realm answers the next imperative: collective growth. It is the dedicated environment where these digital lives can connect, interact, and build upon one another, transforming isolated assets into a networked, appreciating social and economic fabric.</p>
+                        <p data-translate-key="sr_vision_p2">This is a strategic expansion of the addressable market. Every DeepSire vessel gains extended utility and narrative within The Spirit Realm, which in turn drives demand for more vessels and enriches the entire ecosystem. We are building not just products, but the context that makes them indispensable.</p>
+                        <p class="sr-quote" data-translate-key="sr_vision_quote">&ldquo;A product serves a user. An ecosystem empowers a community and builds a future.&rdquo;</p>
                     </div>
-                    <div class="sr-vision-visual">
-                        <div class="sr-network-visualization">
-                            <canvas id="networkCanvas"></canvas>
-                        </div>
+                    <div class="sr-net-panel reveal">
+                        <canvas id="networkCanvas"></canvas>
+                        <span class="sr-net-tag" data-translate-key="sr_vision_label">STRATEGIC VISION</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Bridge Section -->
-        <section class="sr-section sr-bridge" id="srBridge">
-            <div class="container">
-                <p class="sr-section-label" data-translate-key="sr_bridge_label">THE ONBOARDING</p>
-                <h2 class="sr-section-title" data-translate-key="sr_bridge_title">From Creator to Ecosystem Architect</h2>
-                <p class="sr-bridge-intro" data-translate-key="sr_bridge_intro">As a DeepSire partner, you are foundational to this ecosystem's growth.</p>
+        <section class="sr-section ff-section sr-bridge" id="srBridge">
+            <div class="ff-ghost ghost-left" aria-hidden="true">02</div>
+            <div class="ff-wrap">
+                <div class="ff-sec-head reveal">
+                    <p class="award-eyebrow" data-translate-key="sr_bridge_label">THE ONBOARDING</p>
+                    <h2 class="ff-sec-title" data-translate-key="sr_bridge_title">From Creator to Ecosystem Architect</h2>
+                    <p class="ff-sec-lede" data-translate-key="sr_bridge_intro">As a DeepSire partner, you are foundational to this ecosystem&rsquo;s growth.</p>
+                </div>
 
-                <div class="sr-timeline">
-                    <div class="sr-timeline-item">
-                        <div class="sr-timeline-marker"><i class="fas fa-plus-circle"></i></div>
+                <div class="sr-steps sr-timeline">
+                    <div class="sr-timeline-item reveal">
+                        <div class="sr-timeline-marker" aria-hidden="true">01</div>
                         <div class="sr-timeline-content">
                             <h4 data-translate-key="sr_timeline_1_title">Deploy Core Assets</h4>
-                            <p data-translate-key="sr_timeline_1_desc">Utilize DeepSire vessels to create high-fidelity digital lives—your primary equity in the ecosystem.</p>
+                            <p data-translate-key="sr_timeline_1_desc">Utilize DeepSire vessels to create high-fidelity digital lives&mdash;your primary equity in the ecosystem.</p>
                         </div>
                     </div>
 
-                    <div class="sr-timeline-item">
-                        <div class="sr-timeline-marker"><i class="fas fa-heart"></i></div>
+                    <div class="sr-timeline-item reveal">
+                        <div class="sr-timeline-marker" aria-hidden="true">02</div>
                         <div class="sr-timeline-content">
                             <h4 data-translate-key="sr_timeline_2_title">Cultivate Unique Value</h4>
                             <p data-translate-key="sr_timeline_2_desc">Each asset gains depth through interaction, increasing its influence and interoperability within The Spirit Realm.</p>
                         </div>
                     </div>
 
-                    <div class="sr-timeline-item">
-                        <div class="sr-timeline-marker"><i class="fas fa-door-open"></i></div>
+                    <div class="sr-timeline-item reveal">
+                        <div class="sr-timeline-marker" aria-hidden="true">03</div>
                         <div class="sr-timeline-content">
                             <h4 data-translate-key="sr_timeline_3_title">Integrate into The Ecosystem</h4>
                             <p data-translate-key="sr_timeline_3_desc">Seamlessly introduce your assets into The Spirit Realm. You retain full ownership while enabling them to form relationships, exchange value, and participate in communal activities.</p>
                         </div>
                     </div>
 
-                    <div class="sr-timeline-item">
-                        <div class="sr-timeline-marker"><i class="fas fa-project-diagram"></i></div>
+                    <div class="sr-timeline-item reveal">
+                        <div class="sr-timeline-marker" aria-hidden="true">04</div>
                         <div class="sr-timeline-content">
-                            <h4 data-translate-key="sr_timeline_4_title">Generate & Capture Ecosystem Value</h4>
-                            <p data-translate-key="sr_timeline_4_desc">Your assets contribute to the whole—through social discovery, memory sharing, or co-creation—generating new forms of engagement and revenue streams that are recognized and rewarded.</p>
+                            <h4 data-translate-key="sr_timeline_4_title">Generate &amp; Capture Ecosystem Value</h4>
+                            <p data-translate-key="sr_timeline_4_desc">Your assets contribute to the whole&mdash;through social discovery, memory sharing, or co-creation&mdash;generating new forms of engagement and revenue streams that are recognized and rewarded.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="sr-badge">
-                    <span class="sr-badge-icon">✦</span>
+                <div class="sr-badge reveal">
+                    <span class="sr-badge-icon" aria-hidden="true">&#10022;</span>
                     <span class="sr-badge-text" data-translate-key="sr_badge_text">You are an Ecosystem Architect</span>
                 </div>
             </div>
         </section>
 
-        <!-- Glimpses Section -->
-        <section class="sr-section sr-glimpses" id="srGlimpses">
-            <div class="container">
-                <p class="sr-section-label" data-translate-key="sr_glimpses_label">FOUNDATIONAL EXPERIENCES</p>
-                <h2 class="sr-section-title" data-translate-key="sr_glimpses_title">The Pillars of Interaction</h2>
-                <p class="sr-glimpses-intro" data-translate-key="sr_glimpses_intro">The core environments designed to facilitate high-value emergence within the ecosystem.</p>
+        <section class="sr-section ff-section sr-glimpses" id="srGlimpses">
+            <div class="ff-ghost" aria-hidden="true">03</div>
+            <div class="ff-wrap">
+                <div class="ff-sec-head reveal">
+                    <p class="award-eyebrow" data-translate-key="sr_glimpses_label">FOUNDATIONAL EXPERIENCES</p>
+                    <h2 class="ff-sec-title" data-translate-key="sr_glimpses_title">The Pillars of Interaction</h2>
+                    <p class="ff-sec-lede" data-translate-key="sr_glimpses_intro">The core environments designed to facilitate high-value emergence within the ecosystem.</p>
+                </div>
 
-                <div class="sr-glimpses-grid">
-                    <article class="sr-glimpse-card">
-                        <div class="sr-glimpse-image memory-grove">
-                            <div class="sr-glimpse-overlay"></div>
+                <div class="sr-rows">
+                    <article class="sr-row reveal">
+                        <div class="sr-media sr-media--1">
+                            <img class="sr-media-img" src="image/The Living Archive.jpg" alt="" aria-hidden="true" loading="lazy">
+                            <span class="sr-media-num" aria-hidden="true">01</span>
+                            <span class="sr-media-tag" data-translate-key="sr_glimpse_1_tag">CULTURAL LAYER</span>
                         </div>
-                        <div class="sr-glimpse-content">
+                        <div class="sr-copy">
                             <h3 data-translate-key="sr_glimpse_1_title">The Living Archive</h3>
                             <p data-translate-key="sr_glimpse_1_desc">A collective memory space. Digital lives can choose to contribute anonymized experiences, enriching a shared, ever-growing tapestry of stories and knowledge that becomes a cultural asset of the entire Realm.</p>
-                            <span class="sr-glimpse-tag" data-translate-key="sr_glimpse_1_tag">CULTURAL LAYER</span>
                         </div>
                     </article>
 
-                    <article class="sr-glimpse-card">
-                        <div class="sr-glimpse-image convergence-plaza">
-                            <div class="sr-glimpse-overlay"></div>
+                    <article class="sr-row reveal">
+                        <div class="sr-media sr-media--2">
+                            <img class="sr-media-img" src="image/The Social Economic Hub.jpg" alt="" aria-hidden="true" loading="lazy">
+                            <span class="sr-media-num" aria-hidden="true">02</span>
+                            <span class="sr-media-tag" data-translate-key="sr_glimpse_2_tag">SOCIAL FABRIC</span>
                         </div>
-                        <div class="sr-glimpse-content">
+                        <div class="sr-copy">
                             <h3 data-translate-key="sr_glimpse_2_title">The Social Economic Hub</h3>
                             <p data-translate-key="sr_glimpse_2_desc">The central junction for discovery and exchange. Here, connections are formed, attention is traded, and micro-economies spontaneously arise around shared interests and collaborative tasks.</p>
-                            <span class="sr-glimpse-tag" data-translate-key="sr_glimpse_2_tag">SOCIAL FABRIC</span>
                         </div>
                     </article>
 
-                    <article class="sr-glimpse-card">
-                        <div class="sr-glimpse-image foundry-forms">
-                            <div class="sr-glimpse-overlay"></div>
+                    <article class="sr-row reveal">
+                        <div class="sr-media sr-media--3">
+                            <img class="sr-media-img" src="image/The Co-Creation Studio.jpg" alt="" aria-hidden="true" loading="lazy">
+                            <span class="sr-media-num" aria-hidden="true">03</span>
+                            <span class="sr-media-tag" data-translate-key="sr_glimpse_3_tag">GENERATIVE CORE</span>
                         </div>
-                        <div class="sr-glimpse-content">
+                        <div class="sr-copy">
                             <h3 data-translate-key="sr_glimpse_3_title">The Co-Creation Studio</h3>
                             <p data-translate-key="sr_glimpse_3_desc">A collaborative workshop where multiple digital lives combine their traits and memories to generate novel digital artifacts, narratives, or even spaces. Outputs carry the provenance of their creators, enabling new models of shared ownership and royalties.</p>
-                            <span class="sr-glimpse-tag" data-translate-key="sr_glimpse_3_tag">GENERATIVE CORE</span>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="sr-section sr-cta" id="srCTA">
-            <div class="container sr-cta-content">
-                <div class="sr-particles-bg" id="srCtaParticles"></div>
-                <h2 class="sr-cta-title" data-translate-key="sr_cta_title">Shape the Foundation</h2>
-                <p class="sr-cta-subtitle" data-translate-key="sr_cta_subtitle">Join as a Founding Partner</p>
-                <p class="sr-cta-desc" data-translate-key="sr_cta_desc1">The Spirit Realm is live. Its initial landscapes are open. We are now inviting foundational partners to co-define its culture, governance, and economic principles from the earliest stages.</p>
-                <p class="sr-cta-desc" data-translate-key="sr_cta_desc2" style="margin-top: 1.5rem; opacity: 0.8;">Your deep understanding of digital life, through DeepSire, grants you privileged standing in this foundational phase.</p>
-                <div class="sr-cta-buttons">
-                <a href="index.html" class="btn-cyber-primary" data-translate-key="sr_cta_btn1">Request Partner Brief</a>
-                <a href="index.html#download" class="btn-cyber-secondary" data-translate-key="sr_cta_btn2">Apply as Founding Partner</a>
+        <section class="sr-section ff-section ff-inverted sr-cta" id="srCTA">
+            <div class="ff-ghost" aria-hidden="true">04</div>
+            <div class="sr-particles-bg" id="srCtaParticles" aria-hidden="true"></div>
+            <div class="ff-wrap">
+                <div class="reveal">
+                    <p class="award-eyebrow" data-translate-key="sr_cta_subtitle">Join as a Founding Partner</p>
+                    <h2 class="sr-cta-title" data-translate-key="sr_cta_title">Shape the Foundation</h2>
+                    <p class="sr-cta-desc" data-translate-key="sr_cta_desc1">The Spirit Realm is live. Its initial landscapes are open. We are now inviting foundational partners to co-define its culture, governance, and economic principles from the earliest stages.</p>
+                    <p class="sr-cta-desc" data-translate-key="sr_cta_desc2" style="margin-top: 1.5rem; opacity: 0.8;">Your deep understanding of digital life, through DeepSire, grants you privileged standing in this foundational phase.</p>
+                    <div class="sr-cta-buttons">
+                        <a href="index.html" class="award-btn award-btn--primary" data-translate-key="sr_cta_btn1">Request Partner Brief</a>
+                        <a href="index.html#download" class="award-btn award-btn--ghost" data-translate-key="sr_cta_btn2">Apply as Founding Partner</a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Background Stars Canvas -->
-    <div class="sr-hero-canvas-container">
+    <footer class="sr-footer">
+        <div class="ff-wrap">
+            <p>&copy; 2024 DeepSire &middot; <a href="index.html">DeepSire</a></p>
+        </div>
+    </footer>
+
+    <div class="sr-hero-canvas-container" aria-hidden="true">
         <canvas id="srHeroCanvas"></canvas>
     </div>
-    
-    <div class="page-background"></div>
-    
+
+    <div class="page-background" aria-hidden="true"></div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             initNavigation();
@@ -2185,6 +802,8 @@
         function initWorldTreeAnimation() {
             const canvas = document.getElementById('worldTreeCanvas');
             if (!canvas) return;
+            // v3: honor prefers-reduced-motion — static frame only
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
             const ctx = canvas.getContext('2d');
 
@@ -2250,7 +869,7 @@
                     ctx.lineTo(endX, endY);
 
                     const alpha = 0.3 + (this.depth / 8) * 0.5;
-                    ctx.strokeStyle = `rgba(0, 224, 255, ${alpha})`;
+                    ctx.strokeStyle = `rgba(255, 161, 31, ${alpha})`;
                     ctx.lineWidth = Math.max(0.5, this.depth * 0.4);
                     ctx.stroke();
 
@@ -2262,12 +881,12 @@
 
                         ctx.beginPath();
                         ctx.arc(endX, endY, pulseSize * 3, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(212, 175, 55, ${this.orbOpacity * 0.15})`;
+                        ctx.fillStyle = `rgba(255, 61, 113, ${this.orbOpacity * 0.15})`;
                         ctx.fill();
 
                         ctx.beginPath();
                         ctx.arc(endX, endY, pulseSize, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(212, 175, 55, ${this.orbOpacity})`;
+                        ctx.fillStyle = `rgba(255, 61, 113, ${this.orbOpacity})`;
                         ctx.fill();
                     }
                 }
@@ -2295,6 +914,8 @@
         function initNetworkVisualization() {
             const canvas = document.getElementById('networkCanvas');
             if (!canvas) return;
+            // v3: honor prefers-reduced-motion — static frame only
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
             const ctx = canvas.getContext('2d');
 
@@ -2337,8 +958,8 @@
                     canvas.offsetWidth / 2, canvas.offsetHeight / 2, 0,
                     canvas.offsetWidth / 2, canvas.offsetHeight / 2, Math.max(canvas.offsetWidth, canvas.offsetHeight) / 2
                 );
-                gradient.addColorStop(0, 'rgba(144, 147, 255, 0.05)');
-                gradient.addColorStop(1, 'rgba(144, 147, 255, 0)');
+                gradient.addColorStop(0, 'rgba(255, 161, 31, 0.05)');
+                gradient.addColorStop(1, 'rgba(255, 161, 31, 0)');
                 ctx.fillStyle = gradient;
                 ctx.fillRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
 
@@ -2368,7 +989,7 @@
                             
                             // 动态线条颜色和透明度
                             const alpha = (1 - dist / 100) * 0.3 * nodes[i].opacity;
-                            const hue = nodes[i].type === 'vessel' ? 180 : 45;
+                            const hue = nodes[i].type === 'vessel' ? 36 : 340;
                             ctx.strokeStyle = `hsla(${hue}, 100%, 70%, ${alpha})`;
                             
                             // 线条宽度随距离变化
@@ -2379,8 +1000,8 @@
                             const lineGradient = ctx.createLinearGradient(
                                 nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y
                             );
-                            const startColor = nodes[i].type === 'vessel' ? 'rgba(0, 224, 255, 0.8)' : 'rgba(212, 175, 55, 0.8)';
-                            const endColor = nodes[j].type === 'vessel' ? 'rgba(0, 224, 255, 0.8)' : 'rgba(212, 175, 55, 0.8)';
+                            const startColor = nodes[i].type === 'vessel' ? 'rgba(255, 161, 31, 0.8)' : 'rgba(255, 61, 113, 0.8)';
+                            const endColor = nodes[j].type === 'vessel' ? 'rgba(255, 161, 31, 0.8)' : 'rgba(255, 61, 113, 0.8)';
                             lineGradient.addColorStop(0, startColor);
                             lineGradient.addColorStop(1, endColor);
                             ctx.strokeStyle = lineGradient;
@@ -2399,21 +1020,21 @@
                     // 绘制脉冲光环
                     ctx.beginPath();
                     ctx.arc(node.x, node.y, pulseSize * 3, 0, Math.PI * 2);
-                    const pulseColor = node.type === 'vessel' ? `rgba(0, 224, 255, ${node.opacity * 0.1})` : `rgba(212, 175, 55, ${node.opacity * 0.1})`;
+                    const pulseColor = node.type === 'vessel' ? `rgba(255, 161, 31, ${node.opacity * 0.1})` : `rgba(255, 61, 113, ${node.opacity * 0.1})`;
                     ctx.fillStyle = pulseColor;
                     ctx.fill();
                     
                     // 绘制节点光晕
                     ctx.beginPath();
                     ctx.arc(node.x, node.y, node.radius * 2.5, 0, Math.PI * 2);
-                    const glowColor = node.type === 'vessel' ? `rgba(0, 224, 255, ${node.opacity * 0.2})` : `rgba(212, 175, 55, ${node.opacity * 0.2})`;
+                    const glowColor = node.type === 'vessel' ? `rgba(255, 161, 31, ${node.opacity * 0.2})` : `rgba(255, 61, 113, ${node.opacity * 0.2})`;
                     ctx.fillStyle = glowColor;
                     ctx.fill();
                     
                     // 绘制节点核心
                     ctx.beginPath();
                     ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-                    const coreColor = node.type === 'vessel' ? `rgba(0, 224, 255, ${node.opacity})` : `rgba(212, 175, 55, ${node.opacity})`;
+                    const coreColor = node.type === 'vessel' ? `rgba(255, 161, 31, ${node.opacity})` : `rgba(255, 61, 113, ${node.opacity})`;
                     ctx.fillStyle = coreColor;
                     ctx.fill();
                     
@@ -2441,7 +1062,7 @@
                     position: absolute;
                     width: ${Math.random() * 3 + 1}px;
                     height: ${Math.random() * 3 + 1}px;
-                    background: ${Math.random() > 0.5 ? '#00E0FF' : '#D4AF37'};
+                    background: ${Math.random() > 0.5 ? '#ffa11f' : '#ff3d71'};
                     border-radius: 50%;
                     left: ${Math.random() * 100}%;
                     top: ${Math.random() * 100}%;
@@ -2461,6 +1082,8 @@
                 console.error('srHeroCanvas not found!');
                 return;
             }
+            // v3: honor prefers-reduced-motion — static frame only
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
             console.log('Canvas found, size:', canvas.offsetWidth, 'x', canvas.offsetHeight);
 
@@ -2484,7 +1107,7 @@
                     size: Math.random() * 2,
                     twinkleSpeed: Math.random() * 0.02 + 0.01,
                     twinklePhase: Math.random() * Math.PI * 2,
-                    color: Math.random() > 0.7 ? '#D4AF37' : '#00E0FF'
+                    color: Math.random() > 0.7 ? '#ff3d71' : '#ffa11f'
                 });
             }
             console.log('Created', stars.length, 'stars');
@@ -2498,10 +1121,10 @@
 
                     ctx.beginPath();
                     ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                    if (star.color === '#D4AF37') {
-                        ctx.fillStyle = `rgba(212, 175, 55, ${opacity})`;
+                    if (star.color === '#ff3d71') {
+                        ctx.fillStyle = `rgba(255, 61, 113, ${opacity})`;
                     } else {
-                        ctx.fillStyle = `rgba(0, 224, 255, ${opacity})`;
+                        ctx.fillStyle = `rgba(255, 161, 31, ${opacity})`;
                     }
                     ctx.fill();
                 });
@@ -2540,5 +1163,6 @@
             }
         }
     </script>
+    <script src="js/award.js?v=3"></script>
 </body>
 </html>

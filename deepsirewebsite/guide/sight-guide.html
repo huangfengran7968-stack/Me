@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="award">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -12,23 +12,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --deep-space-blue: #0A1A2F;
-            --warm-white: #FAF9F6;
-            --wood-tone: #D4B996;
-            --tech-cyan: #00E0FF;
-            --primary: #D4A5A5;
-            --primary-dim: #C98888;
-            --secondary: #9093ff;
-            --secondary-dim: #7a7dff;
-            --background: #07090d;
+            /* v3 flare remap: all legacy rainbow tokens re-pointed to the Solar Flare palette */
+            --deep-space-blue: #14120c;
+            --warm-white: #f6efe0;
+            --wood-tone: #b9b0a0;
+            --tech-cyan: #ffa11f;
+            --primary: #ffa11f;
+            --primary-dim: #cc7f14;
+            --secondary: #ff3d71;
+            --secondary-dim: #e5326c;
+            --background: #0c0b08;
             --surface: rgba(14, 14, 14, 0.6);
             --surface-high: rgba(26, 25, 25, 0.8);
             --surface-border: rgba(73, 72, 71, 0.3);
-            --text-primary: #FAF9F6;
-            --text-secondary: #adaaaa;
-            --success: #10b981;
-            --btn-primary-start: #8B5CF6;
-            --btn-primary-end: #D4A5A5;
+            --text-primary: #f6efe0;
+            --text-secondary: #b9b0a0;
+            --success: #ffa11f;
+            --btn-primary-start: #ffa11f;
+            --btn-primary-end: #ff3d71;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -514,8 +515,11 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="../css/award.css?v=3">
+    <link rel="stylesheet" href="../css/flare-guide.css">
+
 </head>
-<body>
+<body class="guide-sight">
     <div class="container">
         <header class="header">
             <div class="brand">

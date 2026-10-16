@@ -1,0 +1,182 @@
+/* ============================================================
+   wq-biography.css — 人生传记页 bespoke 覆写层（记忆星河概念）
+   在 static/biography.css 之后加载；只覆盖本页实际类名。
+   原则：零标记改动、零 JS/i18n 破坏；用 :root 变量重映射 + 精确选择器。
+   可独立工作（不依赖 static/wq-award.css）。
+   ============================================================ */
+:root{
+  /* ---- 色板重映射：深海军蓝宇宙 + 唯一签名青 #06b6d4 ---- */
+  --night:#0d0c1d;            /* 原 #0b0711 → 概念 --wq-ink */
+  --plum:#1a192f;             /* 原 #170d1d（基 CSS 中未被使用，见文末审计） */
+  --violet:#33406b;           /* 原 #8b6cff：紫色杂散 → 深海军蓝灰 */
+  --cyan:#06b6d4;             /* 原 #38d4dc → 唯一签名青 */
+  --gold:#d4a574;             /* 原 #d1a56c → 概念金，仅作稀有暖色 */
+  --ink:#f0f4f8;
+  --muted:#a9b3d0;
+  --line:rgba(240,244,248,.12);
+  --wq-serif:'Noto Serif SC','Songti SC','STSong',serif;
+  --wq-mono:'DM Mono','Noto Sans SC',ui-monospace,monospace;
+}
+
+/* ---------- 记忆星河：全局星野（静态；透明区段透出） ---------- */
+body::before{
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 11% 16%, rgba(240,244,248,.85), transparent 60%),
+    radial-gradient(1px 1px at 26% 58%, rgba(240,244,248,.5), transparent 60%),
+    radial-gradient(1px 1px at 41% 9%, rgba(6,182,212,.8), transparent 60%),
+    radial-gradient(2px 2px at 58% 34%, rgba(240,244,248,.7), transparent 60%),
+    radial-gradient(1px 1px at 72% 68%, rgba(240,244,248,.55), transparent 60%),
+    radial-gradient(1.5px 1.5px at 86% 22%, rgba(240,244,248,.75), transparent 60%),
+    radial-gradient(1px 1px at 93% 82%, rgba(6,182,212,.7), transparent 60%),
+    radial-gradient(1px 1px at 6% 86%, rgba(240,244,248,.5), transparent 60%),
+    radial-gradient(1px 1px at 48% 92%, rgba(240,244,248,.45), transparent 60%);
+}
+@media (prefers-reduced-motion:no-preference){
+  body::before{ animation:wq-star-breathe 9s ease-in-out infinite alternate; }
+  @keyframes wq-star-breathe{ from{ opacity:.72; } to{ opacity:1; } }
+}
+
+/* ---------- 标题体系：放大、平衡换行、CJK 行高 ---------- */
+.hero-copy h1{
+  font-size:clamp(54px,6.6vw,98px);
+  line-height:1.16; letter-spacing:.02em; text-wrap:balance;
+}
+.section-heading h2,
+.closing-content h2{
+  font-size:clamp(38px,4.8vw,66px);
+  line-height:1.28; letter-spacing:.01em; text-wrap:balance;
+}
+/* 注意：.process-copy 本身已是 sticky（即已定位），排除在外以免覆盖 */
+.section-heading:not(.process-copy){ position:relative; }
+
+/* ---------- 章节幽灵编号（01–05）：路标 ---------- */
+#value .section-heading::after,
+#process .section-heading::after,
+#lineage .section-heading::after,
+#family-demo .section-heading::after,
+#digital-human .section-heading::after{
+  position:absolute; right:0; top:-0.5em;
+  font-family:var(--wq-mono); font-size:clamp(3.6rem,8vw,6.4rem); line-height:1;
+  color:transparent; -webkit-text-stroke:1px rgba(6,182,212,.28);
+  pointer-events:none; user-select:none;
+}
+#value .section-heading::after{ content:'01'; }
+#process .section-heading::after{ content:'02'; }
+#lineage .section-heading::after{ content:'03'; }
+#family-demo .section-heading::after{ content:'04'; }
+#digital-human .section-heading::after{ content:'05'; }
+
+/* ---------- 眉题 + 拉丁 mono 点缀（DM Mono，有 CJK 回退） ---------- */
+.eyebrow{
+  font-family:var(--wq-mono);
+  font-size:12px; letter-spacing:.22em;
+  color:var(--cyan);
+}
+.hero-mark span:first-child{ font-family:var(--wq-mono); }
+.chapter-rail a b{ font-family:var(--wq-mono); }
+.generation-axis span{ font-family:var(--wq-mono); }
+.memory-index article > span{ font-family:var(--wq-mono); }
+.process-list li > span{ font-family:var(--wq-mono); }
+.lineage-entry > .lineage-period{ font-family:var(--wq-mono); }
+.footer-base > span{ font-family:var(--wq-mono); }
+.demo-status{ font-family:var(--wq-mono); }
+
+/* ---------- 按钮：青色实心 + 深色文字（对比度约 7.9:1） ---------- */
+.primary-button{
+  background:var(--cyan);
+  border-color:transparent;
+  color:#032730;
+  box-shadow:0 14px 34px rgba(6,182,212,.30);
+}
+.primary-button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 20px 44px rgba(6,182,212,.42);
+}
+.btn-nav{
+  background:var(--cyan);
+  color:#032730;
+  box-shadow:0 8px 24px rgba(6,182,212,.28);
+}
+.btn-nav:hover{ box-shadow:0 12px 30px rgba(6,182,212,.42); }
+.chat-form button{
+  background:var(--cyan);
+  color:#032730; font-weight:600;
+}
+.message.user{
+  background:rgba(6,182,212,.18);
+  border:1px solid rgba(6,182,212,.30);
+  color:#fff;
+}
+.prompt-list button:hover,
+.reset-chat:hover{
+  border-color:rgba(6,182,212,.55);
+  background:rgba(6,182,212,.08);
+  color:#fff;
+}
+.chat-form textarea:focus{
+  border-color:var(--cyan);
+  box-shadow:0 0 0 3px rgba(6,182,212,.10);
+}
+
+/* ---------- 硬编码紫色的精确覆盖（基 CSS 未走变量处） ---------- */
+::selection{ background:rgba(6,182,212,.45); color:#032730; }
+.logo-image{ filter:drop-shadow(0 0 12px rgba(6,182,212,.35)); }
+.lang-option:hover,
+.lang-option.active{ background:rgba(6,182,212,.14); }
+.human-halo i:nth-child(2){ border-color:rgba(6,182,212,.22); }
+.memory-ripples::before{
+  background:radial-gradient(circle, rgba(6,182,212,.20), rgba(6,182,212,.055) 42%, transparent 72%);
+}
+.memory-ripples i:nth-child(2){
+  border-color:rgba(6,182,212,.5);
+  box-shadow:0 0 26px rgba(6,182,212,.16), inset 0 0 22px rgba(6,182,212,.07);
+}
+.digital-human-section{
+  background:
+    radial-gradient(circle at 78% 35%, rgba(6,182,212,.10), transparent 29%),
+    radial-gradient(circle at 19% 58%, rgba(51,64,107,.28), transparent 31%),
+    #0d0c1d;
+}
+.digital-human-section::before{
+  background:linear-gradient(90deg, transparent, rgba(6,182,212,.28), transparent);
+}
+.closing-section{
+  background:linear-gradient(180deg, #0d0c1d 0%, #100918 56%, #09050e 100%);
+}
+
+/* ---------- 响应式：幽灵编号不挤压标题 ---------- */
+@media (max-width:960px){
+  #value .section-heading::after,
+  #process .section-heading::after,
+  #lineage .section-heading::after,
+  #family-demo .section-heading::after,
+  #digital-human .section-heading::after{ font-size:3.2rem; opacity:.85; }
+}
+@media (max-width:680px){
+  .hero-copy h1{ font-size:clamp(42px,12.5vw,60px); }
+  .section-heading h2, .closing-content h2{ font-size:34px; }
+  #value .section-heading::after,
+  #process .section-heading::after,
+  #lineage .section-heading::after,
+  #family-demo .section-heading::after,
+  #digital-human .section-heading::after{ display:none; }
+}
+
+/* ---------- 减少动态偏好：星野静止 ---------- */
+@media (prefers-reduced-motion:reduce){
+  body::before{ animation:none; opacity:1; }
+}
+
+/* ============================================================
+   基 CSS 审计（bonus，不改动 biography.css 本体）：
+   1. --plum 在 :root 定义（#170d1d）但全文件 0 次 var(--plum) 引用
+      → 死变量。本覆写层将其赋为 #1a192f 备用；建议从基 CSS 删除。
+   2. .human-portrait-trigger / .human-portrait-play / .human-video-toggle
+      的 v24 规则存在，但 life-biography.html 标记中没有这些元素
+      （human-stage 内只有 .human-video-wrap，且预置 is-video-active），
+      biography.js 也不引用 → 死选择器，建议清理或补齐标记。
+   3. --page-progress 由 biography.js 实时写入（非死变量）。
+   4. --lineage-count / --lineage-delay / --node-delay / --reveal-delay
+      由 JS 通过 style.setProperty 注入（非死变量）。
+   ============================================================ */

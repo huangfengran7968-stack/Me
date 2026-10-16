@@ -1,0 +1,2228 @@
+<!DOCTYPE html>
+
+<html class="dark award" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pleasure | DeepSire</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../image/icon.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="../image/icon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../image/icon.png"/>
+<link rel="shortcut icon" href="../image/icon.png"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2" rel="preload" as="font" type="font/woff2" crossorigin/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#e8ffee",
+                        "surface-container": "#1a1919",
+                        "secondary-dim": "#6063ed",
+                        "tertiary-container": "#a5fecb",
+                        "on-error-container": "#ffb2b9",
+                        "secondary-fixed": "#cdcdff",
+                        "inverse-on-surface": "#565554",
+                        "on-surface-variant": "#adaaaa",
+                        "primary": "#e08efe",
+                        "inverse-primary": "#893da7",
+                        "on-tertiary-fixed": "#004f31",
+                        "tertiary-dim": "#97efbd",
+                        "secondary-fixed-dim": "#bdbeff",
+                        "on-primary-fixed-variant": "#5a0179",
+                        "background": "#0e0e0e",
+                        "on-secondary": "#07007a",
+                        "primary-fixed-dim": "#ce7eec",
+                        "surface-container-high": "#201f1f",
+                        "on-background": "#ffffff",
+                        "on-surface": "#ffffff",
+                        "inverse-surface": "#fcf8f8",
+                        "on-primary": "#4f006c",
+                        "on-tertiary": "#016d46",
+                        "on-secondary-fixed-variant": "#393bc7",
+                        "error-container": "#a70138",
+                        "tertiary-fixed": "#a5fecb",
+                        "primary-fixed": "#dd8bfb",
+                        "error-dim": "#d73357",
+                        "tertiary-fixed-dim": "#97efbd",
+                        "surface-container-low": "#131313",
+                        "outline-variant": "#494847",
+                        "primary-dim": "#ce7eec",
+                        "outline": "#777575",
+                        "error": "#ff6e84",
+                        "surface-variant": "#262626",
+                        "on-secondary-fixed": "#160dac",
+                        "on-tertiary-fixed-variant": "#066f47",
+                        "surface-container-lowest": "#000000",
+                        "on-secondary-container": "#ccccff",
+                        "secondary-container": "#2e2ebd",
+                        "secondary": "#9093ff",
+                        "primary-container": "#d180ef",
+                        "surface-tint": "#e08efe",
+                        "surface": "#0e0e0e",
+                        "surface-dim": "#0e0e0e",
+                        "on-tertiary-container": "#00643f",
+                        "on-error": "#490013",
+                        "surface-container-highest": "#262626",
+                        "on-primary-fixed": "#21002f",
+                        "surface-bright": "#2c2c2c",
+                        "on-primary-container": "#3d0055"
+                    },
+                    fontFamily: {
+                        "headline": ["Lexend"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<link rel="stylesheet" href="../css/product-common.css">
+<style>
+        body { background-color: #0e0e0e; color: white; font-family: 'Inter', sans-serif; }
+        .glass-panel { backdrop-filter: blur(12px); background: rgba(38, 38, 38, 0.4); }
+        .cyber-gradient { background: linear-gradient(45deg, rgba(224, 142, 254, 0.15), rgba(144, 147, 255, 0.15)); }
+        .text-glow { text-shadow: 0 0 20px rgba(224, 142, 254, 0.4); }
+        
+        /* ========== BUTTON STYLES ========== */
+        @keyframes btnBreathingGlow {
+            0%, 100% { 
+                box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
+                            0 0 0 1px rgba(224, 142, 254, 0.3);
+            }
+            50% { 
+                box-shadow: inset 0 0 30px rgba(224, 142, 254, 0.35),
+                            0 0 0 1px rgba(224, 142, 254, 0.5);
+            }
+        }
+        @keyframes btnSecondaryBreathing {
+            0%, 100% { 
+                box-shadow: inset 0 0 15px rgba(224, 142, 254, 0.1),
+                            0 0 0 1px rgba(224, 142, 254, 0.2);
+            }
+            50% { 
+                box-shadow: inset 0 0 25px rgba(224, 142, 254, 0.2),
+                            0 0 0 1px rgba(224, 142, 254, 0.35);
+            }
+        }
+        .btn-primary {
+            position: relative;
+            background: linear-gradient(135deg, #e08efe 0%, #c77df3 100%);
+            color: #21002f;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
+                        0 0 0 1px rgba(224, 142, 254, 0.3);
+            white-space: nowrap;
+            animation: btnBreathingGlow 3s ease-in-out infinite;
+        }
+        
+        @media (max-width: 640px) {
+            .btn-primary, .btn-secondary {
+                padding: 0.875rem 2rem;
+                font-size: 0.875rem;
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: inset 0 0 35px rgba(224, 142, 254, 0.4),
+                        0 0 0 1px rgba(224, 142, 254, 0.6);
+            animation: none;
+        }
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            position: relative;
+            background: rgba(38, 38, 38, 0.6);
+            backdrop-filter: blur(12px);
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset 0 0 15px rgba(224, 142, 254, 0.1),
+                        0 0 0 1px rgba(224, 142, 254, 0.2);
+            animation: btnSecondaryBreathing 3s ease-in-out infinite;
+        }
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .btn-secondary:hover {
+            border-color: rgba(224, 142, 254, 0.5);
+            transform: translateY(-3px);
+            box-shadow: inset 0 0 30px rgba(224, 142, 254, 0.25),
+                        0 0 0 1px rgba(224, 142, 254, 0.5);
+            animation: none;
+        }
+        .btn-secondary:hover::before {
+            opacity: 1;
+        }
+        
+        /* Button Ripple Effect */
+        .btn-primary, .btn-secondary {
+            position: relative;
+            overflow: hidden;
+        }
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* ========== BASIC BUTTON (No Effects) ========== */
+        .btn-basic {
+            display: inline-block;
+            background: linear-gradient(135deg, #e08efe 0%, #c77df3 100%);
+            color: #21002f;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-basic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(224, 142, 254, 0.3);
+        }
+        
+        .btn-arrow {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e08efe;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            padding: 0.75rem 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #e08efe, #9093ff);
+            transition: width 0.3s;
+        }
+        .btn-arrow:hover {
+            color: #ffffff;
+        }
+        .btn-arrow:hover::after {
+            width: 100%;
+        }
+        .btn-arrow .material-symbols-outlined {
+            transition: transform 0.3s;
+        }
+        .btn-arrow:hover .material-symbols-outlined {
+            transform: translateX(6px);
+        }
+        
+        /* ========== LANGUAGE BUTTON GLOW ========== */
+        @keyframes langBtnBreathing {
+            0%, 100% { 
+                box-shadow: 0 2px 8px rgba(224, 142, 254, 0.1);
+            }
+            50% { 
+                box-shadow: 0 2px 15px rgba(224, 142, 254, 0.25),
+                            0 0 25px rgba(224, 142, 254, 0.1);
+            }
+        }
+        .lang-btn {
+            animation: langBtnBreathing 3s ease-in-out infinite;
+        }
+        .lang-btn:hover {
+            animation: none;
+        }
+        
+        /* ========== ARROW BUTTON GLOW ========== */
+        @keyframes arrowBtnBreathing {
+            0%, 100% { 
+                text-shadow: 0 0 10px rgba(224, 142, 254, 0.3);
+            }
+            50% { 
+                text-shadow: 0 0 20px rgba(224, 142, 254, 0.5),
+                             0 0 30px rgba(224, 142, 254, 0.2);
+            }
+        }
+        .btn-text-glow {
+            animation: arrowBtnBreathing 3s ease-in-out infinite;
+        }
+        
+        /* ========== CARD HOVER ========== */
+        .card-hover {
+            position: relative;
+            background: #1a1919;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(224, 142, 254, 0.15);
+        }
+        
+        /* ========== SMOOTH SCROLL ========== */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        .lang-selector { position: relative; }
+        .lang-btn { 
+            display: flex; align-items: center; gap: 0.5rem; 
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.1) 0%, rgba(144, 147, 255, 0.1) 100%); 
+            border: 1px solid rgba(224, 142, 254, 0.3); 
+            color: #e08efe; 
+            padding: 0.5rem 1rem; 
+            border-radius: 9999px; 
+            font-family: 'Lexend', sans-serif; 
+            font-size: 0.75rem; 
+            font-weight: 500;
+            cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 8px rgba(224, 142, 254, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        .lang-btn:hover { 
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.2) 0%, rgba(144, 147, 255, 0.2) 100%); 
+            border-color: rgba(224, 142, 254, 0.5);
+            box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+        .lang-dropdown { 
+            position: absolute; 
+            top: calc(100% + 0.75rem); 
+            right: 0; 
+            min-width: 160px; 
+            background: linear-gradient(180deg, #1a1919 0%, #131313 100%); 
+            border: 1px solid rgba(224, 142, 254, 0.2); 
+            border-radius: 1rem; 
+            padding: 0.5rem; 
+            opacity: 0; 
+            visibility: hidden; 
+            transform: translateY(-10px) scale(0.95); 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: 100;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
+            backdrop-filter: blur(20px);
+        }
+        .lang-selector.open .lang-dropdown { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateY(0) scale(1); 
+        }
+        .lang-dropdown button { 
+            display: block; 
+            width: 100%; 
+            text-align: left; 
+            padding: 0.6rem 1rem; 
+            background: none; 
+            border: none; 
+            color: #777575; 
+            font-size: 0.8125rem; 
+            font-family: 'Inter', sans-serif;
+            cursor: pointer; 
+            border-radius: 0.5rem; 
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .lang-dropdown button::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #e08efe;
+            transform: scaleY(0);
+            transition: transform 0.2s;
+        }
+        .lang-dropdown button:hover { 
+            background: rgba(224, 142, 254, 0.1); 
+            color: #ffffff;
+            padding-left: 1.25rem;
+        }
+        .lang-dropdown button:hover::before {
+            transform: scaleY(1);
+        }
+        .lang-dropdown button.active { 
+            background: linear-gradient(90deg, rgba(224, 142, 254, 0.15) 0%, transparent 100%); 
+            color: #e08efe;
+            padding-left: 1.25rem;
+        }
+        .lang-dropdown button.active::before {
+            transform: scaleY(1);
+        }
+        @font-face {
+            font-family: 'Compressa VF';
+            src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+            font-style: normal;
+            font-weight: 100 900;
+            font-display: swap;
+        }
+        .text-pressure-container {
+            position: relative;
+            width: 100%;
+            min-width: 0;
+            min-height: clamp(6rem, 14vw, 10rem);
+            display: grid;
+            place-items: center;
+            cursor: crosshair;
+        }
+        .text-pressure-title {
+            font-family: 'Compressa VF', 'Lexend', sans-serif;
+            direction: ltr;
+            unicode-bidi: isolate;
+            text-transform: uppercase;
+            font-size: clamp(3.25rem, 12vw, 10rem);
+            line-height: 0.92;
+            margin: 0;
+            text-align: center;
+            user-select: none;
+            white-space: nowrap;
+            max-width: 100%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 0.015em;
+            font-weight: 300;
+            font-variation-settings: 'wght' 300, 'wdth' 100, 'ital' 0;
+        }
+        .text-pressure-title span {
+            display: inline-block;
+            color: #ffffff;
+            cursor: crosshair;
+            transition: font-variation-settings 0.15s ease-out;
+        }
+        .fuzzy-text {
+            filter: blur(0px);
+            transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
+        }
+        .fuzzy-text:hover {
+            filter: blur(0.5px);
+        }
+        .fuzzy-text-char {
+            display: inline;
+            transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        }
+        /* Heart Glow Animations */
+        @keyframes heartGlow {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.15); opacity: 0.6; }
+        }
+        @keyframes heartGlowDelayed {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+        @keyframes heartGlowFast {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.05); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.05); }
+            70% { transform: scale(1); }
+        }
+        .animate-heart-glow {
+            animation: heartGlow 4s ease-in-out infinite;
+        }
+        .animate-heart-glow-delayed {
+            animation: heartGlowDelayed 4s ease-in-out infinite 0.5s;
+        }
+        .animate-heart-glow-fast {
+            animation: heartGlowFast 3s ease-in-out infinite 1s;
+        }
+        .animate-heart-beat {
+            animation: heartBeat 2s ease-in-out infinite;
+        }
+        /* Floating Particles */
+        @keyframes floatUp {
+            0% { transform: translateY(100%) translateX(0) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: translateY(80%) translateX(5px) scale(1); }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100%) translateX(-5px) scale(0.5); opacity: 0; }
+        }
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(224, 142, 254, 0.8), rgba(224, 142, 254, 0));
+            pointer-events: none;
+        }
+        .particle-1 { left: 20%; bottom: 0; animation: floatUp 6s ease-in-out infinite; }
+        .particle-2 { left: 40%; bottom: 0; animation: floatUp 7s ease-in-out infinite 1s; }
+        .particle-3 { left: 60%; bottom: 0; animation: floatUp 5s ease-in-out infinite 2s; }
+        .particle-4 { left: 30%; bottom: 0; animation: floatUp 8s ease-in-out infinite 0.5s; }
+        .particle-5 { left: 70%; bottom: 0; animation: floatUp 6s ease-in-out infinite 1.5s; }
+        .particle-6 { left: 50%; bottom: 0; animation: floatUp 7s ease-in-out infinite 2.5s; }
+        /* Philosophy Heart Container */
+        .philosophy-heart-container {
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 0 60px rgba(224, 142, 254, 0.1),
+                inset 0 0 60px rgba(224, 142, 254, 0.05);
+        }
+        .heart-glow-wrapper {
+            filter: drop-shadow(0 0 30px rgba(224, 142, 254, 0.3));
+        }
+        
+        /* ========== UNIFIED FOOTER STYLES ========== */
+        .unified-footer {
+            background-color: #0A0A0A;
+            padding: 80px 0;
+            width: 100%;
+        }
+        .unified-footer .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+        .unified-footer .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+        }
+        .unified-footer .footer-brand-col {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .unified-footer .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(to right, #D4A5A5, #9093FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        .unified-footer .footer-logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            -webkit-text-fill-color: initial;
+        }
+        .unified-footer .footer-copyright {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            color: #888888;
+            line-height: 1.6;
+            max-width: 260px;
+        }
+        .unified-footer .footer-section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 20px;
+        }
+        .unified-footer .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .unified-footer .footer-link {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            color: #AAAAAA;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+        .unified-footer .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #E08EFE, #9093FF);
+            transition: width 0.3s ease;
+        }
+        .unified-footer .footer-link:hover {
+            color: #E08EFE;
+        }
+        .unified-footer .footer-link:hover::after {
+            width: 100%;
+        }
+        .unified-footer .footer-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            background: transparent;
+            border: 1px solid #E08EFE;
+            border-radius: 9999px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #E08EFE;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 24px;
+            animation: btnBreathingGlow 3s ease-in-out infinite;
+        }
+        .unified-footer .footer-btn:hover {
+            background: linear-gradient(135deg, #E08EFE, #C77DF3);
+            color: #FFFFFF;
+            box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
+            animation: none;
+        }
+        .unified-footer .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+        .unified-footer .footer-social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #AAAAAA;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .unified-footer .footer-social-icon:hover {
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
+            border-color: #E08EFE;
+            color: #E08EFE;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3);
+        }
+        .unified-footer .footer-social-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* ========== MOBILE OPTIMIZATION ========== */
+        @media (max-width: 768px) {
+            .unified-footer {
+                padding: 40px 0;
+            }
+            .unified-footer .footer-container {
+                padding: 0 20px;
+            }
+            .unified-footer .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .unified-footer .footer-brand-col {
+                gap: 16px;
+                order: 2;
+            }
+            .unified-footer .footer-logo {
+                font-size: 20px;
+                gap: 8px;
+            }
+            .unified-footer .footer-logo img {
+                width: 32px;
+                height: 32px;
+            }
+            .unified-footer .footer-copyright {
+                font-size: 11px;
+                max-width: 100%;
+                line-height: 1.5;
+            }
+            .unified-footer .footer-section-title {
+                font-size: 11px;
+                margin-bottom: 16px;
+            }
+            .unified-footer .footer-links {
+                gap: 12px;
+            }
+            .unified-footer .footer-link {
+                font-size: 11px;
+                white-space: normal;
+                word-wrap: break-word;
+            }
+            .unified-footer .footer-btn {
+                padding: 14px 28px;
+                font-size: 12px;
+                width: 100%;
+                max-width: none;
+                font-weight: 700;
+                letter-spacing: 0.15em;
+                background: linear-gradient(135deg, #E08EFE, #C77DF3);
+                color: #FFFFFF;
+                box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
+            }
+            .unified-footer .footer-btn:hover {
+                background: linear-gradient(135deg, #f0aeff, #d79df8);
+                box-shadow: 0 12px 32px rgba(224, 142, 254, 0.6);
+                transform: translateY(-2px);
+            }
+            .unified-footer .footer-social {
+                gap: 8px;
+            }
+            .unified-footer .footer-social-icon {
+                width: 36px;
+                height: 36px;
+            }
+            .unified-footer .footer-social-icon svg {
+                width: 14px;
+                height: 14px;
+            }
+            /* Mobile: Vertical layout as per design */
+            .unified-footer .footer-brand-col {
+                order: 1;
+            }
+            .unified-footer .footer-nav-col:nth-child(3) {
+                order: 2;
+            }
+            .unified-footer .footer-nav-col:nth-child(2) {
+                order: 3;
+            }
+            .unified-footer .footer-nav-col:nth-child(4) {
+                order: 4;
+            }
+        }
+        
+        /* ========== UNIVERSAL DROPDOWN SYSTEM - Apple Style ========== */
+        :root {
+            --spring-fast: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --spring-medium: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-trigger { cursor: pointer; transition: all 0.15s ease; }
+        .dropdown-trigger:hover { background: linear-gradient(135deg, rgba(224, 142, 254, 0.15), rgba(144, 147, 255, 0.15)); box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2); }
+        .dropdown.open .dropdown-trigger { background: linear-gradient(135deg, rgba(224, 142, 254, 0.25), rgba(144, 147, 255, 0.25)); box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3); transform: translateY(-1px); }
+        .dropdown-menu {
+            position: absolute; top: calc(100% + 0.75rem); left: 0; min-width: 200px;
+            background: linear-gradient(180deg, #1a1919 0%, #131313 100%);
+            border: 1px solid rgba(224, 142, 254, 0.2); border-radius: 1rem; padding: 0.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
+            backdrop-filter: blur(20px); opacity: 0; visibility: hidden;
+            transform: translateY(8px) scale(0.96); transform-origin: top center;
+            transition: opacity 0.2s var(--spring-medium), visibility 0.2s var(--spring-medium), transform 0.35s var(--spring-fast);
+        }
+        .dropdown-menu.dropdown-right { left: auto; right: 0; }
+        .dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+        .dropdown:not(.open) .dropdown-menu { transition: opacity 0.15s ease-out, visibility 0.15s ease-out, transform 0.2s var(--ease-in-back); }
+        .dropdown.open .dropdown-item { animation: dropdownItemEnter 0.3s var(--spring-medium) forwards; opacity: 0; transform: translateY(8px); }
+        .dropdown.open .dropdown-item:nth-child(1) { animation-delay: 0.02s; }
+        .dropdown.open .dropdown-item:nth-child(2) { animation-delay: 0.04s; }
+        .dropdown.open .dropdown-item:nth-child(3) { animation-delay: 0.06s; }
+        .dropdown.open .dropdown-item:nth-child(4) { animation-delay: 0.08s; }
+        .dropdown.open .dropdown-item:nth-child(5) { animation-delay: 0.1s; }
+        @keyframes dropdownItemEnter { 0% { opacity: 0; transform: translateY(8px); } 60% { opacity: 1; transform: translateY(-2px); } 100% { opacity: 1; transform: translateY(0); } }
+        .dropdown-item { display: block; width: 100%; text-align: left; padding: 0.75rem 1rem; background: none; border: none; color: #AAAAAA; font-size: 0.875rem; font-family: 'Inter', sans-serif; cursor: pointer; border-radius: 0.5rem; transition: all 0.2s ease; position: relative; overflow: hidden; }
+        .dropdown-item::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 3px; background: linear-gradient(180deg, #E08EFE, #9093FF); transform: scaleY(0); transition: transform 0.2s ease; border-radius: 0 2px 2px 0; }
+        .dropdown-item:hover { background: rgba(224, 142, 254, 0.1); color: #FFFFFF; padding-left: 1.25rem; }
+        .dropdown-item:hover::before { transform: scaleY(1); }
+        .dropdown-item:focus { outline: none; box-shadow: 0 0 0 2px rgba(224, 142, 254, 0.5); }
+        .dropdown-item.active { background: linear-gradient(90deg, rgba(224, 142, 254, 0.15), transparent); color: #E08EFE; }
+        .dropdown-item.active::before { transform: scaleY(1); }
+        .collapse { border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 1rem; margin-bottom: 1rem; overflow: hidden; background: rgba(26, 25, 25, 0.5); transition: all 0.3s ease; }
+        .collapse:hover { border-color: rgba(224, 142, 254, 0.2); }
+        .collapse-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; cursor: pointer; background: none; border: none; width: 100%; color: #FFFFFF; font-size: 1rem; font-weight: 500; font-family: 'Inter', sans-serif; transition: all 0.2s ease; }
+        .collapse-header:hover { background: rgba(224, 142, 254, 0.05); }
+        .collapse-header .icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; transition: transform 0.35s var(--spring-medium); }
+        .collapse.open .collapse-header .icon { transform: rotate(180deg); }
+        .collapse-body { max-height: 0; overflow: hidden; transition: max-height 0.45s var(--spring-medium), padding 0.35s var(--spring-medium), opacity 0.35s ease; opacity: 0; }
+        .collapse.open .collapse-body { max-height: 500px; opacity: 1; }
+        .collapse.open .collapse-content { animation: collapseContentEnter 0.4s var(--spring-medium) forwards; }
+        @keyframes collapseContentEnter { 0% { opacity: 0; transform: translateY(-10px); } 60% { opacity: 1; transform: translateY(3px); } 100% { opacity: 1; transform: translateY(0); } }
+        .collapse-content { padding: 0 1.5rem 1.5rem; color: #AAAAAA; font-size: 0.875rem; line-height: 1.6; }
+        .dropdown-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); z-index: 99; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; cursor: pointer; }
+        .dropdown-overlay.active { opacity: 1; visibility: visible; }
+        .picker-modal { position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(180deg, #1a1919 0%, #0e0e0e 100%); border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; padding: 1.5rem; z-index: 101; transform: translateY(100%); opacity: 0; visibility: hidden; transition: transform 0.4s var(--spring-medium), opacity 0.3s ease, visibility 0.3s ease; }
+        .picker-modal.open { transform: translateY(0); opacity: 1; visibility: visible; }
+        .picker-modal.closing { transition: transform 0.25s ease-in, opacity 0.2s ease-in, visibility 0.2s ease-in; }
+        .picker-handle { width: 40px; height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 2px; margin: 0 auto 1rem; }
+        .picker-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .picker-title { font-size: 1rem; font-weight: 600; color: #FFFFFF; }
+        .picker-action { background: none; border: none; color: #E08EFE; font-size: 0.875rem; font-weight: 500; cursor: pointer; padding: 0.5rem; border-radius: 0.5rem; transition: all 0.2s ease; }
+        .picker-action:hover { background: rgba(224, 142, 254, 0.1); }
+        .focus-ring { position: relative; }
+        .focus-ring::after { content: ''; position: absolute; inset: -3px; border-radius: inherit; background: transparent; box-shadow: 0 0 0 0 rgba(224, 142, 254, 0); transition: box-shadow 0.2s ease; pointer-events: none; }
+        .focus-ring:focus-within::after { box-shadow: 0 0 0 3px rgba(224, 142, 254, 0.3); }
+        
+        /* ========== SCROLL REVEAL ANIMATIONS ========== */
+        /* Button Scroll Reveal */
+        .btn-scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .btn-scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        .btn-scroll-reveal.delay-100 { transition-delay: 0.1s; }
+        .btn-scroll-reveal.delay-200 { transition-delay: 0.2s; }
+        .btn-scroll-reveal.delay-300 { transition-delay: 0.3s; }
+        .btn-scroll-reveal.delay-400 { transition-delay: 0.4s; }
+        .btn-scroll-reveal.delay-500 { transition-delay: 0.5s; }
+        
+        /* Input/Card Scroll Reveal */
+        .input-reveal,
+        .card-scroll-reveal {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .input-reveal.visible,
+        .card-scroll-reveal.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .input-reveal.delay-100,
+        .card-scroll-reveal.delay-100 { transition-delay: 0.1s; }
+        .input-reveal.delay-200,
+        .card-scroll-reveal.delay-200 { transition-delay: 0.2s; }
+        .input-reveal.delay-300,
+        .card-scroll-reveal.delay-300 { transition-delay: 0.3s; }
+        
+        /* Input Field Enhanced */
+        .input-field {
+            position: relative;
+            background: rgba(26, 25, 25, 0.8);
+            border: 1px solid rgba(119, 117, 117, 0.3);
+            border-radius: 0.75rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .input-field:focus {
+            background: rgba(26, 25, 25, 0.95);
+            border-color: #e08efe;
+            box-shadow: 
+                0 0 0 2px rgba(224, 142, 254, 0.1),
+                0 0 20px rgba(224, 142, 254, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Floating Label */
+        .input-label {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            color: #adaaaa;
+            font-size: 0.875rem;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: left top;
+        }
+        
+        .input-field:focus + .input-label,
+        .input-field:not(:placeholder-shown) + .input-label {
+            transform: scale(0.75) translateY(-1.5rem);
+            color: #e08efe;
+            font-weight: 600;
+        }
+        
+        /* Bottom Border Animation */
+        .input-field::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #e08efe, #9093ff);
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0 2px 2px 0;
+        }
+        
+        .input-field:focus::after {
+            width: 100%;
+        }
+        
+        /* Performance Optimization */
+        .btn-scroll-reveal,
+        .input-reveal,
+        .card-scroll-reveal {
+            will-change: transform, opacity;
+        }
+        
+        .btn-scroll-reveal.visible,
+        .input-reveal.visible,
+        .card-scroll-reveal.visible {
+            will-change: auto;
+        }
+        
+        /* Mobile Optimization */
+        @media (max-width: 640px) {
+            .btn-scroll-reveal {
+                transform: translateY(30px);
+            }
+            .input-reveal,
+            .card-scroll-reveal {
+                transform: translateY(20px);
+            }
+        }
+        
+        
+    </style>
+    <link rel="stylesheet" href="../css/award.css?v=2">
+</head>
+<body class="selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_0_40px_rgba(224,142,254,0.1)]">
+<nav class="flex justify-between items-center px-8 py-4 w-full">
+<a href="../index.html" class="nav-brand" style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Lexend', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; background: linear-gradient(to right, #D4A5A5, #9093ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none;">
+    <img src="../image/icon.png" alt="DeepSire Logo" style="height: 32px; width: auto; border-radius: 8px;">
+    <span>DeepSire</span>
+</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../sight/code.html" data-translate-key="nav_sight">Sight</a>
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../touch/code.html" data-translate-key="nav_touch">Touch</a>
+<a class="text-[#e08efe] border-b-2 border-[#e08efe] pb-1 font-headline text-sm tracking-tight" href="../pleasure/code.html" data-translate-key="nav_pleasure">Pleasure</a>
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../scent/code.html" data-translate-key="nav_scent">Scent</a>
+</div>
+<div class="flex items-center">
+<div class="lang-selector" id="langSelector">
+<button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="langDropdown">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400;">language</span>
+<span id="langCurrent">EN</span>
+<span class="material-symbols-outlined text-sm opacity-60" style="font-variation-settings: 'wght' 300;" data-icon="expand_more">expand_more</span>
+</button>
+<div class="lang-dropdown" id="langDropdown" role="listbox" aria-labelledby="langBtn">
+<button data-lang="en" class="active" role="option" aria-selected="true">English</button>
+<button data-lang="zh" role="option" aria-selected="false">中文</button>
+<button data-lang="ja" role="option" aria-selected="false">日本語</button>
+<button data-lang="ko" role="option" aria-selected="false">한국어</button>
+<button data-lang="fr" role="option" aria-selected="false">Français</button>
+<button data-lang="de" role="option" aria-selected="false">Deutsch</button>
+<button data-lang="es" role="option" aria-selected="false">Español</button>
+<button data-lang="pt" role="option" aria-selected="false">Português</button>
+<button data-lang="ru" role="option" aria-selected="false">Русский</button>
+<button data-lang="ar" role="option" aria-selected="false">العربية</button>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-16 w-full overflow-x-hidden">
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" alt="abstract flowing data streams in deep magenta and violet hues with liquid organic movement and ethereal lighting" src="image/main4.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 text-center px-6 w-full max-w-4xl mx-auto">
+<span class="text-primary font-label text-[0.6875rem] uppercase tracking-[0.3em] mb-6 block" data-translate-key="hero_label">Explore The Ecosystem</span>
+<div class="text-pressure-container" id="textPressureHero" data-text="Pleasure" translate="no">
+<h1 class="text-pressure-title text-on-background drop-shadow-2xl">
+                        Pleasure
+                    </h1>
+</div>
+<p class="font-headline text-xl md:text-2xl text-primary-dim tracking-wide opacity-90 mt-4 text-balance" data-translate-key="hero_subtitle">
+                    Connection, Perfected
+                </p>
+<div class="mt-10 md:mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+<a href="https://www.bestfunx.com/collections/pleasure-soul" class="btn-primary btn-scroll-reveal" data-delay="100" data-translate-key="hero_cta_primary">Begin Synthesis</a>
+<a href="#tech" class="btn-secondary btn-scroll-reveal" data-delay="200" data-translate-key="hero_cta_secondary">Technical Specs</a>
+</div>
+</div>
+</section>
+
+<!-- Visual Ethos: product-linked video showcase -->
+<section class="py-24 px-8" id="visual-ethos">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="flex flex-col justify-center max-w-xl">
+<h2 class="font-headline text-5xl font-bold leading-tight mb-8" data-translate-key="visual_ethos_title">Our Visual Ethos</h2>
+<p class="text-outline leading-relaxed text-xl" data-translate-key="visual_ethos_desc">Pleasure extends digital connection into the body. Synced with Sight and your companion's emotional cues, it translates on-screen rhythm and movement into responsive tactile feedback for a more immersive shared moment.</p>
+</div>
+<div class="relative w-full rounded-3xl overflow-hidden bg-surface-container shadow-2xl">
+<video class="w-full aspect-video object-cover block" muted loop controls playsinline preload="none" poster="../video/optimized/pleasure-poster.webp" aria-label="Pleasure ecosystem interaction video" data-product-video data-autoplay="true" data-hls="../video/hls/pleasure/master.m3u8" data-fallback="../video/optimized/pleasure-720p.mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+</div>
+</section>
+
+<!-- Philosophy Section -->
+<section id="philosophy" class="py-32 px-12 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+<div class="max-w-xl">
+<h2 class="font-headline text-5xl md:text-6xl font-bold mb-8 leading-[1.1]" data-translate-key="philosophy_title">Fluid Intimacy</h2>
+<p class="fuzzy-text font-body text-xl text-on-surface-variant leading-relaxed mb-10" data-translate-key="philosophy_text" data-base-intensity="0.2" data-hover-intensity="0.5">
+                        Pleasure translates the emotional rhythm of Sight into precise, real-time haptics—making digital connection feel immediate, physical, and shared.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8">
+<div class="space-y-3">
+<h4 class="font-headline text-2xl font-bold" data-translate-key="synchrony">Synchrony</h4>
+</div>
+<div class="space-y-3">
+<h4 class="font-headline text-2xl font-bold" data-translate-key="evolution">Evolution</h4>
+</div>
+</div>
+<div class="mt-10">
+<a href="https://obs.deepsire.com/#/introduce" target="_blank" class="btn-basic" data-translate-key="webcam_btn">Interactive Webcam Platform</a>
+</div>
+</div>
+<div class="philosophy-heart-container relative aspect-square w-full max-w-lg mx-auto rounded-full border border-outline-variant/20 flex items-center justify-center p-20 bg-surface-container-high/50">
+<!-- Outer glow ring -->
+<div class="absolute inset-0 rounded-full border border-primary/10 animate-pulse"></div>
+<!-- Inner glow effect -->
+<div class="absolute inset-8 rounded-full bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
+<!-- Heart container with breathing animation -->
+<div class="heart-glow-wrapper relative flex items-center justify-center">
+<!-- Breathing glow layers -->
+<div class="absolute w-40 h-40 rounded-full bg-primary/10 blur-[60px] animate-heart-glow"></div>
+<div class="absolute w-32 h-32 rounded-full bg-primary/15 blur-[40px] animate-heart-glow-delayed"></div>
+<div class="absolute w-24 h-24 rounded-full bg-primary/20 blur-[25px] animate-heart-glow-fast"></div>
+<!-- Heart icon -->
+<span class="material-symbols-outlined text-8xl text-primary-fixed relative z-10 animate-heart-beat" style="font-variation-settings: 'FILL' 1; filter: drop-shadow(0 0 20px rgba(224, 142, 254, 0.4));">favorite</span>
+</div>
+<!-- Floating particles -->
+<div class="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
+<div class="particle particle-1"></div>
+<div class="particle particle-2"></div>
+<div class="particle particle-3"></div>
+<div class="particle particle-4"></div>
+<div class="particle particle-5"></div>
+<div class="particle particle-6"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Matrix: Models -->
+<section class="py-32 px-12 bg-surface">
+<div class="max-w-[1400px] mx-auto space-y-48">
+<div class="text-center mb-24">
+<span class="font-label text-xs tracking-[0.4em] text-outline uppercase" data-translate-key="matrix_label">The Interface Matrix</span>
+<h2 class="font-headline text-5xl font-bold mt-6" data-translate-key="matrix_title">Select Your Resonance</h2>
+</div>
+<!-- Voyager -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24 items-center">
+<div class="lg:col-span-7 rounded-3xl overflow-hidden bg-surface-container shadow-2xl">
+<img class="w-full h-auto hover:scale-105 transition-transform duration-1000" alt="minimalist hardware design with sleek curves and glowing violet light accents in a dark studio setting" src="image/Voyager.jpg"/>
+</div>
+<div class="lg:col-span-5 space-y-8">
+<h3 class="font-headline text-6xl font-bold" data-translate-key="voyager_title">Voyager</h3>
+<span class="inline-block px-6 py-2 rounded-full border border-primary/40 text-primary text-sm font-bold tracking-widest uppercase" data-translate-key="voyager_tag">Enlightenment</span>
+<p class="font-body text-on-surface-variant text-xl leading-relaxed" data-translate-key="voyager_text">
+                            A gateway to expanded perception. Voyager uses multi-axial kinetic feedback to guide the user through landscapes of sensory discovery, unlocking new neural pathways for pleasure.
+                        </p>
+<button class="text-primary text-lg font-bold flex items-center gap-3 group btn-text-glow" data-translate-key="configure_btn">
+                            Configure Unit <span class="material-symbols-outlined group-hover:translate-x-3 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Harmony -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24 items-center">
+<div class="lg:col-span-7 lg:order-2 rounded-3xl overflow-hidden bg-surface-container shadow-2xl">
+<img class="w-full h-auto hover:scale-105 transition-transform duration-1000" alt="futuristic organic device with translucent materials and soft blue interior glow resting on black velvet" src="image/Harmony.jpg"/>
+</div>
+<div class="lg:col-span-5 lg:order-1 space-y-8">
+<h3 class="font-headline text-6xl font-bold" data-translate-key="harmony_title">Harmony</h3>
+<span class="inline-block px-6 py-2 rounded-full border border-secondary/40 text-secondary text-sm font-bold tracking-widest uppercase" data-translate-key="harmony_tag">Elegant Dance</span>
+<p class="font-body text-on-surface-variant text-xl leading-relaxed" data-translate-key="harmony_text">
+                            Designed for the subtle interplay of touch and time. Harmony provides rhythmic, bio-responsive micro-vibrations that mimic the natural cadence of a companion's breath.
+                        </p>
+<button class="text-secondary text-lg font-bold flex items-center gap-3 group" data-translate-key="configure_btn">
+                            Configure Unit <span class="material-symbols-outlined group-hover:translate-x-3 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Nexus -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24 items-center">
+<div class="lg:col-span-7 rounded-3xl overflow-hidden bg-surface-container shadow-2xl">
+<img class="w-full h-auto hover:scale-105 transition-transform duration-1000" alt="complex neural interface mesh with glowing purple nodes and fiber optic connections" src="image/Nexus.jpg"/>
+</div>
+<div class="lg:col-span-5 space-y-8">
+<h3 class="font-headline text-6xl font-bold" data-translate-key="nexus_title">Nexus</h3>
+<span class="inline-block px-6 py-2 rounded-full border border-primary/40 text-primary text-sm font-bold tracking-widest uppercase" data-translate-key="nexus_tag">Unity</span>
+<p class="font-body text-on-surface-variant text-xl leading-relaxed" data-translate-key="nexus_text">
+                            The bridge between digital intent and physical sensation. Nexus synchronizes directly with your Companion Profile to translate emotional intimacy into tangible reality.
+                        </p>
+<button class="text-primary text-lg font-bold flex items-center gap-3 group btn-text-glow" data-translate-key="configure_btn">
+                            Configure Unit <span class="material-symbols-outlined group-hover:translate-x-3 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Section -->
+<section class="py-32 bg-surface-container-low overflow-hidden">
+<div class="max-w-6xl mx-auto px-12">
+<div class="text-center mb-20">
+<h2 class="font-headline text-5xl md:text-6xl font-bold" data-translate-key="experience_title">The Neural Bridge</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-8 glass-panel rounded-3xl cyber-gradient border border-outline-variant/10 shadow-xl group hover:border-secondary/30 transition-all duration-500">
+<span class="material-symbols-outlined text-secondary mb-6 text-4xl">psychology</span>
+<h4 class="font-headline text-xl font-bold mb-4" data-translate-key="visual_resonance_title">Visual Resonance</h4>
+<p class="font-body text-on-surface-variant text-base leading-relaxed" data-translate-key="visual_resonance_text">
+                            Visual AI reads motion, expression, and scene rhythm in real time.
+                        </p>
+</div>
+<div class="p-8 glass-panel rounded-3xl cyber-gradient border border-outline-variant/10 shadow-xl group hover:border-secondary/30 transition-all duration-500">
+<span class="material-symbols-outlined text-secondary mb-6 text-4xl">dynamic_feed</span>
+<h4 class="font-headline text-xl font-bold mb-4" data-translate-key="emotion_transfer_title">Emotion Transfer</h4>
+<p class="font-body text-on-surface-variant text-base leading-relaxed" data-translate-key="emotion_transfer_text">
+                            Adaptive haptics translate emotional cues into pressure, temperature, and movement.
+                        </p>
+</div>
+<div class="p-8 glass-panel rounded-3xl cyber-gradient border border-outline-variant/10 shadow-xl group hover:border-secondary/30 transition-all duration-500">
+<span class="material-symbols-outlined text-secondary mb-6 text-4xl">sync</span>
+<h4 class="font-headline text-xl font-bold mb-4" data-translate-key="heart_resonance_title">Heart Resonance</h4>
+<p class="font-body text-on-surface-variant text-base leading-relaxed" data-translate-key="heart_resonance_text">
+                            Live interactions become tactile feedback, tuned to the intensity of each moment.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Foundation -->
+<section id="tech" class="py-32 px-12 border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
+<div>
+<span class="font-label text-sm tracking-widest text-primary uppercase font-bold" data-translate-key="tech_label">Hard-Coded Excellence</span>
+<h2 class="font-headline text-5xl font-bold mt-4" data-translate-key="tech_title">Technical Foundation</h2>
+</div>
+<div class="text-right">
+<p class="font-body text-outline text-lg max-w-sm" data-translate-key="tech_desc">Built for continuous link reliability and absolute sensory purity.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant/20 rounded-3xl overflow-hidden shadow-2xl">
+<div class="bg-surface p-16 space-y-6">
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined text-3xl">bluetooth_connected</span>
+<span class="font-bold text-lg uppercase tracking-tight" data-translate-key="tech_latency_title">Ultra-Low Latency</span>
+</div>
+<p class="font-body text-on-surface-variant text-lg leading-relaxed" data-translate-key="tech_latency_text">Bluetooth 6.0 integration ensures &lt; 5ms delay between digital signal and physical pulse.</p>
+</div>
+<div class="bg-surface p-16 space-y-6">
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined text-3xl">fluid_med</span>
+<span class="font-bold text-lg uppercase tracking-tight" data-translate-key="tech_silicone_title">Bio-Silicone</span>
+</div>
+<p class="font-body text-on-surface-variant text-lg leading-relaxed" data-translate-key="tech_silicone_text">Medical-grade, skin-adaptive silicone that maintains body temperature for seamless integration.</p>
+</div>
+<div class="bg-surface p-16 space-y-6">
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined text-3xl">water_drop</span>
+<span class="font-bold text-lg uppercase tracking-tight" data-translate-key="tech_ipx_title">IPX7 Submersion</span>
+</div>
+<p class="font-body text-on-surface-variant text-lg leading-relaxed" data-translate-key="tech_ipx_text">Full waterproofing allows for immersion in diverse environments without link disruption.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Unified Footer -->
+<footer class="unified-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="../index.html" class="footer-logo">
+          <img src="../image/icon.png" alt="DeepSire">
+          <span>DeepSire</span>
+        </a>
+        <p class="footer-copyright" data-translate-key="footer_copyright">© 2024 DeepSire. The Ethereal Pulse Synthesis. All digital entities are protected under Neural Terms.</p>
+      </div>
+      
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_ecosystem">Ecosystem</h4>
+        <div class="footer-links">
+          <a href="../sight/code.html" class="footer-link" data-translate-key="footer_sight">Sight</a>
+          <a href="../touch/code.html" class="footer-link" data-translate-key="footer_touch">Touch</a>
+          <a href="../pleasure/code.html" class="footer-link" data-translate-key="footer_pleasure">Pleasure</a>
+          <a href="../scent/code.html" class="footer-link" data-translate-key="footer_scent">Scent</a>
+        </div>
+      </div>
+      
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_protocols">Protocols</h4>
+        <div class="footer-links">
+          <a href="#" class="footer-link" data-translate-key="footer_privacy">Privacy Protocol</a>
+          <a href="#" class="footer-link" data-translate-key="footer_terms">Neural Terms</a>
+          <a href="#" class="footer-link" data-translate-key="footer_status">System Status</a>
+          <a href="#" class="footer-link" data-translate-key="footer_support">Contact Support</a>
+        </div>
+      </div>
+      
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_connect">Connect</h4>
+        <a href="https://www.bestfunx.com/collections/ad" class="footer-btn" data-translate-key="footer_cta_button">Support Interface</a>
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" title="Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" title="Discord">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/product-common.js?v=20260814"></script>
+<script src="../js/product-video.js?v=20260814"></script>
+<script>
+const translations = {
+    en: {
+        nav_sight: "Sight", nav_touch: "Touch", nav_pleasure: "Pleasure", nav_scent: "Scent", nav_connect: "Connect",
+        hero_label: "Explore The Ecosystem", hero_title: "Pleasure", hero_subtitle: "Connection, Perfected",
+        hero_cta_primary: "Begin Synthesis", hero_cta_secondary: "Technical Specs",
+        philosophy_title: "The Philosophy of <br/><span class='text-primary'>Fluid Intimacy</span>",
+        philosophy_text: "The Pleasure enables depth beyond the screen. When the Sight plays a cherished memory or detects an intimate mood, it sends a secure signal. The Pleasure responds in real time, choreographing precise haptic feedback to match the scene's emotional tone—transforming watching into a fully immersive, multisensory experience.",
+        pillar_01: "Pillar 01", pillar_02: "Pillar 02",
+        synchrony: "Synchrony", evolution: "Evolution",
+        matrix_label: "The Interface Matrix", matrix_title: "Select Your Resonance",
+        configure_btn: "Configure Unit",
+        voyager_title: "Voyager", voyager_tag: "Enlightenment",
+        voyager_text: "A gateway to expanded perception. Voyager uses multi-axial kinetic feedback to guide the user through landscapes of sensory discovery, unlocking new neural pathways for pleasure.",
+        harmony_title: "Harmony", harmony_tag: "Elegant Dance",
+        harmony_text: "Designed for the subtle interplay of touch and time. Harmony provides rhythmic, bio-responsive micro-vibrations that mimic the natural cadence of a companion's breath.",
+        nexus_title: "Nexus", nexus_tag: "Unity",
+        nexus_text: "The bridge between digital intent and physical sensation. Nexus synchronizes directly with your Companion Profile to translate emotional intimacy into tangible reality.",
+        experience_title: "The Neural Bridge",
+        visual_resonance_title: "Visual Resonance",
+        visual_resonance_text: "Advanced visual AI analyzes screen content and character expressions in real-time, intelligently synchronizing interaction rhythm. More than just recognizing images, it understands emotions, making every interaction resonate with the narrative.",
+        emotion_transfer_title: "Emotion Transfer",
+        emotion_transfer_text: "Patented haptic synthesis converts the emotional weight of your digital interaction into specific physical pressures, varying temperatures, and kinetic responses.",
+        heart_resonance_title: "Heart Resonance",
+        heart_resonance_text: "We enable secure data connectivity with major live streaming platforms. When your supported streamer receives a donation, this heartfelt gesture transforms into unique interactive feedback in real-time, making distant support tangible and perceptible. The intensity and rhythm of the feedback intelligently match the heat of the support.",
+        tech_label: "Hard-Coded Excellence", tech_title: "Technical Foundation",
+        tech_desc: "Built for continuous link reliability and absolute sensory purity.",
+        tech_latency_title: "Ultra-Low Latency",
+        tech_latency_text: "Bluetooth 6.0 integration ensures < 5ms delay between digital signal and physical pulse.",
+        tech_silicone_title: "Bio-Silicone",
+        tech_silicone_text: "Medical-grade, skin-adaptive silicone that maintains body temperature for seamless integration.",
+        tech_ipx_title: "IPX7 Submersion",
+        tech_ipx_text: "Full waterproofing allows for immersion in diverse environments without link disruption.",
+        webcam_btn: "Interactive Webcam Platform",
+        footer_protocol: "Protocol", footer_privacy: "Privacy Protocol", footer_terms: "Neural Terms",
+        footer_stability: "Stability", footer_status: "System Status", footer_contact: "Contact Support",
+        footer_newsletter: "Newsletter", footer_neural_id: "Neural ID",
+        footer_copyright: "© 2024 DeepSire.<br/>The Ethereal Pulse Synthesis.",
+        footer_ecosystem: "Ecosystem", footer_sight: "Sight", footer_touch: "Touch", footer_pleasure: "Pleasure", footer_scent: "Scent",
+        footer_protocols: "Protocols", footer_connect: "Connect", footer_cta_button: "Explore Ecosystem"
+    },
+    zh: {
+        nav_sight: "视", nav_touch: "触", nav_pleasure: "悦", nav_scent: "嗅", nav_connect: "连接",
+        hero_label: "探索灵魂生态系统", hero_title: "悦", hero_subtitle: "完美连接",
+        hero_cta_primary: "开始合成", hero_cta_secondary: "技术规格",
+        philosophy_title: "流动亲密的<br/><span class='text-primary'>哲学</span>",
+        philosophy_text: "悦让你超越屏幕的深度体验。当视播放珍贵记忆或感知亲密情绪时，它会发送安全信号。悦实时响应，精确编排触觉反馈以匹配场景的情感基调——将观看转变为完全沉浸式的多感官体验。",
+        pillar_01: "支柱 01", pillar_02: "支柱 02",
+        synchrony: "同步", evolution: "进化",
+        matrix_label: "接口矩阵", matrix_title: "选择你的共鸣",
+        configure_btn: "配置单元",
+        voyager_title: "航行者", voyager_tag: "启蒙",
+        voyager_text: "通往扩展感知的门户。航行者使用多轴向动力反馈引导用户穿越感官发现的风景，解锁新的愉悦神经通路。",
+        harmony_title: "和谐", harmony_tag: "优雅之舞",
+        harmony_text: "专为触觉与时间的微妙互动而设计。和谐提供有节奏的生物响应微振动，模拟伴侣呼吸的自然节奏。",
+        nexus_title: "纽带", nexus_tag: "统一",
+        nexus_text: "数字意图与物理感觉之间的桥梁。纽带直接与你的伴侣档案同步，将情感亲密转化为有形的现实。",
+        experience_title: "神经桥梁",
+        visual_resonance_title: "视觉共振",
+        visual_resonance_text: "先进的视觉 AI 实时解析屏幕内容与角色神情，智能同步互动节奏。不止识别画面，更理解情绪，让每一次互动都与情节共鸣。",
+        emotion_transfer_title: "情感传递",
+        emotion_transfer_text: "专利触觉合成技术将你数字互动的情感重量转化为特定的物理压力、变化的温度和动能响应。",
+        heart_resonance_title: "心意共振",
+        heart_resonance_text: "我们与主流直播平台实现安全数据连通。当您支持的主播收到打赏时，这份心意将实时转化为独特的互动反馈，让远方的支持变得可感可知。反馈的强度与节奏，将与支持的热度智能匹配。",
+        tech_label: "硬编码卓越", tech_title: "技术基础",
+        tech_desc: "为持续连接可靠性和绝对感官纯净而打造。",
+        tech_latency_title: "超低延迟",
+        tech_latency_text: "蓝牙6.0集成确保数字信号和物理脉冲之间的延迟<5ms。",
+        tech_silicone_title: "生物硅胶",
+        tech_silicone_text: "医用级皮肤适应性硅胶，保持体温以实现无缝集成。",
+        tech_ipx_title: "IPX7浸入",
+        tech_ipx_text: "完全防水允许在各种环境中浸入而不会中断连接。",
+        webcam_btn: "互动摄像头平台",
+        footer_protocol: "协议", footer_privacy: "隐私协议", footer_terms: "神经条款",
+        footer_stability: "稳定性", footer_status: "系统状态", footer_contact: "联系支持",
+        footer_newsletter: "通讯", footer_neural_id: "神经ID",
+        footer_copyright: "© 2024 DeepSire.<br/>空灵脉冲合成",
+        footer_ecosystem: "生态系统", footer_sight: "视", footer_touch: "触", footer_pleasure: "悦", footer_scent: "嗅",
+        footer_protocols: "协议", footer_connect: "连接", footer_cta_button: "探索生态系统"
+    },
+    ja: {
+        nav_sight: "サイト", nav_touch: "タッチ", nav_pleasure: "プレジャー", nav_scent: "セント", nav_connect: "接続",
+        hero_label: "魂エコシステムを探索", hero_title: "プレジャー", hero_subtitle: "完璧な接続",
+        hero_cta_primary: "合成を始める", hero_cta_secondary: "技術仕様",
+        philosophy_title: "<span class='text-primary'>流動的な親密さ</span>の哲学",
+        philosophy_text: "プレジャーは画面を超えた深さを実現します。サイトが大切な記憶を再生したり、親密な雰な雰囲気を検出すると、安全な信号を送信します。プレジャーはリアルタイムで応答し、シーンの感情的なトーンに合わせて精密なハプティックフィードバックを演出します——視聴を完全に没入型のマルチセンサリー体験に変換します。",
+        pillar_01: "柱 01", pillar_02: "柱 02",
+        synchrony: "同期", evolution: "進化",
+        matrix_label: "インターフェースマトリックス", matrix_title: "共鳴を選択",
+        configure_btn: "ユニットを設定",
+        voyager_title: "ボイジャー", voyager_tag: "啓蒙",
+        voyager_text: "拡張された知覚への入り口。ボイジャーは多軸キネティックフィードバックを使用して、感覚発見の風景をユーザーに案内し、新しい快楽の神経経路を開きます。",
+        harmony_title: "ハーモニー", harmony_tag: "エレガントダンス",
+        harmony_text: "触覚と時間の微妙な相互作用のために設計されています。ハーモニーは伴侶の呼吸の自然なリズムを模倣する有节奏な生物応答マイクロバイブレーションを提供します。",
+        nexus_title: "ネクサス", nexus_tag: "統一",
+        nexus_text: "デジタル意図と物理的感覚の間の架け橋。ネクサスはあなたのコンパニオンプロファイルと直接同期し、感情的な親密さを具体的な現実に変換します。",
+        experience_title: "神経ブリッジ",
+        visual_resonance_title: "ビジョンレゾナンス",
+        visual_resonance_text: "高度な視覚 AI が画面の内容とキャラクターの表情をリアルタイムで分析し、インタラクションのリズムをインテリジェントに同期します。画像を認識するだけでなく、感情を理解し、すべてのインタラクションを物語と共鳴させます。",
+        emotion_transfer_title: "感情転送",
+        emotion_transfer_text: "特許取得済みの触覚合成技術は、デジタルインタラクションの感情的重みを特定の物理的圧力、変動する温度、および運動的応答に変換します。",
+        heart_resonance_title: "ハートレゾナンス",
+        heart_resonance_text: "主要なライブストリーミングプラットフォームとの安全なデータ接続を実現しています。サポートしているストリーマーが寄付を受けると、この心からの気持ちがリアルタイムでユニークなインタラクティブなフィードバックに変換され、遠くからのサポートが具体的に感じられるようになります。フィードバックの強さとリズムは、サポートの熱意にインテリジェントにマッチします。",
+        tech_label: "ハードコードされた卓越性", tech_title: "技術基盤",
+        tech_desc: "継続的なリンク信頼性と絶対的な感覚純度のために構築。",
+        tech_latency_title: "超低遅延",
+        tech_latency_text: "Bluetooth 6.0統合により、デジタル信号と物理パルス間の遅延が5ms未満に。",
+        tech_silicone_title: "バイオシリコン",
+        tech_silicone_text: "シームレスな統合のために体温を維持する医療グレードの皮膚適応型シリコン。",
+        tech_ipx_title: "IPX7浸水",
+        tech_ipx_text: "完全防水により、リンク中断なく多様な環境への浸入が可能。",
+        webcam_btn: "インタラクティブWebカメラプラットフォーム",
+        footer_protocol: "プロトコル", footer_privacy: "プライバシープロトコル", footer_terms: "ニュラル利用規約",
+        footer_stability: "安定性", footer_status: "システムステータス", footer_contact: "お問い合わせ",
+        footer_newsletter: "ニュースレター", footer_neural_id: "ニューラルID",
+        footer_copyright: "© 2024 DeepSire.<br/>エーテルパルス合成",
+        footer_ecosystem: "エコシステム", footer_sight: "サイト", footer_touch: "タッチ", footer_pleasure: "プレジャー", footer_scent: "セント",
+        footer_protocols: "プロトコル", footer_connect: "接続", footer_cta_button: "エコシステムを探索"
+    },
+    ko: {
+        nav_sight: "사이트", nav_touch: "터치", nav_pleasure: "플레저", nav_scent: "센트", nav_connect: "연결",
+        hero_label: "영혼 생태계 탐색", hero_title: "플레저", hero_subtitle: "완벽한 연결",
+        hero_cta_primary: "합성 시작", hero_cta_secondary: "기술 사양",
+        philosophy_title: "<span class='text-primary'>유동적 친밀함</span>의 철학",
+        philosophy_text: "플레저은 화면 너머의 깊이를 가능하게 합니다. 사이트이 소중한 기억을 재생하거나 친밀한 분위기를 감지하면 안전한 신호를 보냅니다. 플레저은 실시간으로 응답하여 장면의 감정적 톤에 맞는 정밀한 촉각 피드백을 연출합니다—시청을 완전히 몰입형 다감각 경험으로 변환합니다.",
+        pillar_01: "기둥 01", pillar_02: "기둥 02",
+        synchrony: "동기화", evolution: "진화",
+        matrix_label: "인터페이스 매트릭스", matrix_title: "공명을 선택하세요",
+        configure_btn: "유닛 구성",
+        voyager_title: "보이저", voyager_tag: "계몽",
+        voyager_text: "확장된 인식으로 가는 관문. 보이저는 다축 운동 피드백을 사용하여 사용자를 감각 발견의 풍경으로 안내하고, 새로운 쾌감 신경 경로를 열어줍니다.",
+        harmony_title: "하모니", harmony_tag: "우아한 춤",
+        harmony_text: "터치와 시간의 미묘한 상호작용을 위해 설계되었습니다. 하모니는 동반자의 호흡 자연 리듬을 모방하는 리드미컬한 생체 반응 미세 진동을 제공합니다.",
+        nexus_title: "넥서스", nexus_tag: "통합",
+        nexus_text: "디지털 의도와 물리적 감각 사이의 다리. 넥서스는 동반자 프로필과 직접 동기화하여 감정적 친밀감을 유형의 현실로 변환합니다.",
+        experience_title: "신경 다리",
+        visual_resonance_title: "비주얼 공명",
+        visual_resonance_text: "고급 비주얼 AI 가 화면 콘텐츠와 캐릭터 표정을 실시간으로 분석하여 상호작용 리듬을 지능적으로 동기화합니다. 단순히 이미지를 인식하는 것을 넘어 감정을 이해하여 모든 상호작용이 내러티브와 공명하도록 합니다.",
+        emotion_transfer_title: "감정 전달",
+        emotion_transfer_text: "특허 받은 촉각 합성 기술이 디지털 상호작용의 감정적 무게를 특정 물리적 압력, 변화하는 온도 및 운동적 반응으로 변환합니다.",
+        heart_resonance_title: "하트 공명",
+        heart_resonance_text: "주요 라이브 스트리밍 플랫폼과의 안전한 데이터 연결을 구현합니다. 지원하는 스트리머가 기부를 받으면, 이 마음 속의 느낌이 실시간으로 고유한 상호 작용 피드백으로 변환되어 먼 곳에서의 지원이 구체적으로 느껴지도록 합니다. 피드백의 강도와 리듬은 지원의 열정에 지능적으로 매칭됩니다.",
+        tech_label: "하드코딩된 우수성", tech_title: "기술 기반",
+        tech_desc: "지속적인 링크 신뢰성과 절대적인 감각 순도를 위해 구축.",
+        tech_latency_title: "초저지연",
+        tech_latency_text: "블루투스 6.0 통합으로 디지털 신호와 물리적 펄스 사이의 지연이 5ms 미만.",
+        tech_silicone_title: "바이오 실리콘",
+        tech_silicone_text: "원활한 통합을 위해 체온을 유지하는 의료용 피부 적응형 실리콘.",
+        tech_ipx_title: "IPX7 침수",
+        tech_ipx_text: "완전 방수는 링크 중단 없이 다양한 환경에서의 침수를 가능하게 합니다.",
+        footer_protocol: "프로토콜", footer_privacy: "개인정보 보호 프로토콜", footer_terms: "신경 약관",
+        footer_stability: "안정성", footer_status: "시스템 상태", footer_contact: "문의하기",
+        footer_newsletter: "뉴스레터", footer_neural_id: "신경 ID",
+        footer_copyright: "© 2024 DeepSire.<br/>에테리얼 펄ス合成",
+        footer_ecosystem: "생태계", footer_sight: "사이트", footer_touch: "터치", footer_pleasure: "플레저", footer_scent: "센트",
+        footer_protocols: "프로토콜", footer_connect: "연결", footer_cta_button: "생태계 탐색"
+    },
+    fr: {
+        nav_sight: "Vue", nav_touch: "Toucher", nav_pleasure: "Plaisir", nav_scent: "Odorat", nav_connect: "Connecter",
+        hero_label: "Explorer l'Écosystème de l'Âme", hero_title: "Plaisir", hero_subtitle: "Connexion, Parfaite",
+        hero_cta_primary: "Commencer la Synthèse", hero_cta_secondary: "Spécifications Techniques",
+        philosophy_title: "La Philosophie de <span class='text-primary'>l'Intimité Fluide</span>",
+        philosophy_text: "Le Plaisir permet une profondeur au-delà de l'écran. Lorsque la Vue joue un souvenir précieux ou détecte une humeur intime, elle envoie un signal sécurisé. Le Plaisir répond en temps réel, orchestrant un retour haptique précis pour correspondre au ton émotionnel de la scène—transformant le visionnage en une expérience multisensorielle totalement immersive.",
+        pillar_01: "Pilier 01", pillar_02: "Pilier 02",
+        synchrony: "Synchronie", evolution: "Évolution",
+        matrix_label: "La Matrice d'Interface", matrix_title: "Sélectionnez Votre Résonance",
+        configure_btn: "Configurer l'Unité",
+        voyager_title: "Voyageur", voyager_tag: "Illumination",
+        voyager_text: "Une passerelle vers une perception élargie. Le Voyageur utilise une rétroaction cinétique multiaxiale pour guider l'utilisateur à travers des paysages de découverte sensorielle, débloquant de nouvelles voies neuronales pour le plaisir.",
+        harmony_title: "Harmonie", harmony_tag: "Danse Élégante",
+        harmony_text: "Conçu pour l'interaction subtile entre le toucher et le temps. L'Harmonie fournit des micro-vibrations rythmiques bio-réactives qui imitent le rythme naturel de la respiration d'un compagnon.",
+        nexus_title: "Nexus", nexus_tag: "Unité",
+        nexus_text: "Le pont entre l'intention numérique et la sensation physique. Le Nexus se synchronise directement avec votre Profil Compagnon pour traduire l'intimité émotionnelle en réalité tangible.",
+        experience_title: "Le Pont Neuronal",
+        visual_resonance_title: "Résonance Visuelle",
+        visual_resonance_text: "L'IA visuelle avancée analyse le contenu de l'écran et les expressions des personnages en temps réel, synchronisant intelligemment le rythme d'interaction. Plus que simplement reconnaître les images, elle comprend les émotions, rendant chaque interaction résonante avec le récit.",
+        emotion_transfer_title: "Transfert d'Émotion",
+        emotion_transfer_text: "La synthèse haptique brevetée convertit le poids émotionnel de votre interaction numérique en pressions physiques spécifiques, températures variables et réponses cinétiques.",
+        heart_resonance_title: "Résonance Cardiaque",
+        heart_resonance_text: "Nous permettons une connectivité de données sécurisée avec les principales plateformes de streaming en direct. Lorsque le streamer que vous soutenez reçoit un don, ce geste sincère se transforme en un retour interactif unique en temps réel, rendant le soutien distant tangible et perceptible. L'intensité et le rythme du retour s'adaptent intelligemment à la chaleur du soutien.",
+        tech_label: "Excellence Codée en Dur", tech_title: "Fondation Technique",
+        tech_desc: "Conçu pour la fiabilité continue des liens et la pureté sensorielle absolue.",
+        tech_latency_title: "Latence Ultra-Basse",
+        tech_latency_text: "L'intégration Bluetooth 6.0 assure un délai < 5ms entre le signal numérique et l'impulsion physique.",
+        tech_silicone_title: "Bio-Silicone",
+        tech_silicone_text: "Silicone médical de grade médical adaptatif à la peau qui maintient la température corporelle pour une intégration transparente.",
+        tech_ipx_title: "Immersion IPX7",
+        tech_ipx_text: "L'étanchéité complète permet l'immersion dans divers environnements sans interruption de connexion.",
+        footer_protocol: "Protocole", footer_privacy: "Protocole de Confidentialité", footer_terms: "Termes Neuraux",
+        footer_stability: "Stabilité", footer_status: "État du Système", footer_contact: "Contacter le Support",
+        footer_newsletter: "Newsletter", footer_neural_id: "ID Neuronal",
+        footer_copyright: "© 2024 DeepSire.<br/>La Synthèse du Pulse Éthéré",
+        footer_ecosystem: "Écosystème", footer_sight: "Vue", footer_touch: "Toucher", footer_pleasure: "Plaisir", footer_scent: "Odorat",
+        footer_protocols: "Protocoles", footer_connect: "Connecter", footer_cta_button: "Explorer l'Écosystème"
+    },
+    de: {
+        nav_sight: "Sehen", nav_touch: "Berührung", nav_pleasure: "Vergnügen", nav_scent: "Geruch", nav_connect: "Verbinden",
+        hero_label: "Das Seelen-Ökosystem erkunden", hero_title: "Vergnügen", hero_subtitle: "Verbindung, Perfektioniert",
+        hero_cta_primary: "Synthese beginnen", hero_cta_secondary: "Technische Daten",
+        philosophy_title: "Die Philosophie der <span class='text-primary'>Fließenden Intimität</span>",
+        philosophy_text: "Der Vergnügen ermöglicht Tiefe jenseits des Bildschirms. Wenn der Sehen eine geschätzte Erinnerung abspielt oder eine intime Stimmung erkennt, sendet er ein sicheres Signal. Der Vergnügen reagiert in Echtzeit und orchestriert präzise haptisches Feedback, um den emotionalen Ton der Szene abzustimmen—und verwandelt das Zuschauen in ein vollständig immersives, multisensorisches Erlebnis.",
+        pillar_01: "Säule 01", pillar_02: "Säule 02",
+        synchrony: "Synchronie", evolution: "Evolution",
+        matrix_label: "Die Interface-Matrix", matrix_title: "Wählen Sie Ihre Resonanz",
+        configure_btn: "Einheit Konfigurieren",
+        voyager_title: "Voyager", voyager_tag: "Erleuchtung",
+        voyager_text: "Ein Tor zu erweiterter Wahrnehmung. Voyager nutzt mehrachsige kinetische Rückkopplung, um den Benutzer durch Landschaften sensorischer Entdeckung zu führen und neue neuronale Wege für Vergnügen zu öffnen.",
+        harmony_title: "Harmonie", harmony_tag: "Eleganter Tanz",
+        harmony_text: "Entwickelt für das subtile Zusammenspiel von Berührung und Zeit. Harmonie bietet rhythmische, bio-responsive Mikrovibrationen, die den natürlichen Rhythmus des Atems eines Begleiters nachahmen.",
+        nexus_title: "Nexus", nexus_tag: "Einheit",
+        nexus_text: "Die Brücke zwischen digitaler Absicht und physischer Empfindung. Nexus synchronisiert sich direkt mit Ihrem Begleiterprofil, um emotionale Intimität in greifbare Realität umzusetzen.",
+        experience_title: "Die Neuronale Brücke",
+        visual_resonance_title: "Visuelle Resonanz",
+        visual_resonance_text: "Fortschrittliche visuelle KI analysiert Bildschirminhalte und Charakterausdrücke in Echtzeit und synchronisiert intelligent den Interaktionsrhythmus. Mehr als nur Bilder zu erkennen, versteht sie Emotionen und lässt jede Interaktion mit der Erzählung resonieren.",
+        emotion_transfer_title: "Emotionstransfer",
+        emotion_transfer_text: "Patentierte haptische Synthese wandelt das emotionale Gewicht Ihrer digitalen Interaktion in spezifische physische Drücke, variierende Temperaturen und kinetische Reaktionen um.",
+        heart_resonance_title: "Herzresonanz",
+        heart_resonance_text: "Wir ermöglichen eine sichere Datenverbindung mit führenden Live-Streaming-Plattformen. Wenn der Streamer, den Sie unterstützen, eine Spende erhält, verwandelt sich diese aufrichtige Geste in Echtzeit in einzigartiges interaktives Feedback, das entfernte Unterstützung greifbar und wahrnehmbar macht. Die Intensität und Rhythmik des Feedbacks passen sich intelligent der Wärme der Unterstützung an.",
+        tech_label: "Hard-Coded Exzellenz", tech_title: "Technische Grundlage",
+        tech_desc: "Gebaut für kontinuierliche Verbindungszuverlässigkeit und absolute sensorische Reinheit.",
+        tech_latency_title: "Ultra-Niedrige Latenz",
+        tech_latency_text: "Bluetooth 6.0-Integration gewährleistet < 5ms Verzögerung zwischen digitalem Signal und physischem Puls.",
+        tech_silicone_title: "Bio-Silikon",
+        tech_silicone_text: "Medizinisches, hautadaptives Silikon, das die Körpertemperatur für nahtlose Integration aufrechterhält.",
+        tech_ipx_title: "IPX7-Unterwasser",
+        tech_ipx_text: "Volle Wasserdichtigkeit ermöglicht das Eintauchen in verschiedene Umgebungen ohne Verbindungsunterbrechung.",
+        footer_protocol: "Protokoll", footer_privacy: "Datenschutzprotokoll", footer_terms: "Neurale Bedingungen",
+        footer_stability: "Stabilität", footer_status: "Systemstatus", footer_contact: "Support Kontaktieren",
+        footer_newsletter: "Newsletter", footer_neural_id: "Neurale ID",
+        footer_copyright: "© 2024 DeepSire.<br/>Die Ätherische Puls-Synthese",
+        footer_ecosystem: "Ökosystem", footer_sight: "Sehen", footer_touch: "Berührung", footer_pleasure: "Vergnügen", footer_scent: "Geruch",
+        footer_protocols: "Protokolle", footer_connect: "Verbinden", footer_cta_button: "Ökosystem erkunden"
+    },
+    es: {
+        nav_sight: "Vista", nav_touch: "Toque", nav_pleasure: "Placer", nav_scent: "Olor", nav_connect: "Conectar",
+        hero_label: "Explora el Ecosistema del Alma", hero_title: "Placer", hero_subtitle: "Conexión, Perfeccionada",
+        hero_cta_primary: "Iniciar Síntesis", hero_cta_secondary: "Especificaciones Técnicas",
+        philosophy_title: "La Filosofía de la <span class='text-primary'>Intimidad Fluida</span>",
+        philosophy_text: "El Placer permite una profundidad más allá de la pantalla. Cuando el Vista reproduce un recuerdo precioso o detecta un estado de ánimo íntimo, envía una señal segura. El Placer responde en tiempo real, orquestando una retroalimentación háptica precisa para igualar el tono emocional de la escena—transformando la visualización en una experiencia multisensorial completamente inmersiva.",
+        pillar_01: "Pilar 01", pillar_02: "Pilar 02",
+        synchrony: "Sincronía", evolution: "Evolución",
+        matrix_label: "La Matriz de Interfaz", matrix_title: "Selecciona Tu Resonancia",
+        configure_btn: "Configurar Unidad",
+        voyager_title: "Viajero", voyager_tag: "Iluminación",
+        voyager_text: "Una puerta de entrada a la percepción expandida. Viajero usa retroalimentación cinética multiaxial para guiar al usuario a través de paisajes de descubrimiento sensorial, desbloqueando nuevas vías neuronales para el placer.",
+        harmony_title: "Armonía", harmony_tag: "Danza Elegante",
+        harmony_text: "Diseñado para la interacción sutil entre el tacto y el tiempo. Armonía proporciona micro-vibraciones rítmicas bio-responsivas que imitan el ritmo natural de la respiración de un compañero.",
+        nexus_title: "Nexus", nexus_tag: "Unidad",
+        nexus_text: "El puente entre la intención digital y la sensación física. Nexus se sincroniza directamente con tu Perfil de Compañero para traducir la intimidad emocional en realidad tangible.",
+        experience_title: "El Puente Neural",
+        visual_resonance_title: "Resonancia Visual",
+        visual_resonance_text: "La IA visual avanzada analiza el contenido de la pantalla y las expresiones de los personajes en tiempo real, sincronizando inteligentemente el ritmo de interacción. Más que solo reconocer imágenes, comprende emociones, haciendo que cada interacción resuene con la narrativa.",
+        emotion_transfer_title: "Transferencia Emocional",
+        emotion_transfer_text: "La síntesis háptica patentada convierte el peso emocional de tu interacción digital en presiones físicas específicas, temperaturas variables y respuestas cinéticas.",
+        heart_resonance_title: "Resonancia Cardíaca",
+        heart_resonance_text: "Permitimos una conectividad de datos segura con las principales plataformas de streaming en vivo. Cuando el streamer que apoyas recibe una donación, este gesto sincero se transforma en tiempo real en un feedback interactivo único, haciendo que el apoyo desde lejos sea tangible y perceptible. La intensidad y el ritmo del feedback se adaptan inteligentemente al calor del apoyo.",
+        tech_label: "Excelencia Codificada", tech_title: "Fundación Técnica",
+        tech_desc: "Construida para la confiabilidad continua del enlace y la pureza sensorial absoluta.",
+        tech_latency_title: "Latencia Ultra-Baja",
+        tech_latency_text: "La integración Bluetooth 6.0 asegura < 5ms de retraso entre la señal digital y el pulso físico.",
+        tech_silicone_title: "Bio-Silicona",
+        tech_silicone_text: "Silicona médica de grado médico adaptativa a la piel que mantiene la temperatura corporal para una integración perfecta.",
+        tech_ipx_title: "Inmersión IPX7",
+        tech_ipx_text: "La impermeabilización completa permite la inmersión en diversos entornos sin interrupción del enlace.",
+        footer_protocol: "Protocolo", footer_privacy: "Protocolo de Privacidad", footer_terms: "Términos Neurales",
+        footer_stability: "Estabilidad", footer_status: "Estado del Sistema", footer_contact: "Contactar Soporte",
+        footer_newsletter: "Boletín", footer_neural_id: "ID Neural",
+        footer_copyright: "© 2024 DeepSire.<br/>La Síntesis del Pulso Etéreo",
+        footer_ecosystem: "Ecosistema", footer_sight: "Vista", footer_touch: "Toque", footer_pleasure: "Placer", footer_scent: "Olor",
+        footer_protocols: "Protocolos", footer_connect: "Conectar", footer_cta_button: "Explorar el Ecosistema"
+    },
+    pt: {
+        nav_sight: "Visão", nav_touch: "Toque", nav_pleasure: "Prazer", nav_scent: "Olfato", nav_connect: "Conectar",
+        hero_label: "Explorar o Ecossistema da Alma", hero_title: "Prazer", hero_subtitle: "Conexão, Perfeccionada",
+        hero_cta_primary: "Iniciar Síntese", hero_cta_secondary: "Especificações Técnicas",
+        philosophy_title: "A Filosofia da <span class='text-primary'>Intimidade Fluída</span>",
+        philosophy_text: "O Prazer permite profundidade além da tela. Quando o Visão reproduz uma memória querida ou detecta um humor íntimo, ele envia um sinal seguro. O Prazer responde em tempo real, orquestrando feedback háptico preciso para corresponder ao tom emocional da cena—transformando a visualização em uma experiência multissensorial totalmente imersiva.",
+        pillar_01: "Pilar 01", pillar_02: "Pilar 02",
+        synchrony: "Sincronia", evolution: "Evolução",
+        matrix_label: "A Matriz de Interface", matrix_title: "Selecione Sua Ressonância",
+        configure_btn: "Configurar Unidade",
+        voyager_title: "Viajante", voyager_tag: "Iluminação",
+        voyager_text: "Um portal para a percepção expandida. Viajante usa feedback cinético multiaxial para guiar o usuário por paisagens de descoberta sensorial, desbloqueando novos caminhos neurais para o prazer.",
+        harmony_title: "Harmonia", harmony_tag: "Dança Elegante",
+        harmony_text: "Projetado para a interação sutil entre o toque e o tempo. Harmonia fornece micro-vibraciones rítmicas bio-responsivas que imitam o ritmo natural da respiração de um companheiro.",
+        nexus_title: "Nexus", nexus_tag: "Unidade",
+        nexus_text: "A ponte entre a intenção digital e a sensação física. Nexus se sincroniza diretamente com seu Perfil de Companheiro para traduzir a intimidade emocional em realidade tangível.",
+        experience_title: "A Ponte Neural",
+        visual_resonance_title: "Ressonância Visual",
+        visual_resonance_text: "A IA visual avançada analisa o conteúdo da tela e as expressões dos personagens em tempo real, sincronizando inteligentemente o ritmo de interação. Mais do que apenas reconhecer imagens, compreende emoções, fazendo cada interação ressoar com a narrativa.",
+        emotion_transfer_title: "Transferência Emocional",
+        emotion_transfer_text: "A síntese háptica patenteada converte o peso emocional da sua interação digital em pressões físicas específicas, temperaturas variáveis e respostas cinéticas.",
+        heart_resonance_title: "Ressonância Cardíaca",
+        heart_resonance_text: "Permitimos conectividade de dados segura com as principais plataformas de streaming ao vivo. Quando o streamer que você apoia recebe uma doação, este gesto sincero se transforma em tempo real em um feedback interativo único, tornando o apoio distante tangível e perceptível. A intensidade e o ritmo do feedback se adaptam inteligentemente ao calor do apoio.",
+        tech_label: "Excelência Codificada", tech_title: "Fundação Técnica",
+        tech_desc: "Construída para confiabilidade contínua de link e pureza sensorial absoluta.",
+        tech_latency_title: "Latência Ultra-Baixa",
+        tech_latency_text: "A integração Bluetooth 6.0 garante < 5ms de atraso entre o sinal digital e o pulso físico.",
+        tech_silicone_title: "Bio-Silicone",
+        tech_silicone_text: "Silicone médico de grau médico adaptativo à pele que mantém a temperatura corporal para integração perfeita.",
+        tech_ipx_title: "Submersão IPX7",
+        tech_ipx_text: "Impermeabilização total permite imersão em ambientes diversos sem interrupção de conexão.",
+        footer_protocol: "Protocolo", footer_privacy: "Protocolo de Privacidade", footer_terms: "Termos Neurais",
+        footer_stability: "Estabilidade", footer_status: "Status do Sistema", footer_contact: "Contatar Suporte",
+        footer_newsletter: "Newsletter", footer_neural_id: "ID Neural",
+        footer_copyright: "© 2024 DeepSire.<br/>A Síntese do Pulso Etéreo",
+        footer_ecosystem: "Ecossistema", footer_sight: "Visão", footer_touch: "Toque", footer_pleasure: "Prazer", footer_scent: "Olfato",
+        footer_protocols: "Protocolos", footer_connect: "Conectar", footer_cta_button: "Explorar o Ecossistema"
+    },
+    ru: {
+        nav_sight: "Зрение", nav_touch: "Осязание", nav_pleasure: "Удовольствие", nav_scent: "Обоняние", nav_connect: "Подключить",
+        hero_label: "Исследовать Экосистему Души", hero_title: "Удовольствие", hero_subtitle: "Связь, Усовершенствована",
+        hero_cta_primary: "Начать Синтез", hero_cta_secondary: "Технические Характеристики",
+        philosophy_title: "Философия <span class='text-primary'>Плавной Интимности</span>",
+        philosophy_text: "Удовольствие обеспечивает глубину за пределами экрана. Когда Зрение воспроизводит дорогое воспоминание или обнаруживает интимное настроение, он отправляет безопасный сигнал. Удовольствие реагирует в реальном времени, создавая точную тактильную обратную связь, соответствующую эмоциональному тону сцены—превращая просмотр в полностью погружающий мультисенсорный опыт.",
+        pillar_01: "Столп 01", pillar_02: "Столп 02",
+        synchrony: "Синхрония", evolution: "Эволюция",
+        matrix_label: "Интерфейсная Матрица", matrix_title: "Выберите Ваш Резонанс",
+        configure_btn: "Настроить Устройство",
+        voyager_title: "Вояджер", voyager_tag: "Просвещение",
+        voyager_text: "Портал к расширенному восприятию. Вояджер использует многоосевую кинетическую обратную связь для引导 пользователя через ландшафты сенсорных открытий, открывая новые нейронные пути для удовольствия.",
+        harmony_title: "Гармония", harmony_tag: "Изящный Танец",
+        harmony_text: "Создан для тонкого взаимодействия осязания и времени. Гармония обеспечивает ритмичные, био-отзывчивые микровибрации, имитирующие естественный ритм дыхания партнёра.",
+        nexus_title: "Нексус", nexus_tag: "Единство",
+        nexus_text: "Мост между цифровым намерением и физическим ощущением. Нексус синхронизируется напрямую с Профилем Партнёра для перевода эмоциональной интимности в осязаемую реальность.",
+        experience_title: "Нейронный Мост",
+        visual_resonance_title: "Визуальный Резонанс",
+        visual_resonance_text: "Продвинутый визуальный ИИ анализирует содержимое экрана и выражения персонажей в реальном времени, интеллектуально синхронизируя ритм взаимодействия. Больше чем просто распознавание изображений, он понимает эмоции, заставляя каждое взаимодействие резонировать с повествованием.",
+        emotion_transfer_title: "Передача Эмоций",
+        emotion_transfer_text: "Патентованный гаптический синтез преобразует эмоциональный вес вашего цифрового взаимодействия в конкретные физические давления, изменяющиеся температуры и кинетические реакции.",
+        heart_resonance_title: "Сердечный Резонанс",
+        heart_resonance_text: "Мы обеспечиваем безопасную связь данных с ведущими платформами лайв-стриминга. Когда стример, которого вы поддерживаете, получает пожертвование, это искреннее движение трансформируется в реальном времени в уникальную интерактивную обратную связь, делающую удаленную поддержку осязаемой и восприимчивой. Интенсивность и ритм обратной связи интеллектуально соответствуют теплу поддержки.",
+        tech_label: "Закодированное Превосходство", tech_title: "Технический Фундамент",
+        tech_desc: "Создан для непрерывной надежности связи и абсолютной сенсорной чистоты.",
+        tech_latency_title: "Сверхнизкая Задержка",
+        tech_latency_text: "Интеграция Bluetooth 6.0 обеспечивает задержку < 5мс между цифровым сигналом и физическим импульсом.",
+        tech_silicone_title: "Био-Силикон",
+        tech_silicone_text: "Медицинский адаптивный к коже силикон, поддерживающий температуру тела для бесшовной интеграции.",
+        tech_ipx_title: "Погружение IPX7",
+        tech_ipx_text: "Полная водонепроницаемость позволяет погружение в различные среды без прерывания связи.",
+        footer_protocol: "Протокол", footer_privacy: "Протокол Конфиденциальности", footer_terms: "Нейральные Условия",
+        footer_stability: "Стабильность", footer_status: "Статус Системы", footer_contact: "Связаться с Поддержкой",
+        footer_newsletter: "Рассылка", footer_neural_id: "Нейронный ID",
+        footer_copyright: "© 2024 DeepSire.<br/>Синтез Эфирного Импульса",
+        footer_ecosystem: "Экосистема", footer_sight: "Зрение", footer_touch: "Осязание", footer_pleasure: "Удовольствие", footer_scent: "Обоняние",
+        footer_protocols: "Протоколы", footer_connect: "Подключить", footer_cta_button: "Исследовать Экосистему"
+    },
+    ar: {
+        nav_sight: "البصر", nav_touch: "اللمس", nav_pleasure: "المتعة", nav_scent: "الشم", nav_connect: "اتصال",
+        hero_label: "استكشف نظام البيئة الروحية", hero_title: "المتعة", hero_subtitle: "اتصال، مُحسَّن",
+        hero_cta_primary: "ابدأ التوليف", hero_cta_secondary: "المواصفات التقنية",
+        philosophy_title: "فلسفة <span class='text-primary'>الحميمية المتدفقة</span>",
+        philosophy_text: "يوفر المتعة عمقًا يتجاوز الشاشة. عندما يعرض البصر ذكرى ثمينة أو يكتشف مودًا حميميًا، يرسل إشارة آمنة. يستجيب المتعة في الوقت الفعلي، ويؤسس تغذية راجعة دقيقة لت匹配 النبرة العاطفية للمنظر—تحويل المشاهدة إلى تجربة متعددة الحواس غامرة تمامًا.",
+        pillar_01: "الركيزة 01", pillar_02: "الركيزة 02",
+        synchrony: "تزامن", evolution: "تطور",
+        matrix_label: "ماتريكس الواجهة", matrix_title: "اختر الرنين الخاص بك",
+        configure_btn: "تكوين الوحدة",
+        voyager_title: "فويجر", voyager_tag: "إلهام",
+        voyager_text: "بوابة إلى الإدراك الممتد. يستخدم فويجر ردود الفعل الحركية متعددة المحاور لتوجيه المستخدم عبر مناظر الاكتشاف الحسي، فتح طرق عصبية جديدة للمتعة.",
+        harmony_title: "هارموني", harmony_tag: "رقصة أنيقة",
+        harmony_text: "مصمم للتفاعل الدقيق بين اللمس والوقت. توفر هارموني اهتزازات دقيقة استجابة حيوية إيقاعية تحاكي الإيقاع الطبيعي لرفيقك.",
+        nexus_title: "نكسس", nexus_tag: "توحيد",
+        nexus_text: "الجسر بين القصد الرقمي والإحساس المادي. يزامن نكسس مباشرة مع ملف الرفيق الخاص بك لترجمة الحميمية العاطفية إلى واقع ملموس.",
+        experience_title: "الجسر العصبي",
+        visual_resonance_title: "الرنين البصري",
+        visual_resonance_text: "تحلل الذكاء الاصطناعي البصري المتقدم محتوى الشاشة وتعبيرات الشخصيات في الوقت الفعلي، متزامنة بذكاء مع إيقاع التفاعل. أكثر من مجرد التعرف على الصور، إنه يفهم المشاعر، مما يجعل كل تفاعل يتناغم مع السرد.",
+        emotion_transfer_title: "نقل العواطف",
+        emotion_transfer_text: "يحول التركيب الحسي المبرمج الوزن العاطفي لتفاعلك الرقمي إلى ضغوط مادية محددة ودرجات حرارية متغيرة واستجابات حركية.",
+        heart_resonance_title: "رنين القلب",
+        heart_resonance_text: "نسمح بترابط данных آمن مع منصات البث المباشر الرئيسية. عندما يتلقى المذياع الذي تدعمه تبرعًا، يتحول هذا الإيماءة الصادقة في الوقت الفعلي إلى ردود فعل تفاعلية فريدة، مما يجعل الدعم البعيد ملموسًا ويمكن الإدراك. تتناسب شدة وإيقاع الردود الفعل بذكاء مع حرارة الدعم.",
+        tech_label: "التميز المبرمج", tech_title: "الأساس التقني",
+        tech_desc: "مصمم لموثوقية الاتصال المستمر والنقى الحسي المطلق.",
+        tech_latency_title: "زمن استجابة منخفض للغاية",
+        tech_latency_text: "يضمن دمج بلوتوث 6.0 تأخير < 5 مللي ثانية بين الإشارة الرقمية والن pulse المادي.",
+        tech_silicone_title: "سيليكون بيولوجي",
+        tech_silicone_text: "سيليكون طبي مكيف للبشرة يحافظ على درجة حرارة الجسم للتكامل السلس.",
+        tech_ipx_title: "غمر IPX7",
+        tech_ipx_text: "يسمح العزل الكامل بالغمر في بيئات متنوعة دون انقطاع الاتصال.",
+        footer_protocol: "البروتوكول", footer_privacy: "بروتوكول الخصوصية", footer_terms: "الشروط العصبية",
+        footer_stability: "الاستقرار", footer_status: "حالة النظام", footer_contact: "تواصل مع الدعم",
+        footer_newsletter: "النشرة الإخبارية", footer_neural_id: "الهوية العصبية",
+        footer_copyright: "© 2024 DeepSire.<br/>تخليق النبض الأثيري",
+        footer_ecosystem: "النظام البيئي", footer_sight: "البصر", footer_touch: "اللمس", footer_pleasure: "المتعة", footer_scent: "الشم",
+        footer_protocols: "البروتوكولات", footer_connect: "اتصال", footer_cta_button: "استكشاف النظام البيئي"
+    }
+};
+const visualEthosTranslations = {
+    en: ["Our Visual Ethos", "Pleasure extends digital connection into the body. Synced with Sight and your companion's emotional cues, it translates on-screen rhythm and movement into responsive tactile feedback for a more immersive shared moment."],
+    zh: ["我们的视觉理念", "Pleasure 将数字连接延伸至身体感受。它与 Sight 及伴侣的情绪信号同步，把画面中的节奏与动作转化为实时触觉反馈，让共同体验更加沉浸。"],
+    ja: ["私たちのビジュアル信条", "Pleasureはデジタルなつながりを身体感覚へ広げます。Sightとコンパニオンの感情信号に同期し、画面のリズムや動きを反応性の高い触覚フィードバックへ変えて、共有する瞬間をより深くします。"],
+    ko: ["우리의 비주얼 철학", "Pleasure는 디지털 연결을 신체 감각으로 확장합니다. Sight와 동반자의 감정 신호에 맞춰 화면의 리듬과 움직임을 반응형 촉각 피드백으로 전환해 함께하는 순간을 더욱 몰입감 있게 만듭니다."],
+    fr: ["Notre éthique visuelle", "Pleasure prolonge la connexion numérique jusque dans le corps. Synchronisé avec Sight et les signaux émotionnels du compagnon, il traduit rythme et mouvement à l'écran en retour tactile réactif pour une expérience partagée plus immersive."],
+    de: ["Unser visuelles Ethos", "Pleasure erweitert die digitale Verbindung bis in den Körper. Mit Sight und den emotionalen Signalen des Begleiters synchronisiert, übersetzt es Rhythmus und Bewegung auf dem Bildschirm in reaktionsfähiges haptisches Feedback."],
+    es: ["Nuestro ethos visual", "Pleasure extiende la conexión digital al cuerpo. Sincronizado con Sight y las señales emocionales del compañero, traduce el ritmo y el movimiento de la pantalla en respuesta táctil para crear un momento compartido más inmersivo."],
+    pt: ["Nossa ética visual", "Pleasure estende a conexão digital ao corpo. Sincronizado com Sight e os sinais emocionais do companheiro, traduz ritmo e movimento da tela em resposta tátil para tornar o momento compartilhado mais imersivo."],
+    ru: ["Наша визуальная философия", "Pleasure переносит цифровую связь в телесные ощущения. Синхронизация с Sight и эмоциональными сигналами спутника превращает ритм и движение на экране в отзывчивую тактильную обратную связь."],
+    ar: ["رؤيتنا البصرية", "يوسع Pleasure التواصل الرقمي ليصل إلى إحساس الجسد. وبالتزامن مع Sight والإشارات العاطفية للرفيق، يحول إيقاع الشاشة وحركتها إلى استجابة لمسية تفاعلية تمنح اللحظة المشتركة عمقاً أكبر."]
+};
+Object.entries(visualEthosTranslations).forEach(([lang, copy]) => Object.assign(translations[lang], { visual_ethos_title: copy[0], visual_ethos_desc: copy[1] }));
+
+const distilledPleasureCopy = {
+    en: {
+        philosophy_title: "Fluid Intimacy",
+        philosophy_text: "Pleasure translates the emotional rhythm of Sight into precise, real-time haptics—making digital connection feel immediate, physical, and shared.",
+        visual_resonance_text: "Visual AI reads motion, expression, and scene rhythm in real time.",
+        emotion_transfer_text: "Adaptive haptics translate emotional cues into pressure, temperature, and movement.",
+        heart_resonance_text: "Live interactions become tactile feedback, tuned to the intensity of each moment."
+    },
+    zh: {
+        philosophy_title: "流动亲密",
+        philosophy_text: "Pleasure 将 Sight 的情绪节奏转化为精准的实时触觉，让数字连接变得即时、真实且可共同感受。",
+        visual_resonance_text: "视觉 AI 实时读取动作、神情与场景节奏。",
+        emotion_transfer_text: "自适应触觉将情绪信号转化为压力、温度与运动反馈。",
+        heart_resonance_text: "直播互动即时化为触觉回应，并随每个瞬间的强度变化。"
+    },
+    ja: {
+        philosophy_title: "流動する親密さ",
+        philosophy_text: "PleasureはSightの感情のリズムを精密なリアルタイム触覚へ変え、デジタルなつながりを即時で身体的な共有体験にします。",
+        visual_resonance_text: "ビジュアルAIが動き、表情、シーンのリズムをリアルタイムで読み取ります。",
+        emotion_transfer_text: "適応型ハプティクスが感情信号を圧力、温度、動きへ変換します。",
+        heart_resonance_text: "ライブの反応を、その瞬間の強さに合わせた触覚へ変えます。"
+    },
+    ko: {
+        philosophy_title: "흐르는 친밀감",
+        philosophy_text: "Pleasure는 Sight의 감정 리듬을 정밀한 실시간 촉각으로 바꿔 디지털 연결을 즉각적이고 신체적인 공유 경험으로 만듭니다.",
+        visual_resonance_text: "비주얼 AI가 움직임과 표정, 장면의 리듬을 실시간으로 읽습니다.",
+        emotion_transfer_text: "적응형 햅틱이 감정 신호를 압력과 온도, 움직임으로 변환합니다.",
+        heart_resonance_text: "라이브 상호작용을 순간의 강도에 맞춘 촉각 반응으로 전환합니다."
+    },
+    fr: {
+        philosophy_title: "Intimité fluide",
+        philosophy_text: "Pleasure traduit le rythme émotionnel de Sight en sensations tactiles précises et instantanées, pour une connexion numérique physique et partagée.",
+        visual_resonance_text: "L'IA visuelle lit en temps réel mouvements, expressions et rythme de la scène.",
+        emotion_transfer_text: "L'haptique adaptative transforme les émotions en pression, température et mouvement.",
+        heart_resonance_text: "Les interactions en direct deviennent des sensations accordées à l'intensité du moment."
+    },
+    de: {
+        philosophy_title: "Fließende Intimität",
+        philosophy_text: "Pleasure übersetzt den emotionalen Rhythmus von Sight in präzise Echtzeit-Haptik und macht digitale Verbindung unmittelbar, körperlich und gemeinsam erlebbar.",
+        visual_resonance_text: "Visuelle KI liest Bewegung, Ausdruck und Szenenrhythmus in Echtzeit.",
+        emotion_transfer_text: "Adaptive Haptik übersetzt emotionale Signale in Druck, Temperatur und Bewegung.",
+        heart_resonance_text: "Live-Interaktionen werden zu taktilem Feedback, abgestimmt auf die Intensität des Moments."
+    },
+    es: {
+        philosophy_title: "Intimidad fluida",
+        philosophy_text: "Pleasure traduce el ritmo emocional de Sight en respuesta táctil precisa y en tiempo real, haciendo que la conexión digital se sienta inmediata, física y compartida.",
+        visual_resonance_text: "La IA visual interpreta movimiento, expresión y ritmo de escena en tiempo real.",
+        emotion_transfer_text: "La háptica adaptativa convierte señales emocionales en presión, temperatura y movimiento.",
+        heart_resonance_text: "Las interacciones en vivo se vuelven respuesta táctil ajustada a cada momento."
+    },
+    pt: {
+        philosophy_title: "Intimidade fluida",
+        philosophy_text: "Pleasure traduz o ritmo emocional de Sight em resposta tátil precisa e instantânea, tornando a conexão digital imediata, física e compartilhada.",
+        visual_resonance_text: "A IA visual interpreta movimento, expressão e ritmo da cena em tempo real.",
+        emotion_transfer_text: "A háptica adaptativa transforma sinais emocionais em pressão, temperatura e movimento.",
+        heart_resonance_text: "Interações ao vivo se tornam respostas táteis ajustadas à intensidade do momento."
+    },
+    ru: {
+        philosophy_title: "Текучая близость",
+        philosophy_text: "Pleasure переводит эмоциональный ритм Sight в точную тактильную отдачу в реальном времени, делая цифровую связь непосредственной, физической и общей.",
+        visual_resonance_text: "Визуальный ИИ считывает движение, выражение и ритм сцены в реальном времени.",
+        emotion_transfer_text: "Адаптивная тактильная система переводит эмоции в давление, температуру и движение.",
+        heart_resonance_text: "Прямые взаимодействия становятся тактильным откликом, настроенным на силу момента."
+    },
+    ar: {
+        philosophy_title: "حميمية متدفقة",
+        philosophy_text: "يحوّل Pleasure الإيقاع العاطفي في Sight إلى إحساس لمسي دقيق وفوري، لتصبح الصلة الرقمية مباشرة وجسدية ومشتركة.",
+        visual_resonance_text: "يقرأ الذكاء البصري الحركة والتعبير وإيقاع المشهد لحظياً.",
+        emotion_transfer_text: "تحوّل اللمسات التكيفية الإشارات العاطفية إلى ضغط وحرارة وحركة.",
+        heart_resonance_text: "تتحول التفاعلات المباشرة إلى استجابة لمسية تضبطها شدة كل لحظة."
+    }
+};
+Object.entries(distilledPleasureCopy).forEach(([lang, copy]) => Object.assign(translations[lang], copy));
+
+initLanguageSelector(translations, {
+    onBeforeTranslate: function(el, value, key) {
+        if (el.id === 'textPressureHero') {
+            el.setAttribute('data-text', value);
+            const titleEl = el.querySelector('.text-pressure-title');
+            if (titleEl && window.textPressureInstance) {
+                window.textPressureInstance.text = value;
+                window.textPressureInstance.handleResize();
+                titleEl.textContent = '';
+                const chars = value.split('');
+                chars.forEach(function(char) {
+                    const span = document.createElement('span');
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    titleEl.appendChild(span);
+                });
+                window.textPressureInstance.spans = titleEl.querySelectorAll('span');
+            }
+            return false;
+        }
+    }
+});
+
+
+// TextPressure Component
+class TextPressure {
+    constructor(container, options = {}) {
+        this.container = container;
+        this.text = options.text || 'Hello!';
+        this.fontFamily = options.fontFamily || 'Compressa VF';
+        this.width = options.width !== false;
+        this.weight = options.weight !== false;
+        this.italic = options.italic !== false;
+        this.alpha = options.alpha || false;
+        this.flex = options.flex !== false;
+        this.stroke = options.stroke || false;
+        this.textColor = options.textColor || '#ffffff';
+        this.strokeColor = options.strokeColor || '#5227FF';
+        this.minFontSize = options.minFontSize || 36;
+
+        this.titleRef = container.querySelector('h1') || container.querySelector('.text-pressure-title');
+        this.mouse = { x: 0, y: 0 };
+        this.cursor = { x: 0, y: 0 };
+        this.raf = null;
+        this.observer = null;
+        this.isPaused = false;
+        this.reducedMotion = window.prefersReducedMotion || false;
+
+        this.init();
+    }
+
+    dist(a, b) {
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    getAttr(distance, maxDist, minVal, maxVal) {
+        const val = maxVal - Math.abs((maxVal * distance) / maxDist);
+        return Math.max(minVal, val + minVal);
+    }
+
+    init() {
+        if (!this.titleRef) return;
+
+        // Split text into spans
+        const chars = this.text.split('');
+        this.titleRef.innerHTML = chars.map(char => 
+            char === ' ' ? `<span>&nbsp;</span>` : `<span>${char}</span>`
+        ).join('');
+
+        if (this.flex) {
+            this.titleRef.style.display = 'flex';
+            this.titleRef.style.justifyContent = 'space-between';
+        }
+
+        this.spans = this.titleRef.querySelectorAll('span');
+
+        // Event listeners
+        this.container.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+        this.container.addEventListener('touchmove', (e) => this.handleTouchMove(e));
+        window.addEventListener('resize', () => this.handleResize());
+
+        this.setupIntersectionObserver();
+        this.setupVisibilityListener();
+
+        this.handleResize();
+        if (!this.reducedMotion) {
+            this.animate();
+        }
+    }
+
+    setupIntersectionObserver() {
+        if (!this.container) return;
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !document.hidden) {
+                    this.resume();
+                } else {
+                    this.pause();
+                }
+            });
+        }, { threshold: 0.1 });
+        this.observer.observe(this.container);
+    }
+
+    setupVisibilityListener() {
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.pause();
+            } else if (this.observer) {
+                const isVisible = this.observer.takeRecords().some(e => e.isIntersecting);
+                if (isVisible) this.resume();
+            }
+        });
+    }
+
+    pause() {
+        if (!this.isPaused) {
+            if (this.raf) cancelAnimationFrame(this.raf);
+            this.isPaused = true;
+        }
+    }
+
+    resume() {
+        if (this.isPaused && !this.reducedMotion) {
+            this.isPaused = false;
+            this.animate();
+        }
+    }
+
+    handleMouseMove(e) {
+        const rect = this.container.getBoundingClientRect();
+        this.mouse.x = e.clientX - rect.left;
+        this.mouse.y = e.clientY - rect.top;
+    }
+
+    handleTouchMove(e) {
+        if (e.touches.length > 0) {
+            const rect = this.container.getBoundingClientRect();
+            this.mouse.x = e.touches[0].clientX - rect.left;
+            this.mouse.y = e.touches[0].clientY - rect.top;
+        }
+    }
+
+    handleResize() {
+        const containerW = this.container.offsetWidth;
+        const containerH = this.container.offsetHeight;
+        // 检测是否包含CJK字符（中文、日文、韩文）
+        const isCJK = /[\u4e00-\u9fa5\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]/.test(this.text);
+        // CJK字符宽度约为英文的1.5-2倍，需要使用不同的计算因子
+        const charWidthFactor = isCJK ? 1.0 : 0.5;
+        // 根据屏幕宽度调整计算因子
+        const responsiveFactor = containerW < 480 ? 0.7 : (containerW < 768 ? 0.85 : 1);
+        let newFontSize = Math.max((containerW / (this.text.length * charWidthFactor)) * responsiveFactor, this.minFontSize);
+
+        // 单字 CJK 产品名（如中文“视/触/悦/嗅”）限制大小，避免撑破固定高度容器
+        if (isCJK && this.text.length === 1) {
+            newFontSize = Math.min(newFontSize, containerH * 0.85);
+        }
+
+        if (this.titleRef) {
+            this.titleRef.style.fontSize = newFontSize + 'px';
+        }
+    }
+
+    animate() {
+        this.cursor.x += (this.mouse.x - this.cursor.x) * 0.1;
+        this.cursor.y += (this.mouse.y - this.cursor.y) * 0.1;
+
+        const maxDist = this.container.offsetWidth / 2;
+
+        if (this.spans) {
+            this.spans.forEach((span) => {
+                const rect = span.getBoundingClientRect();
+                const charPos = {
+                    x: rect.left + rect.width / 2 - this.container.getBoundingClientRect().left,
+                    y: rect.top + rect.height / 2 - this.container.getBoundingClientRect().top
+                };
+
+                const d = this.dist(this.cursor, charPos);
+
+                const wdth = this.width ? Math.floor(this.getAttr(d, maxDist, 5, 200)) : 100;
+                const wght = this.weight ? Math.floor(this.getAttr(d, maxDist, 100, 900)) : 400;
+                const ital = this.italic ? this.getAttr(d, maxDist, 0, 1).toFixed(2) : 0;
+                const aph = this.alpha ? this.getAttr(d, maxDist, 0, 1).toFixed(2) : 1;
+
+                span.style.fontVariationSettings = `'wght' ${wght}, 'wdth' ${wdth}, 'ital' ${ital}`;
+                span.style.opacity = aph;
+                span.style.color = this.textColor;
+                span.style.transition = 'font-variation-settings 0.1s ease';
+            });
+        }
+
+        this.raf = requestAnimationFrame(() => this.animate());
+    }
+
+    destroy() {
+        if (this.raf) {
+            cancelAnimationFrame(this.raf);
+        }
+    }
+}
+
+// Initialize TextPressure
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('textPressureHero');
+    window.textPressureInstance = window.initProductHeroTitle(container, { text: 'Pleasure' });
+
+// ========== SCROLL REVEAL ANIMATION ==========
+const scrollObserverOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
+};
+
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.dataset.delay) || 0;
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+                scrollObserver.unobserve(entry.target);
+            }, delay);
+        }
+    });
+}, scrollObserverOptions);
+
+document.querySelectorAll('.btn-scroll-reveal, .input-reveal, .card-scroll-reveal').forEach(el => {
+    scrollObserver.observe(el);
+});
+
+    // Initialize FuzzyText
+    class FuzzyText {
+        constructor(element, options = {}) {
+            this.element = element;
+            this.baseIntensity = options.baseIntensity || 0.2;
+            this.hoverIntensity = options.hoverIntensity || 0.5;
+            this.enableHover = options.enableHover !== false;
+            this.text = element.textContent;
+            this.isHovering = false;
+            this.animationFrame = null;
+            this.chars = [];
+            this.observer = null;
+            this.isPaused = false;
+            this.reducedMotion = window.prefersReducedMotion || false;
+
+            this.init();
+        }
+
+        init() {
+            // Split text into characters
+            const text = this.element.textContent.trim();
+            this.element.innerHTML = '';
+            this.element.style.display = 'block';
+
+            // Create character spans
+            const words = text.split(' ');
+            words.forEach((word, wordIndex) => {
+                const wordSpan = document.createElement('span');
+                wordSpan.style.display = 'inline';
+
+                word.split('').forEach(char => {
+                    const charSpan = document.createElement('span');
+                    charSpan.className = 'fuzzy-text-char';
+                    charSpan.textContent = char;
+                    charSpan.style.filter = `blur(${this.baseIntensity}px)`;
+                    this.chars.push(charSpan);
+                    wordSpan.appendChild(charSpan);
+                });
+
+                this.element.appendChild(wordSpan);
+
+                // Add space between words
+                if (wordIndex < words.length - 1) {
+                    const space = document.createTextNode(' ');
+                    this.element.appendChild(space);
+                }
+            });
+
+            if (this.reducedMotion) {
+                // Render crisp static text without blur animation
+                this.chars.forEach(char => {
+                    char.style.filter = 'none';
+                    char.style.opacity = '1';
+                });
+            }
+
+            if (this.enableHover && !this.reducedMotion) {
+                this.element.addEventListener('mouseenter', () => this.handleHover(true));
+                this.element.addEventListener('mouseleave', () => this.handleHover(false));
+            }
+
+            this.setupIntersectionObserver();
+            this.setupVisibilityListener();
+
+            // Initial animation
+            if (!this.reducedMotion) {
+                this.animate();
+            }
+        }
+
+        setupIntersectionObserver() {
+            if (!this.element) return;
+            this.observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !document.hidden) {
+                        this.resume();
+                    } else {
+                        this.pause();
+                    }
+                });
+            }, { threshold: 0.1 });
+            this.observer.observe(this.element);
+        }
+
+        setupVisibilityListener() {
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    this.pause();
+                } else if (this.observer) {
+                    const isVisible = this.observer.takeRecords().some(e => e.isIntersecting);
+                    if (isVisible) this.resume();
+                }
+            });
+        }
+
+        handleHover(isHovering) {
+            this.isHovering = isHovering;
+        }
+
+        pause() {
+            if (!this.isPaused) {
+                if (this.animationFrame) cancelAnimationFrame(this.animationFrame);
+                this.isPaused = true;
+            }
+        }
+
+        resume() {
+            if (this.isPaused && !this.reducedMotion) {
+                this.isPaused = false;
+                this.animate();
+            }
+        }
+
+        animate() {
+            const targetIntensity = this.isHovering ? this.hoverIntensity : this.baseIntensity;
+            
+            this.chars.forEach((char, index) => {
+                // Add some randomness for organic feel
+                const delay = index * 0.02;
+                const randomOffset = (Math.random() - 0.5) * 0.1;
+                const intensity = targetIntensity + randomOffset;
+                
+                // Smooth transition
+                const currentBlur = parseFloat(char.style.filter.match(/blur\(([^)]+)px\)/)?.[1] || 0);
+                const newBlur = currentBlur + (intensity - currentBlur) * 0.15;
+                
+                char.style.filter = `blur(${Math.max(0, newBlur).toFixed(2)}px)`;
+                
+                // Slight opacity variation for depth
+                const opacity = 1 - (newBlur * 0.15);
+                char.style.opacity = Math.max(0.7, Math.min(1, opacity)).toFixed(2);
+            });
+
+            this.animationFrame = requestAnimationFrame(() => this.animate());
+        }
+
+        destroy() {
+            if (this.animationFrame) {
+                cancelAnimationFrame(this.animationFrame);
+            }
+            if (this.observer) {
+                this.observer.disconnect();
+            }
+        }
+    }
+
+    // Initialize FuzzyText elements
+    const fuzzyTextElements = document.querySelectorAll('.fuzzy-text');
+    fuzzyTextElements.forEach(el => {
+        const baseIntensity = parseFloat(el.dataset.baseIntensity) || 0.2;
+        const hoverIntensity = parseFloat(el.dataset.hoverIntensity) || 0.5;
+        
+        new FuzzyText(el, {
+            baseIntensity: baseIntensity,
+            hoverIntensity: hoverIntensity,
+            enableHover: true
+        });
+    });
+});
+
+
+// ========== UNIVERSAL DROPDOWN SYSTEM ==========
+class DropdownManager {
+    constructor() {
+        this.openDropdowns = new Set();
+        this.overlay = this.createOverlay();
+        this.init();
+    }
+    createOverlay() {
+        const overlay = document.createElement('div');
+        overlay.className = 'dropdown-overlay';
+        overlay.addEventListener('click', () => this.closeAll());
+        document.body.appendChild(overlay);
+        return overlay;
+    }
+    init() {
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            const trigger = dropdown.querySelector('.dropdown-trigger');
+            if (trigger) {
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.toggle(dropdown);
+                });
+            }
+        });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) this.closeAll();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') this.closeAll();
+        });
+    }
+    open(dropdown) {
+        if (this.openDropdowns.size === 0) {
+            this.overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        dropdown.classList.add('open');
+        this.openDropdowns.add(dropdown);
+        const firstItem = dropdown.querySelector('.dropdown-item');
+        if (firstItem) setTimeout(() => firstItem.focus(), 100);
+    }
+    close(dropdown) {
+        dropdown.classList.remove('open');
+        this.openDropdowns.delete(dropdown);
+        if (this.openDropdowns.size === 0) {
+            this.overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+    toggle(dropdown) {
+        if (dropdown.classList.contains('open')) this.close(dropdown);
+        else this.open(dropdown);
+    }
+    closeAll() {
+        this.openDropdowns.forEach(d => d.classList.remove('open'));
+        this.openDropdowns.clear();
+        this.overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+class CollapseManager {
+    constructor() { this.init(); }
+    init() {
+        document.querySelectorAll('.collapse').forEach(collapse => {
+            const header = collapse.querySelector('.collapse-header');
+            if (header) header.addEventListener('click', () => this.toggle(collapse));
+        });
+    }
+    open(collapse) {
+        const body = collapse.querySelector('.collapse-body');
+        collapse.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+    }
+    close(collapse) {
+        const body = collapse.querySelector('.collapse-body');
+        body.style.maxHeight = '0';
+        collapse.classList.remove('open');
+    }
+    toggle(collapse) {
+        if (collapse.classList.contains('open')) this.close(collapse);
+        else this.open(collapse);
+    }
+}
+
+class PickerModal {
+    constructor(element) {
+        this.element = element;
+        this.overlay = document.querySelector('.dropdown-overlay') || this.createOverlay();
+        this.init();
+    }
+    createOverlay() {
+        const overlay = document.createElement('div');
+        overlay.className = 'dropdown-overlay';
+        overlay.addEventListener('click', () => this.close());
+        document.body.appendChild(overlay);
+        return overlay;
+    }
+    init() {
+        const closeBtn = this.element.querySelector('.picker-close');
+        if (closeBtn) closeBtn.addEventListener('click', () => this.close());
+        const confirmBtn = this.element.querySelector('.picker-confirm');
+        if (confirmBtn) confirmBtn.addEventListener('click', () => { this.onConfirm?.(); this.close(); });
+    }
+    open() {
+        this.overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        this.element.classList.remove('closing');
+        this.element.classList.add('open');
+    }
+    close() {
+        this.element.classList.add('closing');
+        this.element.classList.remove('open');
+        setTimeout(() => {
+            this.element.classList.remove('closing');
+            this.overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }, 250);
+    }
+    onConfirm(callback) { this.onConfirm = callback; }
+}
+
+const dropdownManager = new DropdownManager();
+const collapseManager = new CollapseManager();
+window.DropdownSystem = { dropdown: dropdownManager, collapse: collapseManager, PickerModal: PickerModal };
+</script>
+    <script src="../js/award.js?v=2"></script>
+</body></html>

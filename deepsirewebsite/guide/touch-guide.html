@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="award">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -12,19 +12,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --primary: #D4A5A5;
-            --primary-dim: #C98888;
-            --secondary: #9093ff;
-            --secondary-dim: #7a7dff;
-            --background: #07090d;
+            /* v3 flare remap: all legacy rainbow tokens re-pointed to the Solar Flare palette */
+            --primary: #ffa11f;
+            --primary-dim: #cc7f14;
+            --secondary: #ff3d71;
+            --secondary-dim: #e5326c;
+            --background: #0c0b08;
             --surface: rgba(14, 14, 14, 0.6);
             --surface-high: rgba(26, 25, 25, 0.8);
             --surface-border: rgba(73, 72, 71, 0.3);
-            --text-primary: #FAF9F6;
-            --text-secondary: #adaaaa;
-            --wood-tone: #D4B996;
+            --text-primary: #f6efe0;
+            --text-secondary: #b9b0a0;
+            --wood-tone: #b9b0a0;
             --accent-glow: rgba(139, 92, 246, 0.3);
-            --success: #10b981;
+            --success: #ffa11f;
             --step-glow: rgba(212, 165, 165, 0.4);
         }
 
@@ -205,7 +206,7 @@
         }
 
         .info-box.cyan {
-            border-left-color: #00E0FF;
+            border-left-color: #ffa11f;
             background: linear-gradient(135deg, rgba(0, 224, 255, 0.08), rgba(212, 165, 165, 0.04));
         }
 
@@ -522,8 +523,11 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="../css/award.css?v=3">
+    <link rel="stylesheet" href="../css/flare-guide.css">
+
 </head>
-<body>
+<body class="guide-touch">
     <div class="container">
         <header class="header">
             <div class="brand">

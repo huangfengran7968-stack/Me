@@ -1,5 +1,29 @@
-/* Shared product page utilities and accessibility */
+/* ==========================================================================
+   product-common.css — 微圈 Soul 产品页共享工具层（v2 "记忆星河"）
+   --------------------------------------------------------------------------
+   消费者（2026-10-16 核查）：仅被以下 4 个页面加载
+     - sight-soul.html / touch-soul.html / pleasure-soul.html / scent-soul.html
+   因此可自由演进；不被 index / download / lingjing / life-biography /
+   support / guide 下任何页面引用。
 
+   职责：跨页小工具类、无障碍安全网（reduced-motion / focus）、
+   质感层（grain）、滚动条、选中态、CJK 排印基线。
+   视觉系统主体在 static/soul-impact.css；跨站令牌在 static/wq-award.css
+   （若缺失，本文件与 soul-impact.css 内的 var() 回退值保证独立可用）。
+   ========================================================================== */
+
+/* ---- 令牌回退：与 static/wq-award.css 契约一致（该文件后加载，可覆盖） ---- */
+:root {
+  --wq-ink: #0d0c1d;
+  --wq-ink2: #1a192f;
+  --wq-ink3: #242a45;
+  --wq-bone: #f0f4f8;
+  --wq-mist: #a9b3d0;
+  --wq-accent: #06b6d4;
+  --wq-gold: #d4a574;
+}
+
+/* ---- 工具类（沿用 v1） ---- */
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
 }
@@ -13,6 +37,88 @@
   background: linear-gradient(45deg, rgba(224, 142, 254, 0.15), rgba(144, 147, 255, 0.15));
 }
 
+/* 拉丁 mono 点缀：规格数字 / 编号 / 时间戳（报告 §5.1：mono utility face） */
+.mono {
+  font-family: 'DM Mono', 'SFMono-Regular', Consolas, monospace;
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+}
+
+/* CJK 大标题基线：leading 1.0–1.2、spacing ≤ 0.15em、禁止负 tracking（报告 §5.3） */
+.display-cjk {
+  line-height: 1.08;
+  letter-spacing: 0.04em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+/* ---- 全页质感：胶片颗粒（低成本氛围层，报告 §2.1 grain / §1.10 tier-1） ---- */
+.grain {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 2000;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* ---- 滚动条：产品 tint 染色 ---- */
+body.soul-page {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--soul-h, 195) 70% 55%) var(--wq-ink, #0d0c1d);
+}
+body.soul-page ::-webkit-scrollbar { width: 10px; }
+body.soul-page ::-webkit-scrollbar-track { background: var(--wq-ink, #0d0c1d); }
+body.soul-page ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, hsl(var(--soul-h, 195) 85% 55%), hsl(var(--soul-h, 195) 85% 38%));
+  border-radius: 8px;
+  border: 2px solid var(--wq-ink, #0d0c1d);
+}
+body.soul-page ::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--soul-h, 195) 90% 62%);
+}
+
+/* ---- 选中态 ---- */
+body.soul-page ::selection {
+  background: hsl(var(--soul-h, 195) 85% 55% / 0.85);
+  color: var(--wq-ink, #0d0c1d);
+}
+
+/* ---- 键盘焦点：award polish 包含键盘用户（报告 §3.1） ---- */
+body.soul-page :focus-visible {
+  outline: 2px solid var(--wq-accent, #06b6d4);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---- 触控目标 ≥ 44px（报告 §6.3） ---- */
+body.soul-page .btn-primary,
+body.soul-page .btn-secondary,
+body.soul-page .lang-btn,
+body.soul-page .hamburger,
+body.soul-page .cta-links a {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* ---- wow-as-layer-not-gate：.reveal 仅在 JS 生效时隐藏（无 JS 也可读） ----
+   原实现在 CSS 里直接 opacity:0，无 JS 时整页空白——v2 修复为渐进增强。 */
+.reveal { opacity: 1; transform: none; }
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html.js .reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ---- prefers-reduced-motion 安全网（fail-closed，报告 §6.2） ----
+   装饰性动效全部收敛；信息性动效（进度条）保留但去掉位移。 */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -27,4 +133,12 @@
     transform: none;
     opacity: 1;
   }
+  /* reduced-motion 下 JS 隐藏规则也不应藏内容 */
+  html.js .reveal { opacity: 1; transform: none; transition: none; }
+  .marquee-track { animation: none !important; transform: none !important; }
+  .hover-preview { display: none !important; }
+  .grain { display: none; }
+  .soul-char { transform: none !important; }
+  .scroll-hint { display: none; }
+  .vt-tl b { animation: none !important; visibility: visible !important; }
 }

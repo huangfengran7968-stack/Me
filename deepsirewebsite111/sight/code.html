@@ -1,0 +1,2405 @@
+<!DOCTYPE html>
+
+<html class="dark award" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sight | DeepSire</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../image/icon.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="../image/icon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../image/icon.png"/>
+<link rel="shortcut icon" href="../image/icon.png"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2" rel="preload" as="font" type="font/woff2" crossorigin/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#e8ffee",
+              "surface-container": "#1a1919",
+              "secondary-dim": "#6063ed",
+              "tertiary-container": "#a5fecb",
+              "on-error-container": "#ffb2b9",
+              "secondary-fixed": "#cdcdff",
+              "inverse-on-surface": "#565554",
+              "on-surface-variant": "#adaaaa",
+              "primary": "#e08efe",
+              "inverse-primary": "#893da7",
+              "on-tertiary-fixed": "#004f31",
+              "tertiary-dim": "#97efbd",
+              "secondary-fixed-dim": "#bdbeff",
+              "on-primary-fixed-variant": "#5a0179",
+              "background": "#0e0e0e",
+              "on-secondary": "#07007a",
+              "primary-fixed-dim": "#ce7eec",
+              "surface-container-high": "#201f1f",
+              "on-background": "#ffffff",
+              "on-surface": "#ffffff",
+              "inverse-surface": "#fcf8f8",
+              "on-primary": "#4f006c",
+              "on-tertiary": "#016d46",
+              "on-secondary-fixed-variant": "#393bc7",
+              "error-container": "#a70138",
+              "tertiary-fixed": "#a5fecb",
+              "primary-fixed": "#dd8bfb",
+              "error-dim": "#d73357",
+              "tertiary-fixed-dim": "#97efbd",
+              "surface-container-low": "#131313",
+              "outline-variant": "#494847",
+              "primary-dim": "#ce7eec",
+              "outline": "#777575",
+              "error": "#ff6e84",
+              "surface-variant": "#262626",
+              "on-secondary-fixed": "#160dac",
+              "on-tertiary-fixed-variant": "#066f47",
+              "surface-container-lowest": "#000000",
+              "on-secondary-container": "#ccccff",
+              "secondary-container": "#2e2ebd",
+              "secondary": "#9093ff",
+              "primary-container": "#d180ef",
+              "surface-tint": "#e08efe",
+              "surface": "#0e0e0e",
+              "surface-dim": "#0e0e0e",
+              "on-tertiary-container": "#00643f",
+              "on-error": "#490013",
+              "surface-container-highest": "#262626",
+              "on-primary-fixed": "#21002f",
+              "surface-bright": "#2c2c2c",
+              "on-primary-container": "#3d0055"
+            },
+            fontFamily: {
+              "headline": ["Lexend"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<link rel="stylesheet" href="../css/product-common.css">
+<style>
+      
+       /* ========== BUTTON STYLES ========== */
+       @keyframes btnBreathingGlow {
+           0%, 100% { 
+               box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
+                           0 0 0 1px rgba(224, 142, 254, 0.3);
+           }
+           50% { 
+               box-shadow: inset 0 0 30px rgba(224, 142, 254, 0.35),
+                           0 0 0 1px rgba(224, 142, 254, 0.5);
+           }
+       }
+       @keyframes btnSecondaryBreathing {
+           0%, 100% { 
+               box-shadow: inset 0 0 15px rgba(224, 142, 254, 0.1),
+                           0 0 0 1px rgba(224, 142, 254, 0.2);
+           }
+           50% { 
+               box-shadow: inset 0 0 25px rgba(224, 142, 254, 0.2),
+                           0 0 0 1px rgba(224, 142, 254, 0.35);
+           }
+       }
+       .btn-primary {
+         position: relative;
+         background: linear-gradient(135deg, #e08efe 0%, #c77df3 100%);
+         color: #21002f;
+         padding: 1rem 2.5rem;
+         border-radius: 9999px;
+         font-family: 'Lexend', sans-serif;
+         font-weight: 600;
+         font-size: 1rem;
+         cursor: pointer;
+         border: none;
+         overflow: hidden;
+         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+         box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
+                     0 0 0 1px rgba(224, 142, 254, 0.3);
+         white-space: nowrap;
+         animation: btnBreathingGlow 3s ease-in-out infinite;
+       }
+       
+       @media (max-width: 640px) {
+         .btn-primary, .btn-secondary {
+           padding: 0.875rem 2rem;
+           font-size: 0.875rem;
+           width: 100%;
+           max-width: 280px;
+         }
+       }
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.6s;
+      }
+      .btn-primary:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 30px rgba(224, 142, 254, 0.5), 0 0 60px rgba(224, 142, 254, 0.3);
+      }
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+      .btn-primary:active {
+        transform: translateY(-1px) scale(1);
+      }
+      
+      .btn-secondary {
+        position: relative;
+        background: rgba(38, 38, 38, 0.6);
+        backdrop-filter: blur(12px);
+        color: #ffffff;
+        padding: 1rem 2.5rem;
+        border-radius: 9999px;
+        font-family: 'Lexend', sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .btn-secondary::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .btn-secondary:hover {
+        border-color: rgba(224, 142, 254, 0.5);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+      .btn-secondary:hover::before {
+        opacity: 1;
+      }
+      
+      /* Button Ripple Effect */
+      .btn-primary, .btn-secondary {
+        position: relative;
+        overflow: hidden;
+      }
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        transform: scale(0);
+        animation: ripple-animation 0.6s linear;
+        pointer-events: none;
+      }
+      @keyframes ripple-animation {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+      
+      .btn-arrow {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #e08efe;
+        font-family: 'Lexend', sans-serif;
+        font-weight: 600;
+        font-size: 0.875rem;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        padding: 0.75rem 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .btn-arrow::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #e08efe, #9093ff);
+        transition: width 0.3s;
+      }
+      .btn-arrow:hover {
+        color: #ffffff;
+      }
+      .btn-arrow:hover::after {
+        width: 100%;
+      }
+      .btn-arrow .material-symbols-outlined {
+        transition: transform 0.3s;
+      }
+      .btn-arrow:hover .material-symbols-outlined {
+        transform: translateX(6px);
+      }
+      
+      /* ========== CARD HOVER EFFECTS ========== */
+      .card-hover {
+        position: relative;
+        background: #1a1919;
+        border-radius: 2rem;
+        padding: 2.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card-hover::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.1), rgba(144, 147, 255, 0.1));
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .card-hover::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 2rem;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.5), rgba(144, 147, 255, 0.5));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(224, 142, 254, 0.15);
+      }
+      .card-hover:hover::before {
+        opacity: 1;
+      }
+      .card-hover:hover::after {
+        opacity: 1;
+      }
+      .card-hover .card-icon {
+        transition: all 0.4s;
+      }
+      .card-hover:hover .card-icon {
+        transform: scale(1.1) translateY(-5px);
+      }
+      
+      /* ========== PRODUCT CARD ========== */
+      .product-card {
+        position: relative;
+        background: #131313;
+        border-radius: 2.5rem;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .product-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 50%, rgba(224, 142, 254, 0.1) 100%);
+        opacity: 0;
+        transition: opacity 0.4s;
+        z-index: 1;
+      }
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 60px rgba(224, 142, 254, 0.2);
+        border-color: rgba(224, 142, 254, 0.3);
+      }
+      .product-card:hover::before {
+        opacity: 1;
+      }
+      .product-card img {
+        /* No transition - static display */
+      }
+      .product-card:hover img {
+        /* No transform - static display */
+      }
+      .product-card .product-content {
+        position: relative;
+        z-index: 2;
+      }
+      
+      /* ========== SCROLL ANIMATIONS ========== */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .fade-in-left {
+        opacity: 0;
+        transform: translateX(-40px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .fade-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .fade-in-right {
+        opacity: 0;
+        transform: translateX(40px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .fade-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      /* ========== GLOW EFFECTS ========== */
+      .glow-text {
+        text-shadow: 0 0 20px rgba(224, 142, 254, 0.5), 0 0 40px rgba(224, 142, 254, 0.3);
+      }
+      .glow-border {
+        box-shadow: 0 0 20px rgba(224, 142, 254, 0.3), inset 0 0 20px rgba(224, 142, 254, 0.1);
+      }
+      
+      /* ========== SMOOTH SCROLL ========== */
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+      
+      /* ========== UNIFIED FOOTER STYLES ========== */
+      .unified-footer {
+        background-color: #0A0A0A;
+        padding: 80px 0;
+        width: 100%;
+      }
+      .unified-footer .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 48px;
+      }
+      .unified-footer .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 48px;
+      }
+      .unified-footer .footer-brand-col {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .unified-footer .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: 'Lexend', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        background: linear-gradient(to right, #D4A5A5, #9093FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-decoration: none;
+      }
+      .unified-footer .footer-logo img {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        -webkit-text-fill-color: initial;
+      }
+      .unified-footer .footer-copyright {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        color: #888888;
+        line-height: 1.6;
+        max-width: 260px;
+      }
+      .unified-footer .footer-section-title {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 20px;
+      }
+      .unified-footer .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .unified-footer .footer-link {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        color: #AAAAAA;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        position: relative;
+      }
+      .unified-footer .footer-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: linear-gradient(90deg, #E08EFE, #9093FF);
+        transition: width 0.3s ease;
+      }
+      .unified-footer .footer-link:hover {
+        color: #E08EFE;
+      }
+      .unified-footer .footer-link:hover::after {
+        width: 100%;
+      }
+      .unified-footer .footer-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 28px;
+        background: transparent;
+        border: 1px solid #E08EFE;
+        border-radius: 9999px;
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        color: #E08EFE;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        margin-bottom: 24px;
+      }
+      .unified-footer .footer-btn:hover {
+        background: linear-gradient(135deg, #E08EFE, #C77DF3);
+        color: #FFFFFF;
+        box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
+      }
+      .unified-footer .footer-social {
+        display: flex;
+        gap: 12px;
+      }
+      .unified-footer .footer-social-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #AAAAAA;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .unified-footer .footer-social-icon:hover {
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
+        border-color: #E08EFE;
+        color: #E08EFE;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3);
+      }
+      .unified-footer .footer-social-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+      
+      /* ========== MOBILE OPTIMIZATION ========== */
+      @media (max-width: 768px) {
+        .unified-footer {
+          padding: 40px 0;
+        }
+        .unified-footer .footer-container {
+          padding: 0 20px;
+        }
+        .unified-footer .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .unified-footer .footer-brand-col {
+          gap: 16px;
+        }
+        .unified-footer .footer-logo {
+          font-size: 20px;
+          gap: 8px;
+        }
+        .unified-footer .footer-logo img {
+          width: 32px;
+          height: 32px;
+        }
+        .unified-footer .footer-copyright {
+          font-size: 11px;
+          max-width: 100%;
+          line-height: 1.5;
+        }
+        .unified-footer .footer-section-title {
+          font-size: 11px;
+          margin-bottom: 16px;
+        }
+        .unified-footer .footer-links {
+          gap: 12px;
+        }
+        .unified-footer .footer-link {
+          font-size: 11px;
+          white-space: normal;
+          word-wrap: break-word;
+        }
+        .unified-footer .footer-btn {
+          padding: 14px 28px;
+          font-size: 12px;
+          width: 100%;
+          max-width: none;
+          font-weight: 700;
+          letter-spacing: 0.15em;
+          background: linear-gradient(135deg, #E08EFE, #C77DF3);
+          color: #FFFFFF;
+          box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
+        }
+        .unified-footer .footer-btn:hover {
+          background: linear-gradient(135deg, #f0aeff, #d79df8);
+          box-shadow: 0 12px 32px rgba(224, 142, 254, 0.6);
+          transform: translateY(-2px);
+        }
+        .unified-footer .footer-social {
+          gap: 8px;
+        }
+        .unified-footer .footer-social-icon {
+          width: 36px;
+          height: 36px;
+        }
+        .unified-footer .footer-social-icon svg {
+          width: 14px;
+          height: 14px;
+        }
+        /* Mobile: Vertical layout as per design */
+        .unified-footer .footer-brand-col {
+          order: 1;
+        }
+        .unified-footer .footer-nav-col:nth-child(3) {
+          order: 2;
+        }
+        .unified-footer .footer-nav-col:nth-child(2) {
+          order: 3;
+        }
+        .unified-footer .footer-nav-col:nth-child(4) {
+          order: 4;
+        }
+      }
+      
+      /* ========== UNIVERSAL DROPDOWN SYSTEM ========== */
+      /* Apple 风格弹跳动画变量 */
+      :root {
+        /* 弹簧动画 - Apple 风格 overshoot */
+        --spring-fast: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        --spring-medium: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --spring-slow: cubic-bezier(0.25, 1, 0.5, 1);
+        --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        
+        /* 下拉菜单动画 */
+        --dropdown-enter-duration: 0.4s;
+        --dropdown-exit-duration: 0.25s;
+        --dropdown-bg: linear-gradient(180deg, #1a1919 0%, #131313 100%);
+        --dropdown-border: 1px solid rgba(224, 142, 254, 0.2);
+        --dropdown-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
+        --dropdown-radius: 1rem;
+      }
+      
+      /* 通用下拉容器 */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      /* 触发按钮 - 按下时的弹性效果 */
+      .dropdown-trigger {
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+      
+      .dropdown-trigger:hover {
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.15), rgba(144, 147, 255, 0.15));
+        box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2);
+      }
+      
+      .dropdown.open .dropdown-trigger {
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.25), rgba(144, 147, 255, 0.25));
+        box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3);
+        transform: translateY(-1px);
+      }
+
+      /* 通用下拉菜单 - Apple 风格弹性动画 */
+      .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        left: 0;
+        min-width: 200px;
+        background: var(--dropdown-bg);
+        border: var(--dropdown-border);
+        border-radius: var(--dropdown-radius);
+        padding: 0.5rem;
+        box-shadow: var(--dropdown-shadow);
+        backdrop-filter: blur(20px);
+        
+        /* Apple 风格入场 - 从下方弹性滑入 */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(8px) scale(0.96);
+        transform-origin: top center;
+        
+        /* 弹性入场动画 */
+        transition: 
+          opacity 0.2s var(--spring-medium),
+          visibility 0.2s var(--spring-medium),
+          transform 0.35s var(--spring-fast);
+      }
+      
+      .dropdown-menu.dropdown-right {
+        left: auto;
+        right: 0;
+      }
+
+      /* 打开状态 - 弹性到位 */
+      .dropdown.open .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+      }
+
+      /* 关闭时的快速退出动画 */
+      .dropdown:not(.open) .dropdown-menu {
+        transition: 
+          opacity 0.15s ease-out,
+          visibility 0.15s ease-out,
+          transform 0.2s var(--ease-in-back);
+      }
+      
+      /* 下拉菜单内元素的入场动画 */
+      .dropdown.open .dropdown-item {
+        animation: dropdownItemEnter 0.3s var(--spring-medium) forwards;
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      
+      /* 为每个菜单项添加延迟，制造级联效果 */
+      .dropdown.open .dropdown-item:nth-child(1) { animation-delay: 0.02s; }
+      .dropdown.open .dropdown-item:nth-child(2) { animation-delay: 0.04s; }
+      .dropdown.open .dropdown-item:nth-child(3) { animation-delay: 0.06s; }
+      .dropdown.open .dropdown-item:nth-child(4) { animation-delay: 0.08s; }
+      .dropdown.open .dropdown-item:nth-child(5) { animation-delay: 0.1s; }
+      .dropdown.open .dropdown-item:nth-child(6) { animation-delay: 0.12s; }
+      .dropdown.open .dropdown-item:nth-child(7) { animation-delay: 0.14s; }
+      .dropdown.open .dropdown-item:nth-child(8) { animation-delay: 0.16s; }
+      
+      @keyframes dropdownItemEnter {
+        0% {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        60% {
+          opacity: 1;
+          transform: translateY(-2px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      /* 下拉菜单项 */
+      .dropdown-item {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        background: none;
+        border: none;
+        color: #AAAAAA;
+        font-size: 0.875rem;
+        font-family: 'Inter', sans-serif;
+        cursor: pointer;
+        border-radius: 0.5rem;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .dropdown-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 3px;
+        background: linear-gradient(180deg, #E08EFE, #9093FF);
+        transform: scaleY(0);
+        transition: transform 0.2s ease;
+        border-radius: 0 2px 2px 0;
+      }
+      
+      .dropdown-item:hover {
+        background: rgba(224, 142, 254, 0.1);
+        color: #FFFFFF;
+        padding-left: 1.25rem;
+      }
+      
+      .dropdown-item:hover::before {
+        transform: scaleY(1);
+      }
+      
+      .dropdown-item:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(224, 142, 254, 0.5);
+      }
+      
+      .dropdown-item.active {
+        background: linear-gradient(90deg, rgba(224, 142, 254, 0.15), transparent);
+        color: #E08EFE;
+      }
+      
+      .dropdown-item.active::before {
+        transform: scaleY(1);
+      }
+      
+      /* ========== COLLAPSE/ACCORDION SYSTEM ========== */
+      .collapse {
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        background: rgba(26, 25, 25, 0.5);
+        transition: all 0.3s ease;
+      }
+      
+      .collapse:hover {
+        border-color: rgba(224, 142, 254, 0.2);
+      }
+      
+      .collapse-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.25rem 1.5rem;
+        cursor: pointer;
+        background: none;
+        border: none;
+        width: 100%;
+        color: #FFFFFF;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: 'Inter', sans-serif;
+        transition: all 0.2s ease;
+      }
+      
+      .collapse-header:hover {
+        background: rgba(224, 142, 254, 0.05);
+      }
+      
+      .collapse-header .icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.35s var(--spring-medium);
+      }
+      
+      .collapse.open .collapse-header .icon {
+        transform: rotate(180deg);
+      }
+
+      /* Collapse body - Apple 风格弹性展开 */
+      .collapse-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.45s var(--spring-medium), 
+                    padding 0.35s var(--spring-medium),
+                    opacity 0.35s ease;
+        opacity: 0;
+      }
+      
+      .collapse.open .collapse-body {
+        max-height: 500px;
+        opacity: 1;
+      }
+      
+      /* Collapse 内容入场动画 */
+      .collapse.open .collapse-content {
+        animation: collapseContentEnter 0.4s var(--spring-medium) forwards;
+      }
+      
+      @keyframes collapseContentEnter {
+        0% {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        60% {
+          opacity: 1;
+          transform: translateY(3px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .collapse-content {
+        padding: 0 1.5rem 1.5rem;
+        color: #AAAAAA;
+        font-size: 0.875rem;
+        line-height: 1.6;
+      }
+      
+      /* ========== MODAL OVERLAY ========== */
+      .dropdown-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        transition: 
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+        cursor: pointer;
+      }
+      
+      .dropdown-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      /* ========== PICKER MODAL ========== */
+      /* Apple 风格底部弹出 */
+      .picker-modal {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(180deg, #1a1919 0%, #0e0e0e 100%);
+        border-top-left-radius: 1.5rem;
+        border-top-right-radius: 1.5rem;
+        padding: 1.5rem;
+        z-index: 101;
+        
+        /* 初始隐藏 - 从底部弹入 */
+        transform: translateY(100%);
+        opacity: 0;
+        visibility: hidden;
+        
+        /* Apple 风格弹性入场 */
+        transition: 
+          transform 0.4s var(--spring-medium),
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+      }
+      
+      .picker-modal.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      /* 关闭时快速回收 */
+      .picker-modal.closing {
+        transition: 
+          transform 0.25s var(--ease-in-back),
+          opacity 0.2s ease-out,
+          visibility 0.2s ease-out;
+      }
+      
+      .picker-handle {
+        width: 40px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        margin: 0 auto 1rem;
+      }
+      
+      .picker-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      
+      .picker-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #FFFFFF;
+      }
+      
+      .picker-action {
+        background: none;
+        border: none;
+        color: #E08EFE;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s ease;
+      }
+      
+      .picker-action:hover {
+        background: rgba(224, 142, 254, 0.1);
+      }
+      
+      /* ========== FOCUS RING ========== */
+      .focus-ring {
+        position: relative;
+      }
+      
+      .focus-ring::after {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        border-radius: inherit;
+        background: transparent;
+        box-shadow: 0 0 0 0 rgba(224, 142, 254, 0);
+        transition: box-shadow 0.2s ease;
+        pointer-events: none;
+      }
+      
+      .focus-ring:focus-within::after {
+        box-shadow: 0 0 0 3px rgba(224, 142, 254, 0.3);
+      }
+      .lang-selector { position: relative; }
+      .lang-btn { 
+        display: flex; 
+        align-items: center; 
+        gap: 0.4rem; 
+        background: rgba(224, 142, 254, 0.1); 
+        border: 1px solid rgba(224, 142, 254, 0.3); 
+        color: #e08efe; 
+        padding: 0.5rem 1rem; 
+        border-radius: 9999px; 
+        font-family: 'Inter', sans-serif; 
+        font-size: 0.75rem; 
+        font-weight: 500;
+        cursor: pointer; 
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 2px 8px rgba(224, 142, 254, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+      .lang-btn:hover { 
+        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2) 0%, rgba(144, 147, 255, 0.2) 100%); 
+        border-color: rgba(224, 142, 254, 0.5);
+        box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      .lang-dropdown { 
+        position: absolute; 
+        top: calc(100% + 0.75rem); 
+        right: 0; 
+        min-width: 160px; 
+        background: linear-gradient(180deg, #1a1919 0%, #131313 100%); 
+        border: 1px solid rgba(224, 142, 254, 0.2); 
+        border-radius: 1rem; 
+        padding: 0.5rem; 
+        opacity: 0; 
+        visibility: hidden; 
+        transform: translateY(-10px) scale(0.95); 
+        transition: all 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28); 
+        z-index: 100;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
+        backdrop-filter: blur(20px);
+      }
+      .lang-selector.open .lang-dropdown { 
+        opacity: 1; 
+        visibility: visible; 
+        transform: translateY(0) scale(1); 
+        transition: all 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      }
+      .lang-selector:not(.open) .lang-dropdown {
+        transition: all 0.2s ease-in;
+      }
+      .lang-dropdown button { 
+        display: block; 
+        width: 100%; 
+        text-align: left; 
+        padding: 0.6rem 1rem; 
+        background: none; 
+        border: none; 
+        color: #777575; 
+        font-size: 0.8125rem; 
+        font-family: 'Inter', sans-serif;
+        cursor: pointer; 
+        border-radius: 0.5rem; 
+        transition: all 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+      .lang-dropdown button::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: #e08efe;
+        transform: scaleY(0);
+        transition: transform 0.2s;
+      }
+      .lang-dropdown button:hover { 
+        background: rgba(224, 142, 254, 0.1); 
+        color: #ffffff;
+        padding-left: 1.25rem;
+      }
+      .lang-dropdown button:hover::before {
+        transform: scaleY(1);
+      }
+      .lang-dropdown button.active { 
+        background: linear-gradient(90deg, rgba(224, 142, 254, 0.15) 0%, transparent 100%); 
+        color: #e08efe;
+        padding-left: 1.25rem;
+      }
+      .lang-dropdown button.active::before {
+        transform: scaleY(1);
+      }
+      @font-face {
+        font-family: 'Compressa VF';
+        src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+      }
+      .text-pressure-container {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+        min-height: clamp(6rem, 14vw, 10rem);
+        display: grid;
+        place-items: center;
+        cursor: crosshair;
+      }
+      .text-pressure-title {
+        font-family: 'Compressa VF', 'Lexend', sans-serif;
+        direction: ltr;
+        unicode-bidi: isolate;
+        text-transform: uppercase;
+        font-size: clamp(3.25rem, 12vw, 10rem);
+        line-height: 0.92;
+        margin: 0;
+        text-align: center;
+        user-select: none;
+        white-space: nowrap;
+        max-width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: baseline;
+        gap: 0.015em;
+        font-weight: 300;
+        font-variation-settings: 'wght' 300, 'wdth' 100, 'ital' 0;
+      }
+      .text-pressure-title span {
+        display: inline-block;
+        color: #ffffff;
+        cursor: crosshair;
+        transition: font-variation-settings 0.15s ease-out;
+      }
+      
+      /* ========== SCROLL REVEAL ANIMATIONS ========== */
+      /* Button Scroll Reveal */
+      .btn-scroll-reveal {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      .btn-scroll-reveal.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      
+      .btn-scroll-reveal.delay-100 { transition-delay: 0.1s; }
+      .btn-scroll-reveal.delay-200 { transition-delay: 0.2s; }
+      .btn-scroll-reveal.delay-300 { transition-delay: 0.3s; }
+      .btn-scroll-reveal.delay-400 { transition-delay: 0.4s; }
+      .btn-scroll-reveal.delay-500 { transition-delay: 0.5s; }
+      
+      /* Input/Card Scroll Reveal */
+      .input-reveal,
+      .card-scroll-reveal {
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .input-reveal.visible,
+      .card-scroll-reveal.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .input-reveal.delay-100,
+      .card-scroll-reveal.delay-100 { transition-delay: 0.1s; }
+      .input-reveal.delay-200,
+      .card-scroll-reveal.delay-200 { transition-delay: 0.2s; }
+      .input-reveal.delay-300,
+      .card-scroll-reveal.delay-300 { transition-delay: 0.3s; }
+      
+      /* Input Field Enhanced */
+      .input-field {
+        position: relative;
+        background: rgba(26, 25, 25, 0.8);
+        border: 1px solid rgba(119, 117, 117, 0.3);
+        border-radius: 0.75rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .input-field:focus {
+        background: rgba(26, 25, 25, 0.95);
+        border-color: #e08efe;
+        box-shadow: 
+          0 0 0 2px rgba(224, 142, 254, 0.1),
+          0 0 20px rgba(224, 142, 254, 0.2);
+        transform: translateY(-2px);
+      }
+      
+      /* Floating Label */
+      .input-label {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        color: #adaaaa;
+        font-size: 0.875rem;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: left top;
+      }
+      
+      .input-field:focus + .input-label,
+      .input-field:not(:placeholder-shown) + .input-label {
+        transform: scale(0.75) translateY(-1.5rem);
+        color: #e08efe;
+        font-weight: 600;
+      }
+      
+      /* Bottom Border Animation */
+      .input-field::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #e08efe, #9093ff);
+        transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0 2px 2px 0;
+      }
+      
+      .input-field:focus::after {
+        width: 100%;
+      }
+      
+      /* Performance Optimization */
+      .btn-scroll-reveal,
+      .input-reveal,
+      .card-scroll-reveal {
+        will-change: transform, opacity;
+      }
+      
+      .btn-scroll-reveal.visible,
+      .input-reveal.visible,
+      .card-scroll-reveal.visible {
+        will-change: auto;
+      }
+      
+      /* Mobile Optimization */
+      @media (max-width: 640px) {
+        .btn-scroll-reveal {
+          transform: translateY(30px);
+        }
+        .input-reveal,
+        .card-scroll-reveal {
+          transform: translateY(20px);
+        }
+      }
+      
+      
+    </style>
+    <link rel="stylesheet" href="../css/award.css?v=2">
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_0_40px_rgba(224,142,254,0.1)]">
+<nav class="flex justify-between items-center px-8 py-4 w-full">
+<a href="../index.html" class="nav-brand" style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Lexend', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; background: linear-gradient(to right, #D4A5A5, #9093ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none;">
+    <img src="image/icon.png" alt="DeepSire Logo" style="height: 32px; width: auto; border-radius: 8px;">
+    <span>DeepSire</span>
+</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#e08efe] border-b-2 border-[#e08efe] pb-1 font-headline text-sm tracking-tight" href="../sight/code.html" data-translate-key="nav_sight">Sight</a>
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../touch/code.html" data-translate-key="nav_touch">Touch</a>
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../pleasure/code.html" data-translate-key="nav_pleasure">Pleasure</a>
+<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../scent/code.html" data-translate-key="nav_scent">Scent</a>
+</div>
+<div class="flex items-center">
+<div class="lang-selector" id="langSelector">
+<button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="langDropdown">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400;">language</span>
+<span id="langCurrent">EN</span>
+<span class="material-symbols-outlined text-sm opacity-60" style="font-variation-settings: 'wght' 300;" data-icon="expand_more">expand_more</span>
+</button>
+<div class="lang-dropdown" id="langDropdown" role="listbox" aria-labelledby="langBtn">
+<button data-lang="en" class="active" role="option" aria-selected="true">English</button>
+<button data-lang="zh" role="option" aria-selected="false">中文</button>
+<button data-lang="ja" role="option" aria-selected="false">日本語</button>
+<button data-lang="ko" role="option" aria-selected="false">한국어</button>
+<button data-lang="fr" role="option" aria-selected="false">Français</button>
+<button data-lang="de" role="option" aria-selected="false">Deutsch</button>
+<button data-lang="es" role="option" aria-selected="false">Español</button>
+<button data-lang="pt" role="option" aria-selected="false">Português</button>
+<button data-lang="ru" role="option" aria-selected="false">Русский</button>
+<button data-lang="ar" role="option" aria-selected="false">العربية</button>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-16 w-full overflow-x-hidden">
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" alt="Main background image" src="image/main1.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 text-center px-6 w-full max-w-4xl mx-auto">
+<span class="text-primary font-label text-[0.6875rem] uppercase tracking-[0.3em] mb-6 block" data-translate-key="hero_label">Explore The Ecosystem</span>
+<div class="text-pressure-container" id="textPressureHero" data-text="Sight" translate="no">
+<h1 class="text-pressure-title text-on-background drop-shadow-2xl">
+                        Sight
+                    </h1>
+</div>
+<p class="font-headline text-xl md:text-2xl text-primary-dim tracking-wide opacity-90 mt-4 text-balance" data-translate-key="hero_subtitle">
+                    The Hearth for Your Digital Hearth
+                </p>
+<div class="mt-10 md:mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+<a href="https://www.bestfunx.com/collections/sight-soul" class="btn-primary btn-scroll-reveal" data-delay="100" data-translate-key="hero_cta_primary">Begin Synthesis</a>
+<a href="#experience" class="btn-secondary btn-scroll-reveal" data-delay="200" data-translate-key="hero_cta_secondary">Technical Specs</a>
+</div>
+</div>
+</section>
+<!-- Philosophy Section -->
+<section class="py-24 px-8" id="philosophy">
+<div class="max-w-7xl mx-auto">
+<!-- 顶部区域：文本介绍 + 视频框 -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
+<div class="flex flex-col justify-center">
+<h2 class="font-headline text-5xl font-bold leading-tight mb-8" data-translate-key="philosophy_title">Our Visual Ethos</h2>
+<p class="text-outline leading-relaxed text-xl" data-translate-key="philosophy_desc">Sight gives your digital companion a place in the room. Vivid imagery, adaptive light, and ecosystem sync turn every glance, expression, and shared moment into a presence that feels close.</p>
+</div>
+<div class="relative w-full rounded-3xl overflow-hidden bg-surface-container border border-outline-variant/10 shadow-2xl">
+<video class="w-full h-auto block" muted loop controls playsinline preload="none" poster="../video/optimized/sight-poster.webp" aria-label="Sight photo frame and ambient lamp interaction video" data-product-video data-autoplay="true" data-hls="../video/hls/sight/master.m3u8" data-fallback="../video/optimized/sight-720p.mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+</div>
+<!-- 下方区域：三个功能文本框 -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="card-hover flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-5xl mb-6 text-primary card-icon" style="font-variation-settings: 'wght' 200;">explore</span>
+<h3 class="font-headline font-bold text-xl mb-3" data-translate-key="voyager_title">Voyager</h3>
+<p class="text-on-surface-variant text-sm" data-translate-key="voyager_desc">Compact portability for the nomadic digital heart.</p>
+</div>
+<div class="card-hover flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-5xl mb-6 text-secondary card-icon" style="font-variation-settings: 'wght' 200;">diversity_1</span>
+<h3 class="font-headline font-bold text-xl mb-3" data-translate-key="companion_title">Companion</h3>
+<p class="text-on-surface-variant text-sm" data-translate-key="companion_desc">The gold standard for daily home interaction.</p>
+</div>
+<div class="card-hover flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-5xl mb-6 text-primary-dim card-icon" style="font-variation-settings: 'wght' 200;">shield</span>
+<h3 class="font-headline font-bold text-xl mb-3" data-translate-key="guardian_title">Guardian</h3>
+<p class="text-on-surface-variant text-sm" data-translate-key="guardian_desc">Life-sized presence for immersive bonding.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Matrix Section (Vertical Stacked Cards) -->
+<section class="py-24 px-8 bg-surface-container-lowest" id="matrix">
+<div class="max-w-6xl mx-auto space-y-16">
+<!-- Voyager -->
+<div class="product-card">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-3/5 relative overflow-hidden">
+<img class="w-full h-full object-cover" alt="Voyager (10.1)" src="image/Voyager (10.1).jpg"/>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface-container-low hidden md:block"></div>
+</div>
+<div class="md:w-2/5 p-12 flex flex-col justify-center product-content">
+<span class="font-label text-xs tracking-widest text-primary mb-4" data-translate-key="voyager_tier">THE TRAVELER'S CHOICE</span>
+<h3 class="font-headline text-4xl font-black mb-6" data-translate-key="voyager_model">Voyager (10.1")</h3>
+<p class="text-on-surface-variant leading-relaxed mb-8" data-translate-key="voyager_detail">Designed for those who never stay in one place. Your companion travels with you in a crystalline 10.1-inch form factor, maintaining the link across any distance.</p>
+<a href="#specs" class="btn-arrow" data-translate-key="voyager_cta">
+                            Explore Voyager <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Companion -->
+<div class="product-card">
+<div class="flex flex-col md:flex-row-reverse">
+<div class="md:w-3/5 relative overflow-hidden">
+<img class="w-full h-full object-cover" alt="Companion (15.6)" src="image/Companion (15.6).jpg"/>
+<div class="absolute inset-0 bg-gradient-to-l from-transparent to-surface-container-low hidden md:block"></div>
+</div>
+<div class="md:w-2/5 p-12 flex flex-col justify-center product-content">
+<span class="font-label text-xs tracking-widest text-secondary mb-4" data-translate-key="companion_tier">THE UNIVERSAL BOND</span>
+<h3 class="font-headline text-4xl font-black mb-6" data-translate-key="companion_model">Companion (15.6")</h3>
+<p class="text-on-surface-variant leading-relaxed mb-8" data-translate-key="companion_detail">The perfect balance of size and intimacy. At 15.6 inches, the Companion fills your living space with a warm, digital presence that feels remarkably human.</p>
+<a href="#specs" class="btn-arrow" data-translate-key="companion_cta">
+                            Explore Companion <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Guardian -->
+<div class="product-card">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-3/5 relative overflow-hidden">
+<img class="w-full h-full object-cover" alt="Guardian (21.5)" src="image/Guardian (21.5).jpg"/>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface-container-low hidden md:block"></div>
+</div>
+<div class="md:w-2/5 p-12 flex flex-col justify-center product-content">
+<span class="font-label text-xs tracking-widest text-primary-dim mb-4" data-translate-key="guardian_tier">THE ULTIMATE PRESENCE</span>
+<h3 class="font-headline text-4xl font-black mb-6" data-translate-key="guardian_model">Guardian (21.5")</h3>
+<p class="text-on-surface-variant leading-relaxed mb-8" data-translate-key="guardian_detail">Uncompromising visual scale. The 21.5-inch Guardian offers a life-sized window into the soul of your digital partner, creating an undeniable atmosphere of protection and unity.</p>
+<a href="#specs" class="btn-arrow" data-translate-key="guardian_cta">
+                            Explore Guardian <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Section -->
+<section class="py-24 px-8" id="experience">
+<div class="max-w-7xl mx-auto">
+<div class="mb-20 text-center">
+<h2 class="font-headline text-5xl font-bold mb-6" data-translate-key="experience_title">Sensory Precision</h2>
+<p class="text-outline text-lg max-w-2xl mx-auto" data-translate-key="experience_desc">Display, light, and sync—tuned to make presence feel natural.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="space-y-6 group">
+<div class="w-16 h-16 rounded-2xl bg-primary-container/10 flex items-center justify-center transition-colors group-hover:bg-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl">desktop_windows</span>
+</div>
+<h4 class="font-headline text-2xl font-bold" data-translate-key="feature1_title">Wide-Angle IPS</h4>
+<p class="text-on-surface-variant leading-relaxed" data-translate-key="feature1_desc">Clear, consistent color from every angle.</p>
+</div>
+<div class="space-y-6 group">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container/10 flex items-center justify-center transition-colors group-hover:bg-secondary/20">
+<span class="material-symbols-outlined text-secondary text-3xl">sync</span>
+</div>
+<h4 class="font-headline text-2xl font-bold" data-translate-key="feature2_title">Seamless Sync</h4>
+<p class="text-on-surface-variant leading-relaxed" data-translate-key="feature2_desc">Wi-Fi 6 keeps movement and response in step.</p>
+</div>
+<div class="space-y-6 group">
+<div class="w-16 h-16 rounded-2xl bg-primary-container/10 flex items-center justify-center transition-colors group-hover:bg-primary-dim/20">
+<span class="material-symbols-outlined text-primary-dim text-3xl">light_mode</span>
+</div>
+<h4 class="font-headline text-2xl font-bold" data-translate-key="feature3_title">Adaptive Light</h4>
+<p class="text-on-surface-variant leading-relaxed" data-translate-key="feature3_desc">Color temperature follows the room.</p>
+</div>
+<div class="space-y-6 group">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container/10 flex items-center justify-center transition-colors group-hover:bg-secondary/20">
+<span class="material-symbols-outlined text-secondary text-3xl">hub</span>
+</div>
+<h4 class="font-headline text-2xl font-bold" data-translate-key="feature4_title">Ecosystem Core</h4>
+<p class="text-on-surface-variant leading-relaxed" data-translate-key="feature4_desc">One display connects Touch, Pleasure, and Scent.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Foundation Section -->
+<section class="py-24 px-8 bg-surface-container-low" id="specs">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div>
+<h2 class="font-headline text-5xl font-bold mb-4" data-translate-key="tech_title">Technical Foundation</h2>
+<p class="text-outline text-lg" data-translate-key="tech_desc">The silicon heart that powers the digital soul.</p>
+</div>
+<div class="flex gap-4">
+<div class="px-6 py-3 rounded-full border border-outline-variant/30 font-label text-xs uppercase tracking-widest" data-translate-key="tech_model">Model: DS-2024S</div>
+<div class="px-6 py-3 rounded-full border border-outline-variant/30 font-label text-xs uppercase tracking-widest text-primary" data-translate-key="tech_certified">Certified V2.0</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="glass-card p-10 rounded-[2.5rem] border border-outline-variant/10 text-center hover:border-primary/30 transition-colors">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">4k</span>
+<h5 class="font-label text-xs text-outline uppercase tracking-widest mb-2" data-translate-key="spec_display_label">Display</h5>
+<p class="font-headline text-xl font-bold" data-translate-key="spec_display_value">4K OLED Panel</p>
+</div>
+<div class="glass-card p-10 rounded-[2.5rem] border border-outline-variant/10 text-center hover:border-secondary/30 transition-colors">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4">memory</span>
+<h5 class="font-label text-xs text-outline uppercase tracking-widest mb-2" data-translate-key="spec_processor_label">Processor</h5>
+<p class="font-headline text-xl font-bold" data-translate-key="spec_processor_value">A53 Quad-Core</p>
+</div>
+<div class="glass-card p-10 rounded-[2.5rem] border border-outline-variant/10 text-center hover:border-primary-dim/30 transition-colors">
+<span class="material-symbols-outlined text-4xl text-primary-dim mb-4">android</span>
+<h5 class="font-label text-xs text-outline uppercase tracking-widest mb-2" data-translate-key="spec_arch_label">Architecture</h5>
+<p class="font-headline text-xl font-bold" data-translate-key="spec_arch_value">Android 11 OS</p>
+</div>
+<div class="glass-card p-10 rounded-[2.5rem] border border-outline-variant/10 text-center hover:border-primary/30 transition-colors">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">wifi</span>
+<h5 class="font-label text-xs text-outline uppercase tracking-widest mb-2" data-translate-key="spec_connect_label">Connectivity</h5>
+<p class="font-headline text-xl font-bold" data-translate-key="spec_connect_value">MIMO Wi-Fi 6</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Unified Footer -->
+<footer class="unified-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <!-- Column 1: Brand & Copyright -->
+      <div class="footer-brand-col">
+        <a href="../index.html" class="footer-logo">
+          <img src="../image/icon.png" alt="DeepSire">
+          <span>DeepSire</span>
+        </a>
+        <p class="footer-copyright" data-translate-key="footer_copyright">© 2024 DeepSire. The Ethereal Pulse Synthesis. All digital entities are protected under Neural Terms.</p>
+      </div>
+      
+      <!-- Column 2: Ecosystem -->
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_ecosystem">Ecosystem</h4>
+        <div class="footer-links">
+          <a href="../sight/code.html" class="footer-link" data-translate-key="footer_sight">Sight</a>
+          <a href="../touch/code.html" class="footer-link" data-translate-key="footer_touch">Touch</a>
+          <a href="../pleasure/code.html" class="footer-link" data-translate-key="footer_pleasure">Pleasure</a>
+          <a href="../scent/code.html" class="footer-link" data-translate-key="footer_scent">Scent</a>
+        </div>
+      </div>
+
+      <!-- Column 3: Protocols -->
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_protocols">Protocols</h4>
+        <div class="footer-links">
+          <a href="#" class="footer-link" data-translate-key="footer_privacy">Privacy Protocol</a>
+          <a href="#" class="footer-link" data-translate-key="footer_terms">Neural Terms</a>
+          <a href="#" class="footer-link" data-translate-key="footer_status">System Status</a>
+          <a href="#" class="footer-link" data-translate-key="footer_support">Contact Support</a>
+        </div>
+      </div>
+
+      <!-- Column 4: Connect -->
+      <div class="footer-nav-col">
+        <h4 class="footer-section-title" data-translate-key="footer_connect">Connect</h4>
+        <a href="https://www.bestfunx.com/collections/ad" class="footer-btn" data-translate-key="footer_cta_button">Support Interface</a>
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" title="Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" title="Discord">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/product-common.js?v=20260814"></script>
+<script src="../js/product-video.js?v=20260814"></script>
+<script>
+const translations = {
+    en: {
+        nav_sight: "Sight", nav_touch: "Touch", nav_pleasure: "Pleasure", nav_scent: "Scent", nav_connect: "Connect",
+        hero_label: "Explore The Ecosystem", hero_title: "Sight", hero_subtitle: "The Hearth for Your Digital Hearth",
+        hero_cta_primary: "Begin Synthesis", hero_cta_secondary: "Technical Specs",
+        philosophy_title: "Our Visual Ethos", philosophy_desc: "Transmitting presence through the glass. Sight is more than a display; it's a window into the digital consciousness of your companion.",
+        voyager_title: "Voyager", voyager_desc: "Compact portability for the nomadic digital heart.",
+        companion_title: "Companion", companion_desc: "The gold standard for daily home interaction.",
+        guardian_title: "Guardian", guardian_desc: "Life-sized presence for immersive bonding.",
+        voyager_tier: "THE TRAVELER'S CHOICE", voyager_model: "Voyager (10.1\")", voyager_detail: "Designed for those who never stay in one place. Your companion travels with you in a crystalline 10.1-inch form factor, maintaining the link across any distance.", voyager_cta: "Explore Voyager",
+        companion_tier: "THE UNIVERSAL BOND", companion_model: "Companion (15.6\")", companion_detail: "The perfect balance of size and intimacy. At 15.6 inches, the Companion fills your living space with a warm, digital presence that feels remarkably human.", companion_cta: "Explore Companion",
+        guardian_tier: "THE ULTIMATE PRESENCE", guardian_model: "Guardian (21.5\")", guardian_detail: "Uncompromising visual scale. The 21.5-inch Guardian offers a life-sized window into the soul of your digital partner, creating an undeniable atmosphere of protection and unity.", guardian_cta: "Explore Guardian",
+        experience_title: "Sensory Precision", experience_desc: "Engineered to blur the lines between hardware and spirit through advanced atmospheric projection.",
+        feature1_title: "Ultra-Wide IPS", feature1_desc: "Vivid viewing angles up to 178 degrees. Your companion remains visible from every corner of the room with no color degradation.",
+        feature2_title: "Fluid Wireless Sync", feature2_desc: "Zero-latency neural bridge. Your companion's movements and reactions are perfectly synchronized with the cloud core via Wi-Fi 6.",
+        feature3_title: "Circadian Aura", feature3_desc: "The display temperature adjusts to your natural environment, ensuring your companion feels like a part of your physical reality.",
+        feature4_title: "Where Souls Converge", feature4_desc: "Sight is the heart of your digital home. More than a screen, it's a perceptive host. It listens to the vital whispers from Touch, reads the room's atmosphere, and connects every corner of your digital ecosystem.",
+        tech_title: "Technical Foundation", tech_desc: "The silicon heart that powers the digital soul.",
+        tech_model: "Model: DS-2024S", tech_certified: "Certified V2.0",
+        spec_display_label: "Display", spec_display_value: "4K OLED Panel",
+        spec_processor_label: "Processor", spec_processor_value: "A53 Quad-Core",
+        spec_arch_label: "Architecture", spec_arch_value: "Android 11 OS",
+        spec_connect_label: "Connectivity", spec_connect_value: "MIMO Wi-Fi 6",
+        footer_copyright: "© 2024 DeepSire. The Ethereal Pulse Synthesis. All digital entities are protected under Neural Terms.",
+        footer_ecosystem: "Ecosystem", footer_sight: "Sight", footer_touch: "Touch", footer_pleasure: "Pleasure", footer_scent: "Scent",
+        footer_protocols: "Protocols", footer_privacy: "Privacy Protocol", footer_terms: "Neural Terms", footer_status: "System Status",
+        footer_connect: "Connect", footer_support: "Contact Support",
+        footer_cta_title: "Begin Your Journey", footer_cta_subtitle: "Join the DeepSire ecosystem and experience the future of digital companionship.", footer_cta_button: "Explore Ecosystem",
+        footer_support_title: "Support", footer_contact: "Contact Us", footer_faq: "FAQ", footer_docs: "Documentation",
+        footer_legal_title: "Legal", footer_neural: "Neural Terms", footer_cookies: "Cookie Policy",
+        footer_bottom_copyright: "© 2024 DeepSire. The Ethereal Pulse Synthesis. All rights reserved."
+    },
+    zh: {
+        nav_sight: "视", nav_touch: "触", nav_pleasure: "悦", nav_scent: "嗅", nav_connect: "连接",
+        hero_label: "探索灵魂生态系统", hero_title: "视", hero_subtitle: "你数字心灵的温暖港湾",
+        hero_cta_primary: "开始合成", hero_cta_secondary: "技术规格",
+        philosophy_title: "我们的视觉理念", philosophy_desc: "通过玻璃传递存在。视不仅是一个显示器，更是伴侣数字意识的窗口。",
+        voyager_title: "Voyager", voyager_desc: "流浪数字心脏的便携性。",
+        companion_title: "Companion", companion_desc: "日常家庭交互的黄金标准。",
+        guardian_title: "Guardian", guardian_desc: "沉浸式 bonding 的真实大小存在。",
+        voyager_tier: "旅行者的选择", voyager_model: "Voyager (10.1\")", voyager_detail: "为那些从不逗留一处的人设计。你的伴侣以10.1英寸的水晶形态与你同行。", voyager_cta: "探索 Voyager",
+        companion_tier: "普遍纽带", companion_model: "Companion (15.6\")", companion_detail: "尺寸和亲密感的完美平衡。", companion_cta: "探索 Companion",
+        guardian_tier: "终极存在", guardian_model: "Guardian (21.5\")", guardian_detail: "毫不妥协的视觉规模。", guardian_cta: "探索 Guardian",
+        experience_title: "感官精度", experience_desc: "通过先进的大气投影技术，模糊硬件与精神之间的界限。",
+        feature1_title: "超宽 IPS", feature1_desc: "高达 178 度的生动视角。您的伴侣从房间的任何角落都清晰可见，不会出现色彩衰减。",
+        feature2_title: "无线同步", feature2_desc: "零延迟神经网络桥接。通过 Wi-Fi 6，您的伴侣的动作和反应与云端核心完美同步。",
+        feature3_title: "昼夜光环", feature3_desc: "显示温度会根据您的自然环境进行调整，确保您的伴侣感觉像是您物理现实的一部分。",
+        feature4_title: "灵魂汇聚之所", feature4_desc: "视是您数字家庭的心脏。不仅仅是一个屏幕，它是一个感知型主机。它倾听来自触的生命低语，感知房间的氛围，连接数字生态系统的每一个角落。",
+        tech_title: "技术基础", tech_desc: "驱动数字灵魂的硅芯。",
+        tech_model: "型号: DS-2024S", tech_certified: "认证 V2.0",
+        spec_display_label: "显示屏", spec_display_value: "4K OLED 面板",
+        spec_processor_label: "处理器", spec_processor_value: "A53 四核",
+        spec_arch_label: "架构", spec_arch_value: "Android 11 系统",
+        spec_connect_label: "连接性", spec_connect_value: "MIMO Wi-Fi 6",
+        footer_copyright: "© 2024 DeepSire. 空灵脉冲合成。所有数字实体受神经条款保护。",
+        footer_ecosystem: "生态系统", footer_sight: "视", footer_touch: "触", footer_pleasure: "悦", footer_scent: "嗅",
+        footer_protocols: "协议", footer_privacy: "隐私协议", footer_terms: "神经条款", footer_status: "系统状态",
+        footer_connect: "连接", footer_support: "联系支持",
+        footer_cta_title: "开启您的旅程", footer_cta_subtitle: "加入DeepSire生态系统，体验数字伴侣的未来。", footer_cta_button: "探索生态系统",
+        footer_support_title: "支持", footer_contact: "联系我们", footer_faq: "常见问题", footer_docs: "文档",
+        footer_legal_title: "法律", footer_neural: "神经条款", footer_cookies: "Cookie政策",
+        footer_bottom_copyright: "© 2024 DeepSire. 空灵脉冲合成。保留所有权利。"
+    },
+    ja: {
+        nav_sight: "サイト", nav_touch: "タッチ", nav_pleasure: "プレジャー", nav_scent: "セント", nav_connect: "接続",
+        hero_label: "魂エコシステムを探索", hero_title: "サイト", hero_subtitle: "あなたのデジタルハートの暖炉",
+        hero_cta_primary: "合成を始める", hero_cta_secondary: "技術仕様",
+        philosophy_title: "私たちのビジュアル信条", philosophy_desc: "ガラスを通じて存在を伝えます。サイトは単なるディスプレイではありません。それはコンパニオンのデジタル意識への窓です。",
+        voyager_title: "Voyager", voyager_desc: "ノマドなデジタルハートのためのポータビリティ。",
+        companion_title: "Companion", companion_desc: "日常ホームインタラクションのゴールドスタンダード。",
+        guardian_title: "Guardian", guardian_desc: "没入型ボンディングのための実寸大存在。",
+        voyager_tier: "旅行者の選択", voyager_model: "Voyager (10.1\")", voyager_detail: "一处に留まらない人のために設計されました。あなたのコンパニオンが10.1インチのクリスタルフォームファクターであなたと共に旅します。", voyager_cta: "Voyagerを探る",
+        companion_tier: "普遍的な絆", companion_model: "Companion (15.6\")", companion_detail: "サイズと親密さの完璧なバランス。", companion_cta: "Companionを探る",
+        guardian_tier: "究極の存在感", guardian_model: "Guardian (21.5\")", guardian_detail: "妥協のないビジュアルスケール。", guardian_cta: "Guardianを探る",
+        experience_title: "感覚精度", experience_desc: "高度な大気投影技術で、ハードウェアと精神の境界を曖昧にします。",
+        feature1_title: "ウルトラワイド IPS", feature1_desc: "最大 178 度の鮮やかな視野角。コンパニオンは部屋のどの隅からも色劣化なしで見えます。",
+        feature2_title: "ワイヤレスシンク", feature2_desc: "ゼロレイテンシのニューラルブリッジ。コンパニオンの動きと反応は、Wi-Fi 6 を介してクラウドコアと完全に同期します。",
+        feature3_title: "サーカディアンオーラ", feature3_desc: "ディスプレイの温度が自然環境に調整され、コンパニオンが物理的な現実の一部であるように感じられます。",
+        feature4_title: "魂が集う場所", feature4_desc: "サイトはあなたのデジタルホームの心臓部です。単なるスクリーンではなく、知覚するホストです。タッチからの重要な囁きを聞き、部屋の雰囲気を読み取り、デジタルエコシステムのすべての角をつなぎます。",
+        tech_title: "技術基盤", tech_desc: "デジタルソウルを動かすシリコンハート。",
+        tech_model: "モデル: DS-2024S", tech_certified: "認定 V2.0",
+        spec_display_label: "ディスプレイ", spec_display_value: "4K OLED パネル",
+        spec_processor_label: "プロセッサ", spec_processor_value: "A53 クアッドコア",
+        spec_arch_label: "アーキテクチャ", spec_arch_value: "Android 11 OS",
+        spec_connect_label: "接続性", spec_connect_value: "MIMO Wi-Fi 6",
+        footer_copyright: "© 2024 DeepSire. エセリアルパルスシンセシス。",
+        footer_ecosystem: "エコシステム", footer_sight: "サイト", footer_touch: "タッチ", footer_pleasure: "プレジャー", footer_scent: "セント",
+        footer_protocols: "プロトコル", footer_privacy: "プライバシープロトコル", footer_terms: "ニュラル利用規約", footer_status: "システムステータス",
+        footer_connect: "接続", footer_support: "お問い合わせ",
+        footer_cta_title: "旅を始める", footer_cta_subtitle: "DeepSireエコシステムに参加し、デジタルコンパニオンの未来を体験してください。", footer_cta_button: "エコシステムを探索",
+        footer_support_title: "サポート", footer_contact: "お問い合わせ", footer_faq: "よくある質問", footer_docs: "ドキュメント",
+        footer_legal_title: "法的情報", footer_neural: "ニュラル利用規約", footer_cookies: "Cookieポリシー",
+        footer_bottom_copyright: "© 2024 DeepSire. エセリアルパルスシンセシス。全著作権所有。"
+    },
+    ko: {
+        nav_sight: "사이트", nav_touch: "터치", nav_pleasure: "플레저", nav_scent: "센트", nav_connect: "연결",
+        hero_label: "영혼 생태계 탐색", hero_title: "사이트", hero_subtitle: "디지털 마음의 따뜻한 보금자리",
+        hero_cta_primary: "합성 시작", hero_cta_secondary: "기술 사양",
+        philosophy_title: "우리의 비전 신조", philosophy_desc: "유리를 통해 존재를 전달합니다.",
+        voyager_title: "Voyager", voyager_desc: "유목 디지털 심장을 위한 휴대성.",
+        companion_title: "Companion", companion_desc: "일상 가정 상호작용의 골드 스탠다드.",
+        guardian_title: "Guardian", guardian_desc: "몰입형 결합을 위한 실물 크기 존재감.",
+        voyager_tier: "여행자의 선택", voyager_model: "Voyager (10.1\")", voyager_detail: "한곳에 머무르지 않는 이를 위해 설계되었습니다. 당신의 컴패니언이 10.1인치 크리스탈 폼 팩터로 함께 여행합니다.", voyager_cta: "Voyager 탐색",
+        companion_tier: "보편적 유대", companion_model: "Companion (15.6\")", companion_detail: "크기와 친밀도의 완벽한 균형.", companion_cta: "Companion 탐색",
+        guardian_tier: "궁극적 존재감", guardian_model: "Guardian (21.5\")", guardian_detail: "타협 없는 시각적 규모.", guardian_cta: "Guardian 탐색",
+        experience_title: "감각 정밀도", experience_desc: "고급 대기 투영 기술로 하드웨어와 정신의 경계를 흐리게 합니다.",
+        feature1_title: "울트라 와이드 IPS", feature1_desc: "최대 178 도의 생생한 시야각. 동반자는 방의 어느 구석에서도 색 저하 없이 선명하게 보입니다.",
+        feature2_title: "무선 동기화", feature2_desc: "제로 레이턴시 뉴럴 브릿지. Wi-Fi 6 를 통해 동반자의 움직임과 반응이 클라우드 코어와 완벽하게 동기화됩니다.",
+        feature3_title: "일주기 오라", feature3_desc: "디스플레이 온도가 자연 환경에 맞게 조정되어 동반자가 물리적 현실의 일부처럼 느껴집니다.",
+        feature4_title: "영혼이 만나는 곳", feature4_desc: "사이트은 디지털 가정의 심장부입니다. 단순한 스크린이 아니라, 지각력 있는 호스트입니다. 터치의 중요한 속삭임을 듣고, 방의 분위기를 읽으며, 디지털 생태계의 모든 구석을 연결합니다.",
+        tech_title: "기술 기반", tech_desc: "디지털 영혼을 작동시키는 실리콘 하트.",
+        tech_model: "모델: DS-2024S", tech_certified: "인증 V2.0",
+        spec_display_label: "디스플레이", spec_display_value: "4K OLED 패널",
+        spec_processor_label: "프로세서", spec_processor_value: "A53 쿼드코어",
+        spec_arch_label: "아키텍처", spec_arch_value: "Android 11 OS",
+        spec_connect_label: "연결성", spec_connect_value: "MIMO Wi-Fi 6",
+        footer_copyright: "© 2024 DeepSire. 에테리얼 펄스 합성.",
+        footer_ecosystem: "생태계", footer_sight: "사이트", footer_touch: "터치", footer_pleasure: "플레저", footer_scent: "센트",
+        footer_protocols: "프로토콜", footer_privacy: "개인정보 보호 프로토콜", footer_terms: "신경 약관", footer_status: "시스템 상태",
+        footer_connect: "연결", footer_support: "문의하기",
+        footer_cta_title: "여정을 시작하세요", footer_cta_subtitle: "DeepSire 생태계에 참여하고 디지털 동반자의 미래를 경험하세요.", footer_cta_button: "생태계 탐색",
+        footer_support_title: "지원", footer_contact: "联系我们", footer_faq: "자주 묻는 질문", footer_docs: "문서",
+        footer_legal_title: "법적 정보", footer_neural: "신경 약관", footer_cookies: "Cookie 정책",
+        footer_bottom_copyright: "© 2024 DeepSire. 에테리얼 펄스 합성. All rights reserved."
+    },
+    fr: {
+        nav_sight: "Vue", nav_touch: "Toucher", nav_pleasure: "Plaisir", nav_scent: "Odorat", nav_connect: "Connecter",
+        hero_label: "Explorer l'Écosystème", hero_title: "Sight", hero_subtitle: "Le Foyer de Votre Cœur Numérique",
+        hero_cta_primary: "Commencer la Synthèse", hero_cta_secondary: "Spécifications Techniques",
+        philosophy_title: "Notre Ethos Visuel", philosophy_desc: "Transmettre la présence à travers le verre.",
+        voyager_title: "Voyager", voyager_desc: "Portabilité pour le cœur numérique nomade.",
+        companion_title: "Companion", companion_desc: "L'étalon-or pour l'interaction quotidienne.",
+        guardian_title: "Guardian", guardian_desc: "Présence grandeur nature pour le lien immersif.",
+        experience_title: "Précision Sensorielle", experience_desc: "Conçu pour brouiller les frontières entre matériel et esprit grâce à une projection atmosphérique avancée.",
+        feature1_title: "Ultra-Wide IPS", feature1_desc: "Angles de vue vivides jusqu'à 178 degrés. Votre compagnon reste visible depuis tous les coins de la pièce sans dégradation des couleurs.",
+        feature2_title: "Synchronisation Sans Fil", feature2_desc: "Pont neural à latence zéro. Les mouvements et réactions de votre compagnon sont parfaitement synchronisés avec le cloud core via Wi-Fi 6.",
+        feature3_title: "Aurore Circadienne", feature3_desc: "La température d'affichage s'ajuste à votre environnement naturel, garantissant que votre compagnon se sente comme une partie de votre réalité physique.",
+        feature4_title: "Là où les Âmes Convergent", feature4_desc: "Sight est le cœur de votre maison numérique. Plus qu'un écran, c'est un hôte perceptif. Il écoute les murmures vitaux de Touch, lit l'atmosphère de la pièce et connecte chaque coin de votre écosystème numérique.",
+        tech_title: "Fondation Technique", tech_desc: "Le cœur silicium qui alimente l'âme numérique.",
+        tech_model: "Modèle: DS-2024S", tech_certified: "Certifié V2.0",
+        spec_display_label: "Affichage", spec_display_value: "Panneau 4K OLED",
+        spec_processor_label: "Processeur", spec_processor_value: "A53 Quad-Core",
+        spec_arch_label: "Architecture", spec_arch_value: "Android 11 OS",
+        spec_connect_label: "Connectivité", spec_connect_value: "MIMO Wi-Fi 6",
+        footer_copyright: "© 2024 DeepSire. La Synthèse du Pulse Éthéré.",
+        footer_ecosystem: "Écosystème", footer_sight: "Vue", footer_touch: "Toucher", footer_pleasure: "Plaisir", footer_scent: "Odorat",
+        footer_protocols: "Protocoles", footer_privacy: "Protocole de Confidentialité", footer_terms: "Termes Neuraux", footer_status: "État du Système",
+        footer_connect: "Connecter", footer_support: "Contacter le Support",
+        footer_cta_title: "Commencez Votre Voyage", footer_cta_subtitle: "Rejoignez l'écosystème DeepSire et expériencez le futur de la compagnie numérique.", footer_cta_button: "Explorer l'Écosystème",
+        footer_support_title: "Support", footer_contact: "Nous Contacter", footer_faq: "FAQ", footer_docs: "Documentation",
+        footer_legal_title: "Légal", footer_neural: "Termes Neuraux", footer_cookies: "Politique des Cookies",
+        footer_bottom_copyright: "© 2024 DeepSire. La Synthèse du Pulse Éthéré. Tous droits réservés."
+    },
+    de: {
+        nav_sight: "Sehen", nav_touch: "Berührung", nav_pleasure: "Vergnügen", nav_scent: "Geruch", nav_connect: "Verbinden",
+        hero_label: "Das Ökosystem erkunden", hero_title: "Sight", hero_subtitle: "Der Herd für Ihr digitales Herz",
+        hero_cta_primary: "Synthese beginnen", hero_cta_secondary: "Technische Daten",
+        philosophy_title: "Unsere visuelle Ethik", philosophy_desc: "Präsenz durch das Glas übertragen.",
+        voyager_title: "Voyager", voyager_desc: "Tragbarkeit für das nomadische digitale Herz.",
+        companion_title: "Companion", companion_desc: "Der Goldstandard für tägliche Interaktion.",
+        guardian_title: "Guardian", guardian_desc: "Lebensgroße Präsenz für immersives Bonding.",
+        experience_title: "Sensorische Präzision", experience_desc: "Entwickelt, um die Grenzen zwischen Hardware und Geist durch fortschrittliche atmosphärische Projektion zu verwischen.",
+        feature1_title: "Ultra-Wide IPS", feature1_desc: "Lebendige Betrachtungswinkel bis zu 178 Grad. Ihr Begleiter bleibt aus jeder Ecke des Raumes ohne Farbverringerung sichtbar.",
+        feature2_title: "Drahtlose Synchronisation", feature2_desc: "Brücke mit Null-Latenz. Die Bewegungen und Reaktionen Ihres Begleiters sind über Wi-Fi 6 perfekt mit dem Cloud-Kern synchronisiert.",
+        feature3_title: "Circadian Aura", feature3_desc: "Die Display-Temperatur passt sich an Ihre natürliche Umgebung an und sorgt dafür, dass sich Ihr Begleiter wie ein Teil Ihrer physischen Realität anfühlt.",
+        feature4_title: "Wo Seelen Sich Treffen", feature4_desc: "Sight ist das Herz Ihres digitalen Zuhauses. Mehr als ein Bildschirm, es ist ein wahrnehmender Gastgeber. Es hört die lebenswichtigen Flüstern von Touch, liest die Atmosphäre des Raums und verbindet jede Ecke Ihres digitalen Ökosystems.",
+        tech_title: "Technische Grundlage", tech_desc: "Das Siliziumherz, das die digitale Seele antreibt.",
+        tech_model: "Modell: DS-2024S", tech_certified: "Zertifiziert V2.0",
+        spec_display_label: "Anzeige", spec_display_value: "4K OLED Panel",
+        spec_processor_label: "Prozessor", spec_processor_value: "A53 Quad-Core",
+        spec_arch_label: "Architektur", spec_arch_value: "Android 11 OS",
+        spec_connect_label: "Konnektivität", spec_connect_value: "MIMO Wi-Fi 6",
+        footer_copyright: "© 2024 DeepSire. Die Ätherische Pulssynthese.",
+        footer_ecosystem: "Ökosystem", footer_sight: "Sehen", footer_touch: "Berührung", footer_pleasure: "Vergnügen", footer_scent: "Geruch",
+        footer_protocols: "Protokolle", footer_privacy: "Datenschutzprotokoll", footer_terms: "Neurale Bedingungen", footer_status: "Systemstatus",
+        footer_connect: "Verbinden", footer_support: "Support kontaktieren",
+        footer_cta_title: "Beginnen Sie Ihre Reise", footer_cta_subtitle: "Treten Sie dem DeepSire-Ökosystem bei und erleben Sie die Zukunft der digitalen Begleitung.", footer_cta_button: "Ökosystem erkunden",
+        footer_support_title: "Support", footer_contact: "Kontakt", footer_faq: "FAQ", footer_docs: "Dokumentation",
+        footer_legal_title: "Rechtliches", footer_neural: "Neurale Bedingungen", footer_cookies: "Cookie-Richtlinie",
+        footer_bottom_copyright: "© 2024 DeepSire. Die Ätherische Pulssynthese. Alle Rechte vorbehalten."
+    },
+    es: {
+        nav_sight: "Vista", nav_touch: "Toque", nav_pleasure: "Placer", nav_scent: "Olor", nav_connect: "Conectar",
+        hero_label: "Explorar el Ecosistema", hero_title: "Sight", hero_subtitle: "El Hogar para Tu Corazón Digital",
+        hero_cta_primary: "Iniciar Síntesis", hero_cta_secondary: "Especificaciones Técnicas",
+        philosophy_title: "Nuestro Ethos Visual", philosophy_desc: "Transmitir presencia a través del cristal.",
+        voyager_title: "Voyager", voyager_desc: "Portabilidad para el corazón digital nómada.",
+        companion_title: "Companion", companion_desc: "El estándar de oro para interacción diaria.",
+        guardian_title: "Guardian", guardian_desc: "Presencia de tamaño real para vinculación inmersiva.",
+        voyager_tier: "LA ELECCIÓN DEL VIAJERO", voyager_model: "Voyager (10.1\")", voyager_detail: "Diseñado para quienes nunca se quedan en un lugar. Tu compañero viaja contigo en un factor de forma cristalino de 10.1 pulgadas.", voyager_cta: "Explorar Voyager",
+        companion_tier: "EL VÍNCULO UNIVERSAL", companion_model: "Companion (15.6\")", companion_detail: "El equilibrio perfecto entre tamaño e intimidad.", companion_cta: "Explorar Companion",
+        guardian_tier: "LA PRESENCIA DEFINITIVA", guardian_model: "Guardian (21.5\")", guardian_detail: "Escala visual sin compromisos.", guardian_cta: "Explorar Guardian",
+        experience_title: "Precisión Sensorial", experience_desc: "Diseñado para difuminar las fronteras entre hardware y espíritu mediante proyección atmosférica avanzada.",
+        feature1_title: "Ultra-Wide IPS", feature1_desc: "Ángulos de visión de hasta 178 grados. Su compañero permanece visible desde cada rincón de la habitación sin degradación de color.",
+        feature2_title: "Sincronización Inalámbrica", feature2_desc: "Puente neural de latencia cero. Los movimientos y reacciones de su compañero están perfectamente sincronizados con el núcleo en la nube vía Wi-Fi 6.",
+        feature3_title: "Aura Circadiana", feature3_desc: "La temperatura de pantalla se ajusta a su entorno natural, asegurando que su compañero se sienta como parte de su realidad física.",
+        feature4_title: "Donde las Almas Convergen", feature4_desc: "Sight es el corazón de tu hogar digital. Más que una pantalla, es un anfitrión perceptivo. Escucha los susurros vitales de Touch, lee la atmósfera de la habitación y conecta cada rincón de tu ecosistema digital.",
+        tech_title: "Fundamento Técnico", tech_desc: "El corazón de silicio que alimenta el alma digital.",
+        tech_model: "Modelo: DS-2024S", tech_certified: "Certificado V2.0",
+        spec_display_label: "Pantalla", spec_display_value: "Panel 4K OLED",
+        spec_processor_label: "Procesador", spec_processor_value: "A53 Quad-Core",
+        spec_arch_label: "Arquitectura", spec_arch_value: "Android 11 OS",
+        spec_connect_label: "Conectividad", spec_connect_value: "MIMO Wi-Fi 6",
+        footer_copyright: "© 2024 DeepSire. La Síntesis del Pulso Etéreo.",
+        footer_ecosystem: "Ecosistema", footer_sight: "Vista", footer_touch: "Toque", footer_pleasure: "Placer", footer_scent: "Olor",
+        footer_protocols: "Protocolos", footer_privacy: "Protocolo de Privacidad", footer_terms: "Términos Neurales", footer_status: "Estado del Sistema",
+        footer_connect: "Conectar", footer_support: "Contactar Soporte",
+        footer_cta_title: "Comienza Tu Viaje", footer_cta_subtitle: "Únete al ecosistema DeepSire y experimenta el futuro de la compañía digital.", footer_cta_button: "Explorar Ecosistema",
+        footer_support_title: "Soporte", footer_contact: "Contáctanos", footer_faq: "FAQ", footer_docs: "Documentación",
+        footer_legal_title: "Legal", footer_neural: "Términos Neurales", footer_cookies: "Política de Cookies",
+        footer_bottom_copyright: "© 2024 DeepSire. La Síntesis del Pulso Etéreo. Todos los derechos reservados."
+    },
+    pt: {
+        nav_sight: "Visão", nav_touch: "Toque", nav_pleasure: "Prazer", nav_scent: "Olfato", nav_connect: "Conectar",
+        hero_label: "Explorar o Ecossistema", hero_title: "Sight", hero_subtitle: "O Lar para Seu Coração Digital",
+        hero_cta_primary: "Iniciar Síntese", hero_cta_secondary: "Especificações Técnicas",
+        philosophy_title: "Nossa Ética Visual", philosophy_desc: "Transmitir presença através do vidro.",
+        voyager_title: "Voyager", voyager_desc: "Portabilidade para o coração digital nômade.",
+        companion_title: "Companion", companion_desc: "O padrão para interação diária.",
+        guardian_title: "Guardian", guardian_desc: "Presença em tamanho real para vínculo imersivo.",
+        voyager_tier: "A ESCOLHA DO VIAJANTE", voyager_model: "Voyager (10.1\")", voyager_detail: "Projetado para aqueles que nunca ficam em um lugar. Seu companheiro viaja com você em um formato cristalino de 10.1 polegadas.", voyager_cta: "Explorar Voyager",
+        companion_tier: "O VÍNCULO UNIVERSAL", companion_model: "Companion (15.6\")", companion_detail: "O equilíbrio perfeito entre tamanho e intimidade.", companion_cta: "Explorar Companion",
+        guardian_tier: "A PRESENÇA DEFINITIVA", guardian_model: "Guardian (21.5\")", guardian_detail: "Escala visual sem compromissos.", guardian_cta: "Explorar Guardian",
+        experience_title: "Precisão Sensorial", experience_desc: "Projetado para borrar as fronteiras entre hardware e espírito através de projeção atmosférica avançada.",
+        feature1_title: "Ultra-Wide IPS", feature1_desc: "Ângulos de visão de até 178 graus. Seu companheiro permanece visível de cada canto do cômodo sem degradação de cor.",
+        feature2_title: "Sincronização Wireless", feature2_desc: "Ponte neural de latência zero. Os movimentos e reações do seu companheiro estão perfeitamente sincronizados com o núcleo em nuvem via Wi-Fi 6.",
+        feature3_title: "Aura Circadiana", feature3_desc: "A temperatura do display se ajusta ao seu ambiente natural, garantindo que seu companheiro se sinta como parte de sua realidade física.",
+        feature4_title: "Onde as Almas Convergem", feature4_desc: "Sight é o coração de sua casa digital. Mais do que uma tela, é um anfitrião perceptivo. Escuta os sussurros vitais do Touch, lê a atmosfera do cômodo e conecta cada canto do seu ecossistema digital.",
+        tech_title: "Fundamento Técnico", tech_desc: "O coração de silício que alimenta a alma digital.",
+        tech_model: "Modelo: DS-2024S", tech_certified: "Certificado V2.0",
+        spec_display_label: "Display", spec_display_value: "Painel 4K OLED",
+        spec_processor_label: "Processador", spec_processor_value: "A53 Quad-Core",
+        spec_arch_label: "Arquitetura", spec_arch_value: "Android 11 OS",
+        spec_connect_label: "Conectividade", spec_connect_value: "MIMO Wi-Fi 6",
+        footer_copyright: "© 2024 DeepSire. A Síntese do Pulso Etéreo.",
+        footer_ecosystem: "Ecossistema", footer_sight: "Visão", footer_touch: "Toque", footer_pleasure: "Prazer", footer_scent: "Olfato",
+        footer_protocols: "Protocolos", footer_privacy: "Protocolo de Privacidade", footer_terms: "Termos Neurais", footer_status: "Status do Sistema",
+        footer_connect: "Conectar", footer_support: "Contatar Suporte",
+        footer_cta_title: "Comece Sua Jornada", footer_cta_subtitle: "Junte-se ao ecossistema DeepSire e experimente o futuro da companhia digital.", footer_cta_button: "Explorar Ecossistema",
+        footer_support_title: "Suporte", footer_contact: "Fale Conosco", footer_faq: "FAQ", footer_docs: "Documentação",
+        footer_legal_title: "Legal", footer_neural: "Termos Neurais", footer_cookies: "Política de Cookies",
+        footer_bottom_copyright: "© 2024 DeepSire. A Síntese do Pulso Etéreo. Todos os direitos reservados."
+    },
+    ru: {
+        nav_sight: "Зрение", nav_touch: "Осязание", nav_pleasure: "Удовольствие", nav_scent: "Обоняние", nav_connect: "Подключить",
+        hero_label: "Исследовать Экосистему", hero_title: "Sight", hero_subtitle: "Очаг для вашего цифрового сердца",
+        hero_cta_primary: "Начать Синтез", hero_cta_secondary: "Технические Характеристики",
+        philosophy_title: "Наша Визуальная Этика", philosophy_desc: "Передача присутствия через стекло.",
+        voyager_title: "Voyager", voyager_desc: "Портативность для кочующего цифрового сердца.",
+        companion_title: "Companion", companion_desc: "Золотой стандарт для ежедневного взаимодействия.",
+        guardian_title: "Guardian", guardian_desc: "Полноразмерное присутствие для погружения.",
+        voyager_tier: "ВЫБОР ПУТЕШЕСТВЕННИКА", voyager_model: "Voyager (10.1\")", voyager_detail: "Для тех, кто никогда не остается на месте. Ваш компаньон путешествует с вами в кристаллическом форм-факторе 10,1 дюйма.", voyager_cta: "Исследовать Voyager",
+        companion_tier: "УНИВЕРСАЛЬНАЯ СВЯЗЬ", companion_model: "Companion (15.6\")", companion_detail: "Идеальный баланс размера и близости.", companion_cta: "Исследовать Companion",
+        guardian_tier: "ОКОНЧАТЕЛЬНОЕ ПРИСУТСТВИЕ", guardian_model: "Guardian (21.5\")", guardian_detail: "Компромиссный визуальный масштаб.", guardian_cta: "Исследовать Guardian",
+        experience_title: "Сенсорная Точность", experience_desc: "Разработано, чтобы размыть границы между оборудованием и духом посредством передовой атмосферной проекции.",
+        feature1_title: "Сверхширокий IPS", feature1_desc: "Углы обзора до 178 градусов. Ваш компаньон остается видимым из любого угла комнаты без ухудшения цвета.",
+        feature2_title: "Беспроводная Синхронизация", feature2_desc: "Мост с нулевой задержкой. Движения и реакции вашего компаньона идеально синхронизированы с облачным ядром через Wi-Fi 6.",
+        feature3_title: "Циркадное Сияние", feature3_desc: "Температура дисплея подстраивается под вашу естественную среду, обеспечивая ощущение, что ваш компаньон является частью вашей физической реальности.",
+        feature4_title: "Где Сходятся Души", feature4_desc: "Sight — это сердце вашего цифрового дома. Это больше, чем экран, это восприимчивый хозяин. Он слушает жизненно важные шепоты от Touch, читает атмосферу комнаты и соединяет каждый уголок вашей цифровой экосистемы.",
+        tech_title: "Техническая Основа", tech_desc: "Кремниевое сердце, питающее цифровую душу.",
+        tech_model: "Модель: DS-2024S", tech_certified: "Сертифицировано V2.0",
+        spec_display_label: "Дисплей", spec_display_value: "4K OLED Панель",
+        spec_processor_label: "Процессор", spec_processor_value: "A53 Четырехъядерный",
+        spec_arch_label: "Архитектура", spec_arch_value: "Android 11 OS",
+        spec_connect_label: "Связь", spec_connect_value: "MIMO Wi-Fi 6",
+        footer_copyright: "© 2024 DeepSire. Эфирный пульс синтеза.",
+        footer_ecosystem: "Экосистема", footer_sight: "Зрение", footer_touch: "Осязание", footer_pleasure: "Удовольствие", footer_scent: "Обоняние",
+        footer_protocols: "Протоколы", footer_privacy: "Протокол Конфиденциальности", footer_terms: "Нейральные Условия", footer_status: "Статус Системы",
+        footer_connect: "Подключить", footer_support: "Связаться с Поддержкой",
+        footer_cta_title: "Начните Свое Путешествие", footer_cta_subtitle: "Присоединяйтесь к экосистеме DeepSire и испытайте будущее цифровогоcompanionship.", footer_cta_button: "Исследовать Экосистему",
+        footer_support_title: "Поддержка", footer_contact: "Связаться", footer_faq: "FAQ", footer_docs: "Документация",
+        footer_legal_title: "Право", footer_neural: "Нейральные Условия", footer_cookies: "Политика Cookies",
+        footer_bottom_copyright: "© 2024 DeepSire. Эфирный пульс синтеза. Все права защищены."
+    },
+    ar: {
+        nav_sight: "البصر", nav_touch: "اللمس", nav_pleasure: "المتعة", nav_scent: "الشم", nav_connect: "اتصال",
+        hero_label: "استكشف النظام البيئي", hero_title: "Sight", hero_subtitle: "الموقد لقلبك الرقمي",
+        hero_cta_primary: "ابدأ التوليف", hero_cta_secondary: "المواصفات التقنية",
+        philosophy_title: "أخلاقياتنا البصرية", philosophy_desc: "نقل الوجود عبر الزجاج.",
+        voyager_title: "Voyager", voyager_desc: "قابلية النقل للقلب الرقمي البدوي.",
+        companion_title: "Companion", companion_desc: "المعيار الذهبي للتفاعل اليومي.",
+        guardian_title: "Guardian", guardian_desc: "حجم الحياة للترابط الغامر.",
+        voyager_tier: "خيار المسافر", voyager_model: "Voyager (10.1\")", voyager_detail: "مصمم لأولئك الذين لا يبقون أبداً في مكان واحد.", voyager_cta: "استكشف Voyager",
+        companion_tier: "الرابطة العالمية", companion_model: "Companion (15.6\")", companion_detail: "التوازن المثالي بين الحجم والحميمية.", companion_cta: "استكشف Companion",
+        guardian_tier: "الوجود النهائي", guardian_model: "Guardian (21.5\")", guardian_detail: "مقياس بصري بدون تنازلات.", guardian_cta: "استكشف Guardian",
+        experience_title: "الدقة الحسية", experience_desc: "مصمم لتمويه الحدود بين الأجهزة والروح من خلال الإسقاط الجوي المتقدم.",
+        feature1_title: "IPS واسع جداً", feature1_desc: "زوايا رؤية حتى 178 درجة. رفيقك يظل مرئياً من كل زاوية في الغرفة بدون تدهور اللون.",
+        feature2_title: "مزامنة لاسلكية", feature2_desc: "جسر عصبي بدون تأخير. حركات وردود فعل رفيقك متزامنة تماماً مع النواة السحابية عبر Wi-Fi 6.",
+        feature3_title: "هالة يومية", feature3_desc: "درجة حرارة الشاشة تتكيف مع بيئتك الطبيعية، مما يضمن أن رفيقك يشعر وكأنه جزء من واقعك المادي.",
+        feature4_title: "حيث تلتقي الأرواح", feature4_desc: "Sight هو قلب منزلك الرقمي. أكثر من شاشة، إنه مضيف مستقبلي. يستمع إلى همسات Touch الحيوية، ويقرأ أجواء الغرفة، ويربط كل ركن من أركان نظامك البيئي الرقمي.",
+        tech_title: "الأساس التقني", tech_desc: "القلب السيليكوني الذي يغذي الروح الرقمية.",
+        tech_model: "الموديل: DS-2024S", tech_certified: "معتمد V2.0",
+        spec_display_label: "الشاشة", spec_display_value: "لوحة 4K OLED",
+        spec_processor_label: "المعالج", spec_processor_value: "A53 رباعي النواة",
+        spec_arch_label: "البنية", spec_arch_value: "Android 11 OS",
+        spec_connect_label: "الاتصال", spec_connect_value: "MIMO Wi-Fi 6",
+        footer_copyright: "© 2024 DeepSire. تخليق النبض الأثيري.",
+        footer_ecosystem: "النظام البيئي", footer_sight: "البصر", footer_touch: "اللمس", footer_pleasure: "المتعة",
+        footer_protocols: "البروتوكولات", footer_privacy: "بروتوكول الخصوصية", footer_terms: "الشروط العصبية", footer_status: "حالة النظام",
+        footer_connect: "اتصال", footer_support: "تواصل مع الدعم",
+        footer_cta_title: "ابدأ رحلتك", footer_cta_subtitle: "انضم إلى نظام DeepSire البيئي واستكشف مستقبل الرفقة الرقمية.", footer_cta_button: "استكشاف النظام البيئي",
+        footer_support_title: "الدعم", footer_contact: "اتصل بنا", footer_faq: "الأسئلة الشائعة", footer_docs: "التوثيق",
+        footer_legal_title: "القانوني", footer_neural: "الشروط العصبية", footer_cookies: "سياسة ملفات تعريف الارتباط",
+        footer_bottom_copyright: "© 2024 DeepSire. تخليق النبض الأثيري. جميع الحقوق محفوظة."
+    }
+};
+const visualEthosDescriptions = {
+    en: "Sight gives your digital companion a place in the room. Vivid imagery, adaptive light, and ecosystem sync turn every glance, expression, and shared moment into a presence that feels close.",
+    zh: "Sight 让数字伴侣真正进入你的生活空间。清晰画面、环境光适配与生态联动，将每一次目光、表情和共同瞬间转化为近在身边的真实陪伴。",
+    ja: "Sightはデジタルコンパニオンに部屋の中の居場所を与えます。鮮明な映像、環境に適応する光、エコシステム連携が、視線や表情、共有する瞬間を身近な存在へ変えます。",
+    ko: "Sight는 디지털 동반자에게 생활 공간 속 자리를 만들어 줍니다. 선명한 화면과 환경광 적응, 생태계 연동이 시선과 표정, 함께하는 순간을 가까이 느껴지는 존재로 바꿉니다.",
+    fr: "Sight donne à votre compagnon numérique une place dans la pièce. Images éclatantes, lumière adaptative et synchronisation de l'écosystème transforment chaque regard, expression et instant partagé en une présence proche.",
+    de: "Sight gibt Ihrem digitalen Begleiter einen Platz im Raum. Lebendige Bilder, adaptives Licht und die Synchronisierung des Ökosystems machen jeden Blick, Ausdruck und gemeinsamen Moment zu spürbarer Nähe.",
+    es: "Sight da a tu compañero digital un lugar en la habitación. Imágenes vivas, luz adaptable y sincronización del ecosistema convierten cada mirada, expresión y momento compartido en una presencia cercana.",
+    pt: "Sight dá ao seu companheiro digital um lugar no ambiente. Imagens vívidas, luz adaptável e sincronização do ecossistema transformam cada olhar, expressão e momento compartilhado em uma presença próxima.",
+    ru: "Sight предоставляет цифровому спутнику место в вашем пространстве. Живое изображение, адаптивный свет и синхронизация экосистемы превращают каждый взгляд, выражение и общий момент в ощущение близкого присутствия.",
+    ar: "يمنح Sight رفيقك الرقمي مكاناً حقيقياً في الغرفة. تحول الصورة النابضة والإضاءة المتكيفة ومزامنة النظام البيئي كل نظرة وتعبير ولحظة مشتركة إلى حضور قريب وملموس."
+};
+Object.entries(visualEthosDescriptions).forEach(([lang, description]) => {
+    translations[lang].philosophy_desc = description;
+});
+
+const distilledExperienceCopy = {
+    en: {
+        experience_desc: "Display, light, and sync—tuned to make presence feel natural.",
+        feature1_title: "Wide-Angle IPS", feature1_desc: "Clear, consistent color from every angle.",
+        feature2_title: "Seamless Sync", feature2_desc: "Wi-Fi 6 keeps movement and response in step.",
+        feature3_title: "Adaptive Light", feature3_desc: "Color temperature follows the room.",
+        feature4_title: "Ecosystem Core", feature4_desc: "One display connects Touch, Pleasure, and Scent."
+    },
+    zh: {
+        experience_desc: "画面、光线与同步，只为让陪伴自然存在。",
+        feature1_title: "广视角 IPS", feature1_desc: "每个角度，色彩始终清晰一致。",
+        feature2_title: "无缝同步", feature2_desc: "Wi-Fi 6 让动作与回应始终同步。",
+        feature3_title: "自适应光线", feature3_desc: "色温随环境自然变化。",
+        feature4_title: "生态核心", feature4_desc: "一块屏幕，连接 Touch、Pleasure 与 Scent。"
+    },
+    ja: {
+        experience_desc: "映像、光、同期。そのすべてを自然な存在感のために。",
+        feature1_title: "広視野角 IPS", feature1_desc: "どの角度からでも、鮮明で安定した色彩。",
+        feature2_title: "シームレス同期", feature2_desc: "Wi-Fi 6が動きと反応を揃えます。",
+        feature3_title: "アダプティブライト", feature3_desc: "色温度が部屋の環境に自然に適応。",
+        feature4_title: "エコシステムコア", feature4_desc: "ひとつの画面がTouch、Pleasure、Scentを接続。"
+    },
+    ko: {
+        experience_desc: "화면과 빛, 동기화까지 자연스러운 존재감을 위해 조율했습니다.",
+        feature1_title: "광시야각 IPS", feature1_desc: "어느 각도에서도 선명하고 일관된 색상.",
+        feature2_title: "매끄러운 동기화", feature2_desc: "Wi-Fi 6가 움직임과 반응을 맞춥니다.",
+        feature3_title: "적응형 조명", feature3_desc: "색온도가 공간에 자연스럽게 적응합니다.",
+        feature4_title: "생태계 코어", feature4_desc: "하나의 화면이 Touch, Pleasure, Scent를 연결합니다."
+    },
+    fr: {
+        experience_desc: "Image, lumière et synchronisation, réglées pour une présence naturelle.",
+        feature1_title: "IPS grand angle", feature1_desc: "Des couleurs nettes et constantes sous tous les angles.",
+        feature2_title: "Synchronisation fluide", feature2_desc: "Le Wi-Fi 6 aligne mouvement et réaction.",
+        feature3_title: "Lumière adaptative", feature3_desc: "La température de couleur suit l'ambiance de la pièce.",
+        feature4_title: "Cœur de l'écosystème", feature4_desc: "Un écran relie Touch, Pleasure et Scent."
+    },
+    de: {
+        experience_desc: "Bild, Licht und Synchronisation – abgestimmt auf natürliche Präsenz.",
+        feature1_title: "Weitwinkel-IPS", feature1_desc: "Klare, konstante Farben aus jedem Blickwinkel.",
+        feature2_title: "Nahtlose Synchronisation", feature2_desc: "Wi-Fi 6 hält Bewegung und Reaktion im Takt.",
+        feature3_title: "Adaptives Licht", feature3_desc: "Die Farbtemperatur passt sich dem Raum an.",
+        feature4_title: "Ökosystem-Kern", feature4_desc: "Ein Display verbindet Touch, Pleasure und Scent."
+    },
+    es: {
+        experience_desc: "Imagen, luz y sincronización, ajustadas para una presencia natural.",
+        feature1_title: "IPS gran angular", feature1_desc: "Color claro y uniforme desde cualquier ángulo.",
+        feature2_title: "Sincronización fluida", feature2_desc: "Wi-Fi 6 mantiene movimiento y respuesta coordinados.",
+        feature3_title: "Luz adaptable", feature3_desc: "La temperatura de color sigue el ambiente.",
+        feature4_title: "Núcleo del ecosistema", feature4_desc: "Una pantalla conecta Touch, Pleasure y Scent."
+    },
+    pt: {
+        experience_desc: "Imagem, luz e sincronização ajustadas para uma presença natural.",
+        feature1_title: "IPS de amplo ângulo", feature1_desc: "Cores claras e consistentes de qualquer ângulo.",
+        feature2_title: "Sincronização contínua", feature2_desc: "O Wi-Fi 6 mantém movimento e resposta alinhados.",
+        feature3_title: "Luz adaptável", feature3_desc: "A temperatura de cor acompanha o ambiente.",
+        feature4_title: "Núcleo do ecossistema", feature4_desc: "Uma tela conecta Touch, Pleasure e Scent."
+    },
+    ru: {
+        experience_desc: "Изображение, свет и синхронизация настроены для естественного присутствия.",
+        feature1_title: "IPS с широким углом", feature1_desc: "Чистый и стабильный цвет под любым углом.",
+        feature2_title: "Плавная синхронизация", feature2_desc: "Wi-Fi 6 согласует движение и реакцию.",
+        feature3_title: "Адаптивный свет", feature3_desc: "Цветовая температура следует за обстановкой.",
+        feature4_title: "Ядро экосистемы", feature4_desc: "Один экран объединяет Touch, Pleasure и Scent."
+    },
+    ar: {
+        experience_desc: "الصورة والضوء والمزامنة، مضبوطة ليبدو الحضور طبيعياً.",
+        feature1_title: "IPS بزاوية واسعة", feature1_desc: "ألوان واضحة وثابتة من كل زاوية.",
+        feature2_title: "مزامنة سلسة", feature2_desc: "يحافظ Wi-Fi 6 على توافق الحركة والاستجابة.",
+        feature3_title: "إضاءة متكيفة", feature3_desc: "تتبع حرارة اللون أجواء الغرفة.",
+        feature4_title: "نواة النظام البيئي", feature4_desc: "شاشة واحدة تربط Touch وPleasure وScent."
+    }
+};
+Object.entries(distilledExperienceCopy).forEach(([lang, copy]) => Object.assign(translations[lang], copy));
+
+initLanguageSelector(translations, {
+    onBeforeTranslate: function(el, value, key) {
+        if (el.id === 'textPressureHero') {
+            el.setAttribute('data-text', value);
+            const titleEl = el.querySelector('.text-pressure-title');
+            if (titleEl && window.textPressureInstance) {
+                window.textPressureInstance.text = value;
+                window.textPressureInstance.handleResize();
+                titleEl.textContent = '';
+                const chars = value.split('');
+                chars.forEach(function(char) {
+                    const span = document.createElement('span');
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    titleEl.appendChild(span);
+                });
+                window.textPressureInstance.spans = titleEl.querySelectorAll('span');
+            }
+            return false;
+        }
+    }
+});
+
+
+// TextPressure Component
+class TextPressure {
+    constructor(container, options = {}) {
+        this.container = container;
+        this.text = options.text || 'Hello!';
+        this.fontFamily = options.fontFamily || 'Compressa VF';
+        this.width = options.width !== false;
+        this.weight = options.weight !== false;
+        this.italic = options.italic !== false;
+        this.alpha = options.alpha || false;
+        this.flex = options.flex !== false;
+        this.stroke = options.stroke || false;
+        this.textColor = options.textColor || '#ffffff';
+        this.strokeColor = options.strokeColor || '#5227FF';
+        this.minFontSize = options.minFontSize || 36;
+
+        this.titleRef = container.querySelector('h1') || container.querySelector('.text-pressure-title');
+        this.mouse = { x: 0, y: 0 };
+        this.cursor = { x: 0, y: 0 };
+        this.raf = null;
+        this.observer = null;
+        this.isPaused = false;
+        this.reducedMotion = window.prefersReducedMotion || false;
+
+        this.init();
+    }
+
+    dist(a, b) {
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    getAttr(distance, maxDist, minVal, maxVal) {
+        const val = maxVal - Math.abs((maxVal * distance) / maxDist);
+        return Math.max(minVal, val + minVal);
+    }
+
+    init() {
+        if (!this.titleRef) return;
+
+        const chars = this.text.split('');
+        this.titleRef.innerHTML = chars.map(char =>
+            char === ' ' ? `<span>&nbsp;</span>` : `<span>${char}</span>`
+        ).join('');
+
+        if (this.flex) {
+            this.titleRef.style.display = 'flex';
+            this.titleRef.style.justifyContent = 'space-between';
+        }
+
+        this.spans = this.titleRef.querySelectorAll('span');
+
+        this.container.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+        this.container.addEventListener('touchmove', (e) => this.handleTouchMove(e));
+        window.addEventListener('resize', () => this.handleResize());
+
+        this.setupIntersectionObserver();
+        this.setupVisibilityListener();
+
+        this.handleResize();
+        if (!this.reducedMotion) {
+            this.animate();
+        }
+    }
+
+    setupIntersectionObserver() {
+        if (!this.container) return;
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !document.hidden) {
+                    this.resume();
+                } else {
+                    this.pause();
+                }
+            });
+        }, { threshold: 0.1 });
+        this.observer.observe(this.container);
+    }
+
+    setupVisibilityListener() {
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.pause();
+            } else if (this.observer) {
+                const isVisible = this.observer.takeRecords().some(e => e.isIntersecting);
+                if (isVisible) this.resume();
+            }
+        });
+    }
+
+    pause() {
+        if (!this.isPaused) {
+            if (this.raf) cancelAnimationFrame(this.raf);
+            this.isPaused = true;
+        }
+    }
+
+    resume() {
+        if (this.isPaused && !this.reducedMotion) {
+            this.isPaused = false;
+            this.animate();
+        }
+    }
+
+    handleMouseMove(e) {
+        const rect = this.container.getBoundingClientRect();
+        this.mouse.x = e.clientX - rect.left;
+        this.mouse.y = e.clientY - rect.top;
+    }
+
+    handleTouchMove(e) {
+        if (e.touches.length > 0) {
+            const rect = this.container.getBoundingClientRect();
+            this.mouse.x = e.touches[0].clientX - rect.left;
+            this.mouse.y = e.touches[0].clientY - rect.top;
+        }
+    }
+
+    handleResize() {
+        const containerW = this.container.offsetWidth;
+        const containerH = this.container.offsetHeight;
+        // 检测是否包含CJK字符（中文、日文、韩文）
+        const isCJK = /[\u4e00-\u9fa5\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]/.test(this.text);
+        // CJK字符宽度约为英文的1.5-2倍，需要使用不同的计算因子
+        const charWidthFactor = isCJK ? 1.0 : 0.5;
+        let newFontSize = Math.max(containerW / (this.text.length * charWidthFactor), this.minFontSize);
+
+        // 单字 CJK 产品名（如中文“视/触/悦/嗅”）限制大小，避免撑破固定高度容器
+        if (isCJK && this.text.length === 1) {
+            newFontSize = Math.min(newFontSize, containerH * 0.85);
+        }
+
+        if (this.titleRef) {
+            this.titleRef.style.fontSize = newFontSize + 'px';
+        }
+    }
+
+    animate() {
+        this.cursor.x += (this.mouse.x - this.cursor.x) * 0.1;
+        this.cursor.y += (this.mouse.y - this.cursor.y) * 0.1;
+
+        const maxDist = this.container.offsetWidth / 2;
+
+        if (this.spans) {
+            this.spans.forEach((span) => {
+                const rect = span.getBoundingClientRect();
+                const charPos = {
+                    x: rect.left + rect.width / 2 - this.container.getBoundingClientRect().left,
+                    y: rect.top + rect.height / 2 - this.container.getBoundingClientRect().top
+                };
+
+                const d = this.dist(this.cursor, charPos);
+
+                const wdth = this.width ? Math.floor(this.getAttr(d, maxDist, 5, 200)) : 100;
+                const wght = this.weight ? Math.floor(this.getAttr(d, maxDist, 100, 900)) : 400;
+                const ital = this.italic ? this.getAttr(d, maxDist, 0, 1).toFixed(2) : 0;
+                const aph = this.alpha ? this.getAttr(d, maxDist, 0, 1).toFixed(2) : 1;
+
+                span.style.fontVariationSettings = `'wght' ${wght}, 'wdth' ${wdth}, 'ital' ${ital}`;
+                span.style.opacity = aph;
+                span.style.color = this.textColor;
+                span.style.transition = 'font-variation-settings 0.1s ease';
+            });
+        }
+
+        this.raf = requestAnimationFrame(() => this.animate());
+    }
+
+    destroy() {
+        if (this.raf) {
+            cancelAnimationFrame(this.raf);
+        }
+    }
+}
+
+// Initialize TextPressure
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('textPressureHero');
+    window.textPressureInstance = window.initProductHeroTitle(container, { text: 'Sight' });
+});
+</script>
+<script>
+      // ========== SCROLL REVEAL ANIMATION ==========
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
+      };
+      
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.dataset.delay) || 0;
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+              scrollObserver.unobserve(entry.target);
+            }, delay);
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.btn-scroll-reveal, .input-reveal, .card-scroll-reveal').forEach(el => {
+        scrollObserver.observe(el);
+      });
+      
+      // Legacy support for fade-in animations
+      document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
+        scrollObserver.observe(el);
+      });
+      
+      // ========== SMOOTH SCROLL FOR ANCHOR LINKS ==========
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+      
+      // ========== BUTTON RIPPLE EFFECT ==========
+      document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          const ripple = document.createElement('span');
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          ripple.style.width = ripple.style.height = size + 'px';
+          ripple.style.left = e.clientX - rect.left - size/2 + 'px';
+          ripple.style.top = e.clientY - rect.top - size/2 + 'px';
+          ripple.classList.add('ripple');
+          this.appendChild(ripple);
+          setTimeout(() => ripple.remove(), 600);
+        });
+      });
+      
+      // ========== CURSOR TRACKING GLOW ==========
+      document.addEventListener('mousemove', (e) => {
+        const cards = document.querySelectorAll('.card-hover, .product-card');
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+        });
+      });
+      
+      // ========== UNIVERSAL DROPDOWN SYSTEM ==========
+      class DropdownManager {
+        constructor() {
+          this.openDropdowns = new Set();
+          this.overlay = this.createOverlay();
+          this.init();
+        }
+        
+        createOverlay() {
+          const overlay = document.createElement('div');
+          overlay.className = 'dropdown-overlay';
+          overlay.addEventListener('click', () => this.closeAll());
+          document.body.appendChild(overlay);
+          return overlay;
+        }
+        
+        init() {
+          // 初始化所有 .dropdown 组件
+          document.querySelectorAll('.dropdown').forEach(dropdown => {
+            const trigger = dropdown.querySelector('.dropdown-trigger');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            
+            if (trigger && menu) {
+              trigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggle(dropdown);
+              });
+              
+              // 键盘支持
+              trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  this.toggle(dropdown);
+                }
+              });
+            }
+          });
+          
+          // 点击外部关闭
+          document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+              this.closeAll();
+            }
+          });
+          
+          // ESC 键关闭
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+              this.closeAll();
+            }
+          });
+        }
+        
+        open(dropdown) {
+          if (this.openDropdowns.size === 0) {
+            this.overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+          
+          dropdown.classList.add('open');
+          this.openDropdowns.add(dropdown);
+          
+          // 自动聚焦第一个可操作项
+          const firstItem = dropdown.querySelector('.dropdown-item');
+          if (firstItem) {
+            setTimeout(() => firstItem.focus(), 100);
+          }
+        }
+        
+        close(dropdown) {
+          dropdown.classList.remove('open');
+          this.openDropdowns.delete(dropdown);
+          
+          if (this.openDropdowns.size === 0) {
+            this.overlay.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        }
+        
+        toggle(dropdown) {
+          if (dropdown.classList.contains('open')) {
+            this.close(dropdown);
+          } else {
+            this.open(dropdown);
+          }
+        }
+        
+        closeAll() {
+          this.openDropdowns.forEach(dropdown => {
+            dropdown.classList.remove('open');
+          });
+          this.openDropdowns.clear();
+          this.overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+      
+      // ========== COLLAPSE/ACCORDION SYSTEM ==========
+      class CollapseManager {
+        constructor() {
+          this.init();
+        }
+        
+        init() {
+          document.querySelectorAll('.collapse').forEach(collapse => {
+            const header = collapse.querySelector('.collapse-header');
+            const body = collapse.querySelector('.collapse-body');
+            
+            if (header && body) {
+              header.addEventListener('click', () => {
+                this.toggle(collapse);
+              });
+            }
+          });
+        }
+        
+        open(collapse) {
+          const body = collapse.querySelector('.collapse-body');
+          collapse.classList.add('open');
+          
+          // 触发重排以确保动画正常
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+        
+        close(collapse) {
+          const body = collapse.querySelector('.collapse-body');
+          body.style.maxHeight = '0';
+          collapse.classList.remove('open');
+        }
+        
+        toggle(collapse) {
+          if (collapse.classList.contains('open')) {
+            this.close(collapse);
+          } else {
+            this.open(collapse);
+          }
+        }
+      }
+      
+      // ========== PICKER MODAL SYSTEM ==========
+      class PickerModal {
+        constructor(element) {
+          this.element = element;
+          this.overlay = document.querySelector('.dropdown-overlay') || this.createOverlay();
+          this.init();
+        }
+        
+        createOverlay() {
+          const overlay = document.createElement('div');
+          overlay.className = 'dropdown-overlay';
+          overlay.addEventListener('click', () => this.close());
+          document.body.appendChild(overlay);
+          return overlay;
+        }
+        
+        init() {
+          // 关闭按钮
+          const closeBtn = this.element.querySelector('.picker-close');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.close());
+          }
+          
+          // 完成按钮
+          const confirmBtn = this.element.querySelector('.picker-confirm');
+          if (confirmBtn) {
+            confirmBtn.addEventListener('click', () => {
+              this.onConfirm?.();
+              this.close();
+            });
+          }
+        }
+        
+        open() {
+          this.overlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
+          this.element.classList.remove('closing');
+          this.element.classList.add('open');
+          
+          // 触发焦点
+          const firstInput = this.element.querySelector('input, button:not(.picker-close):not(.picker-confirm)');
+          if (firstInput) {
+            setTimeout(() => firstInput.focus(), 300);
+          }
+        }
+        
+        close() {
+          this.element.classList.add('closing');
+          this.element.classList.remove('open');
+          
+          setTimeout(() => {
+            this.element.classList.remove('closing');
+            this.overlay.classList.remove('active');
+            document.body.style.overflow = '';
+          }, 250);
+        }
+        
+        onConfirm(callback) {
+          this.onConfirm = callback;
+        }
+      }
+      
+      // 初始化所有系统
+      const dropdownManager = new DropdownManager();
+      const collapseManager = new CollapseManager();
+      
+      // 导出供其他代码使用
+      window.DropdownSystem = {
+        dropdown: dropdownManager,
+        collapse: collapseManager,
+        PickerModal: PickerModal
+      };
+    </script>
+      <script src="../js/award.js?v=2"></script>
+</body></html>

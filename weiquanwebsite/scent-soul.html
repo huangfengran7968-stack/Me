@@ -6,458 +6,21 @@
     <title>嗅 - DeepSire | 有些记忆，藏在气味里</title>
     <meta name="description" content="嗅智能香氛机，气味是通往记忆的时光机。用精确的气味分子，为你的数字灵魂营造家园。">
     <link rel="icon" href="image/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="image/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/shared.css">
     <link rel="stylesheet" href="static/product-common.css">
-    <style>
-        :root {
-            --brand-color: #8A2BE2;
-            --accent-color: #7B61FF;
-            --dark-bg: #0f172a;
-            --text-light: #ffffff;
-            --text-gray: #94a3b8;
-            --font-family: 'Noto Sans SC', 'Inter', sans-serif;
-            --btn-gradient: linear-gradient(135deg, #5B38F5, #9D5CFF);
-            --btn-hover: linear-gradient(135deg, #7B61FF, #5B38F5);
-            --logo-glow: rgba(0, 224, 255, 0.4);
-            --bg-glow-1: rgba(138,43,226, 0.1);
-            --bg-glow-2: rgba(91,56,245, 0.08);
-            --feature-glow: rgba(138,43,226, 0.12);
-            --border-hover: rgba(138,43,226, 0.2);
-            --card-glow: rgba(138,43,226, 0.1);
-            --icon-bg: rgba(138,43,226, 0.2);
-            --icon-bg-light: rgba(138,43,226, 0.05);
-            --tag-bg: rgba(138,43,226, 0.12);
-            --specs-glow-1: rgba(91,56,245, 0.08);
-            --specs-glow-2: rgba(91,56,245, 0.06);
-            --spec-bg: rgba(91,56,245, 0.04);
-            --spec-border: rgba(91,56,245, 0.15);
-            --spec-bg-hover: rgba(91,56,245, 0.08);
-            --spec-border-hover: rgba(91,56,245, 0.4);
-            --spec-glow: rgba(91,56,245, 0.2);
-            --brand-color-alpha: rgba(91,56,245, 0.1);
-            --spec-icon-bg: rgba(91,56,245, 0.2);
-            --spec-icon-bg-light: rgba(91,56,245, 0.1);
-            --spec-value-glow: rgba(91,56,245, 0.5);
-            --cta-glow-1: rgba(138,43,226, 0.06);
-            --cta-glow-2: rgba(138,43,226, 0.04);
-            --scrollbar-thumb: #5B38F5;
-            --scrollbar-thumb-light: #8A2BE2;
-            --scrollbar-thumb-hover: #5B38F5;
-            --scrollbar-thumb-hover-light: #7B61FF;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: var(--font-family);
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.8;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            background:
-                radial-gradient(ellipse at 20% 20%, rgba(138,43,226, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(91,56,245, 0.08) 0%, transparent 50%);
-            pointer-events: none; z-index: -1;
-        }
-
-        .container { width: 90%; max-width: 1280px; margin: 0 auto; }
-
-        .header {
-            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
-            height: 80px;
-            background: transparent;
-            backdrop-filter: blur(0);
-            border-bottom: none;
-            transition: all 0.3s ease;
-        }
-
-        .header.scrolled {
-            background: rgba(10, 6, 18, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .navbar {
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            height: 100%; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            padding: 0 40px;
-            position: relative;
-        }
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 14px; 
-            text-decoration: none; 
-            position: absolute;
-            left: 40px;
-        }
-        .logo-image { height: 46px; width: auto; filter: drop-shadow(0 0 10px rgba(0, 224, 255, 0.3)); transition: all 0.3s ease; }
-        .logo:hover .logo-image { filter: drop-shadow(0 0 16px rgba(0, 224, 255, 0.5)); }
-        .logo-text { font-family: 'Noto Serif SC', 'Noto Sans SC', 'Inter', serif; font-size: 32px; font-weight: 800; letter-spacing: 2.5px; color: #FFFFFF; text-shadow: 0 0 30px rgba(0, 224, 255, 0.3); }
-        .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-        .nav-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.3s ease; position: relative; }
-        .nav-links a:hover, .nav-links a.active { color: var(--brand-color); }
-
-        .hamburger { display: none; }
-
-        .language-switcher {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            position: absolute;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .lang-btn {
-            padding: 6px 12px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: var(--brand-color);
-        }
-        .lang-btn.active {
-            background: var(--btn-gradient);
-            color: #fff;
-            border-color: var(--brand-color);
-        }
-
-        .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            position: relative; padding: 120px 0 80px; overflow: hidden;
-        }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; }
-        .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-        .hero-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.5) 50%, rgba(15, 23, 42, 0.9) 100%);
-        }
-        .hero-content { text-align: center; max-width: 900px; z-index: 1; }
-        .hero-badge {
-            display: inline-block; padding: 8px 20px;
-            background: rgba(138,43,226, 0.12);
-            border: 1px solid rgba(138,43,226, 0.25);
-            border-radius: 50px; color: var(--brand-color);
-            font-size: 14px; font-weight: 500; margin-bottom: 24px;
-            animation: floatBadge 4s ease-in-out infinite;
-        }
-        @keyframes floatBadge {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-        .hero h1 {
-            font-size: 4.5rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 30%, var(--brand-color) 70%, var(--accent-color) 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; animation: gradientShift 6s ease-in-out infinite;
-        }
-        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        .hero-subtitle { font-size: 1.5rem; color: var(--text-gray); margin-bottom: 40px; font-weight: 300; letter-spacing: 1px; }
-        .hero-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-
-        .btn-primary {
-            display: inline-flex; align-items: center; padding: 16px 40px;
-            background: var(--btn-gradient); color: #fff; text-decoration: none;
-            border-radius: 50px; font-weight: 600; font-size: 16px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 8px 30px rgba(138,43,226, 0.4);
-            position: relative; overflow: hidden;
-        }
-        .btn-primary::before {
-            content: ''; position: absolute; top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        .btn-primary:hover::before { left: 100%; }
-        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(138,43,226, 0.6); }
-
-        .btn-secondary {
-            display: inline-flex; align-items: center; padding: 16px 40px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #fff; text-decoration: none; border-radius: 50px;
-            font-weight: 500; font-size: 16px; transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-        }
-        .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
-
-        section { padding: 120px 0; position: relative; }
-        .section-header { text-align: center; max-width: 700px; margin: 0 auto 60px; }
-        .section-header h2 {
-            font-size: 2.8rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff, var(--brand-color));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .section-header p { font-size: 1.1rem; color: var(--text-gray); }
-
-        .philosophy { background: linear-gradient(180deg, var(--dark-bg) 0%, #0a0612 100%); }
-        .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .philosophy-content h2 { font-size: 2.4rem; font-weight: 700; margin-bottom: 24px; line-height: 1.3; }
-        .philosophy-content p { font-size: 1.1rem; color: var(--text-gray); line-height: 1.9; margin-bottom: 20px; }
-        .philosophy-video { border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); }
-        .philosophy-video video { width: 100%; height: auto; display: block; }
-
-        .features { background: linear-gradient(180deg, #0a0612 0%, var(--dark-bg) 100%); }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px; padding: 40px 32px; text-align: center;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative; overflow: hidden;
-        }
-        .feature-card::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(138,43,226, 0.12) 0%, transparent 60%);
-            opacity: 0; transition: opacity 0.3s ease;
-        }
-        .feature-card:hover::before { opacity: 1; }
-        .feature-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(138,43,226, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(138,43,226, 0.1);
-        }
-        .feature-card .scan-edge {
-            position: absolute; top: 0; left: 0; width: 3px; height: 100%;
-            background: linear-gradient(180deg, transparent, rgba(138,43,226, 0.9), transparent);
-            opacity: 0; pointer-events: none; z-index: 2;
-        }
-        .feature-card:hover .scan-edge { animation: edgeScan 0.6s ease-out forwards; }
-        @keyframes edgeScan { 0% { top: 0; opacity: 1; } 100% { top: 100%; opacity: 1; } }
-        .feature-icon { width: 72px; height: 72px; margin: 0 auto 24px; background: linear-gradient(135deg, rgba(138,43,226, 0.2), rgba(138,43,226, 0.05)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; transition: all 0.4s ease; }
-        .feature-card:hover .feature-icon { transform: scale(1.1) rotate(5deg); }
-        .feature-card h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 12px; }
-        .feature-card p { font-size: 0.95rem; color: var(--text-gray); line-height: 1.7; }
-
-        .stories { background: linear-gradient(180deg, var(--dark-bg) 0%, #0a0612 100%); }
-        .stories-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
-        .story-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px; overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .story-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); border-color: rgba(138,43,226, 0.2); }
-        .story-content { padding: 32px; }
-        .story-tag { display: inline-block; padding: 6px 14px; background: rgba(138,43,226, 0.12); color: var(--brand-color); font-size: 13px; font-weight: 500; border-radius: 20px; margin-bottom: 16px; }
-        .story-icon { margin-right: 8px; font-size: 1.2em; }
-        .story-content h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 16px; }
-        .story-content p { font-size: 1rem; color: var(--text-gray); line-height: 1.8; }
-
-        .specs { background: linear-gradient(180deg, #0a0612 0%, var(--dark-bg) 100%); position: relative; overflow: hidden; }
-        .specs::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(91,56,245, 0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 70% 50%, rgba(91,56,245, 0.06) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .specs .specs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; z-index: 1; }
-        .spec-item {
-            background: rgba(91,56,245, 0.04);
-            border: 1px solid rgba(91,56,245, 0.15);
-            border-radius: 20px; padding: 32px 20px; text-align: center;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative; overflow: hidden;
-        }
-        .spec-item:hover {
-            background: rgba(91,56,245, 0.08);
-            border-color: rgba(91,56,245, 0.4);
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(91,56,245, 0.2);
-        }
-        .spec-item::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), rgba(91,56,245, 0.1), rgba(255,255,255,0.05), transparent);
-            transform: rotate(45deg); animation: holoShine 4s ease-in-out infinite; pointer-events: none;
-        }
-        @keyframes holoShine { 0%, 100% { transform: rotate(45deg) translateX(-100%); } 50% { transform: rotate(45deg) translateX(100%); } }
-        .spec-icon { width: 48px; height: 48px; margin: 0 auto 16px; background: linear-gradient(135deg, rgba(91,56,245, 0.2), rgba(91,56,245, 0.1)); border-radius: 12px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; transition: all 0.3s ease; }
-        .spec-item:hover .spec-icon { transform: scale(1.1); }
-        .spec-icon svg { width: 24px; height: 24px; stroke: var(--brand-color); fill: none; stroke-width: 1.5; }
-        .spec-value { font-size: 1.8rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 20px rgba(91,56,245, 0.5); position: relative; z-index: 1; }
-        .spec-label { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); position: relative; z-index: 1; }
-        .spec-detail { font-size: 0.75rem; color: var(--accent-color); margin-top: 8px; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; position: relative; z-index: 1; }
-        .spec-item:hover .spec-detail { opacity: 1; transform: translateY(0); }
-
-        .product-selection { background: linear-gradient(180deg, var(--dark-bg) 0%, #0a0612 100%); position: relative; overflow: hidden; padding: 120px 0; }
-        .product-selection::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 50% 30%, rgba(138,43,226, 0.06) 0%, transparent 50%),
-                        radial-gradient(ellipse at 20% 80%, rgba(138,43,226, 0.04) 0%, transparent 40%);
-            pointer-events: none;
-        }
-        .product-cards-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; position: relative; z-index: 1; }
-        .product-card {
-            background: rgba(138,43,226, 0.03);
-            border: 1px solid rgba(138,43,226, 0.12);
-            border-radius: 20px; padding: 30px 25px; width: 180px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative; overflow: hidden; cursor: pointer;
-            display: flex; flex-direction: column; align-items: center; text-align: center;
-        }
-        .product-card::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(138,43,226, 0.15) 0%, transparent 50%);
-            opacity: 0; transition: opacity 0.3s ease;
-        }
-        .product-card:hover {
-            background: rgba(138,43,226, 0.08);
-            border-color: rgba(138,43,226, 0.4);
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(138,43,226, 0.15);
-        }
-        .product-card:hover::before { opacity: 1; }
-        .product-card::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
-            opacity: 0.7; z-index: 2;
-        }
-        .card-voyager::after { background: linear-gradient(90deg, #8A2BE2, #8A2BE2); }
-        .card-aura::after { background: linear-gradient(90deg, #7B61FF, #7B61FF); }
-        .card-sanctum::after { background: linear-gradient(90deg, #00E0FF, #00E0FF); }
-        .product-brand { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: rgba(255, 255, 255, 0.6); margin-bottom: 4px; letter-spacing: 1px; text-transform: uppercase; position: relative; z-index: 1; }
-        .product-name { font-size: 1.8rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; letter-spacing: 1px; text-shadow: 0 0 30px rgba(138,43,226, 0.5); position: relative; z-index: 1; transition: all 0.3s ease; }
-        .product-card:hover .product-name { color: var(--accent-color); }
-        .product-cn { font-size: 0.95rem; color: rgba(255, 255, 255, 0.7); position: relative; z-index: 1; margin-bottom: 12px; }
-        .product-slogan { font-size: 0.75rem; color: var(--brand-color); margin-top: 12px; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; position: relative; z-index: 1; }
-        .product-card:hover .product-slogan { opacity: 1; transform: translateY(0); }
-        .specs-area { opacity: 0; transform: translateY(10px); transition: all 0.3s ease; margin-top: 12px; width: 100%; }
-        .product-card:hover .specs-area { opacity: 1; transform: translateY(0); }
-        .specs-area.mobile-expanded { opacity: 1; transform: translateY(0); }
-        .product-card .specs-grid { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 100%; }
-        .product-spec-item { font-size: 0.75rem; color: rgba(255,255,255,0.85); line-height: 1.6; position: relative; z-index: 1; transition: all 0.3s ease; }
-        .product-card:hover .product-spec-item { color: var(--brand-color); }
-        .mobile-tap-hint { display: none; font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 8px; position: relative; z-index: 1; }
-        .product-selection .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px; position: relative; z-index: 1; }
-        .product-selection .btn-primary { padding: 18px 50px; font-weight: 700; font-size: 16px; }
-        .product-selection .cta-links { margin-top: 40px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; position: relative; z-index: 1; }
-        .product-selection .cta-links a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px; transition: all 0.3s ease; position: relative; padding: 8px 0; }
-        .product-selection .cta-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--brand-color), transparent); transition: width 0.3s ease; }
-        .product-selection .cta-links a:hover { color: var(--brand-color); }
-        .product-selection .cta-links a:hover::after { width: 100%; }
-
-        footer { padding: 40px 0; background: #050408; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.06); }
-        footer p { color: var(--text-gray); font-size: 14px; }
-
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-
-        @media (max-width: 1024px) {
-            .philosophy-grid { grid-template-columns: 1fr; gap: 40px; }
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-            .specs .specs-grid { grid-template-columns: repeat(2, 1fr); }
-            .philosophy-video { width: 100%; }
-        }
-        @media (max-width: 768px) {
-            .navbar { padding: 0 20px; justify-content: space-between; }
-            .logo-image { height: 28px; }
-            .logo-text { font-size: 19px; font-weight: 800; letter-spacing: 1px; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(10, 6, 18, 0.98); backdrop-filter: blur(12px); flex-direction: column; padding: 20px; gap: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-            .nav-links.active { display: flex; }
-            .nav-links a { font-size: 15px; padding: 12px 0; display: block; }
-            .nav-language-switcher { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-            .nav-language-switcher .language-switcher { position: static; transform: none; display: flex; justify-content: center; gap: 8px; }
-            .hamburger { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; font-size: 1.2rem; cursor: pointer; order: 999; z-index: 1001; -webkit-tap-highlight-color: transparent; margin-left: auto; }
-            section { padding: 60px 0; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero-subtitle { font-size: 1.1rem; }
-            .hero-badge { font-size: 12px; padding: 6px 16px; }
-            .features-grid { grid-template-columns: 1fr; }
-            .stories-grid { grid-template-columns: 1fr; }
-            .specs .specs-grid { grid-template-columns: 1fr; }
-            .section-header h2 { font-size: 1.8rem; }
-            .section-header { margin-bottom: 40px; }
-            .spec-value { font-size: 1.4rem; }
-            .product-name { font-size: 1.4rem; }
-            .product-cards-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto 40px; }
-            .product-card { width: 100%; padding: 24px 20px; }
-            .btn-primary { padding: 14px 32px; font-size: 14px; }
-            .btn-secondary { padding: 14px 32px; font-size: 14px; }
-            .btn-back { padding: 12px 20px; font-size: 13px; }
-            .feature-card { padding: 28px 20px; }
-            .feature-icon { width: 56px; height: 56px; font-size: 1.5rem; }
-            .story-content { padding: 24px; }
-            .cta-links { gap: 20px; }
-            .cta-links a { font-size: 13px; }
-            .container { width: 92%; }
-            .mobile-tap-hint { display: block; }
-        }
-        /* 滚动条美化 */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(10, 6, 18, 0.8);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #5B38F5, #8A2BE2);
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #5B38F5, #7B61FF);
-        }
-        
-        @media (max-width: 480px) {
-            .navbar { padding: 0 16px; }
-            .logo-image { height: 26px; }
-            .logo-text { font-size: 15px; letter-spacing: 0.5px; }
-            .hero h1 { font-size: 1.8rem; }
-            .hero-subtitle { font-size: 0.95rem; }
-            .section-header h2 { font-size: 1.5rem; }
-            .section-header p { font-size: 0.9rem; }
-            section { padding: 48px 0; }
-            .container { width: 94%; }
-            .product-card { padding: 20px 16px; }
-            .product-brand { font-size: 12px; }
-            .product-name { font-size: 1.3rem; }
-            .spec-value { font-size: 1.2rem; }
-            .spec-label { font-size: 0.8rem; }
-            .cta-buttons { flex-direction: column; align-items: center; }
-            .cta-links { flex-direction: column; align-items: center; gap: 12px; }
-            .philosophy-content h2 { font-size: 1.6rem; }
-            .philosophy-content p { font-size: 0.95rem; }
-            .feature-card h3 { font-size: 1.2rem; }
-            .feature-card p { font-size: 0.85rem; }
-            .story-content h3 { font-size: 1.2rem; }
-            .story-content p { font-size: 0.9rem; }
-        }
-    </style>
     <link rel="stylesheet" href="static/soul-impact.css">
+    <link rel="stylesheet" href="static/wq-award.css">
 </head>
 <body class="soul-page soul-scent">
+    <div class="soul-progress" aria-hidden="true"><span></span></div>
+    <div class="grain" aria-hidden="true"></div>
+
     <header class="header">
-        <nav class="navbar">
+        <nav class="navbar" aria-label="主导航">
             <a href="index.html" class="logo">
                 <img src="image/logo.png" alt="微圈 Logo" class="logo-image">
                 <span class="logo-text">微 圈</span>
@@ -475,37 +38,57 @@
                     </div>
                 </li>
             </ul>
-            <div class="hamburger">☰</div>
+            <div class="hamburger" role="button" tabindex="0" aria-label="打开菜单">☰</div>
         </nav>
     </header>
 
-    <section class="hero">
+    <main>
+    <section class="hero" id="top">
         <div class="hero-bg"><img src="image/main1.jpg" alt="嗅"></div>
-        <div class="hero-overlay"></div>
+        <div class="hero-tint" aria-hidden="true"></div>
+        <div class="hero-vertical" aria-hidden="true">记忆星河 · <b>让 AI，成为有记忆的陪伴</b></div>
         <div class="hero-content">
-            <span class="hero-badge">嗅 · 智能香氛机</span>
-            <h1>嗅</h1>
+            <span class="hero-badge"><span class="hero-badge-text">嗅 · 智能香氛机</span><span class="mono" aria-hidden="true">SOUL·04</span></span>
+            <div class="hero-char-mask">
+                <div class="hero-char-wrap">
+                    <h1 class="soul-char display-cjk" data-char="嗅">嗅</h1>
+                </div>
+            </div>
             <p class="hero-subtitle">有些记忆，藏在气味里</p>
             <div class="hero-buttons">
-                <a href="#philosophy" class="btn-primary">唤醒记忆</a>
-                <a href="https://mall.jd.com/index-16561986.html?from=pc&cid=0" target="_blank" class="btn-secondary">前往京东选购</a>
+                <a href="#philosophy" class="btn-primary magnetic">唤醒记忆</a>
+                <a href="https://mall.jd.com/index-16561986.html?from=pc&cid=0" target="_blank" rel="noopener" class="btn-secondary">前往京东选购</a>
             </div>
+
         </div>
+        <div class="scroll-hint" aria-hidden="true"><small>SCROLL</small><span class="scroll-hint-line"></span></div>
     </section>
+
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <div class="marquee-chunk"><span>气味记忆</span><i>✦</i><span class="hollow">时光机</span><i>✦</i><span>场景气味库</span><i>✦</i><span class="hollow">场景响应</span><i>✦</i><span>声光联动</span><i>✦</i><span class="hollow">记忆星河</span><i>✦</i><span class="mono-tag">MEMORY NEBULA</span><i>✦</i></div>
+            <div class="marquee-chunk"><span>气味记忆</span><i>✦</i><span class="hollow">时光机</span><i>✦</i><span>场景气味库</span><i>✦</i><span class="hollow">场景响应</span><i>✦</i><span>声光联动</span><i>✦</i><span class="hollow">记忆星河</span><i>✦</i><span class="mono-tag">MEMORY NEBULA</span><i>✦</i></div>
+        </div>
+    </div>
 
     <section class="philosophy" id="philosophy">
         <div class="container">
             <div class="philosophy-grid">
                 <div class="philosophy-content reveal">
-                    <h2>气息，是空间的情绪</h2>
+                    <span class="philosophy-kicker">记忆星河 · 序章</span>
+                    <h2 data-accent="空间的情绪">气息，是<em>空间的情绪</em></h2>
                     <p>视觉会模糊，声音会消散，但一缕熟悉的气味能瞬间将你锚定在过去的某个时刻。</p>
                     <p>嗅是空间的调香师与记忆守护者，用精确的气味分子，为你的数字灵魂营造家园，为每一个当下定下情感的基调。</p>
                     <p>闭上眼睛，让气味带你回到那一刻。</p>
                 </div>
                 <div class="philosophy-video reveal reveal-delay-2">
-                    <video class="w-full h-auto block" muted loop controls playsinline preload="none" poster="video/optimized/scent-poster.webp" aria-label="Scent diffuser interaction video" data-product-video data-autoplay="true" data-hls="video/hls/scent/master.m3u8" data-fallback="video/optimized/scent-720p.mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="video-theater">
+                        <span class="vt-tag vt-tl"><b>●</b>&nbsp;REC · 记忆星河剧场</span>
+                        <span class="vt-tag vt-tr mono">SOUL·04</span>
+                        <video class="w-full h-auto block" muted loop controls playsinline preload="none" poster="video/optimized/scent-poster.webp" aria-label="Scent diffuser interaction video" data-product-video data-autoplay="true" data-hls="video/hls/scent/master.m3u8" data-fallback="video/optimized/scent-720p.mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 </div>
             </div>
         </div>
@@ -514,6 +97,7 @@
     <section class="features" id="features">
         <div class="container">
             <div class="section-header reveal">
+                <span class="chapter-num">02</span>
                 <h2>核心体验</h2>
                 <p>它是如何工作的？</p>
             </div>
@@ -522,13 +106,13 @@
                     <span class="scan-edge"></span>
                     <div class="feature-icon">🌸</div>
                     <h3>场景气味库</h3>
-                    <p>在App中选择"雨夜读书"、"林中漫步"等场景，自动释放复方精油</p>
+                    <p>在App中选择&quot;雨夜读书&quot;、&quot;林中漫步&quot;等场景，自动释放复方精油</p>
                 </div>
                 <div class="feature-card reveal reveal-delay-2">
                     <span class="scan-edge"></span>
                     <div class="feature-icon">💭</div>
                     <h3>场景响应</h3>
-                        <p>与触联动，根据你主动选择的夜晚、阅读或放松场景释放对应香氛</p>
+                    <p>与触联动，根据你主动选择的夜晚、阅读或放松场景释放对应香氛</p>
                 </div>
                 <div class="feature-card reveal reveal-delay-3">
                     <span class="scan-edge"></span>
@@ -538,25 +122,29 @@
                 </div>
             </div>
         </div>
+        <div class="hover-preview" aria-hidden="true"><img src="video/optimized/scent-poster.webp" alt=""></div>
     </section>
 
     <section class="stories" id="stories">
         <div class="container">
             <div class="section-header reveal">
+                <span class="chapter-num">03</span>
                 <h2>他们的故事</h2>
                 <p>真实用户的使用体验</p>
             </div>
             <div class="stories-grid">
                 <div class="story-card reveal reveal-delay-1">
                     <div class="story-content">
-                        <h3><span class="story-icon">🌸</span>"当我在写童年，房间就飘着槐花香"</h3>
-                        <p>一位作家在创作童年题材小说时，通过嗅设置槐花香气。每一段落都沉浸在熟悉的味道中，灵感如泉涌，文字仿佛都有了花香的气息。</p>
+                        <span class="story-tag">MEMORY · 001</span>
+                        <h3><span class="story-icon">🌸</span>&quot;当我在写童年，房间就飘着槐花香&quot;</h3>
+                        <p class="story-text">一位作家在创作童年题材小说时，通过嗅设置槐花香气。每一段落都沉浸在熟悉的味道中，灵感如泉涌，文字仿佛都有了花香的气息。</p>
                     </div>
                 </div>
                 <div class="story-card reveal reveal-delay-2">
                     <div class="story-content">
-                        <h3><span class="story-icon">☕</span>"星期天早晨，是咖啡和阳光的味道"</h3>
-                        <p>一对年轻夫妇在每个周日上午10点设置"周末早晨"模式——现磨咖啡的醇厚混合着透过窗帘的暖阳气息，为平凡的日子增添仪式感，让家成为真正的港湾。</p>
+                        <span class="story-tag">MEMORY · 002</span>
+                        <h3><span class="story-icon">☕</span>&quot;星期天早晨，是咖啡和阳光的味道&quot;</h3>
+                        <p class="story-text">一对年轻夫妇在每个周日上午10点设置&quot;周末早晨&quot;模式——现磨咖啡的醇厚混合着透过窗帘的暖阳气息，为平凡的日子增添仪式感，让家成为真正的港湾。</p>
                     </div>
                 </div>
             </div>
@@ -566,29 +154,34 @@
     <section class="specs" id="specs">
         <div class="container">
             <div class="section-header reveal">
+                <span class="chapter-num">04</span>
                 <h2>技术基石</h2>
                 <p>精工铸造，品质保证</p>
             </div>
             <div class="specs-grid">
                 <div class="spec-item reveal reveal-delay-1">
+                    <span class="spec-num">SP.01</span>
                     <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
                     <div class="spec-value">二流体</div>
                     <div class="spec-label">超细雾化</div>
                     <div class="spec-detail">1-5μm颗粒 · 99%雾化效率</div>
                 </div>
                 <div class="spec-item reveal reveal-delay-2">
+                    <span class="spec-num">SP.02</span>
                     <div class="spec-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div>
                     <div class="spec-value">APP+</div>
                     <div class="spec-label">蓝牙智能控制</div>
                     <div class="spec-detail">远程定时 · 浓度调节</div>
                 </div>
                 <div class="spec-item reveal reveal-delay-3">
+                    <span class="spec-num">SP.03</span>
                     <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
                     <div class="spec-value">多容量</div>
                     <div class="spec-label">可选</div>
                     <div class="spec-detail">50ml/100ml/200ml</div>
                 </div>
                 <div class="spec-item reveal reveal-delay-4">
+                    <span class="spec-num">SP.04</span>
                     <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg></div>
                     <div class="spec-value">丰富</div>
                     <div class="spec-label">精油库</div>
@@ -601,6 +194,7 @@
     <section class="product-selection" id="product-selection">
         <div class="container">
             <div class="section-header reveal">
+                <span class="chapter-num">05</span>
                 <h2>让气味带你回到那一刻</h2>
                 <p>选择属于你的气味记忆</p>
             </div>
@@ -611,7 +205,7 @@
                     <div class="product-cn">旅伴</div>
                     <div class="product-slogan">旅途相伴，气味随行</div>
                     <div class="specs-area">
-                        <div class="specs-grid">
+                        <div class="specs-grid-inner">
                             <div class="product-spec-item">车载专用</div>
                             <div class="product-spec-item">便携设计</div>
                             <div class="product-spec-item">长效续航</div>
@@ -626,7 +220,7 @@
                     <div class="product-cn">灵韵</div>
                     <div class="product-slogan">光影律动，香气成诗</div>
                     <div class="specs-area">
-                        <div class="specs-grid">
+                        <div class="specs-grid-inner">
                             <div class="product-spec-item">悬浮雾化</div>
                             <div class="product-spec-item">炫彩灯效</div>
                             <div class="product-spec-item">智能定时</div>
@@ -641,7 +235,7 @@
                     <div class="product-cn">圣所</div>
                     <div class="product-slogan">殿堂气场，沉浸如境</div>
                     <div class="specs-area">
-                        <div class="specs-grid">
+                        <div class="specs-grid-inner">
                             <div class="product-spec-item">大空间覆盖</div>
                             <div class="product-spec-item">高级香氛</div>
                             <div class="product-spec-item">恒久扩散</div>
@@ -652,7 +246,7 @@
                 </div>
             </div>
             <div class="cta-buttons reveal reveal-delay-2">
-                <a href="https://mall.jd.com/index-16561986.html?from=pc&cid=0" target="_blank" class="btn-primary">前往京东选购</a>
+                <a href="https://mall.jd.com/index-16561986.html?from=pc&cid=0" target="_blank" rel="noopener" class="btn-primary magnetic">前往京东选购</a>
             </div>
             <div class="cta-links reveal reveal-delay-3">
                 <a href="index.html">返回微圈首页</a>
@@ -661,56 +255,29 @@
             </div>
         </div>
     </section>
+    </main>
 
     <footer class="footer">
         <div class="container">
             <a href="index.html" class="footer-logo">
                 <img src="image/logo.png" alt="微圈">
-                <span class="logo-text" style="font-size: 22px;">微 圈</span>
+                <span class="logo-text">微 圈</span>
             </a>
             <div class="footer-contact">
-                <p>联系我们：<a href="mailto:support@meeetta.com" style="color: var(--text-dark); text-decoration: none;">support@meeetta.com</a></p>
+                <p>联系我们：<a href="mailto:support@meeetta.com">support@meeetta.com</a></p>
             </div>
             <div class="footer-info">
                 <p>© 2024 深颖数字（深圳）有限公司。All Rights Reserved.</p>
-                <p>备案号：<a href="https://beian.miit.gov.cn/" style="color: var(--text-dark); text-decoration: none;">粤 ICP 备 2023062123 号</a></p>
+                <p>备案号：<a href="https://beian.miit.gov.cn/">粤 ICP 备 2023062123 号</a></p>
             </div>
         </div>
     </footer>
 
+    <script src="static/wq-award.js"></script>
     <script src="static/shared.js"></script>
     <script src="static/product-video.js"></script>
     <script>
-        function initMobileCardInteraction() {
-            const isMobile = window.matchMedia('(max-width: 768px)').matches;
-            if (isMobile) {
-                const cards = document.querySelectorAll('.product-card');
-                cards.forEach(card => {
-                    const specsArea = card.querySelector('.specs-area');
-                    if (!specsArea) return;
-                    card.addEventListener('click', function(e) {
-                        if (e.target.closest('a') || e.target.closest('button')) return;
-                        const isExpanded = specsArea.classList.contains('mobile-expanded');
-                        cards.forEach(otherCard => {
-                            const otherSpecs = otherCard.querySelector('.specs-area');
-                            if (otherSpecs) otherSpecs.classList.remove('mobile-expanded');
-                        });
-                        if (!isExpanded) specsArea.classList.add('mobile-expanded');
-                    });
-                });
-                document.addEventListener('click', function(e) {
-                    if (!e.target.closest('.product-card')) {
-                        cards.forEach(card => {
-                            const specsArea = card.querySelector('.specs-area');
-                            if (specsArea) specsArea.classList.remove('mobile-expanded');
-                        });
-                    }
-                });
-            }
-        }
-        document.addEventListener('DOMContentLoaded', function() { initMobileCardInteraction(); });
-
-        // 本页翻译数据
+        // 本页翻译数据（沿用原站文案，由 shared.js 的 applyTranslations 驱动）
         const pageTranslations = {
             zh: {
                 nav: {

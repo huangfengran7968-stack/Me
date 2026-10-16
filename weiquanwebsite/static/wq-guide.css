@@ -1,0 +1,173 @@
+/* ============================================================
+   wq-guide.css — 微圈使用指南共享覆写层（记忆星河概念）
+   适用: guide/sight-soul-guide.html / guide/touch-soul-guide.html
+   在各页内联 <style> 之后加载；仅用本页实际存在的类名。
+   可独立工作（不依赖 static/wq-award.css）。
+   ============================================================ */
+:root{
+  --wq-ink:#0d0c1d; --wq-ink2:#1a192f; --wq-ink3:#242a45;
+  --wq-bone:#f0f4f8; --wq-mist:#a9b3d0;
+  --wq-accent:#06b6d4; --wq-gold:#d4a574;
+  --wq-serif:'Noto Serif SC','Songti SC',serif;
+  --wq-mono:'DM Mono','Noto Sans SC',ui-monospace,monospace;
+  --wq-ease:cubic-bezier(.22,1,.36,1);
+}
+
+/* ---------- 全局基线 ---------- */
+html{ overflow-x:hidden; }
+body{
+  background-color:var(--wq-ink);
+  color:var(--wq-bone);
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+::selection{ background:rgba(6,182,212,.42); color:#04181d; }
+:focus-visible{ outline:2px solid var(--wq-accent); outline-offset:3px; }
+
+/* ---------- 海报级 h1（中英混排的 CJK 规则） ---------- */
+.header .header-title{
+  font-family:var(--wq-serif);
+  font-weight:700;
+  font-size:clamp(2.1rem,7.5vw,3.2rem);
+  line-height:1.18;                 /* CJK display 1.0–1.2 */
+  letter-spacing:.03em;             /* ≤ 0.15em, 无负 tracking */
+  text-wrap:balance;
+  color:var(--wq-bone);
+  margin-bottom:10px;
+}
+.header .header-subtitle{
+  font-size:.95rem;
+  color:var(--wq-mist);
+  letter-spacing:.06em;
+}
+.header .logo-text{ letter-spacing:.35em; text-indent:.35em; } /* 补偿 letter-spacing 尾随空格的视觉偏移 */
+
+/* ---------- 步骤卡：幽灵编号（路标） ---------- */
+.container{ counter-reset:wq-step; }
+.guide-card{
+  counter-increment:wq-step;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(26,25,47,.66), rgba(13,12,29,.66));
+  border:1px solid rgba(240,244,248,.09);
+  transition:border-color .35s var(--wq-ease), box-shadow .35s var(--wq-ease), transform .35s var(--wq-ease);
+}
+.guide-card::after{
+  content:"0" counter(wq-step);
+  position:absolute; right:12px; top:2px;
+  font-family:var(--wq-mono);
+  font-size:4.4rem; line-height:1;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(6,182,212,.30);
+  pointer-events:none; user-select:none;
+}
+.guide-card:hover{
+  border-color:rgba(6,182,212,.38);
+  box-shadow:0 14px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(6,182,212,.12);
+  transform:translateY(-3px);
+}
+
+/* ---------- 步骤圆盘：≥44px 触控目标 ---------- */
+.step-number{
+  width:44px; height:44px; min-width:44px; min-height:44px;
+  font-family:var(--wq-mono);
+  font-size:1.25rem; font-weight:500;
+  background:#06b6d4;
+  background:linear-gradient(135deg, var(--wq-accent), color-mix(in srgb, #06b6d4 62%, #0d0c1d));
+  box-shadow:0 4px 18px rgba(6,182,212,.38), inset 0 1px 0 rgba(255,255,255,.25);
+  color:#03222b;
+}
+.step-title{
+  font-size:1.12rem; font-weight:600;
+  line-height:1.5; letter-spacing:.02em; text-wrap:balance;
+  color:var(--wq-bone);
+}
+.step-description{
+  font-size:.92rem; color:var(--wq-mist); line-height:1.85;
+}
+
+/* ---------- 提示 / 小贴士：金色仅作稀有暖色 ---------- */
+.highlight-box{
+  border-left:3px solid var(--wq-accent);
+  background:linear-gradient(135deg, rgba(6,182,212,.09), rgba(212,165,116,.04));
+}
+.highlight-box strong{ color:var(--wq-gold); font-weight:600; }
+.highlight-box.accent{
+  border-left-color:var(--wq-gold);
+  background:linear-gradient(135deg, rgba(212,165,116,.10), rgba(6,182,212,.05));
+}
+.tips-section{
+  border:1px solid rgba(212,165,116,.22);
+  background:linear-gradient(180deg, rgba(212,165,116,.055), rgba(13,12,29,.4));
+}
+.tips-title{ color:var(--wq-gold); }
+.tips-title svg{ fill:var(--wq-gold); }
+.tips-list li::before{ background:var(--wq-gold); }
+.success-badge{
+  border-color:rgba(6,182,212,.35);
+  background:rgba(6,182,212,.12);
+  color:var(--wq-accent);
+}
+.success-badge svg{ fill:var(--wq-accent); }
+
+/* ---------- 情景区隔带（touch 指南） ---------- */
+.scenario-divider h2{
+  font-family:var(--wq-serif); font-weight:700;
+  font-size:1.35rem; line-height:1.4; letter-spacing:.04em; text-wrap:balance;
+}
+.scenario-divider p{ color:var(--wq-mist); }
+
+/* ---------- 顶部阅读进度 + 右下角步骤路标 ---------- */
+.wq-progress{
+  position:fixed; top:0; left:0; right:0; height:3px; z-index:60;
+  background:rgba(240,244,248,.07);
+  pointer-events:none;
+}
+.wq-progress span{
+  display:block; height:100%; width:100%;
+  background:var(--wq-accent);
+  box-shadow:0 0 12px rgba(6,182,212,.8);
+  transform:scaleX(0); transform-origin:left center;
+}
+.wq-wayfind{
+  position:fixed; right:18px; bottom:18px; z-index:60;
+  display:flex; align-items:baseline; gap:6px;
+  padding:10px 16px; min-height:44px;
+  border:1px solid rgba(6,182,212,.30); border-radius:999px;
+  background:rgba(13,12,29,.82);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  font-family:var(--wq-mono); font-size:.8rem; letter-spacing:.08em;
+  color:var(--wq-mist); pointer-events:none;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+}
+.wq-wayfind-num{ color:var(--wq-accent); font-size:1rem; }
+
+/* ---------- 入场显现（JS 渐进增强；无 JS 时内容默认可见） ---------- */
+.wq-anim{ opacity:0; transform:translateY(26px); }
+.wq-anim.wq-in{
+  opacity:1; transform:none;
+  transition:opacity .7s var(--wq-ease), transform .7s var(--wq-ease);
+}
+
+/* ---------- 语言切换：触控目标 ≥44px ---------- */
+.lang-selector .lang-btn{ min-height:44px; }
+.lang-option{ padding:12px 14px; min-height:44px; display:flex; align-items:center; }
+
+/* ---------- 页脚 ---------- */
+.footer-contact a{ color:var(--wq-accent); }
+
+/* ---------- 响应式 ---------- */
+@media (max-width:480px){
+  .step-number{ width:44px; height:44px; font-size:1.15rem; } /* 触控目标不随屏缩小 */
+  .guide-card::after{ font-size:3.4rem; }
+  .wq-wayfind{ right:12px; bottom:12px; }
+}
+
+/* ---------- 减少动态偏好：静止 ---------- */
+@media (prefers-reduced-motion:reduce){
+  .guide-card, .step-number{ transition:none; }
+  .guide-card:hover{ transform:none; }
+  .wq-anim{ opacity:1; transform:none; }
+  .wq-anim.wq-in{ transition:none; }
+  .wq-progress span{ transition:none; }
+}

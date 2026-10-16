@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="award">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,47 +13,52 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
+<style>
+        /* ============================================================
+           SUPPORT — "Solar Flare" native restyle (v3)
+           Poster-scale hero, numbered flare cards, amber CTAs, magenta
+           accent moments, ghost numerals. All copy/keys/links intact.
+           ============================================================ */
         :root {
-            --dark-bg: #07090d;
-            --card-bg: rgba(14, 18, 28, 0.86);
-            --text-light: #FAF9F6;
-            --text-muted: #a8b0c0;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --accent: #00E0FF;
-            --primary: #D4A5A5;
-            --secondary: #9093ff;
-            --surface-container: #1a1919;
-            --surface-container-high: #201f1f;
-            --on-surface: #ffffff;
-            --on-surface-variant: #adaaaa;
-            --outline-variant: #494847;
-            --btn-gradient: linear-gradient(90deg, #8B5CF6, #D4A5A5);
+            --ink: var(--award-ink, #0c0b08);
+            --ink-2: #161209;
+            --bone: var(--award-bone, #f6efe0);
+            --bone-dim: #b9b0a0;
+            --moon: var(--award-moonstone, #8fa3b8);
+            --amber: var(--award-accent, #ffa11f);
+            --amber-ink: var(--award-accent-ink, #221100);
+            --flare: var(--award-flare, #ff3d71);
+            --flare-ink: var(--award-flare-ink, #2a0512);
+            --line: rgba(246, 239, 224, 0.14);
             --font-family: 'Inter', 'Noto Sans SC', 'Lexend', sans-serif;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-family);
-            background: var(--dark-bg);
-            color: var(--text-light);
+            background: var(--ink);
+            color: var(--bone);
             line-height: 1.75;
             min-height: 100vh;
+            overflow-x: clip;
         }
         body::before {
             content: '';
             position: fixed; inset: 0;
             background:
-                radial-gradient(ellipse at 18% 8%, rgba(0, 224, 255, 0.10) 0%, transparent 46%),
-                radial-gradient(ellipse at 82% 92%, rgba(139, 92, 246, 0.12) 0%, transparent 50%);
+                radial-gradient(ellipse at 16% 6%, rgba(255, 161, 31, 0.13) 0%, transparent 46%),
+                radial-gradient(ellipse at 84% 96%, rgba(255, 61, 113, 0.11) 0%, transparent 50%);
             pointer-events: none; z-index: -1;
         }
+
+        /* ---- Header ---- */
         .header {
             position: sticky; top: 0; z-index: 20;
             height: 72px;
-            background: rgba(7, 9, 13, 0.88);
+            background: rgba(12, 11, 8, 0.88);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 161, 31, 0.22);
         }
         .navbar {
             max-width: 960px; margin: 0 auto; height: 100%;
@@ -61,91 +66,222 @@
             display: flex; align-items: center; justify-content: space-between;
             gap: 16px;
         }
-        .logo { display: flex; align-items: center; gap: 10px; color: #fff; }
+        .logo { display: flex; align-items: center; gap: 10px; color: var(--bone); }
         .logo img { height: 32px; }
         .logo span { font-family: 'Lexend', sans-serif; font-weight: 700; letter-spacing: 1px; }
         .nav-right { display: flex; align-items: center; gap: 16px; }
 
         .lang-selector { position: relative; z-index: 200; }
         .lang-btn {
-            display: flex; align-items: center; gap: 0.5rem;
-            background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            min-height: 44px;
+            background: transparent;
+            border: 1px solid var(--amber);
+            color: var(--amber);
+            padding: 0.5rem 1.25rem;
             border-radius: 9999px;
             font-family: 'Lexend', sans-serif;
-            font-size: 0.875rem;
+            font-size: 0.875rem; font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
         }
-        .lang-btn:hover { border-color: var(--secondary); color: var(--secondary); transform: scale(1.05); }
+        .lang-btn:hover, .lang-btn:focus-visible {
+            background: var(--amber); color: var(--amber-ink);
+            transform: scale(1.04); outline: none;
+        }
         .lang-btn i { font-size: 0.75rem; transition: transform 0.3s ease; }
         .lang-selector.open .lang-btn i { transform: rotate(180deg); }
         .lang-dropdown {
             position: absolute; top: calc(100% + 0.5rem); right: 0;
-            min-width: 160px;
-            background: var(--surface-container);
-            border: 1px solid var(--outline-variant);
+            min-width: 180px;
+            background: #1a1408;
+            border: 1px solid rgba(255, 161, 31, 0.35);
             border-radius: 0.75rem;
             padding: 0.5rem;
             opacity: 0; visibility: hidden; transform: translateY(-10px);
             transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             z-index: 300;
         }
         .lang-selector.open .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
         .lang-dropdown button {
             display: flex; align-items: center; gap: 0.75rem; width: 100%;
+            min-height: 44px;
             padding: 0.625rem 1rem;
             background: transparent; border: none; border-radius: 0.5rem;
-            color: var(--on-surface-variant);
+            color: var(--bone-dim);
             font-family: 'Lexend', sans-serif; font-size: 0.875rem;
             cursor: pointer; text-align: left;
         }
-        .lang-dropdown button:hover { background: var(--surface-container-high); color: var(--on-surface); }
-        .lang-dropdown button.active {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        .lang-dropdown button:hover { background: rgba(255, 161, 31, 0.12); color: var(--bone); }
+        .lang-dropdown button.active { color: var(--amber); font-weight: 600; }
+
+        /* ---- Hero: poster-scale ---- */
+        .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px 80px; }
+        .hero {
+            position: relative;
+            overflow: clip;
+            padding: 76px 0 60px;
+            margin-bottom: 44px;
+            border-bottom: 1px solid var(--line);
+        }
+        .kicker {
+            display: flex; align-items: center; gap: 10px;
+            color: var(--amber);
+            font-size: 12px; font-weight: 700;
+            letter-spacing: 0.24em; text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .kicker-dot {
+            width: 9px; height: 9px; border-radius: 50%;
+            background: var(--flare);
+            box-shadow: 0 0 14px var(--flare);
+        }
+        .hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(3rem, 9vw, 5.5rem);
+            font-weight: 700; line-height: 0.98;
+            letter-spacing: -0.045em;
+            color: var(--bone);
+            margin-bottom: 18px;
+            animation: flare-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        .hero p { color: var(--moon); max-width: 660px; font-size: 1.05rem; }
+        .ghost {
+            position: absolute;
+            right: -18px; top: -46px;
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(11rem, 30vw, 21rem);
+            font-weight: 700; line-height: 1; letter-spacing: -0.05em;
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(255, 161, 31, 0.22);
+            pointer-events: none; user-select: none;
+        }
+        @supports not (-webkit-text-stroke: 1px black) {
+            .ghost { color: rgba(255, 161, 31, 0.07); }
         }
 
-        .wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
-        .hero { margin-bottom: 40px; }
-        .hero h1 { font-family: 'Lexend', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
-        .hero p { color: var(--text-muted); max-width: 720px; }
+        /* ---- Flare cards ---- */
         .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 28px 28px 12px;
-            margin-bottom: 24px;
+            position: relative;
+            background: linear-gradient(180deg, #171309 0%, #120e07 100%);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 34px 34px 18px;
+            margin-bottom: 28px;
+            overflow: clip;
         }
-        .card h2 { font-size: 1.15rem; margin-bottom: 16px; }
-        .block { margin-bottom: 22px; }
-        .block h3 { font-size: 1rem; margin-bottom: 6px; font-weight: 600; }
-        .block p, .block li { color: var(--text-muted); font-size: 15px; }
-        .block ul { padding-left: 18px; margin: 8px 0; }
+        .card::before {
+            content: '';
+            position: absolute; top: 0; left: 34px; right: 34px; height: 3px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--amber), var(--flare));
+        }
+        .card-num {
+            position: absolute; top: 10px; right: 24px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 4.5rem; font-weight: 700; line-height: 1;
+            letter-spacing: -0.04em;
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(246, 239, 224, 0.16);
+            pointer-events: none; user-select: none;
+        }
+        @supports not (-webkit-text-stroke: 1px black) {
+            .card-num { color: rgba(246, 239, 224, 0.07); }
+        }
+        .card h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.6rem; font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--bone);
+            margin-bottom: 18px;
+        }
+        /* magenta accent moment: the contact card glows flare */
+        .card-contact {
+            border-color: rgba(255, 61, 113, 0.45);
+            box-shadow: 0 0 70px rgba(255, 61, 113, 0.12);
+        }
+        .card-contact::before {
+            background: linear-gradient(90deg, var(--flare), var(--amber));
+        }
+        .card-contact .card-num {
+            -webkit-text-stroke-color: rgba(255, 61, 113, 0.35);
+        }
+        .block { margin-bottom: 24px; }
+        .block:last-child { margin-bottom: 12px; }
+        .block h3 {
+            font-size: 1.05rem; font-weight: 600;
+            color: var(--bone);
+            margin-bottom: 8px;
+        }
+        .block h3::before {
+            content: '';
+            display: inline-block;
+            width: 9px; height: 9px; border-radius: 50%;
+            background: var(--flare);
+            box-shadow: 0 0 10px rgba(255, 61, 113, 0.6);
+            margin-right: 12px;
+            vertical-align: 1px;
+        }
+        .block p, .block li { color: var(--moon); font-size: 15px; }
+        .block ul { padding-left: 18px; margin: 10px 0; }
+        .block li { margin-bottom: 6px; }
+
+        /* ---- Amber CTA (ink text) ---- */
         .mail {
-            display: inline-flex; align-items: center;
-            margin: 12px 0 8px;
-            padding: 10px 18px;
-            background: var(--btn-gradient);
-            color: #fff; text-decoration: none; border-radius: 999px; font-weight: 500;
+            display: inline-flex; align-items: center; justify-content: center;
+            min-height: 48px;
+            margin: 14px 0 10px;
+            padding: 0 30px;
+            background: var(--amber);
+            color: var(--amber-ink);
+            text-decoration: none; border-radius: 999px;
+            font-weight: 700; font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(255, 161, 31, 0.28);
+            transition: background 0.25s ease, color 0.25s ease,
+                        transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .mail:hover { opacity: 0.92; }
+        .mail:hover, .mail:focus-visible {
+            background: var(--flare); color: var(--flare-ink);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(255, 61, 113, 0.38);
+            outline: none;
+        }
+
         footer {
-            border-top: 1px solid var(--border-color);
-            padding: 28px 24px 40px;
+            border-top: 1px solid rgba(255, 161, 31, 0.25);
+            padding: 32px 24px 48px;
             text-align: center;
-            color: var(--text-muted);
+            color: var(--moon);
             font-size: 13px;
         }
-        footer a { color: var(--text-muted); }
+        footer a { color: var(--amber); text-decoration: none; }
+        footer a:hover { color: var(--flare); }
+
+        @keyframes flare-rise {
+            from { opacity: 0; transform: translateY(26px); }
+            to { opacity: 1; transform: none; }
+        }
+
         @media (max-width: 640px) {
-            .hero h1 { font-size: 1.55rem; }
-            .card { padding: 20px 18px 8px; }
+            .hero { padding: 52px 0 44px; }
+            .hero h1 { font-size: clamp(2.6rem, 13vw, 3.4rem); }
+            .card { padding: 26px 22px 12px; }
+            .card::before { left: 22px; right: 22px; }
+            .card-num { font-size: 3.4rem; right: 16px; }
+            .ghost { font-size: clamp(8rem, 34vw, 12rem); right: -10px; top: -30px; }
+            .mail { width: 100%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
         }
     </style>
+    <link rel="stylesheet" href="css/award.css?v=3">
 </head>
 <body>
     <header class="header">
@@ -179,11 +315,14 @@
 
     <main class="wrap">
         <div class="hero">
+            <p class="kicker" aria-hidden="true"><span class="kicker-dot" aria-hidden="true"></span>DeepSire &middot; Help Center</p>
             <h1 data-translate-key="page_title">DeepSire Support</h1>
             <p data-translate-key="page_intro">Account help, app usage, and compatible-device pairing for the DeepSire companionship platform.</p>
+            <span class="ghost" aria-hidden="true">01</span>
         </div>
 
-        <section class="card">
+        <section class="card card-contact">
+            <span class="card-num" aria-hidden="true">01</span>
             <h2 data-translate-key="contact_title">Contact</h2>
             <div class="block">
                 <p data-translate-key="contact_body">For app support, please email us. We typically reply within 1–2 business days.</p>
@@ -192,6 +331,7 @@
         </section>
 
         <section class="card">
+            <span class="card-num" aria-hidden="true">02</span>
             <h2 data-translate-key="about_title">About DeepSire</h2>
             <div class="block">
                 <p data-translate-key="about_body">DeepSire is an AI companionship and digital-life platform. You can create a digital companion with memory and personality, talk with it in the app, and continue that companionship on compatible devices such as a smart photo frame or wearable.</p>
@@ -199,6 +339,7 @@
         </section>
 
         <section class="card">
+            <span class="card-num" aria-hidden="true">03</span>
             <h2 data-translate-key="faq_title">Frequently asked questions</h2>
 
             <div class="block">
@@ -225,6 +366,7 @@
         </section>
 
         <section class="card">
+            <span class="card-num" aria-hidden="true">04</span>
             <h2 data-translate-key="notice_title">Product notice</h2>
             <div class="block">
                 <p data-translate-key="notice_body">DeepSire and compatible wearables are designed for general companionship, wellness, and lifestyle purposes only. They are not medical devices and are not intended to diagnose, treat, cure, prevent, or monitor any disease or medical condition. All data and trends are for reference only and must not be used for medical decisions. Please consult a qualified healthcare professional before making any medical decisions.</p>
@@ -474,5 +616,6 @@
 
     initLanguageSelector(translations);
     </script>
+    <script src="js/award.js?v=3"></script>
 </body>
 </html>

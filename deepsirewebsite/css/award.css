@@ -1,0 +1,418 @@
+/* ============================================================
+   DeepSire Award Enhancement Layer
+   Shared foundation: palette, typography, base states, motion
+   utilities. Scoped to <html class="award"> so it is
+   non-destructive on pages that keep their own inline styles.
+   Version: 3.0 — BOLDER ("Solar Flare" goes supernova): poster
+   scale, reverse marquee band, duotone imagery, inverted magenta
+   block. Same non-destructive contract: base rule only smooths
+   fonts; pages opt in via .award-* classes. No marquee on linked
+   pages (they may opt in with .marquee + .marquee-rev markup).
+   ============================================================ */
+
+/* v3.0 additions (opt-in; v2 tokens/classes/behavior unchanged): --award-flare-deep, .ghost-xl,
+   .marquee-rev, img.img-duotone, .inverted-magenta, .poster-h (+ .o outlined / .serif italic words).
+   Pairing: .marquee-rev needs .marquee > .marquee-track markup; .inverted-magenta = flare block, INK text only (bone on magenta = 2.98:1, never). */
+
+/* ---- Design tokens ---------------------------------------- */
+html.award {
+  --award-ink: #0c0b08;              /* deep ink background      */
+  --award-ink-2: #14120d;           /* raised surface           */
+  --award-bone: #f6efe0;            /* warm bone text (brighter)*/
+  --award-bone-dim: #b9b0a0;        /* muted body copy          */
+  --award-accent: #ffa11f;          /* PRIMARY: vivid amber    */
+  --award-accent-ink: #221100;      /* text on accent           */
+  --award-accent-soft: rgba(255, 161, 31, 0.14);
+  --award-flare: #ff3d71;           /* LOUD SECONDARY: hot magenta */
+  --award-flare-ink: #2a0512;       /* text on flare            */
+  --award-flare-soft: rgba(255, 61, 113, 0.14);
+  --award-flare-deep: #e5326c;      /* deeper magenta, 4.69:1 on ink (body-safe) */
+  --award-flare-body: #38091b;      /* soft ink for body copy on flare, 5.03:1  */
+  --award-moonstone: #8fa3b8;       /* quiet cool (labels)      */
+  --award-line: rgba(239, 232, 216, 0.14);
+  --award-line-soft: rgba(239, 232, 216, 0.08);
+  --award-display: "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --award-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --award-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --award-max: 76rem;
+  scroll-behavior: smooth;
+}
+
+/* ---- Base (strictly additive: never overrides a page's own body styles) ---- */
+html.award body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html.award ::selection {
+  background: var(--award-accent);
+  color: var(--award-accent-ink);
+}
+
+html.award ::-webkit-scrollbar { width: 10px; }
+html.award ::-webkit-scrollbar-track { background: var(--award-ink); }
+html.award ::-webkit-scrollbar-thumb {
+  background: #3a2f16;
+  border-radius: 8px;
+  border: 2px solid var(--award-ink);
+}
+html.award ::-webkit-scrollbar-thumb:hover { background: #5a4413; }
+
+html.award :focus-visible {
+  outline: 2px solid var(--award-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---- Type scale ------------------------------------------- */
+html.award .award-display {
+  font-family: var(--award-display);
+  font-weight: 700;
+  letter-spacing: -0.032em;
+  line-height: 1.02;
+  color: var(--award-bone);
+}
+
+html.award .award-h2 {
+  font-family: var(--award-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.06;
+  color: var(--award-bone);
+  font-size: clamp(2.5rem, 5.2vw + 1rem, 5rem);
+}
+
+html.award .award-lede {
+  font-size: clamp(1.1rem, 1.4vw + 0.8rem, 1.4rem);
+  line-height: 1.65;
+  color: var(--award-bone-dim);
+  max-width: 42rem;
+}
+
+html.award .award-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--award-moonstone);
+}
+
+html.award .award-eyebrow::before {
+  content: "";
+  width: 2.4rem;
+  height: 1px;
+  background: var(--award-accent);
+}
+
+html.award .award-section-no {
+  font-family: var(--award-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--award-accent);
+}
+
+html.award .award-accent-word { color: var(--award-accent); }
+
+/* ---- Layout ------------------------------------------------ */
+html.award .award-wrap {
+  width: 100%;
+  max-width: var(--award-max);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+html.award .award-section {
+  padding-block: clamp(6rem, 11vw, 10.5rem);
+  position: relative;
+}
+
+/* ---- Buttons ----------------------------------------------- */
+html.award .award-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 44px;
+  padding: 0.95rem 2.1rem;
+  font-family: var(--award-display);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.35s var(--award-ease),
+              box-shadow 0.35s var(--award-ease),
+              background-color 0.35s var(--award-ease),
+              color 0.35s var(--award-ease),
+              border-color 0.35s var(--award-ease);
+  will-change: transform;
+}
+
+html.award .award-btn--primary {
+  background: var(--award-accent);
+  color: var(--award-accent-ink);
+  box-shadow: 0 0 0 0 rgba(228, 176, 74, 0);
+}
+
+html.award .award-btn--primary:hover,
+html.award .award-btn--primary:focus-visible {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 22px 54px -12px rgba(255, 161, 31, 0.65);
+}
+
+html.award .award-btn--ghost {
+  background: transparent;
+  color: var(--award-bone);
+  border-color: var(--award-line);
+}
+
+html.award .award-btn--ghost:hover,
+html.award .award-btn--ghost:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--award-accent);
+  color: var(--award-accent);
+}
+
+/* ---- Nav underline sweep ----------------------------------- */
+html.award .award-nav-link {
+  position: relative;
+  text-decoration: none;
+  color: var(--award-bone-dim);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding-block: 0.5rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+html.award .award-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.25rem;
+  width: 100%;
+  height: 1px;
+  background: var(--award-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--award-ease);
+}
+
+html.award .award-nav-link:hover,
+html.award .award-nav-link:focus-visible,
+html.award .award-nav-link.active { color: var(--award-bone); }
+
+html.award .award-nav-link:hover::after,
+html.award .award-nav-link:focus-visible::after,
+html.award .award-nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---- Reveal on scroll --------------------------------------- */
+html.award .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.85s var(--award-ease), transform 0.85s var(--award-ease);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+html.award .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Hairlines & quiet details ------------------------------ */
+html.award .award-rule {
+  border: 0;
+  border-top: 1px solid var(--award-line-soft);
+  margin: 0;
+}
+
+html.award img { max-width: 100%; }
+
+/* ---- Scroll progress hairline -------------------------------- */
+#award-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--award-accent), var(--award-flare));
+  z-index: 1200;
+}
+
+/* ---- Ecosystem gallery ----------------------------------------- */
+html.award .award-gallery {
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem 0 2rem;
+}
+html.award .award-gallery::-webkit-scrollbar { display: none; }
+html.award .award-gallery.is-dragging { cursor: grabbing; }
+html.award .award-gallery__track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  padding-inline: clamp(1.25rem, 6vw, 6rem);
+}
+html.award .award-gallery__item {
+  margin: 0;
+  width: clamp(220px, 26vw, 330px);
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--award-line-soft);
+  background: var(--award-ink-2);
+  flex: 0 0 auto;
+  transition: transform 0.5s var(--award-ease), border-color 0.5s var(--award-ease);
+}
+html.award .award-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+html.award .award-gallery__item:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 161, 31, 0.5);
+}
+
+/* ---- v3: poster heading (opt-in display scale) ------------------- */
+html.award .poster-h {
+  font-family: var(--award-display);
+  font-weight: 800;
+  font-size: clamp(2.9rem, 7.6vw, 7.25rem);
+  letter-spacing: -0.035em;
+  line-height: 0.96;
+  color: var(--award-bone);
+  text-wrap: balance;
+  margin: 0;
+}
+html.award .poster-h .o {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--award-bone); /* bone stroke ≈ 17.2:1 on ink */
+}
+html.award .poster-h em,
+html.award .poster-h .serif {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--award-accent); /* 9.72:1 on ink */
+}
+@supports not (-webkit-text-stroke: 1px black) {
+  html.award .poster-h .o { color: var(--award-bone); }
+}
+
+/* ---- v3: reverse marquee band (pairs with .marquee > .marquee-track) */
+html.award .marquee-rev {
+  background: var(--award-ink);
+  border-top: 1px solid var(--award-flare);
+  border-bottom: 1px solid var(--award-flare);
+  transform: rotate(1.4deg) scale(1.03);
+  box-shadow: 0 24px 60px -20px rgba(255, 61, 113, 0.30);
+}
+html.award .marquee-rev .marquee-track {
+  animation-direction: reverse;
+  animation-duration: 32s;
+}
+html.award .marquee-rev .marquee-track > span {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--award-flare);
+}
+html.award .marquee-rev .mq-star {
+  color: var(--award-accent);
+  -webkit-text-stroke: 0;
+}
+@supports not (-webkit-text-stroke: 1px black) {
+  html.award .marquee-rev .marquee-track > span { color: var(--award-flare); }
+}
+
+/* ---- v3: extra-ghost scale (extends .sec-ghost) ------------------ */
+html.award .ghost-xl { font-size: clamp(10rem, 30vw, 26rem); }
+
+/* ---- v3: duotone image treatment -------------------------------- */
+html.award img.img-duotone {
+  filter: grayscale(1) sepia(1) saturate(3.6) hue-rotate(-16deg) brightness(0.94) contrast(1.12);
+  transition: filter 0.6s var(--award-ease);
+}
+html.award img.img-duotone:hover,
+html.award img.img-duotone:focus-visible,
+html.award img.img-duotone.revealed { filter: none; }
+
+/* ---- v3: inverted magenta block (INK text only) ------------------ */
+html.award .inverted-magenta {
+  background: var(--award-flare);
+  color: var(--award-flare-ink); /* 5.45:1 on flare */
+}
+html.award .inverted-magenta .award-section-no,
+html.award .inverted-magenta .award-eyebrow { color: var(--award-flare-ink); }
+html.award .inverted-magenta .award-eyebrow::before { background: var(--award-flare-ink); }
+html.award .inverted-magenta .award-lede { color: var(--award-flare-body); } /* 5.03:1 */
+html.award .inverted-magenta .award-btn--primary {
+  background: var(--award-ink);
+  color: var(--award-bone); /* 17.19:1 */
+}
+html.award .inverted-magenta .award-btn--primary:hover,
+html.award .inverted-magenta .award-btn--primary:focus-visible {
+  box-shadow: 0 22px 54px -12px rgba(12, 11, 8, 0.55);
+}
+html.award .inverted-magenta .award-btn--ghost {
+  color: var(--award-flare-ink);
+  border-color: rgba(42, 5, 18, 0.45);
+}
+html.award .inverted-magenta .award-btn--ghost:hover,
+html.award .inverted-magenta .award-btn--ghost:focus-visible {
+  border-color: var(--award-flare-ink);
+  color: var(--award-flare-ink); /* base would use amber: 1.68:1 on flare — rejected */
+}
+
+/* ---- Reduced motion & touch fallbacks ------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html.award { scroll-behavior: auto; }
+  html.award .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html.award .award-btn,
+  html.award .award-btn--primary,
+  html.award .award-btn--ghost,
+  html.award .award-nav-link,
+  html.award .award-nav-link::after {
+    transition: none;
+  }
+  html.award img.img-duotone { transition: none; }
+  #award-progress { display: none; }
+  .marquee-track { animation: none; }
+  .hero-flare { animation: none; }
+}
+
+/* ---- Responsive defaults -------------------------------------- */
+@media (max-width: 768px) {
+  html.award .award-btn {
+    width: 100%;
+    max-width: 22rem;
+  }
+}
+@media (max-width: 480px) {
+  html.award .poster-h { font-size: clamp(2.1rem, 10vw, 2.9rem); }
+}

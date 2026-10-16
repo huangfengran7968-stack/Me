@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
+<html class="dark award tint-sight" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Sight | DeepSire</title>
@@ -9,1246 +8,104 @@
 <link rel="apple-touch-icon" sizes="180x180" href="../image/icon.png"/>
 <link rel="shortcut icon" href="../image/icon.png"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2" rel="preload" as="font" type="font/woff2" crossorigin/>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "tertiary": "#e8ffee",
-              "surface-container": "#1a1919",
-              "secondary-dim": "#6063ed",
-              "tertiary-container": "#a5fecb",
-              "on-error-container": "#ffb2b9",
-              "secondary-fixed": "#cdcdff",
-              "inverse-on-surface": "#565554",
-              "on-surface-variant": "#adaaaa",
-              "primary": "#e08efe",
-              "inverse-primary": "#893da7",
-              "on-tertiary-fixed": "#004f31",
-              "tertiary-dim": "#97efbd",
-              "secondary-fixed-dim": "#bdbeff",
-              "on-primary-fixed-variant": "#5a0179",
-              "background": "#0e0e0e",
-              "on-secondary": "#07007a",
-              "primary-fixed-dim": "#ce7eec",
-              "surface-container-high": "#201f1f",
-              "on-background": "#ffffff",
-              "on-surface": "#ffffff",
-              "inverse-surface": "#fcf8f8",
-              "on-primary": "#4f006c",
-              "on-tertiary": "#016d46",
-              "on-secondary-fixed-variant": "#393bc7",
-              "error-container": "#a70138",
-              "tertiary-fixed": "#a5fecb",
-              "primary-fixed": "#dd8bfb",
-              "error-dim": "#d73357",
-              "tertiary-fixed-dim": "#97efbd",
-              "surface-container-low": "#131313",
-              "outline-variant": "#494847",
-              "primary-dim": "#ce7eec",
-              "outline": "#777575",
-              "error": "#ff6e84",
-              "surface-variant": "#262626",
-              "on-secondary-fixed": "#160dac",
-              "on-tertiary-fixed-variant": "#066f47",
-              "surface-container-lowest": "#000000",
-              "on-secondary-container": "#ccccff",
-              "secondary-container": "#2e2ebd",
-              "secondary": "#9093ff",
-              "primary-container": "#d180ef",
-              "surface-tint": "#e08efe",
-              "surface": "#0e0e0e",
-              "surface-dim": "#0e0e0e",
-              "on-tertiary-container": "#00643f",
-              "on-error": "#490013",
-              "surface-container-highest": "#262626",
-              "on-primary-fixed": "#21002f",
-              "surface-bright": "#2c2c2c",
-              "on-primary-container": "#3d0055"
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "ink": "#0c0b08",
+                        "ink-2": "#14120c",
+                        "ink-3": "#1d1a12",
+                        "bone": "#f6efe0",
+                        "bone-dim": "#b3a992",
+                        "moonstone": "#8fa3b8",
+                        "amber": "#ffa11f",
+                        "tint": "#4df0ff",
+                        "tertiary": "#4df0ff",
+                        "surface-container": "#1d1a12",
+                        "secondary-dim": "#4df0ff",
+                        "tertiary-container": "#4df0ff",
+                        "on-error-container": "#f6efe0",
+                        "secondary-fixed": "#4df0ff",
+                        "inverse-on-surface": "#b3a992",
+                        "on-surface-variant": "#b3a992",
+                        "primary": "#ffa11f",
+                        "inverse-primary": "#ffa11f",
+                        "on-tertiary-fixed": "#0c0b08",
+                        "tertiary-dim": "#4df0ff",
+                        "secondary-fixed-dim": "#4df0ff",
+                        "on-primary-fixed-variant": "#0c0b08",
+                        "background": "#0c0b08",
+                        "on-secondary": "#0c0b08",
+                        "primary-fixed-dim": "#ffa11f",
+                        "surface-container-high": "#1d1a12",
+                        "on-background": "#f6efe0",
+                        "on-surface": "#f6efe0",
+                        "inverse-surface": "#f6efe0",
+                        "on-primary": "#0c0b08",
+                        "on-tertiary": "#0c0b08",
+                        "on-secondary-fixed-variant": "#0c0b08",
+                        "error-container": "#1d1a12",
+                        "tertiary-fixed": "#4df0ff",
+                        "primary-fixed": "#ffa11f",
+                        "error-dim": "#4df0ff",
+                        "tertiary-fixed-dim": "#4df0ff",
+                        "surface-container-low": "#14120c",
+                        "outline-variant": "#8fa3b8",
+                        "primary-dim": "#ffa11f",
+                        "outline": "#8fa3b8",
+                        "error": "#4df0ff",
+                        "surface-variant": "#14120c",
+                        "on-secondary-fixed": "#0c0b08",
+                        "on-tertiary-fixed-variant": "#0c0b08",
+                        "surface-container-lowest": "#0c0b08",
+                        "on-secondary-container": "#f6efe0",
+                        "secondary-container": "#4df0ff",
+                        "secondary": "#4df0ff",
+                        "primary-container": "#ffa11f",
+                        "surface-tint": "#ffa11f",
+                        "surface": "#0c0b08",
+                        "surface-dim": "#0c0b08",
+                        "on-tertiary-container": "#0c0b08",
+                        "on-error": "#0c0b08",
+                        "surface-container-highest": "#1d1a12",
+                        "on-primary-fixed": "#0c0b08",
+                        "surface-bright": "#1d1a12",
+                        "on-primary-container": "#0c0b08"
+                    },
+                    fontFamily: {
+                        "headline": ["Lexend"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
             },
-            fontFamily: {
-              "headline": ["Lexend"],
-              "body": ["Inter"],
-              "label": ["Inter"]
-            },
-            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-          },
-        },
-      }
+        }
     </script>
 <link rel="stylesheet" href="../css/product-common.css">
-<style>
-      
-       /* ========== BUTTON STYLES ========== */
-       @keyframes btnBreathingGlow {
-           0%, 100% { 
-               box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
-                           0 0 0 1px rgba(224, 142, 254, 0.3);
-           }
-           50% { 
-               box-shadow: inset 0 0 30px rgba(224, 142, 254, 0.35),
-                           0 0 0 1px rgba(224, 142, 254, 0.5);
-           }
-       }
-       @keyframes btnSecondaryBreathing {
-           0%, 100% { 
-               box-shadow: inset 0 0 15px rgba(224, 142, 254, 0.1),
-                           0 0 0 1px rgba(224, 142, 254, 0.2);
-           }
-           50% { 
-               box-shadow: inset 0 0 25px rgba(224, 142, 254, 0.2),
-                           0 0 0 1px rgba(224, 142, 254, 0.35);
-           }
-       }
-       .btn-primary {
-         position: relative;
-         background: linear-gradient(135deg, #e08efe 0%, #c77df3 100%);
-         color: #21002f;
-         padding: 1rem 2.5rem;
-         border-radius: 9999px;
-         font-family: 'Lexend', sans-serif;
-         font-weight: 600;
-         font-size: 1rem;
-         cursor: pointer;
-         border: none;
-         overflow: hidden;
-         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-         box-shadow: inset 0 0 20px rgba(224, 142, 254, 0.2),
-                     0 0 0 1px rgba(224, 142, 254, 0.3);
-         white-space: nowrap;
-         animation: btnBreathingGlow 3s ease-in-out infinite;
-       }
-       
-       @media (max-width: 640px) {
-         .btn-primary, .btn-secondary {
-           padding: 0.875rem 2rem;
-           font-size: 0.875rem;
-           width: 100%;
-           max-width: 280px;
-         }
-       }
-      .btn-primary::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        transition: left 0.6s;
-      }
-      .btn-primary:hover {
-        transform: translateY(-3px) scale(1.02);
-        box-shadow: 0 8px 30px rgba(224, 142, 254, 0.5), 0 0 60px rgba(224, 142, 254, 0.3);
-      }
-      .btn-primary:hover::before {
-        left: 100%;
-      }
-      .btn-primary:active {
-        transform: translateY(-1px) scale(1);
-      }
-      
-      .btn-secondary {
-        position: relative;
-        background: rgba(38, 38, 38, 0.6);
-        backdrop-filter: blur(12px);
-        color: #ffffff;
-        padding: 1rem 2.5rem;
-        border-radius: 9999px;
-        font-family: 'Lexend', sans-serif;
-        font-weight: 600;
-        font-size: 1rem;
-        letter-spacing: 0.02em;
-        cursor: pointer;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .btn-secondary::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      .btn-secondary:hover {
-        border-color: rgba(224, 142, 254, 0.5);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      }
-      .btn-secondary:hover::before {
-        opacity: 1;
-      }
-      
-      /* Button Ripple Effect */
-      .btn-primary, .btn-secondary {
-        position: relative;
-        overflow: hidden;
-      }
-      .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.5);
-        transform: scale(0);
-        animation: ripple-animation 0.6s linear;
-        pointer-events: none;
-      }
-      @keyframes ripple-animation {
-        to {
-          transform: scale(4);
-          opacity: 0;
-        }
-      }
-      
-      .btn-arrow {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #e08efe;
-        font-family: 'Lexend', sans-serif;
-        font-weight: 600;
-        font-size: 0.875rem;
-        letter-spacing: 0.05em;
-        cursor: pointer;
-        padding: 0.75rem 0;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .btn-arrow::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #e08efe, #9093ff);
-        transition: width 0.3s;
-      }
-      .btn-arrow:hover {
-        color: #ffffff;
-      }
-      .btn-arrow:hover::after {
-        width: 100%;
-      }
-      .btn-arrow .material-symbols-outlined {
-        transition: transform 0.3s;
-      }
-      .btn-arrow:hover .material-symbols-outlined {
-        transform: translateX(6px);
-      }
-      
-      /* ========== CARD HOVER EFFECTS ========== */
-      .card-hover {
-        position: relative;
-        background: #1a1919;
-        border-radius: 2rem;
-        padding: 2.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        overflow: hidden;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .card-hover::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.1), rgba(144, 147, 255, 0.1));
-        opacity: 0;
-        transition: opacity 0.4s;
-      }
-      .card-hover::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 2rem;
-        padding: 1px;
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.5), rgba(144, 147, 255, 0.5));
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.4s;
-      }
-      .card-hover:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 50px rgba(224, 142, 254, 0.15);
-      }
-      .card-hover:hover::before {
-        opacity: 1;
-      }
-      .card-hover:hover::after {
-        opacity: 1;
-      }
-      .card-hover .card-icon {
-        transition: all 0.4s;
-      }
-      .card-hover:hover .card-icon {
-        transform: scale(1.1) translateY(-5px);
-      }
-      
-      /* ========== PRODUCT CARD ========== */
-      .product-card {
-        position: relative;
-        background: #131313;
-        border-radius: 2.5rem;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .product-card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, transparent 50%, rgba(224, 142, 254, 0.1) 100%);
-        opacity: 0;
-        transition: opacity 0.4s;
-        z-index: 1;
-      }
-      .product-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 25px 60px rgba(224, 142, 254, 0.2);
-        border-color: rgba(224, 142, 254, 0.3);
-      }
-      .product-card:hover::before {
-        opacity: 1;
-      }
-      .product-card img {
-        /* No transition - static display */
-      }
-      .product-card:hover img {
-        /* No transform - static display */
-      }
-      .product-card .product-content {
-        position: relative;
-        z-index: 2;
-      }
-      
-      /* ========== SCROLL ANIMATIONS ========== */
-      .fade-in-up {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .fade-in-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .fade-in-left {
-        opacity: 0;
-        transform: translateX(-40px);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .fade-in-left.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      .fade-in-right {
-        opacity: 0;
-        transform: translateX(40px);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .fade-in-right.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      
-      /* ========== GLOW EFFECTS ========== */
-      .glow-text {
-        text-shadow: 0 0 20px rgba(224, 142, 254, 0.5), 0 0 40px rgba(224, 142, 254, 0.3);
-      }
-      .glow-border {
-        box-shadow: 0 0 20px rgba(224, 142, 254, 0.3), inset 0 0 20px rgba(224, 142, 254, 0.1);
-      }
-      
-      /* ========== SMOOTH SCROLL ========== */
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 80px;
-      }
-      
-      /* ========== UNIFIED FOOTER STYLES ========== */
-      .unified-footer {
-        background-color: #0A0A0A;
-        padding: 80px 0;
-        width: 100%;
-      }
-      .unified-footer .footer-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 48px;
-      }
-      .unified-footer .footer-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 48px;
-      }
-      .unified-footer .footer-brand-col {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-      }
-      .unified-footer .footer-logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-family: 'Lexend', sans-serif;
-        font-size: 24px;
-        font-weight: 700;
-        background: linear-gradient(to right, #D4A5A5, #9093FF);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-decoration: none;
-      }
-      .unified-footer .footer-logo img {
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
-        -webkit-text-fill-color: initial;
-      }
-      .unified-footer .footer-copyright {
-        font-family: 'Inter', sans-serif;
-        font-size: 12px;
-        font-weight: 300;
-        color: #888888;
-        line-height: 1.6;
-        max-width: 260px;
-      }
-      .unified-footer .footer-section-title {
-        font-family: 'Inter', sans-serif;
-        font-size: 12px;
-        font-weight: 600;
-        color: #FFFFFF;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        margin-bottom: 20px;
-      }
-      .unified-footer .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-      .unified-footer .footer-link {
-        font-family: 'Inter', sans-serif;
-        font-size: 12px;
-        font-weight: 400;
-        color: #AAAAAA;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        display: inline-block;
-        position: relative;
-      }
-      .unified-footer .footer-link::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0;
-        height: 1px;
-        background: linear-gradient(90deg, #E08EFE, #9093FF);
-        transition: width 0.3s ease;
-      }
-      .unified-footer .footer-link:hover {
-        color: #E08EFE;
-      }
-      .unified-footer .footer-link:hover::after {
-        width: 100%;
-      }
-      .unified-footer .footer-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 14px 28px;
-        background: transparent;
-        border: 1px solid #E08EFE;
-        border-radius: 9999px;
-        font-family: 'Inter', sans-serif;
-        font-size: 12px;
-        font-weight: 600;
-        color: #E08EFE;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        margin-bottom: 24px;
-      }
-      .unified-footer .footer-btn:hover {
-        background: linear-gradient(135deg, #E08EFE, #C77DF3);
-        color: #FFFFFF;
-        box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
-      }
-      .unified-footer .footer-social {
-        display: flex;
-        gap: 12px;
-      }
-      .unified-footer .footer-social-icon {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #AAAAAA;
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
-      .unified-footer .footer-social-icon:hover {
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
-        border-color: #E08EFE;
-        color: #E08EFE;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3);
-      }
-      .unified-footer .footer-social-icon svg {
-        width: 16px;
-        height: 16px;
-      }
-      
-      /* ========== MOBILE OPTIMIZATION ========== */
-      @media (max-width: 768px) {
-        .unified-footer {
-          padding: 40px 0;
-        }
-        .unified-footer .footer-container {
-          padding: 0 20px;
-        }
-        .unified-footer .footer-grid {
-          grid-template-columns: 1fr;
-          gap: 32px;
-        }
-        .unified-footer .footer-brand-col {
-          gap: 16px;
-        }
-        .unified-footer .footer-logo {
-          font-size: 20px;
-          gap: 8px;
-        }
-        .unified-footer .footer-logo img {
-          width: 32px;
-          height: 32px;
-        }
-        .unified-footer .footer-copyright {
-          font-size: 11px;
-          max-width: 100%;
-          line-height: 1.5;
-        }
-        .unified-footer .footer-section-title {
-          font-size: 11px;
-          margin-bottom: 16px;
-        }
-        .unified-footer .footer-links {
-          gap: 12px;
-        }
-        .unified-footer .footer-link {
-          font-size: 11px;
-          white-space: normal;
-          word-wrap: break-word;
-        }
-        .unified-footer .footer-btn {
-          padding: 14px 28px;
-          font-size: 12px;
-          width: 100%;
-          max-width: none;
-          font-weight: 700;
-          letter-spacing: 0.15em;
-          background: linear-gradient(135deg, #E08EFE, #C77DF3);
-          color: #FFFFFF;
-          box-shadow: 0 8px 24px rgba(224, 142, 254, 0.4);
-        }
-        .unified-footer .footer-btn:hover {
-          background: linear-gradient(135deg, #f0aeff, #d79df8);
-          box-shadow: 0 12px 32px rgba(224, 142, 254, 0.6);
-          transform: translateY(-2px);
-        }
-        .unified-footer .footer-social {
-          gap: 8px;
-        }
-        .unified-footer .footer-social-icon {
-          width: 36px;
-          height: 36px;
-        }
-        .unified-footer .footer-social-icon svg {
-          width: 14px;
-          height: 14px;
-        }
-        /* Mobile: Vertical layout as per design */
-        .unified-footer .footer-brand-col {
-          order: 1;
-        }
-        .unified-footer .footer-nav-col:nth-child(3) {
-          order: 2;
-        }
-        .unified-footer .footer-nav-col:nth-child(2) {
-          order: 3;
-        }
-        .unified-footer .footer-nav-col:nth-child(4) {
-          order: 4;
-        }
-      }
-      
-      /* ========== UNIVERSAL DROPDOWN SYSTEM ========== */
-      /* Apple 风格弹跳动画变量 */
-      :root {
-        /* 弹簧动画 - Apple 风格 overshoot */
-        --spring-fast: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        --spring-medium: cubic-bezier(0.34, 1.56, 0.64, 1);
-        --spring-slow: cubic-bezier(0.25, 1, 0.5, 1);
-        --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
-        --ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
-        
-        /* 下拉菜单动画 */
-        --dropdown-enter-duration: 0.4s;
-        --dropdown-exit-duration: 0.25s;
-        --dropdown-bg: linear-gradient(180deg, #1a1919 0%, #131313 100%);
-        --dropdown-border: 1px solid rgba(224, 142, 254, 0.2);
-        --dropdown-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
-        --dropdown-radius: 1rem;
-      }
-      
-      /* 通用下拉容器 */
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-      
-      /* 触发按钮 - 按下时的弹性效果 */
-      .dropdown-trigger {
-        cursor: pointer;
-        transition: all 0.15s ease;
-      }
-      
-      .dropdown-trigger:hover {
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.15), rgba(144, 147, 255, 0.15));
-        box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2);
-      }
-      
-      .dropdown.open .dropdown-trigger {
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.25), rgba(144, 147, 255, 0.25));
-        box-shadow: 0 6px 20px rgba(224, 142, 254, 0.3);
-        transform: translateY(-1px);
-      }
-
-      /* 通用下拉菜单 - Apple 风格弹性动画 */
-      .dropdown-menu {
-        position: absolute;
-        top: calc(100% + 0.75rem);
-        left: 0;
-        min-width: 200px;
-        background: var(--dropdown-bg);
-        border: var(--dropdown-border);
-        border-radius: var(--dropdown-radius);
-        padding: 0.5rem;
-        box-shadow: var(--dropdown-shadow);
-        backdrop-filter: blur(20px);
-        
-        /* Apple 风格入场 - 从下方弹性滑入 */
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(8px) scale(0.96);
-        transform-origin: top center;
-        
-        /* 弹性入场动画 */
-        transition: 
-          opacity 0.2s var(--spring-medium),
-          visibility 0.2s var(--spring-medium),
-          transform 0.35s var(--spring-fast);
-      }
-      
-      .dropdown-menu.dropdown-right {
-        left: auto;
-        right: 0;
-      }
-
-      /* 打开状态 - 弹性到位 */
-      .dropdown.open .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0) scale(1);
-      }
-
-      /* 关闭时的快速退出动画 */
-      .dropdown:not(.open) .dropdown-menu {
-        transition: 
-          opacity 0.15s ease-out,
-          visibility 0.15s ease-out,
-          transform 0.2s var(--ease-in-back);
-      }
-      
-      /* 下拉菜单内元素的入场动画 */
-      .dropdown.open .dropdown-item {
-        animation: dropdownItemEnter 0.3s var(--spring-medium) forwards;
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      
-      /* 为每个菜单项添加延迟，制造级联效果 */
-      .dropdown.open .dropdown-item:nth-child(1) { animation-delay: 0.02s; }
-      .dropdown.open .dropdown-item:nth-child(2) { animation-delay: 0.04s; }
-      .dropdown.open .dropdown-item:nth-child(3) { animation-delay: 0.06s; }
-      .dropdown.open .dropdown-item:nth-child(4) { animation-delay: 0.08s; }
-      .dropdown.open .dropdown-item:nth-child(5) { animation-delay: 0.1s; }
-      .dropdown.open .dropdown-item:nth-child(6) { animation-delay: 0.12s; }
-      .dropdown.open .dropdown-item:nth-child(7) { animation-delay: 0.14s; }
-      .dropdown.open .dropdown-item:nth-child(8) { animation-delay: 0.16s; }
-      
-      @keyframes dropdownItemEnter {
-        0% {
-          opacity: 0;
-          transform: translateY(8px);
-        }
-        60% {
-          opacity: 1;
-          transform: translateY(-2px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      
-      /* 下拉菜单项 */
-      .dropdown-item {
-        display: block;
-        width: 100%;
-        text-align: left;
-        padding: 0.75rem 1rem;
-        background: none;
-        border: none;
-        color: #AAAAAA;
-        font-size: 0.875rem;
-        font-family: 'Inter', sans-serif;
-        cursor: pointer;
-        border-radius: 0.5rem;
-        transition: all 0.2s ease;
-        position: relative;
-        overflow: hidden;
-      }
-      
-      .dropdown-item::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 3px;
-        background: linear-gradient(180deg, #E08EFE, #9093FF);
-        transform: scaleY(0);
-        transition: transform 0.2s ease;
-        border-radius: 0 2px 2px 0;
-      }
-      
-      .dropdown-item:hover {
-        background: rgba(224, 142, 254, 0.1);
-        color: #FFFFFF;
-        padding-left: 1.25rem;
-      }
-      
-      .dropdown-item:hover::before {
-        transform: scaleY(1);
-      }
-      
-      .dropdown-item:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(224, 142, 254, 0.5);
-      }
-      
-      .dropdown-item.active {
-        background: linear-gradient(90deg, rgba(224, 142, 254, 0.15), transparent);
-        color: #E08EFE;
-      }
-      
-      .dropdown-item.active::before {
-        transform: scaleY(1);
-      }
-      
-      /* ========== COLLAPSE/ACCORDION SYSTEM ========== */
-      .collapse {
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 1rem;
-        margin-bottom: 1rem;
-        overflow: hidden;
-        background: rgba(26, 25, 25, 0.5);
-        transition: all 0.3s ease;
-      }
-      
-      .collapse:hover {
-        border-color: rgba(224, 142, 254, 0.2);
-      }
-      
-      .collapse-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1.25rem 1.5rem;
-        cursor: pointer;
-        background: none;
-        border: none;
-        width: 100%;
-        color: #FFFFFF;
-        font-size: 1rem;
-        font-weight: 500;
-        font-family: 'Inter', sans-serif;
-        transition: all 0.2s ease;
-      }
-      
-      .collapse-header:hover {
-        background: rgba(224, 142, 254, 0.05);
-      }
-      
-      .collapse-header .icon {
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.35s var(--spring-medium);
-      }
-      
-      .collapse.open .collapse-header .icon {
-        transform: rotate(180deg);
-      }
-
-      /* Collapse body - Apple 风格弹性展开 */
-      .collapse-body {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.45s var(--spring-medium), 
-                    padding 0.35s var(--spring-medium),
-                    opacity 0.35s ease;
-        opacity: 0;
-      }
-      
-      .collapse.open .collapse-body {
-        max-height: 500px;
-        opacity: 1;
-      }
-      
-      /* Collapse 内容入场动画 */
-      .collapse.open .collapse-content {
-        animation: collapseContentEnter 0.4s var(--spring-medium) forwards;
-      }
-      
-      @keyframes collapseContentEnter {
-        0% {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        60% {
-          opacity: 1;
-          transform: translateY(3px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      
-      .collapse-content {
-        padding: 0 1.5rem 1.5rem;
-        color: #AAAAAA;
-        font-size: 0.875rem;
-        line-height: 1.6;
-      }
-      
-      /* ========== MODAL OVERLAY ========== */
-      .dropdown-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(4px);
-        z-index: 99;
-        opacity: 0;
-        visibility: hidden;
-        transition: 
-          opacity 0.3s ease,
-          visibility 0.3s ease;
-        cursor: pointer;
-      }
-      
-      .dropdown-overlay.active {
-        opacity: 1;
-        visibility: visible;
-      }
-      
-      /* ========== PICKER MODAL ========== */
-      /* Apple 风格底部弹出 */
-      .picker-modal {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: linear-gradient(180deg, #1a1919 0%, #0e0e0e 100%);
-        border-top-left-radius: 1.5rem;
-        border-top-right-radius: 1.5rem;
-        padding: 1.5rem;
-        z-index: 101;
-        
-        /* 初始隐藏 - 从底部弹入 */
-        transform: translateY(100%);
-        opacity: 0;
-        visibility: hidden;
-        
-        /* Apple 风格弹性入场 */
-        transition: 
-          transform 0.4s var(--spring-medium),
-          opacity 0.3s ease,
-          visibility 0.3s ease;
-      }
-      
-      .picker-modal.open {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-      }
-      
-      /* 关闭时快速回收 */
-      .picker-modal.closing {
-        transition: 
-          transform 0.25s var(--ease-in-back),
-          opacity 0.2s ease-out,
-          visibility 0.2s ease-out;
-      }
-      
-      .picker-handle {
-        width: 40px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 2px;
-        margin: 0 auto 1rem;
-      }
-      
-      .picker-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-      }
-      
-      .picker-title {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #FFFFFF;
-      }
-      
-      .picker-action {
-        background: none;
-        border: none;
-        color: #E08EFE;
-        font-size: 0.875rem;
-        font-weight: 500;
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        transition: all 0.2s ease;
-      }
-      
-      .picker-action:hover {
-        background: rgba(224, 142, 254, 0.1);
-      }
-      
-      /* ========== FOCUS RING ========== */
-      .focus-ring {
-        position: relative;
-      }
-      
-      .focus-ring::after {
-        content: '';
-        position: absolute;
-        inset: -3px;
-        border-radius: inherit;
-        background: transparent;
-        box-shadow: 0 0 0 0 rgba(224, 142, 254, 0);
-        transition: box-shadow 0.2s ease;
-        pointer-events: none;
-      }
-      
-      .focus-ring:focus-within::after {
-        box-shadow: 0 0 0 3px rgba(224, 142, 254, 0.3);
-      }
-      .lang-selector { position: relative; }
-      .lang-btn { 
-        display: flex; 
-        align-items: center; 
-        gap: 0.4rem; 
-        background: rgba(224, 142, 254, 0.1); 
-        border: 1px solid rgba(224, 142, 254, 0.3); 
-        color: #e08efe; 
-        padding: 0.5rem 1rem; 
-        border-radius: 9999px; 
-        font-family: 'Inter', sans-serif; 
-        font-size: 0.75rem; 
-        font-weight: 500;
-        cursor: pointer; 
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        backdrop-filter: blur(8px);
-        box-shadow: 0 2px 8px rgba(224, 142, 254, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      }
-      .lang-btn:hover { 
-        background: linear-gradient(135deg, rgba(224, 142, 254, 0.2) 0%, rgba(144, 147, 255, 0.2) 100%); 
-        border-color: rgba(224, 142, 254, 0.5);
-        box-shadow: 0 4px 16px rgba(224, 142, 254, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        transform: translateY(-1px);
-      }
-      .lang-dropdown { 
-        position: absolute; 
-        top: calc(100% + 0.75rem); 
-        right: 0; 
-        min-width: 160px; 
-        background: linear-gradient(180deg, #1a1919 0%, #131313 100%); 
-        border: 1px solid rgba(224, 142, 254, 0.2); 
-        border-radius: 1rem; 
-        padding: 0.5rem; 
-        opacity: 0; 
-        visibility: hidden; 
-        transform: translateY(-10px) scale(0.95); 
-        transition: all 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28); 
-        z-index: 100;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 142, 254, 0.1);
-        backdrop-filter: blur(20px);
-      }
-      .lang-selector.open .lang-dropdown { 
-        opacity: 1; 
-        visibility: visible; 
-        transform: translateY(0) scale(1); 
-        transition: all 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-      }
-      .lang-selector:not(.open) .lang-dropdown {
-        transition: all 0.2s ease-in;
-      }
-      .lang-dropdown button { 
-        display: block; 
-        width: 100%; 
-        text-align: left; 
-        padding: 0.6rem 1rem; 
-        background: none; 
-        border: none; 
-        color: #777575; 
-        font-size: 0.8125rem; 
-        font-family: 'Inter', sans-serif;
-        cursor: pointer; 
-        border-radius: 0.5rem; 
-        transition: all 0.2s;
-        position: relative;
-        overflow: hidden;
-      }
-      .lang-dropdown button::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 2px;
-        background: #e08efe;
-        transform: scaleY(0);
-        transition: transform 0.2s;
-      }
-      .lang-dropdown button:hover { 
-        background: rgba(224, 142, 254, 0.1); 
-        color: #ffffff;
-        padding-left: 1.25rem;
-      }
-      .lang-dropdown button:hover::before {
-        transform: scaleY(1);
-      }
-      .lang-dropdown button.active { 
-        background: linear-gradient(90deg, rgba(224, 142, 254, 0.15) 0%, transparent 100%); 
-        color: #e08efe;
-        padding-left: 1.25rem;
-      }
-      .lang-dropdown button.active::before {
-        transform: scaleY(1);
-      }
-      @font-face {
-        font-family: 'Compressa VF';
-        src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
-        font-style: normal;
-        font-weight: 100 900;
-        font-display: swap;
-      }
-      .text-pressure-container {
-        position: relative;
-        width: 100%;
-        min-width: 0;
-        min-height: clamp(6rem, 14vw, 10rem);
-        display: grid;
-        place-items: center;
-        cursor: crosshair;
-      }
-      .text-pressure-title {
-        font-family: 'Compressa VF', 'Lexend', sans-serif;
-        direction: ltr;
-        unicode-bidi: isolate;
-        text-transform: uppercase;
-        font-size: clamp(3.25rem, 12vw, 10rem);
-        line-height: 0.92;
-        margin: 0;
-        text-align: center;
-        user-select: none;
-        white-space: nowrap;
-        max-width: 100%;
-        display: inline-flex;
-        justify-content: center;
-        align-items: baseline;
-        gap: 0.015em;
-        font-weight: 300;
-        font-variation-settings: 'wght' 300, 'wdth' 100, 'ital' 0;
-      }
-      .text-pressure-title span {
-        display: inline-block;
-        color: #ffffff;
-        cursor: crosshair;
-        transition: font-variation-settings 0.15s ease-out;
-      }
-      
-      /* ========== SCROLL REVEAL ANIMATIONS ========== */
-      /* Button Scroll Reveal */
-      .btn-scroll-reveal {
-        opacity: 0;
-        transform: translateY(40px) scale(0.95);
-        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-      
-      .btn-scroll-reveal.visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-      
-      .btn-scroll-reveal.delay-100 { transition-delay: 0.1s; }
-      .btn-scroll-reveal.delay-200 { transition-delay: 0.2s; }
-      .btn-scroll-reveal.delay-300 { transition-delay: 0.3s; }
-      .btn-scroll-reveal.delay-400 { transition-delay: 0.4s; }
-      .btn-scroll-reveal.delay-500 { transition-delay: 0.5s; }
-      
-      /* Input/Card Scroll Reveal */
-      .input-reveal,
-      .card-scroll-reveal {
-        opacity: 0;
-        transform: translateX(-30px);
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      
-      .input-reveal.visible,
-      .card-scroll-reveal.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      
-      .input-reveal.delay-100,
-      .card-scroll-reveal.delay-100 { transition-delay: 0.1s; }
-      .input-reveal.delay-200,
-      .card-scroll-reveal.delay-200 { transition-delay: 0.2s; }
-      .input-reveal.delay-300,
-      .card-scroll-reveal.delay-300 { transition-delay: 0.3s; }
-      
-      /* Input Field Enhanced */
-      .input-field {
-        position: relative;
-        background: rgba(26, 25, 25, 0.8);
-        border: 1px solid rgba(119, 117, 117, 0.3);
-        border-radius: 0.75rem;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      
-      .input-field:focus {
-        background: rgba(26, 25, 25, 0.95);
-        border-color: #e08efe;
-        box-shadow: 
-          0 0 0 2px rgba(224, 142, 254, 0.1),
-          0 0 20px rgba(224, 142, 254, 0.2);
-        transform: translateY(-2px);
-      }
-      
-      /* Floating Label */
-      .input-label {
-        position: absolute;
-        left: 1rem;
-        top: 1rem;
-        color: #adaaaa;
-        font-size: 0.875rem;
-        pointer-events: none;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        transform-origin: left top;
-      }
-      
-      .input-field:focus + .input-label,
-      .input-field:not(:placeholder-shown) + .input-label {
-        transform: scale(0.75) translateY(-1.5rem);
-        color: #e08efe;
-        font-weight: 600;
-      }
-      
-      /* Bottom Border Animation */
-      .input-field::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #e08efe, #9093ff);
-        transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        border-radius: 0 2px 2px 0;
-      }
-      
-      .input-field:focus::after {
-        width: 100%;
-      }
-      
-      /* Performance Optimization */
-      .btn-scroll-reveal,
-      .input-reveal,
-      .card-scroll-reveal {
-        will-change: transform, opacity;
-      }
-      
-      .btn-scroll-reveal.visible,
-      .input-reveal.visible,
-      .card-scroll-reveal.visible {
-        will-change: auto;
-      }
-      
-      /* Mobile Optimization */
-      @media (max-width: 640px) {
-        .btn-scroll-reveal {
-          transform: translateY(30px);
-        }
-        .input-reveal,
-        .card-scroll-reveal {
-          transform: translateY(20px);
-        }
-      }
-      
-      
-    </style>
+<link rel="stylesheet" href="../css/award.css?v=3">
+<link rel="stylesheet" href="../css/product-flare.css">
 </head>
-<body class="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_0_40px_rgba(224,142,254,0.1)]">
-<nav class="flex justify-between items-center px-8 py-4 w-full">
-<a href="../index.html" class="nav-brand" style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Lexend', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; background: linear-gradient(to right, #D4A5A5, #9093ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none;">
-    <img src="image/icon.png" alt="DeepSire Logo" style="height: 32px; width: auto; border-radius: 8px;">
-    <span>DeepSire</span>
-</a>
-<div class="hidden md:flex gap-8 items-center">
-<a class="text-[#e08efe] border-b-2 border-[#e08efe] pb-1 font-headline text-sm tracking-tight" href="../sight/code.html" data-translate-key="nav_sight">Sight</a>
-<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../touch/code.html" data-translate-key="nav_touch">Touch</a>
-<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../pleasure/code.html" data-translate-key="nav_pleasure">Pleasure</a>
-<a class="text-[#777575] hover:text-[#ce7eec] transition-colors font-headline text-sm tracking-tight" href="../scent/code.html" data-translate-key="nav_scent">Scent</a>
-</div>
-<div class="flex items-center">
-<div class="lang-selector" id="langSelector">
+<body class="flare-body selection:bg-primary selection:text-on-primary">
+<header class="flare-header">
+  <nav class="flare-nav" aria-label="Primary">
+    <a href="../index.html" class="flare-brand">
+      <img src="image/icon.png" alt="DeepSire Logo">
+      <span>DeepSire</span>
+    </a>
+    <div class="flare-navlinks">
+      <a class="flare-navlink active" href="../sight/code.html" data-translate-key="nav_sight">Sight</a>
+      <a class="flare-navlink" href="../touch/code.html" data-translate-key="nav_touch">Touch</a>
+      <a class="flare-navlink" href="../pleasure/code.html" data-translate-key="nav_pleasure">Pleasure</a>
+      <a class="flare-navlink" href="../scent/code.html" data-translate-key="nav_scent">Scent</a>
+    </div>
+    <div class="flare-navtools">
+      <div class="lang-selector" id="langSelector">
 <button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="langDropdown">
 <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400;">language</span>
 <span id="langCurrent">EN</span>
@@ -1267,200 +124,167 @@
 <button data-lang="ar" role="option" aria-selected="false">العربية</button>
 </div>
 </div>
-</div>
-</nav>
+    </div>
+  </nav>
 </header>
-<main class="pt-16 w-full overflow-x-hidden">
-<!-- Hero Section -->
-<section class="relative h-screen flex items-center justify-center overflow-hidden">
-<div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover opacity-60" alt="Main background image" src="image/main1.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-</div>
-<div class="relative z-10 text-center px-6 w-full max-w-4xl mx-auto">
-<span class="text-primary font-label text-[0.6875rem] uppercase tracking-[0.3em] mb-6 block" data-translate-key="hero_label">Explore The Ecosystem</span>
-<div class="text-pressure-container" id="textPressureHero" data-text="Sight" translate="no">
-<h1 class="text-pressure-title text-on-background drop-shadow-2xl">
-                        Sight
-                    </h1>
-</div>
-<p class="font-headline text-xl md:text-2xl text-primary-dim tracking-wide opacity-90 mt-4 text-balance" data-translate-key="hero_subtitle">
+<main class="flare-main">
+<!-- Hero -->
+<section class="flare-hero">
+  <div class="flare-hero-media flare-duotone" aria-hidden="true">
+    <img src="image/main1.jpg" alt="Main background image">
+  </div>
+  <div class="flare-ghost" aria-hidden="true" translate="no">SIGHT</div>
+  <div class="flare-hero-inner">
+    <span class="flare-eyebrow flare-rise" style="--d:.05s" data-translate-key="hero_label">Explore The Ecosystem</span>
+    <div class="text-pressure-container flare-rise" style="--d:.15s" id="textPressureHero" data-text="Sight" translate="no">
+      <h1 class="text-pressure-title">Sight</h1>
+    </div>
+    <p class="flare-sub flare-rise" style="--d:.28s" data-translate-key="hero_subtitle">
                     The Hearth for Your Digital Hearth
                 </p>
-<div class="mt-10 md:mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
-<a href="https://www.bestfunx.com/collections/sight-soul" class="btn-primary btn-scroll-reveal" data-delay="100" data-translate-key="hero_cta_primary">Begin Synthesis</a>
-<a href="#experience" class="btn-secondary btn-scroll-reveal" data-delay="200" data-translate-key="hero_cta_secondary">Technical Specs</a>
-</div>
-</div>
+    <div class="flare-ctas flare-rise" style="--d:.4s">
+      <a href="https://www.bestfunx.com/collections/sight-soul" class="flare-btn-primary" data-translate-key="hero_cta_primary">Begin Synthesis</a>
+      <a href="#experience" class="flare-btn-ghost" data-translate-key="hero_cta_secondary">Technical Specs</a>
+    </div>
+  </div>
+  <a class="flare-scrollcue" href="#philosophy" aria-label="Scroll to content"><span></span></a>
 </section>
-<!-- Philosophy Section -->
-<section class="py-24 px-8" id="philosophy">
-<div class="max-w-7xl mx-auto">
-<!-- 顶部区域：文本介绍 + 视频框 -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
-<div class="flex flex-col justify-center">
-<h2 class="font-headline text-5xl font-bold leading-tight mb-8" data-translate-key="philosophy_title">Our Visual Ethos</h2>
-<p class="text-outline leading-relaxed text-xl" data-translate-key="philosophy_desc">Sight gives your digital companion a place in the room. Vivid imagery, adaptive light, and ecosystem sync turn every glance, expression, and shared moment into a presence that feels close.</p>
-</div>
-<div class="relative w-full rounded-3xl overflow-hidden bg-surface-container border border-outline-variant/10 shadow-2xl">
-<video class="w-full h-auto block" muted loop controls playsinline preload="none" poster="../video/optimized/sight-poster.webp" aria-label="Sight photo frame and ambient lamp interaction video" data-product-video data-autoplay="true" data-hls="../video/hls/sight/master.m3u8" data-fallback="../video/optimized/sight-720p.mp4">
+<div class="flare-marquee" aria-hidden="true">
+  <div class="flare-marquee-track">
+    <span>SIGHT &#10022; DeepSire Ecosystem &#10022;&nbsp;</span><span>SIGHT &#10022; DeepSire Ecosystem &#10022;&nbsp;</span>
+  </div>
+</div><section id="philosophy" class="flare-section">
+  <span class="flare-index" aria-hidden="true">01</span>
+  <div class="flare-sec-inner"><div class="flare-sec-head">
+    
+    <h2 class="flare-h2" data-translate-key="philosophy_title">Our Visual Ethos</h2>
+    
+  </div><div class="flare-video-grid"><div><p class="flare-lede" style="margin-top:0;max-width:36rem;" data-translate-key="philosophy_desc">Sight gives your digital companion a place in the room. Vivid imagery, adaptive light, and ecosystem sync turn every glance, expression, and shared moment into a presence that feels close.</p></div><div class="flare-video-wrap">
+    <div class="flare-video-frame"><video class="w-full h-auto block" muted loop controls playsinline preload="none" poster="../video/optimized/sight-poster.webp" aria-label="Sight photo frame and ambient lamp interaction video" data-product-video data-autoplay="true" data-hls="../video/hls/sight/master.m3u8" data-fallback="../video/optimized/sight-720p.mp4">
 Your browser does not support the video tag.
-</video>
+</video></div>
+  </div></div>
+<div class="flare-cards3" style="margin-top:4rem;">
+<div class="flare-card card-scroll-reveal" style="text-align:center;">
+      <span class="material-symbols-outlined flare-card-icon">explore</span>
+      <h3 class="flare-card-title" data-translate-key="voyager_title">Voyager</h3>
+      <p class="flare-card-desc" data-translate-key="voyager_desc">Compact portability for the nomadic digital heart.</p>
+    </div>
+<div class="flare-card card-scroll-reveal" style="text-align:center;">
+      <span class="material-symbols-outlined flare-card-icon">diversity_1</span>
+      <h3 class="flare-card-title" data-translate-key="companion_title">Companion</h3>
+      <p class="flare-card-desc" data-translate-key="companion_desc">The gold standard for daily home interaction.</p>
+    </div>
+<div class="flare-card card-scroll-reveal" style="text-align:center;">
+      <span class="material-symbols-outlined flare-card-icon">shield</span>
+      <h3 class="flare-card-title" data-translate-key="guardian_title">Guardian</h3>
+      <p class="flare-card-desc" data-translate-key="guardian_desc">Life-sized presence for immersive bonding.</p>
+    </div>
 </div>
-</div>
-<!-- 下方区域：三个功能文本框 -->
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-<div class="card-hover flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-5xl mb-6 text-primary card-icon" style="font-variation-settings: 'wght' 200;">explore</span>
-<h3 class="font-headline font-bold text-xl mb-3" data-translate-key="voyager_title">Voyager</h3>
-<p class="text-on-surface-variant text-sm" data-translate-key="voyager_desc">Compact portability for the nomadic digital heart.</p>
-</div>
-<div class="card-hover flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-5xl mb-6 text-secondary card-icon" style="font-variation-settings: 'wght' 200;">diversity_1</span>
-<h3 class="font-headline font-bold text-xl mb-3" data-translate-key="companion_title">Companion</h3>
-<p class="text-on-surface-variant text-sm" data-translate-key="companion_desc">The gold standard for daily home interaction.</p>
-</div>
-<div class="card-hover flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-5xl mb-6 text-primary-dim card-icon" style="font-variation-settings: 'wght' 200;">shield</span>
-<h3 class="font-headline font-bold text-xl mb-3" data-translate-key="guardian_title">Guardian</h3>
-<p class="text-on-surface-variant text-sm" data-translate-key="guardian_desc">Life-sized presence for immersive bonding.</p>
-</div>
-</div>
-</div>
+  </div>
 </section>
-<!-- Matrix Section (Vertical Stacked Cards) -->
-<section class="py-24 px-8 bg-surface-container-lowest" id="matrix">
-<div class="max-w-6xl mx-auto space-y-16">
-<!-- Voyager -->
-<div class="product-card">
-<div class="flex flex-col md:flex-row">
-<div class="md:w-3/5 relative overflow-hidden">
-<img class="w-full h-full object-cover" alt="Voyager (10.1)" src="image/Voyager (10.1).jpg"/>
-<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface-container-low hidden md:block"></div>
-</div>
-<div class="md:w-2/5 p-12 flex flex-col justify-center product-content">
-<span class="font-label text-xs tracking-widest text-primary mb-4" data-translate-key="voyager_tier">THE TRAVELER'S CHOICE</span>
-<h3 class="font-headline text-4xl font-black mb-6" data-translate-key="voyager_model">Voyager (10.1")</h3>
-<p class="text-on-surface-variant leading-relaxed mb-8" data-translate-key="voyager_detail">Designed for those who never stay in one place. Your companion travels with you in a crystalline 10.1-inch form factor, maintaining the link across any distance.</p>
-<a href="#specs" class="btn-arrow" data-translate-key="voyager_cta">
+<section id="matrix" class="flare-section alt">
+  <span class="flare-index" aria-hidden="true">02</span>
+  <div class="flare-sec-inner"><div class="flare-models">
+<div class="flare-model card-scroll-reveal">
+    <div class="flare-model-media">
+      <div class="flare-duotone"><img src="image/Voyager (10.1).jpg" alt="Voyager (10.1)" loading="lazy"></div>
+    </div>
+    <div class="flare-model-body">
+      <span class="flare-model-num" aria-hidden="true">01</span>
+      <span class="flare-tier" data-translate-key="voyager_tier">THE TRAVELER'S CHOICE</span>
+      <h3 class="flare-model-title" data-translate-key="voyager_model">Voyager (10.1")</h3>
+      <p class="flare-model-desc" data-translate-key="voyager_detail">Designed for those who never stay in one place. Your companion travels with you in a crystalline 10.1-inch form factor, maintaining the link across any distance.</p>
+      
+      <div class="flare-cta-row"><a href="#specs" class="flare-configure" data-translate-key="voyager_cta">
                             Explore Voyager <span class="material-symbols-outlined">arrow_forward</span>
-</a>
-</div>
-</div>
-</div>
-<!-- Companion -->
-<div class="product-card">
-<div class="flex flex-col md:flex-row-reverse">
-<div class="md:w-3/5 relative overflow-hidden">
-<img class="w-full h-full object-cover" alt="Companion (15.6)" src="image/Companion (15.6).jpg"/>
-<div class="absolute inset-0 bg-gradient-to-l from-transparent to-surface-container-low hidden md:block"></div>
-</div>
-<div class="md:w-2/5 p-12 flex flex-col justify-center product-content">
-<span class="font-label text-xs tracking-widest text-secondary mb-4" data-translate-key="companion_tier">THE UNIVERSAL BOND</span>
-<h3 class="font-headline text-4xl font-black mb-6" data-translate-key="companion_model">Companion (15.6")</h3>
-<p class="text-on-surface-variant leading-relaxed mb-8" data-translate-key="companion_detail">The perfect balance of size and intimacy. At 15.6 inches, the Companion fills your living space with a warm, digital presence that feels remarkably human.</p>
-<a href="#specs" class="btn-arrow" data-translate-key="companion_cta">
+</a></div>
+    </div>
+  </div>
+<div class="flare-model flare-flip card-scroll-reveal">
+    <div class="flare-model-media">
+      <div class="flare-duotone"><img src="image/Companion (15.6).jpg" alt="Companion (15.6)" loading="lazy"></div>
+    </div>
+    <div class="flare-model-body">
+      <span class="flare-model-num" aria-hidden="true">02</span>
+      <span class="flare-tier" data-translate-key="companion_tier">THE UNIVERSAL BOND</span>
+      <h3 class="flare-model-title" data-translate-key="companion_model">Companion (15.6")</h3>
+      <p class="flare-model-desc" data-translate-key="companion_detail">The perfect balance of size and intimacy. At 15.6 inches, the Companion fills your living space with a warm, digital presence that feels remarkably human.</p>
+      
+      <div class="flare-cta-row"><a href="#specs" class="flare-configure" data-translate-key="companion_cta">
                             Explore Companion <span class="material-symbols-outlined">arrow_forward</span>
-</a>
-</div>
-</div>
-</div>
-<!-- Guardian -->
-<div class="product-card">
-<div class="flex flex-col md:flex-row">
-<div class="md:w-3/5 relative overflow-hidden">
-<img class="w-full h-full object-cover" alt="Guardian (21.5)" src="image/Guardian (21.5).jpg"/>
-<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface-container-low hidden md:block"></div>
-</div>
-<div class="md:w-2/5 p-12 flex flex-col justify-center product-content">
-<span class="font-label text-xs tracking-widest text-primary-dim mb-4" data-translate-key="guardian_tier">THE ULTIMATE PRESENCE</span>
-<h3 class="font-headline text-4xl font-black mb-6" data-translate-key="guardian_model">Guardian (21.5")</h3>
-<p class="text-on-surface-variant leading-relaxed mb-8" data-translate-key="guardian_detail">Uncompromising visual scale. The 21.5-inch Guardian offers a life-sized window into the soul of your digital partner, creating an undeniable atmosphere of protection and unity.</p>
-<a href="#specs" class="btn-arrow" data-translate-key="guardian_cta">
+</a></div>
+    </div>
+  </div>
+<div class="flare-model card-scroll-reveal">
+    <div class="flare-model-media">
+      <div class="flare-duotone"><img src="image/Guardian (21.5).jpg" alt="Guardian (21.5)" loading="lazy"></div>
+    </div>
+    <div class="flare-model-body">
+      <span class="flare-model-num" aria-hidden="true">03</span>
+      <span class="flare-tier" data-translate-key="guardian_tier">THE ULTIMATE PRESENCE</span>
+      <h3 class="flare-model-title" data-translate-key="guardian_model">Guardian (21.5")</h3>
+      <p class="flare-model-desc" data-translate-key="guardian_detail">Uncompromising visual scale. The 21.5-inch Guardian offers a life-sized window into the soul of your digital partner, creating an undeniable atmosphere of protection and unity.</p>
+      
+      <div class="flare-cta-row"><a href="#specs" class="flare-configure" data-translate-key="guardian_cta">
                             Explore Guardian <span class="material-symbols-outlined">arrow_forward</span>
-</a>
+</a></div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
+  </div>
 </section>
-<!-- Experience Section -->
-<section class="py-24 px-8" id="experience">
-<div class="max-w-7xl mx-auto">
-<div class="mb-20 text-center">
-<h2 class="font-headline text-5xl font-bold mb-6" data-translate-key="experience_title">Sensory Precision</h2>
-<p class="text-outline text-lg max-w-2xl mx-auto" data-translate-key="experience_desc">Display, light, and sync—tuned to make presence feel natural.</p>
+<section id="experience" class="flare-section">
+  <span class="flare-index" aria-hidden="true">03</span>
+  <div class="flare-sec-inner"><div class="flare-sec-head" style="text-align:center;margin-left:auto;margin-right:auto;">
+    
+    <h2 class="flare-h2" data-translate-key="experience_title">Sensory Precision</h2>
+    <p class="flare-lede" data-translate-key="experience_desc">Display, light, and sync—tuned to make presence feel natural.</p>
+  </div><div class="flare-cards cols-4">
+<div class="flare-card card-scroll-reveal">
+      <span class="material-symbols-outlined flare-card-icon">desktop_windows</span>
+      <h4 class="flare-card-title" data-translate-key="feature1_title">Wide-Angle IPS</h4>
+      <p class="flare-card-desc" data-translate-key="feature1_desc">Clear, consistent color from every angle.</p>
+    </div>
+<div class="flare-card card-scroll-reveal">
+      <span class="material-symbols-outlined flare-card-icon">sync</span>
+      <h4 class="flare-card-title" data-translate-key="feature2_title">Seamless Sync</h4>
+      <p class="flare-card-desc" data-translate-key="feature2_desc">Wi-Fi 6 keeps movement and response in step.</p>
+    </div>
+<div class="flare-card card-scroll-reveal">
+      <span class="material-symbols-outlined flare-card-icon">light_mode</span>
+      <h4 class="flare-card-title" data-translate-key="feature3_title">Adaptive Light</h4>
+      <p class="flare-card-desc" data-translate-key="feature3_desc">Color temperature follows the room.</p>
+    </div>
+<div class="flare-card card-scroll-reveal">
+      <span class="material-symbols-outlined flare-card-icon">hub</span>
+      <h4 class="flare-card-title" data-translate-key="feature4_title">Ecosystem Core</h4>
+      <p class="flare-card-desc" data-translate-key="feature4_desc">One display connects Touch, Pleasure, and Scent.</p>
+    </div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-<div class="space-y-6 group">
-<div class="w-16 h-16 rounded-2xl bg-primary-container/10 flex items-center justify-center transition-colors group-hover:bg-primary/20">
-<span class="material-symbols-outlined text-primary text-3xl">desktop_windows</span>
-</div>
-<h4 class="font-headline text-2xl font-bold" data-translate-key="feature1_title">Wide-Angle IPS</h4>
-<p class="text-on-surface-variant leading-relaxed" data-translate-key="feature1_desc">Clear, consistent color from every angle.</p>
-</div>
-<div class="space-y-6 group">
-<div class="w-16 h-16 rounded-2xl bg-secondary-container/10 flex items-center justify-center transition-colors group-hover:bg-secondary/20">
-<span class="material-symbols-outlined text-secondary text-3xl">sync</span>
-</div>
-<h4 class="font-headline text-2xl font-bold" data-translate-key="feature2_title">Seamless Sync</h4>
-<p class="text-on-surface-variant leading-relaxed" data-translate-key="feature2_desc">Wi-Fi 6 keeps movement and response in step.</p>
-</div>
-<div class="space-y-6 group">
-<div class="w-16 h-16 rounded-2xl bg-primary-container/10 flex items-center justify-center transition-colors group-hover:bg-primary-dim/20">
-<span class="material-symbols-outlined text-primary-dim text-3xl">light_mode</span>
-</div>
-<h4 class="font-headline text-2xl font-bold" data-translate-key="feature3_title">Adaptive Light</h4>
-<p class="text-on-surface-variant leading-relaxed" data-translate-key="feature3_desc">Color temperature follows the room.</p>
-</div>
-<div class="space-y-6 group">
-<div class="w-16 h-16 rounded-2xl bg-secondary-container/10 flex items-center justify-center transition-colors group-hover:bg-secondary/20">
-<span class="material-symbols-outlined text-secondary text-3xl">hub</span>
-</div>
-<h4 class="font-headline text-2xl font-bold" data-translate-key="feature4_title">Ecosystem Core</h4>
-<p class="text-on-surface-variant leading-relaxed" data-translate-key="feature4_desc">One display connects Touch, Pleasure, and Scent.</p>
-</div>
-</div>
-</div>
+  </div>
 </section>
-<!-- Technical Foundation Section -->
-<section class="py-24 px-8 bg-surface-container-low" id="specs">
-<div class="max-w-7xl mx-auto">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-<div>
-<h2 class="font-headline text-5xl font-bold mb-4" data-translate-key="tech_title">Technical Foundation</h2>
-<p class="text-outline text-lg" data-translate-key="tech_desc">The silicon heart that powers the digital soul.</p>
-</div>
-<div class="flex gap-4">
-<div class="px-6 py-3 rounded-full border border-outline-variant/30 font-label text-xs uppercase tracking-widest" data-translate-key="tech_model">Model: DS-2024S</div>
-<div class="px-6 py-3 rounded-full border border-outline-variant/30 font-label text-xs uppercase tracking-widest text-primary" data-translate-key="tech_certified">Certified V2.0</div>
-</div>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-<div class="glass-card p-10 rounded-[2.5rem] border border-outline-variant/10 text-center hover:border-primary/30 transition-colors">
-<span class="material-symbols-outlined text-4xl text-primary mb-4">4k</span>
-<h5 class="font-label text-xs text-outline uppercase tracking-widest mb-2" data-translate-key="spec_display_label">Display</h5>
-<p class="font-headline text-xl font-bold" data-translate-key="spec_display_value">4K OLED Panel</p>
-</div>
-<div class="glass-card p-10 rounded-[2.5rem] border border-outline-variant/10 text-center hover:border-secondary/30 transition-colors">
-<span class="material-symbols-outlined text-4xl text-secondary mb-4">memory</span>
-<h5 class="font-label text-xs text-outline uppercase tracking-widest mb-2" data-translate-key="spec_processor_label">Processor</h5>
-<p class="font-headline text-xl font-bold" data-translate-key="spec_processor_value">A53 Quad-Core</p>
-</div>
-<div class="glass-card p-10 rounded-[2.5rem] border border-outline-variant/10 text-center hover:border-primary-dim/30 transition-colors">
-<span class="material-symbols-outlined text-4xl text-primary-dim mb-4">android</span>
-<h5 class="font-label text-xs text-outline uppercase tracking-widest mb-2" data-translate-key="spec_arch_label">Architecture</h5>
-<p class="font-headline text-xl font-bold" data-translate-key="spec_arch_value">Android 11 OS</p>
-</div>
-<div class="glass-card p-10 rounded-[2.5rem] border border-outline-variant/10 text-center hover:border-primary/30 transition-colors">
-<span class="material-symbols-outlined text-4xl text-primary mb-4">wifi</span>
-<h5 class="font-label text-xs text-outline uppercase tracking-widest mb-2" data-translate-key="spec_connect_label">Connectivity</h5>
-<p class="font-headline text-xl font-bold" data-translate-key="spec_connect_value">MIMO Wi-Fi 6</p>
-</div>
-</div>
-</div>
+<section id="specs" class="flare-section alt">
+  <span class="flare-index" aria-hidden="true">04</span>
+  <div class="flare-sec-inner"><div class="flare-sec-head">
+    
+    <h2 class="flare-h2" data-translate-key="tech_title">Technical Foundation</h2>
+    <p class="flare-lede" data-translate-key="tech_desc">The silicon heart that powers the digital soul.</p>
+  </div><div class="flare-video-grid">
+      <div>
+        <div class="flare-feat-check"><span class="flare-card-tag" data-translate-key="tech_model">Model: DS-2024S</span></div>
+        <div class="flare-feat-check"><span class="flare-card-tag" data-translate-key="tech_certified">Certified V2.0</span></div>
+      </div>
+      <div class="flare-spec-rows card-scroll-reveal">
+        <div class="flare-spec-row"><span class="k" data-translate-key="spec_display_label">Display</span><span class="v" data-translate-key="spec_display_value">4K OLED Panel</span></div>
+        <div class="flare-spec-row"><span class="k" data-translate-key="spec_processor_label">Processor</span><span class="v" data-translate-key="spec_processor_value">A53 Quad-Core</span></div>
+        <div class="flare-spec-row"><span class="k" data-translate-key="spec_arch_label">Architecture</span><span class="v" data-translate-key="spec_arch_value">Android 11 OS</span></div>
+        <div class="flare-spec-row"><span class="k" data-translate-key="spec_connect_label">Connectivity</span><span class="v" data-translate-key="spec_connect_value">MIMO Wi-Fi 6</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
-
 <!-- Unified Footer -->
 <footer class="unified-footer">
   <div class="footer-container">
@@ -1514,8 +338,7 @@ Your browser does not support the video tag.
       </div>
     </div>
   </div>
-</footer>
-<script src="../js/product-common.js?v=20260814"></script>
+</footer><script src="../js/product-common.js?v=20260814"></script>
 <script src="../js/product-video.js?v=20260814"></script>
 <script>
 const translations = {
@@ -1949,8 +772,8 @@ class TextPressure {
         this.alpha = options.alpha || false;
         this.flex = options.flex !== false;
         this.stroke = options.stroke || false;
-        this.textColor = options.textColor || '#ffffff';
-        this.strokeColor = options.strokeColor || '#5227FF';
+        this.textColor = options.textColor || '#f6efe0';
+        this.strokeColor = options.strokeColor || '#4df0ff';
         this.minFontSize = options.minFontSize || 36;
 
         this.titleRef = container.querySelector('h1') || container.querySelector('.text-pressure-title');
@@ -2400,4 +1223,6 @@ document.addEventListener('DOMContentLoaded', () => {
         PickerModal: PickerModal
       };
     </script>
-  </body></html>
+<script src="../js/award.js?v=3"></script>
+</body>
+</html>

@@ -8,17 +8,17 @@
     <link rel="icon" href="../image/logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --brand-color: #06b6d4;
-            --accent-color: #fbbf24;
-            --dark-bg: #0f172a;
+            --accent-color: #d4a574;
+            --dark-bg: #0d0c1d;
             --card-bg: rgba(255, 255, 255, 0.04);
             --card-border: rgba(255, 255, 255, 0.1);
             --text-light: #ffffff;
-            --text-gray: #cbd5e1;
-            --success-color: #10b981;
+            --text-gray: #a9b3d0;
+            --success-color: #06b6d4;
             --step-glow: rgba(6, 182, 212, 0.3);
             --z-base: 1;
             --z-dropdown: 10;
@@ -48,7 +48,7 @@
             width: 100%; height: 100%;
             background:
                 radial-gradient(ellipse at 20% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(251, 191, 36, 0.06) 0%, transparent 50%);
+                radial-gradient(ellipse at 80% 80%, rgba(212, 165, 116, 0.06) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
@@ -120,7 +120,8 @@
             flex-shrink: 0;
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--brand-color), #0891b2);
+            background: #06b6d4;
+            background: linear-gradient(135deg, var(--brand-color), color-mix(in srgb, #06b6d4 62%, #0d0c1d));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -188,7 +189,7 @@
         }
 
         .highlight-box {
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(251, 191, 36, 0.05));
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(212, 165, 116, 0.05));
             border-left: 3px solid var(--brand-color);
             border-radius: 0 12px 12px 0;
             padding: 16px 20px;
@@ -218,18 +219,18 @@
             border-radius: 20px;
             margin-top: 16px;
             font-size: 0.85rem;
-            color: #10b981;
+            color: #06b6d4;
         }
 
         .success-badge svg {
             width: 16px;
             height: 16px;
-            fill: #10b981;
+            fill: #06b6d4;
         }
 
         .tips-section {
-            background: rgba(251, 191, 36, 0.05);
-            border: 1px solid rgba(251, 191, 36, 0.15);
+            background: rgba(212, 165, 116, 0.05);
+            border: 1px solid rgba(212, 165, 116, 0.15);
             border-radius: 16px;
             padding: 24px;
             margin-top: 32px;
@@ -439,8 +440,14 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="../static/wq-award.css">
+    <link rel="stylesheet" href="../static/wq-guide.css">
+
 </head>
 <body>
+    <div class="wq-progress" aria-hidden="true"><span></span></div>
+    <div class="wq-wayfind" aria-hidden="true"><span class="wq-wayfind-num">01</span><span class="wq-wayfind-total">/ 00</span></div>
+
     <div class="container">
         <div class="header">
             <div class="logo">
@@ -511,7 +518,7 @@
             <div class="highlight-box">
                 <p>绑定成功后，您可以通过微圈 App 管理相框中的照片、视频、人物档案和相关设置。</p>
             </div>
-            <div class="highlight-box" style="border-left-color: var(--accent-color); background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(6, 182, 212, 0.05));">
+            <div class="highlight-box" style="border-left-color: var(--accent-color); background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(6, 182, 212, 0.05));">
                 <p><strong>送礼模式：</strong>如果您购买相框是为了送给家人或朋友，也可以在不拆开包装的情况下，直接扫描包装底部的设备绑定二维码，提前完成设备绑定、人物影像整理和祝福内容设置。收礼人收到相框并开机联网后，即可看到您准备的人物影像档案、惊喜照片和礼物祝福。</p>
             </div>
         </div>
@@ -743,6 +750,40 @@
         document.querySelector('.lang-dropdown')?.addEventListener('click', (e) => e.stopPropagation());
 
         setGuideLang(detectGuideLang());
+    </script>
+
+    <script>
+    /* 记忆星河 · 阅读进度 + 步骤路标 + 卡片显现（渐进增强） */
+    (function () {
+        var bar = document.querySelector('.wq-progress span');
+        var num = document.querySelector('.wq-wayfind-num');
+        var total = document.querySelector('.wq-wayfind-total');
+        var cards = Array.prototype.slice.call(document.querySelectorAll('.guide-card'));
+        if (total) total.textContent = '/ ' + String(cards.length).padStart(2, '0');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function onScroll() {
+            var h = document.documentElement;
+            var max = h.scrollHeight - h.clientHeight;
+            var p = max > 0 ? h.scrollTop / max : 0;
+            if (bar) bar.style.transform = 'scaleX(' + p + ')';
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+        if ('IntersectionObserver' in window && !reduce) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('wq-in');
+                        var i = cards.indexOf(e.target);
+                        if (num && i > -1) num.textContent = String(i + 1).padStart(2, '0');
+                    }
+                });
+            }, { threshold: 0.3 });
+            cards.forEach(function (c) { c.classList.add('wq-anim'); io.observe(c); });
+        } else {
+            cards.forEach(function (c) { c.classList.add('wq-in'); });
+        }
+    })();
     </script>
 </body>
 </html>

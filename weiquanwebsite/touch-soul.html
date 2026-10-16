@@ -6,667 +6,21 @@
     <title>触 - DeepSire | 心跳，是最亲密的语言</title>
     <meta name="description" content="触智能戒指，用轻触与自定义节奏传递牵挂，让远方的陪伴在手边得到回应。">
     <link rel="icon" href="image/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="image/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/shared.css">
     <link rel="stylesheet" href="static/product-common.css">
-    <style>
-        :root {
-            --brand-color: #8A2BE2;
-            --accent-color: #00E0FF;
-            --dark-bg: #0f172a;
-            --text-light: #ffffff;
-            --text-gray: #94a3b8;
-            --font-family: 'Noto Sans SC', 'Inter', sans-serif;
-            --btn-gradient: linear-gradient(135deg, #5B38F5, #9D5CFF);
-            --btn-hover: linear-gradient(135deg, #7B61FF, #5B38F5);
-            --logo-glow: rgba(0, 224, 255, 0.4);
-            --bg-glow-1: rgba(138,43,226, 0.12);
-            --bg-glow-2: rgba(0,224,255, 0.08);
-            --feature-glow: rgba(138,43,226, 0.12);
-            --border-hover: rgba(138,43,226, 0.2);
-            --card-glow: rgba(138,43,226, 0.1);
-            --icon-bg: rgba(138,43,226, 0.2);
-            --icon-bg-light: rgba(138,43,226, 0.05);
-            --tag-bg: rgba(138,43,226, 0.12);
-            --specs-glow-1: rgba(138,43,226, 0.08);
-            --specs-glow-2: rgba(91,56,245, 0.06);
-            --spec-bg: rgba(138,43,226, 0.04);
-            --spec-border: rgba(138,43,226, 0.15);
-            --spec-bg-hover: rgba(138,43,226, 0.08);
-            --spec-border-hover: rgba(138,43,226, 0.4);
-            --spec-glow: rgba(138,43,226, 0.2);
-            --brand-color-alpha: rgba(138,43,226, 0.1);
-            --spec-icon-bg: rgba(138,43,226, 0.2);
-            --spec-icon-bg-light: rgba(91,56,245, 0.1);
-            --spec-value-glow: rgba(138,43,226, 0.5);
-            --cta-glow-1: rgba(138,43,226, 0.06);
-            --cta-glow-2: rgba(0,224,255, 0.04);
-            --scrollbar-thumb: #8A2BE2;
-            --scrollbar-thumb-light: #00E0FF;
-            --scrollbar-thumb-hover: #7B61FF;
-            --scrollbar-thumb-hover-light: #7B61FF;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: var(--font-family);
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.8;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            background:
-                radial-gradient(ellipse at 30% 20%, rgba(138,43,226, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(0,224,255, 0.08) 0%, transparent 50%);
-            pointer-events: none; z-index: -1;
-        }
-
-        .container { width: 90%; max-width: 1280px; margin: 0 auto; }
-
-        .header {
-            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
-            height: 80px;
-            background: transparent;
-            backdrop-filter: blur(0);
-            border-bottom: none;
-            transition: all 0.3s ease;
-        }
-        .header.scrolled { 
-            background: rgba(10, 6, 18, 0.85); 
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); 
-        }
-        .navbar { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100%; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            padding: 0 40px;
-            position: relative;
-        }
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 14px; 
-            text-decoration: none; 
-            position: absolute;
-            left: 40px;
-        }
-        .logo-image { height: 46px; width: auto; filter: drop-shadow(0 0 10px rgba(0, 224, 255, 0.3)); transition: all 0.3s ease; }
-        .logo:hover .logo-image { filter: drop-shadow(0 0 16px rgba(0, 224, 255, 0.5)); }
-        .logo-text { font-family: 'Noto Serif SC', 'Noto Sans SC', 'Inter', serif; font-size: 32px; font-weight: 800; letter-spacing: 2.5px; color: #FFFFFF; text-shadow: 0 0 30px rgba(0, 224, 255, 0.3); }
-        .nav-links { 
-            display: flex; 
-            align-items: center; 
-            gap: 32px; 
-            list-style: none; 
-        }
-        .nav-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.3s ease; position: relative; }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent-color); }
-        .btn-back {
-            padding: 10px 24px; background: var(--btn-gradient); color: #fff; text-decoration: none;
-            border-radius: 24px; font-weight: 500; font-size: 14px; transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(138,43,226, 0.3); position: relative; overflow: hidden;
-        }
-        .btn-back::before {
-            content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2); transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-        .btn-back:hover::before { width: 200px; height: 200px; }
-        .btn-back:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(138,43,226, 0.5); }
-
-        .hamburger { display: none; }
-
-        .language-switcher {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            position: absolute;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .lang-btn {
-            padding: 6px 12px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: var(--brand-color);
-        }
-        .lang-btn.active {
-            background: var(--btn-gradient);
-            color: #fff;
-            border-color: var(--brand-color);
-        }
-
-        .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            position: relative; padding: 120px 0 80px; overflow: hidden;
-        }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; }
-        .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-        .hero-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.5) 50%, rgba(15, 23, 42, 0.9) 100%);
-        }
-        .hero-content { text-align: center; max-width: 900px; z-index: 1; }
-        .hero-badge {
-            display: inline-block; padding: 8px 20px;
-            background: rgba(138,43,226, 0.12);
-            border: 1px solid rgba(138,43,226, 0.25);
-            border-radius: 50px; color: var(--accent-color);
-            font-size: 14px; font-weight: 500; margin-bottom: 24px;
-            animation: heartbeatBadge 2s ease-in-out infinite;
-        }
-        @keyframes heartbeatBadge {
-            0%, 100% { transform: scale(1); }
-            15% { transform: scale(1.08); }
-            30% { transform: scale(1); }
-            45% { transform: scale(1.04); }
-        }
-        .hero h1 {
-            font-size: 4.5rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 30%, var(--accent-color) 70%, var(--brand-color) 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; animation: gradientShift 6s ease-in-out infinite;
-        }
-        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        .hero-subtitle { font-size: 1.5rem; color: var(--text-gray); margin-bottom: 40px; font-weight: 300; letter-spacing: 1px; }
-        .hero-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-
-        .btn-primary {
-            display: inline-flex; align-items: center; padding: 16px 40px;
-            background: var(--btn-gradient); color: #fff; text-decoration: none;
-            border-radius: 50px; font-weight: 600; font-size: 16px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 8px 30px rgba(138,43,226, 0.4);
-            position: relative; overflow: hidden;
-        }
-        .btn-primary::before {
-            content: ''; position: absolute; top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        .btn-primary:hover::before { left: 100%; }
-        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(138,43,226, 0.6); }
-
-        .btn-secondary {
-            display: inline-flex; align-items: center; padding: 16px 40px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #fff; text-decoration: none; border-radius: 50px;
-            font-weight: 500; font-size: 16px; transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-        }
-        .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
-
-        section { padding: 120px 0; position: relative; }
-        .section-header { text-align: center; max-width: 700px; margin: 0 auto 60px; }
-        .section-header h2 {
-            font-size: 2.8rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff, var(--accent-color));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .section-header p { font-size: 1.1rem; color: var(--text-gray); }
-
-        .philosophy { background: linear-gradient(180deg, var(--dark-bg) 0%, #0a0612 100%); }
-        .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .philosophy-content h2 { font-size: 2.4rem; font-weight: 700; margin-bottom: 24px; line-height: 1.3; }
-        .philosophy-content p { font-size: 1.1rem; color: var(--text-gray); line-height: 1.9; margin-bottom: 20px; }
-        .philosophy-video { border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); }
-        .philosophy-video video { width: 100%; height: auto; display: block; }
-
-        .features { background: linear-gradient(180deg, #0a0612 0%, var(--dark-bg) 100%); }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px; padding: 40px 32px; text-align: center;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative; overflow: hidden;
-        }
-        .feature-card::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(138,43,226, 0.12) 0%, transparent 60%);
-            opacity: 0; transition: opacity 0.3s ease;
-        }
-        .feature-card:hover::before { opacity: 1; }
-        .feature-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(138,43,226, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(138,43,226, 0.1);
-        }
-        .feature-card .scan-edge {
-            position: absolute; top: 0; left: 0; width: 3px; height: 100%;
-            background: linear-gradient(180deg, transparent, rgba(138,43,226, 0.9), transparent);
-            opacity: 0; pointer-events: none; z-index: 2;
-        }
-        .feature-card:hover .scan-edge { animation: edgeScan 0.6s ease-out forwards; }
-        @keyframes edgeScan { 0% { top: 0; opacity: 1; } 100% { top: 100%; opacity: 1; } }
-        .feature-icon { width: 72px; height: 72px; margin: 0 auto 24px; background: linear-gradient(135deg, rgba(138,43,226, 0.2), rgba(138,43,226, 0.05)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; transition: all 0.4s ease; }
-        .feature-card:hover .feature-icon { transform: scale(1.1) rotate(5deg); }
-        .feature-card h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 12px; }
-        .feature-card p { font-size: 0.95rem; color: var(--text-gray); line-height: 1.7; }
-
-        .stories { background: linear-gradient(180deg, var(--dark-bg) 0%, #0a0612 100%); }
-        .stories-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
-        .story-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px; overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .story-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); border-color: rgba(138,43,226, 0.2); }
-        .story-content { padding: 32px; }
-        .story-tag { display: inline-block; padding: 6px 14px; background: rgba(138,43,226, 0.12); color: var(--accent-color); font-size: 13px; font-weight: 500; border-radius: 20px; margin-bottom: 16px; }
-        .story-icon { margin-right: 8px; font-size: 1.2em; }
-        .story-content h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 16px; }
-        .story-content p { font-size: 1rem; color: var(--text-gray); line-height: 1.8; }
-
-        .specs { background: linear-gradient(180deg, #0a0612 0%, var(--dark-bg) 100%); position: relative; overflow: hidden; }
-        .specs::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(138,43,226, 0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 70% 50%, rgba(91,56,245, 0.06) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .specs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; z-index: 1; }
-        .spec-item {
-            background: rgba(138,43,226, 0.04);
-            border: 1px solid rgba(138,43,226, 0.15);
-            border-radius: 20px; padding: 32px 20px; text-align: center;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative; overflow: hidden;
-        }
-        .spec-item:hover {
-            background: rgba(138,43,226, 0.08);
-            border-color: rgba(138,43,226, 0.4);
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(138,43,226, 0.2);
-        }
-        .spec-item::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), rgba(138,43,226, 0.1), rgba(255,255,255,0.05), transparent);
-            transform: rotate(45deg); animation: holoShine 4s ease-in-out infinite; pointer-events: none;
-        }
-        @keyframes holoShine { 0%, 100% { transform: rotate(45deg) translateX(-100%); } 50% { transform: rotate(45deg) translateX(100%); } }
-        .spec-icon { width: 48px; height: 48px; margin: 0 auto 16px; background: linear-gradient(135deg, rgba(138,43,226, 0.2), rgba(91,56,245, 0.1)); border-radius: 12px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; transition: all 0.3s ease; }
-        .spec-item:hover .spec-icon { transform: scale(1.1); }
-        .spec-icon svg { width: 24px; height: 24px; stroke: var(--accent-color); fill: none; stroke-width: 1.5; }
-        .spec-value { font-size: 1.8rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 20px rgba(138,43,226, 0.5); position: relative; z-index: 1; }
-        .spec-label { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); position: relative; z-index: 1; }
-        .spec-detail { font-size: 0.75rem; color: var(--accent-color); margin-top: 8px; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; position: relative; z-index: 1; }
-        .spec-item:hover .spec-detail { opacity: 1; transform: translateY(0); }
-
-        .cta { background: linear-gradient(180deg, var(--dark-bg) 0%, #0a0612 100%); text-align: center; position: relative; overflow: hidden; }
-        .cta::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 50% 30%, rgba(138,43,226, 0.06) 0%, transparent 50%),
-                        radial-gradient(ellipse at 20% 80%, rgba(0,224,255, 0.04) 0%, transparent 40%);
-            pointer-events: none;
-        }
-        .cta-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
-        .cta h2 {
-            font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff, var(--accent-color));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .cta p { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px; }
-        .product-options { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; position: relative; z-index: 1; }
-        .product-option {
-            background: rgba(10, 10, 30, 0.4);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px; padding: 28px 20px; width: 200px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative; overflow: hidden; cursor: pointer;
-            display: flex; flex-direction: column; align-items: center;
-        }
-        .product-option::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(138,43,226, 0.05) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 0;
-        }
-        .product-option:hover {
-            border-color: rgba(138,43,226, 0.3);
-            background: rgba(15, 15, 35, 0.3);
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(138,43,226, 0.1);
-        }
-        .product-option:hover::before {
-            opacity: 1;
-        }
-        .product-option .shine {
-            position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), rgba(138,43,226, 0.2), transparent);
-            transform: skewX(-20deg); z-index: 1; pointer-events: none; opacity: 0;
-        }
-        .product-option:hover .shine { opacity: 1; animation: shineMove 1.8s ease-in-out; }
-        @keyframes shineMove { 0% { left: -100%; } 100% { left: 200%; } }
-        .product-option .name { font-size: 1rem; font-weight: 500; color: rgba(255, 255, 255, 0.7); position: relative; z-index: 2; text-align: center; transition: all 0.3s ease; }
-        .product-option:hover .name { color: rgba(255, 255, 255, 0.9); }
-        .product-option .tag { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; position: relative; z-index: 2; text-shadow: 0 0 10px var(--card-color, #00E0FF); transition: all 0.3s ease; }
-        .product-option:hover .tag { color: var(--card-color, #00E0FF); text-shadow: 0 0 15px var(--card-color, #00E0FF); }
-        .product-option .slogan { font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); text-align: center; margin-bottom: 16px; line-height: 1.5; position: relative; z-index: 2; }
-        .product-option .light-bar {
-            width: 40%; height: 1px;
-            background: linear-gradient(90deg, transparent, var(--card-color, #00E0FF), transparent);
-            margin-top: auto; position: relative; z-index: 2; transition: all 0.5s ease;
-        }
-        .product-option:hover .light-bar { width: 80%; height: 2px; box-shadow: 0 0 15px var(--card-color, #00E0FF); }
-        .product-option .features {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px;
-            margin-top: 16px; padding: 16px;
-            border-top: 1px solid rgba(138,43,226, 0.2);
-            background: rgba(10, 10, 20, 0.3);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            opacity: 0; transform: translateY(10px);
-            transition: all 0.4s ease 0.1s;
-            pointer-events: none;
-            position: relative; z-index: 2; width: 100%;
-        }
-        .product-option:hover .features { 
-            opacity: 1 !important; 
-            pointer-events: auto; 
-            transform: translateY(0);
-            box-shadow: inset 0 0 20px rgba(138,43,226, 0.1);
-        }
-        .product-option .feature-item { 
-            font-size: 0.65rem; 
-            color: #ffffff !important; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative; 
-            z-index: 2;
-            transition: color 0.3s ease;
-        }
-        .product-option:hover .feature-item { 
-            color: var(--card-color, #00E0FF) !important;
-        }
-        .product-option.standard { --card-color: #8A2BE2; }
-        .product-option.pro { --card-color: #7B61FF; }
-        .product-option.ultra { --card-color: #00E0FF; }
-        .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px; position: relative; z-index: 1; }
-        .cta .btn-primary { padding: 18px 50px; font-weight: 700; font-size: 16px; }
-        .cta-links { margin-top: 40px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; position: relative; z-index: 1; }
-        .cta-links a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px; transition: all 0.3s ease; position: relative; padding: 8px 0; }
-        .cta-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-color), transparent); transition: width 0.3s ease; }
-        .cta-links a:hover { color: var(--accent-color); }
-        .cta-links a:hover::after { width: 100%; }
-
-        footer { padding: 40px 0; background: #050408; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.06); }
-        footer p { color: var(--text-gray); font-size: 14px; }
-
-        /* 滚动特效 */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-        
-        /* 平滑滚动 */
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-        
-        /* 背景动态效果 */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(138,43,226, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(0,224,255, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-            animation: backgroundShift 20s ease-in-out infinite;
-        }
-        
-        @keyframes backgroundShift {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(5%, 5%); }
-            50% { transform: translate(0, 10%); }
-            75% { transform: translate(-5%, 5%); }
-            100% { transform: translate(0, 0); }
-        }
-        
-        /* 文字发光效果 */
-        .hero h1 {
-            text-shadow: 0 0 30px rgba(138,43,226, 0.5);
-        }
-        
-        /* 卡片悬浮特效增强 */
-        .feature-card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.3),
-                0 0 30px rgba(138,43,226, 0.2),
-                0 0 15px rgba(0,224,255, 0.3);
-        }
-        
-        /* 按钮特效增强 */
-        .btn-primary {
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s ease;
-        }
-        .btn-primary:hover::after {
-            left: 100%;
-        }
-        
-        /* 滚动条美化 */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(10, 6, 18, 0.8);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #8A2BE2, #00E0FF);
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #7B61FF, #7B61FF);
-        }
-        
-        /* 页脚 - 深色科技风格 */
-        .footer { 
-            background: #0A0612;
-            text-align: center; 
-            padding: 20px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-        }
-        .footer .container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 40px;
-        }
-        .footer-logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: transform 0.3s ease;
-        }
-        .footer-logo:hover {
-            transform: scale(1.05);
-        }
-        .footer-logo img {
-            height: 36px;
-            width: auto;
-            filter: drop-shadow(0 0 8px rgba(0, 224, 255, 0.3));
-        }
-        .footer-logo .logo-text {
-            font-size: 22px;
-            color: #FFFFFF;
-        }
-        .footer-info {
-            text-align: right;
-        }
-        .footer p { 
-            color: rgba(255, 255, 255, 0.7); 
-            font-size: 14px; 
-            margin: 0;
-        }
-        .footer a { color: #00E0FF; text-decoration: none; transition: all 0.3s ease; }
-        .footer a:hover { 
-            color: #7B61FF;
-            text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .footer .container {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-                padding: 0 20px;
-            }
-            .footer-info {
-                text-align: center;
-            }
-            .footer-logo .logo-text {
-                font-size: 20px;
-            }
-            .footer p {
-                font-size: 13px;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .philosophy-grid { grid-template-columns: 1fr; gap: 40px; }
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-            .specs-grid { grid-template-columns: repeat(2, 1fr); }
-            .philosophy-video { width: 100%; }
-        }
-        @media (max-width: 768px) {
-            .navbar { padding: 0 20px; justify-content: space-between; }
-            .logo-image { height: 28px; }
-            .logo-text { font-size: 19px; font-weight: 800; letter-spacing: 1px; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(10, 6, 18, 0.98); backdrop-filter: blur(12px); flex-direction: column; padding: 20px; gap: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-            .nav-links.active { display: flex; }
-            .nav-links a { font-size: 15px; padding: 12px 0; display: block; }
-            .nav-language-switcher { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-            .nav-language-switcher .language-switcher { position: static; transform: none; display: flex; justify-content: center; gap: 8px; }
-            .hamburger { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; font-size: 1.2rem; cursor: pointer; order: 999; z-index: 1001; -webkit-tap-highlight-color: transparent; margin-left: auto; }
-            .btn-back { display: none; }
-            section { padding: 60px 0; }
-            .hero h1 { font-size: 2.2rem; text-shadow: 0 0 15px rgba(138,43,226, 0.3); }
-            .hero-subtitle { font-size: 1.1rem; }
-            .hero-badge { font-size: 12px; padding: 6px 16px; }
-            .features-grid { grid-template-columns: 1fr; }
-            .stories-grid { grid-template-columns: 1fr; }
-            .specs-grid { grid-template-columns: 1fr; }
-            .section-header h2 { font-size: 1.8rem; }
-            .section-header { margin-bottom: 40px; }
-            .spec-value { font-size: 1.4rem; }
-            .cta h2 { font-size: 1.8rem; }
-            .cta p { font-size: 1rem; }
-            .product-options { gap: 12px; }
-            .product-option { width: 100%; max-width: 280px; }
-            .btn-primary { padding: 14px 32px; font-size: 14px; }
-            .btn-secondary { padding: 14px 32px; font-size: 14px; }
-            .feature-card { padding: 28px 20px; }
-            .feature-icon { width: 56px; height: 56px; font-size: 1.5rem; }
-            .story-content { padding: 24px; }
-            .cta-links { gap: 20px; }
-            .cta-links a { font-size: 13px; }
-            .container { width: 92%; }
-            
-            /* 移动设备性能优化 */
-            body::after {
-                animation: none; /* 禁用背景动画以提升性能 */
-            }
-            .feature-card:hover {
-                transform: translateY(-5px); /* 减少移动设备上的变换效果 */
-                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(138,43,226, 0.2);
-            }
-            .btn-primary::after {
-                display: none; /* 禁用按钮渐变效果以提升性能 */
-            }
-        }
-        @media (max-width: 480px) {
-            .navbar { padding: 0 16px; }
-            .logo-image { height: 26px; }
-            .logo-text { font-size: 15px; letter-spacing: 0.5px; }
-            .hero h1 { font-size: 1.8rem; }
-            .hero-subtitle { font-size: 0.95rem; }
-            .section-header h2 { font-size: 1.5rem; }
-            .section-header p { font-size: 0.9rem; }
-            section { padding: 48px 0; }
-            .container { width: 94%; }
-            .product-option { padding: 20px 16px; }
-            .product-option .name { font-size: 1.3rem; }
-            .spec-value { font-size: 1.2rem; }
-            .spec-label { font-size: 0.8rem; }
-            .cta h2 { font-size: 1.5rem; }
-            .cta-buttons { flex-direction: column; align-items: center; }
-            .cta-links { flex-direction: column; align-items: center; gap: 12px; }
-            .philosophy-content h2 { font-size: 1.6rem; }
-            .philosophy-content p { font-size: 0.95rem; }
-            .feature-card h3 { font-size: 1.2rem; }
-            .feature-card p { font-size: 0.85rem; }
-            .story-content h3 { font-size: 1.2rem; }
-            .story-content p { font-size: 0.9rem; }
-        }
-    </style>
     <link rel="stylesheet" href="static/soul-impact.css">
+    <link rel="stylesheet" href="static/wq-award.css">
 </head>
 <body class="soul-page soul-touch">
+    <div class="soul-progress" aria-hidden="true"><span></span></div>
+    <div class="grain" aria-hidden="true"></div>
+
     <header class="header">
-        <nav class="navbar">
+        <nav class="navbar" aria-label="主导航">
             <a href="index.html" class="logo">
                 <img src="image/logo.png" alt="微圈 Logo" class="logo-image">
                 <span class="logo-text">微 圈</span>
@@ -684,37 +38,57 @@
                     </div>
                 </li>
             </ul>
-            <div class="hamburger">☰</div>
+            <div class="hamburger" role="button" tabindex="0" aria-label="打开菜单">☰</div>
         </nav>
     </header>
 
-    <section class="hero">
+    <main>
+    <section class="hero" id="top">
         <div class="hero-bg"><img src="image/main3.jpg" alt="触"></div>
-        <div class="hero-overlay"></div>
+        <div class="hero-tint" aria-hidden="true"></div>
+        <div class="hero-vertical" aria-hidden="true">记忆星河 · <b>让 AI，成为有记忆的陪伴</b></div>
         <div class="hero-content">
-            <span class="hero-badge">触 · 智能戒指</span>
-            <h1>触</h1>
+            <span class="hero-badge"><span class="hero-badge-text">触 · 智能戒指</span><span class="mono" aria-hidden="true">SOUL·02</span></span>
+            <div class="hero-char-mask">
+                <div class="hero-char-wrap">
+                    <h1 class="soul-char display-cjk" data-char="触">触</h1>
+                </div>
+            </div>
             <p class="hero-subtitle">轻轻一触，把牵挂送到远方</p>
             <div class="hero-buttons">
-                <a href="#philosophy" class="btn-primary">感受连接</a>
-                <a href="https://mall.jd.com/index-16561986.html?from=pc&cid=0" target="_blank" class="btn-secondary">前往京东选购</a>
+                <a href="#philosophy" class="btn-primary magnetic">感受连接</a>
+                <a href="https://mall.jd.com/index-16561986.html?from=pc&cid=0" target="_blank" rel="noopener" class="btn-secondary">前往京东选购</a>
             </div>
+
         </div>
+        <div class="scroll-hint" aria-hidden="true"><small>SCROLL</small><span class="scroll-hint-line"></span></div>
     </section>
+
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <div class="marquee-chunk"><span>轻轻一触</span><i>✦</i><span class="hollow">牵挂即达</span><i>✦</i><span>默契触碰</span><i>✦</i><span class="hollow">关怀节奏</span><i>✦</i><span>轻盈佩戴</span><i>✦</i><span class="hollow">记忆星河</span><i>✦</i><span class="mono-tag">MEMORY NEBULA</span><i>✦</i></div>
+            <div class="marquee-chunk"><span>轻轻一触</span><i>✦</i><span class="hollow">牵挂即达</span><i>✦</i><span>默契触碰</span><i>✦</i><span class="hollow">关怀节奏</span><i>✦</i><span>轻盈佩戴</span><i>✦</i><span class="hollow">记忆星河</span><i>✦</i><span class="mono-tag">MEMORY NEBULA</span><i>✦</i></div>
+        </div>
+    </div>
 
     <section class="philosophy" id="philosophy">
         <div class="container">
             <div class="philosophy-grid">
                 <div class="philosophy-content reveal">
-                    <h2>感受，无需言说</h2>
+                    <span class="philosophy-kicker">记忆星河 · 序章</span>
+                    <h2 data-accent="无需言说">感受，<em>无需言说</em></h2>
                     <p>有些牵挂来不及说出口，却可以用一次轻触传达。</p>
-                    <p>触是你与所爱之人共享的互动暗号，把轻触、长按与自定义节奏，变成只有彼此懂得的回应。</p>
+                    <p>触是你与所爱之人共享的<strong>互动暗号</strong>，把轻触、长按与自定义节奏，变成只有彼此懂得的回应。</p>
                     <p>即使相隔千里，也能让想念在手边得到回应。</p>
                 </div>
                 <div class="philosophy-video reveal reveal-delay-2">
-                    <video class="w-full h-auto block" muted loop controls playsinline preload="none" poster="video/optimized/touch-poster.webp" aria-label="Touch ring interaction video" data-product-video data-autoplay="true" data-hls="video/hls/touch/master.m3u8" data-fallback="video/optimized/touch-720p.mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="video-theater">
+                        <span class="vt-tag vt-tl"><b>●</b>&nbsp;REC · 记忆星河剧场</span>
+                        <span class="vt-tag vt-tr mono">SOUL·02</span>
+                        <video class="w-full h-auto block" muted loop controls playsinline preload="none" poster="video/optimized/touch-poster.webp" aria-label="Touch ring interaction video" data-product-video data-autoplay="true" data-hls="video/hls/touch/master.m3u8" data-fallback="video/optimized/touch-720p.mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 </div>
             </div>
         </div>
@@ -723,6 +97,7 @@
     <section class="features" id="features">
         <div class="container">
             <div class="section-header reveal">
+                <span class="chapter-num">02</span>
                 <h2>核心体验</h2>
                 <p>它是如何工作的？</p>
             </div>
@@ -737,7 +112,7 @@
                     <span class="scan-edge"></span>
                     <div class="feature-icon">🌈</div>
                     <h3>关怀节奏</h3>
-                    <p>预设或自定义互动节奏，让问候、晚安和“我在这里”各有回应</p>
+                    <p>预设或自定义互动节奏，让问候、晚安和&quot;我在这里&quot;各有回应</p>
                 </div>
                 <div class="feature-card reveal reveal-delay-3">
                     <span class="scan-edge"></span>
@@ -747,25 +122,29 @@
                 </div>
             </div>
         </div>
+        <div class="hover-preview" aria-hidden="true"><img src="video/optimized/touch-poster.webp" alt=""></div>
     </section>
 
     <section class="stories" id="stories">
         <div class="container">
             <div class="section-header reveal">
+                <span class="chapter-num">03</span>
                 <h2>他们的故事</h2>
                 <p>真实用户的使用体验</p>
             </div>
             <div class="stories-grid">
                 <div class="story-card reveal reveal-delay-1">
                     <div class="story-content">
-                        <h3><span class="story-icon">❤️</span>"妈妈，我到家了"</h3>
-                        <p>母亲与远方的孩子约定了一个专属节奏：两次轻触代表“平安到家”，一次长按代表“想你了”。不用打断彼此，也能让牵挂及时抵达。</p>
+                        <span class="story-tag">MEMORY · 001</span>
+                        <h3><span class="story-icon">❤️</span>&quot;妈妈，我到家了&quot;</h3>
+                        <p class="story-text">母亲与远方的孩子约定了一个专属节奏：两次轻触代表“平安到家”，一次长按代表“想你了”。不用打断彼此，也能让牵挂及时抵达。</p>
                     </div>
                 </div>
                 <div class="story-card reveal reveal-delay-2">
                     <div class="story-content">
-                        <h3><span class="story-icon">💓</span>"跑完了，给你一个击掌"</h3>
-                        <p>身处不同城市的跑友，用约定好的触感节奏分享出发、抵达与完成训练的时刻。远方传来的回应，就像一次隔空击掌。</p>
+                        <span class="story-tag">MEMORY · 002</span>
+                        <h3><span class="story-icon">💓</span>&quot;跑完了，给你一个击掌&quot;</h3>
+                        <p class="story-text">身处不同城市的跑友，用约定好的触感节奏分享出发、抵达与完成训练的时刻。远方传来的回应，就像一次隔空击掌。</p>
                     </div>
                 </div>
             </div>
@@ -775,29 +154,34 @@
     <section class="specs" id="specs">
         <div class="container">
             <div class="section-header reveal">
+                <span class="chapter-num">04</span>
                 <h2>技术基石</h2>
                 <p>精工铸造，品质保证</p>
             </div>
             <div class="specs-grid">
                 <div class="spec-item reveal reveal-delay-1">
+                    <span class="spec-num">SP.01</span>
                     <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
                     <div class="spec-value">细腻触感</div>
                     <div class="spec-label">触觉反馈</div>
                     <div class="spec-detail">多档震动 · 自定义节奏</div>
                 </div>
                 <div class="spec-item reveal reveal-delay-2">
+                    <span class="spec-num">SP.02</span>
                     <div class="spec-icon"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg></div>
                     <div class="spec-value">7-10天</div>
                     <div class="spec-label">超长续航</div>
                     <div class="spec-detail">Type-C快充 · 80mAh电池</div>
                 </div>
                 <div class="spec-item reveal reveal-delay-3">
+                    <span class="spec-num">SP.03</span>
                     <div class="spec-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
                     <div class="spec-value">钛合金</div>
                     <div class="spec-label">材质</div>
                     <div class="spec-detail">IP68防水 · 轻量坚固</div>
                 </div>
                 <div class="spec-item reveal reveal-delay-4">
+                    <span class="spec-num">SP.04</span>
                     <div class="spec-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
                     <div class="spec-value">端对端</div>
                     <div class="spec-label">加密通讯</div>
@@ -810,6 +194,7 @@
     <section class="cta" id="cta">
         <div class="container">
             <div class="cta-content">
+                <span class="chapter-num reveal">05</span>
                 <h2 class="reveal">让牵挂随时有回应</h2>
                 <p class="reveal reveal-delay-1">选择属于你们的连接方式</p>
                 <div class="product-options reveal reveal-delay-2">
@@ -854,36 +239,39 @@
                     </div>
                 </div>
                 <div class="cta-buttons reveal reveal-delay-3">
-                    <a href="https://mall.jd.com/index-16561986.html?from=pc&cid=0" target="_blank" class="btn-primary">前往京东选购</a>
+                    <a href="https://mall.jd.com/index-16561986.html?from=pc&cid=0" target="_blank" rel="noopener" class="btn-primary magnetic">前往京东选购</a>
                 </div>
                 <div class="cta-links reveal reveal-delay-4">
-                    <a href="index.html">返回微圈首页</a>
-                    <a href="sight-soul.html">探索视</a>
-                    <a href="scent-soul.html">探索嗅</a>
+                <a href="index.html">返回微圈首页</a>
+                <a href="sight-soul.html">探索视</a>
+                <a href="scent-soul.html">探索嗅</a>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
     <footer class="footer">
         <div class="container">
             <a href="index.html" class="footer-logo">
                 <img src="image/logo.png" alt="微圈">
-                <span class="logo-text" style="font-size: 22px;">微 圈</span>
+                <span class="logo-text">微 圈</span>
             </a>
             <div class="footer-contact">
-                <p>联系我们：<a href="mailto:support@meeetta.com" style="color: var(--text-dark); text-decoration: none;">support@meeetta.com</a></p>
+                <p>联系我们：<a href="mailto:support@meeetta.com">support@meeetta.com</a></p>
             </div>
             <div class="footer-info">
                 <p>© 2024 深颖数字（深圳）有限公司。All Rights Reserved.</p>
-                <p>备案号：<a href="https://beian.miit.gov.cn/" style="color: var(--text-dark); text-decoration: none;">粤 ICP 备 2023062123 号</a></p>
+                <p>备案号：<a href="https://beian.miit.gov.cn/">粤 ICP 备 2023062123 号</a></p>
             </div>
         </div>
     </footer>
 
+    <script src="static/wq-award.js"></script>
     <script src="static/shared.js"></script>
     <script src="static/product-video.js"></script>
     <script>
+        // 本页翻译数据（沿用原站文案，由 shared.js 的 applyTranslations 驱动）
         const pageTranslations = {
             zh: {
                 nav: {

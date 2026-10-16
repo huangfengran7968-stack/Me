@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="en" class="award">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>DeepSire - Download</title>
+    <meta name="description" content="Download DeepSire App - AI-powered emotional interaction platform">
+    <link rel="icon" href="image/icon.png">
+    <link rel="preload" as="image" href="image/icon.png">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+    <style>
+        :root {
+            /* Brand Colors from index.html */
+            --deep-space-blue: #0A1A2F;
+            --warm-white: #FAF9F6;
+            --wood-tone: #D4B996;
+            --tech-cyan: #00E0FF;
+            
+            /* Primary Colors */
+            --primary: #D4A5A5;
+            --primary-dim: #C98888;
+            --secondary: #9093ff;
+            --tertiary-dim: #97efbd;
+            
+            /* Surface Colors */
+            --surface-dim: #0e0e0e;
+            --surface-container: #1a1919;
+            --surface-container-high: #201f1f;
+            --surface-container-low: #131313;
+            --surface-container-lowest: #000000;
+            --surface-bright: #2c2c2c;
+            --surface-container-highest: #262626;
+            --background: #0e0e0e;
+            --on-surface: #ffffff;
+            --on-surface-variant: #adaaaa;
+            --outline: #777575;
+            --outline-variant: #494847;
+            
+            /* Button Animation Variables */
+            --btn-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --btn-primary-start: #8B5CF6;
+            --btn-primary-end: #D4A5A5;
+            
+            /* Legacy compatibility */
+            --primary-color: #D4A5A5;
+            --primary-light: #e8b8b8;
+            --primary-glow: rgba(212, 165, 165, 0.4);
+            --secondary-color: #9093ff;
+            --secondary-glow: rgba(144, 147, 255, 0.3);
+            --accent-cyan: #00E0FF;
+            --dark-bg: #0e0e0e;
+            --light-bg: rgba(14, 14, 14, 0.95);
+            --text-color: #FAF9F6;
+            --text-muted: #adaaaa;
+            --text-warm: #FAF9F6;
+            --nav-height: 66px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        html { background: #050508; }
+        body {
+            font-family: "Inter", "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            opacity: 0;
+            animation: fadeInBody 0.5s ease-out forwards;
+            -webkit-font-smoothing: antialiased;
+        }
+        @keyframes fadeInBody {
+            to { opacity: 1; }
+        }
+        
+        /* Premium Background Layer */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Base gradient background */
+        .bg-layer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 20%, rgba(157, 78, 221, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 30%, rgba(255, 107, 157, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 70% 50% at 50% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+                linear-gradient(180deg, #080810 0%, #0a0a14 50%, #060610 100%);
+        }
+        
+        /* Subtle grid pattern */
+        .bg-layer::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+        }
+        
+        /* Floating orbs - premium glow */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(0);
+            will-change: transform;
+        }
+        
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle at 30% 30%, rgba(157, 78, 221, 0.25) 0%, rgba(157, 78, 221, 0.1) 30%, transparent 70%);
+            top: -15%;
+            left: -10%;
+            animation: orbDrift1 25s ease-in-out infinite;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 107, 157, 0.2) 0%, rgba(255, 107, 157, 0.08) 30%, transparent 70%);
+            top: 40%;
+            right: -15%;
+            animation: orbDrift2 30s ease-in-out infinite;
+        }
+        
+        .orb-3 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.05) 30%, transparent 70%);
+            bottom: -20%;
+            left: 20%;
+            animation: orbDrift3 28s ease-in-out infinite;
+        }
+        
+        @keyframes orbDrift1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, 60px) scale(1.05); }
+            66% { transform: translate(-20px, 30px) scale(0.95); }
+        }
+        
+        @keyframes orbDrift2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-50px, -40px) scale(1.08); }
+            66% { transform: translate(30px, -20px) scale(0.92); }
+        }
+        
+        @keyframes orbDrift3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -50px) scale(1.1); }
+        }
+        
+        /* Light particles */
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: particleFloat 20s linear infinite;
+        }
+        
+        .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 18s; }
+        .particle:nth-child(2) { left: 25%; top: 60%; animation-delay: 2s; animation-duration: 22s; }
+        .particle:nth-child(3) { left: 45%; top: 30%; animation-delay: 4s; animation-duration: 20s; }
+        .particle:nth-child(4) { left: 70%; top: 70%; animation-delay: 6s; animation-duration: 24s; }
+        .particle:nth-child(5) { left: 85%; top: 40%; animation-delay: 8s; animation-duration: 19s; }
+        .particle:nth-child(6) { left: 55%; top: 85%; animation-delay: 10s; animation-duration: 21s; }
+        .particle:nth-child(7) { left: 35%; top: 15%; animation-delay: 12s; animation-duration: 23s; }
+        .particle:nth-child(8) { left: 90%; top: 10%; animation-delay: 14s; animation-duration: 17s; }
+        
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: scale(1); }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+        }
+        
+
+        
+        /* Navigation - synced from index.html */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            transition: background 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: rgba(14, 14, 14, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        
+        .nav-brand img {
+            height: 32px;
+            width: auto;
+            border-radius: 6px;
+        }
+        
+        .lang-selector {
+            position: relative;
+            z-index: 200;
+        }
+        
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(224, 142, 254, 0.2), rgba(144, 147, 255, 0.2));
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(224, 142, 254, 0.3);
+        }
+        
+        .lang-btn:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            box-shadow: 0 0 16px rgba(224, 142, 254, 0.5);
+            transform: scale(1.05);
+        }
+        
+        .lang-btn i {
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .lang-selector.open .lang-btn i {
+            transform: rotate(180deg);
+        }
+        
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            min-width: 160px;
+            background: var(--surface-container);
+            border: 1px solid var(--outline-variant);
+            border-radius: 0.75rem;
+            padding: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 300;
+        }
+        
+        .lang-selector.open .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .lang-dropdown button {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.625rem 1rem;
+            background: transparent;
+            border: none;
+            border-radius: 0.5rem;
+            color: var(--on-surface-variant);
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        
+        .lang-dropdown button:hover {
+            background: var(--surface-container-high);
+            color: var(--on-surface);
+        }
+        
+        .lang-dropdown button.active {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .lang-dropdown button .lang-flag {
+            font-size: 1.125rem;
+        }
+        
+        .hero {
+            position: relative;
+            min-height: calc(100vh - var(--nav-height));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 5%;
+            z-index: 1;
+            contain: layout style;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--light-bg), transparent);
+            pointer-events: none;
+        }
+        .hero-content {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .logo-large {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 0;
+            text-align: center;
+            width: 100%;
+            will-change: contents;
+        }
+        .logo-large img {
+            width: 110px;
+            height: 110px;
+            border-radius: 28px;
+            margin-bottom: 24px;
+            animation: logoFloat3D 4s ease-in-out infinite;
+            transform-style: preserve-3d;
+            will-change: transform;
+            position: relative;
+        }
+        .logo-large img::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.6), rgba(255, 107, 157, 0.4), rgba(0, 212, 255, 0.3));
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0.7;
+        }
+        
+        @keyframes logoFloat3D {
+            0%, 100% {
+                transform: translateY(0);
+                filter: drop-shadow(0 10px 30px rgba(157, 78, 221, 0.4));
+            }
+            50% {
+                transform: translateY(-12px);
+                filter: drop-shadow(0 20px 40px rgba(157, 78, 221, 0.5));
+            }
+        }
+        .logo-large h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0 auto 0;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        @keyframes logoGradientFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        .logo-large .slogan {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 500px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            line-height: 1.5;
+            margin: 0 auto 6px;
+        }
+        .download-main-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 auto 6px;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            max-width: 500px;
+        }
+        .download-subtitle {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+            margin: 0 auto 6px;
+            max-width: 500px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            line-height: 1.5;
+        }
+        
+        .download-section {
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .other-options-title {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            margin: 24px auto 12px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 300;
+            line-height: 1.6;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .other-options-title::before,
+        .other-options-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            max-width: 80px;
+        }
+        
+        .other-options-title span {
+            padding: 0 16px;
+        }
+        @keyframes logoGradientFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        .logo-large .slogan {
+            font-size: 1.25rem;
+            color: var(--on-surface-variant);
+            max-width: 500px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            line-height: 1.6;
+            margin: 0 auto 6px;
+        }
+        .download-main-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--warm-white);
+            margin: 0 auto 6px;
+            letter-spacing: -0.01em;
+            max-width: 500px;
+            line-height: 1.3;
+        }
+        .download-subtitle {
+            font-size: 1rem;
+            color: var(--on-surface-variant);
+            margin: 0 auto 6px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        
+        .begin-journey-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.875rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0 auto 16px;
+            max-width: 500px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        
+        .download-buttons-main {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 0 auto 0;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .download-btn-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: transform var(--btn-transition), box-shadow var(--btn-transition);
+            min-width: 160px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .download-btn-main i { font-size: 1.2rem; position: relative; z-index: 1; }
+        .download-btn-main span { position: relative; z-index: 1; }
+        
+        /* Neon Glow iOS Button */
+        .ios-main-btn {
+            background: linear-gradient(135deg, var(--btn-primary-start), var(--btn-primary-end));
+            border: none;
+            color: white;
+            box-shadow: 
+                inset 0 1px 1px rgba(255, 255, 255, 0.2),
+                0 0 12px rgba(108, 43, 217, 0.6),
+                0 0 24px rgba(242, 68, 150, 0.3);
+            animation: cyber-breathe 2s ease-in-out infinite;
+        }
+        .ios-main-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+        .ios-main-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                inset 0 1px 1px rgba(255, 255, 255, 0.3),
+                0 0 20px rgba(108, 43, 217, 0.8),
+                0 0 32px rgba(242, 68, 150, 0.5);
+        }
+        .ios-main-btn:hover::before {
+            left: 100%;
+        }
+        .ios-main-btn:active {
+            animation: cyber-pulse 0.4s ease-out;
+        }
+        
+        /* Neon Glow Android Button */
+        .android-main-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dim));
+            border: none;
+            color: white;
+            box-shadow: 
+                inset 0 1px 1px rgba(255, 255, 255, 0.2),
+                0 0 12px rgba(212, 165, 165, 0.6),
+                0 0 24px rgba(201, 136, 136, 0.3);
+            animation: cyber-breathe-warm 2s ease-in-out infinite;
+        }
+        .android-main-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+        .android-main-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                inset 0 1px 1px rgba(255, 255, 255, 0.3),
+                0 0 20px rgba(212, 165, 165, 0.8),
+                0 0 32px rgba(201, 136, 136, 0.5);
+        }
+        .android-main-btn:hover::before {
+            left: 100%;
+        }
+        .android-main-btn:active {
+            animation: cyber-pulse-warm 0.4s ease-out;
+        }
+        
+        /* Cyber Breathing Animations */
+        @keyframes cyber-breathe {
+            0%, 100% { 
+                box-shadow: 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.2),
+                    0 0 12px rgba(108, 43, 217, 0.6),
+                    0 0 24px rgba(242, 68, 150, 0.3);
+            }
+            50% { 
+                box-shadow: 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+                    0 0 16px rgba(108, 43, 217, 0.8),
+                    0 0 28px rgba(242, 68, 150, 0.4);
+            }
+        }
+        
+        @keyframes cyber-breathe-warm {
+            0%, 100% { 
+                box-shadow: 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.2),
+                    0 0 12px rgba(212, 165, 165, 0.6),
+                    0 0 24px rgba(201, 136, 136, 0.3);
+            }
+            50% { 
+                box-shadow: 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+                    0 0 16px rgba(212, 165, 165, 0.8),
+                    0 0 28px rgba(201, 136, 136, 0.4);
+            }
+        }
+        
+        @keyframes cyber-pulse {
+            0% { 
+                transform: scale(1.05);
+                box-shadow: 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+                    0 0 20px rgba(108, 43, 217, 0.8),
+                    0 0 32px rgba(242, 68, 150, 0.5);
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+                    0 0 40px rgba(108, 43, 217, 1),
+                    0 0 60px rgba(242, 68, 150, 0.8);
+            }
+            100% { 
+                transform: scale(1.05);
+                box-shadow: 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.2),
+                    0 0 12px rgba(108, 43, 217, 0.6),
+                    0 0 24px rgba(242, 68, 150, 0.3);
+            }
+        }
+        
+        @keyframes cyber-pulse-warm {
+            0% { 
+                transform: scale(1.05);
+                box-shadow: 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+                    0 0 20px rgba(212, 165, 165, 0.8),
+                    0 0 32px rgba(201, 136, 136, 0.5);
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+                    0 0 40px rgba(212, 165, 165, 1),
+                    0 0 60px rgba(201, 136, 136, 0.8);
+            }
+            100% { 
+                transform: scale(1.05);
+                box-shadow: 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.2),
+                    0 0 12px rgba(212, 165, 165, 0.6),
+                    0 0 24px rgba(201, 136, 136, 0.3);
+            }
+        }
+        
+        .other-options-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            margin: 32px 0 16px;
+        }
+        .download-buttons-secondary {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            width: 100%;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        .download-buttons-secondary .download-btn-secondary,
+        .download-buttons-secondary .button-reset {
+            flex: 1 1 calc(50% - 6px);
+            min-width: 140px;
+            max-width: 200px;
+        }
+        .download-btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 0.8125rem;
+            transition: all var(--btn-transition);
+            background: transparent;
+            border: 1px solid var(--outline-variant);
+            color: var(--on-surface);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .download-btn-secondary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            padding: 1px;
+            background: linear-gradient(135deg, transparent, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity var(--btn-transition), background var(--btn-transition);
+        }
+        .download-btn-secondary:hover {
+            background: rgba(108, 43, 217, 0.1);
+            box-shadow: 0 0 8px rgba(108, 43, 217, 0.6);
+            color: rgba(255, 255, 255, 1);
+        }
+        .download-btn-secondary:hover::before {
+            opacity: 1;
+            background: linear-gradient(135deg, var(--btn-primary-start), var(--btn-primary-end));
+        }
+        .download-btn-secondary:active {
+            transform: scale(0.98);
+            animation: cyber-outline-flash 0.3s ease-out;
+        }
+        .download-btn-secondary i { 
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .download-btn-secondary span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .download-btn-secondary.button-reset {
+            background: transparent;
+        }
+        
+        button.download-btn-secondary {
+            font-family: inherit;
+        }
+        
+        html[dir="rtl"] .download-btn-secondary i {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+        
+        html[dir="rtl"] .download-btn-main i {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+        
+        html[dir="rtl"] .download-btn-main .fab {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+        
+        @keyframes cyber-outline-flash {
+            0% { 
+                box-shadow: 0 0 8px rgba(108, 43, 217, 0.6);
+            }
+            50% { 
+                box-shadow: 0 0 20px rgba(108, 43, 217, 1), 0 0 30px rgba(242, 68, 150, 0.8);
+            }
+            100% { 
+                box-shadow: 0 0 8px rgba(108, 43, 217, 0.6);
+            }
+        }
+        
+        .features-section {
+            padding: 80px 5%;
+            background: var(--light-bg);
+            position: relative;
+            z-index: 1;
+            content-visibility: auto;
+            contain-intrinsic-size: 0 600px;
+        }
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.3), transparent);
+        }
+        .features-section .container { max-width: 900px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--on-surface);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .section-title p { 
+            color: var(--on-surface-variant); 
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 28px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            will-change: transform;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), transparent 50%, rgba(255, 107, 157, 0.2));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .feature-item:hover {
+            background: rgba(255,255,255,0.04);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .feature-item:hover::before {
+            opacity: 1;
+        }
+        .feature-item .pulse-ring {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .feature-item .pulse-ring::before,
+        .feature-item .pulse-ring::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+        }
+        .feature-item .pulse-ring::before {
+            border: 2px solid rgba(157, 78, 221, 0.6);
+            animation: none;
+        }
+        .feature-item .pulse-ring::after {
+            border: 2px solid rgba(255, 107, 157, 0.4);
+            animation: none;
+        }
+        .feature-item .pulse-ring-inner {
+            position: absolute;
+            inset: 6px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(157, 78, 221, 0.5) 0%, transparent 70%);
+            opacity: 0;
+        }
+        .feature-item.animate:nth-child(1) .pulse-ring::before { animation: ring-appear-1 1.2s ease forwards; animation-delay: 0s; }
+        .feature-item.animate:nth-child(1) .pulse-ring::after  { animation: ring-appear-2 1.2s ease forwards; animation-delay: 0.15s; }
+        .feature-item.animate:nth-child(1) .pulse-ring-inner   { animation: inner-glow 1.2s ease forwards; animation-delay: 0.2s; }
+        .feature-item.animate:nth-child(2) .pulse-ring::before { animation: ring-appear-1 1.2s ease forwards; animation-delay: 0s; }
+        .feature-item.animate:nth-child(2) .pulse-ring::after  { animation: ring-appear-2 1.2s ease forwards; animation-delay: 0.15s; }
+        .feature-item.animate:nth-child(2) .pulse-ring-inner   { animation: inner-glow 1.2s ease forwards; animation-delay: 0.2s; }
+        .feature-item.animate:nth-child(3) .pulse-ring::before { animation: ring-appear-1 1.2s ease forwards; animation-delay: 0s; }
+        .feature-item.animate:nth-child(3) .pulse-ring::after  { animation: ring-appear-2 1.2s ease forwards; animation-delay: 0.15s; }
+        .feature-item.animate:nth-child(3) .pulse-ring-inner   { animation: inner-glow 1.2s ease forwards; animation-delay: 0.2s; }
+        @keyframes inner-glow {
+            0%   { opacity: 0; transform: scale(0.2); }
+            50%  { opacity: 0.8; }
+            100% { opacity: 0.5; transform: scale(1); }
+        }
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.4rem;
+            position: relative;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+        .feature-icon.ai { 
+            background: linear-gradient(135deg, rgba(212, 165, 165, 0.25) 0%, rgba(201, 136, 136, 0.15) 100%);
+            color: var(--primary);
+            box-shadow: 0 8px 24px rgba(212, 165, 165, 0.2);
+        }
+        .feature-icon.device { 
+            background: linear-gradient(135deg, rgba(144, 147, 255, 0.25) 0%, rgba(144, 147, 255, 0.15) 100%);
+            color: var(--secondary);
+            box-shadow: 0 8px 24px rgba(144, 147, 255, 0.2);
+        }
+        .feature-icon.secure { 
+            background: linear-gradient(135deg, rgba(0, 224, 255, 0.25) 0%, rgba(0, 224, 255, 0.15) 100%);
+            color: var(--tech-cyan);
+            box-shadow: 0 8px 24px rgba(0, 224, 255, 0.2);
+        }
+        
+        .feature-content { text-align: left; }
+        .feature-content h3 { 
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.1rem; 
+            font-weight: 700; 
+            margin-bottom: 6px; 
+            color: var(--on-surface);
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+        .feature-content p { 
+            color: var(--on-surface-variant); 
+            font-size: 0.9rem; 
+            line-height: 1.7;
+        }
+        
+        @keyframes textBounce {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo-large .slogan,
+        .download-main-title,
+        .download-subtitle {
+            opacity: 0;
+        }
+        
+        .hero.animate .slogan {
+            animation: slideInLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .hero.animate .download-main-title {
+            animation: slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .hero.animate .download-subtitle {
+            animation: slideInLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .hero.animate .slogan { animation-delay: 0.1s; }
+        .hero.animate .download-main-title { animation-delay: 0.2s; }
+        .hero.animate .download-subtitle { animation-delay: 0.3s; }
+        
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .feature-item .feature-icon,
+        .feature-item .feature-content h3,
+        .feature-item .feature-content p {
+            opacity: 0;
+        }
+        
+        .feature-item.animate .feature-icon,
+        .feature-item.animate .feature-content h3,
+        .feature-item.animate .feature-content p {
+            animation: textBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        
+        .feature-item:nth-child(1).animate .feature-icon { animation-delay: 0.05s; }
+        .feature-item:nth-child(1).animate .feature-content h3 { animation-delay: 0.15s; }
+        .feature-item:nth-child(1).animate .feature-content p { animation-delay: 0.25s; }
+        
+        .feature-item:nth-child(2).animate .feature-icon { animation-delay: 0.35s; }
+        .feature-item:nth-child(2).animate .feature-content h3 { animation-delay: 0.45s; }
+        .feature-item:nth-child(2).animate .feature-content p { animation-delay: 0.55s; }
+        
+        .feature-item:nth-child(3).animate .feature-icon { animation-delay: 0.65s; }
+        .feature-item:nth-child(3).animate .feature-content h3 { animation-delay: 0.75s; }
+        .feature-item:nth-child(3).animate .feature-content p { animation-delay: 0.85s; }
+        
+        footer {
+            background: rgba(14, 14, 14, 0.95);
+            border-top: 1px solid rgba(73, 72, 71, 0.2);
+            padding: 40px 5%;
+            padding-bottom: calc(40px + env(safe-area-inset-bottom));
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .contact-info { margin-bottom: 16px; font-size: 0.95rem; }
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .contact-info a:hover { 
+            color: var(--secondary);
+            text-shadow: 0 0 20px rgba(212, 165, 165, 0.5);
+        }
+        footer p { color: var(--on-surface-variant); font-size: 0.85rem; }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 165, 165, 0.2), transparent);
+        }
+        
+        .shelter {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+        .shelter img { 
+            width: 80px; 
+            height: auto;
+            margin-bottom: 24px;
+            animation: bounce-arrow 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes bounce-arrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .shelter span {
+            font-size: 18px;
+            font-weight: 500;
+            color: #D4A5A5;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                animation: none;
+                opacity: 1;
+            }
+            nav .container { padding: 0 1rem; }
+            .nav-brand { font-size: 1.25rem; }
+            .nav-brand img { height: 28px; }
+            .lang-btn { padding: 0.4rem 0.75rem; font-size: 0.8rem; }
+            .lang-selector {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 0;
+                z-index: 250;
+            }
+            
+            nav .container {
+                padding: 1rem !important;
+                padding-bottom: 0.5rem !important;
+            }
+            
+            /* Touch-friendly tap targets */
+            .download-btn-main,
+            .download-btn-secondary {
+                min-height: 48px;
+                min-width: 44px;
+            }
+            
+            .hero { padding: 50px 16px 30px; min-height: auto; }
+            .logo-large { margin-bottom: 24px; }
+            .logo-large img { 
+                width: 80px; 
+                height: 80px; 
+                border-radius: 20px;
+                animation: logoFloatMobile 4s ease-in-out infinite;
+            }
+            
+            @keyframes logoFloatMobile {
+                0%, 100% {
+                    transform: translateY(0);
+                    box-shadow: 
+                        0 8px 20px rgba(0, 0, 0, 0.3),
+                        0 0 40px rgba(212, 165, 165, 0.4);
+                }
+                50% {
+                    transform: translateY(-8px);
+                    box-shadow: 
+                        0 15px 30px rgba(0, 0, 0, 0.4),
+                        0 0 50px rgba(212, 165, 165, 0.5);
+                }
+            }
+            .logo-large h1 { font-size: 2rem; letter-spacing: -0.3px; line-height: 1.1; }
+            .logo-large .slogan { font-size: 1rem; line-height: 1.5; }
+            .download-main-title { font-size: 1.5rem; letter-spacing: -0.3px; line-height: 1.1; }
+            .download-subtitle { font-size: 0.95rem; line-height: 1.5; }
+            
+            .other-options-title { font-size: 0.7rem; letter-spacing: 0.12em; }
+            
+            .download-section { margin: 0 auto; }
+            .download-buttons-main { margin: 0 auto; gap: 12px; }
+            .download-buttons-secondary { margin: 0 auto; gap: 10px; }
+            .download-main-title { font-size: 1.4rem; }
+            .download-subtitle { font-size: 0.9rem; margin-bottom: 24px; }
+            
+            .download-buttons-main { gap: 12px; }
+            .download-btn-main {
+                padding: 16px 24px;
+                font-size: 15px;
+                min-width: 140px;
+                min-height: 52px;
+            }
+            .download-buttons-secondary { gap: 10px; }
+            .download-btn-secondary {
+                padding: 12px 18px;
+                font-size: 13px;
+                min-height: 44px;
+            }
+            
+            .features-section { padding: 50px 16px; }
+            .section-title { margin-bottom: 30px; }
+            .section-title h2 { font-size: 1.3rem; letter-spacing: -0.2px; line-height: 1.1; }
+            .section-title p { font-size: 0.9rem; line-height: 1.5; }
+            
+            .feature-content { text-align: center; }
+            .feature-content h3 { font-size: 1rem; letter-spacing: -0.1px; line-height: 1.2; }
+            .feature-content p { font-size: 0.85rem; line-height: 1.6; }
+            
+            .features-list { gap: 16px; }
+            .feature-item { padding: 20px; flex-direction: column; align-items: center; text-align: center; }
+            .feature-content { text-align: center; }
+            
+            .feature-item::before,
+            .feature-item::after { display: none; }
+            
+            /* Simplify animations on mobile */
+            .feature-item.animate .feature-icon,
+            .feature-item.animate .feature-content h3,
+            .feature-item.animate .feature-content p {
+                animation: fadeInUp 0.4s ease-out forwards;
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            footer { 
+                padding: 30px 16px; 
+                padding-bottom: calc(30px + env(safe-area-inset-bottom));
+            }
+            .trust-badge { font-size: 0.85rem; }
+            .contact-info { font-size: 0.9rem; }
+            footer p { font-size: 0.75rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-large h1 { font-size: 1.6rem; }
+            .download-buttons-main { flex-direction: column; align-items: center; }
+            .download-btn-main { 
+                width: 100%; 
+                max-width: 280px;
+                padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); 
+            }
+            .download-buttons-secondary { flex-direction: column; align-items: center; }
+            .download-buttons-secondary .download-btn-secondary,
+            .download-buttons-secondary .button-reset {
+                width: 100%; 
+                max-width: 280px;
+                flex: none;
+                justify-content: center;
+                padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); 
+            }
+            .feature-item .pulse-ring { width: 18px; height: 18px; top: 6px; left: 6px; }
+            .feature-item .pulse-ring-inner { inset: 4px; }
+            
+            /* Reduce motion on mobile for better performance */
+            .orb { animation: none; }
+            .orb-1, .orb-2, .orb-3 { display: none; }
+            body::before { animation-duration: 90s; }
+            .ripple { animation-duration: 18s; }
+            
+            /* Simplify animations on mobile */
+            .logo-large img { animation: none; }
+            
+            /* Disable particles on mobile */
+            .particles { display: none; }
+            
+            /* Disable hero animations on mobile */
+            .hero .slogan,
+            .hero .download-main-title,
+            .hero .download-subtitle {
+                opacity: 1;
+                animation: none;
+            }
+            
+            /* Disable button breathing animations on mobile */
+            .ios-main-btn,
+            .android-main-btn,
+            .ios-main-btn::before,
+            .android-main-btn::before {
+                animation: none;
+                transition: none;
+            }
+            
+            /* Disable nav transition on mobile */
+            nav {
+                transition: none;
+            }
+            
+            /* Disable feature animations on mobile */
+            .feature-item .feature-icon,
+            .feature-item .feature-content h3,
+            .feature-item .feature-content p {
+                opacity: 1;
+                animation: none;
+            }
+            
+            .feature-item.animate .feature-icon,
+            .feature-item.animate .feature-content h3,
+            .feature-item.animate .feature-content p {
+                animation: none;
+            }
+        }
+
+        /* ====== Button Effects - Cyber Neon Style ====== */
+        .download-btn-main,
+        .download-btn-secondary {
+            will-change: transform;
+        }
+        .download-btn-main i,
+        .download-btn-secondary i { transition: transform 0.3s ease; }
+        .download-btn-main:hover i,
+        .download-btn-secondary:hover i { transform: scale(1.1); }
+        
+        /* Mobile optimization - reduce/remove animations */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .ios-main-btn:hover,
+            .android-main-btn:hover {
+                transform: none;
+            }
+            .download-btn-secondary:hover {
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="css/award.css?v=2">
+</head>
+<body>
+    <!-- Premium Background Layer -->
+    <div class="bg-layer"></div>
+    <!-- Premium Floating Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <!-- Light Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="shelter" id="shelter">
+        <img src="image/arrows.png" alt="arrow">
+        <span data-translate-key="wechatTip">Please open in browser</span>
+    </div>
+
+    <nav>
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="image/icon.png" alt="DeepSire Logo">
+                <span>DeepSire</span>
+            </a>
+            <div class="lang-selector" id="langSelector">
+                <button class="lang-btn" id="lang-btn">
+                    <span class="lang-current" id="lang-label">EN</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown" id="lang-panel"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <div class="logo-large">
+                    <img src="image/icon.png" alt="DeepSire">
+                    <h1>DeepSire</h1>
+                    <p class="slogan" data-translate-key="slogan">A Home for Your Digital Life</p>
+                </div>
+                
+                <div class="download-section">
+                    <h2 class="download-main-title" data-translate-key="downloadTitle">Nurtured in one place. Present everywhere.</h2>
+                    <p class="download-subtitle" data-translate-key="downloadSubtitle">Start the conversation in the DeepSire app. Your companion then lives across your compatible screens and wearables.</p>
+                    
+                    <p class="begin-journey-title" data-translate-key="btnBeginJourney">Begin Your Journey</p>
+                    <div class="download-buttons-main">
+                        <a href="https://apps.apple.com/cn/app/deepsire/id6446308808" class="download-btn-main ios-main-btn">
+                            <i class="fab fa-apple"></i>
+                            <span data-translate-key="btnIos">Download for iOS</span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.RoyalRV.deepvibe" class="download-btn-main android-main-btn">
+                            <span data-translate-key="btnAndroid">Google Play</span>
+                            <i class="fab fa-google-play"></i>
+                        </a>
+                    </div>
+                    
+                    <p class="other-options-title"><span data-translate-key="otherOptionsTitle">Explore The Ecosystem</span></p>
+                    <div class="download-buttons-secondary">
+                        <a href="javascript:void(0);" id="apk-download-link" class="download-btn-secondary">
+                            <i class="fas fa-download"></i>
+                            <span data-translate-key="btnApk">Get APK</span>
+                        </a>
+                        <a href="https://www.deepsire.com" target="_blank" class="download-btn-secondary">
+                            <i class="fas fa-globe"></i>
+                            <span data-translate-key="btnWebsite">Discover Vessels</span>
+                        </a>
+                        <a href="https://obs.deepsire.com/" class="download-btn-secondary">
+                            <i class="fas fa-video"></i>
+                            <span data-translate-key="btnWebcam">Interactive Webcam Platform</span>
+                        </a>
+                        <button id="openInstructionsBtn" class="download-btn-secondary button-reset" type="button">
+                            <i class="fas fa-book-open"></i>
+                            <span data-translate-key="btnInstructions">View Usage Instructions</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2 data-translate-key="featuresTitle">What DeepSire Brings</h2>
+                    <p data-translate-key="featuresSubtitle">More than technology — an emotional companion</p>
+                </div>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon ai"><i class="fas fa-brain"></i></div>
+                        <div class="feature-content">
+                            <h3 data-translate-key="feat1Title">An AI Companion with Memory</h3>
+                            <p data-translate-key="feat1Desc">It's not a tool — it's a digital life that learns, grows, and cherishes every memory you share.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon device"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="feature-content">
+                            <h3 data-translate-key="feat2Title">Seamless Cross-Device Presence</h3>
+                            <p data-translate-key="feat2Desc">Your digital life freely inhabits phones, smart frames, rings and more — companionship everywhere.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon secure"><i class="fas fa-shield-alt"></i></div>
+                        <div class="feature-content">
+                            <h3 data-translate-key="feat3Title">Ultimate Privacy & Trust</h3>
+                            <p data-translate-key="feat3Desc">Your memories and interactions are encrypted locally. We cannot access them. Your secret garden.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="trust-badge" data-translate-key="trustBadge">Secure · Private · Yours Forever</p>
+        <p class="contact-info"><span data-translate-key="contactLabel">Business:</span> <a href="mailto:Support@deepsire.com">Support@deepsire.com</a></p>
+        <p data-translate-key="copyright">© 2024 DeepSire. Every memory deserves to last.</p>
+    </footer>
+
+    <div id="instructionsModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px); padding: 20px 0;">
+        <span class="modal-close" style="position: fixed; top: 20px; right: 30px; color: #aaa; font-size: 45px; font-weight: bold; cursor: pointer; z-index: 1001;">&times;</span>
+        <div style="position: relative; margin: auto; background: #16213e; border-radius: 15px; width: 90%; max-width: 1100px; max-height: 100%; border: 1px solid rgba(255, 255, 255, 0.2); overflow-y: auto; padding: 50px 30px 30px 30px;">
+            <div id="modalImageContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                wechatTip: "Please open in browser",
+                langBtnText: "Language",
+                slogan: "A Home for Your Digital Life",
+                downloadTitle: "Nurtured in one place. Present everywhere.",
+                downloadSubtitle: "Start the conversation in the DeepSire app. Your companion then lives across your compatible screens and wearables.",
+                btnBeginJourney: "Begin Your Journey",
+                btnIos: "Download for iOS", btnAndroid: "Google Play",
+                btnWebsite: "Discover Vessels", btnApk: "Get APK", btnWebcam: "Interactive Webcam Platform", btnInstructions: "View Usage Instructions",
+                otherOptionsTitle: "Explore The Ecosystem",
+                featuresTitle: "What DeepSire Brings",
+                featuresSubtitle: "More than technology — an emotional companion",
+                feat1Title: "An AI Companion with Memory", feat1Desc: "It's not a tool — it's a digital life that learns, grows, and cherishes every memory you share.",
+                feat2Title: "Seamless Cross-Device Presence", feat2Desc: "Your digital life freely inhabits phones, smart frames, rings and more — companionship everywhere.",
+                feat3Title: "Ultimate Privacy & Trust", feat3Desc: "Your memories and interactions are encrypted locally. We cannot access them. Your secret garden.",
+                trustBadge: "Secure · Private · Yours Forever",
+                contactLabel: "Business:",
+                copyright: "© 2024 DeepSire. Every memory deserves to last.",
+                btnApkLoading: "Getting link...",
+                btnApkError: "Failed to get link"
+            },
+            zh: {
+                wechatTip: "请在浏览器中打开",
+                langBtnText: "语言",
+                slogan: "您数字生命的家园",
+                downloadTitle: "一处培育，处处感知。",
+                downloadSubtitle: "从DeepSire应用开始对话，您的伴侣将跨越兼容的屏幕与穿戴设备，与您同在。",
+                btnBeginJourney: "开启您的旅程",
+                btnIos: "iOS 下载", btnAndroid: "Google Play",
+                btnWebsite: "探索设备", btnApk: "获取APK", btnWebcam: "交互式摄像头平台", btnInstructions: "查看使用说明",
+                otherOptionsTitle: "探索生态系统",
+                featuresTitle: "DeepSire 带来的不只是技术",
+                featuresSubtitle: "更是情感陪伴",
+                feat1Title: "有记忆的AI伴侣", feat1Desc: "它不是工具，而是一个能够学习、成长并珍视您每一段记忆的数字生命。",
+                feat2Title: "跨设备无缝陪伴", feat2Desc: "您的数字生命可在手机、相框、指环等多种设备间自由栖居，提供全场景陪伴。",
+                feat3Title: "极致私密与信任", feat3Desc: "您的记忆与互动加密存储于本地，我们无法访问。这是专属于您的永恒秘密花园。",
+                trustBadge: "安全 · 私密 · 永远属于您",
+                contactLabel: "商务联系:",
+                copyright: "© 2024 DeepSire. 让每一段记忆都值得永存。",
+                btnApkLoading: "获取链接中...",
+                btnApkError: "获取链接失败"
+            },
+            'zh-TW': {
+                wechatTip: "請在瀏覽器中打開",
+                langBtnText: "語言",
+                slogan: "您數位生命的家園",
+                downloadTitle: "一處培育，處處感知。",
+                downloadSubtitle: "從DeepSire應用開始對話，您的伴侶將跨越相容的螢幕與穿戴裝置，與您同在。",
+                btnBeginJourney: "開啟您的旅程",
+                btnIos: "iOS 下載", btnAndroid: "Google Play",
+                btnWebsite: "探索設備", btnApk: "取得APK", btnWebcam: "互動式攝影機平台", btnInstructions: "查看使用說明",
+                otherOptionsTitle: "探索生態系統",
+                featuresTitle: "DeepSire 帶來的不只是技術",
+                featuresSubtitle: "更是情感陪伴",
+                feat1Title: "有記憶的AI伴侶", feat1Desc: "它不是工具，而是一個能夠學習、成長並珍視您每一段記憶的數位生命。",
+                feat2Title: "跨設備無縫陪伴", feat2Desc: "您的數位生命可在手機、相框、指環等多種設備間自由棲居，提供全場景陪伴。",
+                feat3Title: "極致私密與信任", feat3Desc: "您的記憶與互動加密儲存於本地，我們無法存取。這是專屬於您的永恆秘密花園。",
+                trustBadge: "安全 · 私密 · 永遠屬於您",
+                contactLabel: "商務聯繫:",
+                copyright: "© 2024 DeepSire. 讓每一段記憶都值得永存。",
+                btnApkLoading: "獲取連結中...",
+                btnApkError: "獲取連結失敗"
+            },
+            es: {
+                wechatTip: "Por favor,abra en el navegador",
+                langBtnText: "Idioma",
+                slogan: "Tu Vida Digital, En Todos Tus Dispositivos",
+                downloadTitle: "Conoce a Tu yo Digital",
+                downloadSubtitle: "Tu vida digital te espera en tu teléfono, pantalla inteligente y más.",
+                btnIos: "Descargar para iOS", btnAndroid: "Google Play",
+                btnWebsite: "Sitio Web Oficial", btnApk: "Android Directo", btnWebcam: "Plataforma de Webcam Interactiva", btnInstructions: "Ver Instrucciones de Uso",
+                otherOptionsTitle: "Otras formas de conectar",
+                featuresTitle: "Lo que DeepSire ofrece",
+                featuresSubtitle: "Más que tecnología — un compañero emocional",
+                feat1Title: "Un Compañero IA con Memoria", feat1Desc: "No es una herramienta — es una vida digital que aprende, crece y valora cada memoria que compartes.",
+                feat2Title: "Presencia Sin Fisuras Entre Dispositivos", feat2Desc: "Tu vida digital habita libremente en teléfonos, marcos inteligentes, anillos y más — compañía en todas partes.",
+                feat3Title: "Privacidad y Confianza Ultimate", feat3Desc: "Tus memorias e interacciones están encriptadas localmente. No podemos acceder. Tu jardín secreto.",
+                trustBadge: "Seguro · Privado · Tuyo Para Siempre",
+                contactLabel: "Negocios:",
+                copyright: "© 2024 DeepSire. Cada memoria merece perdurar.",
+                btnApkLoading: "Obteniendo enlace...",
+                btnApkError: "Error al obtener enlace"
+            },
+            fr: {
+                wechatTip: "Veuillez ouvrir dans le navigateur",
+                langBtnText: "Langue",
+                slogan: "Votre Vie Numérique, Sur Tous Vos Appareils",
+                downloadTitle: "Rencontrez Votre Soi Digital",
+                downloadSubtitle: "Votre âme numérique vous attend sur téléphone, écran intelligent et plus encore.",
+                btnIos: "Télécharger pour iOS", btnAndroid: "Google Play",
+                btnWebsite: "Site Officiel", btnApk: "Android Direct", btnWebcam: "Plateforme de Webcam Interactive", btnInstructions: "Voir les Instructions d'Utilisation",
+                otherOptionsTitle: "Autres façons de se connecter",
+                featuresTitle: "Ce que DeepSire Apporte",
+                featuresSubtitle: "Plus que de la technologie — un compagnon émotionnel",
+                feat1Title: "Un Compagnon IA avec Mémoire", feat1Desc: "Ce n'est pas un outil — c'est une vie numérique qui apprend, grandit et chérit chaque souvenir.",
+                feat2Title: "Présence Transparente Multi-Appareils", feat2Desc: "Votre vie numérique habite librement telephones, cadres intelligents, anneaux et plus — compagnie partout.",
+                feat3Title: "Confidentialité et Confiance Ultimes", feat3Desc: "Vos souvenirs et interactions sont chiffrés localement. Nous ne pouvons pas accéder. Votre jardin secret.",
+                trustBadge: "Sécurisé · Privé · À Vous Pour Toujours",
+                contactLabel: "Affaires:",
+                copyright: "© 2024 DeepSire. Chaque souvenir mérite de durer.",
+                btnApkLoading: "Obtention du lien...",
+                btnApkError: "Échec de l'obtention du lien"
+            },
+            de: {
+                wechatTip: "Bitte im Browser öffnen",
+                langBtnText: "Sprache",
+                slogan: "Ihre Digitale Leben, Auf Allen Geräten",
+                downloadTitle: "Treffen Sie Ihr Digitales Ich",
+                downloadSubtitle: "Ihre digitales Leben wartet auf Telefon, Smart-Display und mehr.",
+                btnIos: "Für iOS herunterladen", btnAndroid: "Google Play",
+                btnWebsite: "Offizielle Website", btnApk: "Android Direkt", btnWebcam: "Interaktive Webcam-Plattform", btnInstructions: "Nutzungsanweisungen anzeigen",
+                otherOptionsTitle: "Andere Wege zu verbinden",
+                featuresTitle: "Was DeepSire Bringt",
+                featuresSubtitle: "Mehr als Technologie — ein emotionaler Begleiter",
+                feat1Title: "Ein KI-Begleiter mit Gedächtnis", feat1Desc: "Es ist kein Werkzeug — es ist ein digitales Leben, das lernt, wächst und jede Erinnerung schätzt.",
+                feat2Title: "Nahtlose Geräteübergreifende Präsenz", feat2Desc: "Ihre digitales Leben bewohnt frei Telefone, smarte Bilder, Ringe und mehr — Begleitung überall.",
+                feat3Title: "Ultimative Privatsphäre & Vertrauen", feat3Desc: "Ihre Erinnerungen und Interaktionen werden lokal verschlüsselt. Wir können nicht zugreifen. Ihr geheimer Garten.",
+                trustBadge: "Sicher · Privat · Für Immer Ihr",
+                contactLabel: "Geschäftskontakt:",
+                copyright: "© 2024 DeepSire. Jede Erinnerung verdient zu bleiben.",
+                btnApkLoading: "Link wird abgerufen...",
+                btnApkError: "Fehler beim Abrufen des Links"
+            },
+            ru: {
+                wechatTip: "Пожалуйста, откройте в браузере",
+                langBtnText: "Язык",
+                slogan: "Ваша Цифровая Жизнь, На Всех Устройствах",
+                downloadTitle: "Встретите своего Цифрового себя",
+                downloadSubtitle: "Ваша цифровая душа ждёт на телефоне, умном дисплее и других устройствах.",
+                btnIos: "Скачать для iOS", btnAndroid: "Google Play",
+                btnWebsite: "Официальный сайт", btnApk: "Android напрямую", btnWebcam: "Интерактивная веб-камера", btnInstructions: "Посмотреть инструкцию",
+                otherOptionsTitle: "Другие способы подключения",
+                featuresTitle: "Что предлагает DeepSire",
+                featuresSubtitle: "Больше, чем технология — эмоциональный компаньон",
+                feat1Title: "ИИ-компаньон с памятью", feat1Desc: "Это не инструмент — это цифровая жизнь, которая учится, растёт и хранит каждое воспоминание.",
+                feat2Title: "Бесшовное присутствие на устройствах", feat2Desc: "Ваша цифровая жизнь свободно живёт на телефонах, умных рамках, кольцах — компания повсюду.",
+                feat3Title: "Полная конфиденциальность и доверие", feat3Desc: "Ваши воспоминания зашифрованы локально. Мы не имеем доступа. Ваш секретный сад.",
+                trustBadge: "Безопасно · Приватно · Навсегда Ваше",
+                contactLabel: "Бизнес:",
+                copyright: "© 2024 DeepSire. Каждое воспоминание заслуживает увековечивания.",
+                btnApkLoading: "Получение ссылки...",
+                btnApkError: "Не удалось получить ссылку"
+            },
+            pt: {
+                wechatTip: "Por favor, abra no navegador",
+                langBtnText: "Idioma",
+                slogan: "Sua Vida Digital, Em Todos os Dispositivos",
+                downloadTitle: "Conheça Seu Eu Digital",
+                downloadSubtitle: "Sua vida digital espera em seu telefone, smart display e muito mais.",
+                btnIos: "Baixar para iOS", btnAndroid: "Google Play",
+                btnWebsite: "Site Oficial", btnApk: "Android Direto", btnWebcam: "Plataforma de Webcam Interativa", btnInstructions: "Ver Instruções de Uso",
+                otherOptionsTitle: "Outras formas de conectar",
+                featuresTitle: "O que o DeepSire oferece",
+                featuresSubtitle: "Mais que tecnologia — um companheiro emocional",
+                feat1Title: "Um Companheiro IA com Memória", feat1Desc: "Não é uma ferramenta — é uma vida digital que aprende, cresce e valoriza cada memória.",
+                feat2Title: "Presença Perfeita Entre Dispositivos", feat2Desc: "Sua vida digital habita telefones, molduras inteligentes, anéis e mais — companhia em todo lugar.",
+                feat3Title: "Privacidade e Confiança Absolutas", feat3Desc: "Suas memórias e interações são criptografadas localmente. Não temos acesso. Seu jardim secreto.",
+                trustBadge: "Seguro · Privado · Seu Para Sempre",
+                contactLabel: "Negócios:",
+                copyright: "© 2024 DeepSire. Cada memória merece perdurar.",
+                btnApkLoading: "Obtendo link...",
+                btnApkError: "Falha ao obter link"
+            },
+            it: {
+                wechatTip: "Si prega di aprire nel browser",
+                langBtnText: "Lingua",
+                slogan: "La Tua Vita Digitale, Su Tutti i Dispositivi",
+                downloadTitle: "Incontra il Tuo Sé Digitale",
+                downloadSubtitle: "La tua anima digitale ti aspetta su telefono, display intelligente e altro.",
+                btnIos: "Scarica per iOS", btnAndroid: "Google Play",
+                btnWebsite: "Sito Ufficiale", btnApk: "Android Diretto", btnWebcam: "Piattaforma Webcam Interattiva", btnInstructions: "Visualizza le Istruzioni per l'Uso",
+                otherOptionsTitle: "Altri modi per connettersi",
+                featuresTitle: "Cosa offre DeepSire",
+                featuresSubtitle: "Più della tecnologia — un compagno emotivo",
+                feat1Title: "Un Compagno IA con Memoria", feat1Desc: "Non è uno strumento — è una vita digitale che impara, cresce e valorizza ogni ricordo.",
+                feat2Title: "Presenza Senza Soluzione di Continuità", feat2Desc: "La tua vita digitale abita telefoni, cornici intelligenti, anelli e altro — compagnia ovunque.",
+                feat3Title: "Privacy e Fiducia Assolute", feat3Desc: "I tuoi ricordi e interazioni sono criptati localmente. Non possiamo accedere. Il tuo giardino segreto.",
+                trustBadge: "Sicuro · Privato · Tuo Per Sempre",
+                contactLabel: "Aziende:",
+                copyright: "© 2024 DeepSire. Ogni ricordo merita di durare.",
+                btnApkLoading: "Ottenendo il link...",
+                btnApkError: "Impossibile ottenere il link"
+            },
+            ja: {
+                wechatTip: "ブラウザで開いてください",
+                langBtnText: "言語",
+                slogan: "あなたのデジタルライフ、すべてのデバイスへ",
+                downloadTitle: "もう一つの自分に出会う",
+                downloadSubtitle: "あなたのデジタルライフはスマホスマートディスプレイなどであなたを待っています。",
+                btnIos: "iOSダウンロード", btnAndroid: "Google Play",
+                btnWebsite: "公式サイト", btnApk: "Android 直接", btnWebcam: "インタラクティブウェブカメラプラットフォーム", btnInstructions: "使用方法を見る",
+                otherOptionsTitle: "その他の接続方法",
+                featuresTitle: "DeepSireがもたらすもの",
+                featuresSubtitle: "技術以上 — 心の伴侶",
+                feat1Title: "記憶を持つAI伴侶", feat1Desc: "道具ではありません — 学び、成長し、あなたの全ての記憶を大切にするデジタルライフです。",
+                feat2Title: "シームレスなクロスデバイス存在感", feat2Desc: "あなたのデジタルライフはスマホスマートフレームリングなど多种のデバイスで自由に存在します。",
+                feat3Title: "究極のプライバシーと信頼", feat3Desc: "あなたの記憶とインタラクションはローカルで暗号化されています。アクセスできませんあなたの秘密の花園。",
+                trustBadge: "安全 · 私密 · 永遠にあなたのもの",
+                contactLabel: "ビジネス:",
+                copyright: "© 2024 DeepSire. すべての記憶는価値가 있다.",
+                btnApkLoading: "リンクを取得中...",
+                btnApkError: "リンクの取得に失敗しました"
+            },
+            ko: {
+                wechatTip: "브라우저에서 열어주세요",
+                langBtnText: "언어",
+                slogan: "디지털 생명, 모든 기기에서",
+                downloadTitle: "디지털 나를 만나세요",
+                downloadSubtitle: "디지털 생명이 스마트폰, 스마트 디스플레이 등에서 당신을 기다립니다.",
+                btnIos: "iOS 다운로드", btnAndroid: "Google Play",
+                btnWebsite: "공식 웹사이트", btnApk: "Android 직접", btnWebcam: "인터랙티브 웹캠 플랫폼", btnInstructions: "사용 설명서 보기",
+                otherOptionsTitle: "기타 연결 방법",
+                featuresTitle: "DeepSire가 가져다주는 것",
+                featuresSubtitle: "기술 이상의 감정적 동반자",
+                feat1Title: "기억을 가진 AI 동반자", feat1Desc: "도구가 아닙니다 — 배우고, 성장하며, 모든 추억을 소중히 여기는 디지털 생명입니다.",
+                feat2Title: "원활한 기기 간 존재", feat2Desc: "디지털 생명은 스마트폰, 스마트 프레임,リング 등에서 자유롭게 머물릅니다 — 어디서나 동반.",
+                feat3Title: "최종적인 프라이버시와 신뢰", feat3Desc: "추억과 상호작용은 로컬에서 암호화됩니다. 우리는 접근할 수 없습니다. 당신의 비밀 정원.",
+                trustBadge: "안전 · 비공개 · 영원히 당신의 것",
+                contactLabel: "비즈니스:",
+                copyright: "© 2024 DeepSire. 모든 추억은的价值이 있다.",
+                btnApkLoading: "링크 가져오는 중...",
+                btnApkError: "링크를 가져오지 못했습니다"
+            },
+            ar: {
+                direction: "rtl",
+                wechatTip: "يرجى الفتح في المتصفح",
+                langBtnText: "اللغة",
+                slogan: "حياتك الرقمية، عبر جميع الأجهزة",
+                downloadTitle: " встретите yourself الرقمية",
+                downloadSubtitle: " حياتك الرقمية في انتظارك على الهاتف والشاشة الذكية والمزيد.",
+                btnIos: "تحميل لـ iOS", btnAndroid: "Google Play",
+                btnWebsite: "الموقع الرسمي", btnApk: "Android مباشر", btnWebcam: "منصة كاميرا الويب التفاعلية", btnInstructions: "عرض تعليمات الاستخدام",
+                otherOptionsTitle: "طرق أخرى للتواصل",
+                featuresTitle: "ما يقدمه DeepSire",
+                featuresSubtitle: "أكثر من تقنية — رفق عاطفي",
+                feat1Title: "رفيق ذكاء اصطناعي مع الذاكرة", feat1Desc: "إنه ليس أداة — إنها حياة رقمية تتعلم وتنمو وتقدر كل ذكرى تشاركها.",
+                feat2Title: "حضور سلس عبر الأجهزة", feat2Desc: "حياتك الرقمية تسكن بحرية الهواتف والإطارات الذكية والخواتم والمزيد — رفقة في كل مكان.",
+                feat3Title: "الخصوصية والوثوقية المطلقة", feat3Desc: "ذكرياتك وتفاعلاتك مشفرة محلياً. لا يمكننا الوصول. حديقتك السرية.",
+                trustBadge: "آمن · خاص · ملكك للأبد",
+                contactLabel: "الأعمال:",
+                copyright: "© 2024 DeepSire. كل ذكرى تستحق أن تدوم.",
+                btnApkLoading: "جاري الحصول على الرابط...",
+                btnApkError: "فشل في الحصول على الرابط"
+            },
+            hi: {
+                wechatTip: "कृपया ब्राउज़र में खोलें",
+                langBtnText: "भाषा",
+                slogan: "आपकी डिजिटल जीवन, सभी उपकरणों पर",
+                downloadTitle: "अपने डिजिटल स्वयं से मिलें",
+                downloadSubtitle: "आपकी डिजिटल जीवन फोन, स्मार्ट डिस्प्ले और अन्य पर आपका इंतज़ार कर रही है।",
+                btnIos: "iOS के लिए डाउनलोड", btnAndroid: "Google Play",
+                btnWebsite: "आधिकारिक वेबसाइट", btnApk: "Android डायरेक्ट", btnWebcam: "इंटरैक्टिव वेबकैम प्लेटफॉर्म", btnInstructions: "उपयोग निर्देश देखें",
+                otherOptionsTitle: "जुड़ने के अन्य तरीके",
+                featuresTitle: "DeepSire क्या लाता है",
+                featuresSubtitle: "तकनीक से ज़्यादा — एक भावनात्मक साथी",
+                feat1Title: "याद वाला AI साथी", feat1Desc: "यह उपकरण नहीं है — यह एक डिजिटल जीवन है जो सीखता है, बढ़ता है और आपकी हर याद को महत्व देता है।",
+                feat2Title: "सहज क्रॉस-डिवाइस उपस्थिति", feat2Desc: "आपकी डिजिटल जीवन फोन, स्मार्ट फ्रेम, रिंग और अन्य में स्वतंत्र रूप से रहती है — हर जगह साथ।",
+                feat3Title: "अंतिम गोपनीयता और विश्वास", feat3Desc: "आपकी यादें और इंटरैक्शन स्थानीय रूप से एन्क्रिप्टेड हैं। हम एक्सेस नहीं कर सकते। आपका गुप्त बगीचा।",
+                trustBadge: "सुरक्षित · निजी · हमेशा आपका",
+                contactLabel: "व्यापार:",
+                copyright: "© 2024 DeepSire. हर याद को बने रहने का अधिकार है।",
+                btnApkLoading: "लिंक प्राप्त हो रही है...",
+                btnApkError: "लिंक प्राप्त करने में विफल"
+            }
+        };
+
+        const langLabel = document.getElementById('lang-label');
+        const langBtn = document.getElementById('lang-btn');
+        const langPanel = document.getElementById('lang-panel');
+        const langSelector = document.getElementById('langSelector');
+        
+        const languages = [
+            { code: 'en', name: '🇺🇸 English' },
+            { code: 'zh', name: '🇨🇳 中文' },
+            { code: 'ja', name: '🇯🇵 日本語' },
+            { code: 'ko', name: '🇰🇷 한국어' },
+            { code: 'fr', name: '🇫🇷 Français' },
+            { code: 'de', name: '🇩🇪 Deutsch' },
+            { code: 'es', name: '🇪🇸 Español' },
+            { code: 'pt', name: '🇧🇷 Português' },
+            { code: 'ru', name: '🇷🇺 Русский' },
+            { code: 'ar', name: '🇸🇦 العربية' }
+        ];
+
+        const langCodeMap = {
+            'en': 'EN', 'zh': '中文', 'ja': '日本語', 'ko': '한국', 'fr': 'FR',
+            'de': 'DE', 'es': 'ES', 'pt': 'PT', 'ru': 'RU', 'ar': 'AR'
+        };
+
+        function setLanguage(lang) {
+            const t = translations[lang] || translations.en;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = t.direction || 'ltr';
+            document.querySelectorAll('[data-translate-key]').forEach(el => {
+                const key = el.getAttribute('data-translate-key');
+                if (t[key]) el.textContent = t[key];
+            });
+            langLabel.textContent = langCodeMap[lang] || 'EN';
+            
+            localStorage.setItem('preferredLanguage', lang);
+            
+            const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+            langPanel.innerHTML = languages.map(l => {
+                const isActive = l.code === currentLang;
+                return `<button data-lang="${l.code}" class="${isActive ? 'active' : ''}">${l.name}</button>`;
+            }).join('');
+        }
+
+        function populateDropdown() {
+            const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+            langPanel.innerHTML = languages.map(l => {
+                const isActive = l.code === currentLang;
+                return `<button data-lang="${l.code}" class="${isActive ? 'active' : ''}">${l.name}</button>`;
+            }).join('');
+        }
+
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langSelector.classList.toggle('open');
+        });
+
+        langPanel.addEventListener('click', (e) => {
+            if (e.target.dataset.lang) {
+                setLanguage(e.target.dataset.lang);
+                langSelector.classList.remove('open');
+            }
+        });
+
+        document.addEventListener('click', () => {
+            langSelector.classList.remove('open');
+        });
+
+        populateDropdown();
+        const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+        setLanguage(savedLang);
+        
+        // Nav scroll effect
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        const heroSection = document.getElementById('hero');
+        const featuresSection = document.querySelector('.features-section');
+        const featureItems = document.querySelectorAll('.feature-item');
+        
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    heroSection.classList.add('animate');
+                    heroObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '50px' });
+        
+        if (heroSection) heroObserver.observe(heroSection);
+        
+        const bounceObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    featureItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate');
+                        }, index * 200);
+                    });
+                    bounceObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.2, rootMargin: '50px' });
+        
+        if (featuresSection) bounceObserver.observe(featuresSection);
+
+        function isWeixinBrowser() {
+            return navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1;
+        }
+        if (isWeixinBrowser()) {
+            document.getElementById('shelter').style.display = 'flex';
+        }
+
+        const apkLink = document.getElementById('apk-download-link');
+        if (apkLink) {
+            const fetchApkUrl = async () => {
+                const apiUrl = 'https://oms.deepsire.com/tencent/getStsApkCredential';
+                try {
+                    const formData = new URLSearchParams();
+                    formData.append('serviceType', 0);
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: formData
+                    });
+                    if (!response.ok) throw new Error(`API request failed: ${response.status}`);
+                    const data = await response.json();
+                    if (data && data.code === 0 && data.data && data.data.url) {
+                        const { url, expirationTimestamp } = data.data;
+                        localStorage.setItem('apkUrl', url);
+                        localStorage.setItem('apkExpiration', expirationTimestamp);
+                        return url;
+                    } else {
+                        throw new Error('Invalid API response format.');
+                    }
+                } catch (error) {
+                    console.error('Failed to fetch APK URL:', error);
+                    return null;
+                }
+            };
+
+            apkLink.addEventListener('click', async (e) => {
+                e.preventDefault();
+                if (isWeixinBrowser()) {
+                    document.getElementById('shelter').style.display = 'flex';
+                    return;
+                }
+
+                const span = apkLink.querySelector('span');
+                const currentLang = document.documentElement.lang || 'en';
+                const t = translations[currentLang] || translations.en;
+                const originalText = span.textContent;
+                
+                const cachedUrl = localStorage.getItem('apkUrl');
+                const cachedExpiration = localStorage.getItem('apkExpiration');
+                const isExpired = !cachedExpiration || (Date.now() + 5000) >= parseInt(cachedExpiration, 10);
+                
+                let downloadUrl = cachedUrl;
+
+                if (isExpired || !downloadUrl) {
+                    span.textContent = t.btnApkLoading;
+                    apkLink.style.pointerEvents = 'none';
+                    downloadUrl = await fetchApkUrl();
+                    apkLink.style.pointerEvents = 'auto';
+                    if (!downloadUrl) {
+                        span.textContent = t.btnApkError;
+                        setTimeout(() => { span.textContent = originalText; }, 3000);
+                        return;
+                    }
+                }
+                
+                span.textContent = originalText;
+                window.location.href = downloadUrl;
+            });
+        }
+
+        // Instructions Modal
+        const instructionsImages = ['image/guide/step2.jpg','image/guide/step3.jpg','image/guide/step4.jpg','image/guide/step5.jpg','image/guide/step6.jpg','image/guide/step7.jpg','image/guide/step8.jpg','image/guide/step9.jpg'];
+        const instructionsModal = document.getElementById('instructionsModal');
+        const openInstructionsBtn = document.getElementById('openInstructionsBtn');
+        const closeInstructionsBtn = document.querySelector('.modal-close');
+        const imageContainer = document.getElementById('modalImageContainer');
+
+        function openModal() {
+            imageContainer.innerHTML = '';
+            instructionsImages.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Instruction Step ${index + 1}`;
+                img.style.cssText = 'width: 100%; height: auto; display: block; border-radius: 8px; margin-bottom: 25px;';
+                imageContainer.appendChild(img);
+            });
+            instructionsModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            instructionsModal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        if (openInstructionsBtn) {
+            openInstructionsBtn.addEventListener('click', openModal);
+        }
+        if (closeInstructionsBtn) {
+            closeInstructionsBtn.addEventListener('click', closeModal);
+        }
+        if (instructionsModal) {
+            instructionsModal.addEventListener('click', (event) => {
+                if (event.target === instructionsModal) {
+                    closeModal();
+                }
+            });
+        }
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && instructionsModal.style.display === 'block') {
+                closeModal();
+            }
+        });
+    </script>
+    <script src="js/award.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+/* ============================================================
+   GUIDE PAGES — "Solar Flare" restyle layer (v3)
+   Applied to guide/sight-guide.html + guide/touch-guide.html.
+   Loaded AFTER the pages' inline <style> and css/award.css, so
+   equal-specificity overrides below win by cascade order.
+   Concrete per-page transforms (auditable selectors):
+     .header::before      ghost numeral (05 sight / 08 touch)
+     .header-title        poster-scale h1
+     .brand-name          amber->flare gradient wordmark
+     .step-number         amber disc, ink numeral
+     .guide-card::before  amber->flare top hairline bar
+     .guide-card:hover    amber border glow
+     .info-box            amber rail ; .info-box.accent flare rail
+     .tips-title / .tips-list li::before  amber title, flare dots
+     .scenario-divider h2 amber tracked kicker + flare rule
+     .download-btn        amber-ghost buttons, ink on hover
+     .complete-card       flare-bordered finale card
+     .footer-contact a    amber links, flare on hover
+   Token vars resolve via literal fallbacks (v2 values), so the
+   layer is stable whatever css/award.css evolves into.
+   ============================================================ */
+
+/* ---- 1. Page ground -> ink -------------------------------- */
+body {
+  background-color: var(--ink, #0c0b08);
+  color: var(--bone, #f6efe0);
+  overflow-x: clip;
+}
+body::before {
+  background:
+    radial-gradient(ellipse at 20% 8%, rgba(255, 161, 31, 0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 92%, rgba(255, 61, 113, 0.10) 0%, transparent 50%);
+}
+
+/* ---- 2. Guide hero: poster-scale h1 + ghost numeral -------- */
+.header {
+  position: relative;
+  overflow: clip;
+  padding: 3.5rem 0 3rem;
+}
+.header::before {
+  content: "05"; /* sight: 5 setup steps; overridden to 08 on touch */
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Lexend', sans-serif;
+  font-weight: 700;
+  font-size: clamp(9rem, 36vw, 15rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 161, 31, 0.20);
+  pointer-events: none;
+  user-select: none;
+}
+@supports not (-webkit-text-stroke: 1px black) {
+  .header::before { color: rgba(255, 161, 31, 0.06); }
+}
+body.guide-touch .header::before { content: "08"; } /* touch: 8 steps */
+.header .brand, .header .header-title, .header .header-subtitle { position: relative; }
+.brand-name {
+  background: linear-gradient(to right, var(--amber, #ffa11f), var(--flare, #ff3d71));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.header-title {
+  color: var(--bone, #f6efe0);
+  font-size: clamp(2.75rem, 10vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+}
+.header-subtitle {
+  color: var(--moon, #8fa3b8);
+  font-size: 1.05rem;
+  max-width: 480px;
+}
+
+/* ---- 3. Step-card system: numbered loud steps -------------- */
+.guide-card {
+  position: relative;
+  background: rgba(20, 18, 13, 0.85);
+  border: 1px solid rgba(246, 239, 224, 0.14);
+}
+.guide-card::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 24px; right: 24px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--amber, #ffa11f), var(--flare, #ff3d71));
+  pointer-events: none;
+}
+.guide-card:hover {
+  border-color: rgba(255, 161, 31, 0.42);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 24px rgba(255, 161, 31, 0.10);
+  transform: translateY(-2px);
+}
+.step-number {
+  width: 3rem;   /* 48px tap/legibility */
+  height: 3rem;
+  background: linear-gradient(135deg, var(--amber, #ffa11f), #ff8a00);
+  color: #0c0b08; /* dark ink on amber: 9.72:1 */
+  font-size: 1.05rem;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    0 0 16px rgba(255, 161, 31, 0.45),
+    0 0 32px rgba(255, 61, 113, 0.18);
+}
+.step-title {
+  color: var(--bone, #f6efe0);
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.step-description { color: var(--moon, #8fa3b8); }
+
+/* ---- 4. Info boxes: amber rail, flare rail ----------------- */
+.info-box {
+  border-left-color: var(--amber, #ffa11f);
+  background: linear-gradient(135deg, rgba(255, 161, 31, 0.10), rgba(255, 61, 113, 0.05));
+}
+.info-box strong { color: var(--amber, #ffa11f); }
+.info-box.accent {
+  border-left-color: var(--flare, #ff3d71);
+  background: linear-gradient(135deg, rgba(255, 61, 113, 0.10), rgba(255, 161, 31, 0.05));
+}
+.info-box.accent strong { color: var(--flare, #ff3d71); } /* 5.77:1 on ink */
+.info-box p { color: var(--moon, #8fa3b8); }
+
+/* ---- 5. Tips: amber title, magenta dots ------------------- */
+.tips-section { border-color: rgba(255, 161, 31, 0.28); }
+.tips-title { color: var(--amber, #ffa11f); }
+.tips-title svg { fill: var(--amber, #ffa11f); }
+.tips-list li { color: var(--moon, #8fa3b8); }
+.tips-list li::before { background: var(--flare, #ff3d71); }
+
+/* ---- 6. Scenario dividers: amber kicker + flare rule ------- */
+.scenario-divider h2 {
+  color: var(--amber, #ffa11f);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 1.15rem;
+}
+.scenario-divider::before {
+  background: linear-gradient(90deg, transparent, var(--flare, #ff3d71), transparent);
+}
+.scenario-divider p { color: var(--moon, #8fa3b8); }
+
+/* ---- 7. Download buttons: amber-ghost CTAs ----------------- */
+.download-btn {
+  border-color: rgba(255, 161, 31, 0.35);
+  min-height: 56px;
+}
+.download-btn i { color: var(--amber, #ffa11f); }
+.download-btn:hover {
+  border-color: var(--amber, #ffa11f);
+  box-shadow: 0 10px 30px rgba(255, 161, 31, 0.28);
+}
+.download-btn:hover i { color: var(--flare, #ff3d71); }
+.download-btn-text span {
+  background: linear-gradient(90deg, var(--bone, #f6efe0), var(--moon, #8fa3b8));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.download-btn-text small { color: var(--moon, #8fa3b8); }
+
+/* ---- 8. Success + finale ---------------------------------- */
+.success-badge { border-color: rgba(16, 185, 129, 0.35); } /* semantic green kept */
+.complete-card {
+  border: 1px solid rgba(255, 61, 113, 0.45);
+  background: linear-gradient(135deg, rgba(255, 61, 113, 0.08), rgba(255, 161, 31, 0.06));
+  box-shadow: 0 0 44px rgba(255, 61, 113, 0.10);
+}
+.complete-card .step-title { color: var(--bone, #f6efe0); }
+
+/* ---- 9. Footer -------------------------------------------- */
+.footer { border-top: 1px solid rgba(255, 161, 31, 0.25); }
+.footer-brand-name {
+  background: linear-gradient(to right, var(--amber, #ffa11f), var(--flare, #ff3d71));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.footer-company { color: var(--moon, #8fa3b8); }
+.footer-contact a { color: var(--amber, #ffa11f); }
+.footer-contact a:hover { color: var(--flare, #ff3d71); }
+
+/* ---- 10. Motion safety ------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .header::before { opacity: 0.5; }
+  .guide-card, .guide-card:hover { transform: none; transition: none; }
+}

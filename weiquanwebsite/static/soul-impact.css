@@ -1,1455 +1,887 @@
-/* Unified visual system for the four Soul product pages. */
+/* ==========================================================================
+   soul-impact.css — 微圈 Soul 产品页视觉系统 v2 "记忆星河"（MEMORY NEBULA）
+   --------------------------------------------------------------------------
+   消费者（2026-10-16 核查）：仅被以下 4 个页面加载
+     - sight-soul.html / touch-soul.html / pleasure-soul.html / scent-soul.html
+   可自由演进；不被 index / download / lingjing / life-biography /
+   support / guide 下任何页面引用。
+
+   层叠顺序（head 内）：shared.css → product-common.css → soul-impact.css
+   → wq-award.css（跨站层，后加载可覆盖令牌；缺失时本文件回退值兜底）。
+
+   概念：深海军蓝宇宙 + 一支签名青 #06b6d4（品牌恒量）+ 每页一支产品
+   tint。四魂字 视/触/悦/嗅 以 filled/outlined 混排的超大图形字登场
+   （research §2.2）。Noto Serif SC 展示 / Noto Sans SC 正文 /
+   DM Mono 拉丁数字点缀（research §5.1）。
+
+   -- TINT RULE（四页统一推导，文档化） ------------------------------------
+   souls 顺序 视(i=0) → 触(i=1) → 悦(i=2) → 嗅(i=3)：
+       --soul-h    = 195 + 45·i        （视195°青 / 触240°蓝 / 悦285°紫 / 嗅330°玫红）
+       --soul-tint = hsl(var(--soul-h) 85% 62%)
+   四支 tint 明度/饱和度完全一致，仅色相步进 45°。视(195°)与品牌青自然
+   融合——旗舰魂；嗅落在 330° 玫瑰色，呼应"花香记忆"。
+   对比度（ink #0d0c1d 基准，实测）：
+     bone 17.47:1 / mist 9.24:1 / accent #06b6d4 7.95:1 /
+     视 #4bc7f0 9.86:1 / 悦 #c74bf0 5.24:1 / 嗅 #f04b9e 5.71:1 /
+     触 #4b4bf0 3.28:1 —— 触 tint 仅用于大字/图形/光晕（large-text 3:1 通过）。
+     小字 tint 一律 --soul-tint-text = hsl(h,88%,72%)：四页实测
+     视 11.82 / 触 5.35 / 悦 7.27 / 嗅 7.62（ink 基准，全部 ≥4.5:1）。
+   --------------------------------------------------------------------------
+   CJK 排印（research §5.3）：display leading 1.0–1.2、letter-spacing ≤0.15em、
+   禁止负 tracking、text-wrap: balance、lang="zh-CN"。
+   动效守则：transform / opacity only；wow-as-layer-not-gate；
+   prefers-reduced-motion 下全部收敛（product-common.css 安全网）。
+   ========================================================================== */
+
+/* ============ 0. 令牌：品牌恒量 + 产品变量 ============ */
 body.soul-page {
-    --dark-bg: #070910;
-    --text-light: #fffaf2;
-    --text-gray: rgba(255, 250, 242, 0.72);
-    --surface-1: rgba(255, 255, 255, 0.075);
-    --surface-2: rgba(255, 255, 255, 0.038);
-    --line-soft: rgba(255, 255, 255, 0.12);
-    --line-strong: rgba(var(--theme-rgb), 0.58);
-    --shadow-strong: 0 26px 70px rgba(0, 0, 0, 0.46);
-    --btn-gradient: linear-gradient(135deg, var(--brand-color), var(--accent-color));
-    --btn-hover: linear-gradient(135deg, var(--accent-color), var(--brand-color));
-    background:
-        linear-gradient(120deg, rgba(var(--theme-rgb), 0.18), transparent 26%),
-        linear-gradient(240deg, rgba(var(--accent-rgb), 0.15), transparent 30%),
-        #070910;
-    color: var(--text-light);
+  /* 跨站令牌回退（与 wq-award.css 契约一致） */
+  --wq-ink: #0d0c1d;
+  --wq-ink2: #1a192f;
+  --wq-ink3: #242a45;
+  --wq-bone: #f0f4f8;
+  --wq-mist: #a9b3d0;
+  --wq-accent: #06b6d4;
+  --wq-gold: #d4a574;
+
+  /* 产品 tint：--soul-h 由 body.soul-<product> 设定 */
+  --soul-h: 195;
+  --soul-tint: hsl(var(--soul-h) 85% 62%);
+  --soul-tint-deep: hsl(var(--soul-h) 82% 38%);
+  /* 小字安全 tint：hsl(h,88%,72%)，四页在 ink 上 ≥5.19:1（实测
+     视 11.82 / 触 5.35 / 悦 7.27 / 嗅 7.62）。原 --soul-tint 中
+     触 #4b4bf0 仅 3.28:1，只许用于大字/图形/光晕。 */
+  --soul-tint-text: hsl(var(--soul-h) 88% 72%);
+  --soul-soft: hsl(var(--soul-h) 85% 62% / 0.14);
+  --soul-faint: hsl(var(--soul-h) 85% 62% / 0.07);
+  --soul-glow: hsl(var(--soul-h) 92% 60% / 0.35);
+  --soul-line: hsl(var(--soul-h) 85% 62% / 0.38);
+
+  --font-sans: 'Noto Sans SC', 'Inter', system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-serif: 'Noto Serif SC', 'Songti SC', serif;
+  --font-mono: 'DM Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+  /* shared.css 兼容变量（原先由各页内联 :root 提供） */
+  --font-family: var(--font-sans);
+  --dark-bg: var(--wq-ink);
+  --text-light: var(--wq-bone);
+  --text-gray: var(--wq-mist);
+  --brand-color: var(--soul-tint);
+  --accent-color: var(--wq-accent);
+  --logo-glow: hsl(187 96% 50% / 0.4);
+  --bg-glow-1: var(--soul-faint);
+  --bg-glow-2: hsl(187 96% 50% / 0.06);
+  --btn-gradient: linear-gradient(135deg, var(--soul-tint), var(--soul-tint-deep));
+  --btn-hover: linear-gradient(135deg, hsl(var(--soul-h) 90% 68%), var(--soul-tint));
+  --tag-bg: var(--soul-soft);
+  --border-hover: var(--soul-line);
+  --specs-glow-1: var(--soul-faint);
+  --specs-glow-2: hsl(187 96% 50% / 0.05);
+  --spec-bg: hsl(var(--soul-h) 85% 62% / 0.05);
+  --spec-border: hsl(var(--soul-h) 85% 62% / 0.18);
+  --spec-bg-hover: hsl(var(--soul-h) 85% 62% / 0.10);
+  --spec-border-hover: hsl(var(--soul-h) 85% 62% / 0.45);
+  --spec-glow: hsl(var(--soul-h) 90% 60% / 0.25);
+  --brand-color-alpha: hsl(var(--soul-h) 85% 62% / 0.12);
+  --spec-icon-bg: hsl(var(--soul-h) 85% 62% / 0.22);
+  --spec-icon-bg-light: hsl(187 96% 50% / 0.08);
+  --spec-value-glow: hsl(var(--soul-h) 90% 60% / 0.45);
+  --cta-glow-1: var(--soul-faint);
+  --cta-glow-2: hsl(187 96% 50% / 0.05);
+  --scrollbar-thumb: hsl(var(--soul-h) 85% 55%);
+  --scrollbar-thumb-light: hsl(var(--soul-h) 85% 38%);
+  --scrollbar-thumb-hover: hsl(var(--soul-h) 90% 62%);
+  --scrollbar-thumb-hover-light: hsl(var(--soul-h) 85% 45%);
+
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(1200px 700px at 12% -6%, var(--soul-faint), transparent 60%),
+    radial-gradient(1000px 620px at 88% 8%, hsl(187 96% 50% / 0.05), transparent 60%),
+    radial-gradient(900px 900px at 50% 110%, hsl(var(--soul-h) 80% 30% / 0.10), transparent 60%),
+    var(--wq-ink);
+  color: var(--wq-bone);
+  overflow-x: hidden;
 }
 
-body.soul-sight {
-    --brand-color: #8A2BE2;
-    --accent-color: #00E0FF;
-    --theme-rgb: 138, 43, 226;
-    --accent-rgb: 0, 224, 255;
+/* 四魂 hue 步进：195 + 45·i（视→触→悦→嗅） */
+body.soul-sight    { --soul-h: 195; }
+body.soul-touch    { --soul-h: 240; }
+body.soul-pleasure { --soul-h: 285; }
+body.soul-scent    { --soul-h: 330; }
+
+/* 无 soul-* class 的回退：品牌青 */
+body.soul-page:not(.soul-sight):not(.soul-touch):not(.soul-pleasure):not(.soul-scent) { --soul-h: 187; }
+
+/* ============ 1. 滚动进度条（wayfinding，research §3.4 / shortlist #3） ============ */
+.soul-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 3000;
+  background: hsl(187 96% 50% / 0.12);
+  pointer-events: none;
+}
+.soul-progress span {
+  display: block; height: 100%; width: 100%;
+  background: linear-gradient(90deg, var(--wq-accent), var(--soul-tint));
+  transform: scaleX(0); transform-origin: 0 50%;
 }
 
-body.soul-touch {
-    --brand-color: #8A2BE2;
-    --accent-color: #00E0FF;
-    --theme-rgb: 138, 43, 226;
-    --accent-rgb: 0, 224, 255;
-}
-
-body.soul-scent {
-    --brand-color: #8A2BE2;
-    --accent-color: #00E0FF;
-    --theme-rgb: 138, 43, 226;
-    --accent-rgb: 0, 224, 255;
-}
-
-body.soul-pleasure {
-    --brand-color: #8A2BE2;
-    --accent-color: #00E0FF;
-    --theme-rgb: 138, 43, 226;
-    --accent-rgb: 0, 224, 255;
-}
-
-body.soul-page::before {
-    background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-        linear-gradient(135deg, rgba(var(--theme-rgb), 0.12), transparent 35%, rgba(var(--accent-rgb), 0.10));
-    background-size: 72px 72px, 72px 72px, auto;
-    opacity: 0.72;
-}
-
-body.soul-page .container {
-    width: min(90%, 1240px);
-    max-width: 1240px;
-}
-
+/* ============ 2. 导航（沿用结构，记忆星河主题） ============ */
 body.soul-page .header {
-    height: 76px;
-    background: linear-gradient(180deg, rgba(7, 9, 16, 0.82), rgba(7, 9, 16, 0.28));
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
+  height: 76px;
+  background: linear-gradient(180deg, hsl(234 38% 9% / 0.85), hsl(234 38% 9% / 0.25));
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid hsl(0 0% 100% / 0.07);
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
-
 body.soul-page .header.scrolled {
-    background: rgba(7, 9, 16, 0.9);
-    border-bottom-color: rgba(var(--theme-rgb), 0.22);
-    box-shadow: 0 14px 42px rgba(0, 0, 0, 0.36);
+  background: hsl(234 38% 8% / 0.92);
+  border-bottom-color: var(--soul-line);
+  box-shadow: 0 12px 40px hsl(0 0% 0% / 0.45), 0 0 32px hsl(var(--soul-h) 85% 55% / 0.08);
 }
-
-body.soul-page .navbar {
-    max-width: 1320px;
-    padding: 0 32px;
-}
-
-body.soul-page .logo {
-    left: 40px;
-}
-
-body.soul-page .logo-image {
-    height: 46px;
-    filter: drop-shadow(0 0 14px rgba(var(--theme-rgb), 0.5));
-}
-
+body.soul-page .navbar { max-width: 1360px; padding: 0 32px; }
+body.soul-page .logo-image { height: 42px; }
 body.soul-page .logo-text {
-    font-size: 32px;
-    letter-spacing: 2.5px;
+  font-family: var(--font-serif); font-weight: 700; font-size: 26px; letter-spacing: 0.35em;
+  text-indent: 0.35em; color: var(--wq-bone);
+  text-shadow: 0 0 24px hsl(187 96% 50% / 0.35);
 }
-
-body.soul-page .nav-links {
-    gap: 24px;
-}
-
+body.soul-page .nav-links { gap: 26px; }
 body.soul-page .nav-links a {
-    padding: 10px 0;
-    color: rgba(255, 250, 242, 0.72);
-    font-size: 14px;
-    letter-spacing: 0;
+  font-size: 14px; letter-spacing: 0.12em; color: hsl(226 32% 82% / 0.72);
+  padding: 10px 2px; transition: color 0.25s ease;
 }
-
 body.soul-page .nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 3px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--brand-color), var(--accent-color));
-    opacity: 0;
-    transform: scaleX(0.35);
-    transition: opacity 0.25s ease, transform 0.25s ease;
+  content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 2px;
+  background: linear-gradient(90deg, var(--wq-accent), var(--soul-tint));
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-body.soul-page .nav-links a:hover::after,
-body.soul-page .nav-links a.active::after {
-    opacity: 1;
-    transform: scaleX(1);
-}
-
+body.soul-page .nav-links a:hover { color: var(--wq-bone); }
+body.soul-page .nav-links a:hover::after { transform: scaleX(1); }
+body.soul-page .nav-links a.active { color: var(--soul-tint-text); }
+body.soul-page .nav-links a.active::after { transform: scaleX(1); }
 body.soul-page .lang-btn {
-    min-width: 42px;
-    border-radius: 999px;
-    border-color: rgba(255, 255, 255, 0.16);
-    background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px; min-width: 44px;
+  border: 1px solid hsl(0 0% 100% / 0.16);
+  background: hsl(0 0% 100% / 0.06); color: hsl(226 32% 82% / 0.75);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+body.soul-page .lang-btn:hover { color: var(--wq-accent); border-color: hsl(187 96% 50% / 0.4); }
+body.soul-page .lang-btn.active {
+  background: linear-gradient(135deg, var(--wq-accent), var(--soul-tint-deep));
+  border-color: transparent; color: #06121a; font-weight: 700;
 }
 
+/* ============ 3. HERO — 灵魂字剧场 ============ */
 body.soul-page .hero {
-    min-height: 94vh;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 136px 0 76px;
+  min-height: 108vh;
+  align-items: center; justify-content: center;
+  padding: 140px 0 90px;
 }
-
-body.soul-page .hero-bg {
-    height: 100%;
-}
-
+body.soul-page .hero-bg { height: 100%; z-index: -2; }
 body.soul-page .hero-bg img {
-    filter: saturate(1.12) contrast(1.05);
+  filter: saturate(1.15) contrast(1.06);
+  transform: scale(1.04);
 }
-
-body.soul-scent .hero-bg img { object-position: 54% center; }
-body.soul-sight .hero-bg img { object-position: 52% center; }
-body.soul-touch .hero-bg img { object-position: 50% center; }
-body.soul-pleasure .hero-bg img { object-position: 50% center; }
-
-body.soul-page .hero-overlay {
-    background:
-        linear-gradient(180deg, rgba(7, 9, 16, 0.2) 0%, rgba(7, 9, 16, 0.24) 44%, rgba(7, 9, 16, 0.92) 100%),
-        linear-gradient(90deg, rgba(7, 9, 16, 0.68) 0%, rgba(7, 9, 16, 0.28) 42%, rgba(7, 9, 16, 0.10) 100%);
+/* 电影感双色调处理：presentation is the story（research §4.1 Oryzo） */
+body.soul-page .hero-tint {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(180deg, hsl(234 38% 9% / 0.55) 0%, hsl(234 38% 9% / 0.18) 38%, hsl(234 38% 9% / 0.94) 100%),
+    linear-gradient(100deg, hsl(var(--soul-h) 85% 45% / 0.28) 0%, transparent 45%, hsl(187 96% 45% / 0.14) 100%);
+  mix-blend-mode: normal;
 }
+body.soul-page .hero::after {
+  /* 暗角 */
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 45%, transparent 55%, hsl(234 38% 6% / 0.75) 100%);
+}
+body.soul-page .hero-overlay { display: none; } /* 由 .hero-tint 接管 */
 
 body.soul-page .hero-content {
-    width: min(90%, 1240px);
-    max-width: 1240px;
-    text-align: left;
+  position: relative; z-index: 1;
+  text-align: center; max-width: 1100px; width: min(92%, 1100px);
 }
+
+/* 竖排诗句：打破网格的一笔（research §2.2 / shortlist #12） */
+.hero-vertical {
+  position: absolute; z-index: 1;
+  right: max(28px, 4.5vw); top: 50%; transform: translateY(-50%);
+  writing-mode: vertical-rl; -webkit-writing-mode: vertical-rl;
+  font-family: var(--font-serif); font-size: 15px; letter-spacing: 0.55em;
+  color: hsl(226 32% 82% / 0.5);
+  border-right: 1px solid var(--soul-line);
+  padding-right: 14px;
+  user-select: none;
+}
+.hero-vertical b { color: var(--soul-tint-text); font-weight: 700; }
 
 body.soul-page .hero-badge {
-    margin-bottom: 18px;
-    padding: 8px 15px;
-    border-radius: 999px;
-    border: 1px solid rgba(var(--theme-rgb), 0.36);
-    background: rgba(7, 9, 16, 0.46);
-    color: var(--text-light);
-    box-shadow: 0 0 32px rgba(var(--theme-rgb), 0.16);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.22em;
+  padding: 10px 22px; margin-bottom: 8px;
+  color: var(--wq-accent);
+  border: 1px solid hsl(187 96% 50% / 0.35); border-radius: 999px;
+  background: hsl(234 38% 10% / 0.55);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0 28px hsl(187 96% 50% / 0.12), inset 0 0 18px hsl(187 96% 50% / 0.06);
+}
+body.soul-page .hero-badge::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--wq-accent); box-shadow: 0 0 12px var(--wq-accent);
 }
 
-body.soul-page .hero h1 {
-    max-width: 760px;
-    margin: 0 0 20px;
-    color: #fffaf2;
-    font-size: 6.25rem;
-    line-height: 1.08;
-    letter-spacing: 0;
-    text-shadow:
-        0 0 22px rgba(var(--theme-rgb), 0.34),
-        0 22px 70px rgba(0, 0, 0, 0.56);
-    background:
-        linear-gradient(135deg, #fffaf2 0%, #fffaf2 34%, var(--brand-color) 66%, var(--accent-color) 100%);
-    background-size: 180% 180%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* 灵魂字：filled 主字 + outlined 幽灵层（research §2.2 mixed filled/outlined） */
+.hero-char-mask { overflow: hidden; padding: 0.06em 0.1em; }
+.hero-char-wrap { transform: translate3d(0, var(--char-y, 0px), 0); will-change: transform; }
+h1.soul-char {
+  position: relative; display: inline-block;
+  font-family: var(--font-serif); font-weight: 900;
+  font-size: clamp(11rem, 30vw, 23rem);
+  line-height: 1; letter-spacing: 0; /* CJK 禁止负 tracking */
+  color: var(--wq-bone);
+  /* 覆盖 shared.css .hero h1 的 gradient-text（否则 WebKit 下透明隐形） */
+  background: none; -webkit-text-fill-color: initial; animation: none;
+  text-shadow:
+    0 0 60px var(--soul-glow),
+    0 30px 90px hsl(0 0% 0% / 0.6);
+  isolation: isolate;
+  margin: 0;
+}
+h1.soul-char::after {
+  /* 幽灵描边层 */
+  content: attr(data-char);
+  position: absolute; left: 0.045em; top: 0.05em; z-index: -1;
+  color: transparent;
+  -webkit-text-stroke: 2.5px var(--soul-tint);
+  opacity: 0.55;
+  pointer-events: none;
+}
+/* 入场：line-mask 上滑揭示（research §1.3），仅 JS + 非 reduced-motion */
+html.js h1.soul-char { transform: translateY(112%); opacity: 0; }
+html.js body.loaded h1.soul-char {
+  transform: translateY(0); opacity: 1;
+  transition: transform 1.15s cubic-bezier(0.19, 1, 0.22, 1) 0.1s, opacity 0.7s ease 0.1s;
 }
 
 body.soul-page .hero-subtitle {
-    max-width: 660px;
-    margin-bottom: 34px;
-    color: rgba(255, 250, 242, 0.86);
-    font-size: 1.36rem;
-    font-weight: 500;
-    line-height: 1.55;
-    letter-spacing: 0;
-    text-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-serif); font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+  letter-spacing: 0.28em; text-indent: 0.28em;
+  color: hsl(226 32% 88% / 0.92);
+  margin: 26px 0 40px; font-weight: 400; line-height: 1.6;
+  text-shadow: 0 8px 30px hsl(0 0% 0% / 0.6);
 }
+body.soul-page .hero-buttons { justify-content: center; gap: 18px; }
 
-body.soul-page .hero-buttons {
-    justify-content: flex-start;
-    gap: 14px;
-}
-
-body.soul-page .btn-primary,
-body.soul-page .btn-secondary {
-    min-height: 52px;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 26px;
-    border-radius: 999px;
-    font-size: 15px;
-    letter-spacing: 0;
-}
-
+/* 主按钮：产品 tint；磁吸由 JS 写 --mag-x/--mag-y（research §1.6）
+   背景取窄明度带 hsl(h,88%,76%→70%) + 深色字 #08131c，四页实测 ≥5.0:1
+   （视 11.8 / 触 ~5.0 / 悦 7.6 / 嗅 7.9）。 */
 body.soul-page .btn-primary {
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    box-shadow: 0 18px 42px rgba(var(--theme-rgb), 0.24), 0 14px 38px rgba(0, 0, 0, 0.38);
+  position: relative; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 56px; padding: 16px 46px; border-radius: 999px;
+  font-size: 16px; font-weight: 700; letter-spacing: 0.12em; text-indent: 0.12em;
+  color: #08131c; text-decoration: none;
+  background: linear-gradient(135deg, hsl(var(--soul-h) 88% 76%), hsl(var(--soul-h) 88% 70%));
+  box-shadow: 0 14px 44px hsl(var(--soul-h) 85% 55% / 0.35), 0 4px 14px hsl(0 0% 0% / 0.4);
+  transform: translate3d(var(--mag-x, 0px), var(--mag-y, 0px), 0);
+  transition: box-shadow 0.35s ease, filter 0.35s ease;
+  text-box: trim-both;
 }
-
+body.soul-page .btn-primary::before { display: none; } /* 关掉 shared.css 的旧扫光，保留下方 ::after */
 body.soul-page .btn-primary:hover {
-    box-shadow: 0 22px 54px rgba(var(--theme-rgb), 0.34), 0 16px 44px rgba(0, 0, 0, 0.46);
+  filter: brightness(1.08);
+  box-shadow: 0 20px 60px hsl(var(--soul-h) 90% 60% / 0.5), 0 6px 18px hsl(0 0% 0% / 0.45);
 }
-
+body.soul-page .btn-primary::after {
+  /* 扫光 */
+  content: ""; position: absolute; top: 0; bottom: 0; width: 45%; left: -60%;
+  background: linear-gradient(100deg, transparent, hsl(0 0% 100% / 0.5), transparent);
+  transform: skewX(-18deg); transition: left 0.6s ease;
+}
+body.soul-page .btn-primary:hover::after { left: 130%; }
 body.soul-page .btn-secondary {
-    background: rgba(255, 255, 255, 0.075);
-    border-color: rgba(255, 255, 255, 0.18);
-    color: rgba(255, 250, 242, 0.92);
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 56px; padding: 16px 40px; border-radius: 999px;
+  font-size: 15px; font-weight: 500; letter-spacing: 0.1em;
+  color: var(--wq-bone); text-decoration: none;
+  border: 1px solid hsl(0 0% 100% / 0.22);
+  background: hsl(234 38% 12% / 0.5);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  text-box: trim-both;
+}
+body.soul-page .btn-secondary:hover {
+  border-color: hsl(187 96% 50% / 0.55);
+  box-shadow: 0 0 30px hsl(187 96% 50% / 0.18);
+  background: hsl(234 38% 14% / 0.7);
 }
 
 body.soul-page .age-notice {
-    width: fit-content;
-    margin-top: 22px;
-    padding: 9px 13px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-    background: rgba(7, 9, 16, 0.42);
-    color: rgba(255, 250, 242, 0.7);
-    backdrop-filter: blur(12px);
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 26px; padding: 12px 24px; border-radius: 999px;
+  font-size: 13.5px; letter-spacing: 0.08em;
+  color: var(--wq-gold);
+  border: 1px solid hsl(36 55% 62% / 0.4);
+  background: hsl(36 55% 62% / 0.08);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+body.soul-page .age-notice svg { width: 18px; height: 18px; flex: none; }
+
+/* 滚动提示：小而克制，首屏滚动后消失（research §3.4） */
+.scroll-hint {
+  position: absolute; left: 50%; bottom: 34px; z-index: 1;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  transition: opacity 0.5s ease;
+}
+body.scrolled-past .scroll-hint { opacity: 0; }
+.scroll-hint small {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.4em; text-indent: 0.4em;
+  color: hsl(226 32% 82% / 0.55);
+}
+.scroll-hint-line {
+  width: 1px; height: 52px; display: block;
+  background: linear-gradient(180deg, var(--soul-tint), transparent);
+  transform-origin: 50% 0;
+  animation: hintDrop 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes hintDrop {
+  0% { transform: scaleY(0); opacity: 0; }
+  35% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1) translateY(10px); opacity: 0; }
 }
 
-body.soul-page section {
-    padding: 112px 0;
+/* ============ 4. MARQUEE（research §1.9：纯 CSS，能量带） ============ */
+.marquee {
+  overflow: hidden; position: relative;
+  border-top: 1px solid hsl(0 0% 100% / 0.08);
+  border-bottom: 1px solid hsl(0 0% 100% / 0.08);
+  background: hsl(234 38% 8% / 0.6);
+  padding: 20px 0;
+}
+.marquee-track {
+  display: flex; width: max-content;
+  animation: marqueeMove 30s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marqueeMove { to { transform: translateX(-50%); } }
+.marquee-chunk {
+  display: flex; align-items: center; gap: 3.2rem; padding-right: 3.2rem;
+  white-space: nowrap;
+}
+.marquee-chunk span {
+  font-family: var(--font-serif); font-weight: 700;
+  font-size: clamp(1.3rem, 2.6vw, 2rem); letter-spacing: 0.2em;
+  color: var(--wq-bone);
+}
+.marquee-chunk span.hollow {
+  color: transparent; -webkit-text-stroke: 1px hsl(var(--soul-h) 80% 65% / 0.8);
+}
+.marquee-chunk i {
+  font-style: normal; color: var(--wq-accent); font-size: 1.1rem;
+  text-shadow: 0 0 14px hsl(187 96% 50% / 0.8);
+}
+.marquee-chunk .mono-tag {
+  font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.3em;
+  color: hsl(226 32% 82% / 0.5);
 }
 
-body.soul-page .philosophy,
-body.soul-page .features,
-body.soul-page .stories,
-body.soul-page .specs,
-body.soul-page .cta,
-body.soul-page .product-selection {
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.018), rgba(255, 255, 255, 0)),
-        linear-gradient(135deg, rgba(var(--theme-rgb), 0.075), transparent 42%, rgba(var(--accent-rgb), 0.058));
-}
+/* ============ 5. 章节通用 ============ */
+body.soul-page section { padding: 120px 0; position: relative; }
+body.soul-page .container { width: min(92%, 1280px); max-width: 1280px; }
 
-body.soul-page .section-header {
-    max-width: 780px;
-    margin-bottom: 48px;
+.section-header {
+  position: relative;
+  max-width: 820px; margin: 0 auto 64px;
+  text-align: center;
 }
-
-body.soul-page .section-header h2,
-body.soul-page .cta-content h2,
-body.soul-page .philosophy-content h2 {
-    color: #fffaf2;
-    font-weight: 900;
-    letter-spacing: 0;
-    line-height: 1.22;
-    background: linear-gradient(135deg, #fffaf2 0%, #fffaf2 45%, var(--brand-color) 76%, var(--accent-color) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.chapter-num {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.35em; text-indent: 0.35em;
+  color: var(--wq-accent);
+  margin-bottom: 20px;
 }
-
+.chapter-num::before, .chapter-num::after {
+  content: ""; width: 42px; height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(187 96% 50% / 0.6));
+}
+.chapter-num::after { background: linear-gradient(90deg, hsl(187 96% 50% / 0.6), transparent); }
 body.soul-page .section-header h2 {
-    font-size: 3rem;
+  font-family: var(--font-serif); font-weight: 900;
+  font-size: clamp(2.1rem, 4.6vw, 3.3rem);
+  line-height: 1.18; letter-spacing: 0.06em;
+  text-wrap: balance; color: var(--wq-bone);
+  /* 覆盖 shared.css 的 gradient-text（WebKit 透明隐形风险） */
+  background: none; -webkit-text-fill-color: initial;
+  margin-bottom: 18px;
+  text-shadow: 0 0 44px hsl(var(--soul-h) 85% 55% / 0.22);
+}
+body.soul-page .section-header h2 em {
+  font-style: normal; color: var(--soul-tint);
+}
+body.soul-page .section-header > p {
+  font-size: 1.05rem; color: var(--wq-mist); letter-spacing: 0.14em; line-height: 1.8;
 }
 
-body.soul-page .section-header p,
-body.soul-page .cta-content > p {
-    color: rgba(255, 250, 242, 0.68);
-    font-size: 1.06rem;
-    line-height: 1.7;
+/* ============ 6. PHILOSOPHY — 记忆星河剧场 ============ */
+body.soul-page .philosophy {
+  background:
+    radial-gradient(800px 480px at 18% 30%, var(--soul-faint), transparent 60%),
+    linear-gradient(180deg, transparent, hsl(234 38% 8% / 0.7));
 }
-
 body.soul-page .philosophy-grid {
-    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-    gap: 44px;
+  display: grid; grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  gap: 56px; align-items: center;
 }
-
+.philosophy-kicker {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.4em;
+  color: var(--wq-accent); margin-bottom: 22px; display: block;
+}
 body.soul-page .philosophy-content h2 {
-    margin-bottom: 22px;
-    font-size: 2.8rem;
+  font-family: var(--font-serif); font-weight: 900;
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  line-height: 1.25; letter-spacing: 0.05em; text-wrap: balance;
+  color: var(--wq-bone); margin-bottom: 28px;
 }
-
+body.soul-page .philosophy-content h2 em { font-style: normal; color: var(--soul-tint); }
 body.soul-page .philosophy-content p {
-    color: rgba(255, 250, 242, 0.72);
-    font-size: 1.08rem;
-    line-height: 1.85;
+  font-size: 1.06rem; line-height: 2; letter-spacing: 0.04em;
+  color: hsl(226 32% 84% / 0.88); margin-bottom: 20px;
 }
+body.soul-page .philosophy-content p strong { color: var(--wq-bone); font-weight: 700; }
 
-body.soul-page .philosophy-video {
-    border: 1px solid rgba(var(--theme-rgb), 0.24);
-    border-radius: 8px;
-    box-shadow: var(--shadow-strong), 0 0 50px rgba(var(--theme-rgb), 0.12);
-    aspect-ratio: 16 / 10;
+/* 产品剧场：电影感画框（research §4.1：presentation is the story） */
+body.soul-page .philosophy-video { position: relative; }
+.video-theater {
+  position: relative; border-radius: 18px; overflow: hidden;
+  border: 1px solid var(--soul-line);
+  background: #05060f;
+  box-shadow:
+    0 30px 80px hsl(0 0% 0% / 0.55),
+    0 0 70px hsl(var(--soul-h) 85% 55% / 0.14),
+    inset 0 0 0 1px hsl(0 0% 100% / 0.04);
 }
-
-body.soul-page .philosophy-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.video-theater::before, .video-theater::after {
+  /* 取景框角标 */
+  content: ""; position: absolute; width: 26px; height: 26px; z-index: 2;
+  border: 2px solid var(--soul-tint); opacity: 0.9; pointer-events: none;
 }
+.video-theater::before { top: 12px; left: 12px; border-right: none; border-bottom: none; border-radius: 6px 0 0 0; }
+.video-theater::after { bottom: 12px; right: 12px; border-left: none; border-top: none; border-radius: 0 0 6px 0; }
+.video-theater video { width: 100%; height: auto; display: block; aspect-ratio: 16 / 10; object-fit: cover; }
+.vt-tag {
+  position: absolute; z-index: 2;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.28em;
+  color: hsl(0 0% 100% / 0.85);
+  background: hsl(0 0% 0% / 0.45);
+  border: 1px solid hsl(0 0% 100% / 0.14);
+  padding: 7px 12px; border-radius: 6px;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+.vt-tl { top: 18px; left: 48px; }
+.vt-tl b { color: #ff5d5d; font-weight: 400; animation: recBlink 1.6s steps(2, start) infinite; }
+@keyframes recBlink { to { visibility: hidden; } }
+.vt-tr { top: 18px; right: 18px; color: var(--soul-tint-text); }
 
+/* ============ 7. FEATURES — 核心体验 + 悬停影像揭示 ============ */
+body.soul-page .features {
+  background: linear-gradient(180deg, transparent, hsl(234 38% 8% / 0.75) 20%, hsl(234 38% 8% / 0.75) 80%, transparent);
+}
 body.soul-page .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 22px;
+  display: grid; gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
-
-body.soul-page .feature-card,
-body.soul-page .story-card,
-body.soul-page .spec-item,
-body.soul-page .product-card,
-body.soul-page .product-option {
-    border-radius: 8px;
-    border: 1px solid var(--line-soft);
-    background:
-        linear-gradient(180deg, var(--surface-1), var(--surface-2)),
-        linear-gradient(135deg, rgba(var(--theme-rgb), 0.08), rgba(var(--accent-rgb), 0.035));
-    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.24);
-}
-
 body.soul-page .feature-card {
-    min-height: 260px;
-    padding: 34px 28px;
-    text-align: left;
+  position: relative; overflow: hidden;
+  border-radius: 20px; padding: 38px 30px;
+  border: 1px solid hsl(0 0% 100% / 0.09);
+  background:
+    radial-gradient(420px 260px at var(--mx, 50%) var(--my, 50%), hsl(var(--soul-h) 85% 60% / 0.13), transparent 65%),
+    linear-gradient(180deg, hsl(234 36% 13% / 0.85), hsl(234 38% 9% / 0.9));
+  box-shadow: 0 18px 50px hsl(0 0% 0% / 0.35);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.35s ease, box-shadow 0.45s ease;
 }
-
-body.soul-page .feature-card:hover,
-body.soul-page .story-card:hover,
-body.soul-page .spec-item:hover,
-body.soul-page .product-card:hover,
-body.soul-page .product-card.active,
-body.soul-page .product-option:hover {
-    border-color: var(--line-strong);
-    box-shadow: var(--shadow-strong), 0 0 42px rgba(var(--theme-rgb), 0.16);
-    transform: translateY(-6px);
+body.soul-page .feature-card::before { display: none; } /* 关掉 shared.css 的旧扫光 */
+body.soul-page .feature-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--soul-line);
+  box-shadow: 0 30px 70px hsl(0 0% 0% / 0.5), 0 0 44px hsl(var(--soul-h) 85% 55% / 0.16);
 }
-
+body.soul-page .feature-card .scan-edge {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--soul-tint), transparent);
+  opacity: 0;
+}
+body.soul-page .feature-card:hover .scan-edge { opacity: 1; animation: edgeScan 0.7s ease-out forwards; }
+@keyframes edgeScan { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
 body.soul-page .feature-icon {
-    width: 56px;
-    height: 56px;
-    margin: 0 0 22px;
-    border-radius: 8px;
-    background:
-        linear-gradient(135deg, rgba(var(--theme-rgb), 0.26), rgba(var(--accent-rgb), 0.16)),
-        rgba(255, 255, 255, 0.06);
-    color: var(--brand-color);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  width: 60px; height: 60px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.7rem; margin-bottom: 22px;
+  background: linear-gradient(135deg, hsl(var(--soul-h) 85% 60% / 0.22), hsl(187 96% 50% / 0.08));
+  border: 1px solid hsl(var(--soul-h) 85% 65% / 0.3);
+  box-shadow: inset 0 0 20px hsl(var(--soul-h) 85% 60% / 0.12);
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-
+body.soul-page .feature-card:hover .feature-icon { transform: scale(1.08) rotate(-4deg); }
+body.soul-page .feature-icon svg { width: 30px; height: 30px; stroke: var(--soul-tint); fill: none; stroke-width: 1.6; }
 body.soul-page .feature-card h3 {
-    font-size: 1.36rem;
-    font-weight: 800;
-    line-height: 1.32;
-    letter-spacing: 0;
+  font-size: 1.35rem; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--wq-bone); margin-bottom: 14px; line-height: 1.4;
 }
-
-body.soul-page .feature-card p,
-body.soul-page .story-content p {
-    color: rgba(255, 250, 242, 0.68);
-    font-size: 0.98rem;
-    line-height: 1.78;
+body.soul-page .feature-card p {
+  font-size: 0.94rem; line-height: 1.85; letter-spacing: 0.03em; color: var(--wq-mist);
 }
+/* 悬停影像揭示（no-WebGL tier，research §1.7）：光标跟随预览 + 兄弟变暗 */
+.hover-preview {
+  position: fixed; left: 0; top: 0; z-index: 1500;
+  width: min(300px, 34vw); aspect-ratio: 4 / 3;
+  border-radius: 14px; overflow: hidden; pointer-events: none;
+  border: 1px solid var(--soul-line);
+  box-shadow: 0 24px 70px hsl(0 0% 0% / 0.6), 0 0 40px hsl(var(--soul-h) 85% 55% / 0.2);
+  opacity: 0; transform: translate(-50%, -118%) scale(0.92);
+  transition: opacity 0.3s ease;
+}
+.hover-preview.on { opacity: 1; }
+.hover-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+body.soul-page .features-grid.previewing .feature-card { opacity: 0.45; }
+body.soul-page .features-grid.previewing .feature-card:hover { opacity: 1; }
+@media (hover: none), (pointer: coarse) { .hover-preview { display: none; } }
 
+/* ============ 8. STORIES — 记忆碎片 ============ */
 body.soul-page .stories-grid {
-    gap: 22px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px;
+  position: relative;
 }
-
 body.soul-page .story-card {
-    min-height: 250px;
+  position: relative; border-radius: 22px; overflow: hidden;
+  border: 1px solid hsl(0 0% 100% / 0.09);
+  background:
+    radial-gradient(500px 300px at 20% 0%, hsl(var(--soul-h) 85% 60% / 0.10), transparent 60%),
+    linear-gradient(180deg, hsl(234 36% 13% / 0.9), hsl(234 38% 9% / 0.92));
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.35s ease, box-shadow 0.45s ease;
 }
-
-body.soul-page .story-content {
-    padding: 30px;
+body.soul-page .story-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--soul-line);
+  box-shadow: 0 28px 64px hsl(0 0% 0% / 0.5), 0 0 40px hsl(var(--soul-h) 85% 55% / 0.12);
 }
-
+body.soul-page .story-card::before {
+  /* 星座连线 */
+  content: ""; position: absolute; top: 0; bottom: 0; left: 34px; width: 1px;
+  background: linear-gradient(180deg, transparent, hsl(var(--soul-h) 85% 60% / 0.35) 30%, hsl(var(--soul-h) 85% 60% / 0.35) 70%, transparent);
+  pointer-events: none;
+}
+body.soul-page .story-content { padding: 40px 40px 40px 64px; }
+.story-tag {
+  display: inline-block; margin-bottom: 18px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.32em;
+  color: var(--wq-accent);
+  border: 1px solid hsl(187 96% 50% / 0.3); border-radius: 999px;
+  padding: 7px 16px; background: hsl(187 96% 50% / 0.06);
+}
 body.soul-page .story-content h3 {
-    color: #fffaf2;
-    font-size: 1.36rem;
-    line-height: 1.42;
-    letter-spacing: 0;
-}
-
-body.soul-page .story-icon {
-    color: var(--brand-color);
-}
-
-body.soul-page .specs .specs-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 18px;
-}
-
-body.soul-page .spec-item {
-    min-height: 230px;
-    padding: 30px 18px;
-}
-
-body.soul-page .spec-icon {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 22px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, rgba(var(--theme-rgb), 0.24), rgba(var(--accent-rgb), 0.15));
-    color: var(--brand-color);
-}
-
-body.soul-page .spec-value {
-    color: #fffaf2;
-    font-size: 1.72rem;
-    font-weight: 900;
-    letter-spacing: 0;
-    text-shadow: 0 0 20px rgba(var(--theme-rgb), 0.24);
-}
-
-body.soul-page .spec-label {
-    color: rgba(255, 250, 242, 0.88);
-    font-size: 1rem;
-    font-weight: 700;
-}
-
-body.soul-page .spec-detail {
-    color: rgba(255, 250, 242, 0.58);
-    opacity: 1;
-    transform: none;
-    font-size: 0.9rem;
-}
-
-body.soul-page .product-selection,
-body.soul-page .cta {
-    overflow: hidden;
-}
-
-body.soul-page .product-cards-grid,
-body.soul-page .product-options {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-    max-width: 1120px;
-    margin: 0 auto 36px;
-}
-
-body.soul-page .product-card,
-body.soul-page .product-option {
-    width: auto;
-    max-width: none;
-    min-height: 300px;
-    padding: 30px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow: hidden;
-}
-
-body.soul-page .product-brand {
-    color: rgba(255, 250, 242, 0.56);
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0;
-}
-
-body.soul-page .product-name,
-body.soul-page .product-option .size,
-body.soul-page .product-option .tag {
-    color: #fffaf2;
-    font-size: 2.45rem;
-    font-weight: 900;
-    line-height: 1.16;
-    letter-spacing: 0;
-}
-
-body.soul-page .product-card:hover .product-name,
-body.soul-page .product-card.active .product-name,
-body.soul-page .product-option:hover .size,
-body.soul-page .product-option:hover .tag {
-    color: var(--brand-color);
-}
-
-body.soul-page .product-cn,
-body.soul-page .product-slogan,
-body.soul-page .product-option .desc,
-body.soul-page .product-option .slogan,
-body.soul-page .product-option .name {
-    color: rgba(255, 250, 242, 0.7);
-    letter-spacing: 0;
-}
-
-body.soul-page .specs-area,
-body.soul-page .product-option .features {
-    margin-top: auto;
-    opacity: 1;
-    transform: none;
-}
-
-body.soul-page .product-card .specs-grid,
-body.soul-page .product-card .specs-grid-inner,
-body.soul-page .product-option .features {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-}
-
-body.soul-page .product-spec-item,
-body.soul-page .product-option .feature-item {
-    min-height: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 7px 8px;
-    border: 1px solid rgba(var(--theme-rgb), 0.18);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.055);
-    color: rgba(255, 250, 242, 0.76);
-    font-size: 0.78rem;
-    line-height: 1.35;
-    text-align: center;
-}
-
-body.soul-page .mobile-tap-hint {
-    color: rgba(255, 250, 242, 0.56);
-}
-
-body.soul-page .cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-}
-
-body.soul-page .cta-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-}
-
-body.soul-page .cta-links a {
-    min-height: 40px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 9px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.055);
-    color: rgba(255, 250, 242, 0.72);
-    text-decoration: none;
-}
-
-body.soul-page .cta-links a:hover {
-    border-color: rgba(var(--theme-rgb), 0.48);
-    color: #fffaf2;
-    background: rgba(var(--theme-rgb), 0.11);
-}
-
-body.soul-page .footer {
-    background: #05060b;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-@media (max-width: 1100px) {
-    body.soul-page .hero h1 {
-        font-size: 5rem;
-    }
-
-    body.soul-page .philosophy-grid {
-        grid-template-columns: 1fr;
-    }
-
-    body.soul-page .specs .specs-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 860px) {
-    body.soul-page .header {
-        height: 68px;
-    }
-
-    body.soul-page .navbar {
-        padding: 0 20px;
-    }
-
-    body.soul-page .logo {
-        left: 20px;
-    }
-
-    body.soul-page .hamburger {
-        color: #fffaf2;
-        font-size: 24px;
-    }
-
-    body.soul-page .nav-links {
-        gap: 0;
-        background: rgba(7, 9, 16, 0.96);
-        border-bottom: 1px solid rgba(var(--theme-rgb), 0.24);
-    }
-
-    body.soul-page .hero {
-        min-height: 88vh;
-        padding: 118px 0 52px;
-    }
-
-    body.soul-page .hero-content {
-        text-align: center;
-    }
-
-    body.soul-page .hero h1,
-    body.soul-page .hero-subtitle {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    body.soul-page .hero h1 {
-        font-size: 3.4rem;
-        line-height: 1.05;
-    }
-
-    body.soul-page .hero-subtitle {
-        font-size: 1.08rem;
-    }
-
-    body.soul-page .hero-buttons {
-        justify-content: center;
-    }
-
-    body.soul-page .age-notice {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    body.soul-page section {
-        padding: 76px 0;
-    }
-
-    body.soul-page .section-header h2,
-    body.soul-page .philosophy-content h2,
-    body.soul-page .cta-content h2 {
-        font-size: 2.12rem;
-    }
-
-    body.soul-page .features-grid,
-    body.soul-page .stories-grid,
-    body.soul-page .product-cards-grid,
-    body.soul-page .product-options {
-        grid-template-columns: 1fr;
-        max-width: 520px;
-    }
-
-    body.soul-page .feature-card,
-    body.soul-page .story-card,
-    body.soul-page .spec-item,
-    body.soul-page .product-card,
-    body.soul-page .product-option {
-        min-height: auto;
-    }
-}
-
-@media (max-width: 540px) {
-    body.soul-page .container,
-    body.soul-page .hero-content {
-        width: min(92%, 520px);
-    }
-
-    body.soul-page .hero {
-        min-height: 84vh;
-        padding: 102px 0 44px;
-    }
-
-    body.soul-page .hero h1 {
-        font-size: 2.55rem;
-    }
-
-    body.soul-page .hero-badge {
-        max-width: 100%;
-        white-space: normal;
-    }
-
-    body.soul-page .btn-primary,
-    body.soul-page .btn-secondary {
-        width: 100%;
-    }
-
-    body.soul-page .specs .specs-grid {
-        grid-template-columns: 1fr;
-    }
-
-    body.soul-page .product-card .specs-grid,
-    body.soul-page .product-card .specs-grid-inner,
-    body.soul-page .product-option .features {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Restrained revision: one premium palette, full-screen hero, continuous sections. */
-body.soul-page,
-body.soul-sight,
-body.soul-touch,
-body.soul-scent,
-body.soul-pleasure {
-    --brand-color: #8A2BE2;
-    --accent-color: #00E0FF;
-    --theme-rgb: 138, 43, 226;
-    --accent-rgb: 0, 224, 255;
-    --text-light: #f3f5f7;
-    --text-gray: rgba(243, 245, 247, 0.66);
-    --surface-1: rgba(255, 255, 255, 0.07);
-    --surface-2: rgba(255, 255, 255, 0.025);
-    --line-soft: rgba(255, 255, 255, 0.105);
-    --line-strong: rgba(255, 255, 255, 0.28);
-    --shadow-strong: 0 28px 80px rgba(0, 0, 0, 0.46);
-    --btn-gradient: linear-gradient(135deg, #5B38F5, #9D5CFF);
-    --btn-hover: linear-gradient(135deg, #7B61FF, #5B38F5);
-    background: #0d0c1d !important;
-}
-
-body.soul-page::before {
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0) 30%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.035), transparent 42%, rgba(255, 255, 255, 0.02));
-    background-size: auto;
-    opacity: 1;
-}
-
-body.soul-page .header {
-    background: linear-gradient(180deg, rgba(7, 8, 12, 0.92), rgba(7, 8, 12, 0.58));
-    border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-body.soul-page .header.scrolled {
-    background: rgba(7, 8, 12, 0.92);
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-body.soul-page .logo-image {
-    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
-}
-
-body.soul-page .nav-links a,
-body.soul-page .nav-links a:hover,
-body.soul-page .nav-links a.active {
-    color: rgba(243, 245, 247, 0.82);
-}
-
-body.soul-page .nav-links a::after {
-    background: rgba(243, 245, 247, 0.72);
-}
-
-body.soul-page .lang-btn.active {
-    background: rgba(243, 245, 247, 0.92);
-    border-color: rgba(243, 245, 247, 0.92);
-    color: #080a0f;
-}
-
-body.soul-page .hero {
-    min-height: 100vh;
-    padding: 132px 0 86px;
-}
-
-body.soul-page .hero-overlay {
-    background:
-        linear-gradient(180deg, rgba(7, 8, 12, 0.16) 0%, rgba(7, 8, 12, 0.32) 45%, rgba(7, 8, 12, 0.92) 100%),
-        linear-gradient(90deg, rgba(7, 8, 12, 0.76) 0%, rgba(7, 8, 12, 0.34) 45%, rgba(7, 8, 12, 0.14) 100%);
-}
-
-body.soul-page .hero-badge,
-body.soul-page .age-notice {
-    border-color: rgba(255, 255, 255, 0.16);
-    background: rgba(7, 8, 12, 0.42);
-    color: rgba(243, 245, 247, 0.86);
-    box-shadow: none;
-}
-
-body.soul-page .hero h1,
-body.soul-page .section-header h2,
-body.soul-page .cta-content h2,
-body.soul-page .philosophy-content h2 {
-    color: #f3f5f7 !important;
-    background: none !important;
-    -webkit-text-fill-color: #f3f5f7 !important;
-    text-shadow: 0 20px 68px rgba(0, 0, 0, 0.66);
-}
-
-body.soul-page .hero-subtitle,
-body.soul-page .section-header p,
-body.soul-page .cta-content > p,
-body.soul-page .philosophy-content p,
-body.soul-page .feature-card p,
-body.soul-page .story-content p,
-body.soul-page .product-cn,
-body.soul-page .product-slogan,
-body.soul-page .product-option .desc,
-body.soul-page .product-option .slogan,
-body.soul-page .product-option .name {
-    color: rgba(243, 245, 247, 0.68) !important;
-}
-
-body.soul-page .btn-primary {
-    background: rgba(243, 245, 247, 0.92) !important;
-    border-color: rgba(243, 245, 247, 0.92);
-    color: #07080c !important;
-    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.38);
-}
-
-body.soul-page .btn-primary:hover {
-    background: #ffffff !important;
-    box-shadow: 0 22px 58px rgba(0, 0, 0, 0.5);
-}
-
-body.soul-page .btn-primary::before {
-    background: linear-gradient(90deg, transparent, rgba(7, 8, 12, 0.12), transparent);
-}
-
-body.soul-page .btn-secondary {
-    background: rgba(255, 255, 255, 0.055);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: rgba(243, 245, 247, 0.88);
-}
-
-body.soul-page section,
-body.soul-page .philosophy,
-body.soul-page .features,
-body.soul-page .stories,
-body.soul-page .specs,
-body.soul-page .cta,
-body.soul-page .product-selection {
-    background: transparent !important;
-}
-
-body.soul-page section {
-    padding: 68px 0;
-}
-
-body.soul-page section + section {
-    padding-top: 22px;
-}
-
-body.soul-page .hero + section {
-    padding-top: 72px;
-}
-
-body.soul-page .section-header {
-    max-width: 920px;
-    margin: 0 0 36px;
-    text-align: left;
-}
-
-body.soul-page .section-header h2 {
-    font-size: 2.72rem;
-}
-
-body.soul-page .section-header p {
-    max-width: 620px;
-}
-
-body.soul-page .philosophy-grid {
-    gap: 52px;
-}
-
-body.soul-page .philosophy-video,
-body.soul-page .feature-card,
-body.soul-page .story-card,
-body.soul-page .spec-item,
-body.soul-page .product-card,
-body.soul-page .product-option {
-    border-color: rgba(255, 255, 255, 0.105);
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.022)),
-        rgba(7, 8, 12, 0.24) !important;
-    box-shadow: 0 16px 54px rgba(0, 0, 0, 0.22);
-}
-
-body.soul-page .feature-card:hover,
-body.soul-page .story-card:hover,
-body.soul-page .spec-item:hover,
-body.soul-page .product-card:hover,
-body.soul-page .product-card.active,
-body.soul-page .product-option:hover {
-    border-color: rgba(255, 255, 255, 0.24);
-    box-shadow: 0 26px 74px rgba(0, 0, 0, 0.38);
-}
-
-body.soul-page .feature-icon,
-body.soul-page .spec-icon {
-    background: rgba(255, 255, 255, 0.075);
-    color: rgba(243, 245, 247, 0.9);
-    filter: grayscale(1) contrast(1.1);
-}
-
-body.soul-page .story-icon {
-    filter: grayscale(1) contrast(1.1);
-}
-
-body.soul-page .feature-card h3,
-body.soul-page .story-content h3,
-body.soul-page .spec-value,
-body.soul-page .spec-label,
-body.soul-page .product-name,
-body.soul-page .product-option .size,
-body.soul-page .product-option .tag,
-body.soul-page .product-card:hover .product-name,
-body.soul-page .product-card.active .product-name,
-body.soul-page .product-option:hover .size,
-body.soul-page .product-option:hover .tag {
-    color: #f3f5f7 !important;
-    text-shadow: none;
-}
-
-body.soul-page .product-spec-item,
-body.soul-page .product-option .feature-item,
-body.soul-page .cta-links a {
-    border-color: rgba(255, 255, 255, 0.13);
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(243, 245, 247, 0.7);
-}
-
-body.soul-page .cta-links a:hover {
-    border-color: rgba(255, 255, 255, 0.28);
-    background: rgba(255, 255, 255, 0.085);
-    color: #f3f5f7;
-}
-
-body.soul-page .footer {
-    background: #07080c;
-    border-top-color: rgba(255, 255, 255, 0.08);
-}
-
-@media (max-width: 860px) {
-    body.soul-page .hero {
-        min-height: 100vh;
-        padding: 112px 0 56px;
-    }
-
-    body.soul-page section,
-    body.soul-page section + section {
-        padding: 50px 0;
-    }
-
-    body.soul-page section + section {
-        padding-top: 22px;
-    }
-
-    body.soul-page .hero + section {
-        padding-top: 52px;
-    }
-
-    body.soul-page .section-header {
-        max-width: 520px;
-        margin-bottom: 30px;
-        text-align: left;
-    }
-
-    body.soul-page .section-header h2,
-    body.soul-page .philosophy-content h2,
-    body.soul-page .cta-content h2 {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 540px) {
-    body.soul-page .hero {
-        min-height: 100vh;
-        padding: 104px 0 46px;
-    }
-
-    body.soul-page .hero h1 {
-        font-size: 2.65rem;
-    }
-}
-
-/* Xiaomi-style overview tuning: clean product narrative and consistent pill buttons. */
-body.soul-page {
-    --mi-btn-h: 44px;
-    --mi-radius: 8px;
-    --mi-text: #f4f5f7;
-    --mi-muted: rgba(244, 245, 247, 0.64);
-    --mi-border: rgba(244, 245, 247, 0.82);
-    --mi-soft-border: rgba(244, 245, 247, 0.12);
-    --mi-panel: rgba(255, 255, 255, 0.038);
-}
-
-body.soul-page .hero-content {
-    max-width: 1180px;
-}
-
-body.soul-page .hero h1 {
-    max-width: 720px;
-    font-size: 5.65rem;
-    font-weight: 800;
-    line-height: 1.04;
-}
-
-body.soul-page .hero-subtitle {
-    max-width: 560px;
-    font-size: 1.18rem;
-    font-weight: 500;
-    line-height: 1.65;
-}
-
-body.soul-page .hero-badge,
-body.soul-page .age-notice {
-    min-height: 34px;
-    padding: 7px 15px;
-    border: 1px solid rgba(244, 245, 247, 0.28);
-    border-radius: 999px;
-}
-
-body.soul-page .btn-primary,
-body.soul-page .btn-secondary,
-body.soul-page .cta-links a {
-    min-height: var(--mi-btn-h);
-    padding: 0 24px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: var(--mi-btn-h);
-    box-shadow: none;
-}
-
-body.soul-page .btn-primary {
-    border-color: var(--mi-border);
-    background: var(--mi-text) !important;
-    color: #101114 !important;
-}
-
-body.soul-page .btn-secondary,
-body.soul-page .cta-links a {
-    border-color: rgba(244, 245, 247, 0.42);
-    background: transparent !important;
-    color: rgba(244, 245, 247, 0.9) !important;
-}
-
-body.soul-page .btn-primary:hover {
-    background: #ffffff !important;
-    border-color: #ffffff;
-    transform: translateY(-1px);
-}
-
-body.soul-page .btn-secondary:hover,
-body.soul-page .cta-links a:hover {
-    border-color: rgba(244, 245, 247, 0.82);
-    background: rgba(244, 245, 247, 0.08) !important;
-    transform: translateY(-1px);
-}
-
-body.soul-page .section-header {
-    max-width: 760px;
-    margin: 0 auto 42px;
-    text-align: center;
-}
-
-body.soul-page .section-header h2 {
-    font-size: 2.56rem;
-    font-weight: 800;
-}
-
-body.soul-page .section-header p {
-    max-width: none;
-    margin: 0 auto;
-    font-size: 1rem;
-}
-
-body.soul-page .philosophy-grid {
-    gap: 44px;
-}
-
-body.soul-page .philosophy-content h2 {
-    font-size: 2.68rem;
-    font-weight: 800;
-}
-
-body.soul-page .philosophy-video {
-    border: 0;
-    border-radius: var(--mi-radius);
-    box-shadow: none;
-}
-
-body.soul-page .feature-card,
-body.soul-page .story-card,
-body.soul-page .spec-item,
-body.soul-page .product-card,
-body.soul-page .product-option {
-    border: 1px solid var(--mi-soft-border);
-    border-radius: var(--mi-radius);
-    background: var(--mi-panel) !important;
-    box-shadow: none;
-}
-
-body.soul-page .feature-card:hover,
-body.soul-page .story-card:hover,
-body.soul-page .spec-item:hover,
-body.soul-page .product-card:hover,
-body.soul-page .product-card.active,
-body.soul-page .product-option:hover {
-    border-color: rgba(244, 245, 247, 0.22);
-    box-shadow: none;
-    transform: translateY(-2px);
-}
-
-body.soul-page .feature-icon,
-body.soul-page .spec-icon {
-    border-radius: var(--mi-radius);
-    background: rgba(255, 255, 255, 0.055);
-    box-shadow: none;
-}
-
-body.soul-sight .features-grid,
-body.soul-pleasure .features-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-body.soul-touch .features-grid,
-body.soul-scent .features-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-body.soul-page .specs .specs-grid {
-    gap: 16px;
-}
-
-body.soul-page .spec-item {
-    min-height: 208px;
-}
-
-body.soul-page .spec-value {
-    font-size: 1.58rem;
-}
-
-body.soul-page .product-card,
-body.soul-page .product-option {
-    min-height: 282px;
-}
-
-body.soul-page .product-spec-item,
-body.soul-page .product-option .feature-item {
-    border-color: rgba(244, 245, 247, 0.1);
-    background: rgba(244, 245, 247, 0.045);
-}
-
-@media (max-width: 1100px) {
-    body.soul-sight .features-grid,
-    body.soul-pleasure .features-grid,
-    body.soul-touch .features-grid,
-    body.soul-scent .features-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 860px) {
-    body.soul-page .hero h1 {
-        font-size: 3.15rem;
-    }
-
-    body.soul-page .section-header {
-        max-width: 520px;
-        margin-bottom: 30px;
-        text-align: center;
-    }
-
-    body.soul-page .features-grid,
-    body.soul-page .stories-grid,
-    body.soul-page .product-cards-grid,
-    body.soul-page .product-options,
-    body.soul-sight .features-grid,
-    body.soul-pleasure .features-grid,
-    body.soul-touch .features-grid,
-    body.soul-scent .features-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 540px) {
-    body.soul-page .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    body.soul-page .btn-primary,
-    body.soul-page .btn-secondary {
-        min-height: 52px;
-        line-height: 52px;
-    }
-}
-
-/* Product identity accents: restrained color, stronger typography. */
-body.soul-sight {
-    --soul-accent: #00E0FF;
-    --soul-accent-rgb: 0, 224, 255;
-    --soul-logo-hue: 0deg;
-}
-
-body.soul-touch {
-    --soul-accent: #00E0FF;
-    --soul-accent-rgb: 0, 224, 255;
-    --soul-logo-hue: 0deg;
-}
-
-body.soul-scent {
-    --soul-accent: #00E0FF;
-    --soul-accent-rgb: 0, 224, 255;
-    --soul-logo-hue: 0deg;
-}
-
-body.soul-pleasure {
-    --soul-accent: #00E0FF;
-    --soul-accent-rgb: 0, 224, 255;
-    --soul-logo-hue: 0deg;
-}
-
-body.soul-page .logo-image {
-    filter: drop-shadow(0 0 10px rgba(0, 224, 255, 0.3));
-}
-
-body.soul-page .nav-links a::after {
-    height: 1px;
-    background: var(--soul-accent);
-    box-shadow: 0 0 14px rgba(var(--soul-accent-rgb), 0.55);
-}
-
-body.soul-page .hero-badge,
-body.soul-page .age-notice {
-    border-color: rgba(var(--soul-accent-rgb), 0.34);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035), 0 0 24px rgba(var(--soul-accent-rgb), 0.1);
-}
-
-body.soul-page .hero-content {
-    padding-bottom: 10px;
-}
-
-body.soul-page .hero h1 {
-    position: relative;
-    margin-bottom: 24px;
-    font-size: 5.35rem;
-    font-weight: 850;
-    line-height: 1.06;
-}
-
-body.soul-page .hero h1::after {
-    content: "";
-    display: block;
-    width: 72px;
-    height: 2px;
-    margin-top: 18px;
-    border-radius: 999px;
-    background: var(--soul-accent);
-    box-shadow: 0 0 18px rgba(var(--soul-accent-rgb), 0.58);
-}
-
-body.soul-page .hero-subtitle {
-    margin-bottom: 30px;
-    font-size: 1.22rem;
-    line-height: 1.72;
-}
-
-body.soul-page .hero-buttons {
-    gap: 12px;
-}
-
-@keyframes soulButtonScan {
-    0% { transform: translateX(-135%) skewX(-18deg); opacity: 0; }
-    18% { opacity: 0.85; }
-    46% { opacity: 0.85; }
-    64%, 100% { transform: translateX(235%) skewX(-18deg); opacity: 0; }
-}
-
-body.soul-page .btn-primary,
-body.soul-page .btn-secondary,
-body.soul-page .cta-links a {
-    position: relative;
-    overflow: hidden;
-}
-
-body.soul-page .btn-primary::after,
-body.soul-page .btn-secondary::after,
-body.soul-page .cta-links a::after {
-    content: "";
-    position: absolute;
-    top: -30%;
-    left: 0;
-    width: 42%;
-    height: 160%;
-    pointer-events: none;
-    background: linear-gradient(90deg, transparent, rgba(var(--soul-accent-rgb), 0.32), transparent);
-    animation: soulButtonScan 3.4s ease-in-out infinite;
-}
-
-body.soul-page .btn-secondary {
-    border-color: rgba(var(--soul-accent-rgb), 0.45);
-}
-
-body.soul-page .btn-secondary:hover,
-body.soul-page .cta-links a:hover {
-    border-color: rgba(var(--soul-accent-rgb), 0.82);
-}
-
-body.soul-page .section-header h2 {
-    position: relative;
-    margin-bottom: 14px;
-    font-size: 2.72rem;
-    font-weight: 850;
-    line-height: 1.18;
-}
-
-body.soul-page .section-header h2::after {
-    content: "";
-    display: block;
-    width: 54px;
-    height: 1px;
-    margin: 18px auto 0;
-    background: rgba(var(--soul-accent-rgb), 0.82);
-    box-shadow: 0 0 14px rgba(var(--soul-accent-rgb), 0.38);
-}
-
-body.soul-page .section-header p {
-    color: rgba(244, 245, 247, 0.58) !important;
-    font-size: 1.02rem;
-    line-height: 1.78;
-}
-
-body.soul-page .philosophy-content h2 {
-    position: relative;
-    margin-bottom: 24px;
-    font-size: 2.8rem;
-    font-weight: 850;
-    line-height: 1.18;
-}
-
-body.soul-page .philosophy-content h2::after {
-    content: "";
-    display: block;
-    width: 58px;
-    height: 1px;
-    margin-top: 18px;
-    background: rgba(var(--soul-accent-rgb), 0.82);
-    box-shadow: 0 0 14px rgba(var(--soul-accent-rgb), 0.36);
-}
-
-body.soul-page .philosophy-content p {
-    max-width: 620px;
-    font-size: 1.02rem;
-    line-height: 1.92;
-}
-
-body.soul-page .feature-card h3,
-body.soul-page .story-content h3 {
-    font-size: 1.28rem;
-    font-weight: 760;
-    line-height: 1.45;
-}
-
-body.soul-page .feature-card p,
+  font-family: var(--font-serif); font-weight: 700;
+  font-size: 1.45rem; line-height: 1.5; letter-spacing: 0.04em; text-wrap: balance;
+  color: var(--wq-bone); margin-bottom: 18px;
+}
+body.soul-page .story-content h3 .story-icon { margin-right: 10px; }
 body.soul-page .story-content p {
-    font-size: 0.96rem;
-    line-height: 1.86;
+  font-size: 0.98rem; line-height: 1.95; letter-spacing: 0.03em; color: var(--wq-mist);
+  border-left: 2px solid var(--soul-line); padding-left: 20px;
 }
 
-body.soul-page .feature-icon,
+/* ============ 9. SPECS — 技术基石 ============ */
+body.soul-page .specs { overflow: hidden; }
+body.soul-page .specs::before {
+  background:
+    radial-gradient(560px 340px at 24% 50%, var(--soul-faint), transparent 60%),
+    radial-gradient(560px 340px at 76% 50%, hsl(187 96% 50% / 0.05), transparent 60%);
+}
+body.soul-page .specs-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;
+}
+body.soul-page .spec-item {
+  border-radius: 20px; padding: 34px 22px 30px; text-align: center;
+  border: 1px solid hsl(0 0% 100% / 0.09);
+  background: linear-gradient(180deg, hsl(234 36% 13% / 0.85), hsl(234 38% 9% / 0.9));
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.35s ease, box-shadow 0.45s ease;
+}
+body.soul-page .spec-item::before { display: none; } /* 关掉 shared.css 的旧 holo 扫光 */
+body.soul-page .spec-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--soul-line);
+  box-shadow: 0 26px 60px hsl(0 0% 0% / 0.5), 0 0 36px hsl(var(--soul-h) 85% 55% / 0.16);
+}
+.spec-num {
+  position: absolute; top: 16px; right: 18px;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.24em;
+  color: hsl(226 32% 82% / 0.4);
+}
 body.soul-page .spec-icon {
-    color: var(--soul-accent);
-    background: rgba(var(--soul-accent-rgb), 0.08);
-    filter: none;
+  width: 54px; height: 54px; margin: 0 auto 18px; border-radius: 15px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, hsl(var(--soul-h) 85% 60% / 0.2), hsl(187 96% 50% / 0.07));
+  border: 1px solid hsl(var(--soul-h) 85% 65% / 0.28);
 }
-
-body.soul-page .feature-card:hover,
-body.soul-page .story-card:hover,
-body.soul-page .spec-item:hover,
-body.soul-page .product-card:hover,
-body.soul-page .product-card.active,
-body.soul-page .product-option:hover {
-    border-color: rgba(var(--soul-accent-rgb), 0.34);
-}
-
+body.soul-page .spec-icon svg { width: 26px; height: 26px; stroke: var(--soul-tint); fill: none; stroke-width: 1.6; }
 body.soul-page .spec-value {
-    font-size: 1.62rem;
-    font-weight: 820;
+  font-family: var(--font-mono), var(--font-sans);
+  font-size: 1.65rem; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--wq-bone); margin-bottom: 10px; line-height: 1.3;
+  text-shadow: 0 0 24px hsl(var(--soul-h) 90% 60% / 0.4);
+}
+body.soul-page .spec-label { font-size: 0.92rem; letter-spacing: 0.2em; color: hsl(226 32% 82% / 0.75); }
+body.soul-page .spec-detail {
+  font-size: 0.8rem; letter-spacing: 0.06em; line-height: 1.7;
+  color: var(--soul-tint-text); margin-top: 12px;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+body.soul-page .spec-item:hover .spec-detail,
+body.soul-page .spec-item:focus-within .spec-detail { opacity: 1; transform: none; }
+/* 触屏：细则常显，不 hover-gate（research §6.3） */
+@media (hover: none), (pointer: coarse) {
+  body.soul-page .spec-detail { opacity: 1; transform: none; }
 }
 
-body.soul-page .product-name,
-body.soul-page .product-option .size,
+/* ============ 10. SELECTION / CTA — 选择 ============ */
+body.soul-page .cta, body.soul-page .product-selection {
+  text-align: center; overflow: hidden;
+  background:
+    radial-gradient(900px 480px at 50% 0%, var(--soul-faint), transparent 60%),
+    linear-gradient(180deg, transparent, hsl(234 38% 8% / 0.85));
+}
+body.soul-page .cta::before, body.soul-page .product-selection::before {
+  background:
+    radial-gradient(600px 320px at 50% 24%, hsl(var(--soul-h) 85% 55% / 0.10), transparent 60%),
+    radial-gradient(500px 300px at 18% 85%, hsl(187 96% 50% / 0.05), transparent 55%);
+}
+body.soul-page .cta-content { max-width: 1000px; margin: 0 auto; }
+body.soul-page .cta h2, body.soul-page .product-selection .section-header h2 {
+  font-family: var(--font-serif); font-weight: 900;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.2; letter-spacing: 0.06em; text-wrap: balance;
+  color: var(--wq-bone); margin-bottom: 20px;
+  /* 覆盖 shared.css .cta h2 的 gradient-text（WebKit 透明隐形风险） */
+  background: none; -webkit-text-fill-color: initial;
+  text-shadow: 0 0 60px hsl(var(--soul-h) 85% 55% / 0.25);
+}
+body.soul-page .cta > .container > .cta-content > p,
+body.soul-page .product-selection .section-header > p {
+  font-size: 1.08rem; letter-spacing: 0.2em; color: var(--wq-mist); margin-bottom: 8px;
+}
+body.soul-page .cta-buttons { margin-top: 48px; }
+body.soul-page .cta .btn-primary, body.soul-page .product-selection .btn-primary {
+  padding: 18px 58px; font-size: 17px;
+}
+body.soul-page .cta-links { margin-top: 44px; gap: 34px; }
+body.soul-page .cta-links a {
+  display: inline-flex; align-items: center;
+  color: hsl(226 32% 82% / 0.6); font-size: 14px; letter-spacing: 0.14em;
+  padding: 10px 4px;
+}
+body.soul-page .cta-links a::after {
+  background: linear-gradient(90deg, transparent, var(--soul-tint), transparent);
+}
+body.soul-page .cta-links a:hover { color: var(--soul-tint-text); }
+
+/* -- Variant A · sight：尺寸三档 -- */
+body.soul-page .product-options {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;
+  max-width: 960px; margin: 52px auto 0; text-align: center;
+}
+body.soul-page .product-option {
+  position: relative; border-radius: 20px; padding: 40px 24px;
+  border: 1px solid hsl(0 0% 100% / 0.09);
+  background: linear-gradient(180deg, hsl(234 36% 13% / 0.85), hsl(234 38% 9% / 0.92));
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.35s ease, box-shadow 0.45s ease;
+}
+body.soul-page .product-option:hover {
+  transform: translateY(-8px); border-color: var(--soul-line);
+  box-shadow: 0 28px 64px hsl(0 0% 0% / 0.5), 0 0 40px hsl(var(--soul-h) 85% 55% / 0.14);
+}
+body.soul-page .product-option .size {
+  font-family: var(--font-mono); font-size: 2rem; font-weight: 500;
+  color: var(--wq-bone); margin-bottom: 10px;
+  text-shadow: 0 0 26px hsl(var(--soul-h) 90% 60% / 0.4);
+}
+body.soul-page .product-option .desc {
+  font-size: 1.05rem; font-weight: 700; letter-spacing: 0.24em; text-indent: 0.24em;
+  color: var(--soul-tint-text); margin-bottom: 10px;
+}
+body.soul-page .product-option .slogan {
+  font-size: 0.9rem; letter-spacing: 0.3em; text-indent: 0.3em; color: var(--wq-mist);
+}
+/* -- Variant A · touch：三档位卡 -- */
 body.soul-page .product-option .tag {
-    font-size: 2.28rem;
-    font-weight: 850;
+  display: inline-block; margin-bottom: 14px;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.3em; text-indent: 0.3em;
+  color: #08131c; font-weight: 700;
+  background: var(--soul-tint-text);
+  padding: 8px 20px; border-radius: 999px;
 }
-
-body.soul-page .product-card:hover .product-name,
-body.soul-page .product-card.active .product-name,
-body.soul-page .product-option:hover .size,
-body.soul-page .product-option:hover .tag {
-    color: var(--soul-accent) !important;
+body.soul-page .product-option .name {
+  font-family: var(--font-mono); font-size: 0.95rem; letter-spacing: 0.18em;
+  color: hsl(226 32% 82% / 0.7); margin-bottom: 12px;
 }
-
-body.soul-page .product-spec-item,
+body.soul-page .product-option .features {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+  margin-top: 22px;
+}
 body.soul-page .product-option .feature-item {
-    border-color: rgba(var(--soul-accent-rgb), 0.12);
+  font-size: 0.82rem; letter-spacing: 0.08em; color: var(--wq-mist);
+  border: 1px solid hsl(0 0% 100% / 0.12); border-radius: 999px;
+  padding: 8px 16px; background: hsl(0 0% 100% / 0.03);
+}
+body.soul-page .product-option .shine {
+  position: absolute; inset: 0; border-radius: 20px; pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, hsl(0 0% 100% / 0.07) 48%, transparent 62%);
+}
+body.soul-page .product-option .light-bar {
+  position: absolute; left: 24px; right: 24px; bottom: 0; height: 3px; border-radius: 3px;
+  background: linear-gradient(90deg, transparent, var(--soul-tint), transparent);
+  opacity: 0.75;
+}
+/* 中档高亮 */
+body.soul-page .product-option.pro { border-color: var(--soul-line); }
+body.soul-page .product-option.pro::before {
+  content: "推荐"; position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  font-size: 11px; letter-spacing: 0.3em; text-indent: 0.3em; color: #08131c; font-weight: 700;
+  background: var(--soul-tint-text);
+  padding: 5px 16px 5px 20px; border-radius: 999px; white-space: nowrap;
 }
 
-@media (max-width: 860px) {
-    body.soul-page .hero h1 {
-        font-size: 3rem;
-    }
-
-    body.soul-page .hero h1::after {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    body.soul-page .hero-subtitle {
-        font-size: 1.04rem;
-        line-height: 1.68;
-    }
-
-    body.soul-page .section-header h2,
-    body.soul-page .philosophy-content h2,
-    body.soul-page .cta-content h2 {
-        font-size: 2.08rem;
-    }
+/* -- Variant B · pleasure/scent：子型号卡 -- */
+body.soul-page .product-cards-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px;
+  max-width: 1180px; margin: 0 auto;
 }
-
-@media (max-width: 540px) {
-    body.soul-page .hero h1 {
-        font-size: 2.44rem;
-    }
-
-    body.soul-page .section-header h2,
-    body.soul-page .philosophy-content h2,
-    body.soul-page .cta-content h2 {
-        font-size: 1.86rem;
-    }
+body.soul-page .product-card {
+  position: relative; overflow: hidden; cursor: pointer;
+  border-radius: 24px; padding: 42px 26px 34px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  border: 1px solid hsl(0 0% 100% / 0.09);
+  background:
+    radial-gradient(420px 240px at 50% 0%, hsl(var(--soul-h) 85% 60% / 0.12), transparent 62%),
+    linear-gradient(180deg, hsl(234 36% 13% / 0.88), hsl(234 38% 9% / 0.94));
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.35s ease, box-shadow 0.45s ease;
 }
-
-/* Navbar brand sizes match the homepage at mobile breakpoints */
+body.soul-page .product-card::before { display: none; }
+body.soul-page .product-card::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--soul-tint), transparent);
+  opacity: 0.8;
+}
+body.soul-page .product-card:hover {
+  transform: translateY(-8px); border-color: var(--soul-line);
+  box-shadow: 0 30px 70px hsl(0 0% 0% / 0.55), 0 0 44px hsl(var(--soul-h) 85% 55% / 0.16);
+}
+body.soul-page .product-brand {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.3em; text-indent: 0.3em;
+  color: hsl(226 32% 82% / 0.55); margin-bottom: 12px;
+}
+body.soul-page .product-name {
+  font-family: var(--font-serif); font-weight: 900; font-size: 2.1rem; letter-spacing: 0.08em;
+  color: var(--wq-bone); margin-bottom: 8px;
+  text-shadow: 0 0 34px hsl(var(--soul-h) 85% 55% / 0.35);
+  transition: color 0.3s ease;
+}
+body.soul-page .product-card:hover .product-name { color: var(--soul-tint); }
+body.soul-page .product-cn {
+  font-size: 1rem; letter-spacing: 0.5em; text-indent: 0.5em;
+  color: hsl(226 32% 82% / 0.75); margin-bottom: 16px;
+}
+body.soul-page .product-slogan {
+  font-size: 0.9rem; letter-spacing: 0.1em; line-height: 1.7; color: var(--soul-tint-text);
+}
+body.soul-page .specs-area {
+  width: 100%; margin-top: 24px; padding-top: 24px;
+  border-top: 1px solid hsl(0 0% 100% / 0.1);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+body.soul-page .product-card:hover .specs-area,
+body.soul-page .specs-area.mobile-expanded { opacity: 1; transform: none; }
+body.soul-page .specs-grid-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px 18px;
+}
+body.soul-page .product-spec-item {
+  font-size: 0.82rem; letter-spacing: 0.06em; line-height: 1.6; color: var(--wq-mist);
+  border: 1px solid hsl(0 0% 100% / 0.1); border-radius: 10px; padding: 10px 8px;
+  background: hsl(0 0% 100% / 0.03);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+body.soul-page .product-card:hover .product-spec-item { color: var(--wq-bone); border-color: var(--soul-line); }
+body.soul-page .mobile-tap-hint {
+  display: none; margin-top: 14px;
+  font-size: 11px; letter-spacing: 0.2em; color: hsl(226 32% 82% / 0.5);
+}
 @media (max-width: 768px) {
-    body.soul-page .logo-image { height: 28px; }
-    body.soul-page .logo-text { font-size: 19px; font-weight: 800; letter-spacing: 1px; }
+  body.soul-page .mobile-tap-hint { display: block; }
+}
+
+/* ============ 11. FOOTER ============ */
+body.soul-page .footer {
+  background: hsl(234 40% 6% / 0.95);
+  border-top: 1px solid hsl(0 0% 100% / 0.07);
+  padding: 44px 0; text-align: center; position: relative;
+}
+body.soul-page .footer::before {
+  content: ""; position: absolute; top: -1px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--soul-line), transparent);
+}
+body.soul-page .footer .container {
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+}
+body.soul-page .footer-logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+body.soul-page .footer-logo img { height: 40px; width: auto; filter: drop-shadow(0 0 10px hsl(187 96% 50% / 0.35)); }
+body.soul-page .footer-logo .logo-text {
+  font-family: var(--font-serif); font-size: 24px; font-weight: 700;
+  letter-spacing: 0.4em; text-indent: 0.4em; color: var(--wq-bone);
+}
+body.soul-page .footer-contact p, body.soul-page .footer-info p {
+  color: hsl(226 32% 82% / 0.6); font-size: 13.5px; letter-spacing: 0.06em; margin: 4px 0;
+}
+body.soul-page .footer a { color: var(--wq-accent); text-decoration: none; transition: color 0.25s ease; }
+body.soul-page .footer a:hover { color: var(--soul-tint-text); }
+
+/* ============ 12. 响应式 ============ */
+@media (max-width: 1024px) {
+  body.soul-page .philosophy-grid { grid-template-columns: 1fr; gap: 48px; }
+  body.soul-page .specs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body.soul-page .product-cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body.soul-page .product-card:last-child { grid-column: 1 / -1; max-width: 480px; margin: 0 auto; width: 100%; }
+  .hero-vertical { display: none; }
+}
+@media (max-width: 768px) {
+  body.soul-page section { padding: 84px 0; }
+  body.soul-page .hero { min-height: 100svh; padding: 120px 0 70px; }
+  h1.soul-char { font-size: clamp(8rem, 38vw, 12rem); }
+  body.soul-page .hero-subtitle { letter-spacing: 0.2em; text-indent: 0.2em; }
+  body.soul-page .stories-grid { grid-template-columns: 1fr; }
+  body.soul-page .product-options { grid-template-columns: 1fr; max-width: 420px; }
+  body.soul-page .product-cards-grid { grid-template-columns: 1fr; max-width: 420px; }
+  body.soul-page .product-card:last-child { grid-column: auto; max-width: 420px; }
+  body.soul-page .specs-grid { grid-template-columns: 1fr 1fr; }
+  body.soul-page .story-content { padding: 32px 28px 32px 52px; }
+  /* 移动端：卡片细则默认展开（tap 仍可收起其余） */
+  body.soul-page .specs-area { opacity: 1; transform: none; }
+  .marquee-chunk { gap: 2rem; padding-right: 2rem; }
 }
 @media (max-width: 480px) {
-    body.soul-page .logo-image { height: 26px; }
-    body.soul-page .logo-text { font-size: 15px; letter-spacing: 0.5px; }
+  body.soul-page section { padding: 68px 0; }
+  body.soul-page .specs-grid { grid-template-columns: 1fr; }
+  body.soul-page .hero-buttons { flex-direction: column; align-items: stretch; }
+  body.soul-page .btn-primary, body.soul-page .btn-secondary { width: 100%; }
+  body.soul-page .story-card::before { left: 24px; }
+  body.soul-page .story-content { padding: 28px 22px 28px 44px; }
+  .vt-tr { display: none; }
 }
+
+/* ============ 13. 旧类兼容收尾 ============ */
+/* shared.css 的 .reveal 基线已被 product-common.css 的 html.js 门控版本覆盖，
+   此处仅保留 transition-delay 工具（product-common.css 已定义）。 */
+body.soul-page .navbar { position: relative; }
